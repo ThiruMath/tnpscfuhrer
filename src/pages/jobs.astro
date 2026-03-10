@@ -1,0 +1,22 @@
+---
+import jobs from "../data/jobs.json";
+
+type Job = {
+  title: string;
+  link: string;
+};
+
+const jobList = jobs as Job[];
+---
+
+<h1>TNPSC Job Notifications</h1>
+
+<ul>
+  {jobList.map((job) => (
+    <li>
+      <a href={job.link} target="_blank">
+        {job.title}
+      </a>
+    </li>
+  ))}
+</ul>

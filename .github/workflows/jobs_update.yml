@@ -1,0 +1,31 @@
+name: Update TNPSC Jobs
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run scraper
+        run: python scripts/tnpsc_jobs_scraper.py
+
+      - name: Commit updated data
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Auto update TNPSC jobs" || echo "No changes"
+          git push
