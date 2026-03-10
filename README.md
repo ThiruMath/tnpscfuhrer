@@ -41,3 +41,13 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Cloudflare Pages Deployment
+
+GitHub Actions will build pull requests and deploy pushes to `main` to Cloudflare Pages.
+
+Set these repository settings before the first deploy:
+
+- GitHub secret `CLOUDFLARE_API_TOKEN`: Cloudflare API token with `Account / Cloudflare Pages / Edit`.
+- GitHub secret `CLOUDFLARE_ACCOUNT_ID`: your Cloudflare account ID.
+- GitHub variable `CLOUDFLARE_PAGES_PROJECT_NAME`: your Pages project name.
