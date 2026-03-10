@@ -1,13 +1,24 @@
 {
-  "name": "tnpscfuhrer",
+  "name": "cd-tnpscfuhrer",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "npm run build && wrangler dev",
+    "astro": "astro",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "astro": "^4.0.0"
+    "@astrojs/cloudflare": "^12.6.13",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.17.1",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "wrangler": "^4.71.0"
   }
 }
