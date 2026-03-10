@@ -2,23 +2,36 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-url = "https://www.tnpsc.gov.in/notifications"
+URL = "https://www.tnpsc.gov.in/english/notification.aspx"
 
-response = requests.get(url)
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
+
+response = requests.get(URL, headers=headers)
 soup = BeautifulSoup(response.text, "html.parser")
 
 jobs = []
 
-for link in soup.find_all("a"):
-    title = link.text.strip()
+# Find all links on the page
+for link in soup.find_all("a", href=True):
+    text = link.get_text(strip=True)
 
-    if "notification" in title.lower():
+    if "notification" in text.lower() or "examination" in text.lower():
+        href = link["href"]
+
+        if not href.startswith("http"):
+            href = "https://www.tnpsc.gov.in/" + href.lstrip("/")
+
         jobs.append({
-            "title": title,
-            "link": link.get("href")
+            "title": text,
+            "link": href
         })
 
-with open("src/data/jobs.json", "w") as f:
-    json.dump(jobs, f, indent=2)
+# Remove duplicates
+unique_jobs = {job["title"]: job for job in jobs}.values()
 
-print("Jobs updated")
+with open("src/data/jobs.json", "w", encoding="utf-8") as f:
+    json.dump(list(unique_jobs), f, indent=2)
+
+print("Jobs collected:", len(unique_jobs))

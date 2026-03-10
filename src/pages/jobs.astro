@@ -9,14 +9,87 @@ type Job = {
 const jobList = jobs as Job[];
 ---
 
-<h1>TNPSC Job Notifications</h1>
+<style>
 
-<ul>
-  {jobList.map((job) => (
-    <li>
-      <a href={job.link} target="_blank">
-        {job.title}
-      </a>
-    </li>
-  ))}
-</ul>
+body{
+font-family: Inter, system-ui;
+background:#f5f7fb;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.title{
+font-size:36px;
+font-weight:700;
+margin-bottom:30px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:14px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+transition:0.2s;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+.jobtitle{
+font-size:18px;
+font-weight:600;
+margin-bottom:12px;
+}
+
+.button{
+display:inline-block;
+margin-top:10px;
+padding:10px 14px;
+background:#2563eb;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-size:14px;
+width:fit-content;
+}
+
+</style>
+
+<div class="container">
+
+<h1 class="title">TNPSC Job Notifications</h1>
+
+<div class="grid">
+
+{jobList.map((job) => (
+
+<div class="card">
+
+<div class="jobtitle">{job.title}</div>
+
+<a href={job.link} target="_blank" class="button">
+View Notification
+</a>
+
+</div>
+
+))}
+
+</div>
+
+</div>
