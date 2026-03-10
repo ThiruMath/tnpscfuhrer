@@ -4,37 +4,49 @@ import json
 
 URL = "https://www.tnpsc.gov.in/english/notification.aspx"
 
-headers = {
-    "User-Agent": "Mozilla/5.0"
-}
-
-response = requests.get(URL, headers=headers)
+response = requests.get(URL, headers={"User-Agent":"Mozilla/5.0"})
 soup = BeautifulSoup(response.text, "html.parser")
-
-jobs = []
 
 table = soup.find("table")
 
-rows = table.find_all("tr")[1:]  # skip header
+jobs = []
+
+rows = table.find_all("tr")[1:]
 
 for row in rows:
+
     cols = row.find_all("td")
 
     if len(cols) >= 6:
+
         notification_no = cols[1].text.strip()
         post_name = cols[2].text.strip()
+
         apply_from = cols[3].text.strip()
         apply_to = cols[4].text.strip()
+
         exam_date = cols[5].text.strip()
 
-        link_tag = cols[2].find("a")
-        link = ""
+        main_link = ""
+        addendum = []
+        corrigendum = []
 
-        if link_tag:
-            link = link_tag.get("href")
+        for a in cols[2].find_all("a"):
+
+            text = a.text.strip().upper()
+            link = a.get("href")
 
             if not link.startswith("http"):
                 link = "https://www.tnpsc.gov.in/" + link
+
+            if "ADDENDUM" in text:
+                addendum.append({"title":text,"link":link})
+
+            elif "CORRIGENDUM" in text:
+                corrigendum.append({"title":text,"link":link})
+
+            else:
+                main_link = link
 
         jobs.append({
             "notification_no": notification_no,
@@ -42,10 +54,12 @@ for row in rows:
             "apply_from": apply_from,
             "apply_to": apply_to,
             "exam_date": exam_date,
-            "link": link
+            "main_link": main_link,
+            "addendum": addendum,
+            "corrigendum": corrigendum
         })
 
-with open("src/data/jobs.json", "w", encoding="utf-8") as f:
-    json.dump(jobs, f, indent=2, ensure_ascii=False)
+with open("src/data/jobs.json","w",encoding="utf-8") as f:
+    json.dump(jobs,f,indent=2,ensure_ascii=False)
 
-print("Collected jobs:", len(jobs))
+print("Collected:",len(jobs))
