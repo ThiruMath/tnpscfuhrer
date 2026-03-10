@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const exams = [
+  {
+    name: 'Group 2 (Interview)',
+    code: 'Gr. 2',
+    posts: 'Deputy Collector, DSP, AO, etc.',
+    eligibility: 'Any Degree',
+    age: '18–32',
+    papers: 'Paper I + II + Interview',
+  },
+  {
+    name: 'Group 2A (Non-Interview)',
+    code: 'Gr. 2A',
+    posts: 'Junior Assistant, Steno, Typist, etc.',
+    eligibility: 'Any Degree / Diploma',
+    age: '18–32',
+    papers: 'Paper I + II',
+  },
+  {
+    name: 'Group 4',
+    code: 'Gr. 4',
+    posts: 'Junior Assistant, Typist, Bill Collector',
+    eligibility: 'HSC (10+2)',
+    age: '18–30',
+    papers: 'Paper I + II',
+  },
+  {
+    name: 'VAO (Village Admin Officer)',
+    code: 'VAO',
+    posts: 'Village Administrative Officer',
+    eligibility: 'HSC (10+2)',
+    age: '18–30',
+    papers: 'Paper I + II',
+  },
+];
+
+const syllabus = [
+  { subject: 'General Studies', topics: 'History, Geography, Polity, Economics, Science, Environment' },
+  { subject: 'Current Affairs', topics: 'National, International, Tamil Nadu specific events' },
+  { subject: 'Tamil', topics: 'Literature, Grammar, Poets, Sangam, Modern Tamil' },
+  { subject: 'Aptitude', topics: 'Mathematics, Reasoning, Mental Ability (Group 4/VAO only)' },
+];
+---
+
+<Layout title="TNPSC Guide" description="Complete TNPSC exam guide — syllabus, eligibility, exam pattern for Group 2, 2A, 4 and VAO." active="TNPSC">
+  <main class="container">
+    <div class="page-header">
+      <span class="badge">Exam Guide</span>
+      <h1>TNPSC Overview</h1>
+      <p>Everything you need to know about Tamil Nadu Public Service Commission exams — eligibility, syllabus, and exam pattern.</p>
+    </div>
+
+    <!-- Exams Table -->
+    <section class="section">
+      <h2>Exam Groups at a Glance</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Exam</th>
+              <th>Posts</th>
+              <th>Eligibility</th>
+              <th>Age Limit</th>
+              <th>Pattern</th>
+            </tr>
+          </thead>
+          <tbody>
+            {exams.map(e => (
+              <tr>
+                <td><strong>{e.name}</strong></td>
+                <td>{e.posts}</td>
+                <td>{e.eligibility}</td>
+                <td>{e.age}</td>
+                <td>{e.papers}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Syllabus -->
+    <section class="section">
+      <h2>Syllabus Breakdown</h2>
+      <div class="syllabus-grid">
+        {syllabus.map(s => (
+          <div class="card syllabus-card">
+            <h3>{s.subject}</h3>
+            <p>{s.topics}</p>
+            <a href="/notes" class="study-link">Study Notes →</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="section tips-section">
+      <h2>Preparation Tips</h2>
+      <ol class="tips-list">
+        <li>Start with NCERT books for History, Geography, and Science fundamentals.</li>
+        <li>Focus on Tamil Nadu-specific history, geography, and current affairs — high weightage in all groups.</li>
+        <li>Solve previous year question papers for all TNPSC groups.</li>
+        <li>Follow monthly current affairs — TNPSC gives 15–20% weightage to current events.</li>
+        <li>Revise using short notes — don't try to read textbooks in the last 30 days.</li>
+      </ol>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .section { margin-bottom: 3.5rem; }
+  .section h2 {
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .table-wrap { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  thead { background: var(--navy); color: #fff; }
+  th { padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); color: var(--muted); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg); }
+  td strong { color: var(--text); }
+
+  .syllabus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .syllabus-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; font-weight: 600; }
+  .syllabus-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+
+  .study-link { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+  .study-link:hover { text-decoration: underline; }
+
+  .tips-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
+
+  .tips-list {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tips-list li { color: var(--muted); font-size: 0.93rem; line-height: 1.7; padding-left: 0.25rem; }
+</style>

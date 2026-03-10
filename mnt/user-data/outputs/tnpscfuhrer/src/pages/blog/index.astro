@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+  {
+    title: 'How to Prepare for TNPSC Group 2 in 6 Months',
+    date: 'March 2025',
+    category: 'Strategy',
+    desc: 'A realistic, week-by-week preparation plan for Group 2 aspirants with a full-time study schedule.',
+  },
+  {
+    title: 'Top 50 Current Affairs Questions — February 2025',
+    date: 'February 2025',
+    category: 'Current Affairs',
+    desc: 'The most important current affairs events from February 2025 compiled specifically for TNPSC exams.',
+  },
+  {
+    title: 'Tamil History: Key Events You Cannot Miss',
+    date: 'January 2025',
+    category: 'History',
+    desc: 'A focused revision of the most frequently asked Tamil History questions across all TNPSC exams.',
+  },
+  {
+    title: 'Understanding the Indian Constitution for TNPSC',
+    date: 'January 2025',
+    category: 'Polity',
+    desc: 'Articles, amendments, and constitutional provisions most relevant to TNPSC Group 2 and 4.',
+  },
+  {
+    title: 'TNPSC VAO vs Group 4 — Which to Target First?',
+    date: 'December 2024',
+    category: 'Strategy',
+    desc: 'A comparison of the two most popular TNPSC entry-level exams to help you decide your strategy.',
+  },
+];
+
+const categories = ['All', 'Strategy', 'Current Affairs', 'History', 'Polity', 'Economics'];
+---
+
+<Layout title="Blog" description="TNPSC exam strategy, current affairs, and subject guides for Tamil Nadu government job aspirants." active="Blog">
+  <main class="container">
+    <div class="page-header">
+      <span class="badge">Articles &amp; Guides</span>
+      <h1>Blog</h1>
+      <p>Exam strategy, current affairs, subject deep-dives — written for TNPSC aspirants.</p>
+    </div>
+
+    <div class="categories">
+      {categories.map((cat, i) => (
+        <button class={`cat-btn ${i === 0 ? 'active' : ''}`}>{cat}</button>
+      ))}
+    </div>
+
+    <div class="posts-list">
+      {posts.map(post => (
+        <article class="post-card card">
+          <div class="post-cat">{post.category}</div>
+          <h2><a href="#">{post.title}</a></h2>
+          <p>{post.desc}</p>
+          <div class="post-footer">
+            <span class="post-date">📅 {post.date}</span>
+            <a href="#" class="read-more">Read more →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .categories {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .cat-btn {
+    padding: 0.4rem 1.1rem;
+    border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cat-btn.active, .cat-btn:hover {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+
+  .posts-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .post-card { padding: 1.75rem; }
+
+  .post-cat {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .post-card h2 { font-size: 1.25rem; color: var(--navy); margin-bottom: 0.6rem; }
+  .post-card h2 a:hover { color: var(--accent); }
+
+  .post-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+
+  .post-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .post-date { font-size: 0.82rem; color: var(--muted); }
+
+  .read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    transition: gap 0.1s;
+  }
+  .read-more:hover { text-decoration: underline; }
+</style>

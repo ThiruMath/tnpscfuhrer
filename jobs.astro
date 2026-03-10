@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const jobs = [
+  { title: 'TNPSC Group 2 & 2A', dept: 'Tamil Nadu PSC', type: 'State', posts: '5529', deadline: 'Check TNPSC Portal', status: 'Open' },
+  { title: 'TNPSC Group 4 & VAO', dept: 'Tamil Nadu PSC', type: 'State', posts: '6244', deadline: 'Check TNPSC Portal', status: 'Upcoming' },
+  { title: 'TN Police Constable', dept: 'TNUSRB', type: 'State', posts: '6700+', deadline: 'Check Portal', status: 'Upcoming' },
+  { title: 'TN Teachers Recruitment', dept: 'TRBT', type: 'State', posts: 'Various', deadline: 'Check Portal', status: 'Open' },
+  { title: 'TN Forest Department', dept: 'Forest Dept', type: 'State', posts: 'Various', deadline: 'Check Portal', status: 'Upcoming' },
+  { title: 'SSC CGL', dept: 'Staff Selection Commission', type: 'Central', posts: '17000+', deadline: 'Check SSC Portal', status: 'Open' },
+];
+---
+
+<Layout title="Jobs" description="Latest Tamil Nadu government job notifications and central government exam alerts." active="Jobs">
+  <main class="container">
+    <div class="page-header">
+      <span class="badge">Job Alerts</span>
+      <h1>Government Jobs</h1>
+      <p>Latest TN government and central government job notifications. Always verify details on official portals.</p>
+    </div>
+
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">State</button>
+      <button class="filter-btn">Central</button>
+      <button class="filter-btn">Open</button>
+    </div>
+
+    <div class="jobs-list">
+      {jobs.map(job => (
+        <div class="job-card card">
+          <div class="job-info">
+            <div class="job-top">
+              <h3>{job.title}</h3>
+              <span class={`status-badge ${job.status === 'Open' ? 'open' : 'upcoming'}`}>
+                {job.status}
+              </span>
+            </div>
+            <p class="job-dept">{job.dept}</p>
+            <div class="job-meta">
+              <span>🏷️ {job.type}</span>
+              <span>👥 {job.posts} posts</span>
+              <span>📅 {job.deadline}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="disclaimer card">
+      <strong>⚠️ Disclaimer:</strong> Always verify job details from official sources like 
+      <a href="https://www.tnpsc.gov.in" target="_blank">tnpsc.gov.in</a>. This page is for informational purposes only.
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+
+  .filter-btn {
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--navy);
+    color: #fff;
+    border-color: var(--navy);
+  }
+
+  .jobs-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .job-card { padding: 1.25rem 1.5rem; }
+
+  .job-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .job-top h3 { font-size: 1.05rem; color: var(--navy); font-family: 'DM Sans', sans-serif; font-weight: 600; }
+
+  .status-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .status-badge.open { background: #ECFDF5; color: #059669; }
+  .status-badge.upcoming { background: #FEF9C3; color: #A16207; }
+
+  .job-dept { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem; }
+
+  .job-meta {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.83rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+
+  .disclaimer {
+    margin-top: 2rem;
+    font-size: 0.88rem;
+    color: var(--muted);
+    background: #FFFBEB;
+    border-color: #FDE68A;
+  }
+  .disclaimer a { color: var(--accent); text-decoration: underline; }
+</style>

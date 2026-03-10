@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About" description="Learn about TNPSC Fuhrer — a free exam prep platform for Tamil Nadu aspirants." active="About">
+  <main class="container">
+    <div class="page-header">
+      <span class="badge">Who We Are</span>
+      <h1>About TNPSC Fuhrer</h1>
+      <p>A free, open platform built for every Tamil Nadu government job aspirant.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-content">
+        <section class="about-section">
+          <h2>Our Mission</h2>
+          <p>TNPSC Fuhrer was built with one goal — to make high-quality TNPSC study material accessible to everyone, regardless of coaching fees or location. We believe every aspirant deserves a fair shot at clearing Tamil Nadu's government exams.</p>
+        </section>
+
+        <section class="about-section">
+          <h2>What We Offer</h2>
+          <ul class="offer-list">
+            <li><span>📚</span> Concise, exam-focused study notes</li>
+            <li><span>💼</span> Daily government job notifications</li>
+            <li><span>📰</span> Current affairs tailored for TNPSC</li>
+            <li><span>🎯</span> Syllabus guides for Group 2, 2A, 4 &amp; VAO</li>
+            <li><span>✍️</span> Strategy blogs and preparation tips</li>
+          </ul>
+        </section>
+
+        <section class="about-section">
+          <h2>Open Source</h2>
+          <p>This entire platform is open source. Found an error? Want to contribute notes or improvements? We welcome contributions from the community.</p>
+          <a href="https://github.com/ThiruMath/tnpscfuhrer" target="_blank" class="github-link">
+            View on GitHub →
+          </a>
+        </section>
+      </div>
+
+      <aside class="about-sidebar">
+        <div class="card">
+          <h3>Quick Facts</h3>
+          <dl>
+            <dt>Platform</dt><dd>TNPSC Fuhrer</dd>
+            <dt>Focus</dt><dd>Tamil Nadu PSC Exams</dd>
+            <dt>Cost</dt><dd>Always Free</dd>
+            <dt>Source</dt><dd>Open Source</dd>
+            <dt>Exams Covered</dt><dd>Group 2, 2A, 4, VAO</dd>
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+
+  .about-section { margin-bottom: 2.5rem; }
+  .about-section h2 {
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  .about-section p { color: var(--muted); line-height: 1.8; }
+
+  .offer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .offer-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .offer-list span { font-size: 1.2rem; }
+
+  .github-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: gap 0.15s;
+  }
+  .github-link:hover { text-decoration: underline; }
+
+  .card h3 {
+    font-size: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.8rem;
+  }
+
+  dl { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 1rem; font-size: 0.9rem; }
+  dt { color: var(--muted); }
+  dd { color: var(--text); font-weight: 500; }
+</style>

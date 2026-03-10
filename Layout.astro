@@ -1,0 +1,59 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  active?: string;
+}
+
+const {
+  title = 'TNPSC Fuhrer',
+  description = 'Free TNPSC exam preparation — notes, jobs, current affairs, and more.',
+  active = '',
+} = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/notes', label: 'Notes' },
+  { href: '/jobs', label: 'Jobs' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/tnpsc', label: 'TNPSC' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | TNPSC Fuhrer</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="nav-logo">TNPSC <span>Fuhrer</span></a>
+      <ul class="nav-links">
+        {navLinks.map(link => (
+          <li>
+            <a href={link.href} class={active === link.label ? 'active' : ''}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <slot />
+
+    <footer>
+      <p>Built for TNPSC aspirants &mdash; <strong>TNPSC Fuhrer</strong> &copy; {new Date().getFullYear()}</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

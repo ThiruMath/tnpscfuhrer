@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Home" active="Home">
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <span class="badge">Free &amp; Open Platform</span>
+          <h1>Crack TNPSC.<br/>Study Smarter.</h1>
+          <p>Notes, job alerts, current affairs, and exam guides — everything you need to clear Group 2, 2A, 4 &amp; VAO in one place.</p>
+          <div class="hero-actions">
+            <a href="/notes" class="btn-primary">Browse Notes</a>
+            <a href="/jobs" class="btn-outline">Latest Jobs</a>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span>500+</span><p>Study Notes</p></div>
+          <div class="stat"><span>Daily</span><p>Job Updates</p></div>
+          <div class="stat"><span>Free</span><p>Forever</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <div class="container">
+        <h2>Everything You Need</h2>
+        <div class="features-grid">
+          <a href="/notes" class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Study Notes</h3>
+            <p>Concise, exam-focused notes covering all TNPSC subjects — History, Polity, Economy, Science, and Tamil.</p>
+          </a>
+          <a href="/jobs" class="feature-card">
+            <div class="feature-icon">💼</div>
+            <h3>Job Alerts</h3>
+            <p>Latest TN government job notifications, exam dates, and application deadlines — updated daily.</p>
+          </a>
+          <a href="/blog" class="feature-card">
+            <div class="feature-icon">✍️</div>
+            <h3>Blog</h3>
+            <p>Strategy articles, current affairs breakdowns, and exam tips written for TNPSC aspirants.</p>
+          </a>
+          <a href="/tnpsc" class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>TNPSC Guide</h3>
+            <p>Everything about TNPSC — exam pattern, syllabus, group-wise eligibility, and preparation roadmap.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .hero {
+    background: linear-gradient(160deg, #fff 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 5rem 0 4rem;
+  }
+
+  .hero-inner {
+    max-width: 620px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-inner h1 {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    color: var(--navy);
+    margin: 1.25rem 0 1rem;
+    line-height: 1.1;
+  }
+
+  .hero-inner p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: opacity 0.15s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1.5px solid var(--border);
+    transition: border-color 0.15s;
+  }
+  .btn-outline:hover { border-color: var(--navy); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .stat span {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  .stat p { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+
+  .features {
+    padding: 5rem 0;
+  }
+
+  .features h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 2.5rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .feature-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+  }
+
+  .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .feature-card h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 0.6rem; }
+  .feature-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+</style>

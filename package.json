@@ -1,18 +1,13 @@
 {
-  "name": "cd-tnpscfuhrer",
+  "name": "tnpscfuhrer",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.17.1",
-    "sharp": "^0.34.3"
+    "astro": "^4.0.0"
   }
 }
