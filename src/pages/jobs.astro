@@ -1,214 +1,428 @@
 ---
-import jobs from "../data/jobs.json";
+import Layout from '../layouts/Layout.astro';
+import jobsData from '../data/jobs.json';
 
-type Job = {
+interface Job {
   notification_no: string;
   post_name: string;
   apply_from: string;
   apply_to: string;
   exam_date: string;
   link: string;
-};
+  addendum_link?: string;
+  corrigendum_link?: string;
+  tags?: string[];
+}
 
-const jobList = jobs as Job[];
+const jobs: Job[] = jobsData as Job[];
 
 const today = new Date();
+today.setHours(0, 0, 0, 0);
 
-function parseDate(dateStr: string) {
-  const parts = dateStr.split("/");
-  return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
+function parseDate(dateStr: string): Date | null {
+  if (!dateStr || dateStr === '-' || dateStr === 'N/A' || dateStr.trim() === '') return null;
+  const parts = dateStr.split('/');
+  if (parts.length === 3) {
+    return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+  }
+  const d = new Date(dateStr);
+  return isNaN(d.getTime()) ? null : d;
 }
 
-const upcoming = jobList.filter((job) => {
-  const d = parseDate(job.exam_date);
-  return d >= today;
-});
-
-const old = jobList.filter((job) => {
-  const d = parseDate(job.exam_date);
-  return d < today;
-});
-
-function googleCalendarLink(title: string, date: string) {
-
-  const d = parseDate(date);
-
-  const y = d.getFullYear();
-  const m = String(d.getMonth()+1).padStart(2,'0');
-  const day = String(d.getDate()).padStart(2,'0');
-
-  const formatted = `${y}${m}${day}`;
-
-  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${formatted}/${formatted}`;
+function formatDate(dateStr: string): string {
+  const d = parseDate(dateStr);
+  if (!d) return '—';
+  return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
 }
+
+function getDaysUntil(dateStr: string): number | null {
+  const d = parseDate(dateStr);
+  if (!d) return null;
+  const diff = d.getTime() - today.getTime();
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+}
+
+function getGCalLink(job: Job): string {
+  const examDate = parseDate(job.exam_date);
+  if (!examDate) return '#';
+  const fmt = (d: Date) =>
+    `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
+  const start = fmt(examDate);
+  const end = fmt(new Date(examDate.getTime() + 86400000));
+  const title = encodeURIComponent(`TNPSC – ${job.post_name}`);
+  const details = encodeURIComponent(`Notification: ${job.notification_no}\nNotification Link: ${job.link}`);
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}`;
+}
+
+const upcomingJobs = jobs.filter(j => {
+  const d = parseDate(j.exam_date);
+  return !d || d >= today;
+}).sort((a, b) => {
+  const da = parseDate(a.exam_date);
+  const db = parseDate(b.exam_date);
+  if (!da && !db) return 0;
+  if (!da) return 1;
+  if (!db) return -1;
+  return da.getTime() - db.getTime();
+});
+
+const oldJobs = jobs.filter(j => {
+  const d = parseDate(j.exam_date);
+  return d && d < today;
+}).sort((a, b) => {
+  const da = parseDate(a.exam_date)!;
+  const db = parseDate(b.exam_date)!;
+  return db.getTime() - da.getTime();
+});
+
+const calendarItems = upcomingJobs
+  .filter(j => parseDate(j.exam_date) !== null)
+  .slice(0, 8);
+
+const lastUpdated = new Date().toLocaleDateString('en-IN', {
+  day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+});
 ---
 
-<style>
+<Layout title="TNPSC Job Notifications | TNPSC Fuhrer">
+  <div class="dashboard">
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:40px;
-font-family:Inter,system-ui;
-}
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <span class="brand-icon">⚡</span>
+          <span class="brand-name">TNPSC<span class="brand-accent">fuhrer</span></span>
+        </div>
+        <nav class="nav-links">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/jobs" class="nav-link active">Jobs</a>
+          <a href="/notes" class="nav-link soon">Notes <span class="badge">Soon</span></a>
+          <a href="/quiz" class="nav-link soon">Quiz <span class="badge">Soon</span></a>
+          <a href="/current-affairs" class="nav-link soon">Current Affairs <span class="badge">Soon</span></a>
+        </nav>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="theme-icon">☀️</span>
+        </button>
+      </div>
+    </header>
 
-h1{
-margin-bottom:20px;
-}
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-eyebrow">Tamil Nadu Public Service Commission</div>
+          <h1 class="hero-title">Exam Notifications<br/><span class="hero-highlight">Dashboard</span></h1>
+          <p class="hero-sub">Live job notifications, exam dates, and calendar integration — updated every 6 hours.</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-num">{upcomingJobs.length}</span>
+              <span class="stat-label">Upcoming</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num">{oldJobs.length}</span>
+              <span class="stat-label">Archived</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-num">{jobs.length}</span>
+              <span class="stat-label">Total</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-calendar-widget">
+          <div class="calendar-widget-header">
+            <span class="cw-icon">📅</span>
+            <span class="cw-title">Upcoming Exams</span>
+          </div>
+          <div class="calendar-list">
+            {calendarItems.length === 0 && (
+              <div class="calendar-empty">No upcoming exams scheduled</div>
+            )}
+            {calendarItems.map((job) => {
+              const days = getDaysUntil(job.exam_date);
+              return (
+                <div class="cal-item">
+                  <div class="cal-date-badge">
+                    <span class="cal-day">{parseDate(job.exam_date)?.getDate().toString().padStart(2,'0')}</span>
+                    <span class="cal-month">{parseDate(job.exam_date)?.toLocaleString('en', {month:'short'})}</span>
+                  </div>
+                  <div class="cal-info">
+                    <span class="cal-post">{job.post_name}</span>
+                    {days !== null && days >= 0 && (
+                      <span class={`cal-countdown ${days <= 7 ? 'urgent' : days <= 30 ? 'soon' : ''}`}>
+                        {days === 0 ? 'Today!' : days === 1 ? 'Tomorrow' : `${days}d left`}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
 
-.section{
-margin-top:40px;
-}
+    <!-- SEARCH & FILTER -->
+    <div class="toolbar-wrap">
+      <div class="toolbar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Search notifications, posts..." class="search-input" />
+          <kbd class="search-kbd">⌘K</kbd>
+        </div>
+        <div class="filter-pills">
+          <button class="pill active" data-filter="all">All</button>
+          <button class="pill" data-filter="upcoming">Upcoming</button>
+          <button class="pill" data-filter="old">Archived</button>
+        </div>
+        <div class="updated-badge">
+          <span class="updated-dot"></span>
+          Updated {lastUpdated}
+        </div>
+      </div>
+    </div>
 
-table{
-width:100%;
-border-collapse:collapse;
-background:white;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-}
+    <main class="main-content" id="mainContent">
 
-thead{
-background:#2563eb;
-color:white;
-}
+      <!-- UPCOMING SECTION -->
+      <section class="jobs-section" id="upcomingSection">
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-icon upcoming-icon">🟢</span>
+            <h2 class="section-title">Upcoming Notifications</h2>
+            <span class="count-badge">{upcomingJobs.length}</span>
+          </div>
+          <p class="section-sub">Active and forthcoming TNPSC exam notifications</p>
+        </div>
 
-th,td{
-padding:14px;
-text-align:left;
-}
+        {upcomingJobs.length === 0 ? (
+          <div class="empty-state">
+            <div class="empty-icon">📭</div>
+            <p>No upcoming notifications found.</p>
+          </div>
+        ) : (
+          <div class="jobs-grid" id="upcomingGrid">
+            {upcomingJobs.map((job) => {
+              const days = getDaysUntil(job.exam_date);
+              const isUrgent = days !== null && days >= 0 && days <= 7;
+              const isSoon = days !== null && days >= 0 && days <= 30 && !isUrgent;
+              const applyDays = getDaysUntil(job.apply_to);
+              const applyOpen = applyDays !== null && applyDays >= 0;
+              return (
+                <div class={`job-card ${isUrgent ? 'urgent' : isSoon ? 'soon' : ''}`} data-post={job.post_name.toLowerCase()} data-notif={job.notification_no.toLowerCase()}>
+                  <div class="card-header">
+                    <div class="notif-no">{job.notification_no}</div>
+                    <div class="card-badges">
+                      {isUrgent && <span class="tag tag-urgent">Urgent</span>}
+                      {isSoon && <span class="tag tag-soon">Soon</span>}
+                      {applyOpen && <span class="tag tag-apply">Apply Open</span>}
+                      {job.addendum_link && <span class="tag tag-addendum">Addendum</span>}
+                      {job.corrigendum_link && <span class="tag tag-corr">Corrigendum</span>}
+                    </div>
+                  </div>
 
-tbody tr{
-border-bottom:1px solid #eee;
-}
+                  <div class="card-body">
+                    <h3 class="post-name">{job.post_name}</h3>
 
-tbody tr:hover{
-background:#f9fafb;
-}
+                    <div class="dates-grid">
+                      <div class="date-item">
+                        <span class="date-label">Apply From</span>
+                        <span class="date-value">{formatDate(job.apply_from)}</span>
+                      </div>
+                      <div class="date-item">
+                        <span class="date-label">Last Date</span>
+                        <span class={`date-value ${applyDays !== null && applyDays <= 5 && applyDays >= 0 ? 'date-urgent' : ''}`}>
+                          {formatDate(job.apply_to)}
+                          {applyDays !== null && applyDays >= 0 && applyDays <= 7 && (
+                            <span class="date-chip">{applyDays}d</span>
+                          )}
+                        </span>
+                      </div>
+                      <div class="date-item">
+                        <span class="date-label">Exam Date</span>
+                        <span class="date-value exam-date-val">
+                          {formatDate(job.exam_date)}
+                          {days !== null && days >= 0 && (
+                            <span class={`date-chip ${isUrgent ? 'chip-urgent' : ''}`}>{days}d</span>
+                          )}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
 
-.btn{
-background:#2563eb;
-color:white;
-padding:6px 10px;
-border-radius:6px;
-text-decoration:none;
-font-size:12px;
-}
+                  <div class="card-footer">
+                    <a href={job.link} target="_blank" rel="noopener" class="btn btn-primary">
+                      <span>View Notification</span>
+                      <span class="btn-arrow">↗</span>
+                    </a>
+                    {job.addendum_link && (
+                      <a href={job.addendum_link} target="_blank" rel="noopener" class="btn btn-outline">
+                        Addendum ↗
+                      </a>
+                    )}
+                    {job.corrigendum_link && (
+                      <a href={job.corrigendum_link} target="_blank" rel="noopener" class="btn btn-outline">
+                        Corrigendum ↗
+                      </a>
+                    )}
+                    {job.exam_date && job.exam_date !== '-' && (
+                      <a href={getGCalLink(job)} target="_blank" rel="noopener" class="btn btn-cal" title="Add to Google Calendar">
+                        📅 Calendar
+                      </a>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </section>
 
-</style>
+      <!-- OLD SECTION -->
+      <section class="jobs-section archived-section" id="oldSection">
+        <div class="section-header">
+          <div class="section-title-group">
+            <span class="section-icon">🔘</span>
+            <h2 class="section-title">Archived Notifications</h2>
+            <span class="count-badge muted">{oldJobs.length}</span>
+          </div>
+          <p class="section-sub">Past exam notifications for reference</p>
+          <button class="toggle-archived" id="toggleArchived">Show Archived ↓</button>
+        </div>
 
-<div class="container">
+        <div class="jobs-grid archived-grid hidden" id="archivedGrid">
+          {oldJobs.map((job) => (
+            <div class="job-card archived" data-post={job.post_name.toLowerCase()} data-notif={job.notification_no.toLowerCase()}>
+              <div class="card-header">
+                <div class="notif-no">{job.notification_no}</div>
+                <div class="card-badges">
+                  <span class="tag tag-old">Completed</span>
+                  {job.addendum_link && <span class="tag tag-addendum">Addendum</span>}
+                  {job.corrigendum_link && <span class="tag tag-corr">Corrigendum</span>}
+                </div>
+              </div>
+              <div class="card-body">
+                <h3 class="post-name">{job.post_name}</h3>
+                <div class="dates-grid">
+                  <div class="date-item">
+                    <span class="date-label">Applied</span>
+                    <span class="date-value">{formatDate(job.apply_from)} – {formatDate(job.apply_to)}</span>
+                  </div>
+                  <div class="date-item">
+                    <span class="date-label">Exam Was</span>
+                    <span class="date-value">{formatDate(job.exam_date)}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <a href={job.link} target="_blank" rel="noopener" class="btn btn-ghost">
+                  View Notification ↗
+                </a>
+                {job.addendum_link && (
+                  <a href={job.addendum_link} target="_blank" rel="noopener" class="btn btn-ghost">
+                    Addendum ↗
+                  </a>
+                )}
+                {job.corrigendum_link && (
+                  <a href={job.corrigendum_link} target="_blank" rel="noopener" class="btn btn-ghost">
+                    Corrigendum ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
-<h1>TNPSC Job Dashboard</h1>
+    </main>
 
-<div class="section">
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="brand-icon">⚡</span>
+          <span>TNPSC<span class="brand-accent">fuhrer</span></span>
+        </div>
+        <p class="footer-note">Data sourced from <a href="https://www.tnpsc.gov.in" target="_blank" rel="noopener">tnpsc.gov.in</a> · Updated every 6 hours via GitHub Actions</p>
+        <div class="footer-links">
+          <span class="coming-soon-pill">🧠 Notes — Coming Soon</span>
+          <span class="coming-soon-pill">🧩 Quiz Engine — Coming Soon</span>
+          <span class="coming-soon-pill">📰 Current Affairs AI — Coming Soon</span>
+        </div>
+      </div>
+    </footer>
 
-<h2>Upcoming Notifications</h2>
+  </div>
+</Layout>
 
-<table>
+<script>
+  // Search
+  const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+  const cards = document.querySelectorAll('.job-card');
 
-<thead>
+  searchInput?.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const post = card.getAttribute('data-post') || '';
+      const notif = card.getAttribute('data-notif') || '';
+      const match = post.includes(q) || notif.includes(q);
+      (card as HTMLElement).style.display = match ? '' : 'none';
+    });
+  });
 
-<tr>
-<th>No</th>
-<th>Notification</th>
-<th>Post</th>
-<th>Apply</th>
-<th>Exam</th>
-<th>Link</th>
-<th>Calendar</th>
-</tr>
+  // Keyboard shortcut
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      searchInput?.focus();
+    }
+  });
 
-</thead>
+  // Filter pills
+  document.querySelectorAll('.pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.getAttribute('data-filter');
+      const upcoming = document.getElementById('upcomingSection');
+      const old = document.getElementById('oldSection');
+      if (filter === 'all') {
+        upcoming?.style.setProperty('display', '');
+        old?.style.setProperty('display', '');
+      } else if (filter === 'upcoming') {
+        upcoming?.style.setProperty('display', '');
+        old?.style.setProperty('display', 'none');
+      } else {
+        upcoming?.style.setProperty('display', 'none');
+        old?.style.setProperty('display', '');
+        // Auto-expand archived
+        const grid = document.getElementById('archivedGrid');
+        grid?.classList.remove('hidden');
+      }
+    });
+  });
 
-<tbody>
+  // Toggle archived
+  const toggleBtn = document.getElementById('toggleArchived');
+  const archivedGrid = document.getElementById('archivedGrid');
+  toggleBtn?.addEventListener('click', () => {
+    archivedGrid?.classList.toggle('hidden');
+    if (toggleBtn) {
+      toggleBtn.textContent = archivedGrid?.classList.contains('hidden')
+        ? 'Show Archived ↓'
+        : 'Hide Archived ↑';
+    }
+  });
 
-{upcoming.map((job,i)=>(
-
-<tr>
-
-<td>{i+1}</td>
-
-<td>{job.notification_no}</td>
-
-<td>{job.post_name}</td>
-
-<td>{job.apply_from} → {job.apply_to}</td>
-
-<td>{job.exam_date}</td>
-
-<td>
-<a class="btn" href={job.link} target="_blank">
-View
-</a>
-</td>
-
-<td>
-<a class="btn" href={googleCalendarLink(job.post_name, job.exam_date)} target="_blank">
-Add
-</a>
-</td>
-
-</tr>
-
-))}
-
-</tbody>
-
-</table>
-
-</div>
-
-<div class="section">
-
-<h2>Old Notifications</h2>
-
-<table>
-
-<thead>
-
-<tr>
-<th>No</th>
-<th>Notification</th>
-<th>Post</th>
-<th>Apply</th>
-<th>Exam</th>
-<th>Link</th>
-</tr>
-
-</thead>
-
-<tbody>
-
-{old.map((job,i)=>(
-
-<tr>
-
-<td>{i+1}</td>
-
-<td>{job.notification_no}</td>
-
-<td>{job.post_name}</td>
-
-<td>{job.apply_from} → {job.apply_to}</td>
-
-<td>{job.exam_date}</td>
-
-<td>
-<a class="btn" href={job.link} target="_blank">
-View
-</a>
-</td>
-
-</tr>
-
-))}
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = themeToggle?.querySelector('.theme-icon');
+  let dark = true;
+  themeToggle?.addEventListener('click', () => {
+    dark = !dark;
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    if (themeIcon) themeIcon.textContent = dark ? '☀️' : '🌙';
+  });
+</script>
