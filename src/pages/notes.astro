@@ -1,61 +1,30 @@
 ---
+// This goes at the top of src/pages/notes.astro
 import Layout from '../layouts/Layout.astro';
-// You can keep your sidebar list here
+import fs from 'node:fs';
+import path from 'node:path';
+
+// This reads the public/notes folder during build time
+const notesDirectory = path.join(process.cwd(), 'public', 'notes');
+let files: string[] = [];
+
+try {
+  files = fs.readdirSync(notesDirectory).filter(file => file.endsWith('.md'));
+} catch (e) {
+  console.error("Could not find the public/notes folder!");
+}
 ---
 
 <Layout title="Notes Browser">
-  <input type="text" id="noteSearch" placeholder="Search notes..." />
-  <div id="content-display">Select a note to view...</div>
+  <aside class="sidebar">
+    <ul>
+      {files.map(file => (
+        <li>
+          <button class="note-link" data-filename={file}>
+            {file.replace('.md', '').replace(/_/g, ' ')}
+          </button>
+        </li>
+      ))}
+    </ul>
+  </aside>
 </Layout>
-
-<script>
-  import { marked } from 'marked';
-
-  // Fixes the 'null' errors by casting types
-  const links = document.querySelectorAll('.note-link') as NodeListOf<HTMLElement>;
-  const display = document.getElementById('content-display') as HTMLDivElement;
-  const searchInput = document.getElementById('noteSearch') as HTMLInputElement;
-
-  // 1. Logic to load and parse Markdown
-  links.forEach(link => {
-    link.addEventListener('click', async (e) => {
-      const target = e.currentTarget as HTMLElement;
-      const fileName = target.getAttribute('data-filename');
-
-      if (display && fileName) {
-        display.innerHTML = "<em>Loading content...</em>";
-        try {
-          const res = await fetch(`/notes/${fileName}`);
-          const text = await res.text();
-          // This converts Markdown to pretty HTML
-          display.innerHTML = await marked.parse(text);
-        } catch (err) {
-          display.innerHTML = "Error loading note.";
-        }
-      }
-    });
-  });
-
-  // 2. Simple Search Logic
-  searchInput?.addEventListener('input', (e) => {
-    const term = (e.target as HTMLInputElement).value.toLowerCase();
-    links.forEach(link => {
-      const text = link.innerText.toLowerCase();
-      link.parentElement!.style.display = text.includes(term) ? 'block' : 'none';
-    });
-  });
-</script>
-
-<style>
-  /* Ensure the content-display looks like your image */
-  #content-display {
-    padding: 2rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    min-height: 400px;
-  }
-  /* Style the rendered Markdown */
-  #content-display h1 { color: #2c3e50; border-bottom: 2px solid #eee; }
-  #content-display p { line-height: 1.6; color: #444; }
-</style>
