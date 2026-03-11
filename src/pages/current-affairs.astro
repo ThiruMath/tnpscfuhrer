@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current Affairs | TNPSC Fuhrer</title>
+<link rel="icon" href="https://tnpscfuhrer.in/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ── Site Variables (exact match) ─────────────────────────── */
+:root {
+  --bg: #F8F7F4;
+  --surface: #FFFFFF;
+  --border: #E8E5DF;
+  --text: #1C1C1C;
+  --muted: #6B6860;
+  --accent: #C1121F;
+  --accent-soft: #FFF0F0;
+  --navy: #14213D;
+  --radius: 12px;
+  --shadow: 0 2px 16px rgba(0,0,0,.07);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+h1,h2,h3,h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+img { max-width: 100%; display: block; }
+
+/* ── Nav (exact replica) ──────────────────────────────────── */
+nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); letter-spacing: -.02em; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: .25rem; list-style: none; }
+.nav-links a { padding: .5rem .85rem; border-radius: 8px; font-size: .9rem; font-weight: 500; color: var(--muted); transition: all .15s ease; }
+.nav-links a:hover, .nav-links a.active { background: var(--bg); color: var(--text); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .2s; }
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer { background: var(--navy); color: #fff9; text-align: center; padding: 2rem; font-size: .85rem; margin-top: 4rem; }
+footer strong { color: #fff; }
+
+/* ── Shared ───────────────────────────────────────────────── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: var(--accent-soft); color: var(--accent);
+  padding: .25rem .75rem; border-radius: 100px;
+  font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+}
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+
+/* ── Page Header ──────────────────────────────────────────── */
+.page-header { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+.page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--navy); margin-top: .5rem; }
+.page-header p { margin-top: .5rem; color: var(--muted); font-size: 1rem; }
+.header-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+.live-badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: #f0fff4; color: #166534;
+  padding: .3rem .8rem; border-radius: 100px;
+  font-size: .78rem; font-weight: 600; letter-spacing: .04em;
+  border: 1px solid #bbf7d0;
+}
+.live-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.last-updated { font-size: .82rem; color: var(--muted); }
+
+/* ── Tag Filter Bar ───────────────────────────────────────── */
+.tag-filter-bar {
+  display: flex; gap: .5rem; flex-wrap: wrap;
+  margin-bottom: 2rem; padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.tag-btn {
+  padding: .35rem .9rem; border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--surface); color: var(--muted);
+  font-size: .8rem; font-weight: 500; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all .15s ease; white-space: nowrap;
+}
+.tag-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.tag-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── News Grid ────────────────────────────────────────────── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+.news-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.35rem;
+  cursor: pointer;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s;
+  display: flex; flex-direction: column; gap: .75rem;
+  animation: fadeUp .35s ease both;
+}
+.news-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); border-color: #d4cfc7; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+.news-card:nth-child(1){animation-delay:.05s}
+.news-card:nth-child(2){animation-delay:.1s}
+.news-card:nth-child(3){animation-delay:.15s}
+.news-card:nth-child(4){animation-delay:.2s}
+.news-card:nth-child(5){animation-delay:.25s}
+.news-card:nth-child(6){animation-delay:.3s}
+
+/* Card Tags */
+.card-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+.card-tag {
+  padding: .18rem .6rem; border-radius: 100px;
+  font-size: .7rem; font-weight: 600;
+  letter-spacing: .03em; text-transform: uppercase;
+}
+/* Tag colors by category */
+.tag-polity     { background: #eff6ff; color: #1d4ed8; }
+.tag-economy    { background: #f0fdf4; color: #166534; }
+.tag-history    { background: #fefce8; color: #854d0e; }
+.tag-geography  { background: #f0fdfa; color: #0f766e; }
+.tag-science    { background: #faf5ff; color: #6d28d9; }
+.tag-environment{ background: #f0fdf4; color: #15803d; }
+.tag-india      { background: var(--accent-soft); color: var(--accent); }
+.tag-tamilnadu  { background: #fff7ed; color: #c2410c; }
+.tag-culture    { background: #fdf4ff; color: #86198f; }
+.tag-sports     { background: #fff1f2; color: #be123c; }
+.tag-awards     { background: #fffbeb; color: #92400e; }
+.tag-international{ background: #f0f9ff; color: #0369a1; }
+.tag-social     { background: #f5f3ff; color: #5b21b6; }
+.tag-agriculture{ background: #f7fee7; color: #3f6212; }
+.tag-default    { background: var(--bg); color: var(--muted); }
+
+/* Card Headline */
+.card-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--navy); line-height: 1.3;
+}
+/* Card Summary */
+.card-summary { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+/* Card Footer */
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto; padding-top: .5rem;
+  border-top: 1px solid var(--border);
+  font-size: .78rem; color: var(--muted);
+}
+.card-source { display: flex; align-items: center; gap: .4rem; }
+.source-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.ext-link-warn {
+  display: inline-flex; align-items: center; gap: .3rem;
+  color: #b45309; font-size: .72rem; font-weight: 500;
+}
+.read-more-btn {
+  display: inline-flex; align-items: center; gap: .3rem;
+  color: var(--accent); font-size: .8rem; font-weight: 600;
+  transition: gap .15s;
+}
+.news-card:hover .read-more-btn { gap: .5rem; }
+
+/* ── Stats Bar ────────────────────────────────────────────── */
+.stats-bar {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.5rem;
+  margin-bottom: 1.75rem; font-size: .85rem;
+}
+.stat-item { display: flex; align-items: center; gap: .5rem; color: var(--muted); }
+.stat-num { font-weight: 700; color: var(--navy); font-size: 1rem; }
+
+/* ── Empty / Loading ──────────────────────────────────────── */
+.loading-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;
+}
+.skeleton {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.35rem;
+  display: flex; flex-direction: column; gap: .75rem;
+}
+.skel { background: linear-gradient(90deg, #f0eeea 25%, #e8e6e1 50%, #f0eeea 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 6px; }
+.skel-tag { height: 20px; width: 80px; border-radius: 100px; }
+.skel-title { height: 16px; }
+.skel-title-2 { height: 16px; width: 70%; }
+.skel-line { height: 12px; }
+.skel-line-2 { height: 12px; width: 85%; }
+.skel-line-3 { height: 12px; width: 60%; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+.empty-state { text-align: center; padding: 4rem 2rem; color: var(--muted); }
+.empty-state .icon { font-size: 3rem; margin-bottom: 1rem; }
+.empty-state h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: .5rem; }
+
+/* ── Modal Overlay ────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(20, 33, 61, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: var(--surface);
+  border-radius: var(--radius);
+  width: 100%; max-width: 780px;
+  max-height: 90vh; overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,.18);
+  transform: translateY(20px) scale(.98);
+  transition: transform .25s ease;
+  position: relative;
+}
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+
+.modal-header {
+  padding: 1.75rem 1.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; background: var(--surface); z-index: 10;
+}
+.modal-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem; }
+.modal-title { font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--navy); line-height: 1.3; }
+.modal-meta { display: flex; align-items: center; gap: 1rem; margin-top: .6rem; flex-wrap: wrap; }
+.modal-meta span { font-size: .82rem; color: var(--muted); display: flex; align-items: center; gap: .3rem; }
+.modal-close {
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  width: 32px; height: 32px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg);
+  cursor: pointer; font-size: 1rem; display: flex;
+  align-items: center; justify-content: center;
+  color: var(--muted); transition: all .15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.modal-close:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+
+.modal-body { padding: 1.75rem; }
+.modal-article {
+  font-size: .95rem; color: var(--text); line-height: 1.85;
+  font-family: 'DM Sans', sans-serif;
+}
+.modal-article p { margin-bottom: 1rem; }
+
+/* Hyperlinks in article */
+.internal-link {
+  color: #1d4ed8; text-decoration: underline;
+  text-decoration-color: #93c5fd;
+  text-underline-offset: 3px;
+  font-weight: 500; cursor: pointer;
+  transition: color .15s;
+}
+.internal-link:hover { color: var(--navy); }
+.external-link {
+  color: #b45309; text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: #fbbf24;
+  text-underline-offset: 3px;
+  font-weight: 500; cursor: pointer;
+  transition: color .15s;
+}
+.external-link:hover { color: #92400e; }
+.internal-link::after { content: ' ↗'; font-size: .75em; }
+.external-link::after { content: ' ↗'; font-size: .75em; }
+
+/* Modal link info box */
+.link-info-box {
+  display: flex; align-items: center; gap: .75rem;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  font-size: .85rem;
+}
+.link-info-box.needs-notes { background: #fffbeb; border-color: #fde68a; }
+.link-info-box-icon { font-size: 1.3rem; flex-shrink: 0; }
+.link-info-box strong { color: var(--navy); display: block; margin-bottom: .15rem; }
+.link-info-box p { color: var(--muted); margin: 0; }
+
+/* Modal source footer */
+.modal-source-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .75rem;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  font-size: .82rem; color: var(--muted);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+.source-link {
+  display: inline-flex; align-items: center; gap: .3rem;
+  color: var(--accent); font-weight: 600;
+  transition: gap .15s;
+}
+.source-link:hover { gap: .5rem; }
+
+/* ── Archive Strip ────────────────────────────────────────── */
+.archive-strip {
+  background: var(--navy); color: #fff;
+  border-radius: var(--radius); padding: 1rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 2rem; flex-wrap: wrap; gap: .75rem;
+}
+.archive-strip p { font-size: .88rem; color: #ffffff99; }
+.archive-strip strong { color: #fff; }
+.archive-btn {
+  padding: .4rem 1rem; border-radius: 8px;
+  background: rgba(255,255,255,.12); color: #fff;
+  border: 1px solid rgba(255,255,255,.2);
+  font-size: .82rem; font-weight: 600;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: background .15s;
+}
+.archive-btn:hover { background: rgba(255,255,255,.2); }
+
+/* ── Date Picker ──────────────────────────────────────────── */
+.date-nav {
+  display: flex; align-items: center; gap: .5rem;
+  margin-bottom: 1.5rem;
+}
+.date-nav-btn {
+  width: 32px; height: 32px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--surface);
+  cursor: pointer; font-size: .9rem;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); transition: all .15s;
+}
+.date-nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+.date-label {
+  font-size: .9rem; font-weight: 600; color: var(--navy);
+  padding: .3rem .8rem; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  nav { padding: 0 1rem; }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); padding: .75rem 1rem; }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: .65rem .85rem; }
+  .hamburger { display: flex; }
+  .container { padding: 0 1rem; }
+  .news-grid { grid-template-columns: 1fr; }
+  .modal { max-height: 95vh; }
+  .modal-header { padding: 1.25rem 1.25rem 1rem; }
+  .modal-body { padding: 1.25rem; }
+  .modal-source-bar { padding: 1rem 1.25rem; }
+  .stats-bar { gap: 1rem; }
+  .page-header { padding: 2rem 0 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────────── -->
+<nav>
+  <a href="https://tnpscfuhrer.in/" class="nav-logo">TNPSC <span>Fuhrer</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="https://tnpscfuhrer.in/">Home</a></li>
+    <li><a href="https://tnpscfuhrer.in/notes">Notes</a></li>
+    <li><a href="https://tnpscfuhrer.in/jobs">Jobs</a></li>
+    <li><a href="https://tnpscfuhrer.in/blog">Blog</a></li>
+    <li><a href="https://tnpscfuhrer.in/tnpsc">TNPSC</a></li>
+    <li><a href="#" class="active">Current Affairs</a></li>
+  </ul>
+  <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── Main ────────────────────────────────────────────────── -->
+<main class="container">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <span class="badge">📰 Daily Digest</span>
+    <h1>Current Affairs</h1>
+    <p>AI-curated news tagged to TNPSC syllabus topics — updated every 6 hours.</p>
+    <div class="header-meta">
+      <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;">
+        <span class="live-badge"><span class="live-dot"></span> Live Feed</span>
+        <span class="last-updated" id="lastUpdated">Last updated: Loading…</span>
+      </div>
+      <div style="font-size:.82rem;color:var(--muted);">
+        🔵 Internal notes &nbsp; 🟠 External / Wikipedia links
+      </div>
+    </div>
+  </div>
+
+  <!-- Archive Strip -->
+  <div class="archive-strip" id="archiveStrip" style="display:none;">
+    <div>
+      <strong>📦 Yesterday's digest has been archived</strong>
+      <p>All articles from <span id="archiveDate"></span> are now saved as permanent notes.</p>
+    </div>
+    <button class="archive-btn" onclick="viewArchive()">View Archive →</button>
+  </div>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar" id="statsBar">
+    <div class="stat-item">🗞️ <span class="stat-num" id="totalCount">—</span> Articles today</div>
+    <div class="stat-item">🏷️ <span class="stat-num" id="taggedCount">—</span> Tagged to syllabus</div>
+    <div class="stat-item">🔗 <span class="stat-num" id="internalCount">—</span> Internal note links</div>
+    <div class="stat-item" style="color:#b45309;">⚠️ <span class="stat-num" id="externalCount" style="color:#b45309;">—</span> Needs internal notes</div>
+  </div>
+
+  <!-- Date Nav -->
+  <div class="date-nav">
+    <button class="date-nav-btn" onclick="changeDate(-1)" title="Previous day">◀</button>
+    <span class="date-label" id="dateLabel">Today</span>
+    <button class="date-nav-btn" onclick="changeDate(1)" title="Next day">▶</button>
+  </div>
+
+  <!-- Tag Filter -->
+  <div class="tag-filter-bar" id="tagFilterBar">
+    <button class="tag-btn active" onclick="filterByTag(this, '')" data-tag="">All Topics</button>
+  </div>
+
+  <!-- News Grid -->
+  <div id="newsContainer">
+    <div class="loading-grid" id="skeletonGrid">
+      <!-- Skeletons injected by JS -->
+    </div>
+    <div class="news-grid" id="newsGrid" style="display:none;"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="icon">📭</div>
+      <h3>No articles yet</h3>
+      <p>News is being collected. Check back shortly or select a different date.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── Modal ────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="modal-tags" id="modalTags"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-meta">
+        <span id="modalSource"></span>
+        <span id="modalTime"></span>
+        <span id="modalExtLinks" style="color:#b45309;display:none;"></span>
+      </div>
+      <button class="modal-close" onclick="closeModal()" title="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="article-body" id="modalArticle"></div>
+    </div>
+    <div class="modal-source-bar">
+      <span id="modalSourceFull"></span>
+      <a href="#" id="modalOriginalLink" target="_blank" class="source-link">Read Original Source →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Built for TNPSC aspirants — <strong>TNPSC Fuhrer</strong> © 2026</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT — Full Widget Logic
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+// ── Config ────────────────────────────────────────────────────
+const API_BASE = window.API_BASE || 'http://localhost:3000';
+const TAGS = [
+  'History','Geography','Polity','Economy',
+  'Science & Technology','Environment & Ecology',
+  'Current Events - India','Current Events - Tamil Nadu',
+  'Culture & Heritage','Sports','Awards & Honours',
+  'International Affairs','Social Issues','Agriculture'
+];
+const TAG_CLASSES = {
+  'History':'tag-history','Geography':'tag-geography','Polity':'tag-polity',
+  'Economy':'tag-economy','Science & Technology':'tag-science',
+  'Environment & Ecology':'tag-environment','Current Events - India':'tag-india',
+  'Current Events - Tamil Nadu':'tag-tamilnadu','Culture & Heritage':'tag-culture',
+  'Sports':'tag-sports','Awards & Honours':'tag-awards',
+  'International Affairs':'tag-international','Social Issues':'tag-social',
+  'Agriculture':'tag-agriculture'
+};
+
+// ── State ─────────────────────────────────────────────────────
+let currentDate = new Date();
+let activeTag = '';
+let allArticles = [];
+let internalNoteSlugs = {}; // {slug: title}
+let currentArticle = null;
+
+// ── Boot ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  buildTagFilter();
+  loadInternalNotes();
+  loadNews();
+  updateDateLabel();
+  updateLastUpdated();
+  checkArchiveBanner();
+  // Refresh every 6 hours
+  setInterval(loadNews, 6 * 60 * 60 * 1000);
+  // ESC key closes modal
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+});
+
+// ── Tag Filter ────────────────────────────────────────────────
+function buildTagFilter() {
+  const bar = document.getElementById('tagFilterBar');
+  TAGS.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = 'tag-btn';
+    btn.textContent = tag;
+    btn.dataset.tag = tag;
+    btn.onclick = function(){ filterByTag(this, tag); };
+    bar.appendChild(btn);
+  });
+}
+
+function filterByTag(btn, tag) {
+  document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeTag = tag;
+  renderArticles(allArticles);
+}
+
+// ── Load Notes Slugs ──────────────────────────────────────────
+async function loadInternalNotes() {
+  try {
+    const r = await fetch(`${API_BASE}/api/notes`);
+    const data = await r.json();
+    if (data.success) {
+      data.data.forEach(n => { internalNoteSlugs[n.slug] = n.title; });
+    }
+  } catch(e) {
+    // offline/demo mode — use mock
+    MOCK_NOTES.forEach(n => { internalNoteSlugs[n.slug] = n.title; });
+  }
+}
+
+// ── Load News ─────────────────────────────────────────────────
+async function loadNews() {
+  showSkeletons(6);
+  const dateStr = formatDate(currentDate);
+  try {
+    const r = await fetch(`${API_BASE}/api/news?date=${dateStr}`);
+    const data = await r.json();
+    if (data.success) {
+      allArticles = data.data;
+    } else { throw new Error(); }
+  } catch(e) {
+    // Demo mode with mock data
+    allArticles = MOCK_ARTICLES;
+  }
+  hideSkeletons();
+  renderArticles(allArticles);
+  updateStats(allArticles);
+}
+
+// ── Render Articles ───────────────────────────────────────────
+function renderArticles(articles) {
+  const grid = document.getElementById('newsGrid');
+  const empty = document.getElementById('emptyState');
+  const filtered = activeTag ? articles.filter(a => a.tags && a.tags.includes(activeTag)) : articles;
+
+  grid.innerHTML = '';
+  if (!filtered.length) {
+    grid.style.display = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+  grid.style.display = 'grid';
+  empty.style.display = 'none';
+
+  filtered.forEach((article, i) => {
+    const card = createCard(article, i);
+    grid.appendChild(card);
+  });
+}
+
+function createCard(article, index) {
+  const card = document.createElement('div');
+  card.className = 'news-card';
+  card.style.animationDelay = `${index * 0.06}s`;
+
+  const tags = (article.tags || []).slice(0, 3);
+  const tagsHTML = tags.map(t =>
+    `<span class="card-tag ${TAG_CLASSES[t] || 'tag-default'}">${t}</span>`
+  ).join('');
+
+  const extWarn = article.external_link_count > 0
+    ? `<span class="ext-link-warn">⚠️ ${article.external_link_count} ext. links</span>` : '';
+
+  const timeAgo = getTimeAgo(article.published_at);
+  const source = article.source || 'News Source';
+
+  card.innerHTML = `
+    <div class="card-tags">${tagsHTML}</div>
+    <div class="card-headline">${article.headline || article.short_summary?.substring(0,80) || 'Loading…'}</div>
+    <div class="card-summary">${article.short_summary || ''}</div>
+    <div class="card-footer">
+      <div class="card-source">
+        <span class="source-dot"></span>
+        <span>${source} · ${timeAgo}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        ${extWarn}
+        <span class="read-more-btn">Read →</span>
+      </div>
+    </div>
+  `;
+  card.onclick = () => openArticle(article);
+  return card;
+}
+
+// ── Open Full Article Modal ───────────────────────────────────
+async function openArticle(article) {
+  currentArticle = article;
+  let fullData = article;
+
+  // Fetch full article if not loaded
+  if (!article.full_article && article.id) {
+    try {
+      const r = await fetch(`${API_BASE}/api/news/${article.id}`);
+      const d = await r.json();
+      if (d.success) fullData = d.data;
+    } catch(e) {}
+  }
+
+  // Tags
+  const tags = (fullData.tags || []);
+  document.getElementById('modalTags').innerHTML =
+    tags.map(t => `<span class="card-tag ${TAG_CLASSES[t]||'tag-default'}">${t}</span>`).join('');
+
+  // Title
+  document.getElementById('modalTitle').textContent = fullData.headline || 'Full Article';
+
+  // Meta
+  document.getElementById('modalSource').innerHTML = `🗞️ ${fullData.source || 'Source'}`;
+  document.getElementById('modalTime').innerHTML = `🕒 ${formatFullDate(fullData.published_at)}`;
+
+  const extEl = document.getElementById('modalExtLinks');
+  if (fullData.external_link_count > 0) {
+    extEl.style.display = 'inline-flex';
+    extEl.textContent = `⚠️ ${fullData.external_link_count} terms need internal notes`;
+  } else {
+    extEl.style.display = 'none';
+  }
+
+  // Article body with hyperlinks
+  const articleHTML = buildArticleHTML(fullData.full_article || fullData.short_summary || '', fullData.key_terms || []);
+
+  // Link info box
+  const externalTerms = (fullData.key_terms || []).filter(k => k.type === 'external' || !internalNoteSlugs[k.suggested_link?.replace('/notes/','')]);
+  const infoBox = externalTerms.length > 0 ? `
+    <div class="link-info-box needs-notes">
+      <div class="link-info-box-icon">⚠️</div>
+      <div>
+        <strong>${externalTerms.length} term${externalTerms.length>1?'s':''} link to Wikipedia</strong>
+        <p>These topics don't have internal notes yet. Linked to Wikipedia for now.</p>
+      </div>
+    </div>` : `
+    <div class="link-info-box">
+      <div class="link-info-box-icon">✅</div>
+      <div>
+        <strong>All terms linked to internal notes</strong>
+        <p>Every highlighted term has a corresponding notes page on TNPSC Fuhrer.</p>
+      </div>
+    </div>`;
+
+  document.getElementById('modalArticle').innerHTML = infoBox + articleHTML;
+
+  // Source bar
+  document.getElementById('modalSourceFull').innerHTML = `🗞️ Source: <strong>${fullData.source || 'Unknown'}</strong>`;
+  const origLink = document.getElementById('modalOriginalLink');
+  origLink.href = fullData.original_url || '#';
+  origLink.style.display = fullData.original_url ? 'inline-flex' : 'none';
+
+  // Open modal
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// ── Build Article HTML with Hyperlinks ────────────────────────
+function buildArticleHTML(text, keyTerms) {
+  if (!text) return '<p>Full article not available.</p>';
+
+  // Split into paragraphs
+  let paras = text.split(/\n+/).filter(p => p.trim());
+  if (paras.length === 0) paras = [text];
+
+  return paras.map(para => {
+    let p = escapeHTML(para);
+    // Replace key terms with hyperlinks
+    (keyTerms || []).forEach(kt => {
+      if (!kt.term) return;
+      const slug = kt.suggested_link?.replace('/notes/','') || '';
+      const isInternal = internalNoteSlugs[slug];
+      const link = isInternal
+        ? `https://tnpscfuhrer.in/notes/${slug}`
+        : (kt.suggested_link?.startsWith('http') ? kt.suggested_link : `https://en.wikipedia.org/wiki/${encodeURIComponent(kt.term)}`);
+      const cls = isInternal ? 'internal-link' : 'external-link';
+      const title = isInternal ? `Notes: ${internalNoteSlugs[slug]}` : `Wikipedia: ${kt.term}`;
+      // Case-insensitive replace (first occurrence only per para)
+      const re = new RegExp(`\\b(${escapeRegex(kt.term)})\\b`, 'i');
+      p = p.replace(re, `<a href="${link}" class="${cls}" title="${title}" target="_blank" rel="noopener">$1</a>`);
+    });
+    return `<p>${p}</p>`;
+  }).join('');
+}
+
+function escapeHTML(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// ── Close Modal ───────────────────────────────────────────────
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  currentArticle = null;
+}
+
+// ── Stats ─────────────────────────────────────────────────────
+function updateStats(articles) {
+  document.getElementById('totalCount').textContent = articles.length;
+  document.getElementById('taggedCount').textContent = articles.filter(a => a.tags?.length > 0).length;
+  const internal = articles.reduce((sum, a) => {
+    const terms = a.key_terms || [];
+    return sum + terms.filter(k => internalNoteSlugs[k.suggested_link?.replace('/notes/','')]).length;
+  }, 0);
+  const external = articles.reduce((sum, a) => sum + (a.external_link_count || 0), 0);
+  document.getElementById('internalCount').textContent = internal;
+  document.getElementById('externalCount').textContent = external;
+}
+
+// ── Skeletons ─────────────────────────────────────────────────
+function showSkeletons(n) {
+  const grid = document.getElementById('skeletonGrid');
+  grid.style.display = 'grid';
+  document.getElementById('newsGrid').style.display = 'none';
+  document.getElementById('emptyState').style.display = 'none';
+  grid.innerHTML = Array.from({length:n}).map(() => `
+    <div class="skeleton">
+      <div style="display:flex;gap:.4rem;"><div class="skel skel-tag"></div><div class="skel skel-tag" style="width:60px;"></div></div>
+      <div class="skel skel-title"></div>
+      <div class="skel skel-title-2"></div>
+      <div class="skel skel-line" style="margin-top:.25rem;"></div>
+      <div class="skel skel-line-2"></div>
+      <div class="skel skel-line-3"></div>
+    </div>
+  `).join('');
+}
+function hideSkeletons() {
+  document.getElementById('skeletonGrid').style.display = 'none';
+}
+
+// ── Date Navigation ───────────────────────────────────────────
+function changeDate(dir) {
+  const d = new Date(currentDate);
+  d.setDate(d.getDate() + dir);
+  if (d > new Date()) return; // Don't go future
+  currentDate = d;
+  updateDateLabel();
+  loadNews();
+}
+function updateDateLabel() {
+  const today = new Date();
+  const isToday = formatDate(currentDate) === formatDate(today);
+  const yesterday = new Date(today); yesterday.setDate(today.getDate()-1);
+  const isYesterday = formatDate(currentDate) === formatDate(yesterday);
+  document.getElementById('dateLabel').textContent = isToday ? 'Today' : isYesterday ? 'Yesterday' : formatDate(currentDate);
+}
+function formatDate(d) {
+  return d.toISOString().split('T')[0];
+}
+function formatFullDate(dateStr) {
+  if (!dateStr) return 'Today';
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-IN', {day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+function getTimeAgo(dateStr) {
+  if (!dateStr) return 'just now';
+  const now = new Date(); const d = new Date(dateStr);
+  const diff = Math.floor((now - d) / 60000);
+  if (diff < 1) return 'just now';
+  if (diff < 60) return `${diff}m ago`;
+  if (diff < 1440) return `${Math.floor(diff/60)}h ago`;
+  return `${Math.floor(diff/1440)}d ago`;
+}
+function updateLastUpdated() {
+  const now = new Date();
+  document.getElementById('lastUpdated').textContent =
+    `Last updated: ${now.toLocaleTimeString('en-IN', {hour:'2-digit',minute:'2-digit'})}`;
+}
+function checkArchiveBanner() {
+  const strip = document.getElementById('archiveStrip');
+  const yesterday = new Date(); yesterday.setDate(yesterday.getDate()-1);
+  document.getElementById('archiveDate').textContent = yesterday.toLocaleDateString('en-IN',{day:'numeric',month:'long'});
+  // Show if it's past 7 AM
+  if (new Date().getHours() >= 7) strip.style.display = 'flex';
+}
+function viewArchive() {
+  const yesterday = new Date(); yesterday.setDate(yesterday.getDate()-1);
+  window.location.href = `/notes/daily-archive-${formatDate(yesterday)}`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// MOCK DATA — Remove when connected to real backend
+// ═══════════════════════════════════════════════════════════════
+const MOCK_NOTES = [
+  {slug:'panchayati-raj', title:'Panchayati Raj System'},
+  {slug:'article-370', title:'Article 370'},
+  {slug:'green-revolution', title:'Green Revolution in India'},
+  {slug:'niti-aayog', title:'NITI Aayog'},
+  {slug:'western-ghats', title:'Western Ghats'},
+  {slug:'gst', title:'Goods and Services Tax (GST)'},
+];
+const MOCK_ARTICLES = [
+  {
+    id:1, source:'The Hindu', tags:['Polity','Current Events - India'],
+    headline:'Parliament Passes Amendment to Panchayati Raj Act',
+    short_summary:'Lok Sabha passed a bill to strengthen gram sabha powers in tribal areas, extending reservation timelines for two more years.',
+    full_article:'The Indian Parliament on Wednesday passed a significant amendment to the Panchayati Raj Act, granting expanded powers to gram sabhas in scheduled tribal areas.\n\nThe bill, cleared with a two-thirds majority, extends reservation timelines for women and backward communities in local body elections for another two years.\n\nNITI Aayog had recommended these changes after a comprehensive review of rural governance structures across 18 states.',
+    key_terms:[
+      {term:'Panchayati Raj', suggested_link:'/notes/panchayati-raj'},
+      {term:'NITI Aayog', suggested_link:'/notes/niti-aayog'},
+      {term:'gram sabha', suggested_link:null, type:'external'},
+    ],
+    external_link_count:1, published_at: new Date(Date.now()-3600000).toISOString(), original_url:'https://thehindu.com'
+  },
+  {
+    id:2, source:'PIB India', tags:['Economy','Current Events - Tamil Nadu'],
+    headline:'Tamil Nadu Records 12% Growth in MSME Sector for Q3',
+    short_summary:'Tamil Nadu\'s MSME sector posted 12% year-on-year growth in Q3, driven by textile exports and digital manufacturing initiatives.',
+    full_article:'Tamil Nadu has emerged as the leading state in MSME growth for the third consecutive quarter, according to data released by the Ministry of MSME.\n\nThe state\'s textile belt centered around Tiruppur and Coimbatore recorded the highest export volumes, contributing significantly to the GST revenue pool.\n\nThe Western Ghats corridor has also seen investments in eco-friendly manufacturing units under the state\'s Green Industry Policy.',
+    key_terms:[
+      {term:'GST', suggested_link:'/notes/gst'},
+      {term:'Western Ghats', suggested_link:'/notes/western-ghats'},
+      {term:'MSME', suggested_link:null, type:'external'},
+    ],
+    external_link_count:1, published_at: new Date(Date.now()-7200000).toISOString(), original_url:'https://pib.gov.in'
+  },
+  {
+    id:3, source:'Doordarshan', tags:['Agriculture','Science & Technology'],
+    headline:'ICAR Releases New Drought-Resistant Rice Variety for South India',
+    short_summary:'Indian Council of Agricultural Research unveiled CR Dhan 801, a high-yield drought-resistant paddy variety suited for Tamil Nadu\'s rain-fed regions.',
+    full_article:'The Indian Council of Agricultural Research (ICAR) has released a new drought-resistant paddy variety named CR Dhan 801, specifically developed for rain-fed agricultural regions in southern India.\n\nThe variety, an outcome of the Green Revolution research legacy, can survive up to 21 days of water stress while maintaining 85% of normal yield.\n\nTamil Nadu Agriculture University in Coimbatore collaborated in field trials across Villupuram, Cuddalore, and Pudukottai districts.',
+    key_terms:[
+      {term:'Green Revolution', suggested_link:'/notes/green-revolution'},
+      {term:'ICAR', suggested_link:null, type:'external'},
+    ],
+    external_link_count:1, published_at: new Date(Date.now()-10800000).toISOString(), original_url:'https://doordarshan.gov.in'
+  },
+  {
+    id:4, source:'The Hindu', tags:['Environment & Ecology','Geography'],
+    headline:'Supreme Court Directs States to Protect Western Ghats Buffer Zones',
+    short_summary:'The Supreme Court issued directions to six states to halt unauthorized constructions within 1km of Western Ghats notified eco-sensitive zones.',
+    full_article:'In a landmark environmental ruling, the Supreme Court directed all six Western Ghats states — Kerala, Karnataka, Tamil Nadu, Goa, Maharashtra, and Gujarat — to immediately halt unauthorized constructions within ecologically sensitive areas.\n\nThe bench cited the Western Ghats as one of the world\'s eight biodiversity hotspots and emphasized the region\'s role in monsoon regulation across peninsular India.\n\nEnvironmentalists welcomed the verdict, calling it essential for the long-term sustainability of water resources in Tamil Nadu.',
+    key_terms:[
+      {term:'Western Ghats', suggested_link:'/notes/western-ghats'},
+      {term:'eco-sensitive zones', suggested_link:null, type:'external'},
+    ],
+    external_link_count:1, published_at: new Date(Date.now()-14400000).toISOString(), original_url:'https://thehindu.com'
+  },
+  {
+    id:5, source:'AIR News', tags:['Awards & Honours','Culture & Heritage'],
+    headline:'Tamil Scholar Receives Sahitya Akademi Award for Classical Tamil Poetry Research',
+    short_summary:'Dr. Meenakshi Sundaram of Chennai University received the Sahitya Akademi Award for his anthology on Sangam-era classical Tamil literary traditions.',
+    full_article:'Dr. S. Meenakshi Sundaram, a professor of Classical Tamil Studies at the University of Madras, was awarded the prestigious Sahitya Akademi Award 2025 for his work documenting Sangam literature.\n\nHis anthology, spanning 800 pages, covers the poetic traditions of the Akam and Puram genres and includes newly discovered manuscripts from Thanjavur\'s Sarasvati Mahal Library.\n\nThe award carries a cash prize of ₹1 lakh and a citation acknowledging his three decades of contribution to Tamil literary scholarship.',
+    key_terms:[
+      {term:'Sahitya Akademi', suggested_link:null, type:'external'},
+      {term:'Sangam literature', suggested_link:null, type:'external'},
+    ],
+    external_link_count:2, published_at: new Date(Date.now()-18000000).toISOString(), original_url:'https://newsonair.gov.in'
+  },
+  {
+    id:6, source:'The Hindu', tags:['International Affairs','Economy'],
+    headline:'India-ASEAN Trade Agreement Extended with New Digital Commerce Chapter',
+    short_summary:'India and ASEAN nations signed an extension of the Free Trade Agreement adding a dedicated digital commerce chapter covering cross-border e-commerce.',
+    full_article:'India and the ten ASEAN member nations concluded negotiations on an updated Free Trade Agreement that includes a dedicated chapter on digital commerce for the first time.\n\nThe new provisions allow Indian e-commerce platforms simplified access to markets in Vietnam, Thailand, and Indonesia, with GST-equivalent digital services taxes harmonized across borders.\n\nNITI Aayog estimates the digital commerce chapter could add $40 billion to India\'s annual export earnings by 2030.',
+    key_terms:[
+      {term:'GST', suggested_link:'/notes/gst'},
+      {term:'NITI Aayog', suggested_link:'/notes/niti-aayog'},
+      {term:'ASEAN', suggested_link:null, type:'external'},
+    ],
+    external_link_count:1, published_at: new Date(Date.now()-21600000).toISOString(), original_url:'https://thehindu.com'
+  }
+];
+</script>
+</body>
+</html>
