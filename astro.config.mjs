@@ -4,7 +4,6 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://tnpscfuhrer.in',
-  integrations: [mdx(), sitemap()],
-  output: 'static',
+  site: "https://tnpscfuhrer.in",
+  base: "/tnpscfuhrer"
 });
