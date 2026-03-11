@@ -1,0 +1,71 @@
+{
+  "lastUpdated": "2026-03-10T08:41:00Z",
+  "jobs": [
+    {
+      "title": "TNPSC Group 2 & 2A",
+      "dept": "Tamil Nadu PSC",
+      "type": "State",
+      "posts": "5529",
+      "deadline": "Check TNPSC Portal",
+      "status": "Open",
+      "link": "https://www.tnpsc.gov.in",
+      "source": "manual",
+      "addedAt": "2026-03-10"
+    },
+    {
+      "title": "TNPSC Group 4 & VAO",
+      "dept": "Tamil Nadu PSC",
+      "type": "State",
+      "posts": "6244",
+      "deadline": "Check TNPSC Portal",
+      "status": "Upcoming",
+      "link": "https://www.tnpsc.gov.in",
+      "source": "manual",
+      "addedAt": "2026-03-10"
+    },
+    {
+      "title": "TN Police Constable",
+      "dept": "TNUSRB",
+      "type": "State",
+      "posts": "6700+",
+      "deadline": "Check Portal",
+      "status": "Upcoming",
+      "link": "https://www.tnusrbonline.org",
+      "source": "manual",
+      "addedAt": "2026-03-10"
+    },
+    {
+      "title": "TN Teachers Recruitment",
+      "dept": "TRBT",
+      "type": "State",
+      "posts": "Various",
+      "deadline": "Check Portal",
+      "status": "Open",
+      "link": "https://trb.tn.gov.in",
+      "source": "manual",
+      "addedAt": "2026-03-10"
+    },
+    {
+      "title": "TN Forest Department",
+      "dept": "Forest Dept",
+      "type": "State",
+      "posts": "Various",
+      "deadline": "Check Portal",
+      "status": "Upcoming",
+      "link": "https://forests.tn.gov.in",
+      "source": "manual",
+      "addedAt": "2026-03-10"
+    },
+    {
+      "title": "SSC CGL",
+      "dept": "Staff Selection Commission",
+      "type": "Central",
+      "posts": "17000+",
+      "deadline": "Check SSC Portal",
+      "status": "Open",
+      "link": "https://ssc.gov.in",
+      "source": "manual",
+      "addedAt": "2026-03-10"
+    }
+  ]
+}

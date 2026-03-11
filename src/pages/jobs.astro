@@ -1,14 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const jobs = [
-  { title: 'TNPSC Group 2 & 2A', dept: 'Tamil Nadu PSC', type: 'State', posts: '5529', deadline: 'Check TNPSC Portal', status: 'Open' },
-  { title: 'TNPSC Group 4 & VAO', dept: 'Tamil Nadu PSC', type: 'State', posts: '6244', deadline: 'Check TNPSC Portal', status: 'Upcoming' },
-  { title: 'TN Police Constable', dept: 'TNUSRB', type: 'State', posts: '6700+', deadline: 'Check Portal', status: 'Upcoming' },
-  { title: 'TN Teachers Recruitment', dept: 'TRBT', type: 'State', posts: 'Various', deadline: 'Check Portal', status: 'Open' },
-  { title: 'TN Forest Department', dept: 'Forest Dept', type: 'State', posts: 'Various', deadline: 'Check Portal', status: 'Upcoming' },
-  { title: 'SSC CGL', dept: 'Staff Selection Commission', type: 'Central', posts: '17000+', deadline: 'Check SSC Portal', status: 'Open' },
-];
+// Load jobs from auto-updated JSON
+let jobs = [];
+let lastUpdated = '';
+
+try {
+  const data = await import('../data/jobs.json');
+  jobs = data.jobs ?? [];
+  lastUpdated = data.lastUpdated ?? '';
+} catch {
+  // Fallback static data if JSON not yet generated
+  jobs = [
+    { title: 'TNPSC Group 2 & 2A', dept: 'Tamil Nadu PSC', type: 'State', posts: '5529', deadline: 'Check TNPSC Portal', status: 'Open', link: 'https://www.tnpsc.gov.in' },
+    { title: 'TNPSC Group 4 & VAO', dept: 'Tamil Nadu PSC', type: 'State', posts: '6244', deadline: 'Check TNPSC Portal', status: 'Upcoming', link: 'https://www.tnpsc.gov.in' },
+    { title: 'TN Police Constable', dept: 'TNUSRB', type: 'State', posts: '6700+', deadline: 'Check Portal', status: 'Upcoming', link: 'https://www.tnusrbonline.org' },
+    { title: 'SSC CGL', dept: 'Staff Selection Commission', type: 'Central', posts: '17000+', deadline: 'Check SSC Portal', status: 'Open', link: 'https://ssc.gov.in' },
+  ];
+}
+
+const formatDate = (iso: string) => {
+  if (!iso) return '';
+  try {
+    return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+  } catch { return iso; }
+};
 ---
 
 <Layout title="Jobs" description="Latest Tamil Nadu government job notifications and central government exam alerts." active="Jobs">
@@ -17,19 +33,29 @@ const jobs = [
       <span class="badge">Job Alerts</span>
       <h1>Government Jobs</h1>
       <p>Latest TN government and central government job notifications. Always verify details on official portals.</p>
+      {lastUpdated && (
+        <p class="updated-at">🕐 Last updated: {formatDate(lastUpdated)}</p>
+      )}
     </div>
 
     <div class="filter-bar">
       <span class="filter-label">Filter:</span>
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">State</button>
-      <button class="filter-btn">Central</button>
-      <button class="filter-btn">Open</button>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="State">State</button>
+      <button class="filter-btn" data-filter="Central">Central</button>
+      <button class="filter-btn" data-filter="Open">Open</button>
     </div>
 
-    <div class="jobs-list">
+    <div class="jobs-list" id="jobs-list">
       {jobs.map(job => (
-        <div class="job-card card">
+        <a
+          href={job.link ?? '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="job-card card"
+          data-type={job.type}
+          data-status={job.status}
+        >
           <div class="job-info">
             <div class="job-top">
               <h3>{job.title}</h3>
@@ -40,22 +66,57 @@ const jobs = [
             <p class="job-dept">{job.dept}</p>
             <div class="job-meta">
               <span>🏷️ {job.type}</span>
-              <span>👥 {job.posts} posts</span>
+              <span>👥 {job.posts ?? 'Various'} posts</span>
               <span>📅 {job.deadline}</span>
             </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
 
+    {jobs.length === 0 && (
+      <div class="empty-state card">
+        <p>No jobs found. Data will be auto-updated every 6 hours via GitHub Actions.</p>
+      </div>
+    )}
+
     <div class="disclaimer card">
-      <strong>⚠️ Disclaimer:</strong> Always verify job details from official sources like 
+      <strong>⚠️ Disclaimer:</strong> Always verify job details from official sources like
       <a href="https://www.tnpsc.gov.in" target="_blank">tnpsc.gov.in</a>. This page is for informational purposes only.
     </div>
   </main>
 </Layout>
 
+<script>
+  const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.job-card');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter ?? 'all';
+      cards.forEach(card => {
+        if (filter === 'all') {
+          card.style.display = '';
+        } else if (filter === 'Open' || filter === 'Upcoming') {
+          card.style.display = card.dataset.status === filter ? '' : 'none';
+        } else {
+          card.style.display = card.dataset.type === filter ? '' : 'none';
+        }
+      });
+    });
+  });
+</script>
+
 <style>
+  .updated-at {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
   .filter-bar {
     display: flex;
     align-items: center;
@@ -86,7 +147,13 @@ const jobs = [
 
   .jobs-list { display: flex; flex-direction: column; gap: 1rem; }
 
-  .job-card { padding: 1.25rem 1.5rem; }
+  .job-card {
+    padding: 1.25rem 1.5rem;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .job-card:hover { transform: translateY(-2px); }
 
   .job-top {
     display: flex;
@@ -106,6 +173,7 @@ const jobs = [
     text-transform: uppercase;
     letter-spacing: 0.05em;
     white-space: nowrap;
+    flex-shrink: 0;
   }
   .status-badge.open { background: #ECFDF5; color: #059669; }
   .status-badge.upcoming { background: #FEF9C3; color: #A16207; }
@@ -118,6 +186,12 @@ const jobs = [
     font-size: 0.83rem;
     color: var(--muted);
     flex-wrap: wrap;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--muted);
   }
 
   .disclaimer {
