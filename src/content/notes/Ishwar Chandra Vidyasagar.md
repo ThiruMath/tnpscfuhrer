@@ -1,0 +1,10 @@
+- Key figure in the Bengal Renaissance.
+- Advocated for widow remarriage and women's rights.
+- Modernized the Bengali language and promoted education, especially for girls.
+- Known for his integrity and dedication to social reform.
+- Widow Remarriage Act (1856): Enacted due to Ishwar Chandra Vidyasagar’s efforts.
+- Aimed to improve the status of widows and protect child widows from remaining unmarried.
+- **[[Marriage Age Act]] (1860)**: Set the marriageable age at **10 years**.
+- Raised to 12 years in 1891 and 13 years in 1925.
+- Remained largely ineffective, as noted by the **1929** **[[Marriage Age Committee]].**
+- 

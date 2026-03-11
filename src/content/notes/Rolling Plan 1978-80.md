@@ -1,0 +1,1 @@
+- Janata Government ended the **Five Year Plan** and introduced a new plan called **Rolling Plan** between **1978**-**1980**. Rolling Plan is a variant of **short term plan**.

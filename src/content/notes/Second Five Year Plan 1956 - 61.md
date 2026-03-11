@@ -1,0 +1,5 @@
+- Based on **Mahalonobis model**
+- **Initiate and accelerate the process of industrialization**
+- This plan was successful and achieved the growth rate of 4.1%
+- Iron and steel Plants at Bhilai, Durgapur and Rourkela were established during this time.
+- Research Institute like **Tata Institute of Fundamental Research** and **Atomic Energy commission of India** was established.

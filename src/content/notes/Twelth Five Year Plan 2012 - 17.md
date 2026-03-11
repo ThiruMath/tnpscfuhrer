@@ -1,0 +1,3 @@
+- Its main theme is “Faster, More Inclusive and Sustainable Growth”.
+- Its growth rate target is 8%.
+- Ithu success acha ilaya nu therila

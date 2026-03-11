@@ -1,0 +1,5 @@
+- A prominent Indian social reformer and a key leader of the Brahmo Samaj.
+- Joined the Brahmo Samaj in 1857 and worked closely with Debendranath Tagore.
+- Advocated for social reforms like women's rights, education, and the abolition of the caste system.
+- In 1866, he founded the Brahmo Samaj of India, a more radical offshoot of the **original Brahmo Samaj.**
+- His efforts significantly influenced the Indian social reform movement and laid the groundwork for future activism.

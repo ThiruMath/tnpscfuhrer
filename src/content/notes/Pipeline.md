@@ -1,0 +1,7 @@
+- Pipelines provided a very convenient mode of transport to connect oil and natural gas fields, refineries and to the markets.  
+- In the past, these were used to transport water to cities and industries.  
+- Now solids can also be transported through a pipeline when converted into slurry.    
+- The initial cost of laying pipeline is high but subsequent running cost is minimum.  
+- It can be laid through difficult terrain as well as under water.  
+- It ensures steady supply of goods and reduces the transshipment losses and delays. 
+- Oil field in upper Assam to Kanpur, from Salaya in Gujarat to Jalandhar in Punjab and gas pipeline from the Hazira in Gujarat ot Jagadispur in Uttar Pradesh.

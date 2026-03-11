@@ -1,0 +1,5 @@
+- The Brahmo Samaj was founded by Raja Ram Mohan Roy in 1828 in Calcutta (now Kolkata).
+- It was a socio-religious reform movement that sought to **purify Hinduism** by removing practices like idol worship, caste distinctions, and unnecessary rituals.
+- The Brahmo Samaj promoted monotheism and emphasized the worship of a single, formless God.
+- It played a significant role in the Indian Renaissance, advocating for social reforms such as the education of women, widow remarriage, and the abolition of social evils.
+- The movement laid the groundwork for later reform movements in India and contributed to the broader struggle for Indian independence.

@@ -1,0 +1,4 @@
+- Plan top priority was given to agriculture, next came industry and mines.
+- The draft of this plan was prepared and launched by **D.P. Dhar**. This plan was terminated in **1978**.
+- This plan followed the path of **export promotion and import substitution.**
+- Plan was successful, which achieved the growth rate of 4.8% against the target of 4.4%

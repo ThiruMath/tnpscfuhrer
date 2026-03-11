@@ -1,0 +1,4 @@
+- Clipping is a technique to minimize the influence of extreme outliers. 
+- In brief, clipping usually caps (reduces) the value of outliers to a specific maximum value. Clipping is a strange idea, and yet, it can be very effective.
+- Clipping prevents your model from overindexing on unimportant data. However, some outliers are actually important, so clip values carefully.
+- 

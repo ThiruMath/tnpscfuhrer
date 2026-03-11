@@ -1,0 +1,9 @@
+- The Justice party was formed by non-Brahmin elites in 1917.
+- The Justice party originated with the Madras United League which was initially started as a work group that helped non-Brahmin students in Madras with accommodation and later grew into a political party under the efforts of leaders like [[C. Natesa Mudaliar]], [[P. Theagaraya Chetty]] and [[T. M. Nair]]. 
+- The party was named South Indian Liberal Federation (S. I. L. F.) – popularly known as Justice party.
+- The party had been in power in Madras Presidency since self-governance was introduced in 1920, until it was defeated by the Indian National Congress in 1937.
+- By the time Annadurai joined the Justice party, Periyar was the party president. Annadurai served as the sub-editor of the Justice magazine. 
+- He later became the editor for Viduthalai (Freedom in English) and was also associated with the Tamil weekly paper, Kudi Arasu. 
+- He started his own journal Dravida Nadu (named after the Dravida Nadu – an independent state that the party called for). 
+- In 1944, Periyar renamed the Justice party to Dravidar Kazhagam and gave up contesting in the elections.
+- 

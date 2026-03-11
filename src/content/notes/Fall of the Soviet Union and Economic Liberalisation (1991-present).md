@@ -1,0 +1,10 @@
+- 1991 - Present
+- The economic compulsion, casued by the fall of Soviet Union and the rise of Liberalisation, Privatisation and Globalisation – LPG forced India to move away from its largely socialistic economy to a market economy. 
+- India hence had to open its doors to Foreign Direct Investments (FDI) and it was the beginning of improving relations with the USA. 
+- In present days, India faces a new set of challenges and its foreign policy is tranformed, without changing its core principles, to cope with the ever-changing nature of geopolitics. 
+- China has become one of the world powers which has a bearing in South Asia and our neighbourhood policy. 
+- With a growing economy, India has also become a regional power and hence it needs to be more responsible than ever before. 
+- These changes require India to fine tune its foreign policy to protect its interests and improve ties with its neighbours. 
+- Other factors that have contributed in building India’s relations with the outside world over the years include its civilian and defence Nuclear capability and its increasing presence in key international institutions such as the [[BRICS]], [[G20]], [[SCO]], MTCR, etc.. 
+- Having steadily grown in stature, several global powers have voiced their opinion for the inclusion of India as a permanent member of the UN Security Council. 
+- To summarise the essence of India’s foreign policy, it is worthy to mention that it holds a rare distinction of being the only nation to have friendly ties with Israel, Iran, Palestine and Saudi Arabia.

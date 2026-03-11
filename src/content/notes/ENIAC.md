@@ -1,0 +1,4 @@
+- The first digital computer 
+- The ENIAC (Electronic Numerical Integrator And Calculator)  was invented by ***J. Presper Eckert*** and ***John Mauchly*** at the ***University of Pennsylvania*** and began construction in 1943 and was not completed until 1946. 
+- It occupied about 1,800 square feet and used about 18,000 vacuum tubes, weighing almost 50 tons. 
+- ENIAC was the first digital computer because it was fully functional.

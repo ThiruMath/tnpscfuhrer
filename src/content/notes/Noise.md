@@ -1,0 +1,3 @@
+- When training a model, you might think that noise is an undesirable characteristic that should be eliminated. 
+- However, a certain amount of noise can be a good thing. 
+- In later modules, you'll learn how noise can help a model generalize better and find the optimal weights and bias in a [[Neural Networks]].

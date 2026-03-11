@@ -1,0 +1,4 @@
+- The Deputy Speaker is also elected by the members of the Assembly from amongst themselves. 
+- He performs the duties and responsibilities of the Speaker as his absence and presides over the Assembly in the absence of the Speaker. 
+- The deputy Speaker has also powers on par with the Speaker within the House. 
+- Any member existing in a panel can preside over the House in case of absence of Speaker and the deputy Speaker.

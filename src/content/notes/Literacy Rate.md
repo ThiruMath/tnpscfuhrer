@@ -1,0 +1,8 @@
+- The people who are able to read and write are known as literates. 
+- It is an important indicator of quality of people. 
+- The percentage of literate people to the total population is termed as literacy rate. 
+- There has been a steady improvement in the literacy levels in India. 
+- India’s literacy rate as per 2011 census is 74.04%. From this, the literacy rate of male is 82.14% and the female is 65.46%. 
+- It shows that still there is a vast gap (16.68%) between the male and female literacy rates. 
+- Kerala ranks first in the country with a literacy rate of 93.91% followed by union territory Lakshadweep with 92.28%. 
+- The lowest literacy rate is found in Bihar (63.82 %).

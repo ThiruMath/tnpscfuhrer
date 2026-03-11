@@ -1,0 +1,3 @@
+Complex models typically outperform simple models on the training set. However, simple models typically outperform complex models on the test set (which is more important).
+
+Simplicity has been beating complexity for a long time. In fact, the preference for simplicity dates back to ancient Greece. Centuries later, a fourteenth-century friar named William of Occam formalized the preference for simplicity in a philosophy known as [[Occam's razor]]. This philosophy remains an essential underlying principle of many sciences, including machine learning.

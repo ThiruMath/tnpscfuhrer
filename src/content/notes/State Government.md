@@ -1,0 +1,1 @@
+Chief Minister and Council of Ministers – Tamil Nadu Legislative Assembly: Structure, Powers and Functions; Local Governments: Three-tier system – 73rd and 74th Constitutional amendments - Tamil Nadu Panchayat Act 1994 – Grama Sabha

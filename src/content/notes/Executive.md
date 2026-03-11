@@ -1,0 +1,8 @@
+- The preamble of the constitution of India, Declares India a Sovereign Socialist Secular Democratic Republic. 
+- Unlike England where a **hereditary monarch**, either a Queen or a king is the head of the State, India has an elected President as head of the State with a fixed tenure of office. 
+- The President is the **supreme head** of all the constitutional wings of the State, i.e the legislature. Executive, Judiciary and Armed Forces. 
+- The President supervises their functions and ensures adherence to constitutional provisions by theses bodies.  
+- The President represents the entire nation and upholds the constitution in every sphere of State’s activity. 
+- But unlike the President of the USA, where the President of the republic wields de-facto (real, functional) executive powers, the President of Indian Republic is not vested with direct executive responsibilities. 
+- Such direct and real executive responsibilities are assigned by the Constitution to a Council of Ministers led by the Prime Minister, and such Council of Ministers, both collectively and individually responsible and accountable to the union legislature. 
+- Thus, our Republican form of State is different from American form of Republic, where it is Presidential executive. 

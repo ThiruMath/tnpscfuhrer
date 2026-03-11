@@ -1,0 +1,1 @@
+A capitalist economy is also known as free market economy (Laissez faire, in Latin) where the role of the government is minimum and the market determines the economic activities. [[Adam Smith]] is  known as the father of capitalism. The USA, Australia and Japan are the best examples for capitalistic economies. 

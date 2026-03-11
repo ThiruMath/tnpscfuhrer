@@ -1,0 +1,4 @@
+- In 1980 the 6th plan prepared by Janata Government was abandoned by the Congress Government.A new plan was started.
+- It was based on investment yojana.
+- The basic objective of this plan was poverty eradication and technological self reliance. Poverty eradication (**GARIBI**-**HATAO**) was the motto.
+- Its growth target was 5.2% but it achieved 5.7%.

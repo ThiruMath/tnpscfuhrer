@@ -1,0 +1,6 @@
+- "Father of Modern India,"
+- Raja Ram Mohan Roy was a prominent social and religious reformer in the early 19th century.
+- He advocated for the abolition of practices like *sati* (the burning of widows) and child marriage.-
+- Roy was a key figure in the promotion of modern education, introducing Western education and the study of science and English literature in India.
+- He was a strong proponent of women's rights, including the right to property and education.
+- Roy also worked to reform Hinduism, emphasizing the need to return to its monotheistic roots.  

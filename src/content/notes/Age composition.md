@@ -1,0 +1,2 @@
+- In India, the children who has less than 15 years of age constitute 29.5% and the people above 60 years constitute 8.0%. 
+- So, the dependent population in India is 37.5%and the independent population (16-59 yrs) is 62.5%. It shows that our country has enormous manpower. 

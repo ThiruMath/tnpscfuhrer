@@ -1,0 +1,2 @@
+- Eighth five year Plan could not take place due to volatile political situation at the centre. So two annual programmes are formed in 1990-91& 1991-92.
+- New Industrial Policy – 1991 initiated.

@@ -1,0 +1,2 @@
+- Growth with justice and equity
+- This plan failed to achieve the growth target of 7% and grew only at the rate of 5.6%.

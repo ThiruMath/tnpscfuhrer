@@ -1,0 +1,1 @@
+A subset of [[Machine Learning]] that involves [[Artificial Neural Network]] inspired by the human brain, capable of learning and making complex decisions from data on their own.

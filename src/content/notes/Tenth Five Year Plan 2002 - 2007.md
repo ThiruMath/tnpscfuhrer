@@ -1,0 +1,11 @@
+- This plan aimed to **double the per capita income** of India in the next **10 years**. Inum agala
+- It aimed to reduce the poverty ratio to 15% by 2012.
+- Its growth target was 8.0% but it achieved only 7.2%.
+- ==Universal access to primary education==
+- ==Compulsory elementary education (SSA 2002).==
+- ==Reduction in the decadal rate of population growth between 2001 and 2011 to 16.2%==
+- ==Increase in the literacy rate to 72% by 2007==
+- ==Reduction of IMR to 45==
+- ==Reduction of MMR to 2 per 1000 live births==
+- ==Increase in the forest and trees cover to 25%==
+- ==Cleaning all major polluted rivers.

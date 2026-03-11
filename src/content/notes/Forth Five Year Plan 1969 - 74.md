@@ -1,0 +1,2 @@
+- Growth with stability and progressive achievement of self reliance
+- This plan failed and could achieve growth rate of 3.3% only, against the target of 5.7%.

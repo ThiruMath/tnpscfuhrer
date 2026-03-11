@@ -1,0 +1,1 @@
+Let p be a prime number. If p divides a², then p divides a, where a is a positive integer.

@@ -1,0 +1,2 @@
+- The main reason behind the plan holiday was the **Indo-Pakistan war & failure of third plan**.
+- During this period, annual plans were made and equal priority was given to **agriculture, its allied sectors and the industry sector.

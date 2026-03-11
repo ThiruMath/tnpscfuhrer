@@ -1,0 +1,3 @@
+- [[RMSA - அனைவருக்கும் கல்வி இடைநிலை திட்டம் ]]
+- Its main theme was “faster and more inclusive growth”.
+- Its growth rate target was 8.1% but it achieved only 7.9%

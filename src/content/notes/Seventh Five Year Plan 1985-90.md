@@ -1,0 +1,3 @@
+- Objectives of this plan included the establishment of the self sufficient economy and opportunities for productive employment.
+- For the first time, due to the pressure from private sector the **private sector got the priority over public sector.**
+- Its growth target was 5.0% but it achieved 6.0%.

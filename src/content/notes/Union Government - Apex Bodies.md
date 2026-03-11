@@ -1,0 +1,15 @@
+- [[President]] of India 
+- [[Vice-President]] of India
+- [[Cabinet Secretariat]]
+- Election Commission of India
+- Union Public Service Commission ([[UPSC]]) 
+- National Human Rights Commission ([[NHRC]]), India
+- Comptroller and Auditor General (CAG) of India, 
+- Indian Audit and Accounts Department 
+- [[NITI Aayog]] - National Institution for Transforming India 
+- National Commission for Women (NCW) 
+- National Commission for Scheduled Tribes (NCST)
+- Fifteenth [[Finance Commission]] of India 
+- National Commission for Minorities(NCM) 
+- Insurance Regulatory and Development Authority (IRDA) 
+- [[Office of the Principal Scientific Adviser]]

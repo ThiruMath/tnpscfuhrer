@@ -1,0 +1,6 @@
+- Launched on April 1, 1951
+- Based on the **Harrod-Domar Model**.
+- ==**Agriculture**== was the main priority
+- National income was **3.6**% (it was targeted at 2.1%)
+- The per capita income growth rate was **1.8**%
+- Dams like Bhakra, Hirakud, **Mettur Dam** and Damodar Valley are initiated during this time.

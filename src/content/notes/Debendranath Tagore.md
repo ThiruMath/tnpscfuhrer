@@ -1,0 +1,5 @@
+- Key figure in the Bengal Renaissance and father of Rabindranath Tagore.
+- Joined and revitalized the Brahmo Samaj after Raja Ram Mohan Roy's death.
+- Promoted monotheism, rejecting idolatry and rituals, influenced by the Upanishads.
+- Founded the **Tattwabodhini Sabha** in 1839 to spread religious and social reforms.
+- Played a significant role in Bengal's spiritual and moral awakening.

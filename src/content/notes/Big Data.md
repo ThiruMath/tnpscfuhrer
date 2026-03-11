@@ -1,0 +1,1 @@
+Vast amounts of [[structured]], [[semi-structured]], and [[unstructured]] data are characterized by its volume, velocity, variety, and value, which, when analyzed, can provide competitive advantages and drive digital transformations.

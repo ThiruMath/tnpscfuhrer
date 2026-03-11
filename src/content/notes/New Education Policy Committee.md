@@ -1,0 +1,2 @@
+- A committee for the Draft National Education Policy was constituted in June 2017 under the Chairmanship of eminent **Scientist Dr. K. Kasturirangan.** 
+- The committee was submitted the Draft National Education Policy, 2019 to the Human Resource Development Minister on 31 May 2019

@@ -1,0 +1,5 @@
+- Sex ratio is defined as the number of females per 1000 male population. 
+- The sex ratio in our country is always unfavourable to females. 
+- According to 2011 census, the sex ratio of the country is 940 females per 1000 males. 
+- It is 1084 in Kerala and 1038 in Puducherry. 
+- The lowest sex ratio is recorded in the union territory of Daman and Diu(618).

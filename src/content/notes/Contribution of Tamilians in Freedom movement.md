@@ -1,0 +1,1 @@
+Literary personalities – Journalists – Women activists – Types of struggles – revolutionary songs; Socio-political movements of 19th and 20th centuries: Justice Party, 

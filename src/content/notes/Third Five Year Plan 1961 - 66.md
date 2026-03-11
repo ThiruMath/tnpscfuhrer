@@ -1,0 +1,4 @@
+- This plan was called ‘**GadgilYojana**’ also
+- The main target of this plan was to make the economy independent and to reach self propelled position or take off.
+- National income was only at 2.5% and it was targeted at **5.6**% per annum. Due to **Indo -China war.**
+- Per capita income was only 0.2% per annum.

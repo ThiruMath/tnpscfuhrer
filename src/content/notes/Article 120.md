@@ -1,0 +1,2 @@
+- Hindi and English have been declared by the Constitution to be the languages for conducting business in Parliament. 
+- The Presiding Officer may, however, allow any member not proficient in either to address the House in his **mother tongue**

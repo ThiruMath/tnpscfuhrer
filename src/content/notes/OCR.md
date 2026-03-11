@@ -1,0 +1,4 @@
+- Optical Character Recognition (Optical Grapheme Recognition) engine for the Indus Scripts has been developed using **Deep Learning Neural Networks** (a sub-field of Artificial Intelligence). 
+- Given photographs, scans, or any image feed of an Indus Valley Civilization artifact, the system will be able to recognise the inscriptions (the symbol/ grapheme sequences) from the image. 
+- There are totally 417 Symbols/ Graphemes/Characters in the Indus Scripts and just 3700+ text inscriptions of data for the machine to learn and attain expert-level status.
+- 

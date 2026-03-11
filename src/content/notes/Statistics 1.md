@@ -1,0 +1,3 @@
+
+>[! Quote] Statistics is the grammar of science -**Karl Pearson**
+

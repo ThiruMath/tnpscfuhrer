@@ -1,0 +1,3 @@
+- Top priority was given to development of the **human resources** i.e. employment, education and public health.
+- During this plan, New Economic Policy of India was introduced.
+- Annual growth rate of 6.8% against the target of 5.6%.
