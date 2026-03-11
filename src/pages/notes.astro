@@ -395,18 +395,13 @@ import Layout from '../layouts/Layout.astro';
     display.scrollTop = 0;
 
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system: "You are a TNPSC exam study assistant. Return well-structured markdown study notes. Use ## headers, bullet points, bold key terms. Be concise, accurate, and exam-focused.",
-          messages: [{ role: "user", content: `TNPSC study notes for: "${fmt(filename)}"` }]
-        })
-      });
-      const data = await res.json() as { content?: Array<{ text?: string }> };
-      const text = data.content?.map((c: { text?: string }) => c.text ?? '').join('\n') ?? 'No content available.';
+     const res = await fetch("/api/notes", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ topic: fmt(filename) })
+});
+const data = await res.json() as { text: string };
+const text = data.text;
       const top = (display.querySelector('.detail-top') as HTMLElement).outerHTML;
       display.innerHTML = top + `<div class="note-content"><p>${renderMD(text)}</p></div>`;
     } catch(e) {
