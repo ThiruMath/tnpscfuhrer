@@ -1,98 +1,63 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import fs from 'node:fs';
-import path from 'node:path';
-
-const notesDir = path.join(process.cwd(), 'public', 'notes');
-let files: string[] = [];
-try {
-  files = fs.readdirSync(notesDir).filter((f: string) => f.endsWith('.md'));
-} catch (e) {
-  files = [];
-}
 ---
 
-<Layout title="Notes Browser">
-  <div class="app-container">
-    <aside class="category-sidebar">
-      <div class="brand">TNPSC Fuhrer</div>
-      <nav>
-        <button class="cat-btn active">All Notes</button>
-        <button class="cat-btn">Polity</button>
-        <button class="cat-btn">History</button>
-        <button class="cat-btn">Tamil</button>
-      </nav>
-    </aside>
+<Layout title="Notes Browser | TNPSC Fuhrer">
 
-    <section class="file-browser">
-      <div class="search-bar">
-        <input type="text" id="noteSearch" placeholder="Search 300+ notes..." />
+<div class="app-container">
+
+  <!-- Column 1: Sidebar -->
+  <aside class="category-sidebar">
+    <div class="brand">TNPSC <span>Fuhrer</span></div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Views</div>
+      <button class="view-btn active" onclick="switchView('browse', this)">🗂 Browse</button>
+      <button class="view-btn" onclick="switchView('recent', this)">🕐 Recent</button>
+      <button class="view-btn" onclick="switchView('bookmarks', this)">⭐ Saved</button>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Categories</div>
+      <button class="cat-btn active" onclick="switchCat('All Notes', this)">📚 All Notes <span class="cat-count">389</span></button>
+      <button class="cat-btn" onclick="switchCat('Tamil & History', this)">🏛 Tamil & History</button>
+      <button class="cat-btn" onclick="switchCat('Polity & Governance', this)">⚖️ Polity</button>
+      <button class="cat-btn" onclick="switchCat('Economics & Banking', this)">💰 Economics</button>
+      <button class="cat-btn" onclick="switchCat('Data Science & AI', this)">🤖 Data Science</button>
+      <button class="cat-btn" onclick="switchCat('Mathematics', this)">📐 Maths</button>
+      <button class="cat-btn" onclick="switchCat('Cybersecurity', this)">🔐 Cyber</button>
+      <button class="cat-btn" onclick="switchCat('Current Affairs', this)">📰 Current Affairs</button>
+    </div>
+  </aside>
+
+  <!-- Column 2: File List -->
+  <section class="file-browser">
+    <div class="search-bar">
+      <input type="text" id="noteSearch" placeholder="Search 389 notes..." oninput="renderList()" />
+    </div>
+    <div class="list-header">
+      <strong id="listTitle">All Notes</strong>
+      <span id="listCount">389 notes</span>
+    </div>
+    <ul class="file-list" id="fileList"></ul>
+  </section>
+
+  <!-- Column 3: Preview -->
+  <main class="preview-area">
+    <div id="contentDisplay" class="markdown-body">
+      <div class="placeholder">
+        <div class="placeholder-icon">📖</div>
+        <h3>Select a note to start reading</h3>
+        <p>Choose any topic from the list on the left.</p>
       </div>
-      <ul class="file-list" id="fileList">
-        {files.map(file => (
-          <li>
-            <button class="note-link" data-filename={file}>
-              <span class="file-icon">📄</span>
-              {file.replace('.md', '').replace(/_/g, ' ')}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </section>
+    </div>
+  </main>
 
-    <main class="preview-area">
-      <div id="content-display" class="markdown-body">
-        <div class="placeholder">
-          <img src="/favicon.svg" alt="" style="width: 50px; opacity: 0.2;" />
-          <p>Select a note to start reading</p>
-        </div>
-      </div>
-    </main>
-  </div>
-</Layout>
-
-<script>
-  import { marked } from 'marked';
-
-  const display = document.getElementById('content-display') as HTMLDivElement;
-  const searchInput = document.getElementById('noteSearch') as HTMLInputElement;
-  const fileButtons = document.querySelectorAll('.note-link') as NodeListOf<HTMLButtonElement>;
-
-  // Function to load content
-  fileButtons.forEach(button => {
-    button.addEventListener('click', async () => {
-      const fileName = button.getAttribute('data-filename');
-      if (!fileName || !display) return;
-
-      display.innerHTML = '<div class="loading">Loading note content...</div>';
-      
-      try {
-        const response = await fetch(`/notes/${fileName}`);
-        if (!response.ok) throw new Error("File not found");
-        const text = await response.text();
-        display.innerHTML = await marked.parse(text);
-        
-        // Remove active class from others and add to this one
-        fileButtons.forEach(btn => btn.classList.remove('active-note'));
-        button.classList.add('active-note');
-      } catch (err) {
-        display.innerHTML = '<div class="error">Could not load this note. Check if file exists in public/notes/</div>';
-      }
-    });
-  });
-
-  // Search Logic
-  searchInput?.addEventListener('input', () => {
-    const term = searchInput.value.toLowerCase();
-    fileButtons.forEach(btn => {
-      const text = btn.innerText.toLowerCase();
-      (btn.parentElement as HTMLElement).style.display = text.includes(term) ? 'block' : 'none';
-    });
-  });
-</script>
+</div>
 
 <style>
-  /* Alignment Fix: The Container */
+  body { margin: 0; overflow: hidden; }
+
   .app-container {
     display: flex;
     height: 100vh;
@@ -100,52 +65,370 @@ try {
     font-family: 'DM Sans', sans-serif;
   }
 
-  /* Column 1: Categories */
+  /* ── Sidebar ── */
   .category-sidebar {
-    width: 200px;
+    width: 210px;
+    min-width: 210px;
     background: #14213D;
     color: white;
-    padding: 20px;
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
   }
-  .cat-btn { 
-    display: block; width: 100%; text-align: left; background: none; border: none; 
-    color: #8a99af; padding: 10px; cursor: pointer; border-radius: 5px;
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: white;
+    padding: 4px 8px 18px;
+    border-bottom: 1px solid #ffffff15;
+    margin-bottom: 16px;
   }
-  .cat-btn.active { color: white; background: #ffffff10; }
+  .brand span { color: #C1121F; }
+  .sidebar-section { margin-bottom: 20px; }
+  .sidebar-label {
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #4a5568;
+    padding: 0 8px 6px;
+  }
+  .view-btn, .cat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #8a99af;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .84rem;
+    transition: all .15s;
+    margin-bottom: 1px;
+  }
+  .view-btn:hover, .cat-btn:hover { color: white; background: #ffffff10; }
+  .view-btn.active, .cat-btn.active { color: white; background: #ffffff18; }
+  .cat-count {
+    background: #ffffff15;
+    color: #8a99af;
+    font-size: .7rem;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-family: monospace;
+  }
+  .cat-btn.active .cat-count { background: #C1121F; color: white; }
 
-  /* Column 2: List */
+  /* ── File List ── */
   .file-browser {
-    width: 350px;
-    border-right: 1px solid #e8e5df;
+    width: 290px;
+    min-width: 290px;
+    border-right: 1px solid #E8E5DF;
     display: flex;
     flex-direction: column;
     background: #fff;
   }
-  .search-bar { padding: 15px; border-bottom: 1px solid #eee; }
-  #noteSearch { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; }
-  .file-list { flex: 1; overflow-y: auto; list-style: none; padding: 0; margin: 0; }
-  .note-link { 
-    width: 100%; text-align: left; padding: 15px; border: none; background: none; 
-    border-bottom: 1px solid #f9f9f9; cursor: pointer; transition: 0.2s;
+  .search-bar { padding: 12px; border-bottom: 1px solid #E8E5DF; }
+  #noteSearch {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1.5px solid #E8E5DF;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .88rem;
+    outline: none;
+    transition: border-color .15s;
+    background: #F8F7F4;
+    color: #1C1C1C;
   }
-  .note-link:hover { background: #f0f7ff; }
-  .active-note { background: #e6f0ff !important; border-left: 4px solid #c1121f; }
+  #noteSearch:focus { border-color: #C1121F; background: white; }
+  .list-header {
+    padding: 8px 14px;
+    border-bottom: 1px solid #E8E5DF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #F8F7F4;
+  }
+  .list-header strong { font-size: .85rem; color: #14213D; font-family: 'Playfair Display', serif; }
+  .list-header span { font-size: .75rem; color: #6B6860; }
+  .file-list { flex: 1; overflow-y: auto; list-style: none; padding: 0; margin: 0; }
+  .file-list::-webkit-scrollbar { width: 4px; }
+  .file-list::-webkit-scrollbar-thumb { background: #E8E5DF; border-radius: 2px; }
+  .note-item {
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    border: none;
+    background: none;
+    border-bottom: 1px solid #f5f4f1;
+    cursor: pointer;
+    transition: background .1s;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .84rem;
+    color: #1C1C1C;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .note-item:hover { background: #F8F7F4; }
+  .note-item.active {
+    background: #FFF0F0;
+    color: #C1121F;
+    font-weight: 600;
+    border-left: 3px solid #C1121F;
+    padding-left: 11px;
+  }
+  .note-item .bm { font-size: .7rem; flex-shrink: 0; }
+  .no-results { padding: 2rem; text-align: center; color: #6B6860; font-size: .85rem; }
 
-  /* Column 3: Preview */
+  /* ── Preview ── */
   .preview-area {
     flex: 1;
     overflow-y: auto;
-    background: #f8f7f4;
-    padding: 40px;
+    background: #F8F7F4;
+    padding: 32px;
   }
   .markdown-body {
-    max-width: 800px;
+    max-width: 780px;
     margin: 0 auto;
     background: white;
-    padding: 40px;
+    padding: 36px 40px;
     border-radius: 12px;
-    min-height: 100%;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    min-height: calc(100vh - 128px);
+    box-shadow: 0 2px 16px rgba(0,0,0,.06);
+    border: 1px solid #E8E5DF;
   }
-  .placeholder { text-align: center; margin-top: 100px; color: #aaa; }
+
+  .detail-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #E8E5DF;
+  }
+  .detail-top h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #14213D; margin: 0; }
+  .detail-top .fname { font-size: .72rem; color: #6B6860; margin-top: .2rem; font-family: monospace; }
+  .btn-bm {
+    padding: .35rem .9rem;
+    border-radius: 8px;
+    font-size: .8rem;
+    font-weight: 500;
+    border: 1.5px solid #E8E5DF;
+    background: white;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    color: #6B6860;
+    transition: all .15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .btn-bm:hover { border-color: #C1121F; color: #C1121F; }
+  .btn-bm.saved { background: #FFF0F0; color: #C1121F; border-color: #C1121F; }
+
+  .note-content h1 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #14213D; margin: 1.2em 0 .5em; }
+  .note-content h2 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #14213D; margin: 1em 0 .4em; border-bottom: 1px solid #E8E5DF; padding-bottom: .25em; }
+  .note-content h3 { font-size: 1rem; color: #C1121F; margin: .85em 0 .3em; }
+  .note-content h4 { font-size: .93rem; color: #6B6860; margin: .7em 0 .25em; }
+  .note-content strong { color: #14213D; }
+  .note-content code { background: #f3f2ef; color: #C1121F; padding: 1px 5px; border-radius: 4px; font-size: .85em; }
+  .note-content ul, .note-content ol { padding-left: 1.4em; margin: .5em 0; }
+  .note-content li { margin: .35em 0; line-height: 1.6; }
+  .note-content p { margin: .6em 0; line-height: 1.75; color: #1C1C1C; font-size: .93rem; }
+
+  .placeholder { text-align: center; margin-top: 80px; color: #6B6860; }
+  .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: .4; }
+  .placeholder h3 { font-family: 'Playfair Display', serif; color: #14213D; font-size: 1.2rem; margin-bottom: .5rem; }
+  .placeholder p { font-size: .9rem; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner { width: 28px; height: 28px; border: 3px solid #E8E5DF; border-top-color: #C1121F; border-radius: 50%; animation: spin .7s linear infinite; }
+  .loading-wrap { display: flex; flex-direction: column; align-items: center; padding: 4rem 0; gap: 1rem; }
+  .loading-wrap p { color: #6B6860; font-size: .88rem; }
+
+  @media (max-width: 768px) {
+    .category-sidebar { display: none; }
+    .file-browser { width: 220px; min-width: 220px; }
+    .preview-area { padding: 16px; }
+    .markdown-body { padding: 20px; }
+  }
 </style>
+
+<script>
+  const ALL_FILES: string[] = ["10th_Tamil","11th_Five_Year_Plan","12_Volume","1936","19th_Century_Reforms","20th_Century_Authors","42nd_Ammendment","6th_Tamil","7th_Tamil","8th_Tamil","9th_Tamil","ADMINISTRATIVE__REFORMS___TRIBUNALS","AI","AI_Blog_Post_Generator","AP","ASCII","AUC","Accuracy","Accuracy__recall__precision","Adam_Smith","Addition_Properties","Administration_of_States_with_reference_to_Tamil_Nadu__30_Questions_","Administrative_Machinery_in_India","Advent_of_Europeans","Adversarial_artificial_intelligence","Age_composition","Airways","Alexander_Cunningham","Algorithms","Alternative_Growth_Indicators","Amendment_Process_and_Procedure","Ancient_History","Ancient_Tamil_Society","Annual_Plan_1990_-_91___92","Antivirus_software","Appointment","April","April_CA","Area___Volume","Areas_Related_to_Circles","Article_120","Article_2","Article_315","Article_316","Article_317","Articles_Related_to_Public_Service_Commissions","Artificial_neural_network","Artificial_neural_network_2","Awards","Bad_Loan","Bank_Money_or_Deposit_Money","Banking","Banking_Sector_Reforms","Banking_structure_in_India","Barter_System","Basic_Concepts_and_Measures","Basic_geometrical_ideas__2_-D_","Baye_s_Theorem","Bayes_Theorem","Beautiful_soup","Big_Data","Binning","Binomial_Theorem","Bodies_Associated_with_Planning_in_India","Books","Booting","Brahmo_Samaj","Budget","CA___GS","COMMISSION","CPU","C__Natesa_Mudaliar","Cabinet_Secretariat","Capitalism","Carl_Fredrich_Gauss","Cashless_Economy","Categorical_data","Causes_of_Inflation","Central_Bank_Digital_Currency","Central_Govt","Central_Planning","Central_Secretariat","Cheet_Sheet","Chief_Minister","Child_Labour","Circle","Citizenship","Class_6","Classification_of_Banks","Classification_of_Taxes","Clipping","Cloud_Computing","Co-operative_Bank","Coefficient_of_Variation","Coins___Notes","Committee","Communication","Complex_Sentence","Components_of_a_Budget","Concepts_and_Terms_Related_to_Inflation","Confusion_matrix","Constitution_of_India","Contribution_of_Tamilians_in_Freedom_movement","Coordinate_Geometry","Countable_and_Uncountable_sets","Cryptocurrency","Cryptographic_Attack","Curzon","DBSCAN","Daily_News","Data","Data_Analytics","Data_Pre_Processing","Data_Representations","Data_Science","Data_Science_Infosys","Data_Science_do","Data_Scientist","Data_Types","Debendranath_Tagore","Decentralised_planning","Decision_Tree_Regression","Decision_Trees","Deep_Learning","Deep_learning_and_machine_learning","Demand_and_Supply_-_Money","Developement_Banks","Development_of_Rationalism","Difference_between_Ordinary_Bill_and_Money_Bill","Difficulties_and_Problems_in_Calculation","Directive_Principles_of_State_Policy","Discrete_Probability","District_Administration","Downsampling_and_Upweighting","E-Governance","EMERGENCY","EMPOWERMENT_OF_WOMEN","ENIAC","Economic_Development","Economic_Growth","Economic_Reforms","Economice_Basics","Economics","Economics_CA","Effects_of_Inflation","Eighth_Five_Year_Plan_1992_-_97","Electronic_Health_Records","Electronic_orders_and_digital_payments","Elementary_Set_Theory","Eleventh_Five_Year_Plan_2007_-_12","Embedding_Vectors","Encoding","Ethical_principles_and_methodologies","Event","Excel_Shortcuts","Excutive_-_State","Executive","Executive_-_Union","Executive_1","Fall_of_the_Soviet_Union_and_Economic_Liberalisation__1991-present_","False_positive_rate","Famous_people","Father_of_Computer","Feature_Crosses","Feature_Engineering","Feature_Scaling","Feb","Feb_CA","Feedback_Loop","Fifth_Five_Year_Plan_1974_-_79","File_Types","Finance_Commission","Financial_position_of_a_Bank","First_Five_Year_Plan_1951-56","Fiscal_Policy_and_Monetary_Policy","Five-Year_Plans","Five_Year_Plan_Model___Assessment","Forth_Five_Year_Plan_1969_-_74","Fractions","Free_Cybersecurity_Services_and_Tools","Functions_of_Banks","Functions_of_Money","Fundamental_Duties","Fundamental_Rights","G2","G2A_Mains","GMM","GS","GST","Ganga_Water_Treaty","General_Awareness","General_Science","General_Tamil","Generalization","Generation","Generative_AI","Geography","Globalization","Glossary_Python","Glossary_Python_Basics","Glossary_of_Cyber_Security","Gottfried_Wilhelm_Leibniz","Governor","Gradient_Boosting","Gradient_Boosting_Regression","Gradient_descent","Group_2A_Syllabus","Group_2___2A_Prelims","HCF_-_LCM","HCF___LCM","HCF___LCM_1","Hadoop","Handling_the_missing_values","Henri_Poincare","Hierarchical_Clustering","Hilton_Young_Commission","History","History_of_TN","History_of_artificial_intelligence-","History_on_Polity","Hyperparameter","IBM","INC","INC_Sessions","INM","ISRO","ISRO_2","Imbalanced_Datasets","Import_Required_Libraries","Income_Classification","Income_Theory","Independent_Events","Indian_Government_Structure","Indirect_taxes_in_India","Inflation","International","Intrusion_detection_system","Irrational_Numbers","Ishwar_Chandra_Vidyasagar","J_P__Morgan","James_Prinsep","Jan","Jan_14","Jan_CA","Jawaharlal_Nehru","Join_Siting","Judgements","Jupyter","Justice_Party","Justice_magazine","K-Means","Keras","Keshab_Chandra_Sen","Knowing_our_Numbers","LDA","LaTeX","LaTeX_1","Labels","Land_Reforms_and_Agriculture","Lasso_Regression","Law_Making_Process","Liberalisation","Linear_Regression","Linear_scaling","Lines_and_Angles","Literacy_Rate","Local_Self-Government","Location","Log_scaling","Logistic_Regression","Lok_Adalat","Lok_Ayukta","Lord_Curzon","Loss","MGR","MNA","Machine_Learning","Making_of_Indian_Constitution","Making_of_constitution","Malware","March","Marriage_Age_Committee","Math","Math_Syllabus","Mathematicians","Mathi","Matplotlib","Mean","Mean_deviation","Measurers_of_Inflation","Measurers_to_Control_Inflation","Measures_of_Central_Tendency","Measures_of_Dispersion","Median","Medical_Services_Recruitment_Board_Composition","Mensuration","Merger_of_public_sector_bank_in_India","Metallic_Standard","Methods_of_Measurement","Methods_of_collecting_primary_data","Metric_Spaces","Microprocessor","Mode","Model","Model_complexity","Modern_History_of_Tamil_Nadu__Tamil_Society___Culture_and_Heritage__20_Questions_","Monetary_Policy","Money","Monitor","Monsoon__Rainfall__Weather_and_Climate","Mouse","Multi-class_classification","Multi-level_Planning","Multi_Dimensional_Poverty_Index","Multiplication_Properties","NCERT_Math","NLP","Naive_Bayes","National_Events","National_Income","National_Security","Nature_of_Indian_Economy","Nature_of_Universe","Negative_Numbers_and_Integers","Network_protocol_analyzers","Neural_Networks","Neural_Networks_Regression","New","New_Education_Policy","New_Education_Policy_Committee","Ninth_Five_Year_Plan_1997_-_2002","Noise","Non-Banking_Financial_Company","Normal_Distribution","Normalization","Notes","Nouns","NumPy","Numerical_data","OCR","OS","Office_of_the_Principal_Scientific_Adviser","One-hot_encoding","One_Tute","Outliers","Overfitting","PCA","PMO","P_C__Mahalanobis","P__Theagaraya","P__Theagaraya_Chetty","Panchsheel_and_Non-Aligned_Movement","Pandas","Papper_Currency_Standard","Parliament","Parties","Parts_of_Speech","Password_Attack","Percentage","Phishing","Physical_Attack","Physical_features","Pipeline","Plan_Holiday_1966_-_69","Planning_Commission","Planning_Commission___Niti_Ayog","Planning_in_India","Plastic_Money","Playbooks","Playing_with_Numbers","Polity","Polity_2","Polynomial","Population","Preamble","Precision","Prediction_Bias","President","Price_Theory","Prime_Minister","Printer","Privatisation","Probability","Project","bounded","centralized_planning","features","k-NN","l"];
+
+  const CATEGORIES: Record<string, string[]> = {
+    "All Notes": ALL_FILES,
+    "Tamil & History": ALL_FILES.filter((f: string) => /tamil|tamilians|mgr|justice_party|ancient_tamil|modern_history_of_tamil|history_of_tn|contribution_of_tamil|19th_century|ancient_history|advent_of_european|brahmo|ishwar|debendranath|keshab|alexander_cunningham|james_prinsep|curzon|lord_curzon|hilton_young|jawaharlal|1936|development_of_rationalism/i.test(f)),
+    "Polity & Governance": ALL_FILES.filter((f: string) => /polity|president|parliament|governor|chief_minister|prime_minister|constitution|fundamental|directive|citizenship|preamble|emergency|amendment|article_|executive|lok_|law_making|district|local_self|central_govt|cabinet|pmo|commission|committee|administrative|finance_comm|parties|judgement|making_of|indian_government|group_2|g2|appointment|empowerment|ganga|panchsheel|national_security/i.test(f)),
+    "Economics & Banking": ALL_FILES.filter((f: string) => /bank|money|inflation|economic|planning|five_year|budget|gst|fiscal|monetary|national_income|poverty|liberali|privatisation|globaliz|barter|cashless|cryptocurrency|tax|price_theory|income_theory|capitalism|land_reform|plan_|niti|annual_plan|plan_holiday|bad_loan|coins|demand_and_supply|plastic_money|metallic_standard|papper_currency|central_bank_digital|non-banking|co-operative|classification_of_bank|banking_structure|banking_sector|merger_of_public/i.test(f)),
+    "Data Science & AI": ALL_FILES.filter((f: string) => /data|machine_learning|deep_learning|neural|algorithm|regression|classification|cluster|python|pandas|numpy|keras|nlp|generative|embedding|feature|gradient|logistic|decision_tree|naive_bayes|pca|lda|k-means|dbscan|gmm|hierarchical|overfitting|generalization|loss|accuracy|precision|recall|auc|confusion|encoding|normalization|outlier|noise|binning|pipeline|jupyter|matplotlib|big_data|hadoop|cloud|ocr|ascii|artificial|adversarial|beautiful_soup|downsampling|imbalanced|hyperparameter|labels|feedback_loop|prediction_bias|model|generative_ai/i.test(f)),
+    "Mathematics": ALL_FILES.filter((f: string) => /math|geometry|circle|fraction|percentage|hcf|lcm|binomial|polynomial|coordinate|mensuration|probability|statistic|mean|median|mode|distribution|set_theory|metric_space|irrational|integer|number|ncert|area|volume|lines_and|addition|multiplication|bayes|discrete|coefficient|dispersion|variance|deviation|class_6|mathi|latex|bounded|countable|independent_events|normal_distribution|log_scaling|linear_scaling|carl_fredrich|gottfried|henri_poincare|mathematician/i.test(f)),
+    "Cybersecurity": ALL_FILES.filter((f: string) => /cyber|malware|phishing|password|attack|intrusion|antivirus|network_protocol|playbook|cryptograph|glossary_of_cyber|free_cyber|physical_attack/i.test(f)),
+    "Current Affairs": ALL_FILES.filter((f: string) => /^jan$|^feb$|^march$|^april$|jan_14|jan_ca|feb_ca|april_ca|daily_news|national_events|international/i.test(f)),
+  };
+
+  let currentCat: string = "All Notes";
+  let currentView: string = "browse";
+  let currentNote: string | null = null;
+  let bookmarks: string[] = [];
+  let recent: string[] = [];
+
+  try { bookmarks = JSON.parse(localStorage.getItem('tnpsc_bookmarks') || '[]') as string[]; } catch(e) {}
+  try { recent = JSON.parse(localStorage.getItem('tnpsc_recent') || '[]') as string[]; } catch(e) {}
+
+  function fmt(name: string): string {
+    return name.replace(/_/g, ' ').replace(/-/g, ' - ').replace(/\s+/g, ' ').trim();
+  }
+
+  function getPool(): string[] {
+    if (currentView === 'bookmarks') return bookmarks;
+    if (currentView === 'recent') return recent;
+    return CATEGORIES[currentCat] ?? ALL_FILES;
+  }
+
+  function renderList(): void {
+    const searchEl = document.getElementById('noteSearch') as HTMLInputElement | null;
+    const search = (searchEl?.value ?? '').toLowerCase();
+    const pool = getPool();
+    const filtered = pool.filter((f: string) => !search || fmt(f).toLowerCase().includes(search));
+
+    const titleEl = document.getElementById('listTitle');
+    const countEl = document.getElementById('listCount');
+    if (titleEl) titleEl.textContent =
+      currentView === 'bookmarks' ? 'Saved Notes' :
+      currentView === 'recent' ? 'Recent Notes' : currentCat;
+    if (countEl) countEl.textContent = filtered.length + ' notes';
+
+    const list = document.getElementById('fileList');
+    if (!list) return;
+    if (!filtered.length) {
+      list.innerHTML = '<li class="no-results">No notes found.</li>';
+      return;
+    }
+    list.innerHTML = filtered.map((f: string) => `
+      <li><button class="note-item ${currentNote === f ? 'active' : ''}"
+        onclick="openNote('${f.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')">
+        <span>${fmt(f)}</span>
+        ${bookmarks.includes(f) ? '<span class="bm">⭐</span>' : ''}
+      </button></li>
+    `).join('');
+  }
+
+  function switchCat(cat: string, btn: HTMLElement): void {
+    currentCat = cat;
+    document.querySelectorAll('.cat-btn').forEach((b: Element) => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderList();
+  }
+
+  function switchView(view: string, btn: HTMLElement): void {
+    currentView = view;
+    document.querySelectorAll('.view-btn').forEach((b: Element) => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderList();
+  }
+
+  function toggleBookmark(filename: string): void {
+    bookmarks = bookmarks.includes(filename)
+      ? bookmarks.filter((b: string) => b !== filename)
+      : [...bookmarks, filename];
+    try { localStorage.setItem('tnpsc_bookmarks', JSON.stringify(bookmarks)); } catch(e) {}
+    renderList();
+    const btn = document.getElementById('bmBtn');
+    if (btn) {
+      const saved = bookmarks.includes(filename);
+      btn.textContent = saved ? '⭐ Saved' : '☆ Save';
+      btn.className = 'btn-bm' + (saved ? ' saved' : '');
+    }
+  }
+
+  function renderMD(text: string): string {
+    return text
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/^#### (.+)$/gm,'<h4>$1</h4>')
+      .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+      .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+      .replace(/^# (.+)$/gm,'<h1>$1</h1>')
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g,'<em>$1</em>')
+      .replace(/`([^`]+)`/g,'<code>$1</code>')
+      .replace(/^\s*[-*] (.+)$/gm,'<li>$1</li>')
+      .replace(/^\s*\d+\. (.+)$/gm,'<li>$1</li>')
+      .replace(/(<li>[\s\S]*?<\/li>)/g,'<ul>$1</ul>')
+      .replace(/\n\n+/g,'</p><p>');
+  }
+
+  async function openNote(filename: string): Promise<void> {
+    currentNote = filename;
+    recent = [filename, ...recent.filter((r: string) => r !== filename)].slice(0, 20);
+    try { localStorage.setItem('tnpsc_recent', JSON.stringify(recent)); } catch(e) {}
+    renderList();
+
+    const isBm = bookmarks.includes(filename);
+    const display = document.getElementById('contentDisplay') as HTMLDivElement | null;
+    if (!display) return;
+
+    display.innerHTML = `
+      <div class="detail-top">
+        <div>
+          <h2>${fmt(filename)}</h2>
+          <div class="fname">${filename}.md</div>
+        </div>
+        <button id="bmBtn" class="btn-bm ${isBm ? 'saved' : ''}"
+          onclick="toggleBookmark('${filename.replace(/'/g,"\\'")}')">
+          ${isBm ? '⭐ Saved' : '☆ Save'}
+        </button>
+      </div>
+      <div class="loading-wrap">
+        <div class="spinner"></div>
+        <p>Loading study notes...</p>
+      </div>
+    `;
+    display.scrollTop = 0;
+
+    try {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 1000,
+          system: "You are a TNPSC exam study assistant. Return well-structured markdown study notes. Use ## headers, bullet points, bold key terms. Be concise, accurate, and exam-focused.",
+          messages: [{ role: "user", content: `TNPSC study notes for: "${fmt(filename)}"` }]
+        })
+      });
+      const data = await res.json() as { content?: Array<{ text?: string }> };
+      const text = data.content?.map((c: { text?: string }) => c.text ?? '').join('\n') ?? 'No content available.';
+      const top = (display.querySelector('.detail-top') as HTMLElement).outerHTML;
+      display.innerHTML = top + `<div class="note-content"><p>${renderMD(text)}</p></div>`;
+    } catch(e) {
+      const top = (display.querySelector('.detail-top') as HTMLElement).outerHTML;
+      display.innerHTML = top + `<p style="color:#6B6860;padding-top:1rem">Failed to load. Please try again.</p>`;
+    }
+  }
+
+  // Make functions available globally for onclick handlers
+  (window as Window & typeof globalThis & {
+    switchCat: typeof switchCat;
+    switchView: typeof switchView;
+    toggleBookmark: typeof toggleBookmark;
+    openNote: typeof openNote;
+    renderList: typeof renderList;
+  }).switchCat = switchCat;
+  (window as Window & typeof globalThis & { switchView: typeof switchView }).switchView = switchView;
+  (window as Window & typeof globalThis & { toggleBookmark: typeof toggleBookmark }).toggleBookmark = toggleBookmark;
+  (window as Window & typeof globalThis & { openNote: typeof openNote }).openNote = openNote;
+  (window as Window & typeof globalThis & { renderList: typeof renderList }).renderList = renderList;
+
+  renderList();
+</script>
+
+</Layout>
