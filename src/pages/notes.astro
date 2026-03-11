@@ -1,152 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+// You can keep your sidebar list here
+---
+
+<Layout title="Notes Browser">
+  <input type="text" id="noteSearch" placeholder="Search notes..." />
+  <div id="content-display">Select a note to view...</div>
+</Layout>
+
 <script>
-// @ts-nocheck
+  import { marked } from 'marked';
 
-const ALL_FILES = [
-"Adam_Smith",
-"Ancient_History",
-"Polity",
-"Machine_Learning",
-"Probability",
-"Inflation",
-"Banking",
-"GST"
-];
+  // Fixes the 'null' errors by casting types
+  const links = document.querySelectorAll('.note-link') as NodeListOf<HTMLElement>;
+  const display = document.getElementById('content-display') as HTMLDivElement;
+  const searchInput = document.getElementById('noteSearch') as HTMLInputElement;
 
-const CATEGORIES = {
-"All Notes": ALL_FILES,
-"Economics": ALL_FILES.filter(f=>/bank|inflation|gst|money/i.test(f)),
-"Polity": ALL_FILES.filter(f=>/polity|constitution|president/i.test(f)),
-"Data Science": ALL_FILES.filter(f=>/machine|data/i.test(f)),
-"Maths": ALL_FILES.filter(f=>/probability|math/i.test(f))
-};
+  // 1. Logic to load and parse Markdown
+  links.forEach(link => {
+    link.addEventListener('click', async (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const fileName = target.getAttribute('data-filename');
 
-let currentCat = "All Notes";
-let currentView = "browse";
-let currentNote = null;
+      if (display && fileName) {
+        display.innerHTML = "<em>Loading content...</em>";
+        try {
+          const res = await fetch(`/notes/${fileName}`);
+          const text = await res.text();
+          // This converts Markdown to pretty HTML
+          display.innerHTML = await marked.parse(text);
+        } catch (err) {
+          display.innerHTML = "Error loading note.";
+        }
+      }
+    });
+  });
 
-let bookmarks = JSON.parse(localStorage.getItem("tnpsc_bookmarks")||"[]");
-let recent = JSON.parse(localStorage.getItem("tnpsc_recent")||"[]");
-
-function fmt(name){
-return name.replace(/_/g," ");
-}
-
-function getPool(){
-if(currentView==="bookmarks") return bookmarks;
-if(currentView==="recent") return recent;
-return CATEGORIES[currentCat]||ALL_FILES;
-}
-
-function renderList(){
-
-const search=document.getElementById("searchInput").value.toLowerCase();
-const pool=getPool();
-
-const filtered=pool.filter(f=>!search||fmt(f).toLowerCase().includes(search));
-
-document.getElementById("listCount").textContent=filtered.length+" notes";
-
-const list=document.getElementById("notesList");
-
-if(!filtered.length){
-list.innerHTML="<div class='no-results'>No notes found</div>";
-return;
-}
-
-list.innerHTML=filtered.map(f=>`
-<div class="note-item ${currentNote===f?'active':''}" onclick="openNote('${f}')">
-<span>${fmt(f)}</span>
-${bookmarks.includes(f)?"⭐":""}
-</div>
-`).join("");
-
-}
-
-function switchCat(cat,btn){
-currentCat=cat;
-document.querySelectorAll(".cat-tab").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-renderList();
-}
-
-function switchView(view,btn){
-currentView=view;
-document.querySelectorAll(".view-tab").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-renderList();
-}
-
-function toggleBookmark(name){
-
-if(bookmarks.includes(name))
-bookmarks=bookmarks.filter(b=>b!==name);
-else
-bookmarks.push(name);
-
-localStorage.setItem("tnpsc_bookmarks",JSON.stringify(bookmarks));
-renderList();
-
-}
-
-function renderMD(md){
-
-return md
-.replace(/^### (.*$)/gim,"<h3>$1</h3>")
-.replace(/^## (.*$)/gim,"<h2>$1</h2>")
-.replace(/^# (.*$)/gim,"<h1>$1</h1>")
-.replace(/\*\*(.*?)\*\*/gim,"<b>$1</b>")
-.replace(/\*(.*?)\*/gim,"<i>$1</i>")
-.replace(/\n/g,"<br>");
-
-}
-
-async function openNote(filename){
-
-currentNote=filename;
-
-recent=[filename,...recent.filter(r=>r!==filename)].slice(0,20);
-localStorage.setItem("tnpsc_recent",JSON.stringify(recent));
-
-renderList();
-
-const detail=document.getElementById("noteDetail");
-
-detail.innerHTML=`
-<div class="loading-wrap">
-<div class="spinner"></div>
-<p>Loading notes...</p>
-</div>
-`;
-
-try{
-
-const res=await fetch("/notes/"+filename+".md");
-
-if(!res.ok) throw new Error();
-
-const md=await res.text();
-
-detail.innerHTML=`
-<div class="detail-header">
-<h2>${fmt(filename)}</h2>
-<button onclick="toggleBookmark('${filename}')">
-${bookmarks.includes(filename)?"⭐ Saved":"☆ Save"}
-</button>
-</div>
-
-<div class="detail-body">
-${renderMD(md)}
-</div>
-`;
-
-}catch{
-
-detail.innerHTML="<p style='padding:20px'>Note not found</p>";
-
-}
-
-}
-
-renderList();
-
+  // 2. Simple Search Logic
+  searchInput?.addEventListener('input', (e) => {
+    const term = (e.target as HTMLInputElement).value.toLowerCase();
+    links.forEach(link => {
+      const text = link.innerText.toLowerCase();
+      link.parentElement!.style.display = text.includes(term) ? 'block' : 'none';
+    });
+  });
 </script>
+
+<style>
+  /* Ensure the content-display looks like your image */
+  #content-display {
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    min-height: 400px;
+  }
+  /* Style the rendered Markdown */
+  #content-display h1 { color: #2c3e50; border-bottom: 2px solid #eee; }
+  #content-display p { line-height: 1.6; color: #444; }
+</style>
