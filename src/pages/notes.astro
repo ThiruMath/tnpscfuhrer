@@ -1,329 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Browse 389 TNPSC study notes — History, Polity, Economics, Data Science, Maths and more."/>
-  <title>Notes Browser | TNPSC Fuhrer</title>
-  <link rel="icon" href="https://tnpscfuhrer.in/favicon.svg" type="image/svg+xml"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --bg: #F8F7F4; --surface: #FFFFFF; --border: #E8E5DF;
-      --text: #1C1C1C; --muted: #6B6860; --accent: #C1121F;
-      --accent-soft: #FFF0F0; --navy: #14213D;
-      --radius: 12px; --shadow: 0 2px 16px rgba(0,0,0,.07);
-    }
-    *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
-    a { color: inherit; text-decoration: none; }
-    h1,h2,h3,h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
-
-    /* NAV */
-    nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 2rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); letter-spacing: -.02em; }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: .25rem; list-style: none; }
-    .nav-links a { padding: .5rem .85rem; border-radius: 8px; font-size: .9rem; font-weight: 500; color: var(--muted); transition: all .15s ease; }
-    .nav-links a:hover, .nav-links a.active { background: var(--bg); color: var(--text); }
-
-    /* LAYOUT */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-    .page-header { padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
-    .page-header h1 { font-size: clamp(2rem,4vw,2.8rem); color: var(--navy); }
-    .page-header p { margin-top: .65rem; color: var(--muted); font-size: 1.05rem; max-width: 560px; }
-    .badge { display: inline-flex; align-items: center; gap: .4rem; background: var(--accent-soft); color: var(--accent); padding: .25rem .75rem; border-radius: 100px; font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 1rem; }
-
-    /* CONTROLS */
-    .controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
-    .view-tabs { display: flex; gap: .4rem; }
-    .view-tab { padding: .38rem .85rem; border-radius: 6px; font-size: .82rem; font-weight: 500; border: 1.5px solid var(--border); background: var(--surface); cursor: pointer; font-family: 'DM Sans', sans-serif; color: var(--muted); transition: all .15s; }
-    .view-tab.active { background: var(--bg); border-color: var(--navy); color: var(--navy); font-weight: 600; }
-    .search-wrap { position: relative; }
-    .search-wrap input { width: 300px; padding: .65rem 1rem .65rem 2.6rem; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: .92rem; background: var(--surface); color: var(--text); outline: none; transition: border-color .15s; }
-    .search-wrap input:focus { border-color: var(--accent); }
-    .search-wrap svg { position: absolute; left: .8rem; top: 50%; transform: translateY(-50%); color: var(--muted); width:15px; height:15px; pointer-events:none; }
-
-    /* CATEGORY TABS */
-    .cat-tabs { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
-    .cat-tab { padding: .38rem .85rem; border-radius: 100px; border: 1.5px solid var(--border); background: var(--surface); font-size: .82rem; font-weight: 500; color: var(--muted); cursor: pointer; transition: all .15s; font-family: 'DM Sans', sans-serif; }
-    .cat-tab:hover { border-color: var(--navy); color: var(--navy); }
-    .cat-tab.active { background: var(--navy); color: #fff; border-color: var(--navy); }
-
-    /* TWO-COL LAYOUT */
-    .notes-layout { display: grid; grid-template-columns: 290px 1fr; gap: 1.5rem; align-items: start; padding-bottom: 3rem; }
-    @media (max-width: 780px) { .notes-layout { grid-template-columns: 1fr; } .search-wrap input { width: 100%; } }
-
-    /* LIST PANEL */
-    .notes-list { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; position: sticky; top: 80px; }
-    .list-header { padding: .8rem 1rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-    .list-header strong { font-size: .92rem; color: var(--navy); font-family: 'Playfair Display', serif; }
-    .list-header span { font-size: .78rem; color: var(--muted); }
-    .list-scroll { max-height: 580px; overflow-y: auto; }
-    .list-scroll::-webkit-scrollbar { width: 4px; }
-    .list-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-    .note-item { padding: .7rem 1rem; border-bottom: 1px solid var(--border); cursor: pointer; transition: background .1s; display: flex; align-items: center; justify-content: space-between; font-size: .86rem; color: var(--text); }
-    .note-item:last-child { border-bottom: none; }
-    .note-item:hover { background: var(--bg); }
-    .note-item.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; border-left: 3px solid var(--accent); padding-left: calc(1rem - 3px); }
-    .note-item .bm-star { font-size: .7rem; flex-shrink: 0; margin-left: .4rem; }
-    .no-results { padding: 2rem; text-align: center; color: var(--muted); font-size: .88rem; }
-
-    /* DETAIL PANEL */
-    .note-detail { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); min-height: 480px; }
-    .detail-header { padding: 1.4rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-    .detail-header h2 { font-size: 1.45rem; color: var(--navy); }
-    .detail-header .fname { font-size: .75rem; color: var(--muted); margin-top: .2rem; font-family: monospace; }
-    .btn-bm { padding: .38rem .9rem; border-radius: 8px; font-size: .82rem; font-weight: 500; border: 1.5px solid var(--border); background: var(--surface); cursor: pointer; font-family: 'DM Sans', sans-serif; color: var(--muted); transition: all .15s; white-space: nowrap; }
-    .btn-bm:hover { border-color: var(--accent); color: var(--accent); }
-    .btn-bm.saved { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
-    .detail-body { padding: 1.5rem; line-height: 1.85; font-size: .93rem; color: var(--text); }
-    .detail-body h1 { font-size: 1.35rem; color: var(--navy); margin: 1.2em 0 .5em; }
-    .detail-body h2 { font-size: 1.15rem; color: var(--navy); margin: 1em 0 .4em; border-bottom: 1px solid var(--border); padding-bottom: .25em; }
-    .detail-body h3 { font-size: 1rem; color: var(--accent); margin: .85em 0 .3em; }
-    .detail-body h4 { font-size: .93rem; color: var(--muted); margin: .7em 0 .25em; }
-    .detail-body strong { color: var(--navy); }
-    .detail-body code { background: #f3f2ef; color: var(--accent); padding: 1px 5px; border-radius: 4px; font-size: .85em; font-family: monospace; }
-    .detail-body ul, .detail-body ol { padding-left: 1.4em; margin: .5em 0; }
-    .detail-body li { margin: .3em 0; }
-    .detail-body p { margin: .55em 0; }
-
-    /* EMPTY STATE */
-    .note-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; color: var(--muted); gap: .75rem; text-align: center; padding: 2rem; }
-    .note-empty .ei { font-size: 2.8rem; }
-    .note-empty h3 { font-size: 1.2rem; color: var(--navy); }
-    .note-empty p { font-size: .9rem; max-width: 280px; }
-
-    /* SPINNER */
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .spinner { width: 30px; height: 30px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
-    .loading-wrap { display: flex; flex-direction: column; align-items: center; padding: 3.5rem 0; gap: 1rem; }
-    .loading-wrap p { color: var(--muted); font-size: .88rem; }
-
-    footer { background: var(--navy); color: #fff9; text-align: center; padding: 2rem; font-size: .85rem; margin-top: 2rem; }
-    footer strong { color: #fff; }
-  </style>
-</head>
-<body>
-
-<nav>
-  <a href="https://tnpscfuhrer.in/" class="nav-logo">TNPSC <span>Fuhrer</span></a>
-  <ul class="nav-links">
-    <li><a href="https://tnpscfuhrer.in/">Home</a></li>
-    <li><a href="https://tnpscfuhrer.in/notes" class="active">Notes</a></li>
-    <li><a href="https://tnpscfuhrer.in/jobs">Jobs</a></li>
-    <li><a href="https://tnpscfuhrer.in/blog">Blog</a></li>
-    <li><a href="https://tnpscfuhrer.in/tnpsc">TNPSC</a></li>
-    <li><a href="https://tnpscfuhrer.in/about">About</a></li>
-  </ul>
-</nav>
-
-<main>
-  <div class="container">
-    <div class="page-header">
-      <span class="badge">389 Study Notes</span>
-      <h1>Notes Browser</h1>
-      <p>Exam-focused notes covering Polity, History, Economics, Data Science, Maths and more — all in one place.</p>
-    </div>
-
-    <div class="controls">
-      <div class="view-tabs">
-        <button class="view-tab active" onclick="switchView('browse',this)">🗂 Browse</button>
-        <button class="view-tab" onclick="switchView('recent',this)">🕐 Recent</button>
-        <button class="view-tab" onclick="switchView('bookmarks',this)">⭐ Saved</button>
-      </div>
-      <div class="search-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="searchInput" placeholder="Search notes..." oninput="renderList()"/>
-      </div>
-    </div>
-
-    <div class="cat-tabs" id="catTabs">
-      <button class="cat-tab active" onclick="switchCat('All Notes',this)">📚 All (389)</button>
-      <button class="cat-tab" onclick="switchCat('Tamil & History',this)">🏛 Tamil & History</button>
-      <button class="cat-tab" onclick="switchCat('Polity & Governance',this)">⚖️ Polity</button>
-      <button class="cat-tab" onclick="switchCat('Economics & Banking',this)">💰 Economics</button>
-      <button class="cat-tab" onclick="switchCat('Data Science & AI',this)">🤖 Data Science</button>
-      <button class="cat-tab" onclick="switchCat('Mathematics',this)">📐 Maths</button>
-      <button class="cat-tab" onclick="switchCat('Cybersecurity',this)">🔐 Cyber</button>
-      <button class="cat-tab" onclick="switchCat('Current Affairs',this)">📰 Current Affairs</button>
-    </div>
-
-    <div class="notes-layout">
-      <!-- LIST -->
-      <div class="notes-list">
-        <div class="list-header">
-          <strong id="listTitle">All Notes</strong>
-          <span id="listCount">389 notes</span>
-        </div>
-        <div class="list-scroll" id="notesList"></div>
-      </div>
-
-      <!-- DETAIL -->
-      <div class="note-detail" id="noteDetail">
-        <div class="note-empty">
-          <div class="ei">📖</div>
-          <h3>Select a Note</h3>
-          <p>Click any note from the list to load its study content.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  <p>Built for TNPSC aspirants — <strong>TNPSC Fuhrer</strong> © 2026</p>
-</footer>
-
 <script>
-const ALL_FILES = ["10th_Tamil","11th_Five_Year_Plan","12_Volume","1936","19th_Century_Reforms","20th_Century_Authors","42nd_Ammendment","6th_Tamil","7th_Tamil","8th_Tamil","9th_Tamil","ADMINISTRATIVE__REFORMS___TRIBUNALS","AI","AI_Blog_Post_Generator","AP","ASCII","AUC","Accuracy","Accuracy__recall__precision","Adam_Smith","Addition_Properties","Administration_of_States_with_reference_to_Tamil_Nadu__30_Questions_","Administrative_Machinery_in_India","Advent_of_Europeans","Adversarial_artificial_intelligence","Age_composition","Airways","Alexander_Cunningham","Algorithms","Alternative_Growth_Indicators","Amendment_Process_and_Procedure","Ancient_History","Ancient_Tamil_Society","Annual_Plan_1990_-_91___92","Antivirus_software","Appointment","April","April_CA","Area___Volume","Areas_Related_to_Circles","Article_120","Article_2","Article_315","Article_316","Article_317","Articles_Related_to_Public_Service_Commissions","Artificial_neural_network","Artificial_neural_network_2","Awards","Bad_Loan","Bank_Money_or_Deposit_Money","Banking","Banking_Sector_Reforms","Banking_structure_in_India","Barter_System","Basic_Concepts_and_Measures","Basic_geometrical_ideas__2_-D_","Baye_s_Theorem","Bayes_Theorem","Beautiful_soup","Big_Data","Binning","Binomial_Theorem","Bodies_Associated_with_Planning_in_India","Books","Booting","Brahmo_Samaj","Budget","CA___GS","COMMISSION","CPU","C__Natesa_Mudaliar","Cabinet_Secretariat","Capitalism","Carl_Fredrich_Gauss","Cashless_Economy","Categorical_data","Causes_of_Inflation","Central_Bank_Digital_Currency","Central_Govt","Central_Planning","Central_Secretariat","Cheet_Sheet","Chief_Minister","Child_Labour","Circle","Citizenship","Class_6","Classification_of_Banks","Classification_of_Taxes","Clipping","Cloud_Computing","Co-operative_Bank","Coefficient_of_Variation","Coins___Notes","Committee","Communication","Complex_Sentence","Components_of_a_Budget","Concepts_and_Terms_Related_to_Inflation","Confusion_matrix","Constitution_of_India","Contribution_of_Tamilians_in_Freedom_movement","Coordinate_Geometry","Countable_and_Uncountable_sets","Cryptocurrency","Cryptographic_Attack","Curzon","DBSCAN","Daily_News","Data","Data_Analytics","Data_Pre_Processing","Data_Representations","Data_Science","Data_Science_Infosys","Data_Science_do","Data_Scientist","Data_Types","Debendranath_Tagore","Decentralised_planning","Decision_Tree_Regression","Decision_Trees","Deep_Learning","Deep_learning_and_machine_learning","Demand_and_Supply_-_Money","Developement_Banks","Development_of_Rationalism","Difference_between_Ordinary_Bill_and_Money_Bill","Difficulties_and_Problems_in_Calculation","Directive_Principles_of_State_Policy","Discrete_Probability","District_Administration","Downsampling_and_Upweighting","E-Governance","EMERGENCY","EMPOWERMENT_OF_WOMEN","ENIAC","Economic_Development","Economic_Growth","Economic_Reforms","Economice_Basics","Economics","Economics_CA","Effects_of_Inflation","Eighth_Five_Year_Plan_1992_-_97","Electronic_Health_Records","Electronic_orders_and_digital_payments","Elementary_Set_Theory","Eleventh_Five_Year_Plan_2007_-_12","Embedding_Vectors","Encoding","Ethical_principles_and_methodologies","Event","Excel_Shortcuts","Excutive_-_State","Executive","Executive_-_Union","Executive_1","Fall_of_the_Soviet_Union_and_Economic_Liberalisation__1991-present_","False_positive_rate","Famous_people","Father_of_Computer","Feature_Crosses","Feature_Engineering","Feature_Scaling","Feb","Feb_CA","Feedback_Loop","Fifth_Five_Year_Plan_1974_-_79","File_Types","Finance_Commission","Financial_position_of_a_Bank","First_Five_Year_Plan_1951-56","Fiscal_Policy_and_Monetary_Policy","Five-Year_Plans","Five_Year_Plan_Model___Assessment","Forth_Five_Year_Plan_1969_-_74","Fractions","Free_Cybersecurity_Services_and_Tools","Functions_of_Banks","Functions_of_Money","Fundamental_Duties","Fundamental_Rights","G2","G2A_Mains","GMM","GS","GST","Ganga_Water_Treaty","General_Awareness","General_Science","General_Tamil","Generalization","Generation","Generative_AI","Geography","Globalization","Glossary_Python","Glossary_Python_Basics","Glossary_of_Cyber_Security","Gottfried_Wilhelm_Leibniz","Governor","Gradient_Boosting","Gradient_Boosting_Regression","Gradient_descent","Group_2A_Syllabus","Group_2___2A_Prelims","HCF_-_LCM","HCF___LCM","HCF___LCM_1","Hadoop","Handling_the_missing_values","Henri_Poincare","Hierarchical_Clustering","Hilton_Young_Commission","History","History_of_TN","History_of_artificial_intelligence-","History_on_Polity","Hyperparameter","IBM","INC","INC_Sessions","INM","ISRO","ISRO_2","Imbalanced_Datasets","Import_Required_Libraries","Income_Classification","Income_Theory","Independent_Events","Indian_Government_Structure","Indirect_taxes_in_India","Inflation","International","Intrusion_detection_system","Irrational_Numbers","Ishwar_Chandra_Vidyasagar","J_P__Morgan","James_Prinsep","Jan","Jan_14","Jan_CA","Jawaharlal_Nehru","Join_Siting","Judgements","Jupyter","Justice_Party","Justice_magazine","K-Means","Keras","Keshab_Chandra_Sen","Knowing_our_Numbers","LDA","LaTeX","LaTeX_1","Labels","Land_Reforms_and_Agriculture","Lasso_Regression","Law_Making_Process","Liberalisation","Linear_Regression","Linear_scaling","Lines_and_Angles","Literacy_Rate","Local_Self-Government","Location","Log_scaling","Logistic_Regression","Lok_Adalat","Lok_Ayukta","Lord_Curzon","Loss","MGR","MNA","Machine_Learning","Making_of_Indian_Constitution","Making_of_constitution","Malware","March","Marriage_Age_Committee","Math","Math_Syllabus","Mathematicians","Mathi","Matplotlib","Mean","Mean_deviation","Measurers_of_Inflation","Measurers_to_Control_Inflation","Measures_of_Central_Tendency","Measures_of_Dispersion","Median","Medical_Services_Recruitment_Board_Composition","Mensuration","Merger_of_public_sector_bank_in_India","Metallic_Standard","Methods_of_Measurement","Methods_of_collecting_primary_data","Metric_Spaces","Microprocessor","Mode","Model","Model_complexity","Modern_History_of_Tamil_Nadu__Tamil_Society___Culture_and_Heritage__20_Questions_","Monetary_Policy","Money","Monitor","Monsoon__Rainfall__Weather_and_Climate","Mouse","Multi-class_classification","Multi-level_Planning","Multi_Dimensional_Poverty_Index","Multiplication_Properties","NCERT_Math","NLP","Naive_Bayes","National_Events","National_Income","National_Security","Nature_of_Indian_Economy","Nature_of_Universe","Negative_Numbers_and_Integers","Network_protocol_analyzers","Neural_Networks","Neural_Networks_Regression","New","New_Education_Policy","New_Education_Policy_Committee","Ninth_Five_Year_Plan_1997_-_2002","Noise","Non-Banking_Financial_Company","Normal_Distribution","Normalization","Notes","Nouns","NumPy","Numerical_data","OCR","OS","Office_of_the_Principal_Scientific_Adviser","One-hot_encoding","One_Tute","Outliers","Overfitting","PCA","PMO","P_C__Mahalanobis","P__Theagaraya","P__Theagaraya_Chetty","Panchsheel_and_Non-Aligned_Movement","Pandas","Papper_Currency_Standard","Parliament","Parties","Parts_of_Speech","Password_Attack","Percentage","Phishing","Physical_Attack","Physical_features","Pipeline","Plan_Holiday_1966_-_69","Planning_Commission","Planning_Commission___Niti_Ayog","Planning_in_India","Plastic_Money","Playbooks","Playing_with_Numbers","Polity","Polity_2","Polynomial","Population","Preamble","Precision","Prediction_Bias","President","Price_Theory","Prime_Minister","Printer","Privatisation","Probability","Project","bounded","centralized_planning","features","k-NN","l"];
+// @ts-nocheck
+
+const ALL_FILES = [
+"Adam_Smith",
+"Ancient_History",
+"Polity",
+"Machine_Learning",
+"Probability",
+"Inflation",
+"Banking",
+"GST"
+];
 
 const CATEGORIES = {
-  "All Notes": ALL_FILES,
-  "Tamil & History": ALL_FILES.filter(f => /tamil|tamilians|mgr|justice_party|ancient_tamil|modern_history_of_tamil|history_of_tn|contribution_of_tamil|19th_century|ancient_history|advent_of_european|brahmo|ishwar|debendranath|keshab|alexander_cunningham|james_prinsep|curzon|lord_curzon|hilton_young|jawaharlal|1936|development_of_rationalism/i.test(f)),
-  "Polity & Governance": ALL_FILES.filter(f => /polity|president|parliament|governor|chief_minister|prime_minister|constitution|fundamental|directive|citizenship|preamble|emergency|amendment|article_|executive|lok_|law_making|district|local_self|central_govt|cabinet|pmo|commission|committee|administrative|finance_comm|parties|judgement|making_of|indian_government|group_2|g2|appointment|empowerment|ganga|panchsheel|national_security/i.test(f)),
-  "Economics & Banking": ALL_FILES.filter(f => /bank|money|inflation|economic|planning|five_year|budget|gst|fiscal|monetary|national_income|poverty|liberali|privatisation|globaliz|barter|cashless|cryptocurrency|tax|price_theory|income_theory|capitalism|land_reform|plan_|niti|annual_plan|plan_holiday|bad_loan|coins|demand_and_supply|plastic_money|metallic_standard|papper_currency|central_bank_digital|non-banking|co-operative|classification_of_bank|banking_structure|banking_sector|merger_of_public/i.test(f)),
-  "Data Science & AI": ALL_FILES.filter(f => /data|machine_learning|deep_learning|neural|algorithm|regression|classification|cluster|python|pandas|numpy|keras|nlp|generative|embedding|feature|gradient|logistic|decision_tree|naive_bayes|pca|lda|k-means|dbscan|gmm|hierarchical|overfitting|generalization|loss|accuracy|precision|recall|auc|confusion|encoding|normalization|outlier|noise|binning|pipeline|jupyter|matplotlib|big_data|hadoop|cloud|ocr|ascii|artificial|adversarial|beautiful_soup|downsampling|imbalanced|hyperparameter|labels|feedback_loop|prediction_bias|model|generative_ai/i.test(f)),
-  "Mathematics": ALL_FILES.filter(f => /math|geometry|circle|fraction|percentage|hcf|lcm|binomial|polynomial|coordinate|mensuration|probability|statistic|mean|median|mode|distribution|set_theory|metric_space|irrational|integer|number|ncert|area|volume|lines_and|addition|multiplication|bayes|discrete|coefficient|dispersion|variance|deviation|class_6|mathi|latex|bounded|countable|independent_events|normal_distribution|log_scaling|linear_scaling|carl_fredrich|gottfried|henri_poincare|mathematician/i.test(f)),
-  "Cybersecurity": ALL_FILES.filter(f => /cyber|malware|phishing|password|attack|intrusion|antivirus|network_protocol|playbook|cryptograph|glossary_of_cyber|free_cyber|physical_attack/i.test(f)),
-  "Current Affairs": ALL_FILES.filter(f => /^jan$|^feb$|^march$|^april$|jan_14|jan_ca|feb_ca|april_ca|daily_news|national_events|international/i.test(f)),
+"All Notes": ALL_FILES,
+"Economics": ALL_FILES.filter(f=>/bank|inflation|gst|money/i.test(f)),
+"Polity": ALL_FILES.filter(f=>/polity|constitution|president/i.test(f)),
+"Data Science": ALL_FILES.filter(f=>/machine|data/i.test(f)),
+"Maths": ALL_FILES.filter(f=>/probability|math/i.test(f))
 };
 
 let currentCat = "All Notes";
 let currentView = "browse";
 let currentNote = null;
-let bookmarks = [];
-let recent = [];
 
-try { bookmarks = JSON.parse(localStorage.getItem('tnpsc_bookmarks') || '[]'); } catch(e){}
-try { recent = JSON.parse(localStorage.getItem('tnpsc_recent') || '[]'); } catch(e){}
+let bookmarks = JSON.parse(localStorage.getItem("tnpsc_bookmarks")||"[]");
+let recent = JSON.parse(localStorage.getItem("tnpsc_recent")||"[]");
 
-function fmt(name) {
-  return name.replace(/_/g,' ').replace(/-/g,' - ').replace(/\s+/g,' ').trim();
+function fmt(name){
+return name.replace(/_/g," ");
 }
 
-function getPool() {
-  if (currentView === 'bookmarks') return bookmarks;
-  if (currentView === 'recent') return recent;
-  return CATEGORIES[currentCat] || ALL_FILES;
+function getPool(){
+if(currentView==="bookmarks") return bookmarks;
+if(currentView==="recent") return recent;
+return CATEGORIES[currentCat]||ALL_FILES;
 }
 
-function renderList() {
-  const search = (document.getElementById('searchInput').value || '').toLowerCase();
-  const pool = getPool();
-  const filtered = pool.filter(f => !search || fmt(f).toLowerCase().includes(search));
+function renderList(){
 
-  document.getElementById('listTitle').textContent =
-    currentView === 'bookmarks' ? 'Saved Notes' : currentView === 'recent' ? 'Recent Notes' : currentCat;
-  document.getElementById('listCount').textContent = filtered.length + ' notes';
+const search=document.getElementById("searchInput").value.toLowerCase();
+const pool=getPool();
 
-  const list = document.getElementById('notesList');
-  if (!filtered.length) {
-    list.innerHTML = '<div class="no-results">No notes found.</div>';
-    return;
-  }
-  list.innerHTML = filtered.map(f => `
-    <div class="note-item ${currentNote===f?'active':''}" onclick="openNote('${f.replace(/'/g,"\\'")}')">
-      <span>${fmt(f)}</span>
-      ${bookmarks.includes(f) ? '<span class="bm-star">⭐</span>' : ''}
-    </div>
-  `).join('');
+const filtered=pool.filter(f=>!search||fmt(f).toLowerCase().includes(search));
+
+document.getElementById("listCount").textContent=filtered.length+" notes";
+
+const list=document.getElementById("notesList");
+
+if(!filtered.length){
+list.innerHTML="<div class='no-results'>No notes found</div>";
+return;
 }
 
-function switchCat(cat, btn) {
-  currentCat = cat;
-  document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderList();
+list.innerHTML=filtered.map(f=>`
+<div class="note-item ${currentNote===f?'active':''}" onclick="openNote('${f}')">
+<span>${fmt(f)}</span>
+${bookmarks.includes(f)?"⭐":""}
+</div>
+`).join("");
+
 }
 
-function switchView(view, btn) {
-  currentView = view;
-  document.querySelectorAll('.view-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderList();
+function switchCat(cat,btn){
+currentCat=cat;
+document.querySelectorAll(".cat-tab").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+renderList();
 }
 
-function toggleBookmark(filename) {
-  bookmarks = bookmarks.includes(filename)
-    ? bookmarks.filter(b => b !== filename)
-    : [...bookmarks, filename];
-  try { localStorage.setItem('tnpsc_bookmarks', JSON.stringify(bookmarks)); } catch(e){}
-  renderList();
-  const btn = document.getElementById('bmBtn');
-  if (btn) {
-    const saved = bookmarks.includes(filename);
-    btn.textContent = saved ? '⭐ Saved' : '☆ Save';
-    btn.className = 'btn-bm' + (saved ? ' saved' : '');
-  }
+function switchView(view,btn){
+currentView=view;
+document.querySelectorAll(".view-tab").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+renderList();
 }
 
-function renderMD(text) {
-  return text
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/^#### (.+)$/gm,'<h4>$1</h4>')
-    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
-    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
-    .replace(/^# (.+)$/gm,'<h1>$1</h1>')
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g,'<em>$1</em>')
-    .replace(/`([^`]+)`/g,'<code>$1</code>')
-    .replace(/^\s*[-*] (.+)$/gm,'<li>$1</li>')
-    .replace(/^\s*\d+\. (.+)$/gm,'<li>$1</li>')
-    .replace(/(<li>[\s\S]*?<\/li>)/g,'<ul>$1</ul>')
-    .replace(/\n\n+/g,'</p><p>');
+function toggleBookmark(name){
+
+if(bookmarks.includes(name))
+bookmarks=bookmarks.filter(b=>b!==name);
+else
+bookmarks.push(name);
+
+localStorage.setItem("tnpsc_bookmarks",JSON.stringify(bookmarks));
+renderList();
+
 }
 
-async function openNote(filename) {
-  currentNote = filename;
-  recent = [filename, ...recent.filter(r => r !== filename)].slice(0, 20);
-  try { localStorage.setItem('tnpsc_recent', JSON.stringify(recent)); } catch(e){}
-  renderList();
+function renderMD(md){
 
-  const isBm = bookmarks.includes(filename);
-  const detail = document.getElementById('noteDetail');
-  detail.innerHTML = `
-    <div class="detail-header">
-      <div>
-        <h2>${fmt(filename)}</h2>
-        <div class="fname">${filename}.md</div>
-      </div>
-      <button id="bmBtn" class="btn-bm ${isBm?'saved':''}" onclick="toggleBookmark('${filename.replace(/'/g,"\\'")}')">
-        ${isBm ? '⭐ Saved' : '☆ Save'}
-      </button>
-    </div>
-    <div class="detail-body">
-      <div class="loading-wrap">
-        <div class="spinner"></div>
-        <p>Loading study notes...</p>
-      </div>
-    </div>
-  `;
-  detail.scrollTop = 0;
+return md
+.replace(/^### (.*$)/gim,"<h3>$1</h3>")
+.replace(/^## (.*$)/gim,"<h2>$1</h2>")
+.replace(/^# (.*$)/gim,"<h1>$1</h1>")
+.replace(/\*\*(.*?)\*\*/gim,"<b>$1</b>")
+.replace(/\*(.*?)\*/gim,"<i>$1</i>")
+.replace(/\n/g,"<br>");
 
-  try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        system: "You are a TNPSC exam study assistant. Return well-structured markdown study notes. Use ## headers, bullet points, bold key terms. Be concise, accurate, and exam-focused.",
-        messages: [{ role: "user", content: `TNPSC study notes for: "${fmt(filename)}"` }]
-      })
-    });
-    const data = await res.json();
-    const text = data.content?.map(c => c.text||'').join('\n') || 'No content available.';
-    detail.querySelector('.detail-body').innerHTML = `<p>${renderMD(text)}</p>`;
-  } catch(e) {
-    detail.querySelector('.detail-body').innerHTML = `<p style="color:var(--muted)">Failed to load. Please try again.</p>`;
-  }
+}
+
+async function openNote(filename){
+
+currentNote=filename;
+
+recent=[filename,...recent.filter(r=>r!==filename)].slice(0,20);
+localStorage.setItem("tnpsc_recent",JSON.stringify(recent));
+
+renderList();
+
+const detail=document.getElementById("noteDetail");
+
+detail.innerHTML=`
+<div class="loading-wrap">
+<div class="spinner"></div>
+<p>Loading notes...</p>
+</div>
+`;
+
+try{
+
+const res=await fetch("/notes/"+filename+".md");
+
+if(!res.ok) throw new Error();
+
+const md=await res.text();
+
+detail.innerHTML=`
+<div class="detail-header">
+<h2>${fmt(filename)}</h2>
+<button onclick="toggleBookmark('${filename}')">
+${bookmarks.includes(filename)?"⭐ Saved":"☆ Save"}
+</button>
+</div>
+
+<div class="detail-body">
+${renderMD(md)}
+</div>
+`;
+
+}catch{
+
+detail.innerHTML="<p style='padding:20px'>Note not found</p>";
+
+}
+
 }
 
 renderList();
+
 </script>
-</body>
-</html>
