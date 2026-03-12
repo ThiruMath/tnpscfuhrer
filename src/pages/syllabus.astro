@@ -1,0 +1,816 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allNotes = await getCollection('notes');
+
+// Tag → note slug mapping function
+function findRelatedNotes(keywords: string[]) {
+  return allNotes
+    .filter(note => {
+      const titleLower = note.slug.toLowerCase().replace(/-/g, ' ');
+      const bodyLower = (note.body || '').toLowerCase().slice(0, 500);
+      return keywords.some(kw => titleLower.includes(kw) || bodyLower.includes(kw));
+    })
+    .slice(0, 4)
+    .map(n => ({ title: n.data.title || n.slug.replace(/-/g, ' '), slug: n.slug }));
+}
+
+// Syllabus Data
+const syllabus = {
+  exam: "Combined Civil Services Examination – II",
+  groups: "Group II & IIA Services",
+  code: "495",
+  date: "12.12.2024",
+  parts: [
+    {
+      id: "A",
+      name: "General Studies",
+      standard: "Degree Standard",
+      total: 75,
+      color: "#C1121F",
+      icon: "📘",
+      units: [
+        {
+          num: "I", title: "General Science", questions: 5,
+          tags: ["science", "physics", "chemistry", "biology", "ecology"],
+          topics: [
+            "Scientific knowledge and scientific temper, Power of reasoning",
+            "Nature of universe, General scientific laws, Mechanics",
+            "Properties of matter, force, motion, and energy",
+            "Electricity and magnetism, Light, Sound, Heat",
+            "Nuclear physics, Laser, Electronics, and Communications",
+            "Elements, Compounds, Acids, Bases, Salts",
+            "Petroleum products, Fertilizers, Pesticides",
+            "Life science, Classification of living organisms, Evolution, Genetics",
+            "Physiology, Nutrition, Health and Hygiene, Human diseases",
+            "Environment and Ecology",
+            "Latest inventions in Science and Technology",
+            "Current affairs"
+          ]
+        },
+        {
+          num: "II", title: "Geography of India", questions: 5,
+          tags: ["geography", "monsoon", "rivers", "soil", "climate", "pollution"],
+          topics: [
+            "Location, Physical features",
+            "Monsoon, Rainfall, Weather and Climate",
+            "Water Resources, Rivers in India",
+            "Soil, Minerals and Natural Resources",
+            "Forest and Wildlife, Agricultural pattern",
+            "Transport and Communication",
+            "Social Geography – Population density and distribution",
+            "Racial, linguistic groups and major tribes",
+            "Natural calamity, Disaster management",
+            "Environmental pollution, Reasons and preventive measures",
+            "Climate change, Green energy",
+            "Geographical landmarks, Current affairs"
+          ]
+        },
+        {
+          num: "III", title: "History, Culture of India & Indian National Movement", questions: 10,
+          tags: ["history", "independence", "freedom", "mughal", "polity", "gandhi", "national movement"],
+          topics: [
+            "Indus Valley Civilization",
+            "Guptas, Delhi Sultans, Mughals, and Marathas",
+            "Age of Vijayanagaram and Bahmani Kingdoms",
+            "South Indian History",
+            "National Renaissance, Early uprising against British rule",
+            "Indian National Congress, Emergence of leaders",
+            "B.R.Ambedkar, Bhagat Singh, Bharathiar, V.O.Chidambaranar",
+            "Jawaharlal Nehru, Kamarajar, Mahatma Gandhi, Maulana Abul Kalam Azad",
+            "Thanthai Periyar, Rajaji, Subash Chandra Bose, Rabindranath Tagore",
+            "Growth of Satyagraha and Militant Movements",
+            "Communalism and Partition",
+            "Characteristics of Indian Culture, Unity in Diversity",
+            "India as a secular state, Social harmony",
+            "Prominent personalities in Arts, Science, Literature and Philosophy"
+          ]
+        },
+        {
+          num: "IV", title: "Indian Polity", questions: 15,
+          tags: ["constitution", "polity", "fundamental rights", "parliament", "judiciary", "election"],
+          topics: [
+            "Constitution of India, Preamble, Salient features",
+            "Union, State and Union Territory",
+            "Citizenship, Fundamental Rights, Fundamental Duties",
+            "Directive Principles of State Policy",
+            "Union Executive, Union Legislature",
+            "State Executive, State Legislature",
+            "Local Governments, Panchayat Raj",
+            "Spirit of federalism: Centre-State relationships",
+            "Election, Judiciary in India, Rule of Law",
+            "Corruption in public life, Anti-corruption measures",
+            "Lokpal and Lok Ayukta",
+            "Right to Information",
+            "Empowerment of Women, Consumer Protection Forums",
+            "Human Rights Charter, Political parties"
+          ]
+        },
+        {
+          num: "V", title: "Indian Economy & Development Administration in Tamil Nadu", questions: 20,
+          tags: ["economy", "five year plan", "rbi", "fiscal", "poverty", "tamilnadu", "gst", "development"],
+          topics: [
+            "Nature of Indian Economy, Five-Year Plan Models",
+            "Planning Commission and Niti Aayog",
+            "Sources of Revenue, Reserve Bank of India",
+            "Fiscal Policy and Monetary Policy",
+            "Finance Commission, Resource sharing",
+            "Goods and Services Tax (GST)",
+            "Structure of Indian Economy, Employment Generation",
+            "Land Reforms and Agriculture",
+            "Application of Science and Technology in Agriculture",
+            "Industrial growth, Rural welfare oriented programmes",
+            "Social problems: Population, Education, Health, Employment, Poverty",
+            "Human Development Indicators in Tamil Nadu",
+            "Impact of social reform movements in Tamil Nadu's development",
+            "E-Governance in Tamil Nadu",
+            "Welfare schemes and public delivery systems"
+          ]
+        },
+        {
+          num: "VI", title: "History, Culture, Heritage & Socio-Political Movements in Tamil Nadu", questions: 20,
+          tags: ["tamil", "sangam", "thirukkural", "periyar", "anna", "tamilnadu", "dravidian", "freedom"],
+          topics: [
+            "History of Tamil Society and archaeological discoveries",
+            "Tamil literature from Sangam age till contemporary times",
+            "Thirukkural – Significance as secular literature",
+            "Relevance to everyday life, impact on humanity",
+            "Thirukkural and universal values",
+            "Role of Tamil Nadu in freedom struggle",
+            "Early agitations against British Rule",
+            "Role of women in freedom struggle",
+            "Evolution of 19th and 20th century socio-political movements",
+            "Justice Party, Growth of Rationalism",
+            "Self Respect Movement, Dravidian Movement",
+            "Contributions of Thanthai Periyar and Perarignar Anna"
+          ]
+        }
+      ]
+    },
+    {
+      id: "B",
+      name: "Aptitude & Mental Ability",
+      standard: "SSLC Standard",
+      total: 25,
+      color: "#0a6e4f",
+      icon: "🧮",
+      units: [
+        {
+          num: "I", title: "Aptitude", questions: 15,
+          tags: ["simplification", "percentage", "hcf", "lcm", "ratio", "interest", "area", "volume"],
+          topics: [
+            "Simplification, Percentage",
+            "Highest Common Factor (HCF), Lowest Common Multiple (LCM)",
+            "Ratio and Proportion",
+            "Simple Interest, Compound Interest",
+            "Area, Volume",
+            "Time and Work"
+          ]
+        },
+        {
+          num: "II", title: "Reasoning", questions: 10,
+          tags: ["logical reasoning", "puzzles", "visual reasoning", "number series"],
+          topics: [
+            "Logical reasoning",
+            "Puzzles, Dice",
+            "Visual reasoning",
+            "Alpha numeric reasoning",
+            "Number series"
+          ]
+        }
+      ]
+    },
+    {
+      id: "C",
+      name: "Language",
+      standard: "SSLC Standard",
+      total: 100,
+      color: "#7c3aed",
+      icon: "🗣️",
+      note: "Choose either General Tamil OR General English",
+      sections: [
+        {
+          lang: "General Tamil / பொதுத் தமிழ்",
+          flag: "🇮🇳",
+          units: [
+            { num: "I", title: "இலக்கணம் / Grammar", questions: 25, tags: ["tamil grammar", "ilakkanam", "sandhi"], topics: ["எழுத்து – பிரித்து எழுதுதல், சேர்த்து எழுதுதல், சந்திப்பிழை", "குறில்/நெடில் வேறுபாடு, லகர/ளகர/ழகர வேறுபாடு", "சொல் – வேர்ச்சொல், எதிர்ச்சொல், வினைச்சொல்", "எழுத்துப்பிழை, ஒற்றுப்பிழை"] },
+            { num: "II", title: "சொல்லகராதி / Vocabulary", questions: 15, tags: ["tamil vocabulary", "sollakaram"], topics: ["எதிர்ச்சொல்", "ஓரெழுத்து ஒருமொழி", "பொருத்தமான சொல் தேர்வு", "பெச்சுவழக்கு vs எழுத்துவழக்கு"] },
+            { num: "III", title: "எழுதும் திறன் / Writing Skills", questions: 15, tags: ["tamil writing", "thodarchollu"], topics: ["சொற்களை ஒழுங்குபடுத்துதல்", "மரபுத்தமிழ் – திணை, பால், காலம் மரபு", "நிறுத்தல் குறியீடுகள்"] },
+            { num: "IV", title: "கலைச் சொற்கள் / Technical Terms", questions: 10, tags: ["tamil technical terms", "kalai sol"], topics: ["அறிவியல், கல்வி, மருத்துவம் – கலைச்சொற்கள்", "Search engine – தேடு பொறி", "Gene – மரபணு, Allergy – ஒவ்வாமை"] },
+            { num: "V", title: "வாசித்தல் திறன் / Reading Comprehension", questions: 15, tags: ["tamil comprehension", "reading"], topics: ["கொடுக்கப்பட்ட பத்தியிலிருந்து கேள்விகளுக்கு விடை", "செய்திதாள், அரசு சார்ந்த செய்திகள்", "உவமைத்தொடர், மரபுத்தொடர் புரிதல்"] },
+            { num: "VI", title: "எளிய மொழி பெயர்ப்பு / Translation", questions: 5, tags: ["translation", "tamil translation"], topics: ["ஆங்கிலச் சொற்களுக்கு தமிழ்ச்சொற்கள்", "PENDRIVE – கையடக்க சேமிப்பு", "ஆவணங்களின் தலைப்பு, கோப்புகள், மனுக்கள்"] },
+            { num: "VII", title: "இலக்கியம் & தமிழ் அறிஞர்கள் / Literature", questions: 15, tags: ["thirukkural", "sangam literature", "tamil literature", "kavimani"], topics: ["திருக்குறள் – 20 அதிகாரங்கள்: ஒழுக்கமுடைமை, ஈகை, கல்வி, பண்புடைமை", "நாலடியார், நான்மணிக்கடிகை, பழமொழி நானூறு", "உ.வே.சாமிநாத ஐயர், தே.போ. மீனாட்சி சுந்தரம், சி.இலக்குவனார்", "தமிழ்ச் சான்றோர்: பாவேந்தர், கண்ணதாசன், காயிதே மில்லத்,  தாராபாரதி"] }
+          ]
+        },
+        {
+          lang: "General English",
+          flag: "🇬🇧",
+          units: [
+            { num: "I", title: "Grammar", questions: 25, tags: ["english grammar", "tense", "voice"], topics: ["Parts of Speech, Concord, Tense", "Active and Passive Voice, Types of Sentences", "Transformations: Imperatives, Interrogatives, Assertives", "Verbs, Infinitives, Gerunds, Participles, Question Tags", "Simple, Compound, Complex sentences, Degrees of Comparison", "Direct/Indirect Speech, Synthesis, Punctuations"] },
+            { num: "II", title: "Vocabulary", questions: 15, tags: ["synonyms", "antonyms", "idioms", "vocabulary"], topics: ["Synonyms, Antonyms, Homonyms, Homophones", "Collocations, Idioms & Phrases, Phrasal Verbs", "Spelling, Correct usage, One-word substitution", "Word creation, British and American English", "Figures of speech, Compound words"] },
+            { num: "III", title: "Writing Skills", questions: 10, tags: ["letter writing", "english writing"], topics: ["Letter writing (formal and informal)", "Jumbled sentences, Finding right order", "Inferences, Blanks, Substitutions"] },
+            { num: "IV", title: "Technical Terms", questions: 10, tags: ["administrative terms", "technical english"], topics: ["Administrative Terms, Department related", "General and Official terms", "Official Correspondence (basics)"] },
+            { num: "V", title: "Reading Comprehension", questions: 20, tags: ["comprehension", "reading"], topics: ["Unseen passages – Newspaper, Headlines, Editorials", "Government related News", "Strong question, Weak question, Match the following", "Sentence Completion, Ascertainment of facts"] },
+            { num: "VI", title: "Translation", questions: 5, tags: ["translation", "tense voice"], topics: ["Word Translation, Sentence Translation", "Tense related translation tasks", "Tense / Voice related tasks"] },
+            { num: "VII", title: "Literary Works (SSLC Standard)", questions: 15, tags: ["poetry", "prose", "literature", "robert frost"], topics: ["Figures of Speech, Appreciation and Analysis of Poetry", "Poems: I Dream of Spices, The Crocodile, Sea Fever, Stopping by Woods on a Snowy Evening, A Poison Tree, The Secret of the Machines", "Prose: His First Flight, The Last Lesson, The Dying Detective, Learning The Game, Water – The Elixir of Life", "Biography of Srinivasa Ramanujan, A Birthday Letter by Nehru"] }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// Build related notes for each unit
+for (const part of syllabus.parts) {
+  if (part.units) {
+    for (const unit of part.units as any[]) {
+      unit.relatedNotes = findRelatedNotes(unit.tags);
+    }
+  }
+  if (part.sections) {
+    for (const section of part.sections as any[]) {
+      for (const unit of section.units as any[]) {
+        unit.relatedNotes = findRelatedNotes(unit.tags);
+      }
+    }
+  }
+}
+---
+
+<Layout title="TNPSC Group II/IIA Syllabus – Code 495" description="Complete structured TNPSC Group II and Group IIA Preliminary Exam Syllabus (Code 495) with unit-wise breakdown and linked study notes." active="TNPSC">
+  <main>
+    <!-- Hero Banner -->
+    <div class="syllabus-hero">
+      <div class="container">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Updated: 12.12.2024
+        </div>
+        <h1>TNPSC Group II &amp; IIA Syllabus</h1>
+        <p class="hero-sub">Combined Civil Services (Preliminary) Examination – Code <strong>495</strong></p>
+        <div class="exam-meta">
+          <div class="meta-chip">
+            <span class="chip-icon">📘</span>
+            <div>
+              <div class="chip-label">Part A</div>
+              <div class="chip-val">General Studies – 75 Qs</div>
+            </div>
+          </div>
+          <div class="meta-chip">
+            <span class="chip-icon">🧮</span>
+            <div>
+              <div class="chip-label">Part B</div>
+              <div class="chip-val">Aptitude &amp; Reasoning – 25 Qs</div>
+            </div>
+          </div>
+          <div class="meta-chip">
+            <span class="chip-icon">🗣️</span>
+            <div>
+              <div class="chip-label">Part C</div>
+              <div class="chip-val">Language – 100 Qs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container syllabus-body">
+      <!-- Filter bar -->
+      <div class="filter-bar">
+        <span class="filter-label">Jump to:</span>
+        <a href="#partA" class="filter-btn active">Part A – General Studies</a>
+        <a href="#partB" class="filter-btn">Part B – Aptitude</a>
+        <a href="#partC" class="filter-btn">Part C – Language</a>
+      </div>
+
+      <!-- PART A -->
+      <section id="partA" class="part-section">
+        <div class="part-header" style="--part-color: #C1121F">
+          <span class="part-icon">📘</span>
+          <div>
+            <h2>Part A – General Studies</h2>
+            <p>Degree Standard · 75 Questions</p>
+          </div>
+          <div class="part-qs-badge">75 Qs</div>
+        </div>
+
+        <div class="units-grid">
+          {syllabus.parts[0].units?.map((unit: any) => (
+            <div class="unit-card" data-part="A">
+              <div class="unit-header">
+                <div class="unit-num" style="--uc:#C1121F">Unit {unit.num}</div>
+                <div class="unit-qs">{unit.questions} Questions</div>
+              </div>
+              <h3 class="unit-title">{unit.title}</h3>
+              <ul class="topic-list">
+                {unit.topics.map((t: string) => (
+                  <li><span class="bullet" style="--bc:#C1121F"></span>{t}</li>
+                ))}
+              </ul>
+              {unit.relatedNotes.length > 0 && (
+                <div class="related-notes">
+                  <div class="notes-label">📝 Related Notes</div>
+                  <div class="notes-chips">
+                    {unit.relatedNotes.map((n: any) => (
+                      <a href={`/notes/${n.slug}`} class="note-chip">
+                        {n.title.length > 28 ? n.title.slice(0, 28) + '…' : n.title}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- PART B -->
+      <section id="partB" class="part-section">
+        <div class="part-header" style="--part-color: #0a6e4f">
+          <span class="part-icon">🧮</span>
+          <div>
+            <h2>Part B – Aptitude &amp; Mental Ability</h2>
+            <p>SSLC Standard · 25 Questions</p>
+          </div>
+          <div class="part-qs-badge" style="background:#0a6e4f">25 Qs</div>
+        </div>
+
+        <div class="units-grid units-grid--2">
+          {syllabus.parts[1].units?.map((unit: any) => (
+            <div class="unit-card" data-part="B">
+              <div class="unit-header">
+                <div class="unit-num" style="--uc:#0a6e4f">Unit {unit.num}</div>
+                <div class="unit-qs">{unit.questions} Questions</div>
+              </div>
+              <h3 class="unit-title">{unit.title}</h3>
+              <ul class="topic-list">
+                {unit.topics.map((t: string) => (
+                  <li><span class="bullet" style="--bc:#0a6e4f"></span>{t}</li>
+                ))}
+              </ul>
+              {unit.relatedNotes.length > 0 && (
+                <div class="related-notes">
+                  <div class="notes-label">📝 Related Notes</div>
+                  <div class="notes-chips">
+                    {unit.relatedNotes.map((n: any) => (
+                      <a href={`/notes/${n.slug}`} class="note-chip note-chip--green">
+                        {n.title.length > 28 ? n.title.slice(0, 28) + '…' : n.title}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- PART C -->
+      <section id="partC" class="part-section">
+        <div class="part-header" style="--part-color: #7c3aed">
+          <span class="part-icon">🗣️</span>
+          <div>
+            <h2>Part C – Language</h2>
+            <p>SSLC Standard · 100 Questions · Choose Tamil or English</p>
+          </div>
+          <div class="part-qs-badge" style="background:#7c3aed">100 Qs</div>
+        </div>
+
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="showLang('tamil')" id="btn-tamil">🇮🇳 General Tamil</button>
+          <button class="lang-btn" onclick="showLang('english')" id="btn-english">🇬🇧 General English</button>
+        </div>
+
+        <!-- Tamil Section -->
+        <div id="lang-tamil" class="lang-section">
+          <div class="lang-banner lang-banner--tamil">
+            <span>பொதுத் தமிழ்</span>
+            <span class="lang-qs">100 Questions</span>
+          </div>
+          <div class="units-grid">
+            {syllabus.parts[2].sections?.[0].units.map((unit: any) => (
+              <div class="unit-card" data-part="C">
+                <div class="unit-header">
+                  <div class="unit-num" style="--uc:#7c3aed">அலகு {unit.num}</div>
+                  <div class="unit-qs">{unit.questions} கேள்விகள்</div>
+                </div>
+                <h3 class="unit-title">{unit.title}</h3>
+                <ul class="topic-list">
+                  {unit.topics.map((t: string) => (
+                    <li><span class="bullet" style="--bc:#7c3aed"></span>{t}</li>
+                  ))}
+                </ul>
+                {unit.relatedNotes.length > 0 && (
+                  <div class="related-notes">
+                    <div class="notes-label">📝 Related Notes</div>
+                    <div class="notes-chips">
+                      {unit.relatedNotes.map((n: any) => (
+                        <a href={`/notes/${n.slug}`} class="note-chip note-chip--purple">
+                          {n.title.length > 28 ? n.title.slice(0, 28) + '…' : n.title}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- English Section -->
+        <div id="lang-english" class="lang-section" style="display:none">
+          <div class="lang-banner lang-banner--english">
+            <span>General English</span>
+            <span class="lang-qs">100 Questions</span>
+          </div>
+          <div class="units-grid">
+            {syllabus.parts[2].sections?.[1].units.map((unit: any) => (
+              <div class="unit-card" data-part="C">
+                <div class="unit-header">
+                  <div class="unit-num" style="--uc:#be185d">Unit {unit.num}</div>
+                  <div class="unit-qs">{unit.questions} Questions</div>
+                </div>
+                <h3 class="unit-title">{unit.title}</h3>
+                <ul class="topic-list">
+                  {unit.topics.map((t: string) => (
+                    <li><span class="bullet" style="--bc:#be185d"></span>{t}</li>
+                  ))}
+                </ul>
+                {unit.relatedNotes.length > 0 && (
+                  <div class="related-notes">
+                    <div class="notes-label">📝 Related Notes</div>
+                    <div class="notes-chips">
+                      {unit.relatedNotes.map((n: any) => (
+                        <a href={`/notes/${n.slug}`} class="note-chip note-chip--pink">
+                          {n.title.length > 28 ? n.title.slice(0, 28) + '…' : n.title}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Download notice -->
+      <div class="official-note">
+        <span>⚠️</span>
+        <p>This is a structured reference. Always verify with the <strong>official TNPSC notification</strong> before the exam.</p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  function showLang(lang: string) {
+    const tamil = document.getElementById('lang-tamil')!;
+    const english = document.getElementById('lang-english')!;
+    const btnTamil = document.getElementById('btn-tamil')!;
+    const btnEnglish = document.getElementById('btn-english')!;
+    if (lang === 'tamil') {
+      tamil.style.display = '';
+      english.style.display = 'none';
+      btnTamil.classList.add('active');
+      btnEnglish.classList.remove('active');
+    } else {
+      tamil.style.display = 'none';
+      english.style.display = '';
+      btnEnglish.classList.add('active');
+      btnTamil.classList.remove('active');
+    }
+  }
+  (window as any).showLang = showLang;
+
+  // Smooth scroll for jump links
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const href = this.getAttribute('href')!;
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+<style>
+  .syllabus-hero {
+    background: linear-gradient(135deg, #14213D 0%, #1d3461 60%, #C1121F22 100%);
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: #e5e7eb;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(8px);
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .syllabus-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    color: #fff;
+    margin: 0 0 0.5rem;
+    line-height: 1.15;
+  }
+  .hero-sub { color: #9ca3af; font-size: 1.05rem; margin-bottom: 2rem; }
+  .exam-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 0.75rem 1.25rem;
+    backdrop-filter: blur(10px);
+    transition: background 0.2s;
+  }
+  .meta-chip:hover { background: rgba(255,255,255,0.13); }
+  .chip-icon { font-size: 1.5rem; }
+  .chip-label { font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; }
+  .chip-val { font-size: 0.9rem; color: #fff; font-weight: 600; }
+
+  /* Filter bar */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.5rem 0 2.5rem;
+    flex-wrap: wrap;
+  }
+  .filter-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+  .filter-btn {
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* Part Section */
+  .part-section { margin-bottom: 4rem; }
+  .part-header {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--part-color) 8%, white), color-mix(in srgb, var(--part-color) 3%, white));
+    border: 1px solid color-mix(in srgb, var(--part-color) 20%, var(--border));
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .part-header::before {
+    content:'';
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:4px;
+    background: var(--part-color);
+    border-radius: 4px 0 0 4px;
+  }
+  .part-icon { font-size: 2rem; }
+  .part-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 0;
+  }
+  .part-header p { margin: 0.25rem 0 0; color: var(--muted); font-size: 0.9rem; }
+  .part-qs-badge {
+    margin-left: auto;
+    background: var(--part-color);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  /* Units Grid */
+  .units-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.25rem;
+  }
+  .units-grid--2 {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  /* Unit Card */
+  .unit-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .unit-card::after {
+    content:'';
+    position:absolute;
+    top:0;right:0;
+    width:60px;height:60px;
+    border-radius:0 14px 0 60px;
+    background: linear-gradient(135deg, transparent, rgba(0,0,0,0.02));
+  }
+  .unit-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+  }
+  .unit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .unit-num {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--uc);
+    background: color-mix(in srgb, var(--uc) 12%, white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .unit-qs {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--bg);
+    padding: 0.22rem 0.7rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+  .unit-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin: 0;
+    line-height: 1.35;
+  }
+
+  /* Topic list */
+  .topic-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    flex: 1;
+  }
+  .topic-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .bullet {
+    display: inline-block;
+    width: 5px; height: 5px;
+    min-width: 5px;
+    background: var(--bc);
+    border-radius: 50%;
+    margin-top: 0.5em;
+    opacity: 0.7;
+  }
+
+  /* Related Notes */
+  .related-notes {
+    border-top: 1px solid var(--border);
+    padding-top: 0.9rem;
+    margin-top: auto;
+  }
+  .notes-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+  .notes-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .note-chip {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 100px;
+    text-decoration: none;
+    border: 1px solid;
+    font-weight: 500;
+    transition: all 0.15s;
+    background: #fff0f0;
+    color: var(--accent);
+    border-color: #ffc8c8;
+    line-height: 1.4;
+  }
+  .note-chip:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .note-chip--green { background: #f0fdf4; color: #0a6e4f; border-color: #86efac; }
+  .note-chip--green:hover { background: #0a6e4f; color: #fff; border-color: #0a6e4f; }
+  .note-chip--purple { background: #f5f3ff; color: #7c3aed; border-color: #c4b5fd; }
+  .note-chip--purple:hover { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+  .note-chip--pink { background: #fdf2f8; color: #be185d; border-color: #f9a8d4; }
+  .note-chip--pink:hover { background: #be185d; color: #fff; border-color: #be185d; }
+
+  /* Language Toggle */
+  .lang-toggle {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .lang-btn {
+    padding: 0.65rem 1.5rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .lang-btn:hover { border-color: #7c3aed; color: #7c3aed; }
+  .lang-btn.active { background: #7c3aed; color: #fff; border-color: #7c3aed; }
+
+  .lang-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .lang-banner--tamil { background: linear-gradient(90deg, #7c3aed18, #7c3aed08); color: #7c3aed; border: 1px solid #c4b5fd; }
+  .lang-banner--english { background: linear-gradient(90deg, #be185d18, #be185d08); color: #be185d; border: 1px solid #f9a8d4; }
+  .lang-qs { font-size:0.8rem; font-weight:600; opacity:0.7; }
+
+  /* Official note */
+  .official-note {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 3rem;
+    font-size: 0.88rem;
+    color: #92400e;
+  }
+  .official-note span { font-size: 1.2rem; margin-top: -2px; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .units-grid { grid-template-columns: 1fr; }
+    .exam-meta { flex-direction: column; }
+    .filter-bar { flex-direction: column; align-items: flex-start; }
+    .part-header { flex-wrap: wrap; gap: 0.75rem; }
+    .part-qs-badge { margin-left: 0; }
+  }
+</style>
