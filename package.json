@@ -17,7 +17,9 @@
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.17.1",
+    "dotenv": "^17.3.1",
     "marked": "^17.0.4",
+    "pdf-parse": "^2.4.5",
     "sharp": "^0.34.3",
     "typescript": "^5.9.3"
   },

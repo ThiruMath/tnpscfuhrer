@@ -1,0 +1,348 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Generate static routes for all notes
+export async function getStaticPaths() {
+  const noteEntries = await getCollection('notes');
+  return noteEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const { 
+  title, 
+  description, 
+  subject, 
+  exam, 
+  topics, 
+  difficulty, 
+  last_updated, 
+  source_references 
+} = entry.data;
+
+const displayTitle = title || entry.slug;
+const displayDate = last_updated ? new Date(last_updated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
+---
+
+<Layout title={`${displayTitle} | TNPSC Fuhrer Notes`} description={description || `Study notes for ${displayTitle}`}>
+  <div class="note-container">
+    <div class="note-layout">
+      <!-- Main Content -->
+      <article class="note-content-area">
+        <header class="note-header">
+          <div class="breadcrumbs">
+            <a href="/notes">Notes</a> &raquo;
+            {subject && <a href={`/notes?subject=${encodeURIComponent(subject)}`}>{subject}</a>}
+            {exam && exam.map(e => <span class="exam-badge">{e}</span>)}
+          </div>
+          <h1>{displayTitle}</h1>
+          {description && <p class="note-description">{description}</p>}
+          
+          <div class="note-meta">
+            {difficulty && <span class={`difficulty-badge ${difficulty}`}>{difficulty}</span>}
+            {displayDate && <span class="last-updated">Last Updated: {displayDate}</span>}
+          </div>
+        </header>
+
+        <div class="markdown-body">
+          <Content />
+        </div>
+
+        {source_references && source_references.length > 0 && (
+          <div class="source-references">
+            <h3>Sources & References</h3>
+            <ul>
+              {source_references.map(src => (
+                <li>{src.startsWith('http') ? <a href={src} target="_blank" rel="noopener">{src}</a> : src}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </article>
+
+      <!-- Sidebar Area for TOC and Tags -->
+      <aside class="note-sidebar">
+        <div class="sidebar-block">
+          <h3>Topics Covered</h3>
+          <div class="tags-container">
+            {topics && topics.length > 0 ? topics.map(topic => (
+              <a href={`/notes?topic=${encodeURIComponent(topic)}`} class="topic-tag">{topic}</a>
+            )) : <span class="empty-state">No specific topics tagged.</span>}
+          </div>
+        </div>
+        
+        <div class="sidebar-block table-of-contents" id="toc-container">
+          <h3>Table of Contents</h3>
+          <nav id="tocList">
+            <!-- Dynamically populated via script -->
+          </nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const headings = document.querySelectorAll('.markdown-body h2, .markdown-body h3');
+    const tocList = document.getElementById('tocList');
+    
+    if (headings.length > 0 && tocList) {
+      const list = document.createElement('ul');
+      headings.forEach(heading => {
+        // Create ID if missing
+        if (!heading.id) {
+          heading.id = heading.textContent?.toLowerCase().replace(/[^a-z0-9]+/g, '-') || 'section';
+        }
+        
+        const listItem = document.createElement('li');
+        listItem.className = heading.tagName.toLowerCase() === 'h3' ? 'toc-h3' : 'toc-h2';
+        
+        const link = document.createElement('a');
+        link.href = `#${heading.id}`;
+        link.textContent = heading.textContent;
+        
+        listItem.appendChild(link);
+        list.appendChild(listItem);
+      });
+      tocList.appendChild(list);
+    } else if (tocList) {
+      tocList.innerHTML = '<span class="empty-state">No headings found.</span>';
+    }
+  });
+</script>
+
+<style>
+  .note-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .note-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+  .note-content-area {
+    flex: 1;
+    min-width: 0;
+    background: #FFFFFF;
+    border: 1px solid #E8E5DF;
+    border-radius: 12px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .note-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 5rem;
+  }
+  
+  /* Header Styles */
+  .note-header {
+    border-bottom: 1px solid #E8E5DF;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #6B6860;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .breadcrumbs a {
+    color: #14213D;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .breadcrumbs a:hover { color: #C1121F; }
+  .exam-badge {
+    background: #14213D;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.2rem;
+  }
+  .note-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #14213D;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+  }
+  .note-description {
+    font-size: 1.1rem;
+    color: #6B6860;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .note-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  .difficulty-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .difficulty-badge.easy { background: #F0FDF4; color: #166534; }
+  .difficulty-badge.medium { background: #FFFBEB; color: #92400E; }
+  .difficulty-badge.hard { background: #FEF2F2; color: #B91C1C; }
+  .last-updated { color: #6B6860; font-style: italic; }
+
+  /* Markdown Body Styles */
+  .markdown-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #1C1C1C;
+  }
+  .markdown-body h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #14213D;
+    margin: 2.5rem 0 1rem;
+    border-bottom: 2px solid #F8F7F4;
+    padding-bottom: 0.5rem;
+  }
+  .markdown-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #14213D;
+    margin: 2rem 0 1rem;
+  }
+  .markdown-body p { margin-bottom: 1.5rem; }
+  .markdown-body ul, .markdown-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+  .markdown-body li { margin-bottom: 0.5rem; }
+  .markdown-body strong { color: #14213D; font-weight: 700; }
+  .markdown-body blockquote {
+    border-left: 4px solid #C1121F;
+    margin: 1.5rem 0;
+    padding: 0.5rem 1.5rem;
+    background: #FFF0F0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+  }
+  .markdown-body pre {
+    background: #14213D;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+  .markdown-body code {
+    background: #F8F7F4;
+    color: #C1121F;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .markdown-body pre code { background: none; color: inherit; padding: 0; }
+  .markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  .markdown-body th, .markdown-body td {
+    border: 1px solid #E8E5DF;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  .markdown-body th { background: #F8F7F4; font-weight: 600; color: #14213D; }
+
+  /* Sources Block */
+  .source-references {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #E8E5DF;
+  }
+  .source-references h3 {
+    font-family: 'Playfair Display', serif;
+    color: #14213D;
+    margin-bottom: 1rem;
+  }
+  .source-references ul { list-style: circle; padding-left: 1.5rem; color: #6B6860; }
+  .source-references a { color: #C1121F; text-decoration: underline; }
+
+  /* Sidebar Styles */
+  .sidebar-block {
+    background: #FFFFFF;
+    border: 1px solid #E8E5DF;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  }
+  .sidebar-block h3 {
+    font-size: 1.1rem;
+    color: #14213D;
+    margin: 0 0 1rem;
+    border-bottom: 1px solid #F8F7F4;
+    padding-bottom: 0.8rem;
+  }
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .topic-tag {
+    background: #F8F7F4;
+    color: #6B6860;
+    padding: 0.4rem 0.8rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .topic-tag:hover {
+    background: #C1121F;
+    color: white;
+  }
+  .table-of-contents ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .table-of-contents li { margin-bottom: 0.6rem; }
+  .toc-h2 a {
+    font-weight: 500;
+    color: #14213D;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.15s;
+  }
+  .toc-h3 { padding-left: 1rem; }
+  .toc-h3 a {
+    color: #6B6860;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.15s;
+  }
+  .table-of-contents a:hover { color: #C1121F; }
+  .empty-state { color: #9CA3AF; font-size: 0.9rem; font-style: italic; }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .note-layout { flex-direction: column; }
+    .note-sidebar { width: 100%; position: static; }
+  }
+  @media (max-width: 768px) {
+    .note-content-area { padding: 1.5rem; }
+    .note-header h1 { font-size: 2rem; }
+  }
+</style>
