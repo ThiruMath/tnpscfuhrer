@@ -110,7 +110,8 @@ def load_existing():
     path = "src/data/jobs.json"
     if os.path.exists(path):
         with open(path) as f:
-            return json.load(f)
+            data = json.load(f)
+            return data.get("jobs", [])
     return []
 
 
