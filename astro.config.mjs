@@ -5,5 +5,6 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: "https://tnpscfuhrer.pages.dev",
-  output: "static"
+  output: "static",
+  integrations: [mdx(), sitemap()]
 });

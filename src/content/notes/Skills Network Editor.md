@@ -608,7 +608,7 @@ However, in the raw string raw_string, the backslashes are treated as literal ch
 
 #### Author: [Abhishek Gagneja](https://www.coursera.org/instructor/~129186572)
 
-![](HTML%20import/Attachments/MicrosoftTeams-image.png)
+![](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0110EN-SkillsNetwork/images/MicrosoftTeams-image.png)
 
   
 
