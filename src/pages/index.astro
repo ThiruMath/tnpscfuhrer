@@ -160,24 +160,81 @@ import Layout from '../layouts/Layout.astro';
     });
   }
 
-  async function loadNews() {
-    try {
-      const res = await fetch('/api/news');
-      if (!res.ok) throw new Error('fetch failed');
-      const data = await res.json();
-      if (data.updatedAt) {
-        const dateEl = document.getElementById('newsDate');
-        if (dateEl) {
-          dateEl.textContent = new Date(data.updatedAt).toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' });
-        }
-      }
-      renderNews(data.news || []);
-    } catch {
-      renderNews([]);
+  // TNPSC syllabus auto-tag rules
+  const TAGS: [RegExp, string][] = [
+    [/parliament|lok sabha|rajya sabha|president|governor|cabinet|minister|constitution|panchayat|election/i, 'Polity'],
+    [/economy|budget|gdp|inflation|rbi|bank|rupee|tax|gst|fiscal|monetary|finance/i, 'Economy'],
+    [/science|technology|isro|space|satellite|research|artificial intelligence|\bai\b/i, 'Science & Tech'],
+    [/climate|environment|pollution|renewable|solar|forest|wildlife|ecology/i, 'Environment'],
+    [/exam|neet|tnpsc|upsc|scholarship|education|school|university/i, 'Education'],
+    [/health|disease|vaccination|hospital|medicine|epidemic|nutrition/i, 'Health'],
+    [/agriculture|farmer|crop|irrigation|fertilizer|soil/i, 'Agriculture'],
+    [/award|prize|nobel|padma|bharat ratna|sport|olympic/i, 'Awards & Sports'],
+    [/defence|army|navy|air force|missile|border|security/i, 'Defence'],
+    [/tamilnadu|tamil nadu|chennai|tn government/i, 'Tamil Nadu'],
+    [/international|united nations|g20|brics|imf|world bank|foreign/i, 'International'],
+    [/history|heritage|culture|archaeological|museum/i, 'History & Culture'],
+  ];
+
+  function autoTag(text: string): string[] {
+    const tags: string[] = [];
+    for (const [re, tag] of TAGS) {
+      if (re.test(text) && !tags.includes(tag)) tags.push(tag);
+      if (tags.length >= 2) break;
     }
+    return tags;
+  }
+
+  async function fetchRSS(rssUrl: string, source: string) {
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=4`;
+    try {
+      const res = await fetch(apiUrl, { signal: AbortSignal.timeout(5000) });
+      if (!res.ok) return [];
+      const data = await res.json();
+      if (data.status !== 'ok' || !data.items) return [];
+      return data.items.map((item: any) => {
+        const title = (item.title || '').slice(0, 130);
+        const raw = (item.description || item.content || '').replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim();
+        const summary = raw.length > 130 ? raw.slice(0, 130).replace(/\s+\S*$/, '') + '…' : raw;
+        const tags = autoTag(title + ' ' + summary);
+        const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : '';
+        return { title, link: item.link || '#', summary, tags, date, source };
+      });
+    } catch { return []; }
+  }
+
+  async function loadNews() {
+    const results = await Promise.allSettled([
+      fetchRSS('https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3', 'PIB India'),
+      fetchRSS('https://pib.gov.in/RssMain.aspx?ModId=7&Lang=1&Regid=3', 'PIB Economy'),
+      fetchRSS('https://timesofindia.indiatimes.com/rssfeeds/296589292.cms', 'Times of India'),
+    ]);
+
+    const all: any[] = [];
+    for (const r of results) {
+      if (r.status === 'fulfilled') all.push(...r.value);
+    }
+
+    // Deduplicate
+    const seen = new Set<string>();
+    const news = all.filter(item => {
+      const k = item.title.slice(0, 35).toLowerCase();
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    }).slice(0, 8);
+
+    // Set date
+    const dateEl = document.getElementById('newsDate');
+    if (dateEl) {
+      dateEl.textContent = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    renderNews(news);
   }
 
   loadNews();
+
 </script>
 
 <style>
