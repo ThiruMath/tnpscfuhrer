@@ -1,25 +1,105 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Fetch daily news server-side
+let newsItems: any[] = [];
+let newsDate = '';
+try {
+  const res = await fetch(new URL('/api/news', Astro.url).toString());
+  if (res.ok) {
+    const data = await res.json();
+    newsItems = data.news || [];
+    newsDate = data.updatedAt ? new Date(data.updatedAt).toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' }) : '';
+  }
+} catch {
+  newsItems = [];
+}
+
+// Tag color map
+const tagColors: Record<string, string> = {
+  'Polity': '#14213D',
+  'Economy': '#0a6e4f',
+  'Science & Tech': '#7c3aed',
+  'Environment': '#0369a1',
+  'History & Culture': '#C1121F',
+  'Education': '#d97706',
+  'Health': '#be185d',
+  'Agriculture': '#15803d',
+  'Awards & Sports': '#ea580c',
+  'Defence': '#374151',
+  'Tamil Nadu': '#9f1239',
+  'International': '#0891b2',
+};
 ---
 
-<Layout title="Home" active="Home">
+<Layout title="TNPSC Fuhrer – Free Study Notes, Jobs & Current Affairs" active="Home">
   <main>
-    <!-- Hero -->
+    <!-- Hero – 2 column -->
     <section class="hero">
       <div class="container">
-        <div class="hero-inner">
-          <span class="badge">Free &amp; Open Platform</span>
-          <h1>Crack TNPSC.<br/>Study Smarter.</h1>
-          <p>Notes, job alerts, current affairs, and exam guides — everything you need to clear Group 2, 2A, 4 &amp; VAO in one place.</p>
-          <div class="hero-actions">
-            <a href="/notes" class="btn-primary">Browse Notes</a>
-            <a href="/jobs" class="btn-outline">Latest Jobs</a>
+        <div class="hero-grid">
+          <!-- Left: Headline -->
+          <div class="hero-left">
+            <span class="badge">Free &amp; Open Platform</span>
+            <h1>Crack TNPSC.<br/>Study Smarter.</h1>
+            <p>Notes, job alerts, current affairs, and exam guides — everything you need to clear Group 2, 2A, 4 &amp; VAO in one place.</p>
+            <div class="hero-actions">
+              <a href="/notes" class="btn-primary">Browse Notes</a>
+              <a href="/jobs" class="btn-outline">Latest Jobs</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat"><span>900+</span><p>Study Notes</p></div>
+              <div class="stat"><span>Daily</span><p>Job Updates</p></div>
+              <div class="stat"><span>Free</span><p>Forever</p></div>
+            </div>
           </div>
-        </div>
-        <div class="hero-stats">
-          <div class="stat"><span>500+</span><p>Study Notes</p></div>
-          <div class="stat"><span>Daily</span><p>Job Updates</p></div>
-          <div class="stat"><span>Free</span><p>Forever</p></div>
+
+          <!-- Right: Daily News Feed -->
+          <div class="news-panel">
+            <div class="news-panel-header">
+              <div class="news-panel-title">
+                <span class="live-dot"></span>
+                <span>Today's Exam News</span>
+              </div>
+              {newsDate && <span class="news-date">{newsDate}</span>}
+            </div>
+
+            <div class="news-scroll">
+              {newsItems.length > 0 ? newsItems.map((item, i) => (
+                <a href={item.link} target="_blank" rel="noopener noreferrer" class="news-item" style={`--ni:${i}`}>
+                  <div class="news-item-inner">
+                    <div class="news-meta">
+                      <span class="news-source">{item.source}</span>
+                      <span class="news-time">{item.date}</span>
+                    </div>
+                    <h4 class="news-headline">{item.title}</h4>
+                    {item.summary && <p class="news-summary">{item.summary}</p>}
+                    {item.tags.length > 0 && (
+                      <div class="news-tags">
+                        {item.tags.map((tag: string) => (
+                          <span class="news-tag" style={`--tc:${tagColors[tag] || '#6b7280'}`}>{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <span class="news-arrow">↗</span>
+                </a>
+              )) : (
+                <!-- Fallback cards when news can't load -->
+                <>
+                  <div class="news-fallback">
+                    <div class="fallback-icon">📡</div>
+                    <p>Live news is loading…<br/>Check back in a moment.</p>
+                    <a href="/notes" class="fallback-link">Browse Study Notes instead →</a>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <a href="/current-affairs" class="news-footer">
+              View all Current Affairs →
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -34,15 +114,15 @@ import Layout from '../layouts/Layout.astro';
             <h3>Study Notes</h3>
             <p>Concise, exam-focused notes covering all TNPSC subjects — History, Polity, Economy, Science, and Tamil.</p>
           </a>
+          <a href="/syllabus" class="feature-card">
+            <div class="feature-icon">📋</div>
+            <h3>Syllabus</h3>
+            <p>Complete Group II/IIA syllabus with unit-wise breakdown, topic lists, and linked study notes.</p>
+          </a>
           <a href="/jobs" class="feature-card">
             <div class="feature-icon">💼</div>
             <h3>Job Alerts</h3>
             <p>Latest TN government job notifications, exam dates, and application deadlines — updated daily.</p>
-          </a>
-          <a href="/blog" class="feature-card">
-            <div class="feature-icon">✍️</div>
-            <h3>Blog</h3>
-            <p>Strategy articles, current affairs breakdowns, and exam tips written for TNPSC aspirants.</p>
           </a>
           <a href="/tnpsc" class="feature-card">
             <div class="feature-icon">🎯</div>
@@ -56,49 +136,63 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+  /* ─── Hero ─── */
   .hero {
     background: linear-gradient(160deg, #fff 0%, var(--bg) 100%);
     border-bottom: 1px solid var(--border);
-    padding: 5rem 0 4rem;
+    padding: 4.5rem 0 3.5rem;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
   }
 
-  .hero-inner {
-    max-width: 620px;
-    margin-bottom: 3rem;
+  /* Left column */
+  .hero-left { max-width: 500px; }
+  .badge {
+    display: inline-block;
+    background: #fff0f0;
+    color: var(--accent);
+    border: 1px solid #ffc8c8;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
   }
-
-  .hero-inner h1 {
-    font-size: clamp(2.5rem, 5vw, 3.8rem);
+  .hero-left h1 {
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
     color: var(--navy);
-    margin: 1.25rem 0 1rem;
-    line-height: 1.1;
+    margin: 0 0 1rem;
+    line-height: 1.08;
   }
-
-  .hero-inner p {
-    font-size: 1.15rem;
+  .hero-left > p {
+    font-size: 1.08rem;
     color: var(--muted);
-    max-width: 500px;
+    max-width: 440px;
     line-height: 1.7;
+    margin-bottom: 1.75rem;
   }
-
   .hero-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
     flex-wrap: wrap;
+    margin-bottom: 2.5rem;
   }
-
   .btn-primary {
     background: var(--accent);
     color: #fff;
     padding: 0.75rem 1.75rem;
     border-radius: 8px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.95rem;
-    transition: opacity 0.15s;
+    transition: opacity 0.15s, transform 0.15s;
   }
-  .btn-primary:hover { opacity: 0.88; }
-
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
   .btn-outline {
     background: transparent;
     color: var(--navy);
@@ -107,53 +201,211 @@ import Layout from '../layouts/Layout.astro';
     font-weight: 600;
     font-size: 0.95rem;
     border: 1.5px solid var(--border);
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, transform 0.15s;
   }
-  .btn-outline:hover { border-color: var(--navy); }
-
-  .hero-stats {
-    display: flex;
-    gap: 3rem;
-  }
-
+  .btn-outline:hover { border-color: var(--navy); transform: translateY(-1px); }
+  .hero-stats { display: flex; gap: 2.5rem; }
   .stat span {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--accent);
     display: block;
   }
-  .stat p { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+  .stat p { color: var(--muted); font-size: 0.85rem; margin-top: 0.15rem; }
 
-  .features {
-    padding: 5rem 0;
+  /* ─── News Panel ─── */
+  .news-panel {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    max-height: 560px;
   }
+  .news-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #14213D, #1d3461);
+    color: #fff;
+  }
+  .news-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .live-dot {
+    width: 8px; height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: livepulse 1.8s infinite;
+    box-shadow: 0 0 0 0 #22c55e44;
+  }
+  @keyframes livepulse {
+    0% { box-shadow: 0 0 0 0 #22c55e55; }
+    70% { box-shadow: 0 0 0 7px #22c55e00; }
+    100% { box-shadow: 0 0 0 0 #22c55e00; }
+  }
+  .news-date { font-size: 0.72rem; color: #9ca3af; }
 
+  .news-scroll {
+    overflow-y: auto;
+    flex: 1;
+    padding: 0.5rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .news-scroll::-webkit-scrollbar { width: 4px; }
+  .news-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  /* Individual news item */
+  .news-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.18s;
+    animation: slideIn 0.4s ease both;
+    animation-delay: calc(var(--ni) * 60ms);
+  }
+  @keyframes slideIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: none; } }
+  .news-item:last-child { border-bottom: none; }
+  .news-item:hover { background: color-mix(in srgb, var(--accent) 4%, var(--surface)); }
+  .news-item-inner { flex: 1; min-width: 0; }
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+  .news-source {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent);
+    background: #fff0f0;
+    padding: 0.1rem 0.5rem;
+    border-radius: 100px;
+    border: 1px solid #ffc8c8;
+  }
+  .news-time { font-size: 0.68rem; color: var(--muted); }
+  .news-headline {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+    margin: 0 0 0.3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .news-summary {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0 0 0.45rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .news-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .news-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.12rem 0.5rem;
+    border-radius: 100px;
+    background: color-mix(in srgb, var(--tc) 10%, white);
+    color: var(--tc);
+    border: 1px solid color-mix(in srgb, var(--tc) 25%, transparent);
+    letter-spacing: 0.03em;
+  }
+  .news-arrow {
+    font-size: 0.9rem;
+    color: var(--muted);
+    transition: color 0.15s, transform 0.15s;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+  .news-item:hover .news-arrow { color: var(--accent); transform: translate(2px,-2px); }
+
+  .news-footer {
+    display: block;
+    text-align: center;
+    padding: 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: #fff8f8;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .news-footer:hover { background: #fff0f0; }
+
+  /* Fallback */
+  .news-fallback {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--muted);
+  }
+  .fallback-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+  .news-fallback p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+  .fallback-link { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 0.88rem; }
+
+  /* ─── Features ─── */
+  .features { padding: 5rem 0; }
   .features h2 {
+    font-family: 'Playfair Display', serif;
     font-size: 2rem;
     color: var(--navy);
     margin-bottom: 2.5rem;
   }
-
   .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1.25rem;
   }
-
   .feature-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 2rem 1.5rem;
-    transition: box-shadow 0.2s, transform 0.2s;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
   }
   .feature-card:hover {
-    box-shadow: var(--shadow);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     transform: translateY(-3px);
+    border-color: #ffc8c8;
   }
-
   .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
-  .feature-card h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 0.6rem; }
-  .feature-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+  .feature-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 0.6rem; }
+  .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .news-panel { max-height: 380px; }
+  }
+  @media (max-width: 600px) {
+    .hero-stats { gap: 1.5rem; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+  }
 </style>
