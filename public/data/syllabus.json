@@ -1,0 +1,6 @@
+{
+ "Economy": ["inflation", "rbi", "bank", "repo rate", "gdp"],
+ "Polity": ["parliament", "supreme court", "constitution", "election"],
+ "Environment": ["climate", "cop", "biodiversity", "emissions"],
+ "International Relations": ["china", "usa", "middle east", "israel", "iran", "war"]
+}

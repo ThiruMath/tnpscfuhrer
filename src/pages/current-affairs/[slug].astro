@@ -1,0 +1,74 @@
+---
+import newsData from "../../../public/data/news.json";
+
+export async function getStaticPaths() {
+  return newsData.map(item => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{item.title} - TNPSC Fuhrer</title>
+  <style>
+    body { font-family: 'DM Sans', sans-serif; background: #F8F7F4; color: #1C1C1C; margin: 0; padding: 2rem; }
+    .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .meta { font-size: 0.9rem; color: #666; margin-bottom: 2rem; }
+    .tag { background: #FFF0F0; color: #C1121F; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: bold; }
+    .section { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; }
+    .pyq-card { background: #f9fafb; border-left: 4px solid #14213D; padding: 1rem; margin-top: 10px; }
+    a { color: #1d4ed8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul li { margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/current-affairs">← Back to Current Affairs</a>
+    
+    <h1 style="color: #14213D;">{item.title}</h1>
+    
+    <div class="meta">
+      <span class="tag">{item.topic}</span> | Source: <a href={item.link} target="_blank">{item.source}</a>
+    </div>
+    
+    <div class="section">
+      <h3>Summary (Why in News)</h3>
+      <p>{item.summary}</p>
+    </div>
+
+    {item.notes && item.notes.length > 0 && (
+      <div class="section">
+        <h3>Related Official Notes</h3>
+        <ul>
+          {item.notes.map(note => (
+            <li>
+              <a href={`/notes/${note}`} target="_blank">
+                📖 {note.replace(/-/g, ' ').toUpperCase()} (Read Note)
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {item.pyq && item.pyq.length > 0 && (
+      <div class="section">
+        <h3>Previous Year Questions (PYQ)</h3>
+        {item.pyq.map(q => (
+          <div class="pyq-card">
+            <strong>{q.year}</strong>
+            <p style="margin: 0.5rem 0 0 0;">{q.question}</p>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</body>
+</html>

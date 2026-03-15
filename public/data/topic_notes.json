@@ -1,0 +1,6 @@
+{
+ "Economy": ["monetary-policy", "gdp-growth"],
+ "Polity": ["parliament", "elections"],
+ "Environment": ["climate-change", "biodiversity"],
+ "International Relations": ["india-middle-east", "us-china-relations"]
+}
