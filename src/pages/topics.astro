@@ -16,30 +16,29 @@ const exams = Object.keys(syllabus);
 
     <!-- Syllabus Visualization -->
     <div class="syllabus-grid">
-      {exams.map(exam => (
+      {Object.keys(syllabus).map(subject => (
         <div class="exam-column">
-          <h2 class="exam-title">{exam}</h2>
+          <h2 class="exam-title">{subject}</h2>
           
           <div class="subjects-list">
-            {Object.keys((syllabus as any)[exam]).map(subject => (
-              <div class="subject-card">
-                <h3 class="subject-title">{subject}</h3>
-                <ul class="keywords-list">
-                  {((syllabus as any)[exam][subject]).map((keyword: string) => (
-                    <li>
-                      <!-- We link this to the notes slug assuming 1:1 mapping, or search -->
-                      <a href={`/notes/${keyword.toLowerCase().replace(/\s+/g, '-')}`} class="topic-link">
-                        <span class="icon">📄</span>
-                        {keyword}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <div class="subject-actions">
-                  <a href={`/current-affairs`} class="action-link">Related News →</a>
-                </div>
+            <div class="subject-card">
+              <ul class="keywords-list">
+                {((syllabus as any)[subject]).map((keyword: string) => {
+                  let slug = keyword.trim().toLowerCase().replace(/\s+/g, '-').replace(/[#?/\\%&]/g, '');
+                  return (
+                  <li>
+                    <a href={`/topics/${slug}`} class="topic-link">
+                      <span class="icon">🧭</span>
+                      {keyword}
+                    </a>
+                  </li>
+                  );
+                })}
+              </ul>
+              <div class="subject-actions">
+                <a href={`/current-affairs`} class="action-link">Related News →</a>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       ))}

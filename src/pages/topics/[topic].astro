@@ -1,0 +1,217 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import syllabus from "../../../public/data/syllabus.json";
+import news from "../../../public/data/news.json";
+import pyq from "../../../public/data/pyq.json";
+import revision from "../../../public/data/revision.json";
+
+export async function getStaticPaths() {
+  // Extract all topics from syllabus.json
+  const paths: any[] = [];
+  const subjects = Object.keys(syllabus);
+  
+  subjects.forEach(subject => {
+    ((syllabus as any)[subject]).forEach((keyword: string) => {
+      if(keyword && typeof keyword === 'string' && keyword.trim() !== '') {
+        // Keep Tamil and special characters, just replace spaces with hyphens and lowercase
+        let slug = keyword.trim().toLowerCase().replace(/\s+/g, '-');
+        // Remove problematic URL characters but keep unicode
+        slug = slug.replace(/[#?/\\%&]/g, '');
+        
+        if (slug) {
+          paths.push({
+            params: { topic: slug },
+            props: {
+              topicName: keyword.trim(),
+              exam: 'UPSC / TNPSC',
+              subject: subject
+            }
+          });
+        }
+      }
+    });
+  });
+
+  return paths;
+}
+
+const { topic } = Astro.params;
+const { topicName, exam, subject } = Astro.props;
+
+// Compile Knowledge Graph for this specific topic
+const topicNews = Array.isArray(news) ? news.filter((n: any) => n && n.topic && n.topic.toLowerCase() === topicName.toLowerCase()) : [];
+const topicPyq = Array.isArray(pyq) ? pyq.filter((p: any) => p && p.topic && p.topic.toLowerCase() === topicName.toLowerCase()) : [];
+
+// Optional: check if there's any revision for this topic today
+const topicRevision = (revision as any).questions ? (revision as any).questions.filter((q: any) => q && q.topic && q.topic.toLowerCase() === topicName.toLowerCase()) : [];
+---
+
+<Layout title={`${topicName} | UPSC & TNPSC Study Material`} active="Topics">
+  <main class="topic-landing">
+    
+    <!-- SEO Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> › 
+      <a href="/topics">Syllabus</a> › 
+      <span class="exam-bc">{exam}</span> › 
+      <span class="subject-bc">{subject}</span>
+    </nav>
+
+    <header class="topic-header">
+      <div class="badge-row">
+        <span class="badge">Syllabus Topic</span>
+      </div>
+      <h1>{topicName}</h1>
+      <p>Complete {exam} preparation guide for {topicName}. Includes official study notes, recent current affairs, and previous year questions.</p>
+    </header>
+
+    <div class="kg-grid">
+      
+      <!-- Quadrant 1: Official Notes (The Core) -->
+      <section class="kg-module notes-module">
+        <div class="module-header">
+          <h2>1. Concept & Study Notes</h2>
+        </div>
+        <div class="module-body">
+          <p>Master the theoretical foundation of <strong>{topicName}</strong> before attempting current affairs or PYQs.</p>
+          <a href={`/notes/${topic}`} class="primary-action-btn">
+            <span class="icon">📘</span>
+            Read Official {topicName} Notes
+          </a>
+        </div>
+      </section>
+
+      <!-- Quadrant 2: Daily Revision -->
+      {topicRevision.length > 0 && (
+        <section class="kg-module revision-module">
+          <div class="module-header">
+            <span class="live-dot"></span>
+            <h2>Today's Revision</h2>
+          </div>
+          <div class="module-body">
+            {topicRevision.map((q: any) => (
+              <div class="mini-q">
+                <span class="q-source">{q.source.toUpperCase()}</span>
+                <p>{q.question}</p>
+              </div>
+            ))}
+            <a href="/revision" class="view-all-link">Go to Full Revision Panel →</a>
+          </div>
+        </section>
+      )}
+
+      <!-- Quadrant 3: Current Affairs -->
+      <section class="kg-module news-module">
+        <div class="module-header">
+          <h2>2. Recent Current Affairs</h2>
+        </div>
+        <div class="module-body">
+          {topicNews.length > 0 ? (
+            <div class="news-list">
+              {topicNews.map((item: any) => (
+                <a href={`/current-affairs/${item.slug}`} class="news-link-card">
+                  <span class="n-date">{item.date ? new Date(item.date).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' }) : 'Recent'}</span>
+                  <h4>{item.title}</h4>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <div class="empty-state">
+              <p>No recent news detected for {topicName} in the last 30 days.</p>
+            </div>
+          )}
+          <a href="/current-affairs" class="view-all-link">Browse All News →</a>
+        </div>
+      </section>
+
+      <!-- Quadrant 4: PYQs -->
+      <section class="kg-module pyq-module">
+        <div class="module-header">
+          <h2>3. Previous Year Questions</h2>
+        </div>
+        <div class="module-body">
+          {topicPyq.length > 0 ? (
+            <div class="pyq-list">
+              {topicPyq.map((q: any) => (
+                <div class="pyq-item">
+                  <span class="pyq-year">{q.year}</span>
+                  <p>{q.question}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+             <div class="empty-state">
+              <p>No targeted PYQs logged for {topicName} yet.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .topic-landing { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+
+  /* Breadcrumbs */
+  .breadcrumbs { font-size: 0.85rem; color: #9ca3af; margin-bottom: 2rem; font-weight: 500;}
+  .breadcrumbs a { color: #6b7280; text-decoration: none; transition: color 0.2s;}
+  .breadcrumbs a:hover { color: #14213D; }
+  .exam-bc { color: #14213D; font-weight: 700; }
+  .subject-bc { color: #C1121F; font-weight: 600; }
+
+  /* Header */
+  .topic-header { text-align: left; margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2.5rem;}
+  .badge { display: inline-block; background: #FFF0F0; color: #C1121F; padding: 0.3rem 0.8rem; border-radius: 100px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;}
+  .topic-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); color: #14213D; margin: 0 0 1rem; line-height: 1.1; }
+  .topic-header p { color: #4b5563; font-size: 1.15rem; max-width: 700px; line-height: 1.6; margin: 0;}
+
+  /* Grid System */
+  .kg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;}
+  
+  .kg-module { background: #fff; border: 1px solid #E8E5DF; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.02); display: flex; flex-direction: column; height: 100%;}
+  .module-header { background: #f8fafc; padding: 1.25rem 1.5rem; border-bottom: 1px solid #E8E5DF; display: flex; align-items: center; gap: 0.75rem;}
+  .module-header h2 { margin: 0; font-size: 1.25rem; color: #0f172a; font-family: 'Playfair Display', serif; font-weight: 700;}
+  .module-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;}
+
+  /* Module specifics */
+  p { color: #475569; line-height: 1.6; margin-top: 0;}
+  
+  .primary-action-btn { background: #14213D; color: #fff; display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: background 0.2s, transform 0.2s; margin-top: auto;}
+  .primary-action-btn:hover { background: #1e3a8a; transform: translateY(-2px); }
+
+  /* News Module */
+  .news-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;}
+  .news-link-card { display: block; text-decoration: none; border-left: 3px solid #3b82f6; padding: 0.75rem 1rem; background: #f0f9ff; border-radius: 0 8px 8px 0; transition: background 0.2s;}
+  .news-link-card:hover { background: #e0f2fe; }
+  .n-date { display: block; font-size: 0.7rem; font-weight: 800; color: #2563eb; text-transform: uppercase; margin-bottom: 0.25rem;}
+  .news-link-card h4 { margin: 0; color: #1e3a8a; font-size: 0.95rem; line-height: 1.4;}
+
+  /* PYQ Module */
+  .pyq-list { display: flex; flex-direction: column; gap: 1.25rem; }
+  .pyq-item { border-bottom: 1px dashed #cbd5e1; padding-bottom: 1.25rem; }
+  .pyq-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .pyq-year { display: inline-block; background: #fef3c7; color: #b45309; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 800; font-size: 0.75rem; margin-bottom: 0.5rem; }
+  .pyq-item p { margin: 0; font-size: 0.95rem; color: #451a03; font-weight: 500;}
+
+  /* Revision Module */
+  .revision-module { grid-column: 1 / -1; border-color: #bbf7d0;}
+  .revision-module .module-header { background: #f0fdf4; border-bottom-color: #bbf7d0;}
+  .live-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 3px #dcfce7; }
+  
+  .mini-q { background: #fff; border: 1px solid #e2e8f0; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;}
+  .q-source { font-size: 0.7rem; font-weight: 800; color: #059669; display: block; margin-bottom: 0.4rem;}
+  .mini-q p { margin: 0; font-weight: 600; color: #064e3b; font-size: 1.05rem;}
+
+  /* Utilities */
+  .view-all-link { font-size: 0.85rem; font-weight: 700; color: #1d4ed8; text-decoration: none; margin-top: auto; display: block;}
+  .view-all-link:hover { text-decoration: underline; }
+  
+  .empty-state { text-align: center; padding: 2rem 1rem; color: #9ca3af; font-size: 0.9rem; font-style: italic; background: #f8fafc; border-radius: 8px; border: 1px dashed #cbd5e1; margin-bottom: 1.5rem; flex-grow: 1; display: flex; align-items: center; justify-content: center;}
+  .empty-state p { margin: 0; }
+
+  @media (max-width: 900px) {
+    .kg-grid { grid-template-columns: 1fr; }
+  }
+</style>
