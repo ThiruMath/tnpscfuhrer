@@ -49,7 +49,7 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </div>
 
-            <a href="/current-affairs" class="news-footer">View all Current Affairs →</a>
+            <a href="/current-affairs" class="news-footer">View more Current Affairs & Practice →</a>
           </div>
         </div>
       </div>
@@ -151,9 +151,12 @@ import Layout from '../layouts/Layout.astro';
         inner.append(tagsDiv);
       }
 
-      const arrow = document.createElement('span');
+      const arrow = document.createElement('div');
       arrow.className = 'news-arrow';
-      arrow.textContent = '↗';
+      arrow.textContent = 'Read full analysis →';
+      arrow.style.fontSize = '0.75rem';
+      arrow.style.fontWeight = 'bold';
+      arrow.style.marginTop = '0.5rem';
 
       a.append(inner, arrow);
       feed.append(a);
@@ -204,33 +207,32 @@ import Layout from '../layouts/Layout.astro';
   }
 
   async function loadNews() {
-    const results = await Promise.allSettled([
-      fetchRSS('https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3', 'PIB India'),
-      fetchRSS('https://pib.gov.in/RssMain.aspx?ModId=7&Lang=1&Regid=3', 'PIB Economy'),
-      fetchRSS('https://timesofindia.indiatimes.com/rssfeeds/296589292.cms', 'Times of India'),
-    ]);
+    try {
+      // Fetch latest compiled news from our MVP engine
+      const res = await fetch('/data/news.json', { signal: AbortSignal.timeout(5000) });
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      
+      const news = data.map((item: any) => ({
+        title: item.title,
+        link: `/current-affairs/${item.slug}`, // Point to our internal slug page!
+        summary: item.summary,
+        tags: [item.topic],
+        date: item.date ? new Date(item.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : 'Today',
+        source: item.source
+      })).slice(0, 8); // Top 8 items
 
-    const all: any[] = [];
-    for (const r of results) {
-      if (r.status === 'fulfilled') all.push(...r.value);
+      // Set date
+      const dateEl = document.getElementById('newsDate');
+      if (dateEl) {
+        dateEl.textContent = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+      }
+
+      renderNews(news);
+    } catch { 
+      const feed = document.getElementById('newsFeed')!;
+      feed.innerHTML = `<div class="news-fallback"><div class="fallback-icon">📡</div><p>Failed to load daily news.</p><a href="/notes" class="fallback-link">Browse Study Notes instead →</a></div>`;
     }
-
-    // Deduplicate
-    const seen = new Set<string>();
-    const news = all.filter(item => {
-      const k = item.title.slice(0, 35).toLowerCase();
-      if (seen.has(k)) return false;
-      seen.add(k);
-      return true;
-    }).slice(0, 8);
-
-    // Set date
-    const dateEl = document.getElementById('newsDate');
-    if (dateEl) {
-      dateEl.textContent = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
-    }
-
-    renderNews(news);
   }
 
   loadNews();

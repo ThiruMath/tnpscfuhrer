@@ -1,37 +1,135 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import news from "../../../public/data/news.json";
+
+// Extract unique topics for filtering
+const topics = ["All", ...new Set(news.map(n => n.topic))];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Current Affairs | TNPSC Fuhrer</title>
-  <style>
-    body { font-family: 'DM Sans', sans-serif; background: #F8F7F4; color: #1C1C1C; margin: 0; padding: 2rem; }
-    .container { max-width: 800px; margin: 0 auto; }
-    .card { background: #fff; border: 1px solid #E8E5DF; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .card h2 { margin-top: 0; color: #14213D; }
-    .tag { display: inline-block; background: #FFF0F0; color: #C1121F; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-bottom: 1rem; }
-    a { color: #1d4ed8; text-decoration: none; font-weight: bold; }
-    a:hover { text-decoration: underline; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Current Affairs (Daily Generator)</h1>
-    <p><a href="/">← Back Home</a></p>
-    
-    {news.map((item) => (
-      <div class="card">
-        <span class="tag">{item.topic}</span>
-        <h2>{item.title}</h2>
-        <p>{item.summary}</p>
-        <a href={`/current-affairs/${item.slug}`}>Read Full Details & Practice →</a>
-      </div>
-    ))}
+<Layout title="Current Affairs | TNPSC Fuhrer" active="Current Affairs">
+  <main class="container">
+    <div class="header">
+      <span class="badge">📰 Daily Updates</span>
+      <h1>Current Affairs Archive</h1>
+      <p>Exam-focused news linked directly to TNPSC/UPSC syllabus topics and your official notes.</p>
+      <a href="/" class="back-link">← Back to Dashboard</a>
+    </div>
 
-    {news.length === 0 && <p>No news available today.</p>}
-  </div>
-</body>
-</html>
+    <!-- Topic Filter -->
+    <div class="filter-bar">
+      <span>Filter by Syllabus:</span>
+      <div class="topic-buttons">
+        {topics.map(topic => (
+          <button class="topic-btn" data-topic={topic}>{topic}</button>
+        ))}
+      </div>
+    </div>
+    
+    <!-- News Grid -->
+    <div class="news-grid">
+      {news.map((item) => (
+        <div class="news-card" data-topic={item.topic}>
+          <div class="card-header">
+            <span class="tag">{item.topic}</span>
+            <span class="date">{item.date ? new Date(item.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : 'Today'}</span>
+          </div>
+          
+          <h2>{item.title}</h2>
+          <p class="summary">{item.summary.length > 150 ? item.summary.slice(0, 150) + "..." : item.summary}</p>
+          
+          <div class="card-footer">
+            <span class="source">{item.source}</span>
+            <a href={`/current-affairs/${item.slug}`} class="read-more">Read full analysis →</a>
+          </div>
+        </div>
+      ))}
+
+      {news.length === 0 && (
+        <div class="empty-state">
+          <p>📡 No news available right now. The crawler will update soon!</p>
+        </div>
+      )}
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Simple Client-Side Filtering
+  const buttons = document.querySelectorAll('.topic-btn');
+  const cards = document.querySelectorAll('.news-card') as NodeListOf<HTMLElement>;
+
+  // Highlight 'All' by default
+  const allBtn = document.querySelector('[data-topic="All"]');
+  if(allBtn) allBtn.classList.add('active');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // Manage active states
+      buttons.forEach(b => b.classList.remove('active'));
+      const target = e.currentTarget as HTMLElement;
+      target.classList.add('active');
+
+      const selectedTopic = target.getAttribute('data-topic');
+
+      // Filter cards
+      cards.forEach(card => {
+        if (selectedTopic === 'All' || card.getAttribute('data-topic') === selectedTopic) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .container { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; }
+  
+  .header { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .badge { background: #FFF0F0; color: #C1121F; padding: 0.3rem 0.8rem; border-radius: 100px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; }
+  .header h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #14213D; margin: 1rem 0; line-height: 1.1; }
+  .header p { color: #666; font-size: 1.1rem; max-width: 600px; line-height: 1.6; margin-bottom: 1.5rem; }
+  .back-link { font-weight: 600; color: #1d4ed8; text-decoration: none; transition: opacity 0.2s;}
+  .back-link:hover { opacity: 0.7; }
+
+  /* Filtering */
+  .filter-bar { margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;}
+  .filter-bar span { font-weight: 600; color: #14213D; font-size: 0.95rem; }
+  .topic-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .topic-btn { 
+    background: #fff; border: 1px solid #E8E5DF; padding: 0.4rem 1rem; border-radius: 100px; 
+    font-size: 0.9rem; font-family: 'DM Sans', sans-serif; cursor: pointer; color: #666;
+    transition: all 0.2s;
+  }
+  .topic-btn:hover { border-color: #14213D; color: #14213D; }
+  .topic-btn.active { background: #14213D; color: #fff; border-color: #14213D; }
+
+  /* Grid Setup */
+  .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  
+  .news-card { 
+    background: #fff; border: 1px solid #E8E5DF; border-radius: 12px; padding: 1.5rem;
+    display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .news-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); border-color: #d1d5db; }
+  
+  .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .tag { background: #eff6ff; color: #1d4ed8; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;}
+  .date { font-size: 0.8rem; color: #9ca3af; }
+
+  .news-card h2 { font-size: 1.15rem; color: #14213D; margin: 0 0 0.75rem; line-height: 1.4; font-family: 'DM Sans', sans-serif;}
+  .summary { font-size: 0.9rem; color: #6b7280; line-height: 1.6; margin: 0 0 1.5rem; flex-grow: 1; }
+
+  .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f3f4f6; padding-top: 1rem; margin-top: auto;}
+  .source { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #9ca3af; }
+  .read-more { font-size: 0.85rem; font-weight: 600; color: #C1121F; text-decoration: none; }
+  .read-more:hover { text-decoration: underline; }
+
+  .empty-state { text-align: center; color: #6b7280; padding: 3rem; grid-column: 1 / -1; background: #fff; border-radius: 12px; border: 1px dashed #E8E5DF; }
+
+  @media (max-width: 768px) {
+    .news-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2.2rem; }
+  }
+</style>

@@ -1,4 +1,5 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import newsData from "../../../public/data/news.json";
 
 export async function getStaticPaths() {
@@ -11,64 +12,157 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{item.title} - TNPSC Fuhrer</title>
-  <style>
-    body { font-family: 'DM Sans', sans-serif; background: #F8F7F4; color: #1C1C1C; margin: 0; padding: 2rem; }
-    .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .meta { font-size: 0.9rem; color: #666; margin-bottom: 2rem; }
-    .tag { background: #FFF0F0; color: #C1121F; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: bold; }
-    .section { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; }
-    .pyq-card { background: #f9fafb; border-left: 4px solid #14213D; padding: 1rem; margin-top: 10px; }
-    a { color: #1d4ed8; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ul li { margin-bottom: 0.5rem; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <a href="/current-affairs">← Back to Current Affairs</a>
+<Layout title={`${item.title} | Current Affairs Mode`} active="Current Affairs">
+  <main class="article-container">
     
-    <h1 style="color: #14213D;">{item.title}</h1>
-    
-    <div class="meta">
-      <span class="tag">{item.topic}</span> | Source: <a href={item.link} target="_blank">{item.source}</a>
-    </div>
-    
-    <div class="section">
-      <h3>Summary (Why in News)</h3>
-      <p>{item.summary}</p>
-    </div>
+    <!-- Top Nav -->
+    <nav class="article-nav">
+      <a href="/current-affairs" class="back-btn">← Back to Current Affairs Feed</a>
+    </nav>
 
-    {item.notes && item.notes.length > 0 && (
-      <div class="section">
-        <h3>Related Official Notes</h3>
-        <ul>
-          {item.notes.map(note => (
-            <li>
-              <a href={`/notes/${note}`} target="_blank">
-                📖 {note.replace(/-/g, ' ').toUpperCase()} (Read Note)
-              </a>
-            </li>
-          ))}
-        </ul>
+    <!-- Main Title Header -->
+    <header class="article-header">
+      <div class="tags-row">
+        <span class="exam-tag">UPSC / TNPSC RELEVANCE</span>
+        <span class="topic-tag">{item.topic}</span>
       </div>
-    )}
+      
+      <h1>{item.title}</h1>
+      
+      <div class="meta-row">
+        <p class="source-info">Source: <strong><a href={item.link} target="_blank">{item.source} ↗</a></strong></p>
+        <p class="date-info">{item.date ? new Date(item.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : 'Today'}</p>
+      </div>
+    </header>
 
-    {item.pyq && item.pyq.length > 0 && (
-      <div class="section">
-        <h3>Previous Year Questions (PYQ)</h3>
-        {item.pyq.map(q => (
-          <div class="pyq-card">
-            <strong>{q.year}</strong>
-            <p style="margin: 0.5rem 0 0 0;">{q.question}</p>
+    <div class="split-layout">
+      <!-- Left Column: The News Content -->
+      <article class="news-content-col">
+        
+        <div class="content-box">
+          <h3>Why in News?</h3>
+          <p class="summary-text">{item.summary}</p>
+        </div>
+
+        <!-- Exam Relevance Highlights -->
+        <div class="relevance-box">
+          <div class="relevance-icon">🎯</div>
+          <div class="relevance-text">
+            <strong>Exam Relevance</strong>
+            <p>Syllabus Area: <em>{item.topic}</em></p>
           </div>
-        ))}
-      </div>
-    )}
-  </div>
-</body>
-</html>
+        </div>
+      </article>
+
+      <!-- Right Column: Study System Connections -->
+      <aside class="study-connections-col">
+        
+        <!-- Connected Notes -->
+        <section class="connection-module notes-module">
+          <div class="module-header">
+            <h3>📘 Related Official Notes</h3>
+          </div>
+          <div class="module-body">
+            {item.notes && item.notes.length > 0 ? (
+              <ul class="notes-list">
+                {item.notes.map((note: string) => (
+                  <li>
+                    <a href={`/notes/${note}`} target="_blank">
+                      <span class="note-icon">📝</span>
+                      <span class="note-title">{note.replace(/-/g, ' ').toUpperCase()}</span>
+                      <span class="note-arrow">→</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="empty-msg">No structured notes linked yet.</p>
+            )}
+          </div>
+        </section>
+
+        <!-- Connected PYQ -->
+        <section class="connection-module pyq-module">
+          <div class="module-header">
+            <h3>💡 Previous Year Questions</h3>
+          </div>
+          <div class="module-body">
+            {item.pyq && item.pyq.length > 0 ? (
+              <div class="pyq-list">
+                {item.pyq.map((q: any) => (
+                  <div class="pyq-card">
+                    <span class="pyq-year">{q.year}</span>
+                    <p>{q.question}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p class="empty-msg">No specific PYQs found for this update.</p>
+            )}
+          </div>
+        </section>
+
+      </aside>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .article-container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+  
+  .article-nav { margin-bottom: 2rem; }
+  .back-btn { font-weight: 600; color: #6b7280; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: color 0.2s;}
+  .back-btn:hover { color: #14213D; }
+
+  /* Header */
+  .article-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+  .tags-row { display: flex; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap;}
+  
+  .exam-tag { background: #fef08a; color: #854d0e; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;}
+  .topic-tag { background: #eff6ff; color: #1d4ed8; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;}
+
+  .article-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); color: #14213D; margin: 0 0 1.5rem; line-height: 1.15; }
+  
+  .meta-row { display: flex; justify-content: space-between; align-items: center; color: #6b7280; font-size: 0.9rem; flex-wrap: wrap; gap: 1rem;}
+  .source-info a { color: #C1121F; text-decoration: none; }
+  .source-info a:hover { text-decoration: underline; }
+
+  /* Layout */
+  .split-layout { display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: start; }
+
+  /* Left Column */
+  .content-box { background: #fff; padding: 2.5rem; border-radius: 12px; border: 1px solid #E8E5DF; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.03);}
+  .content-box h3 { margin: 0 0 1.5rem; font-size: 1.4rem; color: #14213D; font-family: 'Playfair Display', serif;}
+  .summary-text { font-size: 1.1rem; line-height: 1.8; color: #374151; white-space: pre-wrap; margin: 0;}
+
+  .relevance-box { display: flex; gap: 1rem; align-items: center; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1.5rem; border-radius: 12px; }
+  .relevance-icon { font-size: 2rem; }
+  .relevance-text strong { display: block; color: #166534; font-size: 1.1rem; margin-bottom: 0.25rem; }
+  .relevance-text p { margin: 0; color: #15803d; font-size: 0.95rem; }
+
+  /* Right Column (Study Connections) */
+  .connection-module { background: #fff; border: 1px solid #E8E5DF; border-radius: 12px; overflow: hidden; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.02);}
+  .module-header { background: #f9fafb; padding: 1.25rem 1.5rem; border-bottom: 1px solid #E8E5DF;}
+  .module-header h3 { margin: 0; font-size: 1.1rem; color: #14213D; font-family: 'DM Sans', sans-serif;}
+  .module-body { padding: 1.5rem; }
+
+  /* Notes List */
+  .notes-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  .notes-list a { display: flex; align-items: center; gap: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 1rem; border-radius: 8px; text-decoration: none; color: #0f172a; transition: all 0.2s;}
+  .notes-list a:hover { background: #fff; border-color: #3b82f6; box-shadow: 0 2px 8px rgba(59,130,246,0.1); transform: translateX(4px); }
+  .note-icon { font-size: 1.2rem; }
+  .note-title { font-weight: 700; font-size: 0.9rem; flex-grow: 1; }
+  .note-arrow { color: #94a3b8; font-weight: bold;}
+
+  /* PYQ Cards */
+  .pyq-list { display: flex; flex-direction: column; gap: 1rem; }
+  .pyq-card { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 1.25rem; border-radius: 0 8px 8px 0; }
+  .pyq-year { display: inline-block; background: #fef3c7; color: #b45309; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 800; font-size: 0.75rem; margin-bottom: 0.75rem; }
+  .pyq-card p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: #78350f; font-weight: 500;}
+
+  .empty-msg { color: #9ca3af; font-size: 0.9rem; font-style: italic; margin: 0; }
+
+  @media (max-width: 900px) {
+    .split-layout { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>
