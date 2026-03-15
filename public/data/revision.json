@@ -1,0 +1,32 @@
+{
+  "date": "2026-03-15",
+  "questions": [
+    {
+      "question": "Explain the core concepts of Polity as it relates to current events.",
+      "topic": "Polity",
+      "source": "concept"
+    },
+    {
+      "question": "Explain the core concepts of Economy as it relates to current events.",
+      "topic": "Economy",
+      "source": "concept"
+    },
+    {
+      "question": "Based on recent news regarding 'Jeweller arrested in IDFC First Bank fraud case in Haryana; 12th arrest', what are the key implications?",
+      "topic": "Economy",
+      "source": "news",
+      "reference": "https://www.thehindu.com/news/national/haryana/jeweller-arrested-in-idfc-first-bank-fraud-case-in-haryana-12th-arrest/article70744622.ece"
+    },
+    {
+      "question": "Based on recent news regarding 'Trump threatens more strikes on Iran's Kharg Island, pushes allies on Strait of Hormuz - Reuters', what are the key implications?",
+      "topic": "International Relations",
+      "source": "news",
+      "reference": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOS0REc3k5MGJlQkh2MzVHWnFzdGNLWVlQNktONjFqWkJiSHl6OVhLcjd3RUpuS1FMeFBQVnluT1I1N1lreFJYVWpWSng0ZnlyUm8wQmtJbmdtNXBZejRUTkVlZ0FGLXZtXzNSdHdDUF8wanlFcVduUEc3aWNVWk1KOXgwY2FpMWQtLUpLOUN0TmNFLU9idERNRW1wMVZpU1d0MzVYdGpPMmhCWGdocWVlelVBTGxsSEg5LUdoTlpZMXhjUmdEdVZV?oc=5"
+    },
+    {
+      "question": "(UPSC 2021) Discuss the role of Parliamentary Committees.",
+      "topic": "Polity",
+      "source": "pyq"
+    }
+  ]
+}

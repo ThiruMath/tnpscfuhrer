@@ -18,10 +18,12 @@ jobs:
     - run: pip install -r requirements.txt
 
     - run: python scripts/crawler.py
+    
+    - run: python scripts/revision_generator.py
 
     - name: Commit changes
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "github-actions@github.com"
-        git add public/data/news.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update current affairs" && git push)
+        git add public/data/news.json public/data/revision.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update current affairs and revision set" && git push)

@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import syllabus from "../../public/data/syllabus.json";
+
+// We have exams object -> subjects -> keywords
+const exams = Object.keys(syllabus);
+---
+
+<Layout title="Topic Navigator | TNPSC Fuhrer" active="Topic Navigator">
+  <main class="navigator-container">
+    <div class="header">
+      <span class="badge">🗺️ Interactive Map</span>
+      <h1>Topic Navigator</h1>
+      <p>Explore the entire UPSC & TNPSC syllabus visually. Click any topic to see connected Notes, Current Affairs, and PYQs.</p>
+    </div>
+
+    <!-- Syllabus Visualization -->
+    <div class="syllabus-grid">
+      {exams.map(exam => (
+        <div class="exam-column">
+          <h2 class="exam-title">{exam}</h2>
+          
+          <div class="subjects-list">
+            {Object.keys((syllabus as any)[exam]).map(subject => (
+              <div class="subject-card">
+                <h3 class="subject-title">{subject}</h3>
+                <ul class="keywords-list">
+                  {((syllabus as any)[exam][subject]).map((keyword: string) => (
+                    <li>
+                      <!-- We link this to the notes slug assuming 1:1 mapping, or search -->
+                      <a href={`/notes/${keyword.toLowerCase().replace(/\s+/g, '-')}`} class="topic-link">
+                        <span class="icon">📄</span>
+                        {keyword}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <div class="subject-actions">
+                  <a href={`/current-affairs`} class="action-link">Related News →</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  .navigator-container { max-width: 1200px; margin: 0 auto; padding: 4rem 1.5rem; }
+  
+  .header { text-align: center; margin-bottom: 4rem; }
+  .badge { display: inline-block; background: #FFF0F0; color: #C1121F; padding: 0.3rem 0.8rem; border-radius: 100px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;}
+  .header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #14213D; margin: 0 0 1rem; }
+  .header p { color: #6b7280; font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;}
+
+  /* Grid Layout */
+  .syllabus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;}
+  
+  .exam-column { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; }
+  .exam-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #1e293b; margin: 0 0 2rem; border-bottom: 2px solid #cbd5e1; padding-bottom: 1rem;}
+
+  .subjects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  
+  .subject-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: transform 0.2s;}
+  .subject-card:hover { transform: translateY(-2px); box-shadow: 0 8px 15px rgba(0,0,0,0.04); border-color: #cbd5e1;}
+  
+  .subject-title { margin: 0 0 1rem; font-size: 1.25rem; color: #0f172a; display: flex; align-items: center; gap: 0.5rem;}
+  .subject-title::before { content: "📚"; font-size: 1.1rem; }
+
+  .keywords-list { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .topic-link { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #475569; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; padding: 0.4rem; border-radius: 6px;}
+  .topic-link:hover { background: #eff6ff; color: #1d4ed8; }
+  .icon { font-size: 0.8rem; opacity: 0.7; }
+
+  .subject-actions { border-top: 1px solid #f1f5f9; padding-top: 1rem; text-align: right; }
+  .action-link { font-size: 0.85rem; font-weight: 700; color: #C1121F; text-decoration: none; }
+  .action-link:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .syllabus-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .keywords-list { grid-template-columns: 1fr; }
+  }
+</style>

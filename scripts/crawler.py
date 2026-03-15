@@ -53,6 +53,8 @@ def crawl_news():
     pyq_list = load_pyq()
     notes_map = load_topic_notes()
     
+    seen_titles = set()
+    
     for source, url in sources.items():
         try:
             feed = feedparser.parse(url)
@@ -68,6 +70,10 @@ def crawl_news():
                 attached_pyq = [q for q in pyq_list if q.get("topic") == topic]
                 attached_notes = notes_map.get(topic, [])
                 
+                if title in seen_titles:
+                    continue
+                seen_titles.add(title)
+
                 articles.append({
                     "title": title,
                     "slug": slug,
@@ -82,6 +88,9 @@ def crawl_news():
         except Exception as e:
             print(f"Failed to fetch {source}: {e}")
             
+    # Keep only the freshest 30 items
+    articles = articles[:30]
+
     os.makedirs("public/data", exist_ok=True)
     with open("public/data/news.json", "w", encoding="utf-8") as f:
         json.dump(articles, f, indent=2, ensure_ascii=False)
