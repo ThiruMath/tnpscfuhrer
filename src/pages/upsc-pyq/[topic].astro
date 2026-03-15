@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import pyqData from "../../../public/data/pyq.json";
+import syllabus from "../../../public/data/syllabus.json";
+
+export async function getStaticPaths() {
+  const paths: any[] = [];
+  const subjects = Object.keys(syllabus);
+  
+  subjects.forEach(subject => {
+    ((syllabus as any)[subject]).forEach((keyword: string) => {
+      if(keyword && typeof keyword === 'string' && keyword.trim() !== '') {
+        // Safe Slug logic match
+        let slug = keyword.trim().toLowerCase().replace(/\s+/g, '-');
+        slug = slug.replace(/[#?/\\%&]/g, '');
+        
+        if (slug) {
+          paths.push({
+            params: { topic: slug },
+            props: {
+              topicName: keyword.trim(),
+              exam: 'UPSC / TNPSC',
+              subject: subject
+            }
+          });
+        }
+      }
+    });
+  });
+
+  return paths;
+}
+
+const { topic } = Astro.params;
+const { topicName, exam, subject } = Astro.props;
+
+// Filter PYQs mapped to this specific Syllabus Topic
+const filteredPYQs = pyqData.filter((q: any) => 
+  q.topic && q.topic.toLowerCase() === topicName.toLowerCase()
+);
+
+// Sort PYQs by recent year descending
+const sortedPYQs = filteredPYQs.sort((a: any, b: any) => parseInt(b.year) - parseInt(a.year));
+---
+
+<Layout title={`${topicName} PYQ | ${exam} Previous Year Questions`} active="Topic Navigator">
+  <main class="pyq-page-container">
+    
+    <!-- Top Navigation -->
+    <nav class="breadcrumb-nav">
+      <a href="/topics" class="crumb-link">Topic Navigator</a>
+      <span class="divider">/</span>
+      <a href={`/topics/${topic}`} class="crumb-link">{topicName} Hub</a>
+      <span class="divider">/</span>
+      <span class="crumb-current">Past Questions</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="pyq-header">
+      <div class="context-badges">
+        <span class="subject-badge">{subject}</span>
+        <span class="count-badge">{sortedPYQs.length} Questions Found</span>
+      </div>
+      
+      <h1><span class="highlight">{topicName}</span> Previous Year Questions</h1>
+      <p class="subtitle">Official past exam questions mapped to this specific syllabus area to help you analyze trends and test patterns.</p>
+    </header>
+
+    <!-- PYQ List -->
+    <div class="pyq-list-container">
+      {sortedPYQs.length > 0 ? (
+        <div class="pyq-grid">
+          {sortedPYQs.map((q: any) => (
+            <article class="pyq-card">
+              <div class="pyq-meta">
+                <span class="exam-label">{q.exam || 'UPSC'}</span>
+                <span class="year-label">{q.year}</span>
+              </div>
+              <p class="question-text">{q.question}</p>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <div class="empty-icon">📂</div>
+          <h3>No Previous Questions Detected</h3>
+          <p>We haven't mapped any specific historical exam questions to <strong>{topicName}</strong> yet.</p>
+          <a href={`/topics/${topic}`} class="back-action">Return to Topic Hub →</a>
+        </div>
+      )}
+    </div>
+
+    <!-- Bottom Actions -->
+    <div class="bottom-actions">
+      <a href={`/topics/${topic}`} class="action-btn primary-btn">
+        <span class="icon">📘</span> Study {topicName} Notes
+      </a>
+      <a href="/revision" class="action-btn secondary-btn">
+        <span class="icon">🤖</span> Take AI Revision
+      </a>
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  .pyq-page-container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
+  
+  /* Breadcrumbs */
+  .breadcrumb-nav { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 3rem; font-size: 0.9rem; font-weight: 600;}
+  .crumb-link { color: #6b7280; text-decoration: none; transition: color 0.2s; }
+  .crumb-link:hover { color: #1d4ed8; }
+  .divider { color: #d1d5db; }
+  .crumb-current { color: #14213D; font-weight: 700; }
+
+  /* Header */
+  .pyq-header { margin-bottom: 4rem; text-align: left; border-bottom: 2px solid #f1f5f9; padding-bottom: 3rem;}
+  .context-badges { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;}
+  
+  .subject-badge { background: #fef3c7; color: #b45309; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+  .count-badge { background: #f1f5f9; color: #475569; padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 700; }
+  
+  .pyq-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); color: #0f172a; margin: 0 0 1.5rem; line-height: 1.1;}
+  .highlight { color: #C1121F; }
+  .subtitle { font-size: 1.25rem; color: #475569; line-height: 1.6; max-width: 700px; margin: 0;}
+
+  /* Grid layout */
+  .pyq-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+
+  /* PYQ Card */
+  .pyq-card { background: #fff; border: 1px solid #e2e8f0; border-left: 5px solid #C1121F; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: transform 0.2s, box-shadow 0.2s;}
+  .pyq-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); border-color: #cbd5e1;}
+  
+  .pyq-meta { display: flex; gap: 1rem; margin-bottom: 1.25rem; }
+  .exam-label { font-weight: 800; font-size: 0.8rem; color: #1e293b; background: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 4px; letter-spacing: 0.05em;}
+  .year-label { font-weight: 800; font-size: 0.8rem; color: #b45309; background: #fef3c7; padding: 0.2rem 0.6rem; border-radius: 4px; letter-spacing: 0.05em;}
+  
+  .question-text { font-size: 1.2rem; line-height: 1.7; color: #1e293b; margin: 0; font-weight: 500;}
+
+  /* Empty State */
+  .empty-state { text-align: center; padding: 5rem 2rem; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 16px; margin-top: 2rem; }
+  .empty-icon { font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;}
+  .empty-state h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #334155; margin: 0 0 1rem;}
+  .empty-state p { color: #64748b; font-size: 1.1rem; margin: 0 0 2rem;}
+  .back-action { display: inline-block; background: #fff; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.2s;}
+  .back-action:hover { background: #f1f5f9; border-color: #94a3b8;}
+
+  /* Bottom Actions */
+  .bottom-actions { display: flex; gap: 1.5rem; margin-top: 5rem; justify-content: center; flex-wrap: wrap;}
+  
+  .action-btn { display: flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 100px; font-weight: bold; font-size: 1.05rem; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+  .action-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+  
+  .primary-btn { background: #14213D; color: #fff; }
+  .primary-btn:hover { background: #0f172a; }
+  
+  .secondary-btn { background: #fff; color: #14213D; border: 2px solid #e2e8f0; }
+  .secondary-btn:hover { border-color: #14213D; }
+
+  @media (max-width: 600px) {
+    .pyq-header h1 { font-size: 2.2rem; }
+    .pyq-card { padding: 1.5rem; }
+    .bottom-actions { flex-direction: column; width: 100%; }
+    .action-btn { justify-content: center; width: 100%; }
+  }
+</style>

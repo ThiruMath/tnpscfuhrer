@@ -131,14 +131,19 @@ const topicRevision = (revision as any).questions ? (revision as any).questions.
         </div>
         <div class="module-body">
           {topicPyq.length > 0 ? (
-            <div class="pyq-list">
-              {topicPyq.map((q: any) => (
-                <div class="pyq-item">
-                  <span class="pyq-year">{q.year}</span>
-                  <p>{q.question}</p>
-                </div>
-              ))}
-            </div>
+            <>
+              <div class="pyq-list">
+                {topicPyq.slice(0, 2).map((q: any) => (
+                  <div class="pyq-item">
+                    <span class="pyq-year">{q.year}</span>
+                    <p>{q.question}</p>
+                  </div>
+                ))}
+              </div>
+              <a href={`/upsc-pyq/${topic}`} class="view-all-link">
+                View all {topicPyq.length} Questions →
+              </a>
+            </>
           ) : (
              <div class="empty-state">
               <p>No targeted PYQs logged for {topicName} yet.</p>
@@ -193,7 +198,9 @@ const topicRevision = (revision as any).questions ? (revision as any).questions.
   .pyq-item { border-bottom: 1px dashed #cbd5e1; padding-bottom: 1.25rem; }
   .pyq-item:last-child { border-bottom: none; padding-bottom: 0; }
   .pyq-year { display: inline-block; background: #fef3c7; color: #b45309; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 800; font-size: 0.75rem; margin-bottom: 0.5rem; }
-  .pyq-item p { margin: 0; font-size: 0.95rem; color: #451a03; font-weight: 500;}
+  .pyq-item p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: #78350f;}
+  .pyq-module .view-all-link { display: inline-block; margin-top: 1rem; color: #b45309; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: color 0.2s; }
+  .pyq-module .view-all-link:hover { color: #f59e0b; text-decoration: underline; }
 
   /* Revision Module */
   .revision-module { grid-column: 1 / -1; border-color: #bbf7d0;}

@@ -49,7 +49,7 @@ const { item } = Astro.props;
           <div class="relevance-icon">🎯</div>
           <div class="relevance-text">
             <strong>Exam Relevance</strong>
-            <p>Syllabus Area: <em>{item.topic}</em></p>
+            <p>Syllabus Area: <a href={`/topics/${item.topic.toLowerCase().replace(/\s+/g, '-').replace(/[#?/\\%&]/g, '')}`} class="relevance-link">{item.topic}</a></p>
           </div>
         </div>
       </article>
@@ -139,6 +139,8 @@ const { item } = Astro.props;
   .relevance-icon { font-size: 2rem; }
   .relevance-text strong { display: block; color: #166534; font-size: 1.1rem; margin-bottom: 0.25rem; }
   .relevance-text p { margin: 0; color: #15803d; font-size: 0.95rem; }
+  .relevance-link { color: #15803d; font-weight: bold; text-decoration: underline; text-decoration-color: #bbf7d0; text-underline-offset: 4px; transition: all 0.2s;}
+  .relevance-link:hover { color: #166534; text-decoration-color: #166534; }
 
   /* Right Column (Study Connections) */
   .connection-module { background: #fff; border: 1px solid #E8E5DF; border-radius: 12px; overflow: hidden; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.02);}

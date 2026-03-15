@@ -53,7 +53,9 @@ const pyqQs = (questions as Question[]).filter(q => q.source === "pyq");
       {(questions as Question[]).map((q: Question, index: number) => (
         <div class={`question-card type-${q.source}`}>
           <div class="card-top">
-            <span class="topic-tag">{q.topic}</span>
+            <a href={`/topics/${q.topic.toLowerCase().replace(/\s+/g, '-').replace(/[#?/\\%&]/g, '')}`} class="topic-tag-link">
+              <span class="topic-tag">{q.topic}</span>
+            </a>
             <span class="source-tag">{q.source.toUpperCase()}</span>
           </div>
           
@@ -155,7 +157,9 @@ const pyqQs = (questions as Question[]).filter(q => q.source === "pyq");
   .type-pyq { border-left-color: #f59e0b; } /* Orange */
 
   .card-top { display: flex; justify-content: space-between; margin-bottom: 1.5rem; }
-  .topic-tag { font-weight: 700; font-size: 0.8rem; color: #4b5563; background: #f3f4f6; padding: 0.2rem 0.6rem; border-radius: 4px;}
+  .topic-tag-link { text-decoration: none; }
+  .topic-tag { font-weight: 700; font-size: 0.8rem; color: #4b5563; background: #f3f4f6; padding: 0.3rem 0.8rem; border-radius: 4px; transition: all 0.2s;}
+  .topic-tag-link:hover .topic-tag { background: #e5e7eb; color: #111827; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
   .source-tag { font-weight: 800; font-size: 0.75rem; letter-spacing: 0.05em; color: #14213D; }
 
   .q-content { display: flex; gap: 1rem; margin-bottom: 2rem; }

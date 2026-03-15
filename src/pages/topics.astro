@@ -1,9 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import syllabus from "../../public/data/syllabus.json";
+import news from "../../public/data/news.json";
+import pyq from "../../public/data/pyq.json";
+import revision from "../../public/data/revision.json";
 
-// We have exams object -> subjects -> keywords
-const exams = Object.keys(syllabus);
+// We have subjects object -> keywords array
+const subjects = Object.keys(syllabus);
+
+// Helper function to safely create slugs (matches the getStaticPaths logic in [topic].astro)
+const createSlug = (keyword: string) => {
+  if (!keyword || typeof keyword !== 'string' || !keyword.trim()) return '';
+  let slug = keyword.trim().toLowerCase().replace(/\s+/g, '-');
+  return slug.replace(/[#?/\\%&]/g, '');
+};
+
+// Helper function to get stats for a keyword
+const getTopicStats = (keywordName: string) => {
+    const topicNews = Array.isArray(news) ? news.filter((n: any) => n && n.topic && n.topic.toLowerCase() === keywordName.toLowerCase()) : [];
+    const topicPyq = Array.isArray(pyq) ? pyq.filter((p: any) => p && p.topic && p.topic.toLowerCase() === keywordName.toLowerCase()) : [];
+    const topicRevision = (revision as any).questions ? (revision as any).questions.filter((q: any) => q && q.topic && q.topic.toLowerCase() === keywordName.toLowerCase()) : [];
+    
+    return {
+        news: topicNews.length,
+        pyq: topicPyq.length,
+        revision: topicRevision.length
+    }
+}
 ---
 
 <Layout title="Topic Navigator | TNPSC Fuhrer" active="Topic Navigator">
@@ -16,7 +39,7 @@ const exams = Object.keys(syllabus);
 
     <!-- Syllabus Visualization -->
     <div class="syllabus-grid">
-      {Object.keys(syllabus).map(subject => (
+      {subjects.map(subject => (
         <div class="exam-column">
           <h2 class="exam-title">{subject}</h2>
           
@@ -24,19 +47,30 @@ const exams = Object.keys(syllabus);
             <div class="subject-card">
               <ul class="keywords-list">
                 {((syllabus as any)[subject]).map((keyword: string) => {
-                  let slug = keyword.trim().toLowerCase().replace(/\s+/g, '-').replace(/[#?/\\%&]/g, '');
+                  let slug = createSlug(keyword);
+                  let stats = getTopicStats(keyword);
+                  if (!slug) return null;
+                  
                   return (
                   <li>
-                    <a href={`/topics/${slug}`} class="topic-link">
-                      <span class="icon">🧭</span>
-                      {keyword}
+                    <a href={`/topics/${slug}`} class="topic-link-card">
+                      <div class="tl-header">
+                        <span class="icon">🧭</span>
+                        <span class="tl-title">{keyword}</span>
+                      </div>
+                      <div class="tl-stats">
+                        {stats.news > 0 && <span class="stat-pill news-pill">News: {stats.news}</span>}
+                        {stats.pyq > 0 && <span class="stat-pill pyq-pill">PYQ: {stats.pyq}</span>}
+                        {stats.revision > 0 && <span class="stat-pill rev-pill">Rev: {stats.revision}</span>}
+                        {stats.news === 0 && stats.pyq === 0 && stats.revision === 0 && <span class="stat-pill empty-pill">Notes Only</span>}
+                      </div>
                     </a>
                   </li>
                   );
                 })}
               </ul>
               <div class="subject-actions">
-                <a href={`/current-affairs`} class="action-link">Related News →</a>
+                <a href={`/current-affairs`} class="action-link">Explore {subject} News →</a>
               </div>
             </div>
           </div>
@@ -69,10 +103,21 @@ const exams = Object.keys(syllabus);
   .subject-title { margin: 0 0 1rem; font-size: 1.25rem; color: #0f172a; display: flex; align-items: center; gap: 0.5rem;}
   .subject-title::before { content: "📚"; font-size: 1.1rem; }
 
-  .keywords-list { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-  .topic-link { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #475569; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; padding: 0.4rem; border-radius: 6px;}
-  .topic-link:hover { background: #eff6ff; color: #1d4ed8; }
-  .icon { font-size: 0.8rem; opacity: 0.7; }
+  .keywords-list { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  
+  .topic-link-card { display: flex; flex-direction: column; gap: 0.5rem; text-decoration: none; border: 1px solid #e2e8f0; padding: 1rem; border-radius: 8px; transition: all 0.2s; background: #fff;}
+  .topic-link-card:hover { border-color: #3b82f6; box-shadow: 0 4px 12px rgba(59,130,246,0.08); transform: translateY(-2px);}
+  
+  .tl-header { display: flex; align-items: center; gap: 0.5rem; }
+  .tl-title { color: #0f172a; font-size: 1.05rem; font-weight: 700; }
+  .icon { font-size: 1rem; }
+  
+  .tl-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-left: 1.5rem;}
+  .stat-pill { font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;}
+  .news-pill { background: #dbeafe; color: #1d4ed8; }
+  .pyq-pill { background: #fef3c7; color: #b45309; }
+  .rev-pill { background: #dcfce7; color: #15803d; }
+  .empty-pill { background: #f1f5f9; color: #64748b; }
 
   .subject-actions { border-top: 1px solid #f1f5f9; padding-top: 1rem; text-align: right; }
   .action-link { font-size: 0.85rem; font-weight: 700; color: #C1121F; text-decoration: none; }
@@ -80,8 +125,5 @@ const exams = Object.keys(syllabus);
 
   @media (max-width: 900px) {
     .syllabus-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 600px) {
-    .keywords-list { grid-template-columns: 1fr; }
   }
 </style>
