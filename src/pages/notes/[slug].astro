@@ -5,7 +5,7 @@ export async function getStaticPaths() {
   const notes = await getCollection("notes");
 
   return notes.map((note) => ({
-    params: { slug: note.id },
+    params: { slug: note.slug },
     props: { note }
   }));
 }
@@ -16,12 +16,12 @@ const { note } = Astro.props;
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>{note.id.replace(/_/g, " ")}</title>
+  <title>{note.slug.replace(/[-_]/g, " ")} | Notes</title>
 </head>
 
 <body>
 
-<h1>{note.id.replace(/_/g, " ")}</h1>
+<h1>{note.slug.replace(/[-_]/g, " ")}</h1>
 
 <article set:html={note.rendered?.html}></article>
 
