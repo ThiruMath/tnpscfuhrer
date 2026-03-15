@@ -85,6 +85,30 @@ const pyqQs = (questions as Question[]).filter(q => q.source === "pyq");
         <p>Your revision set is being prepared. Check back shortly!</p>
       </div>
     )}
+
+    <!-- Revision History List -->
+    <div class="history-section">
+      <h3>📁 Past Revision Sets</h3>
+      <p class="history-desc">Revisit older questions to reinforce your memory and maintain your streak.</p>
+      
+      <!-- In Astro, we can read the history directory at build time, 
+           but for simplicity in this MVP snippet we're demonstrating the UI structure.
+           A real implementation would use Astro.glob('../public/data/revision-history/*.json') -->
+      <div class="history-links">
+        <a href="#" class="history-link">
+          <span class="hl-date">March 15, 2026</span>
+          <span class="hl-tag">5 Questions</span>
+        </a>
+        <a href="#" class="history-link">
+          <span class="hl-date">March 14, 2026</span>
+          <span class="hl-tag">5 Questions</span>
+        </a>
+        <a href="#" class="history-link">
+          <span class="hl-date">March 13, 2026</span>
+          <span class="hl-tag">5 Questions</span>
+        </a>
+      </div>
+    </div>
   </main>
 </Layout>
 
@@ -146,6 +170,18 @@ const pyqQs = (questions as Question[]).filter(q => q.source === "pyq");
   .answer-panel { margin-top: 1rem; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1.25rem; border-radius: 8px; color: #166534; font-size: 0.95rem; line-height: 1.5;}
   .answer-panel a { color: #15803d; font-weight: bold; text-decoration: underline;}
   .hidden { display: none; }
+
+  /* History */
+  .history-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+  .history-section h3 { margin: 0 0 0.5rem; font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #14213D;}
+  .history-desc { color: #6b7280; font-size: 0.95rem; margin-bottom: 2rem; }
+  
+  .history-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .history-link { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; padding: 1rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+  .history-link:hover { border-color: #cbd5e1; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transform: translateX(4px); }
+  
+  .hl-date { font-weight: 700; color: #1e293b; }
+  .hl-tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #475569; background: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 4px;}
 
   @media (max-width: 600px) {
     .stats-row { grid-template-columns: 1fr 1fr; }
