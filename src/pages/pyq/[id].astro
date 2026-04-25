@@ -107,19 +107,15 @@ for (const q of questions) {
 
       <!-- Question card -->
       <div class="question-card" id="question-card">
-        <div class="q-col-question">
-          <div class="q-meta-row">
-            <span class="q-part" id="q-part">Part A</span>
-            <span class="q-topic" id="q-topic">History</span>
-            <span class="q-timer" id="q-timer">150:00</span>
-          </div>
-
-          <h2 class="q-text" id="q-text">Loading…</h2>
-        </div>
-
-        <div class="q-col-right">
-          <div class="q-col-options">
-            <div class="options-list" id="options-list"></div>
+        
+        <div class="q-col-left">
+          <div class="q-col-question">
+            <div class="q-meta-row">
+              <span class="q-part" id="q-part">Part A</span>
+              <span class="q-topic" id="q-topic">History</span>
+              <span class="q-timer" id="q-timer">150:00</span>
+            </div>
+            <h2 class="q-text" id="q-text">Loading…</h2>
           </div>
 
           <div class="q-col-reason" id="q-reason-col" style="display: none;">
@@ -130,6 +126,13 @@ for (const q of questions) {
             <div id="reason-content" class="reason-content"></div>
           </div>
         </div>
+
+        <div class="q-col-right">
+          <div class="q-col-options">
+            <div class="options-list" id="options-list"></div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Bottom nav -->
@@ -679,9 +682,10 @@ for (const q of questions) {
       flex-direction: row;
       gap: 3rem;
       padding: 3rem;
+      padding-bottom: 5rem; /* Room for sticky nav */
     }
-    .q-col-question { flex: 1.1; min-width: 300px; }
-    .q-col-right { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; min-width: 320px; }
+    .q-col-left { flex: 1.1; display: flex; flex-direction: column; gap: 1.5rem; min-width: 300px; }
+    .q-col-right { flex: 1; min-width: 320px; }
   }
 
   @keyframes slideInUp {
@@ -871,7 +875,22 @@ for (const q of questions) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 0.25rem;
+    padding: 1rem 1.5rem;
+    position: sticky;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid #f1f3f4;
+    border-radius: 0 0 24px 24px;
+    margin: 0 -2rem -2rem -2rem; /* Negate padding of question-card on mobile */
+    z-index: 10;
+  }
+
+  @media (min-width: 900px) {
+    .quiz-nav {
+      margin: 0 -3rem -3rem -3rem; /* Negate padding of question-card on desktop */
+      padding: 1.5rem 3rem;
+    }
   }
 
   .nav-back {
