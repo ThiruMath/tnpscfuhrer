@@ -1,12 +1,15 @@
-name: Update TNPSC Jobs
+# ARCHIVED: Update TNPSC Jobs
+# This workflow has been archived. Jobs auto-scraping is no longer active.
+# Focus shifted to TNPSC Calendar, PYQ Practice, and Study Planner.
+
+name: "[ARCHIVED] Update TNPSC Jobs"
 
 on:
-  schedule:
-    - cron: "0 */6 * * *"   # Every 6 hours
-  workflow_dispatch:          # Manual trigger
+  workflow_dispatch: # Manual trigger only — cron disabled
 
 jobs:
   scrape-and-deploy:
+    if: false # Disabled
     runs-on: ubuntu-latest
     permissions:
       contents: write

@@ -1,0 +1,593 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const exams = [
+  {
+    id: 'grp2',
+    name: 'Group II / IIA (CSSE-II)',
+    date: '2026-07-12',
+    status: 'Confirmed',
+    posts: 'Combined Civil Services Examination - II',
+    vacancies: '6,318',
+    subjects: ['Tamil', 'General Studies', 'Aptitude', 'History', 'Polity', 'Geography', 'Economy', 'Science'],
+    syllabus: '/syllabus'
+  },
+  {
+    id: 'grp4',
+    name: 'Group IV (CSSE-IV)',
+    date: '2026-09-21',
+    status: 'Tentative',
+    posts: 'VAO, Junior Assistant, Typist',
+    vacancies: '9,351',
+    subjects: ['Tamil', 'General Knowledge', 'Aptitude & Mental Ability'],
+    syllabus: '/syllabus'
+  },
+  {
+    id: 'grp1-prelims',
+    name: 'Group I Prelims',
+    date: '2026-11-15',
+    status: 'Tentative',
+    posts: 'Deputy Collector, DSP, Assistant Commissioner',
+    vacancies: '92',
+    subjects: ['General Studies', 'Aptitude', 'Mental Ability'],
+    syllabus: '/syllabus'
+  },
+  {
+    id: 'grp1-mains',
+    name: 'Group I Mains',
+    date: '2027-02-20',
+    status: 'Tentative',
+    posts: 'Deputy Collector, DSP, Assistant Commissioner',
+    vacancies: '92',
+    subjects: ['Indian Polity', 'Indian Economy', 'Indian National Movement', 'Modern History', 'Geography', 'Science & Technology'],
+    syllabus: '/syllabus'
+  },
+];
+
+function daysUntil(dateStr: string): number {
+  const target = new Date(dateStr);
+  const today = new Date();
+  return Math.max(0, Math.ceil((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)));
+}
+
+function weeksUntil(dateStr: string): number {
+  return Math.floor(daysUntil(dateStr) / 7);
+}
+---
+
+<Layout title="TNPSC Exam Calendar & Study Planner" description="Track all TNPSC exam dates, create a personalized study plan, and track your progress." active="Calendar">
+
+  <script define:vars={{ exams }}>
+    window.__EXAM_DATA__ = exams;
+  </script>
+
+  <div class="cal-page">
+    <div class="container">
+
+      <!-- ─── Page Header ──────────────────────────────────────────── -->
+      <div class="cal-header">
+        <div class="cal-header-left">
+          <h1>📅 TNPSC Exam Calendar</h1>
+          <p>Track upcoming exams, create a personalized study plan, and monitor your daily progress.</p>
+        </div>
+      </div>
+
+      <!-- ─── Exam Cards ───────────────────────────────────────────── -->
+      <section class="exams-section">
+        <h2 class="sec-title">Upcoming Exams</h2>
+        <div class="exams-grid">
+          {exams.map((exam, idx) => (
+            <div class="exam-card" data-exam-id={exam.id}>
+              <div class="exam-top">
+                <div class="exam-countdown">
+                  <span class="ec-days">{daysUntil(exam.date)}</span>
+                  <span class="ec-label">days left</span>
+                </div>
+                <span class={`exam-status ${exam.status.toLowerCase()}`}>{exam.status}</span>
+              </div>
+              <h3 class="exam-name">{exam.name}</h3>
+              <p class="exam-posts">{exam.posts}</p>
+              <div class="exam-meta">
+                <span>📆 {new Date(exam.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                <span>👥 {exam.vacancies} posts</span>
+              </div>
+              <div class="exam-subjects">
+                {exam.subjects.slice(0, 4).map(s => (
+                  <span class="subj-chip">{s}</span>
+                ))}
+                {exam.subjects.length > 4 && (
+                  <span class="subj-chip more">+{exam.subjects.length - 4}</span>
+                )}
+              </div>
+              <div class="exam-actions">
+                <button class="plan-btn" data-exam={exam.id} data-weeks={weeksUntil(exam.date)} data-subjects={JSON.stringify(exam.subjects)} data-name={exam.name}>
+                  📝 Create Study Plan
+                </button>
+                <a href={exam.syllabus} class="syllabus-link">View Syllabus →</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ─── Study Planner ──────────────────────────────────────── -->
+      <section class="planner-section" id="planner-section">
+        <h2 class="sec-title">📋 My Study Planner</h2>
+        <p class="sec-desc">Select an exam above to auto-generate a study plan, or manage your existing plans below.</p>
+
+        <div id="planner-empty" class="planner-empty">
+          <div class="empty-icon">📅</div>
+          <h3>No study plans yet</h3>
+          <p>Click "Create Study Plan" on any exam above to get started!</p>
+        </div>
+
+        <div id="planner-container" class="planner-container" style="display:none;">
+          <div class="planner-tabs" id="planner-tabs"></div>
+          <div class="planner-content" id="planner-content"></div>
+        </div>
+      </section>
+
+      <!-- ─── Daily Tracker ──────────────────────────────────────── -->
+      <section class="tracker-section">
+        <h2 class="sec-title">📊 Study Streak & Progress</h2>
+        <div class="tracker-grid">
+          <div class="streak-card">
+            <div class="streak-fire">🔥</div>
+            <span class="streak-num" id="streak-num">0</span>
+            <span class="streak-label">Day Streak</span>
+            <button class="streak-btn" id="streak-btn">✅ Mark Today Complete</button>
+          </div>
+          <div class="heatmap-card">
+            <h4>Study Activity (Last 30 Days)</h4>
+            <div class="heatmap" id="heatmap"></div>
+            <div class="heatmap-legend">
+              <span>Less</span>
+              <span class="hm-cell hm-0"></span>
+              <span class="hm-cell hm-1"></span>
+              <span class="hm-cell hm-2"></span>
+              <span class="hm-cell hm-3"></span>
+              <span>More</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // ─── Study Planner Logic (localStorage-based) ──────────────────────────────
+  interface StudyPlan {
+    examId: string;
+    examName: string;
+    weeks: { weekNum: number; subjects: string[]; tasks: { name: string; done: boolean }[] }[];
+    createdAt: string;
+  }
+
+  function getPlans(): StudyPlan[] {
+    try { return JSON.parse(localStorage.getItem('tnpsc_plans') || '[]'); }
+    catch { return []; }
+  }
+
+  function savePlans(plans: StudyPlan[]) {
+    localStorage.setItem('tnpsc_plans', JSON.stringify(plans));
+  }
+
+  function createPlan(examId: string, examName: string, weeksAvail: number, subjects: string[]) {
+    const plans = getPlans();
+    if (plans.find(p => p.examId === examId)) {
+      if (!confirm(`A plan for ${examName} already exists. Replace it?`)) return;
+      const idx = plans.findIndex(p => p.examId === examId);
+      plans.splice(idx, 1);
+    }
+
+    const weeks: StudyPlan['weeks'] = [];
+    const totalWeeks = Math.max(weeksAvail, 1);
+
+    for (let w = 0; w < totalWeeks; w++) {
+      const weekSubjects: string[] = [];
+      // Distribute subjects across weeks round-robin
+      const subjectsPerWeek = Math.ceil(subjects.length / Math.min(totalWeeks, 8));
+      for (let s = 0; s < subjectsPerWeek; s++) {
+        const sIdx = (w * subjectsPerWeek + s) % subjects.length;
+        weekSubjects.push(subjects[sIdx]);
+      }
+
+      weeks.push({
+        weekNum: w + 1,
+        subjects: weekSubjects,
+        tasks: weekSubjects.map(s => ({ name: `Study ${s}`, done: false }))
+          .concat([
+            { name: 'Revision of previous topics', done: false },
+            { name: 'Practice PYQ (10 questions)', done: false }
+          ])
+      });
+    }
+
+    plans.push({ examId, examName, weeks, createdAt: new Date().toISOString() });
+    savePlans(plans);
+    renderPlanner();
+  }
+
+  function renderPlanner() {
+    const plans = getPlans();
+    const empty = document.getElementById('planner-empty')!;
+    const container = document.getElementById('planner-container')!;
+    const tabs = document.getElementById('planner-tabs')!;
+    const content = document.getElementById('planner-content')!;
+
+    if (!plans.length) {
+      empty.style.display = 'block';
+      container.style.display = 'none';
+      return;
+    }
+
+    empty.style.display = 'none';
+    container.style.display = 'block';
+
+    // Render tabs
+    tabs.innerHTML = plans.map((p, i) =>
+      `<button class="ptab ${i === 0 ? 'active' : ''}" data-idx="${i}">${p.examName}</button>`
+    ).join('') + `<button class="ptab ptab-delete" data-action="clear">🗑️ Clear All</button>`;
+
+    renderPlanContent(0);
+
+    // Tab click handlers
+    tabs.querySelectorAll('.ptab[data-idx]').forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        renderPlanContent(parseInt((tab as HTMLElement).dataset.idx!));
+      });
+    });
+
+    tabs.querySelector('.ptab-delete')?.addEventListener('click', () => {
+      if (confirm('Delete all study plans?')) {
+        savePlans([]);
+        renderPlanner();
+      }
+    });
+  }
+
+  function renderPlanContent(planIdx: number) {
+    const plans = getPlans();
+    const plan = plans[planIdx];
+    if (!plan) return;
+    const content = document.getElementById('planner-content')!;
+
+    // Calculate overall progress
+    const totalTasks = plan.weeks.reduce((sum, w) => sum + w.tasks.length, 0);
+    const doneTasks = plan.weeks.reduce((sum, w) => sum + w.tasks.filter(t => t.done).length, 0);
+    const pct = totalTasks > 0 ? Math.round((doneTasks / totalTasks) * 100) : 0;
+
+    let html = `
+      <div class="plan-progress">
+        <div class="pp-bar"><div class="pp-fill" style="width:${pct}%"></div></div>
+        <span class="pp-text">${pct}% complete (${doneTasks}/${totalTasks} tasks)</span>
+      </div>
+      <div class="weeks-grid">
+    `;
+
+    plan.weeks.forEach((week, wi) => {
+      const weekDone = week.tasks.filter(t => t.done).length;
+      const weekTotal = week.tasks.length;
+      const weekPct = weekTotal > 0 ? Math.round((weekDone / weekTotal) * 100) : 0;
+
+      html += `
+        <div class="week-card ${weekPct === 100 ? 'week-done' : ''}">
+          <div class="week-header">
+            <span class="week-num">Week ${week.weekNum}</span>
+            <span class="week-pct">${weekPct}%</span>
+          </div>
+          <div class="week-subjects">
+            ${week.subjects.map(s => `<span class="ws-chip">${s}</span>`).join('')}
+          </div>
+          <div class="week-tasks">
+            ${week.tasks.map((task, ti) => `
+              <label class="task-item ${task.done ? 'task-done' : ''}">
+                <input type="checkbox" ${task.done ? 'checked' : ''} data-plan="${planIdx}" data-week="${wi}" data-task="${ti}" />
+                <span class="task-check"></span>
+                <span class="task-name">${task.name}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    });
+
+    html += '</div>';
+    content.innerHTML = html;
+
+    // Checkbox handlers
+    content.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', (e) => {
+        const el = e.target as HTMLInputElement;
+        const pi = parseInt(el.dataset.plan!);
+        const wi = parseInt(el.dataset.week!);
+        const ti = parseInt(el.dataset.task!);
+        const plans = getPlans();
+        plans[pi].weeks[wi].tasks[ti].done = el.checked;
+        savePlans(plans);
+        renderPlanContent(pi);
+      });
+    });
+  }
+
+  // ─── Streak Tracker ─────────────────────────────────────────────────────────
+  function getStudyDays(): string[] {
+    try { return JSON.parse(localStorage.getItem('tnpsc_study_days') || '[]'); }
+    catch { return []; }
+  }
+
+  function saveStudyDays(days: string[]) {
+    localStorage.setItem('tnpsc_study_days', JSON.stringify(days));
+  }
+
+  function todayStr(): string {
+    return new Date().toISOString().split('T')[0];
+  }
+
+  function calculateStreak(): number {
+    const days = getStudyDays().sort().reverse();
+    if (!days.length) return 0;
+
+    let streak = 0;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    for (let i = 0; i < 365; i++) {
+      const check = new Date(today);
+      check.setDate(check.getDate() - i);
+      const checkStr = check.toISOString().split('T')[0];
+      if (days.includes(checkStr)) {
+        streak++;
+      } else if (i > 0) {
+        break;
+      }
+    }
+    return streak;
+  }
+
+  function renderStreak() {
+    const streak = calculateStreak();
+    const el = document.getElementById('streak-num');
+    if (el) el.textContent = streak.toString();
+
+    const btn = document.getElementById('streak-btn') as HTMLButtonElement;
+    const days = getStudyDays();
+    if (days.includes(todayStr())) {
+      btn.textContent = '✅ Today marked!';
+      btn.disabled = true;
+      btn.style.opacity = '0.6';
+    }
+  }
+
+  function renderHeatmap() {
+    const container = document.getElementById('heatmap');
+    if (!container) return;
+    const days = getStudyDays();
+    const today = new Date();
+    let html = '';
+
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const ds = d.toISOString().split('T')[0];
+      const studied = days.includes(ds);
+      const level = studied ? 3 : 0;
+      const dayLabel = d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+      html += `<div class="hm-cell hm-${level}" title="${dayLabel}"></div>`;
+    }
+    container.innerHTML = html;
+  }
+
+  // ─── Events ───────────────────────────────────────────────────────────────
+  document.querySelectorAll('.plan-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const el = btn as HTMLElement;
+      const examId = el.dataset.exam!;
+      const examName = el.dataset.name!;
+      const weeks = parseInt(el.dataset.weeks!);
+      const subjects = JSON.parse(el.dataset.subjects!);
+      createPlan(examId, examName, weeks, subjects);
+      document.getElementById('planner-section')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  document.getElementById('streak-btn')?.addEventListener('click', () => {
+    const days = getStudyDays();
+    const today = todayStr();
+    if (!days.includes(today)) {
+      days.push(today);
+      saveStudyDays(days);
+      renderStreak();
+      renderHeatmap();
+    }
+  });
+
+  // Init
+  renderPlanner();
+  renderStreak();
+  renderHeatmap();
+</script>
+
+<style>
+  .cal-page {
+    min-height: calc(100vh - 64px);
+    padding: 3rem 0 4rem;
+    background: var(--bg);
+  }
+
+  /* Header */
+  .cal-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .cal-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .cal-header p { color: var(--muted); font-size: 1.05rem; max-width: 600px; }
+
+  .sec-title {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .sec-desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 2rem; }
+
+  /* Exam cards */
+  .exams-section { margin-bottom: 4rem; }
+  .exams-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .exam-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: all 0.2s;
+  }
+  .exam-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+
+  .exam-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+  .exam-countdown { display: flex; flex-direction: column; }
+  .ec-days { font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1; font-family: 'Inter', sans-serif; }
+  .ec-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+  .exam-status {
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 0.2rem 0.6rem; border-radius: 100px;
+  }
+  .exam-status.confirmed { background: var(--green-soft); color: var(--green); }
+  .exam-status.tentative { background: var(--amber-soft); color: var(--amber); }
+
+  .exam-name { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+  .exam-posts { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem; }
+  .exam-meta { display: flex; gap: 1rem; font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; }
+
+  .exam-subjects { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+  .subj-chip {
+    background: var(--blue-soft); color: var(--blue);
+    font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 100px;
+  }
+  .subj-chip.more { background: #f1f3f4; color: var(--muted); }
+
+  .exam-actions { display: flex; gap: 1rem; align-items: center; }
+  .plan-btn {
+    background: var(--accent); color: #fff; border: none; border-radius: 8px;
+    padding: 0.6rem 1.2rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .plan-btn:hover { background: #a50f1a; }
+  .syllabus-link { font-size: 0.85rem; color: var(--blue); font-weight: 600; }
+  .syllabus-link:hover { text-decoration: underline; }
+
+  /* Planner */
+  .planner-section { margin-bottom: 4rem; }
+
+  .planner-empty {
+    text-align: center; padding: 3rem; background: var(--surface);
+    border: 2px dashed var(--border); border-radius: 16px;
+  }
+  .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .planner-empty h3 { font-family: 'Inter', sans-serif; color: var(--navy); margin-bottom: 0.5rem; }
+  .planner-empty p { color: var(--muted); font-size: 0.9rem; }
+
+  .planner-tabs {
+    display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+  }
+  :global(.ptab) {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.5rem 1rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    transition: all 0.15s; color: var(--muted);
+  }
+  :global(.ptab:hover) { border-color: var(--accent); color: var(--accent); }
+  :global(.ptab.active) { background: var(--accent); color: #fff; border-color: var(--accent); }
+  :global(.ptab-delete) { color: #ea4335; margin-left: auto; }
+  :global(.ptab-delete:hover) { background: #fce8e6; border-color: #ea4335; }
+
+  /* Plan progress */
+  :global(.plan-progress) { margin-bottom: 1.5rem; }
+  :global(.pp-bar) { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem; }
+  :global(.pp-fill) { height: 100%; background: linear-gradient(90deg, var(--accent), #e85d68); border-radius: 4px; transition: width 0.5s ease; }
+  :global(.pp-text) { font-size: 0.82rem; color: var(--muted); font-weight: 600; }
+
+  /* Weeks grid */
+  :global(.weeks-grid) { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  :global(.week-card) {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem;
+  }
+  :global(.week-card.week-done) { border-color: var(--green); background: #f8fff9; }
+  :global(.week-header) { display: flex; justify-content: space-between; margin-bottom: 0.75rem; }
+  :global(.week-num) { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+  :global(.week-pct) { font-size: 0.82rem; font-weight: 700; color: var(--accent); }
+  :global(.week-subjects) { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.75rem; }
+  :global(.ws-chip) { font-size: 0.68rem; background: var(--blue-soft); color: var(--blue); padding: 0.15rem 0.5rem; border-radius: 100px; font-weight: 600; }
+
+  :global(.week-tasks) { display: flex; flex-direction: column; gap: 0.4rem; }
+  :global(.task-item) {
+    display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--text);
+    cursor: pointer; padding: 0.35rem 0; transition: opacity 0.15s;
+  }
+  :global(.task-item.task-done) { opacity: 0.5; text-decoration: line-through; }
+  :global(.task-item input) { display: none; }
+  :global(.task-check) {
+    width: 18px; height: 18px; border: 2px solid var(--border); border-radius: 4px;
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  :global(.task-item input:checked + .task-check) { background: var(--green); border-color: var(--green); }
+  :global(.task-item input:checked + .task-check::after) { content: '✓'; color: #fff; font-size: 0.7rem; font-weight: 700; }
+
+  /* Streak & Heatmap */
+  .tracker-section { margin-bottom: 2rem; }
+  .tracker-grid { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+
+  .streak-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  }
+  .streak-fire { font-size: 2.5rem; }
+  .streak-num { font-size: 3rem; font-weight: 800; color: var(--accent); font-family: 'Inter', sans-serif; line-height: 1; }
+  .streak-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+  .streak-btn {
+    background: var(--green); color: #fff; border: none; border-radius: 8px;
+    padding: 0.6rem 1rem; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .streak-btn:hover { background: #2d9249; }
+
+  .heatmap-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem;
+  }
+  .heatmap-card h4 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
+
+  :global(.heatmap) { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  :global(.hm-cell) {
+    width: 20px; height: 20px; border-radius: 4px; background: #ebedf0;
+    transition: background 0.2s;
+  }
+  :global(.hm-0) { background: #ebedf0; }
+  :global(.hm-1) { background: #9be9a8; }
+  :global(.hm-2) { background: #40c463; }
+  :global(.hm-3) { background: #30a14e; }
+
+  .heatmap-legend {
+    display: flex; align-items: center; gap: 4px; font-size: 0.72rem; color: var(--muted);
+  }
+  .heatmap-legend .hm-cell { width: 12px; height: 12px; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .exams-grid { grid-template-columns: 1fr; }
+    .tracker-grid { grid-template-columns: 1fr; }
+  }
+</style>

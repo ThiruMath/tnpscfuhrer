@@ -7,17 +7,16 @@ interface Props {
 
 const {
   title = 'TNPSC Fuhrer',
-  description = 'Free TNPSC exam preparation — notes, jobs, current affairs, and more.',
+  description = 'Free TNPSC exam preparation — calendar, PYQ practice, study notes, and more.',
   active = '',
 } = Astro.props;
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/notes', label: 'Notes' },
+  { href: '/calendar', label: 'Calendar' },
   { href: '/pyq', label: 'PYQ Quiz' },
+  { href: '/notes', label: 'Notes' },
   { href: '/syllabus', label: 'Syllabus' },
-  { href: '/jobs', label: 'Jobs' },
-  { href: '/blog', label: 'Blog' },
   { href: '/tnpsc', label: 'TNPSC' },
   { href: '/about', label: 'About' },
 ];
@@ -33,11 +32,15 @@ const navLinks = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <nav>
       <a href="/" class="nav-logo">TNPSC <span>Fuhrer</span></a>
-      <ul class="nav-links">
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         {navLinks.map(link => (
           <li>
             <a href={link.href} class={active === link.label ? 'active' : ''}>
@@ -51,7 +54,21 @@ const navLinks = [
     <slot />
 
     <footer>
-      <p>Built for TNPSC aspirants &mdash; <strong>TNPSC Fuhrer</strong> &copy; {new Date().getFullYear()}</p>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">TNPSC <strong>Fuhrer</strong></span>
+          <p>Your companion for cracking TNPSC exams.</p>
+        </div>
+        <div class="footer-links">
+          <a href="/calendar">Exam Calendar</a>
+          <a href="/pyq">PYQ Practice</a>
+          <a href="/notes">Study Notes</a>
+          <a href="/syllabus">Syllabus</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} TNPSC Fuhrer — Built for aspirants, by aspirants.</p>
+      </div>
     </footer>
   </body>
 </html>
@@ -59,3 +76,14 @@ const navLinks = [
 <style is:global>
   @import '../styles/global.css';
 </style>
+
+<script>
+  const toggle = document.getElementById('mobile-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      toggle.classList.toggle('open');
+    });
+  }
+</script>

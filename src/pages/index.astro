@@ -1,324 +1,589 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import newsData from '../../public/data/news.json';
 
-const topNews = newsData ? newsData.slice(0, 3) : [];
+// TNPSC Exam Calendar Data - upcoming exams
+const upcomingExams = [
+  {
+    name: 'Group II / IIA (CSSE-II)',
+    date: '2026-07-12',
+    status: 'Confirmed',
+    posts: 'Combined Civil Services Examination - II',
+    vacancies: '6,318',
+    color: '#C1121F'
+  },
+  {
+    name: 'Group IV (CSSE-IV)',
+    date: '2026-09-21',
+    status: 'Tentative',
+    posts: 'VAO, Junior Assistant, Typist',
+    vacancies: '9,351',
+    color: '#1a73e8'
+  },
+  {
+    name: 'Group I Prelims',
+    date: '2026-11-15',
+    status: 'Tentative',
+    posts: 'Deputy Collector, DSP, Assistant Commissioner',
+    vacancies: '92',
+    color: '#e37400'
+  },
+];
+
+// Calculate days remaining
+function daysUntil(dateStr: string): number {
+  const target = new Date(dateStr);
+  const today = new Date();
+  const diff = target.getTime() - today.getTime();
+  return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+}
 ---
 
-<Layout title="TNPSC Fuhrer – Free Study Notes, Jobs & Current Affairs" active="Home">
+<Layout title="TNPSC Fuhrer – Exam Calendar, PYQ Practice & Study Notes" active="Home">
   <main>
-    <!-- Hero – 2 column -->
+    <!-- ─── Hero ──────────────────────────────────────────────────────── -->
     <section class="hero">
       <div class="container">
-        <div class="hero-container">
-          <!-- Left: Headline -->
+        <div class="hero-grid">
           <div class="hero-left">
-            <span class="badge">Free &amp; Open Platform</span>
-            <h1 class="hero-title">Crack TNPSC.<br/>Study Smarter.</h1>
-            <p class="hero-subtitle">Notes, job alerts, current affairs, and exam guides — everything you need to clear Group 2, 2A, 4 &amp; VAO in one place.</p>
-            <div class="hero-buttons">
-              <a href="/notes" class="btn-primary">Browse Notes</a>
-              <a href="/jobs" class="btn-outline">Latest Jobs</a>
-            </div>
-            <div class="hero-stats">
-              <div class="stat"><span>900+</span><p>Study Notes</p></div>
-              <div class="stat"><span>Daily</span><p>Job Updates</p></div>
-              <div class="stat"><span>Free</span><p>Forever</p></div>
+            <span class="hero-badge">🎯 Your TNPSC Exam Companion</span>
+            <h1 class="hero-title">Plan. Practice.<br/><span class="highlight">Crack TNPSC.</span></h1>
+            <p class="hero-subtitle">Exam calendar with study planner, previous year question practice with analytics, and comprehensive study notes — all in one place.</p>
+            <div class="hero-ctas">
+              <a href="/calendar" class="btn-primary">📅 Exam Calendar</a>
+              <a href="/pyq" class="btn-outline">📝 Take PYQ Quiz</a>
             </div>
           </div>
 
-          <!-- Right: Live News Panel (Statically rendered) -->
-          <div class="news-right-col">
-            <div class="exam-news-card">
-              <div class="news-panel-header">
-                <h3><span class="news-live-dot"></span> Today's Exam News</h3>
+          <!-- Countdown Card -->
+          <div class="countdown-panel">
+            <div class="countdown-header">
+              <span class="countdown-live"></span>
+              <span>Next Exam</span>
+            </div>
+            <h3 class="countdown-exam">{upcomingExams[0].name}</h3>
+            <div class="countdown-grid">
+              <div class="cd-unit">
+                <span class="cd-val" id="cd-days">{daysUntil(upcomingExams[0].date)}</span>
+                <span class="cd-label">Days</span>
               </div>
-
-              <div class="news-feed">
-                {topNews.length > 0 ? topNews.map((item) => (
-                  <div class="exam-news-item">
-                    <div class="exam-news-meta">
-                      {item.source} • {item.date ? new Date(item.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : 'Today'}
-                    </div>
-                    
-                    <div class="exam-news-title">
-                      {item.title}
-                    </div>
-                    
-                    <div class="exam-news-summary">
-                      {item.summary && item.summary.length > 140 ? item.summary.slice(0, 140) + '...' : item.summary}
-                    </div>
-                    
-                    <span class="news-topic">
-                      {item.topic}
-                    </span>
-                    
-                    <a href={`/current-affairs/${item.slug}`} class="read-more-link">
-                      Read full analysis →
-                    </a>
-                  </div>
-                )) : (
-                  <p>No news available yet.</p>
-                )}
+              <div class="cd-sep">:</div>
+              <div class="cd-unit">
+                <span class="cd-val" id="cd-hours">00</span>
+                <span class="cd-label">Hours</span>
+              </div>
+              <div class="cd-sep">:</div>
+              <div class="cd-unit">
+                <span class="cd-val" id="cd-mins">00</span>
+                <span class="cd-label">Mins</span>
               </div>
             </div>
-            <div class="revision-streak">
-              🔥 Revision Streak: 3 days
+            <div class="countdown-meta">
+              <span>{upcomingExams[0].vacancies} vacancies</span>
+              <span class={`status-chip ${upcomingExams[0].status.toLowerCase()}`}>{upcomingExams[0].status}</span>
             </div>
+            <a href="/calendar" class="cd-link">View all exams →</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Features -->
+    <!-- ─── Upcoming Exams Strip ──────────────────────────────────────── -->
+    <section class="exam-strip">
+      <div class="container">
+        <div class="strip-grid">
+          {upcomingExams.map(exam => (
+            <a href="/calendar" class="strip-card" style={`--card-accent: ${exam.color}`}>
+              <div class="strip-top">
+                <span class="strip-days">{daysUntil(exam.date)}<small>days</small></span>
+                <span class={`strip-status ${exam.status.toLowerCase()}`}>{exam.status}</span>
+              </div>
+              <h4 class="strip-name">{exam.name}</h4>
+              <p class="strip-info">{exam.posts}</p>
+              <p class="strip-date">{new Date(exam.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Core Features ─────────────────────────────────────────────── -->
     <section class="features">
       <div class="container">
-        <h2>Everything You Need</h2>
+        <h2 class="section-title">Everything You Need to Crack TNPSC</h2>
         <div class="features-grid">
-          <a href="/notes" class="feature-card">
-            <div class="feature-icon">📚</div>
+
+          <a href="/calendar" class="fcard fcard-calendar">
+            <div class="fcard-icon">📅</div>
+            <h3>Exam Calendar & Study Planner</h3>
+            <p>Track all TNPSC exam dates with a customizable study planner. Set daily goals, track progress, and never miss a deadline.</p>
+            <span class="fcard-tag">NEW</span>
+            <span class="fcard-arrow">→</span>
+          </a>
+
+          <a href="/pyq" class="fcard fcard-pyq">
+            <div class="fcard-icon">📝</div>
+            <h3>PYQ Practice & Analysis</h3>
+            <p>Practice real TNPSC questions from previous years. Get instant results with subject-wise analysis and track your improvement.</p>
+            <span class="fcard-tag">POPULAR</span>
+            <span class="fcard-arrow">→</span>
+          </a>
+
+          <a href="/notes" class="fcard fcard-notes">
+            <div class="fcard-icon">📚</div>
             <h3>Study Notes</h3>
-            <p>Concise, exam-focused notes covering all TNPSC subjects — History, Polity, Economy, Science, and Tamil.</p>
+            <p>Concise, exam-focused notes covering History, Polity, Economy, Science, Geography, and Tamil — 900+ topics.</p>
+            <span class="fcard-arrow">→</span>
           </a>
-          <a href="/syllabus" class="feature-card">
-            <div class="feature-icon">📋</div>
-            <h3>Syllabus</h3>
-            <p>Complete Group II/IIA syllabus with unit-wise breakdown, topic lists, and linked study notes.</p>
+
+          <a href="/syllabus" class="fcard fcard-syllabus">
+            <div class="fcard-icon">📋</div>
+            <h3>Syllabus Tracker</h3>
+            <p>Complete Group II/IIA syllabus with unit-wise breakdown. Track what you've covered and what's remaining.</p>
+            <span class="fcard-arrow">→</span>
           </a>
-          <a href="/jobs" class="feature-card">
-            <div class="feature-icon">💼</div>
-            <h3>Job Alerts</h3>
-            <p>Latest TN government job notifications, exam dates, and application deadlines — updated daily.</p>
-          </a>
-          <a href="/tnpsc" class="feature-card">
-            <div class="feature-icon">🎯</div>
-            <h3>TNPSC Guide</h3>
-            <p>Everything about TNPSC — exam pattern, syllabus, group-wise eligibility, and preparation roadmap.</p>
-          </a>
+
         </div>
       </div>
     </section>
+
+    <!-- ─── Quick Stats ───────────────────────────────────────────────── -->
+    <section class="quick-stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-num">900+</span>
+            <span class="stat-desc">Study Notes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">120+</span>
+            <span class="stat-desc">PYQ Questions</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">Free</span>
+            <span class="stat-desc">Forever</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">24/7</span>
+            <span class="stat-desc">Available</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 </Layout>
 
-<style>
-  /* Hero */
-  .hero {
-    background: linear-gradient(160deg, #fff 0%, var(--bg) 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 4.5rem 0 3.5rem;
+<script>
+  // Live countdown timer
+  const targetDate = new Date('2026-07-12T10:00:00+05:30');
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate.getTime() - now.getTime();
+    if (diff <= 0) return;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const dEl = document.getElementById('cd-days');
+    const hEl = document.getElementById('cd-hours');
+    const mEl = document.getElementById('cd-mins');
+    if (dEl) dEl.textContent = days.toString();
+    if (hEl) hEl.textContent = hours.toString().padStart(2, '0');
+    if (mEl) mEl.textContent = mins.toString().padStart(2, '0');
   }
-  .hero-container {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
-    align-items: start;
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+</script>
+
+<style>
+  /* ─── Hero ──────────────────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(160deg, #fff 0%, var(--bg) 40%, #fff0f0 100%);
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid var(--border);
   }
 
-  /* Left */
-  .hero-left { max-width: 500px; }
-  .badge {
-    display: inline-block;
-    background: #fff0f0;
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-soft);
     color: var(--accent);
     border: 1px solid #ffc8c8;
-    padding: 0.3rem 0.9rem;
+    padding: 0.4rem 1rem;
     border-radius: 100px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 1.25rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.6s ease;
   }
+
   .hero-title {
-    font-size: 64px;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
     font-weight: 700;
     line-height: 1.1;
     color: var(--navy);
-    margin: 0;
+    margin: 0 0 1.25rem;
+    animation: fadeInUp 0.6s ease 0.1s both;
   }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--accent), #e85d68);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .hero-subtitle {
-    font-size: 18px;
-    color: #556070;
-    margin-top: 16px;
-    max-width: 520px;
-    line-height: 1.6;
-  }
-  .hero-buttons { 
-    margin-top: 28px; 
-    display: flex; 
-    gap: 14px; 
-    margin-bottom: 2.5rem; 
-  }
-  .btn-primary {
-    background: var(--accent); color: #fff;
-    padding: 0.75rem 1.75rem; border-radius: 8px;
-    font-weight: 700; font-size: 0.95rem;
-    transition: opacity 0.15s, transform 0.15s;
-  }
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); background: #b9141b; }
-  .btn-outline {
-    background: transparent; color: var(--navy);
-    padding: 0.75rem 1.75rem; border-radius: 8px;
-    font-weight: 600; font-size: 0.95rem;
-    border: 1.5px solid var(--border);
-    transition: border-color 0.15s, transform 0.15s;
-  }
-  .btn-outline:hover { border-color: var(--navy); transform: translateY(-1px); }
-  .hero-stats { display: flex; gap: 2.5rem; }
-  .stat span {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem; font-weight: 700;
-    color: var(--accent); display: block;
-  }
-  .stat p { color: var(--muted); font-size: 0.85rem; margin-top: 0.15rem; }
-
-  /* News Panel */
-  .news-right-col {
-    display: flex; 
-    flex-direction: column; 
-    gap: 12px;
-  }
-  .exam-news-card {
-    background: #1f355e;
-    color: white;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease;
-    max-height: 280px;
-    overflow-y: auto;
-  }
-  .exam-news-card:hover {
-    transform: translateY(-2px);
-  }
-  .exam-news-card::-webkit-scrollbar { width: 6px; }
-  .exam-news-card::-webkit-scrollbar-thumb { background: #8ea0c3; border-radius: 10px; }
-
-  .news-panel-header {
-    margin-bottom: 16px; 
-    border-bottom: 1px solid rgba(255,255,255,0.1); 
-    padding-bottom: 12px;
-  }
-  .news-panel-header h3 {
-    margin: 0; font-size: 16px; font-weight: 700; display: flex; align-items: center; color: #fff;
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 500px;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease 0.2s both;
   }
 
-  .news-live-dot {
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.6s ease 0.3s both;
+  }
+
+  /* ─── Countdown Panel ─────────────────────────────────────────────── */
+  .countdown-panel {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 12px 40px rgba(20,33,61,0.25);
+    animation: fadeInUp 0.6s ease 0.4s both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .countdown-panel::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(193,18,31,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .countdown-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .countdown-live {
     width: 8px;
     height: 8px;
-    background: #00d26a;
+    background: #34a853;
     border-radius: 50%;
-    display: inline-block;
-    margin-right: 8px;
-    box-shadow: 0 0 0 0 rgba(0, 210, 106, 0.4);
-    animation: livepulse 1.8s infinite;
-  }
-  @keyframes livepulse {
-    0% { box-shadow: 0 0 0 0 rgba(0, 210, 106, 0.5); }
-    70% { box-shadow: 0 0 0 6px rgba(0, 210, 106, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 210, 106, 0); }
+    animation: pulse-glow-green 2s infinite;
   }
 
-  /* News item */
-  .exam-news-item { 
-    margin-bottom: 16px; 
-    border-bottom: 1px solid rgba(255,255,255,0.08); 
-    padding-bottom: 16px; 
+  @keyframes pulse-glow-green {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(52,168,83,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(52,168,83,0); }
   }
-  .exam-news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-  .exam-news-meta { 
-    font-size: 11px; 
-    opacity: 0.7; 
-    margin-bottom: 6px; 
-    text-transform: uppercase; 
-    letter-spacing: 0.05em; 
+  .countdown-exam {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
     font-weight: 700;
+    margin-bottom: 1.5rem;
   }
 
-  .exam-news-title { 
-    font-weight: 600; 
-    font-size: 15px; 
-    line-height: 1.4; 
-    word-wrap: break-word; 
-    margin: 4px 0 8px; 
-  }
-  
-  .exam-news-summary { 
-    font-size: 13px; 
-    color: #d0d7e5; 
-    margin-bottom: 8px; 
-    line-height: 1.5;
-  }
-  
-  .news-topic {
-    display: inline-block;
-    background: #e8eefc;
-    color: #1f355e;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 11px;
-    margin-top: 6px;
-    font-weight: 700;
+  .countdown-grid {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
   }
 
-  .read-more-link {
+  .cd-unit { text-align: center; }
+  .cd-val {
     display: block;
-    color: #8faadb;
-    font-size: 13px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    line-height: 1;
+    background: linear-gradient(180deg, #fff, #c8d6f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cd-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
     font-weight: 600;
-    text-decoration: none;
-    margin-top: 10px;
+  }
+  .cd-sep {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    padding-bottom: 1rem;
+  }
+
+  .countdown-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 1rem;
+  }
+
+  .status-chip {
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .status-chip.confirmed { background: rgba(52,168,83,0.2); color: #69db7c; }
+  .status-chip.tentative { background: rgba(227,116,0,0.2); color: #ffa94d; }
+
+  .cd-link {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    font-weight: 600;
     transition: color 0.15s;
   }
-  .read-more-link:hover { color: #fff; text-decoration: underline; }
+  .cd-link:hover { color: #fff; }
 
-  .revision-streak {
-    margin-top: 6px;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 700;
-    color: #c1121f;
-    background: #fff0f0;
-    padding: 10px;
-    border-radius: 12px;
-    border: 1px solid #ffc8c8;
-    box-shadow: 0 4px 12px rgba(193, 18, 31, 0.05);
+  /* ─── Exam Strip ───────────────────────────────────────────────────── */
+  .exam-strip {
+    padding: 2.5rem 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
   }
 
-  /* Features */
-  .features { padding: 5rem 0; margin-top: 80px; }
-  .features h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem; color: var(--navy); margin-bottom: 2.5rem;
-  }
-  .features-grid {
+  .strip-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
   }
-  .feature-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 2rem 1.5rem;
-    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-    text-decoration: none; color: inherit; display: block;
-  }
-  .feature-card:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    transform: translateY(-3px); border-color: #ffc8c8;
-  }
-  .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
-  .feature-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 0.6rem; }
-  .feature-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
 
-  /* Responsive */
-  @media (max-width: 900px) {
-    .hero-container { grid-template-columns: 1fr; gap: 2rem; }
+  .strip-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--card-accent, var(--accent));
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
   }
+  .strip-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .strip-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  .strip-days {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--card-accent, var(--accent));
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+  }
+  .strip-days small {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    color: var(--muted);
+  }
+
+  .strip-status {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+  }
+  .strip-status.confirmed { background: var(--green-soft); color: var(--green); }
+  .strip-status.tentative { background: var(--amber-soft); color: var(--amber); }
+
+  .strip-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+
+  .strip-info {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .strip-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--card-accent, var(--accent));
+  }
+
+  /* ─── Features ──────────────────────────────────────────────────── */
+  .features {
+    padding: 5rem 0;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--navy);
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .fcard {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 2rem 2.5rem;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+  }
+  .fcard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .fcard-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .fcard h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+
+  .fcard p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .fcard-tag {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .fcard-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--muted);
+    transition: transform 0.2s;
+  }
+  .fcard:hover .fcard-arrow {
+    transform: translateX(4px);
+    color: var(--accent);
+  }
+
+  .fcard-calendar { border-top: 4px solid var(--accent); }
+  .fcard-pyq { border-top: 4px solid var(--blue); }
+  .fcard-pyq .fcard-tag { background: var(--blue); }
+  .fcard-notes { border-top: 4px solid var(--green); }
+  .fcard-syllabus { border-top: 4px solid var(--amber); }
+
+  /* ─── Quick Stats ───────────────────────────────────────────────── */
+  .quick-stats {
+    padding: 3rem 0;
+    background: var(--navy);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-desc {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  /* ─── Responsive ────────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .strip-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  }
+
   @media (max-width: 600px) {
-    .hero-stats { gap: 1.5rem; }
-    .features-grid { grid-template-columns: 1fr 1fr; }
-    .hero-title { font-size: 42px; }
+    .hero { padding: 3rem 0 2rem; }
+    .hero-ctas { flex-direction: column; }
+    .hero-ctas a { text-align: center; justify-content: center; }
   }
 </style>

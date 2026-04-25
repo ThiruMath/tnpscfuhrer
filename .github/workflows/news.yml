@@ -1,12 +1,15 @@
-name: Current Affairs Pipeline
+# ARCHIVED: Current Affairs Pipeline
+# This workflow has been archived. News auto-crawl is no longer active.
+# Focus shifted to TNPSC Calendar, PYQ Practice, and Study Planner.
+
+name: "[ARCHIVED] Current Affairs Pipeline"
 
 on:
-  schedule:
-    - cron: "0 */12 * * *"
-  workflow_dispatch:
+  workflow_dispatch: # Manual trigger only — cron disabled
 
 jobs:
   build:
+    if: false # Disabled
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
