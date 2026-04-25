@@ -299,7 +299,7 @@ for (const q of questions) {
       }
 
       btn.innerHTML = inner;
-      if (!isAnswered) {
+      if (!isAnswered && !answered[q.id]) {
         btn.addEventListener('click', () => selectOption(idx));
       } else {
         btn.disabled = true;
@@ -332,14 +332,8 @@ for (const q of questions) {
     const nextBtn = $('next-btn') as HTMLButtonElement;
     prevBtn.disabled = cur === 0;
     
-    // Only show 'Next' if answered or skipped (which marks it as answered in some flows, wait skip does next directly)
-    if (isAnswered) {
-      nextBtn.style.display = 'block';
-      nextBtn.textContent = cur === qs.length - 1 ? 'Submit' : 'Next';
-      nextBtn.classList.toggle('submit-mode', cur === qs.length - 1);
-    } else {
-      nextBtn.style.display = 'none';
-    }
+    nextBtn.textContent = cur === qs.length - 1 ? 'Submit' : 'Next';
+    nextBtn.classList.toggle('submit-mode', cur === qs.length - 1);
 
     updateDashes();
   }
@@ -404,7 +398,7 @@ for (const q of questions) {
   function renderReview() {
     const container = $('review-list');
     container.innerHTML = '';
-    const labels = ['A','B','C','D'];
+    const labels = ['A','B','C','D','E','F'];
 
     qs.forEach((q, i) => {
       const ua = selected[q.id];
