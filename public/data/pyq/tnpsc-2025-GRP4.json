@@ -4,7 +4,7 @@
     "year": 2025,
     "paper_code": "GRP4",
     "total_questions": 200,
-    "disputed": 200,
+    "disputed": 21,
     "extracted_at": "2026-04-25T16:20:50.148Z",
     "source_file": "TNPSC Group 4 2025 Master Q&A Bank (200 Questions).docx"
   },
@@ -20,12 +20,12 @@
         "காளையில் பூத்த மல்லிகை மனம் வீசியது",
         "நெற்பயிர்கள் மழைநீரில் மூழ்கின"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"காலை\" (பொழுது) என்பதற்குப் பதில் \"காளை\" (எருது) எனவும், \"மணம்\" (வாசனை) என்பதற்குப் பதில் \"மனம்\" (உள்ளம்) எனவும் தவறாக எழுதப்பட்டுள்ளது."
     },
     {
       "id": 2,
@@ -38,12 +38,12 @@
         "4 3 2 1",
         "4 1 2 3"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "(a) அழிந்தது தீமை - குணப்பெயர் (3), (b) அற்றது பிறப்பு - தொழிற்பெயர் (4), (c) நல்லது கை - சினைப்பெயர் (1), (d) குளிர்ந்தது நிலம் - இடப்பெயர் (2)."
     },
     {
       "id": 3,
@@ -56,12 +56,12 @@
         "வன்மை",
         "கேண்மை"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "செற்றம் என்பதன் பொருள் \"சினம்\" அல்லது \"பகை\". இதன் எதிர்ச்சொல் \"கேண்மை\" (நட்பு) ஆகும்."
     },
     {
       "id": 4,
@@ -74,12 +74,12 @@
         "எதிர்காலப் பெயரெச்சம்",
         "குறிப்புப் பெயரெச்சம்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"பாடும்\" என்பது எதிர்காலத்தைக் குறிக்கும் பெயரெச்சமாகும்."
     },
     {
       "id": 5,
@@ -92,12 +92,12 @@
         "நடப்பவை",
         "நடந்தவன்"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"நடந்தவன்\" என்பது ஒரு செயலைச் செய்தவனைக் குறிக்கும் உயர்திணை வினையாலணையும் பெயராகும்."
     },
     {
       "id": 6,
@@ -115,7 +115,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "சரியான ஏவல் வினைமுற்று தேர்வுகளில் இல்லை (வை என்பதே சரியான ஏவல்)."
     },
     {
       "id": 7,
@@ -128,12 +128,12 @@
         "கூற்று – சரி; காரணம் – சரி",
         "கூற்று – தவறு; காரணம் – தவறு"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அ, இ, உ என்பவையே சுட்டெழுத்துகள். எ, யா, ஆ, ஓ, ஏ என்பன வினா எழுத்துகள்."
     },
     {
       "id": 8,
@@ -146,12 +146,12 @@
         "கூற்று – சரி; காரணம் – சரி",
         "கூற்று, காரணம் இரண்டும் தவறு"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அ, இ, உ ஆகிய மூன்று எழுத்துகளும் இடப்பொருளைச் சுட்டும் சுட்டுச் சொற்களாக வந்துள்ளன."
     },
     {
       "id": 9,
@@ -164,12 +164,12 @@
         "ஐ – அ",
         "ற – ன"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"ஐ\" என்னும் எழுத்திற்கு \"இ\" என்பதே இணை எழுத்தாகும்; \"அ\" அல்ல."
     },
     {
       "id": 10,
@@ -182,12 +182,12 @@
         "கூட்டம், காடு",
         "காடு, தோட்டம்"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இது \"கணம் - காணம்\" என வந்திருக்க வேண்டும். கணம் (கூட்டம்) - காணம் (பொருள்/காசு) என்பதே சரியான இணையாகும்."
     },
     {
       "id": 11,
@@ -200,12 +200,12 @@
         "கூற்று – சரி; காரணம் – சரி",
         "கூற்று – தவறு; காரணம் – தவறு"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"தந்தப் பலகை\" என்பது யானைத் தந்தத்தால் ஆன பலகையைக் குறிக்கும். \"தந்த பலகை\" என்பதே \"கொடுத்த பலகை\" எனப் பொருள்படும்."
     },
     {
       "id": 12,
@@ -218,12 +218,12 @@
         "இங்கு பேசாதே",
         "எங்கு சென்றாய்"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அங்கு, இங்கு, எங்கு ஆகிய சுட்டு, வினாச் சொற்களின் பின் வல்லினம் மிகும்."
     },
     {
       "id": 13,
@@ -236,12 +236,12 @@
         "அம்புலி, காப்பு, சப்பாணி, செங்கீரை, தால், முத்தம், வருகை",
         "அம்புலி, காப்பு, செங்கீரை, சப்பாணி, தால், முத்தம், வருகை"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அம்புலி, காப்பு, சப்பாணி, செங்கீரை, தால், முத்தம், வருகை என்பதே சரியான அகரவரிசையாகும்."
     },
     {
       "id": 14,
@@ -254,12 +254,12 @@
         "காரணம், கூற்று – இரண்டும் சரி",
         "கூற்று, காரணம் – இரண்டும் தவறு"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"அணில்\" என்பது உயிர் எழுத்தில் தொடங்குவதால், \"ஓர் அணில்\" என்றே எழுத வேண்டும்."
     },
     {
       "id": 15,
@@ -272,12 +272,12 @@
         "2 1 4 3",
         "4 3 2 1"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "கோயம்புத்தூர் - கோவை, சோழநாடு - சோணாடு, பூந்தமல்லி - பூவை, தேவகோட்டை - தேகோட்டை என்பது சரியான மரூஉச் சொற்களாகும்."
     },
     {
       "id": 16,
@@ -290,12 +290,12 @@
         "கடல், பூமி",
         "பூமி, உலகம்"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "தாரணி என்னும் சொல்லுக்கு பூமி, உலகம், மாலை போன்ற பல பொருள்கள் உள்ளன."
     },
     {
       "id": 17,
@@ -308,12 +308,12 @@
         "நடுப்பகுதி",
         "மேல்பகுதி"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "மீ, மிசை ஆகிய இரு சொற்களும் \"மேல்\" என்னும் ஒரே பொருளைத் தருவதால் இது ஒருபொருள் பன்மொழியாகும்."
     },
     {
       "id": 18,
@@ -331,7 +331,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "சரியான விடை கிடைக்கவில்லை."
     },
     {
       "id": 19,
@@ -349,7 +349,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "சரியான விடை கிடைக்கவில்லை."
     },
     {
       "id": 20,
@@ -362,12 +362,12 @@
         "உரவோர் × மடந்தை",
         "உரவோர் × மடவம்"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "உரவோர் என்றால் அறிவுடையோர் அல்லது வலியவர் எனப் பொருள். இதன் எதிர்ச்சொல் மடவம் (அறிவற்றவர்) என்பதாகும்."
     },
     {
       "id": 21,
@@ -380,12 +380,12 @@
         "முக்காற்புள்ளி",
         "முற்றுப்புள்ளி"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "ஒருவருடைய கூற்றையோ, நூலின் மேற்கோளையோ விளக்கும்போது முக்காற்புள்ளி (Colon) பயன்படுத்தப்படும்."
     },
     {
       "id": 22,
@@ -403,7 +403,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "சரியான விடை கிடைக்கவில்லை."
     },
     {
       "id": 23,
@@ -416,12 +416,12 @@
         "சிலம்பும்",
         "சீறும்"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"புள் நரலும்\" என்பதே சரியான பறவை ஒலி மரபாகும்."
     },
     {
       "id": 24,
@@ -434,12 +434,12 @@
         "கவின்மொழி வருவாள்",
         "பூமி சுழல்கிறது"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"பூமி சுழல்கிறது\" என்பது நிகழ்காலத்தை உணர்த்தும் பிழையற்ற தொடராகும்."
     },
     {
       "id": 25,
@@ -452,12 +452,12 @@
         "கூற்று – சரி; காரணம் – தவறு",
         "கூற்று – தவறு; காரணம் – தவறு"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"யானைகள்\" என்பது பலவின்பால் என்பதால், \"ஓடின\" என பன்மை விகுதி பெற்று முடிவதே சரியாகும்."
     },
     {
       "id": 26,
@@ -470,12 +470,12 @@
         "அடிகள் மறை ஓதினார்.",
         "அரசன் மாலை அணிவித்தான்."
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"அணிவித்தான்\" என்பது ஒருவர் பிறரைச் செய்ய வைக்கும் செயலைக் குறிப்பதால் இது பிறவினைத் தொடராகும்."
     },
     {
       "id": 27,
@@ -488,12 +488,12 @@
         "தன்வினை பிறவினையாக மாறும்போது",
         "பிறவினை தன்வினையாக மாறும்போது"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "செய்வினைத் தொடரைச் செயப்பாட்டு வினைத் தொடராக மாற்றும்போது எழுவாய் மூன்றாம் வேற்றுமையையும், செயப்படுபொருள் முதல் வேற்றுமையையும் ஏற்கும்."
     },
     {
       "id": 28,
@@ -506,12 +506,12 @@
         "வாடிகன் – மாளிகை",
         "பிரிட்டானிய அரசு அலுவலகம்"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "Whitehall என்பது இலண்டனில் உள்ள பிரிட்டிஷ் அரசு அலுவலகங்கள் அமைந்திருக்கும் பகுதியைக் குறிக்கும்."
     },
     {
       "id": 29,
@@ -524,12 +524,12 @@
         "1 3 4 2",
         "2 4 1 3"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "Dark Fiber - இருட்டு இழை, Demon - பின்னணி நிரல், Darkest - மிகு இருண்மை, Density - அடர்த்தி."
     },
     {
       "id": 30,
@@ -542,12 +542,12 @@
         "பெரும் நில அதிர்விற்குப் பின்னான சிறு அதிர்வுகள்",
         "வியாழனின் துணைக்கோள்"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "புவியியலில் \"Advance\" என்பது கடற்கரையியக்கத்தைக் குறிக்கும் கலைச்சொல்லாகும்."
     },
     {
       "id": 31,
@@ -560,12 +560,12 @@
         "4 3 2 1",
         "1 4 3 2"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "Pre-censorship - முன் தணிக்கை, Possession - உடைமை, Prescription - நீடனுபோகம், Premium - முனைமம்."
     },
     {
       "id": 32,
@@ -578,12 +578,12 @@
         "காலம் கடத்துபவர்",
         "முன்கோபி"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"Veteran\" என்ற சொல்லுக்குத் துறையில் நீண்ட அனுபவம் வாய்ந்த \"திறனாளர்\" என்பது சரியான தமிழ்ச்சொல்லாகும்."
     },
     {
       "id": 33,
@@ -596,12 +596,12 @@
         "செவுள் வலை",
         "பனியாறு"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"Glacier\" என்ற புவியியல் சொல்லுக்கு இணையான தமிழ்ச்சொல் \"பனியாறு\" என்பதாகும்."
     },
     {
       "id": 34,
@@ -614,12 +614,12 @@
         "பகையை நீக்குதல்",
         "நட்பைப் பெருக்குதல்"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "ஒருவர் மட்டும் தனித்துச் செயல்பட முடியாது என்பதை உணர்த்தி, \"நட்பைப் பெருக்குதல்\" என்பதை இப்பழமொழி வலியுறுத்துகிறது."
     },
     {
       "id": 35,
@@ -632,12 +632,12 @@
         "கிட்ட நெருங்க முட்டப்பகை",
         "குந்தித் தின்றால் குன்றும் மாளும்"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பிறர் வருந்துமாறு கவர்ந்த செல்வம் அழுகையோடு அழியும் என்ற திருக்குறள் கருத்திற்கு இணையான பழமொழி இதுவாகும்."
     },
     {
       "id": 36,
@@ -650,12 +650,12 @@
         "3 4 2 1",
         "3 2 4 1"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அகட விகடம் என்றால் தந்திரம், கை கூடுதல் என்றால் சித்தியடைதல் எனப் பொருளாகும்."
     },
     {
       "id": 37,
@@ -668,12 +668,12 @@
         "முழங்கும், பிளிறும்",
         "உறுமும், கத்தும்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "சிங்கத்தின் ஒலி \"முழங்கும்\" எனவும், யானையின் ஒலி \"பிளிறும்\" எனவும் மரபு வழக்கில் கூறப்படுகிறது."
     },
     {
       "id": 38,
@@ -686,12 +686,12 @@
         "4 3 2 1",
         "4 1 3 2"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அலை ஓய்ந்த கடல் போல் - அமைதி, அடியற்ற மரம் போல் - வீழ்தல், மத்தில் அகப்பட்ட தயிர் - மனம் உடைதல்."
     },
     {
       "id": 39,
@@ -704,12 +704,12 @@
         "நகச்சுற்று",
         "திருமணச்சுற்று"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "\"உகிர்\" என்னும் சொல்லுக்கு \"நகம்\" என்று பொருள். எனவே உகிர்ச்சுற்று என்பது நகச்சுற்றைக் குறிக்கிறது."
     },
     {
       "id": 40,
@@ -722,12 +722,12 @@
         "3 2 4 1",
         "4 1 2 3"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "Call book - மறுகவனிப்புப் பதிவேடு, Fair copy register - செம்மைப்படி பதிவேடு எனப் பொருந்துவதே சரியாகும்."
     },
     {
       "id": 41,
@@ -740,12 +740,12 @@
         "போற்றுதல்",
         "துணை நிற்றல்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'Adoring' என்ற ஆங்கிலச் சொல்லிற்கு இணையான தமிழ்ச்சொல் 'போற்றுதல்' அல்லது 'ஆராதித்தல்' என்பதாகும்."
     },
     {
       "id": 42,
@@ -758,12 +758,12 @@
         "போர்த்துக்கீசிய மொழி",
         "பிரெஞ்சு மொழி"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'காம்ரேட்' (Comrade) என்ற சொல் பிரெஞ்சு மொழியிலிருந்து ஆங்கிலத்திற்கு வந்து, பின் தமிழுக்கு வந்ததாகும்."
     },
     {
       "id": 43,
@@ -776,12 +776,12 @@
         "(4) - சரி",
         "(3) - சரி"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "முடியரசன் இயற்றிய நூல் 'வீரகாவியம்' என்பதே சரியான இணையாகும்."
     },
     {
       "id": 44,
@@ -794,12 +794,12 @@
         "குறிக்கோள்",
         "மலை"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'பூட்கை' என்ற சொல்லின் பொருள் 'குறிக்கோள்' அல்லது 'திண்ணிய கொள்கை' என்பதாகும்."
     },
     {
       "id": 45,
@@ -812,12 +812,12 @@
         "தேவநேயப் பாவாணர்",
         "சி. இலக்குவனார்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "தேவநேயப் பாவாணர் உலகத் தமிழ்க் கழகத்தை நிறுவி அதன் தலைவராகப் பொறுப்பு வகித்தார்."
     },
     {
       "id": 46,
@@ -830,12 +830,12 @@
         "கோண்டா",
         "கண்ணெழுத்துகள்"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "கடைச்சங்க காலத்தில் தமிழகத்தில் பயன்படுத்தப்பட்ட எழுத்துகள் 'கண்ணெழுத்துகள்' என்று அழைக்கப்பட்டன."
     },
     {
       "id": 47,
@@ -848,12 +848,12 @@
         "(3) மட்டும்",
         "(4) மட்டும்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "கண்டங்கத்திரி என்பது சிறுபஞ்சமூலத்தில் இடம்பெறும் மருந்துப்பொருள், ஏலாதியில் இடம்பெறாது."
     },
     {
       "id": 48,
@@ -866,12 +866,12 @@
         "நாலடியார்",
         "திரிகடுகம்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'தூற்றின் கண் தூவிய வித்து' என்னும் இத்தொடர் நாலடியார் நூலில் இடம்பெற்றுள்ளது."
     },
     {
       "id": 49,
@@ -884,12 +884,12 @@
         "A மற்றும் R இரண்டும் தவறு",
         "A தவறு R சரி"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அழிவில்லாத சிறந்த செல்வம் கல்வியே ஆகும்; அதனை விடச் சிறந்த செல்வம் வேறு எதுவும் இல்லை. எனவே காரணம் தவறு."
     },
     {
       "id": 50,
@@ -902,12 +902,12 @@
         "முன்வினையையும் தோற்கடித்து வெற்றியடைவார்",
         "அரிய செயல்களை விரைந்து செய்து முடிப்பார்"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "கற்றவர் அவையில் தாம் கற்றவற்றைத் தெளிவாகக் கூற வல்லவர், கற்றவருள் மிகவும் சிறந்தவராக மதிக்கப்படுவார்."
     },
     {
       "id": 51,
@@ -920,12 +920,12 @@
         "கல்வி",
         "பண்பு"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இக்குறளில் 'தகுதி' என்ற சொல் 'பொறுமை' என்ற பொருளில் ஆளப்பட்டுள்ளது."
     },
     {
       "id": 52,
@@ -938,12 +938,12 @@
         "மாலை நேரத்தில் அல்லியின் இதழ்கள் விரிந்தன; மயில் தோகை விரித்தது",
         "மாலை நேரத்தில் அல்லியின் இதழ்கள் விரிந்தன; மயில் தோகையை விரித்தது"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'விரிந்தன' என்பது தன்வினை (இதழ்கள் தாமே விரிந்தன), 'விரித்தது' என்பது பிறவினை (மயில் தோகையை விரித்தது)."
     },
     {
       "id": 53,
@@ -956,12 +956,12 @@
         "கூற்று – தவறு; காரணம் – சரி",
         "கூற்று – தவறு; காரணம் – தவறு"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வல்லினம் மிகும் இடங்களில் இரு சொற்களுக்கிடையே வேற்றுமை உருபோ, பிற பொருளோ மறைந்து வந்து பொருள் தரும். இங்கு 'க்' என்ற ஒற்று மிகுந்து விரிந்து பொருள் தருகிறது."
     },
     {
       "id": 54,
@@ -979,7 +979,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "விடை சரியாகத் தெரியவில்லை. 'உக்கை' தமிழ்ச்சொல்லாக இருக்கலாம்."
     },
     {
       "id": 55,
@@ -997,7 +997,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "தரவுகள் துல்லியமாக இல்லை."
     },
     {
       "id": 56,
@@ -1010,12 +1010,12 @@
         "1 2 4 3",
         "4 2 1 3"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "ஓடுகிற குதிரை - நிகழ்காலம், அறிந்த பையன் - உடன்பாடு, அறியாத குழந்தை - எதிர்மறை பெயரெச்சம்."
     },
     {
       "id": 57,
@@ -1028,12 +1028,12 @@
         "ஒலகம்",
         "ஓட்டோலக்கம்"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'ஒலக்கம்' என்னும் சொல்லின் வேர்ச்சொல் 'ஒல்' என்பதாகும்."
     },
     {
       "id": 58,
@@ -1046,12 +1046,12 @@
         "4 1 2 3",
         "3 2 4 1"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அனிகம் என்றால் படையின் ஓர் அளவு, அநங்கு என்றால் காமன் (தெய்வம்)."
     },
     {
       "id": 59,
@@ -1064,12 +1064,12 @@
         "கூற்று – தவறு, காரணம் – தவறு",
         "கூற்று – சரி, காரணம் – சரி"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "எ, ஏ, யா, ஆ, ஓ என்பன வினா எழுத்துகள் (கூற்று சரி). ஆனால் இவற்றை இடவினா எழுத்துகள் எனக் கூற இயலாது."
     },
     {
       "id": 60,
@@ -1082,12 +1082,12 @@
         "கூற்று – சரி; காரணம் – சரி",
         "கூற்று – தவறு; காரணம் – தவறு"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "மெய்யெழுத்துகளைப் போலவே உயிர் எழுத்துகளிலும் இன எழுத்துகள் உண்டு. குறிலுக்கு நெடிலும், நெடிலுக்குக் குறிலும் இனமாகும்."
     },
     {
       "id": 61,
@@ -1100,12 +1100,12 @@
         "4 2 1 3",
         "2 1 4 3"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "மருப்பு - யானைத் தந்தம், விரகு - தந்திரம், சீறடி - சிறிய அடி."
     },
     {
       "id": 62,
@@ -1123,7 +1123,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "சரியான விடை கிடைக்கவில்லை."
     },
     {
       "id": 63,
@@ -1136,12 +1136,12 @@
         "பலாவருமை",
         "பலாப்பழம் அருமை"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "நிலைமொழி ஈற்றில் அகரம் (ஆ) வந்து வருமொழி முதலில் அகரம் (அ) வந்தால் 'வ்' என்னும் உடம்படுமெய் தோன்றி 'பலாவருமை' எனப் புணரும்."
     },
     {
       "id": 64,
@@ -1159,7 +1159,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "கங்கை + ஓகம் = கங்கௌகம் என வரும், ஆனால் தேர்வுகளில் சரியான பிரிப்பு இல்லை."
     },
     {
       "id": 65,
@@ -1172,12 +1172,12 @@
         "ஆடு",
         "அடுதல்"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'அடுதல்' என்னும் சொல்லுக்குக் கோறல், கொல்லுதல், சமைத்தல் போன்ற பொருள்கள் உள்ளன."
     },
     {
       "id": 66,
@@ -1190,12 +1190,12 @@
         "பூ",
         "மா"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'வீ' என்னும் ஓரெழுத்து ஒருமொழி மலர் (பூ), அழிவு, நீக்கம், பறவை ஆகிய பல பொருள்களைத் தரும்."
     },
     {
       "id": 67,
@@ -1208,12 +1208,12 @@
         "மறதி",
         "தீரவர்"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வருங்காலத்தை முன்னரே அறிபவரைத் 'தீரவர்' அல்லது 'தீர்க்கதரிசி' என அழைப்பர்."
     },
     {
       "id": 68,
@@ -1231,7 +1231,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "குதித்தல் என்பதற்கு இணையான சொல் தேர்வுகளில் தெளிவாக இல்லை."
     },
     {
       "id": 69,
@@ -1249,7 +1249,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "தேர்வுகளில் உள்ள அனைத்துத் தொடர்களும் ஒரே மாதிரியாக உள்ளன."
     },
     {
       "id": 70,
@@ -1262,12 +1262,12 @@
         "அருள், பரிவு, கருணை",
         "ஆதவன், பகலவன், ஞாயிறு"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வெற்பு, சிலம்பு, பொருப்பு ஆகிய சொற்கள் மலையைக் குறிக்கும் இணைச்சொற்களாகும்."
     },
     {
       "id": 71,
@@ -1285,7 +1285,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "சரியான பொருள் இணைகள் தேர்வுகளில் பொருந்தவில்லை. கலி - துன்பம்/பா வகை, கழி - மிகுதி/நீக்குதல்."
     },
     {
       "id": 72,
@@ -1298,12 +1298,12 @@
         "கூற்று, காரணம் இரண்டும் சரியன்று",
         "கூற்று, காரணம் இரண்டும் சரி"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "ஓர் எழுவாய் பல பயனிலைகளைக் கொண்டு முடியும் போது ஒவ்வொரு பயனிலையின் இறுதியிலும் அரைப்புள்ளி வரும்."
     },
     {
       "id": 73,
@@ -1316,12 +1316,12 @@
         "ஆசிரியர், புகழினியாளிடம் வந்து, கேள்வி கேட்டுப், பதில் கூறுமாறு, செய்தார்.",
         "ஆசிரியர், புகழினியாளிடம், வந்து கேள்வி கேட்டுப், பதில் கூறுமாறு செய்தார்."
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'வந்து' என்ற வினையெச்சத்திற்குப் பிறகு காற்புள்ளி இடுவதே சரியான நிறுத்தற்குறி முறையாகும்."
     },
     {
       "id": 74,
@@ -1334,12 +1334,12 @@
         "4 2 1 3",
         "1 4 3 2"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "விலங்குகளின் இளமைப் பெயர்கள்: நவ்வி (மான்) - மறி, முதலை - பார்ப்பு, மீன் - சினை."
     },
     {
       "id": 75,
@@ -1357,7 +1357,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "புல்லின் உறுப்பு 'தாள்' அல்லது 'அறுகு' என வர வேண்டும். தேர்வுகளில் சரியான விடை இல்லை."
     },
     {
       "id": 76,
@@ -1370,12 +1370,12 @@
         "மாணவர்கள் விளையாடினர்",
         "ஆசிரியர்கள் மகிழ்ந்தனர்"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'மலர்கள்' என்பது அஃறிணைப் பலவின்பால் எழுவாயாகும்."
     },
     {
       "id": 77,
@@ -1388,12 +1388,12 @@
         "சீவகனிடம் விடாமுயற்சி இருந்தது.",
         "சிறுவர் தெருவில் ஓடி விளையாடினர்."
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'சிறுவர்' என்பது பலர்பால் பெயர். எனவே 'விளையாடினர்' என முடிவதே ஒருமைப் பன்மை பிழையற்ற தொடராகும்."
     },
     {
       "id": 78,
@@ -1406,12 +1406,12 @@
         "நிலவோ காய்ந்தது",
         "அம்ம வாழி"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'அம்ம' என்பது வியப்பு, உரையசை ஆகிய பொருள்களில் வரும் இடைச்சொல்லாகும்."
     },
     {
       "id": 79,
@@ -1424,12 +1424,12 @@
         "பாடறிந்து பண்பு எனப்படுவது ஒழுகல்",
         "ஒழுகல் எனப்படுவது பண்பு பாடறிந்து"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'பண்பு எனப்படுவது பாடறிந்து ஒழுகல்' என்பதே சரியான திருக்குறள்/கலித்தொகை தொடராகும்."
     },
     {
       "id": 80,
@@ -1442,12 +1442,12 @@
         "கட்புலமேவி",
         "காட்சி உணர்தல்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'Visual Scanner' என்பதற்கு இணையான கலைச்சொல் 'கட்புலமேவி' என்பதாகும்."
     },
     {
       "id": 81,
@@ -1460,12 +1460,12 @@
         "வெட்டுமுகம்",
         "நீர்க்குழல்"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பொறியியலில் 'Anchorage' என்பது முட்டுக் கொடுக்கும் அல்லது உறுதியாகப் பிடித்துக்கொள்ளும் அமைப்பைக் குறிக்கும். இதற்கு இணையான தமிழ்ச்சொல் 'ஊன்றுதளை' என்பதாகும்."
     },
     {
       "id": 82,
@@ -1478,12 +1478,12 @@
         "தனி வல்லாளர்",
         "தனி வரைவு கட்டுப்பாடு"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'Monopoly' என்பது தனி உரிமையைக் குறிக்கும். எனவே 'Monopoly Control' என்பது 'தனி வல்லாண்மைக் கட்டுப்பாடு' எனப் பொருள்படும்."
     },
     {
       "id": 83,
@@ -1496,12 +1496,12 @@
         "2 4 1 3",
         "2 3 4 1"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "Abulia - மன உறுதிக் குறைபாடு, Acomia - தலை வழுக்கை, Abscess - சீழ்கட்டி, Alopecia Universalis - உடல் வழுக்கை."
     },
     {
       "id": 84,
@@ -1514,12 +1514,12 @@
         "சுருளி அருவி",
         "குற்றால அருவி"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "தென்காசி மாவட்டத்தில் உள்ள குற்றால அருவியானது மூலிகைகள் கலந்த நீரைக்கொண்டு வீழ்வதால் 'தென்னிந்தியாவின் ஸ்பா' என்று அழைக்கப்படுகிறது."
     },
     {
       "id": 85,
@@ -1532,12 +1532,12 @@
         "8",
         "10"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "தமிழ்நாட்டின் பெருமையை உலகறியச் செய்யும் எழுத்தாளர்களையும் தமிழறிஞர்களையும் சிறப்பிக்கும் வகையில், ஒவ்வொரு நிதியாண்டும் 10 விருதாளர்களுக்குக் கனவு இல்லம் வழங்கப்படுகிறது."
     },
     {
       "id": 86,
@@ -1550,12 +1550,12 @@
         "குறைத்து மதிப்பிடாதே",
         "புகழ்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "உருவத்தில் சிறியதாக இருந்தாலும் அதன் தன்மை குறையாது. எனவே ஒருவரை உருவத்தை வைத்து எடைகட்டக்கூடாது (குறைத்து மதிப்பிடாதே) என்பதே இதன் பொருளாகும்."
     },
     {
       "id": 87,
@@ -1568,12 +1568,12 @@
         "4 2 3 1",
         "3 4 2 1"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "கடன் கழித்தல் - மனமின்றிச் செய்தல், கடை விரித்தல் - தன் ஆற்றலைச் சொல்லுதல், கட்சைக் கட்டுதல் - முரண்படுதல், கக்கல் கரீசல் - கலங்கல் நீர்."
     },
     {
       "id": 88,
@@ -1586,12 +1586,12 @@
         "கடந்த காலம்",
         "வரும் காலம்"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'வேளைப் பிசகு' என்னும் மரபுத்தொடர் துரதிர்ஷ்டமான அல்லது 'தீய காலம்' என்பதை உணர்த்துகிறது."
     },
     {
       "id": 89,
@@ -1604,12 +1604,12 @@
         "வேகம்",
         "வேதனை"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "தேவையற்ற செயல்களில் தலையிட்டுத் துன்பத்திற்கு ஆளாவதை இத்தொடர் குறிக்கிறது. எனவே இது உணர்த்தும் பொருள் 'வேதனை' ஆகும்."
     },
     {
       "id": 90,
@@ -1622,12 +1622,12 @@
         "சுபாஷ் சந்திரபோஸ்",
         "பாரதிதாசன்"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வ.உ. சிதம்பரனார் ஆங்கிலேயர்களது கப்பல் ஏகபோக உரிமையை எதிர்த்து 'சுதேசி நாவாய்ச் சங்கம்' என்ற கப்பல் நிறுவனத்தைத் தொடங்கினார்."
     },
     {
       "id": 91,
@@ -1640,12 +1640,12 @@
         "பாரதிதாசன்",
         "திரு.வி.க."
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வ.உ.சி. அவர்கள் சென்னை செல்லும்போதெல்லாம் தமது உற்ற நண்பரான பாரதியாரைச் சந்தித்து அளவளாவுவதை வழக்கமாகக் கொண்டிருந்தார்."
     },
     {
       "id": 92,
@@ -1658,12 +1658,12 @@
         "தமிழ், ஆங்கிலம்",
         "மலையாளம், தமிழ்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வ.உ.சி. அவர்கள் தமிழிலும் ஆங்கிலத்திலும் மிகச் சிறந்த புலமை பெற்றிருந்தார். அவர் ஆங்கில நூல்களைத் தமிழுக்கு மொழிபெயர்த்துள்ளார்."
     },
     {
       "id": 93,
@@ -1676,12 +1676,12 @@
         "கருத்துரு",
         "எண்ண உரு"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அரசாங்கப் பணிகளில் 'Proposal' என்பதற்கு இணையான கலைச்சொல் 'கருத்துரு' என்பதாகும்."
     },
     {
       "id": 94,
@@ -1694,12 +1694,12 @@
         "நீர்ப்பாசனத் தொழில்நுட்பம்",
         "வெப்ப மண்டலத் தொழில்நுட்பம்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'Irrigation' என்றால் நீர்ப்பாசனம். எனவே 'Irrigation Technology' என்பது 'நீர்ப்பாசனத் தொழில்நுட்பம்' எனப் பொருள்படும்."
     },
     {
       "id": 95,
@@ -1712,12 +1712,12 @@
         "ம.பொ. சிவஞானம்",
         "ப. ஜீவானந்தம்"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "காயிதே மில்லத் அவர்களை 'தமிழக அரசியல் வானில் கவ்வியிருந்த காரிருளை அகற்ற வந்த ஒளிக்கதிராகத் திகழ்கிறார்' என்று அறிஞர் அண்ணா புகழ்ந்துரைத்துள்ளார்."
     },
     {
       "id": 96,
@@ -1730,12 +1730,12 @@
         "(3) மட்டும்",
         "(4) மட்டும்"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "டி.கே. சிதம்பரநாதர் (டி.கே.சி) ஒரு வழக்கறிஞர், எழுத்தாளர் மற்றும் சிறந்த இலக்கியத் திறனாய்வாளர் ஆவார். அவர் பேராசிரியராகப் பணியாற்றியதில்லை."
     },
     {
       "id": 97,
@@ -1748,12 +1748,12 @@
         "A மற்றும் R இரண்டும் தவறு",
         "A தவறு ஆனால் R சரி"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பல அரிய பழந்தமிழ் நூல்களை தேடி அச்சிட்டு வெளியிட்டமையால் உ.வே.சா அவர்கள் தமிழ்த்தாத்தா எனப் போற்றப்படுகிறார். இரண்டும் சரி."
     },
     {
       "id": 98,
@@ -1766,12 +1766,12 @@
         "(3) மட்டும்",
         "(4) மட்டும்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'திராவிடம்' என்னும் சொல்லை முதன்முதலில் குறிப்பிட்டவர் குமரிலபட்டர் ஆவார். ஹிராஸ் பாதிரியார் அல்ல. எனவே (3) மட்டும் தவறு."
     },
     {
       "id": 99,
@@ -1784,12 +1784,12 @@
         "நாகனார்",
         "சேந்தனார்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "நான்மணிக்கடிகை என்னும் பதினெண்கீழ்க்கணக்கு நூலை இயற்றியவர் விளம்பி நாகனார் ஆவார்."
     },
     {
       "id": 100,
@@ -1802,12 +1802,12 @@
         "இரக்கம் இல்லாதவர்",
         "மேடைக்கு அஞ்சிச் சொல்ல மாட்டாதவர்"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "Tamil",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'அரம்போலும் கூர்மையரேனும் மரம்போல்வர் மக்கட்பண்பு இலாதவர்' என்ற குறளின்படி, பண்பில்லாதவர்கள் மரத்திற்கு ஒப்பானவர்கள் என வள்ளுவர் கூறுகிறார்."
     },
     {
       "id": 101,
@@ -1820,12 +1820,12 @@
         "3 4 2 1",
         "2 4 1 3"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "a-3 (Dependent children below 16), b-4, c-2 (Foster care for destitute), d-1 (After care 18-21)."
     },
     {
       "id": 102,
@@ -1843,7 +1843,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "பொருளாதார ஆய்வறிக்கையின்படி சரியான தரவுகள் உறுதிப்படுத்தப்படவில்லை."
     },
     {
       "id": 103,
@@ -1856,12 +1856,12 @@
         "(ii) and (iv) only",
         "(iii) only"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இத்திட்டத்திற்கு உலக வங்கி மற்றும் தமிழ்நாடு அரசு நிதியுதவி அளிக்கின்றன (மத்திய அரசு அல்ல). மேலும் இது SDG 3 (சுகாதாரம்) இலக்கை அடைவதற்கானதாகும், SDG 9 அல்ல."
     },
     {
       "id": 104,
@@ -1874,12 +1874,12 @@
         "A is false R is true",
         "Both A and R are true but R is not the correct explanation of A"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "செங்கல்பட்டு மாவட்ட ஆட்சியர் ட்ரெமென்ஹீர் அறிக்கையின்படி பஞ்சமி நிலங்கள் தாழ்த்தப்பட்ட மக்களுக்காக வழங்கப்பட்டனவே தவிர, அரசின் வருவாயைப் பெருக்குவதற்காக அல்ல."
     },
     {
       "id": 105,
@@ -1892,12 +1892,12 @@
         "(3) and (4)",
         "(4) and (1)"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "தமிழ் செம்மொழியாக அறிவிக்கப்பட்டது 2004 அக்டோபர் 12 ஆகும். தேசிய ஒருமைப்பாட்டுக் குழு (NIC) 1961-ல் அமைக்கப்பட்டது. இவை இரண்டும் தவறான இணைகள்."
     },
     {
       "id": 106,
@@ -1910,12 +1910,12 @@
         "Insurance to old age people / வயது வந்தோருக்கான காப்பீடு வழங்குவது",
         "Financing to small industries / சிறிய தொழிற்சாலைகளுக்கு நிதி வழங்குவது"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'சூர்ய கர் முஃப்ட் பிஜிலி யோஜனா' என்ற திட்டம் வீடுகளின் மேற்கூரையில் சூரிய ஒளி மின்தகடுகளை அமைத்து இலவச மின்சாரம் வழங்கும் திட்டமாகும்."
     },
     {
       "id": 107,
@@ -1928,12 +1928,12 @@
         "Both A and R are false",
         "Both A and R are true, but R is the correct explanation of A"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "1793-ல் காரன்வாலிஸ் பிரபுவால் ஜமீன்தாரி முறை கொண்டுவரப்பட்டது. இதன்படி நிலத்தின் முழு உரிமையாளர்களாக ஜமீன்தார்கள் அறிவிக்கப்பட்டனர்."
     },
     {
       "id": 108,
@@ -1946,12 +1946,12 @@
         "A is false, R is true",
         "Both A and R are true, but R is not the correct explanation of A is correct"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "சரக்கு மற்றும் சேவை வரி (GST) என்பது பல முனைகளில் விதிக்கப்படும் ஒரு விரிவான வரியாகும். 'ஒரே நாடு, ஒரே சந்தை, ஒரே வரி' என்பதே இதன் நோக்கமாகும்."
     },
     {
       "id": 109,
@@ -1964,12 +1964,12 @@
         "2 1 3 4",
         "1 4 2 3"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "நெடுஞ்செழியன் (எம்.ஜி.ஆர் & ஜெ காலங்களில்), பன்னீர்செல்வம் (ஜெ காலங்களில்), பி.டி.ஆர் பழனிவேல் தியாகராஜன் (2021-2023), தங்கம் தென்னரசு (தற்போது) என்பதே சரியான வரிசையாகும்."
     },
     {
       "id": 110,
@@ -1982,12 +1982,12 @@
         "Both A and R are true, but R is the correct explanation of A",
         "A is false, R is true"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "1962-ல் சீனப்போரும், 1965-ல் பாகிஸ்தான் போரும் நடைபெற்றதால் 1966-69 வரை ஐந்தாண்டுத் திட்டங்களுக்குப் பதிலாக ஓராண்டுத் திட்டங்கள் (திட்ட விடுமுறை) செயல்படுத்தப்பட்டன."
     },
     {
       "id": 111,
@@ -2000,12 +2000,12 @@
         "Both Statement and Reason are incorrect",
         "Statement is incorrect but Reason is correct"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "திருக்குறளில் எந்தவொரு தனிப்பட்ட மன்னனையோ, மூவேந்தர்களையோ வள்ளுவர் குறிப்பிடவில்லை. அவர் பொதுவாக அரசு, அமைச்சின் இலக்கணங்களையே கூறியுள்ளார்."
     },
     {
       "id": 112,
@@ -2018,12 +2018,12 @@
         "12",
         "16"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "திருக்குறளில் அறத்துப்பாலில் இடம்பெற்றுள்ள 'துறவறவியல்' மொத்தம் 13 அதிகாரங்களைக் கொண்டுள்ளது."
     },
     {
       "id": 113,
@@ -2036,12 +2036,12 @@
         "Ra.Pi. Sethupillai / ரா.பி. சேதுப்பிள்ளை",
         "Thiru.Vi. Kalyanasundaram / திரு.வி. கலியாண சுந்தரனார்"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'வள்ளுவரும் குறளும்' என்ற சிறந்த நூலினை இயற்றியவர் முத்தமிழ்க் காவலர் கி.ஆ.பெ. விசுவநாதம் ஆவார்."
     },
     {
       "id": 114,
@@ -2054,12 +2054,12 @@
         "Saminatha Sharma / சாமிநாத சர்மா",
         "Vannacharaba Dheetchithar / வண்ணச்சரப தீட்சிதர்"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "திருவள்ளுவரின் உருவத்தை முதன்முதலில் அனைவரும் ஏற்றுக்கொள்ளும் வகையில் ஓவியமாக வரைந்தவர் கே.ஆர். வேணுகோபால சர்மா ஆவார்."
     },
     {
       "id": 115,
@@ -2072,12 +2072,12 @@
         "(3) and (4) are correct",
         "(1) and (4) are correct"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'நவசக்தி' இதழைத் திரு.வி.க தொடங்கினார். 'தி இந்து' நாளிதழை ஜி. சுப்பிரமணிய ஐயர் தொடங்கினார். இவை இரண்டும் சரியான இணைகள்."
     },
     {
       "id": 116,
@@ -2090,12 +2090,12 @@
         "(i) and (iii)",
         "(iii) only"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அன்னி பெசன்ட் அம்மையார் 1889-ல் தான் பிரம்மஞான சபையில் இணைந்தார் (1893-ல் இந்தியா வந்தார்). எனவே கூற்று (ii) தவறு. (i), (iii) ஆகிய இரண்டும் சரியானவை."
     },
     {
       "id": 117,
@@ -2108,12 +2108,12 @@
         "A is false, R is true",
         "Both A and R are true, but R is not the correct explanation of A is correct"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "ஈ.வே.ரா. பெரியார் 1925-ல் சுயமரியாதை இயக்கத்தைத் தொடங்கினார் என்பது சரி. ஆனால் அதன் அதிகாரப்பூர்வ ஏடு 'குடியரசு' ஆகும், நியூ இந்தியா அல்ல."
     },
     {
       "id": 118,
@@ -2126,12 +2126,12 @@
         "(1) and (3) are wrong",
         "(2) and (4) are wrong"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "கட்டபொம்மனைச் சந்திக்க ஆணையிட்டவர் காலின் ஜாக்சன் ஆவர். மேலும் கட்டபொம்மன் கயத்தாறில் தூக்கிலிடப்பட்டது அக்டோபர் 16, 1799-ல் ஆகும். எனவே (1), (3) தவறானவை."
     },
     {
       "id": 119,
@@ -2144,12 +2144,12 @@
         "(1), (3) are correct",
         "(1), (2), (3) are correct"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "1923 தேர்தலில் காங்கிரஸ் பங்கேற்கவில்லை. நீதிக்கட்சி வெற்றிபெற்று ஆட்சியமைத்தது. சுயராஜ்ய கட்சி 11 இடங்களில் வென்றது. இவை மூன்றும் சரியானவை. காமராஜர் அல்ல, ராஜாஜியே சென்னையில் முன்னின்று நடத்தினார்."
     },
     {
       "id": 120,
@@ -2162,12 +2162,12 @@
         "4 3 2 1",
         "1 2 3 4"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "காரைக்கால் அம்மையார் - மூத்த திருப்பதிகங்கள், ஆண்டாள் - பாவைப்பாட்டு (திருப்பாவை), அரங்கநாத முதலியார் - கச்சிக்கலம்பகம், சேரமான் பெருமாள் நாயனார் - திருவந்தாதி (பொன்வண்ணத்தந்தாதி)."
     },
     {
       "id": 121,
@@ -2180,12 +2180,12 @@
         "(i) and (ii) only",
         "(iii) only"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "சிவகளை தாமிரபரணி ஆற்றின் வடகரையில் அமைந்துள்ளது. இங்கு வாழ்ந்த சமூகம் மிகவும் பழமையானதாகக் கருதப்படுகிறது. எனவே (i) மற்றும் (ii) சரியானவை."
     },
     {
       "id": 122,
@@ -2198,12 +2198,12 @@
         "gene regulation / மரபணு கட்டுப்பாடு",
         "carbohydrate synthesis / கார்போஹைட்ரேட் தொகுப்பு"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "குறியிடாத ஆர்.என்.ஏ (ncRNA) புரதங்களை உற்பத்தி செய்வதில்லை. மாறாக, மரபணுக்களின் வெளிப்பாட்டைக் கட்டுப்படுத்தும் (gene regulation) முக்கியப் பணியைச் செய்கிறது."
     },
     {
       "id": 123,
@@ -2216,12 +2216,12 @@
         "(1) and (2) are correct",
         "(1), (2) and (3) are correct"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "ஐந்துலக வகைப்பாட்டை R.H. விட்டாக்கரும், ஆறுலக வகைப்பாட்டைக் கார்ல் வொய்சியும், மூன்றுலக வகைப்பாட்டை எர்னெஸ்ட் ஹெக்கேலும் முன்மொழிந்தனர். நான்குலக வகைப்பாடு கோப்லேண்ட் என்பவரால் முன்மொழியப்பட்டது."
     },
     {
       "id": 124,
@@ -2234,12 +2234,12 @@
         "1.44 x 10^-5",
         "1.44 x 10^4"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பிரிகை மாறிலி Ka = C * alpha^2. இங்கு C = 0.10 M, alpha = 0.012. எனவே Ka = 0.10 * (0.012)^2 = 1.44 x 10^-5."
     },
     {
       "id": 125,
@@ -2252,12 +2252,12 @@
         "January 29, 2024 / ஜனவரி 29, 2024",
         "March 08, 2024 / மார்ச் 08, 2024"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இஸ்ரோவால் GSLV-F15 ராக்கெட் 2025 ஜனவரி 29 அன்று விண்ணில் வெற்றிகரமாக ஏவப்பட்டது."
     },
     {
       "id": 126,
@@ -2275,7 +2275,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "கனேடியன் பசிபிக் இருப்புப்பாதை அட்லாண்டிக் கடலையும் பசிபிக் கடலையுமே இணைக்கிறது (இந்தியப் பெருங்கடல் அல்ல)."
     },
     {
       "id": 127,
@@ -2288,12 +2288,12 @@
         "Indira Gandhi / இந்திராகாந்தி",
         "Morarji Desai / மொரார்ஜி தேசாய்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இந்திய அரசியலமைப்பின் 42-வது திருத்தச் சட்டம் (1976) கொண்டுவரப்பட்ட போது திருமதி இந்திரா காந்தி அவர்கள் இந்தியாவின் பிரதமராக இருந்தார்."
     },
     {
       "id": 128,
@@ -2306,12 +2306,12 @@
         "Both A and R are true",
         "Both A and R are false"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "குடைவரைக் கோயில்கள் மரம், செங்கல் இன்றி உருவாக்கப்பட்டவை. கற்றளிகள் என்பவை கருங்கற்களை அடுக்கி கட்டப்பட்டவை. இரு கூற்றுகளும் சரியானவை."
     },
     {
       "id": 129,
@@ -2324,12 +2324,12 @@
         "(3)",
         "(4)"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "முண்டா மொழி என்பது ஆஸ்ட்ரோ-ஆசிய மொழிக் குடும்பத்தைச் சேர்ந்ததே தவிர, திராவிட மொழிக் குடும்பத்தைச் சேர்ந்ததல்ல. எனவே இதுவே தவறான இணை."
     },
     {
       "id": 130,
@@ -2342,12 +2342,12 @@
         "A is False R is True",
         "Both A and R are true but R is not the correct explanation of A"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "1919-ல் நடைபெற்ற ஜாலியன் வாலாபாக் படுகொலையைக் கண்டித்தே இரவீந்திரநாத் தாகூர் தனது 'சர்' (Knighthood) பட்டத்தைத் துறந்தார். இரண்டும் சரி."
     },
     {
       "id": 131,
@@ -2360,12 +2360,12 @@
         "A is false R is true",
         "Both A and R are true but R is not the correct explanation of A is correct"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இந்திய தேசிய காங்கிரசின் முதல் மாநாடு பம்பாயில் நடந்தது சரி. அதில் சென்னை மாகாணத்திலிருந்து 21 பேர் கலந்து கொண்டனர் என்பதும் சரி. ஆனால், காரணம் கூற்றை விளக்கவில்லை."
     },
     {
       "id": 132,
@@ -2378,12 +2378,12 @@
         "(ii) and (iii) only",
         "(ii) and (iv) only"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "மார்டிமர் வீலர் 1940-களில்தான் அகழாய்வு செய்தார் (1920 அல்ல). மெலுஹா என்ற சொல் அக்காடிய (சுமேரிய) கல்வெட்டுகளில் உள்ளது (பிராகிருதம் அல்ல). (ii), (iv) மட்டுமே சரி."
     },
     {
       "id": 133,
@@ -2401,7 +2401,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "தரவுகள் நடப்பு நிகழ்வுகள் சார்ந்தவை. இந்திய தலைமைத் தேர்தல் ஆணையர் மற்றும் தேர்தல் ஆணையர்கள் பற்றிய நியமனங்கள் இதனுள் அடங்கும்."
     },
     {
       "id": 134,
@@ -2414,12 +2414,12 @@
         "1 3 4 2",
         "4 1 2 3"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "நுகர்வோர் பாதுகாப்பு விதிகள் - 1987, மருந்துக் கட்டுப்பாடு சட்டம் - 1950, ஏகபோக வர்த்தக சட்டம் (MRTP) - 1969, பொருட்கள் விற்பனைச் சட்டம் - 1930."
     },
     {
       "id": 135,
@@ -2432,12 +2432,12 @@
         "A is true but R is false",
         "A is false but R is true"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "உச்சநீதிமன்ற நீதிபதிகளைக் குடியரசுத் தலைவர் நியமிக்கிறார் என்பது சரி. ஆனால், இதற்காக அவர் இந்தியத் தலைமை நீதிபதியைக் (CJI) கலந்தாலோசிப்பாரே தவிர, சட்ட அமைச்சரை அல்ல."
     },
     {
       "id": 136,
@@ -2450,12 +2450,12 @@
         "(2), (4), (3), (1)",
         "(2), (3), (4), (1)"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இராஜமன்னார் குழு (1969), சர்க்காரியா குழு (1983), வெங்கட செல்லையா குழு (2000), புன்ச்சி குழு (2007) என்பதே சரியான காலவரிசையாகும்."
     },
     {
       "id": 137,
@@ -2468,12 +2468,12 @@
         "(2) and (3) are correct",
         "(3) and (4) are correct"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இந்தியக் குடியரசுத் தலைவராகப் போட்டியிட 35 வயதும், மாநிலங்களவை உறுப்பினராக 30 வயதும் பூர்த்தியடைந்திருக்க வேண்டும். இவை இரண்டும் சரியான இணைகள்."
     },
     {
       "id": 138,
@@ -2486,12 +2486,12 @@
         "4, 3, 2, 1",
         "3, 1, 4, 2"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "விருதுகளின் தரவரிசைப்படி: பாரத ரத்னா (முதல்), பத்ம விபூஷன் (இரண்டாம்), பத்ம பூஷன் (மூன்றாம்), பத்மஸ்ரீ (நான்காம்) என அமையும்."
     },
     {
       "id": 139,
@@ -2504,12 +2504,12 @@
         "3 1 2 4",
         "1 2 4 3"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "1950 அரசியலமைப்பின்படி: மேற்கு வங்காளம் - Part A, இராஜஸ்தான் - Part B, இமாச்சலப் பிரதேசம் - Part C, அந்தமான் நிக்கோபார் - Part D."
     },
     {
       "id": 140,
@@ -2522,12 +2522,12 @@
         "8 days / 8 நாட்கள்",
         "11 days / 11 நாட்கள்"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "P மற்றும் Q-இன் ஒரு நாள் வேலை (1/20 + 1/40 = 3/40). கடைசி 8 நாட்கள் P மட்டும் வேலை செய்துள்ளார் (8 * 1/20 = 8/20 = 16/40). மீதமுள்ள 24/40 வேலையை இருவரும் சேர்ந்து 8 நாட்களில் (24/3) முடித்திருப்பார்கள். எனவே 8 நாட்கள் கழித்து Q சென்றுவிட்டார்."
     },
     {
       "id": 141,
@@ -2540,12 +2540,12 @@
         "Rs. 1,302, Rs. 1,300",
         "Rs. 1,352, Rs. 1,250"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "A(1.04)^6 = B(1.04)^8 => A/B = (1.04)^2 = 1.0816 = 676/625. எனவே A-இன் பங்கு 1352, B-இன் பங்கு 1250."
     },
     {
       "id": 142,
@@ -2558,12 +2558,12 @@
         "Rs. 9,400",
         "Rs. 9,100"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "தனிவட்டி (SI) = PNR / 100. ஈடுசெய்ய: 68000 * (9/12) * (50/3) / 100 = ரூ. 8,500."
     },
     {
       "id": 143,
@@ -2576,12 +2576,12 @@
         "6 : 7",
         "2 : 1"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "a:b = 3:7 மற்றும் b:c = 7:6 என்பதால் a:b:c = 3:7:6 ஆகும். எனவே c:a = 6:3 = 2:1."
     },
     {
       "id": 144,
@@ -2594,12 +2594,12 @@
         "58",
         "68"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "எண்கள் 3x, 4x. மீ.பொ.வ (HCF) = 4 என்பதால் x=4. எண்கள் 12, 16. இவற்றின் மீ.சி.ம (LCM) 48 ஆகும்."
     },
     {
       "id": 145,
@@ -2612,12 +2612,12 @@
         "389",
         "392"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "16, 24, 32 ஆகியவற்றின் மீ.சி.ம 96. எனவே எண் (96k + 6) என்ற வடிவில் இருக்கும். k=4 எனும்போது 390 கிடைக்கிறது. இது 13-ஆல் மீதியின்றி வகுபடும்."
     },
     {
       "id": 146,
@@ -2630,12 +2630,12 @@
         "30",
         "25"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "25% மாணவர்கள் வரவில்லை எனில் 75% மாணவர்கள் வந்துள்ளனர். 80-ல் 75% என்பது 60 ஆகும்."
     },
     {
       "id": 147,
@@ -2648,12 +2648,12 @@
         "84%",
         "92%"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "மொத்த மாணவர்கள் 800 (500 + 300) எனில், தோல்வியுற்றவர்கள் 104 (80 + 24). எனவே தேர்ச்சி பெறாதவர் சதவீதம் 13%. ஆக, தேர்ச்சி பெற்றவர் சதவீதம் 87%."
     },
     {
       "id": 148,
@@ -2666,12 +2666,12 @@
         "555",
         "550"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இது ஒற்றைப்படை எண்களின் தொடர். மொத்த உறுப்புகளின் எண்ணிக்கை (n) = 28. ஒற்றை எண்களின் கூடுதல் = n^2 = 28^2 = 784."
     },
     {
       "id": 149,
@@ -2684,12 +2684,12 @@
         "38450",
         "44650"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இத்தொடர் (n^n - n) என்ற அமைப்பில் உள்ளது. 1^1-1, 2^2-2, 3^3-3, 4^4-4, 5^5-5 என வருகிறது. அடுத்த எண் 6^6 - 6 = 46650 ஆகும்."
     },
     {
       "id": 150,
@@ -2702,12 +2702,12 @@
         "Three / மூன்று",
         "Four / நான்கு"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "6-4, 4-2, 5-3 ஆகிய மூன்று இணைகள் மட்டுமே 2 என்ற வித்தியாசத்தைக் கொண்டுள்ளன."
     },
     {
       "id": 151,
@@ -2720,12 +2720,12 @@
         "6",
         "3"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பகடையின் அருகாமையில் உள்ள எண்களை வைத்து ஆராய்ந்தால், 2-க்கு எதிர்ப்புறம் 5 அமைந்திருப்பதைக் காணலாம்."
     },
     {
       "id": 152,
@@ -2738,12 +2738,12 @@
         "48",
         "63"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இது ஒரு மாற்றுத் தொடர் (Alternate series). 7, 19, 43, 91 (வித்தியாசம் 12, 24, 48). 12, 24, விடுபட்ட எண் (வித்தியாசம் 12, 24). எனவே அடுத்த எண் 24+24 = 48."
     },
     {
       "id": 153,
@@ -2756,12 +2756,12 @@
         "A is correct but R is wrong",
         "A is wrong but R is correct"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "ஸ்பேஸ் மைத்ரி (Space MAITRI) என்பது இந்தியா மற்றும் ஆஸ்திரேலியா இடையேயான விண்வெளித் திட்டமாகும். இது விண்வெளிக்கான அணுகல் செலவைக் குறைப்பதை நோக்கமாகக் கொண்டுள்ளது."
     },
     {
       "id": 154,
@@ -2774,12 +2774,12 @@
         "(i) and (ii) only",
         "(ii) and (iii) only"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பெரம்பலூரில் மக்காச்சோளமும், கள்ளக்குறிச்சியில் கரும்பும் அதிகளவில் சாகுபடி செய்யப்படுகின்றன. நெல் சாகுபடியில் தஞ்சாவூரே முதலிடம் வகிக்கிறது. எனவே (ii) மற்றும் (iii) சரியானவை."
     },
     {
       "id": 155,
@@ -2792,12 +2792,12 @@
         "A is false R is true",
         "Both A and R are true but R is not the correct explanation of A"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பொது விநியோகத் திட்டம் மற்றும் கலைஞர் மகளிர் உரிமைத் திட்டம் போன்ற அரசின் மக்கள் நலத் திட்டங்களே பணவீக்கத்தைக் கட்டுப்படுத்திக் குறைப்பதற்கு முக்கியக் காரணமாகும்."
     },
     {
       "id": 156,
@@ -2810,12 +2810,12 @@
         "A is true but R is false",
         "A is false but R is true"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "கோவிட் பெருந்தொற்றால் ஏற்பட்ட கற்றல் இடைவெளியைக் குறைக்கவே இல்லம் தேடிக் கல்வி கொண்டுவரப்பட்டது. இதற்காகத் தன்னார்வலர்கள் வீடு தேடிச் சென்று கல்வி கற்பிக்கின்றனர்."
     },
     {
       "id": 157,
@@ -2828,12 +2828,12 @@
         "(i) and (ii) only",
         "(ii) and (iii) only"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "மண்டல் கமிஷன் 11 அளவுகோல்களைப் பயன்படுத்தியது. சமூகக் குறிகாட்டியில் 4, கல்விக்கு 3, பொருளாதாரத்திற்கு 4 அளவுகோல்கள் பயன்படுத்தப்பட்டன. எனவே (i), (iii) மட்டுமே சரி."
     },
     {
       "id": 158,
@@ -2851,7 +2851,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "இந்தியாவில் பணவீக்கத்திற்கு அதிக தேவை, குறைந்த உற்பத்தி எனப் பல காரணிகள் உள்ளதால் விடை தெளிவாக வரையறுக்கப்படவில்லை."
     },
     {
       "id": 159,
@@ -2864,12 +2864,12 @@
         "3 2 1 4",
         "2 3 4 1"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பாரத் நிர்மாண் (2005), தேசிய ஊரக வாழ்வாதார இயக்கம் (2011), ராஜீவ் ஆவாஸ் யோஜனா (2013), தேசிய உணவுப் பாதுகாப்புத் திட்டம் (2013). சரியான வரிசை: 3, 1, 2, 4."
     },
     {
       "id": 160,
@@ -2882,12 +2882,12 @@
         "(3) and (4)",
         "(2) and (3)"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "DDP என்பது Desert Development Programme (பாலைவன மேம்பாட்டுத் திட்டம்) ஆகும். HDA என்பது Hill Area Development Programme (மலைப்பகுதி மேம்பாட்டுத் திட்டம்) ஆகும். எனவே 3 மற்றும் 4 தவறானவை."
     },
     {
       "id": 161,
@@ -2900,12 +2900,12 @@
         "(1), (2) and (4)",
         "(4) only"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "IMIS என்பது Integrated Management Information System என்பதைக் குறிக்கும், Infrastructure System அல்ல. எனவே (4) மட்டும் தவறானது."
     },
     {
       "id": 162,
@@ -2923,7 +2923,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "பாம்பே திட்டம் (1944), காந்தியத் திட்டம் (1944), மக்கள் திட்டம் (1945), சர்வோதயத் திட்டம் (1950). தேர்வுகளில் சரியான இணை இல்லை."
     },
     {
       "id": 163,
@@ -2936,12 +2936,12 @@
         "(1) – Wrong, (2) – Right, (3) – Wrong, (4) – Right",
         "(1) – Right, (2) – Wrong, (3) – Right, (4) – Right"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இக்குறள் 'காலமறிதல்' அதிகாரத்தில் அமைந்துள்ளது. இதன் பொருள், காலம் வரும்வரை கொக்கு போல காத்திருக்க வேண்டும் என்பதாகும். இதற்கு மூதுரையின் 'வாடியிருக்குமாம் கொக்கு' என்ற வரி பொருத்தமானது."
     },
     {
       "id": 164,
@@ -2954,12 +2954,12 @@
         "Statement 1 and 2 – Correct",
         "Statement 1 and 2 – Incorrect"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "மனத்தோடு பொருந்த உண்மை பேசுபவர்கள், தானம் மற்றும் தவம் செய்யும் அனைவரையும் விடச் சிறந்தவர்கள் என்பதே இக்குறளின் கருத்தாகும். எனவே கூற்று 1 மட்டுமே சரி."
     },
     {
       "id": 165,
@@ -2972,12 +2972,12 @@
         "4 3 1 2",
         "1 2 4 3"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அயோத்திதாசப் பண்டிதர் - ஒரு பைசாத் தமிழன், இராமலிங்க அடிகள் - திருவருட்பா, ஜோதிபா பூலே - குலாம்கிரி, சையது அகமது கான் - தத்கிப்-உல்-அக்லுக்."
     },
     {
       "id": 166,
@@ -2990,12 +2990,12 @@
         "A is false R is true",
         "Both A and R are true but R is not the correct explanation of A is correct"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "டாக்டர் சி. நடேச முதலியார் நீதிக்கட்சியின் இதயமாகவும், அன்பு, பொறுமை ஆகியவற்றின் இருப்பிடமாகவும் திகழ்ந்ததால், அவர் மகாத்மா காந்தியுடன் ஒப்பிடப்பட்டார்."
     },
     {
       "id": 167,
@@ -3008,12 +3008,12 @@
         "(i) and (ii) only",
         "(ii) and (iii) only"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வள்ளலார் எனப் போற்றப்படும் இராமலிங்க அடிகள், 'ஜீவகாருண்யம்' எனப்படும் உயிரிடத்து அன்பே இறைவனை அடையும் வழி என்றார். அவர் விவசாயிகளுக்காக இரவுப் பள்ளி எதையும் தொடங்கவில்லை. எனவே (i), (iii) சரி."
     },
     {
       "id": 168,
@@ -3026,12 +3026,12 @@
         "Both A and R are true and R is the correct explanation of A",
         "Both A and R are true but R is not the correct explanation of A"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "1930-ஆம் ஆண்டு முத்துலட்சுமி ரெட்டி அவர்கள் தேவதாசி முறை ஒழிப்பு மசோதாவைச் சட்டமன்றத்தில் கொண்டுவந்தார். பின்னர் 1947-ல் இது சட்டமாகி 'பொட்டுக்கட்டுதல்' தடை செய்யப்பட்டது. இரண்டு கூற்றுகளும் சரி."
     },
     {
       "id": 169,
@@ -3044,12 +3044,12 @@
         "A is false, R is true",
         "Both A and R are true, and R is not the correct explanation of A"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "சைமன் குழுவில் இந்தியர்கள் எவரும் இடம்பெறாததால் அக்குழு புறக்கணிக்கப்பட்டது (காரணம் சரி). ஆனால் சென்னையில் இப்புறக்கணிப்புப் போராட்டத்தை எஸ். சத்தியமூர்த்தி தலைமையேற்று நடத்தினார் (கூற்று தவறு)."
     },
     {
       "id": 170,
@@ -3062,12 +3062,12 @@
         "3 4 2 1",
         "3 4 1 2"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வெற்றிவேற்கை - அதிவீரராம பாண்டியர், நன்னெறி - துறைமங்கலம் சிவப்பிரகாசர், நீதிநெறி விளக்கம் - குமரகுருபரர், நல்வழி - ஒளவையார்."
     },
     {
       "id": 171,
@@ -3080,12 +3080,12 @@
         "3 1 2 4",
         "4 3 2 1"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அழகன்குளம் - இராமநாதபுரம், வசவசமுத்திரம் - காஞ்சிபுரம், கொடுமணல் - ஈரோடு, கீழடி - சிவகங்கை."
     },
     {
       "id": 172,
@@ -3103,7 +3103,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "டெங்கு இரத்தத்தையும், இளம்பிள்ளை வாதம் மூளை/குடலையும் பாதிக்கின்றன. தட்டம்மை மற்றும் சின்னம்மைக்கான பாதிப்புப் பகுதிகள் தேர்வுகளில் குழப்பமாக உள்ளன."
     },
     {
       "id": 173,
@@ -3116,12 +3116,12 @@
         "A is correct but R is incorrect",
         "Both A and R are incorrect"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "கோபால்ட்-60 ஐசோடோப்பு காமா கதிர்களை வெளியிடுவதால், அது புற்றுநோய் செல்களை அழிக்க வல்லது. எனவே இது புற்றுநோய் চিকিৎসையில் பயன்படுகிறது."
     },
     {
       "id": 174,
@@ -3134,12 +3134,12 @@
         "March, 2022 / மார்ச், 2022",
         "October, 2021 / அக்டோபர், 2021"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "'விடியல் பயணம்' எனப்படும் மகளிருக்கான இலவசப் பேருந்துப் பயணத் திட்டம், மாண்புமிகு தமிழக முதல்வர் மு.க. ஸ்டாலின் அவர்களால் 2021 மே மாதம் தொடங்கி வைக்கப்பட்டது."
     },
     {
       "id": 175,
@@ -3152,12 +3152,12 @@
         "Both A and R are true, and R is the correct explanation of A",
         "Both A and R are true, but R is not the correct explanation of A"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "காலநிலை, நிலத்தோற்றம், மண் மற்றும் இயற்கை வளங்கள் ஆகியவை மக்கள் தொகை பரவலைப் பெரிதும் பாதிக்கின்றன. ஆனால் பிறப்பு, இறப்பு விகிதங்கள் மக்கள் தொகையைப் பாதிக்காது என்பது தவறு (அவை நேரடியாகப் பாதிக்கக்கூடியவை)."
     },
     {
       "id": 176,
@@ -3170,12 +3170,12 @@
         "4 2 3 1",
         "2 3 4 1"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இடப்பெயர்வு வேளாண்மையின் வெவ்வேறு பெயர்கள்: லடாங் - மலேசியா, மில்பா - மெக்ஸிகோ, ரோக்கா - பிரேசில், ரே - வியட்நாம்."
     },
     {
       "id": 177,
@@ -3188,12 +3188,12 @@
         "2 3 4 1",
         "2 3 1 4"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அமோகவர்ஷர் - கவிராஜமார்க்கம், ஜீனசேனர் - ஆதிபுராணம், குணபத்ரர் - மகாபுராணம் (உத்தரபுராணம்), பாணர் - காதம்பரி."
     },
     {
       "id": 178,
@@ -3206,12 +3206,12 @@
         "(i) and (ii)",
         "(ii) and (iii)"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வேலுநாச்சியார் இராமநாதபுர அரசர் செல்லமுத்து சேதுபதியின் மகளாவார். அவர் இறந்தது 1796-ல் ஆகும். எனவே (i), (iii) தவறானவை. (ii) மட்டுமே சரியான கூற்று."
     },
     {
       "id": 179,
@@ -3224,12 +3224,12 @@
         "(ii) and (iii) only",
         "(ii) and (iv) only"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "காந்தி-இர்வின் ஒப்பந்தத்தின்படி சொந்தப் பயன்பாட்டிற்கு உப்பு தயாரிக்கவும், அந்நியத் துணிக்கடைகள் முன் அறவழியில் ஆர்ப்பாட்டம் செய்யவும் ஆங்கிலேய அரசு சம்மதித்தது."
     },
     {
       "id": 180,
@@ -3242,12 +3242,12 @@
         "(1), (3) and (4) only",
         "(1), (2) and (3) only"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "மதுரை ஹார்வி மில் தொழிலாளர் சங்கத்தை ஜார்ஜ் ஜோசப் (ரோசாப்பூ துரை) வழிநடத்தினார். எனவே (2) தவறு. மற்ற மூன்றும் சரியானவை."
     },
     {
       "id": 181,
@@ -3260,12 +3260,12 @@
         "(ii) and (iii) only",
         "(i) and (iii) only"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "சுபாஷ் சந்திர போஸ் ஒடிசாவில் உள்ள கட்டாக்கில் பிறந்தார். மேலும், அவரது பிறந்தநாள் (பராக்ரம் திவாஸ்) தேசிய அளவிலான பொது விடுமுறை நாளாக அறிவிக்கப்படவில்லை. (i) மற்றும் (iii) தவறானவை."
     },
     {
       "id": 182,
@@ -3278,12 +3278,12 @@
         "3 4 1 2",
         "4 2 3 1"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "திரௌபதி முர்மு - பிரபோவா சுபியாண்டோ (2025), அப்துல் கலாம் - விளாடிமிர் புடின் (2007), பிரணாப் முகர்ஜி - பராக் ஒபாமா (2015), ராம் நாத் கோவிந்த் - சிரில் ராமபோசா (2019)."
     },
     {
       "id": 183,
@@ -3301,7 +3301,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "ஊழல் தடுப்பு மற்றும் கண்காணிப்புப் பிரிவின் இலவச உதவி எண்கள் குறித்த துல்லியமான தகவல் உறுதிப்படுத்தப்படவில்லை (1064 பொதுவாகப் பயன்படுத்தப்படும் எண்ணாகும்)."
     },
     {
       "id": 184,
@@ -3319,7 +3319,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "2004 மக்களவைத் தேர்தலில் முழுமையாக வாக்குப் பதிவு இயந்திரங்கள் (EVM) பயன்படுத்தப்பட்டது என்பது சரி. மற்ற கூற்றுகள் தெளிவற்றவை."
     },
     {
       "id": 185,
@@ -3332,12 +3332,12 @@
         "(2) and (3) are correct",
         "(3) and (4) are correct"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பஞ்சாயத்து ராஜ் தேர்தல் குழுவிற்கு கே. சந்தானம் அவர்களும், நிர்வாகக் குழுவிற்கு வி. ஈஸ்வரன் அவர்களும் தலைமை வகித்தனர். இவை இரண்டும் சரியான இணைகள்."
     },
     {
       "id": 186,
@@ -3350,12 +3350,12 @@
         "(i) and (ii) only",
         "(ii) and (iii) only"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "அரசு வழிகாட்டும் நெறிமுறைகள் அயர்லாந்து அரசியலமைப்பிலிருந்து பெறப்பட்டவை (ஸ்பானிஷ் அல்ல). இவை சரத்து 36 முதல் 51 வரை உள்ளன. எனவே (i) மட்டுமே சரி."
     },
     {
       "id": 187,
@@ -3368,12 +3368,12 @@
         "A is true R is false",
         "Both A and R are true but R is not the correct explanation of A"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இந்திய அரசியலமைப்பு கூட்டாட்சித் தன்மையைக் கொண்டிருந்தாலும் (கூற்று சரி), அது அமெரிக்காவைப் போல இரட்டைக் குடியுரிமையை வழங்காமல், ஒற்றைக் குடியுரிமையையே வழங்குகிறது (காரணம் தவறு)."
     },
     {
       "id": 188,
@@ -3386,12 +3386,12 @@
         "A is false, but R is true",
         "Both A and R are true, but R is not the correct explanation of A is correct"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "இந்திய அரசியலமைப்பு நெகிழும் மற்றும் நெகிழாத் தன்மை ஆகிய இரண்டையும் பெற்றுள்ளது. அடிப்படை மாறாமல் 100-க்கும் மேற்பட்ட முறை திருத்தப்பட்டதே இதற்குச் சான்றாகும்."
     },
     {
       "id": 189,
@@ -3409,7 +3409,7 @@
       "year": 2025,
       "paper_code": "GRP4",
       "disputed": true,
-      "explanation": ""
+      "explanation": "வினாவில் நில அளவீட்டு வரைபடம் அல்லது மதிப்புகள் தெளிவாகக் கொடுக்கப்படவில்லை."
     },
     {
       "id": 190,
@@ -3422,12 +3422,12 @@
         "57",
         "65"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "விகிதங்கள் 1/3 : 1/4 : 1/5 : 1/6. பகுதி எண்களின் மீ.சி.ம 60. இதை முழு எண்ணாக மாற்றினால் 20 : 15 : 12 : 10 என வரும். இவற்றின் கூடுதல் 57. எனவே குறைந்தபட்சம் 57 பேனாக்கள் இருக்க வேண்டும்."
     },
     {
       "id": 191,
@@ -3440,12 +3440,12 @@
         "8",
         "4"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "விகித சம விதிப்படி 2/5 = x/20. குறுக்குப்பெருக்கல் செய்தால் 5x = 40. எனவே x = 8."
     },
     {
       "id": 192,
@@ -3458,12 +3458,12 @@
         "4",
         "5"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "108 மற்றும் 234 ஆகியவற்றின் மீ.பொ.வ (HCF) 18 ஆகும். கொடுக்கப்பட்ட சமன்பாட்டின்படி 23x - 51 = 18. இதிலிருந்து 23x = 69, எனவே x = 3."
     },
     {
       "id": 193,
@@ -3476,12 +3476,12 @@
         "-7x^2 + 7x - 7",
         "7x^2 - 7x + 7"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பல்லுறுப்புக் கோவைகளை காரணிப்படுத்தினால், (x+2)(x^2-x+1) மற்றும் (2x-3)(x^2-x+1) எனக் கிடைக்கும். எனவே இவற்றின் பொதுவான காரணி (மீ.பொ.கா) x^2 - x + 1 ஆகும்."
     },
     {
       "id": 194,
@@ -3494,12 +3494,12 @@
         "21/64",
         "64/21"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "ஏதேனும் ஒரு எண்ணின் அடுக்கு '0' ஆக இருந்தால் அதன் மதிப்பு 1. எனவே (1) * (1/4 + 1/16 + 1/64) = 1 * (21/64) = 21/64."
     },
     {
       "id": 195,
@@ -3512,12 +3512,12 @@
         "78.42",
         "78.24"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "தவறாக எடுக்கப்பட்ட மதிப்பெண்ணால் ஏற்பட்ட வித்தியாசம்: 96 - 69 = 27 (கூடுதல் மதிப்பு). புதிய கூடுதல் = (25 * 78.4) + 27 = 1987. புதிய சராசரி = 1987 / 25 = 79.48."
     },
     {
       "id": 196,
@@ -3530,12 +3530,12 @@
         "M",
         "G"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "வரிசை முறை: F, H, (I/M), (M/I), G, D. கொடுக்கப்பட்ட நிபந்தனைகளின்படி, F என்பவர் முதல் இடத்திலும், D என்பவர் இறுதி இடத்திலும் இருப்பர். D-க்கு இடதுபுறம் G உள்ளார். எனவே விடுபட்ட H என்பவரே F-க்கு வலதுபுறம் (இரண்டாவது இடத்தில்) இருக்க முடியும்."
     },
     {
       "id": 197,
@@ -3548,12 +3548,12 @@
         "57",
         "58"
       ],
-      "answer": -1,
+      "answer": 2,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "ஆங்கில எழுத்துகளுக்குப் பின்னோக்கு முறையில் எண்கள் (Z=1... A=26) கொடுக்கப்பட்டுள்ளன. இதன்படி C=24, A=26, T=7. கூடுதல் = 24 + 26 + 7 = 57."
     },
     {
       "id": 198,
@@ -3566,12 +3566,12 @@
         "a = b = c",
         "a ≠ c or a = c / a ≠ c அல்லது a = c"
       ],
-      "answer": -1,
+      "answer": 3,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "a ≠ b ≠ c என்பது a, b மற்றும் c ஆகியவை அடுத்தடுத்த எண்களோடு சமமில்லை என்பதைக் காட்டுகிறது. ஆனால் a-யும் c-யும் சமமாக இருக்கலாம் அல்லது இல்லாமலும் இருக்கலாம் (a ≠ c அல்லது a = c)."
     },
     {
       "id": 199,
@@ -3584,12 +3584,12 @@
         "30 H 100",
         "30 H 120"
       ],
-      "answer": -1,
+      "answer": 0,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "முதல் எண்கள்: 2, 7, 14, 23 (+5, +7, +9, +11) -> 34. எழுத்துகள்: X, T, P, L (-4, -4, -4) -> H. இறுதி எண்கள்: 2, 4, 12, 48 (*2, *3, *4, *5) -> 240. விடை: 34 H 240."
     },
     {
       "id": 200,
@@ -3602,12 +3602,12 @@
         "1/9",
         "7/36"
       ],
-      "answer": -1,
+      "answer": 1,
       "topic": "General Studies",
       "year": 2025,
       "paper_code": "GRP4",
-      "disputed": true,
-      "explanation": ""
+      "disputed": false,
+      "explanation": "பெருக்கற்பலன் 4 கிடைக்க (1,4), (2,2), (4,1) என 3 வாய்ப்புகள் உள்ளன. வித்தியாசம் 5 கிடைக்க (1,6), (6,1) என 2 வாய்ப்புகள் உள்ளன. எனவே மொத்தச் சாதகமான வாய்ப்புகள் 5. நிகழ்தகவு 5/36."
     }
   ]
 }
