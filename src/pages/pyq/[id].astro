@@ -106,8 +106,8 @@ for (const q of questions) {
       </div>
 
       <!-- Question card -->
-      <div class="question-card">
-        <div class="q-left-col">
+      <div class="question-card" id="question-card">
+        <div class="q-col-question">
           <div class="q-meta-row">
             <span class="q-part" id="q-part">Part A</span>
             <span class="q-topic" id="q-topic">History</span>
@@ -117,8 +117,13 @@ for (const q of questions) {
           <h2 class="q-text" id="q-text">Loading…</h2>
         </div>
 
-        <div class="q-right-col">
+        <div class="q-col-options">
           <div class="options-list" id="options-list"></div>
+        </div>
+
+        <div class="q-col-reason" id="q-reason-col" style="display: none;">
+          <h3 class="reason-title">Explanation</h3>
+          <div id="reason-content" class="reason-content"></div>
         </div>
       </div>
 
@@ -262,7 +267,7 @@ for (const q of questions) {
 
     const ol = $('options-list');
     ol.innerHTML = '';
-    const labels = ['A','B','C','D'];
+    const labels = ['A','B','C','D','E','F'];
     const isAnswered = answered[q.id];
     const userAns = selected[q.id];
     const correctAns = q.answer;
@@ -282,14 +287,11 @@ for (const q of questions) {
       if (state) btn.classList.add(state);
 
       // Inner HTML
-      let inner = `<span class="opt-lbl">${labels[idx]}</span><span class="opt-txt">${opt}</span>`;
+      let inner = `<span class="opt-lbl">${labels[idx] || ''}</span><span class="opt-txt">${opt}</span>`;
       if (isAnswered && idx === correctAns && correctAns !== -1) {
         inner += `<div class="opt-feedback correct-fb">
                     <span class="fb-check">✓</span><span class="fb-label">That's right!</span>
                   </div>`;
-        if (q.explanation) {
-          inner += `<div class="opt-explanation correct-text">${q.explanation.replace(/\n/g, '<br/>')}</div>`;
-        }
       } else if (isAnswered && idx === userAns && idx !== correctAns && correctAns !== -1) {
         inner += `<div class="opt-feedback wrong-fb">
                     <span class="fb-x">✕</span><span class="fb-label">Not quite</span>
@@ -305,15 +307,24 @@ for (const q of questions) {
       ol.appendChild(btn);
     });
 
-    // Disputed notice
-    if (isAnswered && q.answer === -1) {
-      const note = document.createElement('div');
-      note.className = 'disputed-note';
-      note.innerHTML = '⚠️ This question is before the Expert Committee — no official answer key available.';
-      if (q.explanation) {
-        note.innerHTML += `<div class="opt-explanation">${q.explanation.replace(/\n/g, '<br/>')}</div>`;
+    const reasonCol = $('q-reason-col');
+    const reasonContent = $('reason-content');
+
+    if (isAnswered) {
+      reasonCol.style.display = 'block';
+      let html = '';
+      if (q.answer === -1) {
+         html += '<div class="disputed-note">⚠️ This question is before the Expert Committee — no official answer key available.</div>';
       }
-      ol.appendChild(note);
+      if (q.explanation) {
+         html += `<div class="reason-text">${q.explanation.replace(/\n/g, '<br/>')}</div>`;
+      } else if (q.answer !== -1) {
+         html += `<div class="reason-text">No additional explanation provided.</div>`;
+      }
+      reasonContent.innerHTML = html;
+    } else {
+      reasonCol.style.display = 'none';
+      reasonContent.innerHTML = '';
     }
 
     // Prev/Next
@@ -589,7 +600,7 @@ for (const q of questions) {
 
   /* ── Quiz Screen ────────────────────────────────────────────────────── */
   #quiz-screen {
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0 auto;
     width: 100%;
     padding: 1.5rem 1rem 2rem;
@@ -667,11 +678,37 @@ for (const q of questions) {
   @media (min-width: 768px) {
     .question-card {
       flex-direction: row;
-      gap: 3rem;
+      gap: 2rem;
       padding: 2.5rem;
     }
-    .q-left-col { flex: 1.2; }
-    .q-right-col { flex: 1; }
+    .q-col-question { flex: 1; min-width: 300px; }
+    .q-col-options { flex: 1; min-width: 300px; }
+    .q-col-reason { flex: 1; min-width: 250px; }
+  }
+
+  .q-col-reason {
+    background: #fdf5e6;
+    border: 1px solid #fdd663;
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+  
+  .reason-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #e37400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 1rem;
+    border-bottom: 1px solid #fce8b2;
+    padding-bottom: 0.5rem;
+  }
+
+  :global(.reason-text) {
+    font-size: 0.95rem;
+    color: #3c4043;
+    line-height: 1.6;
+    font-family: 'Google Sans', 'DM Sans', sans-serif;
   }
 
   .q-meta-row {
@@ -739,16 +776,11 @@ for (const q of questions) {
     cursor: pointer;
     font-size: 1rem;
     color: #1f1f1f;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     gap: 0;
     font-family: 'Google Sans', 'DM Sans', sans-serif;
     position: relative;
-  }
-
-  :global(.opt-btn:active):not([disabled]) {
-    transform: scale(0.97);
   }
 
   :global(.opt-btn[disabled]) {
@@ -803,23 +835,6 @@ for (const q of questions) {
   :global(.wrong-fb) { color: #8c1d18; }
   :global(.fb-check) { font-size: 0.9rem; }
   :global(.fb-label) {}
-
-  @keyframes slideDownFade {
-    0% { opacity: 0; transform: translateY(-10px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-
-  :global(.opt-explanation) {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 12px;
-    font-size: 0.95rem;
-    color: #1f1f1f;
-    line-height: 1.6;
-    font-family: 'Google Sans', 'DM Sans', sans-serif;
-    animation: slideDownFade 0.4s cubic-bezier(0.2, 0, 0, 1) forwards;
-  }
 
   :global(.disputed-note) {
     margin-top: 0.75rem;
