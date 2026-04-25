@@ -117,13 +117,18 @@ for (const q of questions) {
           <h2 class="q-text" id="q-text">Loading…</h2>
         </div>
 
-        <div class="q-col-options">
-          <div class="options-list" id="options-list"></div>
-        </div>
+        <div class="q-col-right">
+          <div class="q-col-options">
+            <div class="options-list" id="options-list"></div>
+          </div>
 
-        <div class="q-col-reason" id="q-reason-col" style="display: none;">
-          <h3 class="reason-title">Explanation</h3>
-          <div id="reason-content" class="reason-content"></div>
+          <div class="q-col-reason" id="q-reason-col" style="display: none;">
+            <div class="reason-header">
+              <span class="reason-icon">💡</span>
+              <h3 class="reason-title">Explanation</h3>
+            </div>
+            <div id="reason-content" class="reason-content"></div>
+          </div>
         </div>
       </div>
 
@@ -669,39 +674,53 @@ for (const q of questions) {
     flex: 1;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     .question-card {
       flex-direction: row;
-      gap: 2rem;
-      padding: 2.5rem;
+      gap: 3rem;
+      padding: 3rem;
     }
-    .q-col-question { flex: 1; min-width: 300px; }
-    .q-col-options { flex: 1; min-width: 300px; }
-    .q-col-reason { flex: 1; min-width: 250px; }
+    .q-col-question { flex: 1.1; min-width: 300px; }
+    .q-col-right { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; min-width: 320px; }
+  }
+
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .q-col-reason {
     background: #fdf5e6;
     border: 1px solid #fdd663;
-    border-radius: 16px;
+    border-radius: 20px;
     padding: 1.5rem;
+    animation: slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   
+  .reason-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(227, 116, 0, 0.2);
+  }
+
+  .reason-icon { font-size: 1.2rem; }
+
   .reason-title {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: #e37400;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin: 0 0 1rem;
-    border-bottom: 1px solid #fce8b2;
-    padding-bottom: 0.5rem;
+    margin: 0;
   }
 
   :global(.reason-text) {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #3c4043;
-    line-height: 1.6;
+    line-height: 1.65;
     font-family: 'Google Sans', 'DM Sans', sans-serif;
   }
 
@@ -775,15 +794,22 @@ for (const q of questions) {
     gap: 0;
     font-family: 'Google Sans', 'DM Sans', sans-serif;
     position: relative;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  :global(.opt-btn:active):not([disabled]) {
+    transform: scale(0.98);
   }
 
   :global(.opt-btn[disabled]) {
     cursor: default;
-    opacity: 1;
+    opacity: 0.95;
   }
 
   :global(.opt-btn:hover):not([disabled]) {
     background: #e4e9f1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
 
   :global(.opt-btn.pending) {
