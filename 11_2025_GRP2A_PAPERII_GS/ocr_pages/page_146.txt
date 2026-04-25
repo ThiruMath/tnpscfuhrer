@@ -1,0 +1,34 @@
+173. Choose the right pair of Sheep variety and its District :
+
+Sheep Variety Districts
+(1) Mecheri — Salem
+(2) Madras Red — Tiruvallur
+(3) Ramnad white — Pudhukottai
+(4) Kilakarisal — Kanchipuram
+(A) (1) and (8) are correct (B) (1) and (2) are correct
+(C) (2) and (8) are correct (D) -(8) and (4) are correct
+
+(E) Answer not known
+
+சரியான இணையைத்‌ தேர்வு செய்க. செம்மறி ஆடுகளின்‌ வகை மற்றும்‌ அதன்‌
+
+- மாவட்டங்கள்‌ :
+செம்மறி ஆடு வகைகள்‌ மாவட்டங்கள்‌
+
+(1) மேச்சேரி — சேலம்‌
+
+(2) மதராஸ்‌ ரெட்‌ - திருவள்ளூர்‌
+
+(3) ராம்நாட்‌ ஒயிட்‌ புதுக்கோட்டை
+
+(4) கீழகரைசல்‌ - காஞ்சிபுரம்‌
+
+(A) (மற்றும்‌ (9) சரி (B) @ மற்றும்‌ (2) சரி
+(0) (மற்றும்‌ (9) சரி (D) (8) மற்றும்‌ (4) சரி
+
+(E) விடை தெரியவில்லை
+THIS QUESTION AND ANSWER ARE TO BE PLACED BEFORE
+THE EXPERT COMMITTEE FOR FINAL DECISION
+
+RE/GS2AM/2026 இக்கேள்வி மற்றும்‌ விடை இறுதி முடிவிற்காக,
+வல்லுநர்‌ குழுவின்‌ முன்‌ வைக்கப்பட உள்ளது.

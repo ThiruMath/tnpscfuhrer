@@ -1,0 +1,42 @@
+41. Mention the tool used for detecting specific DNA sequences in
+molecular diagnostics.
+
+(A) Southern Blotting (B) ELISA
+Tor PCR (D) Flow cytometry
+(E) Answer not known
+
+மூலக்கூறு நோயறிதலில்‌ குறிப்பிட்ட டிஎன்‌ஏ வரிசைகளைக்‌ கண்டறிய பயன்படும்‌
+கருவியைக்‌ குறிப்பிடவும்‌
+
+(A) தெற்கு ப்ளாட்டிங்‌ (சதன்‌ ப்ளாட்டிங்‌) (B) ELISA
+(C) PCR (D) ப்ளோ சைட்டோமெட்ரி
+(E) விடை தெரியவில்லை
+
+42. Choose the correct answer :
+
+(1) Natural Polymer - மதுக்‌.
+
+(2) Synthetic Polymer _ PVC
+
+(8) Addition Polymerisation | — Loss of H20, HCl, NHs
+(4) Condensation Polymerisation — Monomer Addition
+
+(A) (1) and (4) are correct
+(B) (2) and (8) are correct
+(1) and (2) are correct
+(D) (4) and (8) are correct
+(EK) Answer not known
+“சரியான விடையைத்‌ தேர்ந்தெடு :
+(10) இயற்கை பாலிமர்‌ _ DNA
+
+(2) செயற்கை பாலிமர்‌ - PVC
+(3) சேர்க்கை பல்படியாக்கல்‌ - 1120, HCl, NH3 விடுபடல்‌
+(4) குறுக்க பல்படியாக்கல்‌ - மோனோமர்‌ சேர்க்கை
+
+(A) (0 மற்றும்‌ (4) சரியானது
+(B) (2) மற்றும்‌ (8) சரியானது
+(0) (1) மற்றும்‌ (2) சரியானது
+(D) (மற்றும்‌ (8) சரியானது
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 42° B

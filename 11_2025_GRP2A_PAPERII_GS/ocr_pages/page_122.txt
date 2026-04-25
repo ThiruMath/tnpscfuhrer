@@ -1,0 +1,46 @@
+146. Consider the following statements :
+Assertion [A] : Bacillus thuringiensis formed crystals containing
+
+toxic insecticidal protein. But it is not killed by
+that toxic protein
+
+Reason [R] : Actually the Bt. toxin protein exist as inactive
+protoxins.
+(A) [A] is true [R] is false
+(B) Both [A] and [R] are true but [R] is not the correct explanation
+of [A] :
+v2) Both [A] and [8] are true and [8] is the correct explanation
+of [A] ்‌
+(D) [A] is false [R] is correct
+(E) Answer not known
+பின்வரும்‌ அறிக்கைகளை கவனியுங்கள்‌ :
+கூற்று [A] > பேசில்லஸ்‌ தூரிஞ்சியென்சிஸ்‌ பூச்சிகளைக்‌ கொல்லக்கூடிய
+ர நச்சுத்தன்மை வாய்ந்த புரதப்‌ படிகங்களை
+உருவாக்குகின்றன. ஆனால்‌, அவை -பேசில்லலைக்‌
+கொல்வதில்லை.
+காரணம்‌ [8] - : பொதுவாக பேசில்லஸ்‌  துரிஞ்சியென்சிஸ்‌ உருவாக்கும்‌
+
+(A)
+(B)
+
+(C)
+
+(D)
+(E)
+
+நச்சுத்தன்மை வாய்ந்த புரதப்‌ படிகங்கள்‌, செல்லினுள்‌
+உட்புகாதவரை வெளியில்‌ செயலற்ற புரோடாக்ஸின்களாக
+உள்ளன. ்‌
+
+கூற்று [A] சரி; காரணம்‌ [13] தவறு
+
+கூற்று [A] மற்றும்‌ காரணம்‌ [R] சரி, ஆனால்‌ காரணம்‌ [R] கூற்று [A] க்கு
+சரியான விளக்கமல்ல
+
+கூற்று [A] மற்றும்‌ காரணம்‌ [8] சரி, மற்றும்‌ காரணம்‌ [௩] கூற்று [A] க்கு.
+சரியான விளக்கமாகும்‌
+
+கூற்று [A] தவறு; காரணம்‌ [R] சரி
+விடை தெரியவில்லை
+
+RE/GS2AM/2026 122 B

@@ -1,0 +1,31 @@
+44, The most important use of Schmitt trigger dhitennit is to convert
+
+(A) A very slowly varying input voltage into an output having an
+abrupt waveform
+
+(B) Steady input into a steady output waveform
+
+(C) Abrupt input into a very slowly varying output
+
+ஸ்ரீ A Sawtooth waveform to a square waveform
+
+(E) Answer not known
+
+இதனை மாற்றுவதற்கு ஷிமிட்‌ தூண்டுதல்‌ சுற்று முக்கியமாக
+
+உபயோகிக்கப்படுகிறது. | _
+
+(A) மிதமாக மாறுபடும்‌ உள்ளீட்டை திடீர்‌ என்று - மாறுபடும்‌ வெளியீட்டு
+அலைவடிவமாக மாற்றுவதற்கு
+
+(2) மாறா உள்ளீட்டை மாறா வெளியீடாக மாற்றுவதற்கு அலைவடிவம்‌ ன்‌
+
+(0) திடீர்‌ என்று மாறுபடும்‌ உள்ளீட்டை மிதமாக மாறுபடும்‌ வெளியீடாக
+மாற்றுவதற்கு
+
+(D) ரம்பப்பல்‌.: போன்ற அலைவடிவத்தை ஒரு சதுர அலைவடிவமாக
+மாற்றுவதற்கு (
+
+(3) விடை தெரியவில்லை
+
+RE/GS2AM/2026 44 . B

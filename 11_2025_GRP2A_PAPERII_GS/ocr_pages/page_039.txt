@@ -1,0 +1,50 @@
+88. Consider the following statements :
+
+Assertion [A]. : In relational database a foreign key in one table
+
+is used to reference the primary key in another
+
+table.
+
+Reason [R] : Foreign key is used to ensure the referential
+
+(A)
+
+integrity between table.
+
+[A] is true but [R] is false
+
+JP). Both [A] and [R] are true
+
+(C)
+(D)
+
+Both [A] and [R] are false
+
+[A] is false but [R] is true
+
+(E) Answer not known
+
+பின்வரும்‌ அறிக்கைகளை கவனியுங்கள்‌ :
+
+கூற்று [A] > தொடர்புடைய தரவுத்தளத்தில்‌ ஒரு அட்டவணையில்‌ உள்ள
+
+வெளிநாட்டு விசை மற்றொரு அட்டவணையில்‌ உள்ள
+முதன்மை விசையை குறிப்பிடப்‌ பயன்படுத்தப்படுகிறது.
+
+காரணம்‌ [8] : அட்டவணைகளுக்கு இடையே உள்ள ஒருமைப்பாட்டை
+
+உறுதிப்படுத்த Foreign key பயன்படுத்தப்படுகிறது.
+
+(A) [A] சரி ஆனால்‌ [R] தவறு
+
+(B) [A] மற்றும்‌ [8] இரண்டும்‌ சரி
+
+(C) [A] மற்றும்‌ [8] இரண்டும்‌ தவறு
+
+(D) [A] தவறு ஆனால்‌ [R] சரி
+
+(E) விடை தெரியவில்லை
+RE/GS2AM/2026 ற 89
+
+[Turn over

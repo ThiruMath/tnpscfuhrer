@@ -1,0 +1,11 @@
+{
+  "meta": {
+    "exam": "TNPSC Group 2A",
+    "paper_code": "GRP2A-3",
+    "total_questions": 0,
+    "extracted_at": "2026-04-12T00:37:56.258Z",
+    "source_file": "part3.pdf",
+    "model": "gemini-2.5-flash"
+  },
+  "questions": []
+}

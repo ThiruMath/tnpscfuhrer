@@ -1,0 +1,42 @@
+170. Consider the following statements :
+Assertion [A] : Detergent induced soil pollution depresses the
+growth of soil micro organism.
+
+Reason [8] : The presence of detergents makes the soil acidic.
+
+Choose the appropriate answers from the options :
+
+(A) [A] is false, but [R] is true
+[A] is true but [R] is false .
+
+(C) Both [A] & [R] are true; and [R] is the correct explanation of [A] .
+
+(D) Both [A] and [8] are true, but [R] is not the correct explanation
+of [A] is correct
+
+(0) Answer not known
+
+பின்வரும்‌ அறிக்கைகளை கவனியுங்கள்‌ :
+
+கூற்று [A] > சலவைப்‌ பொருட்களால்‌ உண்டான மண்‌ மாசுபாடு மண்ணின்‌
+
+நுண்ணுயிரிகளின்‌ வளர்ச்சியை குறைக்கிறது.
+காரணம்‌ [8] : சலவைப்‌ பொருட்களின்‌ இருப்பால்‌ மண்‌
+அமிலத்தன்மையாகிறது.
+
+கீழ்க்கண்ட தெரிவுகளில்‌ பொருத்தமான விடையளிக்கவும்‌ :
+
+(A) [A] சரியல்ல ஆனால்‌ [1] சரி
+
+(B) [A] சரி ஆனால்‌ [8] சரியல்ல
+
+(0) [A] மற்றும்‌ [85] ஆகிய இரண்டும்‌ சரி; மற்றும்‌ [R] என்பது [க்கு சரியான
+
+விளக்கம்‌
+
+(D) [A] மற்றும்‌ [R] ஆகிய இரண்டும்‌ சரி, ஆனால்‌ [R] என்பது [&]ிக்கு சரியான
+விளக்கம்‌ அல்ல என்பது சரி
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 144 B

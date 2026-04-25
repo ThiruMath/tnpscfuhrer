@@ -1,0 +1,42 @@
+136. Match the newly created state with the parent state :
+
+(a) Haryana 1. Uttar Pradesh
+(b) Uttarakhand 2. Punjab
+
+(c) Gujarat 8. Madhya Pradesh
+(d) .Chhattisgarh 4. Bombay
+
+ஓ 6) 69 @
+
+பூக 2 1 4. 8
+(1 2 3 4
+© 4 3 2 1
+©) 1 3 2 4
+
+(E) Answer not known
+
+பின்வருவனவற்றைப்‌ பொருத்துக.
+
+புதிய மாநிலங்கள்‌ எந்த மாநிலத்திலிருந்து பிரிந்தது.
+
+(a) ஹரியானா 1. உத்திரப்‌ பிரதேசம்‌
+
+(0) உத்தரகாண்ட்‌ 2 பஞ்சாப்‌
+
+(6) குஜராத்‌ 8. மத்தியப்‌ பிரதேசம்‌
+4
+
+(9) சட்டீஸ்கர்‌ பம்பாய்‌
+
+லு 6) © @
+(A) 2. 1
+201 2
+(0 4 3
+ட 1 3
+(E) விடைதெரியவில்லை
+
+bo ww wo fF
+
+RE/GS2AM/2026 115
+
+[Turn over

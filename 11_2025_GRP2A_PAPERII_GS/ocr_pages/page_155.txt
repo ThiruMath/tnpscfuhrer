@@ -1,0 +1,33 @@
+184. If the word ‘REPRINT’ be written as ‘FGBFXJK’ in coded form, how
+can ‘RENT’ be written following the same coding.
+(A) FBJK (B) FXJK
+Jef FGIK (D) FBXK
+(E) Answer not known
+
+REPRINT என்ற வார்த்தை குறியீட்டு முறையில்‌ ‘FGBFXIK என
+எழுதப்பட்டிருப்பின்‌, அதே முறையில்‌ RENT’ என்ற வார்த்தையின்‌ குறியீட்டை
+
+தேர்ந்தெடு
+(A) FBJK (B) FXJK
+(C) 04% 10) FBXK
+
+(E) விடை தெரியவில்லை
+
+185. If ROAST is coded as PQYUR in a certain language, then how will
+SLOPPY be coded in that language?
+வக்‌ QNMRNA (B) MRNAQN
+(C) NRMNQA (D) RANNMQ
+
+(E) Answer not known
+
+ஒரு குறிப்பிட்ட மொழியில்‌ ROAST யை PQYUR என குறியிடப்பட்டால்‌,
+அந்த மொழியில்‌ SLOPPY யை எப்படி குறியிடப்படும்‌?
+
+(A) QNMRNA (B) MRNAQN
+
+(6) NRMNQA | (D) RANNMQ
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 155
+[Turn over

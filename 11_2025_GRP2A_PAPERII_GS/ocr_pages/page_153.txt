@@ -1,0 +1,50 @@
+181. Five girls are sitting in a row. Rashi is not adjacent to Sulekha or
+Abha. Anuradha is not adjacent to Sulekha. Rashi is adjacent to
+Monika. Monika is at the middle in the row. Then Anuradha is
+adjacent to whom?
+
+Rashi (B) Sulekha
+(C) Abha (D) Monika
+(E) Answer not known
+
+ஐந்து பெண்கள்‌ ஒரு வரிசையில்‌ அமர்ந்திருக்கிறார்கள்‌. ரஷி, சுலேகா அல்லது
+அபாவுக்கு அருகில்‌ இல்லை, அனுராதா சுலேகாவுக்கு அருகில்‌ இல்லை. ரஷி
+மோனிகாவுக்கு அருகில்‌ இருக்கிறார்‌. வரிசையின்‌ நடுவில்‌ மோனிகா இருக்கிறார்‌.
+எனவே அனுராதா யாருக்கு அருகில்‌ இருக்கிறார்‌?
+
+(A) ரஷி (B) சுலேகா
+
+(C) அபா (D) மோனிகா
+
+(E) விடை தெரியவில்லை
+
+182. ‘A+B’ means ‘A is the father of B’
+‘A — B’ means ‘A is the wife of B’
+‘A x B’ means ‘A is the brother of B’
+‘A +B’ means ‘A is the daughter of B’
+
+If P + R + Q, which of the following is true?
+
+(A) P is the brother of Q (B) P is the son of Q
+P is the husband of Q (D) P is the father of Q
+
+(E) Answer not known
+
+‘A+B என்றால்‌ யின்‌ தந்தை A
+
+‘A —B’ என்றால்‌ B யின்‌ மனைவி A
+
+‘Ax B என்றால்‌ 1 யின்‌ சகோதரன்‌ A
+
+‘A +B என்றால்‌ B யின்‌ மகள்‌ A
+
+P+R+Q எனில்‌ பின்வருவனவற்றில்‌ எது சரி?
+
+(A) டூயின்‌ சகோதரன்‌ P (B) Q wert மகன்‌ P
+
+(C) டுயின்‌ கணவன்‌ P (D) Q wer sions P
+
+(BE) விடை தெரியவில்லை i ்‌
+
+RE/GS2AM/2026 153
+[Turn over

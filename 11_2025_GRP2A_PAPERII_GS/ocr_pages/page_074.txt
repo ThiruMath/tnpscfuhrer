@@ -1,0 +1,41 @@
+83. The columns and rows of Matrix I are numbered from 0 to 4 and
+Matrix II from 5 to 9. A letter from these matrices can be
+represented first by its row and then column number. Identify the
+correct set for the word ROAD
+
+Matrix I Matrix II
+0111213514 [5 | 6 718[9
+011013 81%) [sla T|D 112
+BE RIF o|M யிட்‌ A|T|D
+2/0|M[s[R|F||7/T[p|1|Pla
+1318011118] [slplalr|p/1
+aimis{RIFlol (9 011181 T
+(“ம
+(A) 42,9979, 58 (B) 23, 32, 98, 99
+er 11, 13, 67, 69 ற) 04, 20, 55, 78
+
+(E) Answer not known
+
+மேட்ரிக்ஸின்‌ I நெடுவரிசைகள்‌ மற்றும்‌ வரிசைகள்‌ 0 முதல்‌ 4 வரையிலும்‌
+மேட்ரிக்ஸின்‌ 11 5 முதல்‌ 9 வரையிலும்‌ எண்ணப்படுகின்றன. இந்த மேட்ரிக்ஸில்‌
+இருந்து ஒரு வார்த்தை முதலில்‌ அதன்‌ வரிசையையும்‌ பின்னர்‌ நெடுவரிசை
+எண்ணையும்‌ குறிக்கலாம்‌ எனில்‌, ROAD என்ற வார்த்தையின்‌ சரியான
+தொகுப்பைக்‌ கண்டறியவும்‌. ்‌
+
+மேட்ரிக்ஸ்‌ I மேட்ரிக்ஸ்‌ IT
+1011]21814]| [5168171819
+ட. 17 | —
+010 ம181% AltTlp/1|pP
+ட்‌ ட்‌
+1181110௦11 t|/plalt|p|
+\2}0|M/s|R]F ॥1ற[ 1114
+அட்ட 4
+3/R|F/o|M|s Plalt{p[r
+l4[m|s|[r] Flo] [olplilplalr
+| ய்‌ 3
+(A) 42, 32, 79, 58 (B) 23, 32, 98, 99
+(C) 11, 13, 67, 69 (D) 04, 20, 55, 78
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 74 8)

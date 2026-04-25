@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "exam": "TNPSC Group 2A",
+    "paper_code": "GRP2A-1",
+    "total_questions": 14,
+    "extracted_at": "2026-04-11T23:09:56.957Z",
+    "source_file": "part1.pdf",
+    "model": "gemini-2.5-flash"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following statement/s is/are true about Papa Umanath of Tamil Nadu?\n(1) She was the first woman in South India to have been arrested by the British for Salt Sathyagraha.\n(2) She organised a Peasant movement in Thuvariman Village.\n(3) She became part of the Ponmalai Women's Association.\n(4) She joined the Congress Party in 1945.",
+      "options": [
+        "(1) and (2) are true",
+        "(2) and (4) are true",
+        "(1) and (4) are true",
+        "(2) and (3) are true"
+      ],
+      "answer": 3,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 2,
+      "part": "A",
+      "lang": "en",
+      "question": "Which is/are the following facts about Thomas Munroe correct?\n(i) He introduced Ryotwari system.\n(ii) He donated a big vessel to Tirupathi Tirumala temple.\n(iii) He replaced pagoda with rupee.",
+      "options": [
+        "(i) only",
+        "(ii) and (iii) only",
+        "(i) and (ii) only",
+        "(i) and (iii) only"
+      ],
+      "answer": 2,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 3,
+      "part": "A",
+      "lang": "en",
+      "question": "Speaking bitterly when sweet words prevail, is eating the sour for ripe fruits in the couplet, which of the following human values is stressed for human good relations?",
+      "options": [
+        "Not to use harsh words",
+        "Not to speak meaningless words",
+        "Not to speak untruthful words",
+        "Not to use unknowledgeable words"
+      ],
+      "answer": 0,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 4,
+      "part": "A",
+      "lang": "en",
+      "question": "According to Valluvar to whom poverty will be pondered?",
+      "options": [
+        "Righteous",
+        "Thieves",
+        "Baseness",
+        "Evil friends"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 5,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the correct matches from the given matches:\n(1) Chera King - Vanji-Thondi\n(2) Chola King - Madurai-Korkai\n(3) Pandiya king - Uraiyur-Poombugar\n(4) King Ashoka - Samba Inscription",
+      "options": [
+        "(3) and (4) only",
+        "(1) and (4) only",
+        "(2) and (3) only",
+        "(4) and (2) only"
+      ],
+      "answer": 1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 6,
+      "part": "A",
+      "lang": "en",
+      "question": "Match the Sangam books published by U.V.SA. with the years they were published :\n(a) Pathupattu\n(b) Purananuru\n(c) Ingurunuru\n(d) Pathitrupathu\n1. 1903\n2. 1889\n3. 1904\n4. 1894",
+      "options": [
+        "(a)-4, (b)-1, (c)-2, (d)-3",
+        "(a)-2, (b)-4, (c)-1, (d)-3",
+        "(a)-3, (b)-2, (c)-4, (d)-1",
+        "(a)-1, (b)-4, (c)-3, (d)-2"
+      ],
+      "answer": 1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 7,
+      "part": "A",
+      "lang": "en",
+      "question": "People living in BC 6th century were literate. Because,\n(1) The pot found at the Keezhadi has Tamizhi scripts engraved on it.\n(2) Most of the pots found at the Keezhadi were inscribed with letters after the pot had dried\n(3) The black and red coloured pots found in Keezhadi have the image of God engraved on them.\n(4) The letter written on the pot were in the same script.",
+      "options": [
+        "(1) only correct",
+        "(2) only correct",
+        "(3) and (4) are correct",
+        "(1) and (2) are correct"
+      ],
+      "answer": 3,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 8,
+      "part": "A",
+      "lang": "en",
+      "question": "Consider the following statements and find the correct statements.\nDuring Peraringnar Anna's rule, preferences were given to Tamil language. Many steps were taken by him to incorporate Tamil in different fields.\n(i) Removed 'Satyameva Jayate' from the Government Motto and incorporated the Tamil words 'Vaimaye Vellum' in it.\n(ii) The name board 'Tamilaga Arasu Thalaimai Cheiyalakam' was opened in St. George Fort for the first time.\n(iii) Measures were taken to write Thirukkural verses on Tamil Nadu Government buses.",
+      "options": [
+        "(i) only",
+        "(i) and (iii) only",
+        "(i) and (ii) only",
+        "(i), (ii) and (iii)"
+      ],
+      "answer": 3,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 9,
+      "part": "A",
+      "lang": "en",
+      "question": "Consider the following statements :\nAssertion [A] : Lokmanya Tilak preferred to replace Swaraj and redesigned it as Home Rule\nReason [R] : The British Government was quite allergic to the term Swaraj and considered it seditious.",
+      "options": [
+        "[A] is true but [R] is false",
+        "[A] is false but [R] is true",
+        "Both [A] and [R] are true, but [R] is not the correct explanation of [A]",
+        "Both [A] and [R] are true; and [R] is the correct explanation of [A]"
+      ],
+      "answer": 3,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 10,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the correctly matched pairs from the following.\n(1) Dharmalayam - V.V. Subramaniam\n(2) Bharata Mata Sangam - Neelakanta Bramachari\n(3) Bharathi Ashramam - V.O. Chidambaram\n(4) Swadeshi Steam Navigation Company - Subramania Siva",
+      "options": [
+        "(1) and (3) are correct",
+        "(1) and (2) are correct",
+        "(2) and (3) are correct",
+        "(3) and (4) are correct"
+      ],
+      "answer": 1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 11,
+      "part": "A",
+      "lang": "en",
+      "question": "Arrange the following Governors of Madras Presidency in chronological order.\n(1) Lushington\n(2) Thomas Munroe\n(3) Huge Elliot\n(4) George Barlow",
+      "options": [
+        "(4), (3), (1), (2)",
+        "(3), (2), (1), (4)",
+        "(4), (3), (2), (1)",
+        "(1), (2), (3), (4)"
+      ],
+      "answer": 2,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 12,
+      "part": "A",
+      "lang": "en",
+      "question": "The Ramakrishna Mission upholds Vedanta Doctrine\n(i) To protect ancient culture of India.\n(ii) To develop highest spirituality inherent in man.\n(iii) To believe in the truth of Hindu religion only.",
+      "options": [
+        "(i) and (ii) only",
+        "(i) only",
+        "(ii) and (iii) only",
+        "(i) and (iii) only"
+      ],
+      "answer": 0,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    },
+    {
+      "id": 13,
+      "part": "A",
+      "lang": "en",
+      "question": "Arrange the following events with regard to South Indian Rebellion in chronological order.\n(1) Tirunelveli confederacy\n(2) Dindugal confederacy\n(3) Peninsular confederacy\n(4) Regional leagues",
+      "options": [
+        "(3), (1), (2), (4)",
+        "(2), (4), (1), (3)",
+        "(4), (1), (2), (3)",
+        "(4), (3), (2), (1)"
+      ],
+      "answer": -1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "RE/GS2AM/2026"
+    },
+    {
+      "id": 14,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the right matches among the following Settlements/Headquarters\n(1) Santhome - The Portuguese\n(2) Port Nova - The Dutch\n(3) Tranquebar - The English\n(4) Devanampattinam - The French",
+      "options": [
+        "(1) and (3) are correct",
+        "(1) and (2) are correct",
+        "(2) and (3) are correct",
+        "(3) and (4) are correct"
+      ],
+      "answer": 1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A-1"
+    }
+  ]
+}

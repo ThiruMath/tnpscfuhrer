@@ -1,0 +1,41 @@
+198. If first day of a year which is not a leap year is Sunday, then find
+the last day of that year?
+Sunday (B) Monday
+(C) Tuesday (D) Wednesday
+(E) Answer not known ~
+லீப்‌ ஆண்டு அல்லாத ஆண்டின்‌ முதல்‌ நாள்‌ ஞாயிற்றுக்கிழமை என்றால்‌, ஆண்டின்‌
+கடைசி நாளைக்‌ கண்ட 1யவும்‌.
+(A) ஞாயிறு (9) திங்கள்‌
+(0) செவ்வாய்‌ (0) புதன்‌
+(E) விடை தெரியவில்லை
+
+199. On what dates of March 2085 does Sunday fall?
+(A) 7%, 14th, 21st, 28th (B) 1st, 8th, 15th, 22nd
+(C) 8th, 15th, 22nd, ஓல்‌ (D) 2nd, 9th, 16th, 23rd
+(E) Answer not known THIS QUESTION AND ANSWER ARE TO BE PLACED BEFORE
+
+THE EXPERT COMMITTEE FOR FINAL DECISION
+
+மார்ச்‌ 2035-ல்‌ எந்தெந்தத்‌ தேதிகளில்‌ ஞாயிற்றுக்கிழமை aiid’ iat apap cle. நதி மடூனிற்னா
+
+(A) 7, 14, 21, 28 (B) 1, 8, 15, 22 லூர்‌ குழலிர்‌ முள்‌ ஈவச்சப்பட உள்ள்‌.
+
+(C) 8, 15, 22, 29 (D) 2, 9, 16, 23
+
+(E) விடை தெரியவில்லை
+
+200. Choose the set of numbers from the four alternative sets, that is
+similar to the given set : (3, 18, 36).
+(A) . (2, 10, 16) ve (4, 24, 48)
+(C) (6, 42, 48) (D) (12, 72, 96)
+(E) Answer not known
+கீழே கொடுக்கப்பட்ட எண்களிலிருந்து (3, 18, 86) என்ற எண்‌ தொகுப்பிற்கு
+
+இணையான எண்‌ தொகுப்பினைத்‌ தேர்வு செய்க.
+(A) (2, 10, 16) (B) (4, 24, 48)
+(C) (6, 42, 48) (D) (12, 72, 96)
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 163
+[Turn over

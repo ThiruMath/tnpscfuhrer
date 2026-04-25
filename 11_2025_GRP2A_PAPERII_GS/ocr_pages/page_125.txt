@@ -1,0 +1,59 @@
+149. Consider the following statements :
+
+Assertion [A]
+
+Reason [R]
+
+Corrosion reaction in Nickel — Metal hydride
+battery cell, accelerates water loss by changing
+the balance between positive and negative
+electrode.
+
+Corrosion reduces the active material in the
+negative electrode, shifting the capacity
+balance toward positive electrode and reducing
+the material available for hydrogen absorption.
+
+“(ஸு [A] is true but [R] is false
+Both [A] and [R] are true and [R] is the correct explanation
+
+of [A]
+
+(C) [A] is false but [R] is true
+(D) Both [A] and [R] are true, but [R] is not the correct explanation
+
+of [A]
+
+(E) Answer not known
+
+பின்வரும்‌ அறிக்கைகளை கவனியுங்கள்‌ :
+
+கூற்று [A] :
+
+காரணம்‌ [18] :
+
+நிக்கல்‌ - உலோக ஹைடிரைடு மின்கலனில்‌ ஏற்படும்‌ அரிப்பு
+வினை நேர்‌ மற்றும்‌ எதிர்மின்‌ வாய்க்கிடையேயான
+சமநிலையை மாற்றுவதன்‌ மூலம்‌ நீர்‌ இழப்பை அதிகரிக்கச்‌
+செய்கிறது.
+
+அரிப்பு வினை எதிர்மின்‌ வாயிலில்‌ உள்ள
+செயல்படுபொருளை குறைத்து சமநிலைத்திறனை நேர்மின்‌
+வாய்க்கு மாற்றுகிறது. மேலும்‌ ஹைடிரஜன்‌ உட்கவர்தலுக்கான
+பொருளையும்‌ குறைக்கிறது.
+
+(A) [A] சரி ஆனால்‌ [R] தவறு.
+(B) [A] மற்றும்‌ [8] ஆகிய இரண்டும்‌ சரி மற்றும்‌ [8], [A] க்கான சரியான
+
+விளக்கம்‌
+
+(0) [Al sam ஆனால்‌ [R] சரி
+௫) {A] மற்றும்‌ [75] ஆகிய இரண்டும்‌ சரி ஆனால்‌ [R], [A] க்கான சரியான
+விளக்கம்‌ அன்று
+(8) விடை தெரியவில்லை
+
+RE/GS2AM/2026
+
+125 B
+
+[Turn over

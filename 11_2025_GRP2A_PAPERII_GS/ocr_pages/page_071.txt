@@ -1,0 +1,34 @@
+78. Below are depicted the three different positions of a dice. Find the
+number of dots on the face opposite to the face with one dot.
+
+“44” சி]
+(A) 2 . (B) 3
+
+(C) 4 PF 6
+
+(E) Answer not known
+
+கீழே ஒரு பகடையின்‌ மூன்று வெவ்வேறு நிலைகள்‌ சித்தரிக்கப்பட்டுள்ளன.
+ஒரு புள்ளியுடைய முகத்திற்கு எதிரே ள்‌ முகத்தில்‌ உள்ள புள்ளிகளின்‌
+எண்ணிக்கையைக்‌ கண்டறிக
+
+ஙி
+(A) 2 (B) 3
+
+(C) 4 (D) 6
+(1) விடை தெரியவில்லை
+
+79. Which of the following option is wrong?
+AF P(A)>1 ௫) ari ) 51
+(0) 2-0 ஐ) P(A)+P(4)=1
+
+(E) Answer not known
+
+கீழே கொடுக்கப்பட்டவைகளில்‌ எது தவறானது?
+
+(A) P(A)>1 = (B) 0<P(A)<1
+(C) 2-0 (D) P(A)+P(A)=1
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 ன 7
+[Turn over

@@ -1,0 +1,25 @@
+183. In a certain code, ‘il be pee’ means ‘roses are blue’, ‘sik hee’ means
+‘red flowers’ and ‘pee mit hee’ means ‘flowers-are vegetables’. How is
+
+‘red’ written in that code?
+(A) hee .
+ee ல்‌
+(0 be
+(D) none of these
+
+(E) Answer not known
+
+ஒரு குறிப்பிட்ட குறியீட்டில்‌ ‘il be pee’ என்பதன்‌ பொருள்‌ ‘roses are blue’,
+‘sik hee’ என்பது ‘red flowers’ மற்றும்‌ ‘pee mit hee’ என்பது ‘flowers are
+
+vegetables’ என்றால்‌, அந்த குறியீட்டில்‌ ‘red’ எப்படி எழுதப்பட்டுள்ளது ?
+
+(A) hee
+(B) sik
+(C) be
+
+(D) மேலே உள்ளதில்‌ எதுவும்‌ இல்லை
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 154 B

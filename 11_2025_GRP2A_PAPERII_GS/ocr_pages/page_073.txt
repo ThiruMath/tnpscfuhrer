@@ -1,0 +1,39 @@
+81. Pointing to a boy, Veena said ‘He is the only son of my
+grandmother’s only child’. How is the boy related to Veena?
+
+(A) Son ஒக்‌ Brother
+(C) Uncle (D) Father
+(E) Answer not known
+
+ஒரு பையனைக்‌ காட்டி, வீணா, “அவன்‌ என்‌ பாட்டியின்‌ ஒரே குழந்தையின்‌
+ஒரே மகன்‌' எனக்‌ கூறினாள்‌. அந்த பையன்‌ வீணாவுக்கு என்ன உறவு?
+
+(A) மகன்‌ (B) சகோதரன்‌
+
+(0) மாமா (D) தந்‌ைத
+
+(E) விடை தெரியவில்லை
+
+82. Column I Column II
+VIOLET abcpqr
+CLEAR tusqp
+VOWEL peqdr
+Decode the language and choose the correct code for the word
+‘WRITE’
+dsabp (B) arbqd
+(C) srbaq (D) tsrcb
+(E) Answer not known
+நிரல்‌ ] நிரல்‌ 11
+VIOLET abcpqr
+CLEAR tusqp
+VOWEL peqdr
+சாதாரண மொழியில்‌ மாற்றி “WRITH என்ற சொல்லின்‌ சரியான குறியீட்டைத்‌
+தேர்ந்தெடுக்கவும்‌.
+(A) dsabp (B) arbqd
+(C) srbaq (D) tsrcb
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 73
+
+[Turn over

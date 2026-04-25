@@ -1,0 +1,45 @@
+58. Arrange the following states having the population in the age group
+of 60 and above as per 2011 census with ascending order.
+
+(1) West Bengal
+
+(2) Andhra Pradesh
+
+(8) Bihar
+
+(4) Maharashtra
+
+(5) Uttar Pradesh
+
+(6) Tamil Nadu
+
+(A) (1), (4), (6), (8), (2), 6)
+(B) (5), (1), (2), (4), (©), (8)
+(C) (4), 2), 3), (), ©), ©
+
+A (3), (5), (2), (1), 4), (6)
+(E) Answer not known
+
+Diet பதக கண்ட்‌ மாறலங்கள eit ote பட்‌
+(1) மேற்கு வங்கம்‌
+
+(2) ஆந்திர பிரதேஷ்‌
+
+(8) பீகார்‌
+
+(4) மகாராஷ்டிரா
+
+(5) உத்திர பிரதேசம்‌
+
+(6) தமிழ்நாடு
+
+(A) (2), (4), (), (3), (2), (6)
+
+(B) (5), (1), (2), (4), ©), (3)
+
+(C) (4), (2), (3), D), (6), ©
+
+ட (8), 6), (2), (), (4), ©
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 52 B

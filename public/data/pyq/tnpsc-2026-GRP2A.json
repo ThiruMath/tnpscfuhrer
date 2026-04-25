@@ -1,0 +1,1957 @@
+{
+  "meta": {
+    "exam": "TNPSC Group 2A Paper II",
+    "year": 2026,
+    "paper_code": "GRP2A",
+    "total_questions": 121,
+    "disputed": 7,
+    "extracted_at": "2026-04-12T01:39:33.722Z",
+    "source_file": "11_2025_GRP2A_PAPERII_GS_ocr.txt",
+    "note": "Answers set to -1 (OCR cannot read checkmarks). Use extract.mjs with Gemini for accurate answers."
+  },
+  "questions": [
+    {
+      "id": 2,
+      "part": "A",
+      "lang": "en",
+      "question": "Which is/are the following facts about Thomas Munroe correct? @ = He introduced Ryotwari system. (ii) He donated a big vessel to Tirupathi Tirumala temple. (iii) He replaced pagoda with rupee.",
+      "options": [
+        "@ only",
+        "(ii) and (ii) only",
+        "( and (iii) only"
+      ],
+      "answer": -1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 3,
+      "part": "A",
+      "lang": "en",
+      "question": "Speaking bitterly when sweet words prevail, is eating the sour for ripe fruits in the couplet, which of the following human values is stressed for human good relations? : Ve Not to use harsh words",
+      "options": [
+        "Not to speak meaningless words",
+        "Not to speak untruthful words",
+        "Not to use unknowledgeable words",
+        "Righteous ( (B) Thieves"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": true
+    },
+    {
+      "id": 5,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the correct matches from the given matches: (1) (2) (3) (4) Chera King - Chola King Pandiya king King Ashoka (3) and (4) only ன்‌ (1) and (4) only",
+      "options": [
+        ". (2) and (8)-only",
+        "(4) and (2) only",
+        "Pathupattu",
+        "Purananuru"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 7,
+      "part": "A",
+      "lang": "en",
+      "question": "People living in BC 6‘ century were literate. Because, (1) The pot found at the Keezhadi has Tamizhi scripts engraved on it. (2) Most of the pots found at the Keezhadi were inscribed with letters after the pot had dried (8) The black and red coloured pots found in Keezhadi have the image of God engraved on them. (4) The letter written on the pot were in the same script.",
+      "options": [
+        "(1) only correct",
+        "(2) only correct",
+        "(8) and (4) are correct"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 8,
+      "part": "A",
+      "lang": "en",
+      "question": "Consider the following statements and find the correct statements. During Peraringnar Anna’s rule, preferences were given to Tamil language. Many steps were taken by him to incorporate Tamil in different fields. (i) Removed ‘Satyameva Jayate’ from the Government Motto and incorporated the Tamil words ‘Vaimaye Vellum’ in it. (ii) The name board ‘Tamilaga Arasu Thalaimai Cheiyalakam’ was opened in St. George Fort for the first time. (iii) Measures were taken to write Thirukkural verses on Tamil Nadu Government buses.",
+      "options": [
+        "(only",
+        "_ (i) and (ii) only"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 13,
+      "part": "A",
+      "lang": "en",
+      "question": "Arrange the following events with regard to South Indian Rebellion in chronological order. (1) Tirunelveli confederacy (2) Dindugal confederacy (3) Peninsular confederacy (4) Regional leagues",
+      "options": [
+        "(8), (1), 2), (4)",
+        "(2), (4), (1), (8)",
+        "(4), (1), (2); (3)",
+        "(4), (8), 2), )"
+      ],
+      "answer": -1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": true
+    },
+    {
+      "id": 14,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the right matches Headquarters (1) Santhome (2) Port Nova (3) Tranquebar (4) Devanampattinam",
+      "options": [
+        "(1) and (8) are correct",
+        "(3) and (4) are: correct"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 16,
+      "part": "A",
+      "lang": "en",
+      "question": "Identify the correct statements about Dr. Dharmambal Ammaiyar Ninaivu Widow Remarriage Assistance Scheme. ட) There is an income ceiling and educational qualification prescribed to avail benefit under the scheme. (ii) The degree/diploma holders are given 50,000, out of which 30,000 through ECS and 20,000 given as National Savings Certificate. (iii). The degree/diploma holders are also given 8 gram 22 carat gold coin. :",
+      "options": [
+        "(i) only",
+        "@) and (ii) only"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 17,
+      "part": "A",
+      "lang": "en",
+      "question": "Match correctly the Tamilnadu State Public Sector undertakings with their corresponding established year:",
+      "options": [
+        "Tamilnadu Industrial",
+        "Tamilnadu Civil Supplies",
+        "Tamilnadu Industrial",
+        "State Industries Promotion"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 19,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the right matches from the following. (1) SiTN (2) SeMT (3) ARIVU (4) CEET Simplify TN State e-Mission Team Natural Language Processing Chatbot jointly developed by TNeGA and Anna University Centre for Emerging Electronic Technologies JS (1) and (2) only",
+      "options": [
+        "(0) and (8) only",
+        "(2) and (8) only",
+        "(8) and (4) only"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 20,
+      "part": "A",
+      "lang": "en",
+      "question": "Consider the following statements : Assertion [A]. : The word 'Tahsildar' is derived from the Mughal word ‘tahsil’, meaning ‘revenue- generating area’. Reason [R] ; Since the ‘Tahsil’ were renamed as taluks, The Tahsildars were called Taluk Officers.",
+      "options": [
+        "[A] is true but [R] is false",
+        "Both [A] and [R] are true; and [R] is the correct explanation"
+      ],
+      "answer": -1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 21,
+      "part": "A",
+      "lang": "en",
+      "question": "Tamilnadu Government Service Rules are made under the provision of power confered by Indian Constitution provides in",
+      "options": [
+        "Article 360",
+        "Article 365",
+        "Article 311 :"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 22,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following are related to evolution of Tamilnadu Administration is incorrectly paired? (1) 1800 - Political Department இ 1751 - Ecclesiastical Department (3) 1843 - Public Works Department (4) 1809 -— Post of Chief Secretary",
+      "options": [
+        "(1) and (8)",
+        "(2) and (3) ்‌",
+        "(8) and (4)",
+        "(8) wip (4)"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 24,
+      "part": "A",
+      "lang": "en",
+      "question": "Match the following :",
+      "options": [
+        "Vikram Sarabai 1. Andaman Islands — Port Blair",
+        "Satish Dhawan 2. Dehradun",
+        "Indian Institute of 3.  Sriharikota",
+        "3 2 4"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 26,
+      "part": "A",
+      "lang": "en",
+      "question": "Match the following : Article Provision Subject",
+      "options": [
+        "Article 243 A Gram Sabha",
+        "Article 243 I State Finance Commission",
+        "Article 243 K",
+        "Article 248 O"
+      ],
+      "answer": -1,
+      "topic": "Polity",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 27,
+      "part": "A",
+      "lang": "en",
+      "question": "Match the following given below :",
+      "options": [
+        "Dhar Commission",
+        "Mandal Commission ,",
+        "Swaran Singh Committee 3. States — Reorganisation",
+        "Ashok Mehta Committee"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 28,
+      "part": "A",
+      "lang": "en",
+      "question": "Match the following Articles of the Indian Constitution with the Provisions concerned :",
+      "options": [
+        "Article 178 1. Power of Deputy Speaker to perform the",
+        "Article 180 2. The Speaker and Deputy Speaker of the",
+        "Article 182 3. Power of Deputy Chairman to perform",
+        "Article 184 4, The Chairman and Deputy Chairman of"
+      ],
+      "answer": -1,
+      "topic": "Polity",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 29,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following feature for amending Indian Constitution requires ratification by not less than half of the State legislatures? G) Addition of a new principle (ii) Abolition of Fundamental Rights (ii) Amendment is the power of the Supreme Court (iv) Change in the powers of the States _ (A) @ and (iii) only",
+      "options": [
+        "(i) and (ii) only",
+        "(i) and (iii) only"
+      ],
+      "answer": -1,
+      "topic": "Polity",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 31,
+      "part": "A",
+      "lang": "en",
+      "question": "Under Indian Constitution which of the following is/are not a Fundamental Duties?",
+      "options": [
+        "To protect and improve the natural environment.",
+        "To safeguard public property and to abjure violence.",
+        "To promote International peace and security.",
+        "(a) only"
+      ],
+      "answer": -1,
+      "topic": "Polity",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 32,
+      "part": "A",
+      "lang": "en",
+      "question": "Consider the following statements:: Assertion [A] : Religions instruction shall be provided in any educational institution wholly provided by the State funds Reason [R] 4 A State should maintains a neutral and impartial attitude towards all religions.",
+      "options": [
+        "[A] is true but [R] is false ;",
+        "Both [A] and [R] are true; and [R] is the correct explanation",
+        "Both [A] and [8] are true, but [R] is not the correct explanation"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 33,
+      "part": "A",
+      "lang": "en",
+      "question": "Incase, a member of the Tamilnadu Cabinet wants to resign his/her Ministerial post; to whom he/she may submit the resignation letter?",
+      "options": [
+        "To the Chief Minister",
+        "To the Speaker of the Legislative Assembly",
+        "To the President of his/her political party"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 34,
+      "part": "A",
+      "lang": "en",
+      "question": "The ways of losing citizenship under the Constitution of India are (1) When an Indian citizen voluntarily acquires the citizenship of another country. (2) The citizen has been ordinarily resident out of India for seven years continuously. . (3) The citizen has been imprisoned in any country for two years. Select the correct answer using code given below :",
+      "options": [
+        "(1) and (2) only",
+        "(2) and (8) only",
+        "(2) only"
+      ],
+      "answer": -1,
+      "topic": "Polity",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 35,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the right matches. (1): ‘UK —  Bicameral Legislature (2) USSR — Independent Judiciary (3) Australia — Five Year Plan (4) US — Removal of Supreme Court and High Court Judges",
+      "options": [
+        "(1) and (8)",
+        "(2) and (3)",
+        "(4) and (2)"
+      ],
+      "answer": -1,
+      "topic": "Polity",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 36,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the right matches (1) Quasi-Federal — K.C. Wheare (2) Bargaining Federalism - C.R. Dass (8) Co-operative Federalism -— Granville Austin (4) Federation with a — Jawaharlal Nehru Centralising Tendency S&S (1) and (8) only",
+      "options": [
+        "(1) and (2) only",
+        "(2) and (8) only",
+        "(8) and (4) only"
+      ],
+      "answer": -1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 37,
+      "part": "A",
+      "lang": "en",
+      "question": "Arrange the following events in chronological order based on geographical area (1) WAN (2) PAN (3) MAN (4) LAN",
+      "options": [
+        "(2), (2), 8), (4)",
+        "(2), (3), (4),",
+        "(), 2), (8), (4)",
+        "(2), (4), (3), D"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 40,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following statements are true about M.S. Swaminathan? (i) He was the Father of Green Revolution in India (ii) He was an Agronomist and Plant Geneticist (iii) He wrote the book “Cotton” (iv) He was a Pioneer in mutation plant breeding",
+      "options": [
+        "Q), Gi) and (ii) only",
+        "(i) and (iii) only",
+        "Gi) and (iii) only"
+      ],
+      "answer": -1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 42,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the correct answer : (1) Natural Polymer - மதுக்‌. (2) Synthetic Polymer _ PVC (8) Addition Polymerisation | — Loss of H20, HCl, NHs (4) Condensation Polymerisation — Monomer Addition",
+      "options": [
+        "(1) and (4) are correct",
+        "(2) and (8) are correct",
+        "(4) and (8) are correct"
+      ],
+      "answer": -1,
+      "topic": "Aptitude",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 43,
+      "part": "A",
+      "lang": "en",
+      "question": "Match correctly the gaseous fuels with their corresponding calorific values :",
+      "options": [
+        "Oil gas 1. 12,000 to 14,000 K.cal/m3",
+        "Natural gas 2. 4,500 to 5,400 K.cal/m3",
+        "Producer gas ்‌ 8. 27,800 K.cal/m3",
+        "Liquefied petroleum gas 4. 1,300 K.cal/m3"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": true
+    },
+    {
+      "id": 45,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following statement(s) is/are true about the techniques used for nanomaterial synthesis? டு Ordered structural organisation of molecules occur when the system is in equilibrium without dissipating energy which is called static self assembly. (ii)’ Electron beam Lithography uses beam of electromagnetic wave to generate patterns for integrated circuits at nanoscale. (iii) Atomic force microscope tips can be used as a nanoscale write head to deposit chemicals on a surface.",
+      "options": [
+        "(i) and Gi) only வீடு and Gii) only",
+        "(ii) and (iii) only ம) (ii) only"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 47,
+      "part": "A",
+      "lang": "en",
+      "question": "Arrange the following in chronological order : (1) Scheduled Castes Development Corporations (SCDCs). (2) Rajiv Gandhi National Fellowship Scheme for SC students. (3) National Scheduled Castes Finance and Development Corporation. (4) Scheduled Castes Sub-Plan. ்‌",
+      "options": [
+        "(4), (3), 2), D ஸீ (1), (4), (8), 2)",
+        "(8), (2), (4), Q) (D) (4), (8), (1), 2)",
+        "(4), (8), (2), (1) (B) (1), (4), (8), (2)",
+        "(8), (2), (4), () (D) (4), (3), (1), (2)"
+      ],
+      "answer": -1,
+      "topic": "History",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 48,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following are incorrectly paired? (1) (2) 3) (4) SCDC - TRIFED - NSFDC - LAMS - South Asian Countries Development Corporation The Tribal Cooperative Marketing Development Federation of India The National Scheduled Castes Fortune Development Corporation Large Area Multi-Purpose Societies MS (1) and (3) are incorrect",
+      "options": [
+        "(1) and (2) are incorrect",
+        "(2) and (8) are incorrect",
+        "(8) and (4) are incorrect"
+      ],
+      "answer": -1,
+      "topic": "Aptitude",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 49,
+      "part": "A",
+      "lang": "en",
+      "question": "Which is/are the aim(s) of the National Medical Commission Bill, 2019? G) to improve access to quality and affordable medical education and high quality medical professionals in all parts of the country. Gi) to improve access, research and development and adoption of latest scientific advancement. (iii) to establish 75 New medical colleges.",
+      "options": [
+        "@ only",
+        "(ii) and (iii) only",
+        "@ and Gi) only"
+      ],
+      "answer": -1,
+      "topic": "Current Affairs",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 55,
+      "part": "A",
+      "lang": "en",
+      "question": "Consider the following statements : Assertion [A] : Reason [R] Unemployment is the major social problems causing sickness, personal, family and community disorganization. Social provisions for financial aid to those who face economic disabilities alleviates the suffering which unemployed entails. பூக Both [A] and [8] are true, but [R] is not correct explanation of [A]",
+      "options": [
+        "[A] is true; but [R] is false",
+        "Both [A] and [R] are true and [R] is the correct explanation"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 58,
+      "part": "A",
+      "lang": "en",
+      "question": "How many Coastal Districts of Tamilnadu are involved in the TN-SHORE (Neithal Meetchi Iyakkam) Project? VU 14 (B) 12",
+      "options": [
+        "08 (D) 20",
+        "14 (B) 12",
+        "08 (D) 20"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 59,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following schemes is correctly matched? (i) Kalaignar Women’s Rights Grant Scheme - 2023 (ii) Chief Minister’s Thayumanavar Scheme — 2025 (iii) Chief Minister’s Breakfast Scheme — 2021",
+      "options": [
+        "(ii) only",
+        "(i) and (iii) only’"
+      ],
+      "answer": -1,
+      "topic": "Current Affairs",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 61,
+      "part": "A",
+      "lang": "en",
+      "question": "A hurricane’s low pressure centre of relative calm is called the eye (of the storm) and the radius of the eye is (A) (B) (C) (D) (E) 10-25 km 30-65 km 20-55 km : 40-50 km Answer not known",
+      "options": [
+        "10-25 கி.மீ.",
+        "30-65 கி.மீ.",
+        "20-55 கி.மீ."
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": true
+    },
+    {
+      "id": 63,
+      "part": "A",
+      "lang": "en",
+      "question": "The sustainable development has three main aspects namely",
+      "options": [
+        "Social, Environment, Natural Resources Management",
+        "Social, Environment, Pollution Control",
+        "Social, Environment, Technology",
+        "1994 (B) 1975"
+      ],
+      "answer": -1,
+      "topic": "Environment",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 65,
+      "part": "A",
+      "lang": "en",
+      "question": "Match the following:",
+      "options": [
+        "Institute of Veterinary 1. Madhavaram",
+        "Livestock research station 2. Ranipet",
+        "Tamilnadu Veterinary and 3. Nandanam",
+        "Tamilnadu livestock 4. Kattupakkam"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": true
+    },
+    {
+      "id": 66,
+      "part": "A",
+      "lang": "en",
+      "question": "Match Column-I with Column-II and select the correct answer using answer codes : Column-I Column-II",
+      "options": [
+        "Corundum 1. Gasoline",
+        "Vanadium 2. Abrasives",
+        ". Titanium 3. Alloys",
+        "Lead 4. Pigments"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 68,
+      "part": "A",
+      "lang": "en",
+      "question": "Arrange the following industries in chronological order based on their Establishment Years : (1) . TANSI — Tamil Nadu Small Industries Corporation Ltd. இ TANMAG - ° Tamil Nadu Magnesite Limited (3) TAMIN — Tamil Nadu Minerals Limited (4) TANCEM - _ Tamil Nadu Cement Corporation VS), , 8), 2) ௫ (), 2), 3), 4)",
+      "options": [
+        "(1), (8), (4), 2) (D) (1), (2), (4), (3)",
+        "(1), (4), (8), (2) (B) (1), (2), (3), (4)",
+        "(2), (3), (4), (2) (D) (2), (2), (4), (3)"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 69,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the incorrect statement about Tank irrigation in Tamil Nadu : (i) Tamil Nadu has an area of 589 thousand hectares of tank irrigation. (ii) It covers three fourth of the country’s area. (iii) There are about 24,000 tanks in Tamil Nadu.",
+      "options": [
+        "@ only",
+        "(i) and (ii) only",
+        "(ii) and (iii)",
+        "Gi) wig (19)"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 70,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following statements are true about tropical evergreen rain forest biome? (i) The tropical evergreen rain forest biome has the largest plant and animal species Gi) The average annual rainfall is 25 cm to 50 cm (iii) These forests are dense and has tall trees. SS (i) and (iii) are correct",
+      "options": [
+        "(i) and (iii) are correct",
+        "(i) and Gi) are correct",
+        "(i) only is correct"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 72,
+      "part": "A",
+      "lang": "en",
+      "question": "Agrometeorological Advisory Service is related to",
+      "options": [
+        "Weather forecasting (B) Cyclone forecasting",
+        "Crop forecasting ரீ _Crop-weather forecasting"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 73,
+      "part": "A",
+      "lang": "en",
+      "question": "The Union Government unveiled the green credits programme on",
+      "options": [
+        "October, 2024 a October, 2023",
+        "July, 2023 (D) January, 2024"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 74,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following species has been recently (2025) focused on conserving lesser-known endangered species by the Government of Tamilnadu? (i) Lion Tailed Macaque and Madras Hedgehog (ii) Gharial and Hawksbill Sea Turtle (iii) Striped Hyena and hump - Headed Mahseer Fish (iv) Pygmy Hog and Malabar Civet",
+      "options": [
+        "@ only",
+        "(ii) and (iii) only",
+        "@) and (iv) only"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 75,
+      "part": "A",
+      "lang": "en",
+      "question": "What will be there in the place of question mark in the following series? EG 35, IK 99,_?_, QS 323, UW 483",
+      "options": [
+        "NS173 (B) MP 165",
+        "NS 173 (B) MP 165",
+        "MO 195 (D) NQ 195"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 76,
+      "part": "A",
+      "lang": "en",
+      "question": "Find the missing letters. PTVX, AEGI, LPRT, HLNP A® WACE (B) KNQT மு KPQS (D) HKLO (E) Answer not known PTVX, AEGI, LPRT, HLNP",
+      "options": [
+        "WACE (B) KNQT",
+        "KPQS (D) HKLO"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 78,
+      "part": "A",
+      "lang": "en",
+      "question": "Below are depicted the three different positions of a dice. Find the number of dots on the face opposite to the face with one dot. “44” சி]",
+      "options": [
+        "2 . (B) 3",
+        "4 PF 6",
+        "2 (B) 3",
+        "4 (D) 6"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 79,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following option is wrong? AF P(A)>1 ௫) ari ) 51 (0) 2-0 ஐ) P(A)+P(4)=1 (E) Answer not known",
+      "options": [
+        "P(A)>1 = (B) 0<P(A)<1",
+        "2-0 (D) P(A)+P(A)=1"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 80,
+      "part": "A",
+      "lang": "en",
+      "question": "Read the given instructions carefully and answer : A sales representative plans to visit each of six companies M, N, P, Q, R and S exactly once during the course of one day. She is setting up her schedule for the day according to the following conditions (1) She rant visit M before N and R (2) She must visit N before Q (3) The third company she visits must be P. If the sales representative visits Q immediately before R and immediately after S, when must she visit Q?",
+      "options": [
+        "First (B) Second",
+        "Fourth ரீ Fifth"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 81,
+      "part": "A",
+      "lang": "en",
+      "question": "Pointing to a boy, Veena said ‘He is the only son of my grandmother’s only child’. How is the boy related to Veena?",
+      "options": [
+        "Son ஒக்‌ Brother",
+        "Uncle (D) Father"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 82,
+      "part": "A",
+      "lang": "en",
+      "question": "Column I Column II VIOLET abcpqr CLEAR tusqp VOWEL peqdr Decode the language and choose the correct code for the word ‘WRITE’ dsabp (B) arbqd",
+      "options": [
+        "srbaq (D) tsrcb",
+        "dsabp (B) arbqd",
+        "srbaq (D) tsrcb"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 83,
+      "part": "A",
+      "lang": "en",
+      "question": "The columns and rows of Matrix I are numbered from 0 to 4 and Matrix II from 5 to 9. A letter from these matrices can be represented first by its row and then column number. Identify the correct set for the word ROAD Matrix I Matrix II 0111213514 [5 | 6 718[9 011013 81%) [sla T|D 112 BE RIF o|M யிட்‌ A|T|D 2/0|M[s[R|F||7/T[p|1|Pla 1318011118] [slplalr|p/1 aimis{RIFlol (9 011181 T (“ம",
+      "options": [
+        "42,9979, 58 (B) 23, 32, 98, 99",
+        "42, 32, 79, 58 (B) 23, 32, 98, 99",
+        "11, 13, 67, 69 (D) 04, 20, 55, 78"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 84,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the number pair/group which is different from others :",
+      "options": [
+        "17, 187 0) 15, 165",
+        "14,134 (D) 12, 132",
+        "17, 187 (B) 15, 165"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 85,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the number which is different from others in the group. SA 225 (B) 125",
+      "options": [
+        "64 (D) 216",
+        "225 : (B) 125",
+        "64 (D) 216"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 86,
+      "part": "A",
+      "lang": "en",
+      "question": "Choose the odd pair of words. Odometer : Current",
+      "options": [
+        "Barometer : Pressure",
+        "Seismograph : Earthquakes"
+      ],
+      "answer": -1,
+      "topic": "Current Affairs",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 87,
+      "part": "A",
+      "lang": "en",
+      "question": "is to race as slow is to",
+      "options": [
+        "Rapid : Stop",
+        "Gallop : Fast",
+        "Run : Fast"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 88,
+      "part": "A",
+      "lang": "en",
+      "question": "‘Kilogram’ is related to ‘Mass’ in the same way as ‘Newton’ is related to .",
+      "options": [
+        "Energy (B) Volume",
+        "Pressure Force"
+      ],
+      "answer": -1,
+      "topic": "Current Affairs",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 92,
+      "part": "A",
+      "lang": "en",
+      "question": "The total of ages of 4 persons is 86 years. What was their average age, 4 year ago?",
+      "options": [
+        "20.5 yr",
+        "19.5 yr",
+        "20yr"
+      ],
+      "answer": -1,
+      "topic": "Aptitude",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 93,
+      "part": "A",
+      "lang": "en",
+      "question": "If L stands for x, M stands for +, N stands for — and P stands for +, then what 15L 10M 33 P11 N 8= is?",
+      "options": [
+        "150 (B) 170",
+        "150 (B) 170",
+        "145 ~ (@) 120"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 95,
+      "part": "A",
+      "lang": "en",
+      "question": "Find the missing character from among the given alternatives.",
+      "options": [
+        "85:",
+        "50 ,",
+        "85 (B) 65",
+        "50 (D) 60"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 96,
+      "part": "A",
+      "lang": "en",
+      "question": "Out of 5 consonants and 5 vowels, how many strings of 2 consonants and 3 vowels can be formed?",
+      "options": [
+        "1200 (B) 12500.",
+        "1200 (B) 12500",
+        "12000 (D) 25000"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 97,
+      "part": "A",
+      "lang": "en",
+      "question": "What is the value of 100 Cgg— 1000?",
+      "options": [
+        "4550 ‘ (B) 4950",
+        "4955 BY 4949",
+        "4550 (B) 4950",
+        "4955 (D) 4949"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 98,
+      "part": "A",
+      "lang": "en",
+      "question": "Select the option in which the numbers share the same relationship as that shared by the given pair of numbers 80 : 42. VA 12:20 (B) 25:57",
+      "options": [
+        "19:88 (D) 34:31",
+        "12:20 (B) 25:57",
+        "19:88 ட) 34:31"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 103,
+      "part": "B",
+      "lang": "en",
+      "question": "Match the following:",
+      "options": [
+        "Nava Sakthi 1. Dr. P. Varadarajulu Naidu",
+        "Suthandara Sangu 3. Gandhi",
+        "Nava Jeevan 4. Subramaniam",
+        "1 2 3 4"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 105,
+      "part": "B",
+      "lang": "en",
+      "question": "Choose the special features of Kalithogai. (0 The word “Madaleral” has been spoken. (ii) No parables are included. (iti) The love of wicked 15 present.",
+      "options": [
+        "(i) only",
+        "(ii) and (iii) only"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 109,
+      "part": "B",
+      "lang": "en",
+      "question": "Consider the following statements : Assertion [A]: Anna introduced their economic policy name as. scientific socialism Reason [R] : He mentioned that try to create all are equal is socialism",
+      "options": [
+        "[A] is true but [R] is false",
+        "[A] is false but [R] is true",
+        "Both [A] and [R] are false"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 111,
+      "part": "B",
+      "lang": "en",
+      "question": "Non-tax revenue Government Sale of goods IV. States own tax revenue",
+      "options": [
+        "Jand II only",
+        "Iand III only",
+        "II and IV only"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 114,
+      "part": "B",
+      "lang": "en",
+      "question": "Match correctly the Tamil Palayakkarars with the British Generals",
+      "options": [
+        "Pulithevan",
+        "Kattabomman",
+        "Oomai Thurai",
+        "Dheeran Chinnamalai"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 116,
+      "part": "B",
+      "lang": "en",
+      "question": "Choose the wrong matches type (1) (2) (3) (4) Fort David Castle Geldria Tarrangambadi Fort Fort Louis (1) and (4) oft (2) and (3)",
+      "options": [
+        "(3) and (4)",
+        "(1) and (2)"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 117,
+      "part": "B",
+      "lang": "en",
+      "question": "The aim of Cradle Baby Scheme by Tamilnadu Government is",
+      "options": [
+        "To eradicate the evil of foeticide",
+        "To eradicate female adoption",
+        "To eradicate the evil of male infanticide"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 121,
+      "part": "B",
+      "lang": "en",
+      "question": "The office of the District Collector in India was created by WS Warren Hasting",
+      "options": [
+        "Cornwallis",
+        "Robert Clive",
+        "Dalhousie"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 125,
+      "part": "B",
+      "lang": "en",
+      "question": "“Makkaludan Muthalvar” (Chief Minister with the people) is the scheme by. the Government of Tamilnadu to ensure",
+      "options": [
+        "Social Assistance",
+        "Self Employment",
+        "Bey transport"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 127,
+      "part": "B",
+      "lang": "en",
+      "question": "Which section of the Tamilnadu Panchayats Act, 1994 deals with the discretionary powers of Village Panchayats for certain matters? A 111",
+      "options": [
+        "145",
+        "152",
+        "189",
+        "111"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 130,
+      "part": "B",
+      "lang": "en",
+      "question": "Which of the following statements are true about the appointment of Chief Minister of a State? (i) The Chief Minister shall be appointed by the President of India (ii) A person who is not a member of a State Legislature may be appointed as Chief Minister (iii) Other Ministers shall be appointed by the Governor on the advice of Chief Minister",
+      "options": [
+        "(i) and (ij) only",
+        "G) and (iii) only"
+      ],
+      "answer": -1,
+      "topic": "Polity",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 136,
+      "part": "B",
+      "lang": "en",
+      "question": "Match the newly created state with the parent state :",
+      "options": [
+        "Haryana 1. Uttar Pradesh",
+        "Uttarakhand 2. Punjab",
+        "Gujarat 8. Madhya Pradesh",
+        ".Chhattisgarh 4. Bombay"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 138,
+      "part": "B",
+      "lang": "en",
+      "question": "Which one of the following is not a part of Federal Legislature according to Government of India Act 1935?",
+      "options": [
+        "The King, represented by the Governor General",
+        "The Council of State",
+        "The Legislative Assembly"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 139,
+      "part": "B",
+      "lang": "en",
+      "question": "The Preamble of the Indian Constitution under 4274 Constitutional Amendment Act, 1976 substituted the phrase into",
+      "options": [
+        "Unity of the Nation",
+        "Unity and Integrity of the Nation",
+        "and (B)",
+        "Armed rebellion into internal disturbance"
+      ],
+      "answer": -1,
+      "topic": "Polity",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 140,
+      "part": "B",
+      "lang": "en",
+      "question": "Match correctly the devices and its properties :",
+      "options": [
+        "Flat panel display readers",
+        "E-ink readers",
+        "Dot-matrix printer",
+        "Inkjet printer"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 141,
+      "part": "B",
+      "lang": "en",
+      "question": "Match correctly the E-mail header fields to message transport :",
+      "options": [
+        "To:",
+        "Cc:",
+        "Bec:",
+        "From:"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 144,
+      "part": "B",
+      "lang": "en",
+      "question": "Infectious Bovine Rhinotracheitis (IBR) disease is caused by in cattle.",
+      "options": [
+        "bacteria AS virus",
+        "fungus (D) .protozoa"
+      ],
+      "answer": -1,
+      "topic": "Science",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 145,
+      "part": "B",
+      "lang": "en",
+      "question": "Choose the correct steps in Enzyme Immobilization. (1) Copolymerisation and Encapsulation , (2) Entrapment (3) Adsorption (4) Covalent bonding WS (3), (4), 2),",
+      "options": [
+        "(1), 2), (3), 4)",
+        "(2), (3), (4),",
+        "(4), (), (2), (3)",
+        "(8), (4), (2), @)"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 146,
+      "part": "B",
+      "lang": "en",
+      "question": "Consider the following statements : Assertion [A] : Bacillus thuringiensis formed crystals containing toxic insecticidal protein. But it is not killed by that toxic protein Reason [R] : Actually the Bt. toxin protein exist as inactive protoxins.",
+      "options": [
+        "[A] is true [R] is false",
+        "Both [A] and [R] are true but [R] is not the correct explanation",
+        "[A] is false [R] is correct"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 148,
+      "part": "B",
+      "lang": "en",
+      "question": "Match the following Scientists from Tamilnadu with their respective fields.",
+      "options": [
+        "Sir Chandra Sekara 1. Function of ribosomes",
+        "Venki Ramakrishnan 2. Light scattering",
+        "Mylswamy Annadurai 3. Green Revolution in India",
+        "M.S. Swaminathan 4. Chandrayan —I"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 149,
+      "part": "B",
+      "lang": "en",
+      "question": "Consider the following statements : Assertion [A] Reason [R] Corrosion reaction in Nickel — Metal hydride battery cell, accelerates water loss by changing the balance between positive and negative electrode. Corrosion reduces the active material in the negative electrode, shifting the capacity balance toward positive electrode and reducing the material available for hydrogen absorption. “(ஸு [A] is true but [R] is false Both [A] and [R] are true and [R] is the correct explanation of [A]",
+      "options": [
+        "[A] is false but [R] is true",
+        "Both [A] and [R] are true, but [R] is not the correct explanation"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 154,
+      "part": "B",
+      "lang": "en",
+      "question": "Which of the following programme was launched in 2014, to improve quality of life of children? wo a Bal Swasthya Karyakram",
+      "options": [
+        "Rashtriya Kishor Swasthya Karyakram",
+        "Janani Shishu Suraksha Karyakram",
+        "Janani Suraksha Yojana."
+      ],
+      "answer": -1,
+      "topic": "Current Affairs",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 157,
+      "part": "B",
+      "lang": "en",
+      "question": "D’Ering Memorial Wildlife Sanctuary is located in which state?",
+      "options": [
+        "Tamil Nadu",
+        "Shillong",
+        "Manipur"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 159,
+      "part": "B",
+      "lang": "en",
+      "question": "Which are the objectives of a Kalaignar Kaivinai Thittam? (i) To provide financial assistance to all artisans in the state. (ii) To provide Skill Development and Entrepreneurship Development Training for starting new Industrial units and expanding existing units. (iii) To provide 50% subsidy upto a maximum of Rs. 50,000.",
+      "options": [
+        "@ only",
+        "(@ and (iii) only"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 160,
+      "part": "B",
+      "lang": "en",
+      "question": "As per 2011 census, arrange the district rank-wise based on their Literacy rate. (1) The Nilgiris (2) Chennai (3) Thoothukudi (4) Kanyakumari ~ A) @Q), 3), (4), M",
+      "options": [
+        ", (2), (1), (8), (4)",
+        "(8), 2), (1), (4)"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 161,
+      "part": "B",
+      "lang": "en",
+      "question": "Samagra Shiksha subsumes three erstwhile schemes viz",
+      "options": [
+        "Sarva Shiksha Abhiyan, School Education, Teacher Education",
+        "Teacher Education, Higher Education, School Education",
+        "Higher Education, Sarva Shiksha Abhiyan, Teacher Education"
+      ],
+      "answer": -1,
+      "topic": "Current Affairs",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 162,
+      "part": "B",
+      "lang": "en",
+      "question": "Match the correct answer :",
+      "options": [
+        "National Food Security 1. Augmenting Mechanisation",
+        "Rainfed Area Development 2. Improving rainfed farming",
+        "National Agricultural 3. Increase production .of rice",
+        "Drought Prone Area 4. | Promotion of horticulture in"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 164,
+      "part": "B",
+      "lang": "en",
+      "question": "Which of the following is incorrectly paired? (1) NEET - National Eligibility Cum Entrance Test (2) NEP: — National Education Policy இ NCF — National Council Framework (4) NCTE -— National Commission for Teacher Education",
+      "options": [
+        "(1) and (8) are incorrect",
+        "(1) and (2) are incorrect",
+        "(2) and (8) are incorrect"
+      ],
+      "answer": -1,
+      "topic": "Current Affairs",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 165,
+      "part": "B",
+      "lang": "en",
+      "question": "Which is/are the features of Tamilnadu State Budget 2025-26? (i) 1% less stamp duty if property and other assets is registered in the name of women for properties worth upto Rs.10 lakh. (ii) Rs. 2,000 stipend for children who lost both parents to continue their education. (iii) Earned leave surrender system will be restored to encash by surrending upto 30 days of earned leave. (A). (i) only",
+      "options": [
+        "(ii) and (ii) only",
+        "@) and (ii) only"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 166,
+      "part": "B",
+      "lang": "en",
+      "question": "Arrange the following gases in ascending order of their Global Warming Potential (GWP) @ CO, (01) CH, (iii) SF, (iv) CFC -11 (v) 110",
+      "options": [
+        "(@), Gi), Gai), (v), Gv)",
+        "@, Gi), (iii), (v), Civ)",
+        "Gi), Gi), (v), Cv), (ii)",
+        "(i), Gi), (iv), (0"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 167,
+      "part": "B",
+      "lang": "en",
+      "question": "Match the type of hazards with the relevant example. A B",
+      "options": [
+        "Natural Hazard 1. Oil spill",
+        "Social Hazard 2. Bird Flu",
+        "Biological Hazard 3. War",
+        "1 4 8 2"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 168,
+      "part": "B",
+      "lang": "en",
+      "question": "Consider the following statements : (1) The definition of ‘Critical Wildlife Habitat’ is incorporated in the Wildlife Protection Act, 1972. (2) India is the first country in the world to have made provisions for the Protection and Conservation of the environment in its constitution. (8) No alteration of boundaries of a Sanctuary/National park shall be made except on the recommendation of the National Tiger Conservation Authority. Which of the statement(s) given above is/are correct?",
+      "options": [
+        "(1), (2) and (8) only",
+        "(2) and (8) only"
+      ],
+      "answer": -1,
+      "topic": "Polity",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 169,
+      "part": "B",
+      "lang": "en",
+      "question": "Which one of the following is an incorrect match?",
+      "options": [
+        "Evolutionary time Hypothesis - Fisher (1960)",
+        "Climate Stability Hypothesis — Schmidt-Nielsen (1964)",
+        "Productive Hypothesis - Connell and Orias (1964)",
+        "Spatial heterogeneity Hypothesis — Simpson (1964)"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 170,
+      "part": "B",
+      "lang": "en",
+      "question": "Consider the following statements : Assertion [A] : Detergent induced soil pollution depresses the growth of soil micro organism. Reason [8] : The presence of detergents makes the soil acidic. Choose the appropriate answers from the options :",
+      "options": [
+        "[A] is false, but [R] is true",
+        "Both [A] & [R] are true; and [R] is the correct explanation of [A] .",
+        "Both [A] and [8] are true, but [R] is not the correct explanation"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 173,
+      "part": "B",
+      "lang": "en",
+      "question": "Choose the right pair of Sheep variety and its District : Sheep Variety Districts (1) Mecheri — Salem (2) Madras Red — Tiruvallur (3) Ramnad white — Pudhukottai (4) Kilakarisal — Kanchipuram",
+      "options": [
+        "(1) and (8) are correct (B) (1) and (2) are correct",
+        "(2) and (8) are correct (D) -(8) and (4) are correct"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": true
+    },
+    {
+      "id": 174,
+      "part": "B",
+      "lang": "en",
+      "question": "Match the following soils with their characteristics : A B Clayey",
+      "options": [
+        "Saline soil 1.",
+        "Black soil 2. Sandy",
+        "Alluvial soil 3. Infertile",
+        "Red soil 4. Porous and loamy"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 176,
+      "part": "B",
+      "lang": "en",
+      "question": "Match correctly the India’s rank on Climate Change Performance Index (CCPI) 2026 based on the main four categories of evaluation : Categories",
+      "options": [
+        "Greenhouse gas emissions",
+        "Renewable energy",
+        "Energy use",
+        "Climate policy"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 177,
+      "part": "B",
+      "lang": "en",
+      "question": "Study the following figure carefully and answer the given questions. “a Singers Which region represents Dancers who are neither Singers nor actors?",
+      "options": [
+        "2 — (B) 3",
+        "2 (B) 3",
+        "6 (D) 7"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 178,
+      "part": "B",
+      "lang": "en",
+      "question": "One morning at 7 O’clock Raju started walking with his friend back towards the Sun. Then he turned towards left, walked straight and then turned towards right and walked straight. Then he again turned towards left. Now in which direction is he facing?",
+      "options": [
+        "West : வளி South",
+        "North | (D) East"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 179,
+      "part": "B",
+      "lang": "en",
+      "question": "Jayashree was facing North-West direction. If she was playing - carrom with Hemalatha in the standard seating pattern, in which direction was Hemalatha facing?",
+      "options": [
+        "North-West (B) North-East",
+        "South-West MP South-East"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 180,
+      "part": "B",
+      "lang": "en",
+      "question": "A, B, C, D, E, F and G are members of a family consisting of four adults and three children, two of whom F and G are girls. A and D are brothers and A is a doctor. E is an engineer married to one of the brothers and has two children. B is married to D and G is their child. Who is C?",
+      "options": [
+        "G’s father",
+        "F's father"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 183,
+      "part": "B",
+      "lang": "en",
+      "question": "In a certain code, ‘il be pee’ means ‘roses are blue’, ‘sik hee’ means ‘red flowers’ and ‘pee mit hee’ means ‘flowers-are vegetables’. How is ‘red’ written in that code?",
+      "options": [
+        "hee .",
+        "none of these",
+        "hee",
+        "sik"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 184,
+      "part": "B",
+      "lang": "en",
+      "question": "If the word ‘REPRINT’ be written as ‘FGBFXJK’ in coded form, how can ‘RENT’ be written following the same coding.",
+      "options": [
+        "FBJK (B) FXJK",
+        "FBJK (B) FXJK",
+        "04% 10) FBXK"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 185,
+      "part": "B",
+      "lang": "en",
+      "question": "If ROAST is coded as PQYUR in a certain language, then how will SLOPPY be coded in that language? வக்‌ QNMRNA (B) MRNAQN",
+      "options": [
+        "NRMNQA (D) RANNMQ",
+        "QNMRNA (B) MRNAQN"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 186,
+      "part": "B",
+      "lang": "en",
+      "question": "Choose the best alternative : 18: 30:: 36: ? (A). 54 (B) 62 (0) 64 AI 66 (E) Answer not known 18:80::86:?",
+      "options": [
+        "54 (B) 62",
+        "64 ்‌ (D) 66"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 187,
+      "part": "B",
+      "lang": "en",
+      "question": "Choose one out of the four given alternatives, which mentions the quality to the three given words . Earth : Mercury : Saturn",
+      "options": [
+        "Mars (B) Moon",
+        "Jupiter ண Planets"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 189,
+      "part": "B",
+      "lang": "en",
+      "question": "An address is given below which has been reproduced against the four alternatives; Of them, three have some mistake or the other, while one is exactly the same, select the option that is exactly the same as the given address. : Mr. B. JAYAPRAKASH, M.Sc., M.Sc., M.A., No: 14/33, Station Road, Annanur, Chennai — 600077.",
+      "options": [
+        "Mr. B. JAYAKUMAR, M.Sc., M.Sc., M.A.,",
+        "Mr. B. JAYAPRAKASH, M.Sc.,",
+        "Mr. B. JAYAPRAKASH, M.Sc., M.Sc., M.A.,",
+        "Mr. B. JAYAKUMAR, M.Sc., M.Sc., M.A.,"
+      ],
+      "answer": -1,
+      "topic": "Tamil Literature",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 190,
+      "part": "B",
+      "lang": "en",
+      "question": "Statement (A) : Vijay Adithiya is a good reader",
+      "options": [
+        ": Readers are intelligent",
+        "All intelligent are Readers",
+        "Both (A) and (B)",
+        "None of the above"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 191,
+      "part": "B",
+      "lang": "en",
+      "question": "Rearrange these letters \"UEAGTFI\" to form a meaningful word and select from the options the word which is opposite to the formed word.",
+      "options": [
+        "Weariness AS Brisk",
+        "Tension (D) Sweating",
+        "Weariness _ (B) Brisk",
+        "Tension (D) Sweating"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 192,
+      "part": "B",
+      "lang": "en",
+      "question": "Choose the correct answer from the options given below: (0.08)? ~ (0.02)? 0.08 — 0.02 .",
+      "options": [
+        "0.06 SS 0.1",
+        "0.16 (D) 0.04.",
+        "0.06 (B) 0.1",
+        "0.16 (D) 0.04"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 194,
+      "part": "B",
+      "lang": "en",
+      "question": "Choose the right option that is wrong argument : Statement : Should all the universities in India have the same syllabus? : ArgumentsI : Yes, because immigration of the students from one university to another will not create problem. II: No, because the universities will lose their distinctive character.",
+      "options": [
+        "Both I and II are strong Neither I nor 11 is strong",
+        "Only Tis strong (D) Only 11 is strong"
+      ],
+      "answer": -1,
+      "topic": "Geography",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 195,
+      "part": "B",
+      "lang": "en",
+      "question": "Find the missing number.",
+      "options": [
+        "4",
+        "12",
+        "4",
+        "12"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 196,
+      "part": "B",
+      "lang": "en",
+      "question": "In a town, 60% people watches the news on television, 40% read a newspaper and 30% read a newspaper and watched the news on television also. What percent of the people neither watched the news on television nor read a newspaper? 30 (B) 40",
+      "options": [
+        "60 (D) 70",
+        "30 (B) 40",
+        "60 (D) 70"
+      ],
+      "answer": -1,
+      "topic": "Current Affairs",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 197,
+      "part": "B",
+      "lang": "en",
+      "question": "Data on 450 candidates, who took an examinations in Telugu, English and Hindi are given below: Passed in all subjects 167, Failed in all subjects 60, Failed in Telugu 175, Failed in English 199, Failed in Hindi 191 Passed in Telugu only 62, Passed in English only 48, Passed in Hindi only 52. How many failed in one subject only? (A), 152 (B) 144 61 (D) 56 (E) Answer not known",
+      "options": [
+        "152 (B) 144",
+        "61 (D) 56"
+      ],
+      "answer": -1,
+      "topic": "English",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 198,
+      "part": "B",
+      "lang": "en",
+      "question": "If + means -, - means +, x means + and + means x, find the value of 12+6+3-8x2 —2 (B) 2 / (0 4 (D) 8 (E) Answer not known",
+      "options": [
+        "-2 (B) 2",
+        "4 ட 8"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    },
+    {
+      "id": 199,
+      "part": "B",
+      "lang": "en",
+      "question": "On what dates of March 2085 does Sunday fall?",
+      "options": [
+        "7%, 14th, 21st, 28th (B) 1st, 8th, 15th, 22nd",
+        "8th, 15th, 22nd, ஓல்‌ (D) 2nd, 9th, 16th, 23rd",
+        "8, 15, 22, 29 (D) 2, 9, 16, 23"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": true
+    },
+    {
+      "id": 200,
+      "part": "B",
+      "lang": "en",
+      "question": "Choose the set of numbers from the four alternative sets, that is similar to the given set : (3, 18, 36).",
+      "options": [
+        ". (2, 10, 16) ve (4, 24, 48)",
+        "(6, 42, 48) (D) (12, 72, 96)",
+        "(2, 10, 16) (B) (4, 24, 48)",
+        "(6, 42, 48) (D) (12, 72, 96)"
+      ],
+      "answer": -1,
+      "topic": "Reasoning",
+      "year": 2026,
+      "paper_code": "GRP2A",
+      "disputed": false
+    }
+  ]
+}

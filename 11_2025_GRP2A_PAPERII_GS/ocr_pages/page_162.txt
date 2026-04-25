@@ -1,0 +1,41 @@
+196. In a town, 60% people watches the news on television, 40% read a
+newspaper and 30% read a newspaper and watched the news on
+television also. What percent of the people neither watched the news
+on television nor read a newspaper?
+
+30 (B) 40
+(C) 60 (D) 70
+(E) Answer not known
+ஒரு ஊரில்‌, 60% பேர்‌ தொலைக்காட்சியில்‌ செய்திகளைப்‌ பார்க்கிறார்கள்‌,
+40% பேர்‌ செய்தித்தாள்களைப்‌ படிக்கிறார்கள்‌, 30% பேர்‌ செய்தித்தாள்களையும்‌
+படிக்கிறார்கள்‌, தொலைக்காட்சியிலும்‌ செய்திகளைப்‌ பார்க்கிறார்கள்‌. எத்தனை
+சதவீதம்‌ பேர்‌ தொலைக்காட்சியிலும்‌ செய்திகளைப்‌ பார்க்கவில்லை
+செய்தித்தாளிலும்‌ படிக்கவில்லை?
+(A) 30 (B) 40
+(C) 60 (D) 70
+(E) விடை தெரியவில்லை
+
+197. Data on 450 candidates, who took an examinations in Telugu,
+English and Hindi are given below:
+Passed in all subjects 167, Failed in all subjects 60, Failed in Telugu
+175, Failed in English 199, Failed in Hindi 191 Passed in Telugu
+only 62, Passed in English only 48, Passed in Hindi only 52.
+
+How many failed in one subject only?
+(A), 152 (B) 144
+
+61 (D) 56
+(E) Answer not known
+தெலுங்கு, ஆங்கிலம்‌, இந்தி ஆகிய மூன்று தேர்வுகளையும்‌ “ எழுதிய
+450 தேர்வர்களின்‌ புள்ளி விவரங்கள்‌ பின்வருமாறு.
+அனைத்துப்‌ பாடங்களிலும்‌ தேர்ச்சி பெற்றோர்‌ - 167, மூன்று பாடங்களில்‌
+தோல்வியுற்றோர்‌ - 60, தெலுங்கில்‌ மட்டும்‌ தேர்ச்சி பெறாதோர்‌ - 175,
+ஆங்கிலத்தில்‌ தேர்ச்சி பெறாதோர்‌ - 199, இந்தியில்‌ தேர்ச்சி பெறாதோர்‌ - 191,
+தெலுங்கில்‌ மட்டும்‌ தேர்ச்சி பெற்றோர்‌ - 62, ஆங்கிலத்தில்‌ மட்டும்‌ தேர்ச்சி
+பெற்றோர்‌ - 48, இந்தியில்‌ மட்டும்‌ தேர்ச்சி பெற்றோர்‌ 52.
+ஒரு பாடத்தில்‌ மட்டும்‌ தோல்வியடைந்தவர்கள்‌ எத்தனை பேர்‌?
+(A) 152 (B) 144
+(C) 61 (D) 56
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 162 B

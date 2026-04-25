@@ -1,0 +1,935 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+let quizMeta = { exam: "TNPSC Group 2A", year: 2026, paper_code: "GRP2A", total_questions: 0 };
+let questions: any[] = [];
+
+try {
+  const rawData = await import('../../public/data/pyq/tnpsc-2026-GRP2A.json', { assert: { type: 'json' } });
+  const data = rawData.default as { meta: any; questions: any[] };
+  quizMeta = data.meta;
+  questions = data.questions;
+} catch (e) {}
+
+const topicCounts: Record<string, number> = {};
+for (const q of questions) {
+  topicCounts[q.topic] = (topicCounts[q.topic] || 0) + 1;
+}
+---
+
+<Layout title="TNPSC PYQ Quiz 2026 | TNPSC Fuhrer" description="Practice TNPSC Group 2A 2026 questions with instant feedback." active="PYQ Quiz">
+
+  <script define:vars={{ questions, quizMeta }}>
+    window.__QUIZ_DATA__ = questions;
+    window.__QUIZ_META__ = quizMeta;
+  </script>
+
+  <div class="pyq-wrap">
+
+    <!-- ── START SCREEN ──────────────────────────────────────────────────── -->
+    <div id="start-screen" class="screen active">
+      <div class="start-card">
+        <div class="start-icon">📋</div>
+        <h1 class="start-title">TNPSC Group 2A · 2026</h1>
+        <p class="start-sub">Paper II — General Studies &amp; General Intelligence</p>
+
+        <div class="start-stats">
+          <div class="sstat"><span class="sval" id="s-total">{questions.length}</span><span class="slab">Questions</span></div>
+          <div class="sstat"><span class="sval">150</span><span class="slab">Minutes</span></div>
+          <div class="sstat"><span class="sval">2026</span><span class="slab">Year</span></div>
+        </div>
+
+        <!-- Topic chips -->
+        <div class="topic-section">
+          <p class="topic-label">Topics covered</p>
+          <div class="topic-chips">
+            {Object.entries(topicCounts).sort((a,b)=>b[1]-a[1]).map(([t,c])=>(
+              <span class="tchip">{t} <strong>{c}</strong></span>
+            ))}
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+          <div class="fgroup">
+            <label for="filter-topic">Topic</label>
+            <select id="filter-topic">
+              <option value="all">All Topics</option>
+              {Object.keys(topicCounts).sort().map(t=>(<option value={t}>{t}</option>))}
+            </select>
+          </div>
+          <div class="fgroup">
+            <label for="filter-part">Part</label>
+            <select id="filter-part">
+              <option value="all">Both Parts</option>
+              <option value="A">Part A (Q 1–100)</option>
+              <option value="B">Part B (Q 101–200)</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="start-btn" class="start-btn">Start Quiz →</button>
+        <p class="disclaimer">⚠️ Answers extracted via OCR — some may be unavailable. For practice only.</p>
+      </div>
+    </div>
+
+    <!-- ── QUIZ SCREEN ───────────────────────────────────────────────────── -->
+    <div id="quiz-screen" class="screen">
+
+      <!-- Top bar -->
+      <div class="quiz-topbar">
+        <span class="quiz-title" id="quiz-title">TNPSC Group 2A 2026</span>
+        <div class="topbar-right">
+          <span class="score-badge wrong" id="badge-wrong"><span class="bicon">✕</span><span id="count-wrong">0</span></span>
+          <span class="score-badge correct" id="badge-correct"><span class="bicon">✓</span><span id="count-correct">0</span></span>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-track">
+        <div class="progress-dashes" id="progress-dashes"></div>
+        <div class="progress-label" id="progress-label">1 / 0</div>
+      </div>
+
+      <!-- Question card -->
+      <div class="question-card">
+        <div class="q-meta-row">
+          <span class="q-part" id="q-part">Part A</span>
+          <span class="q-topic" id="q-topic">History</span>
+          <span class="q-timer" id="q-timer">150:00</span>
+        </div>
+
+        <h2 class="q-text" id="q-text">Loading…</h2>
+
+        <div class="options-list" id="options-list"></div>
+      </div>
+
+      <!-- Bottom nav -->
+      <div class="quiz-nav">
+        <button class="nav-back" id="prev-btn">Back</button>
+        <div class="nav-center">
+          <button class="skip-btn" id="mark-btn">Skip →</button>
+        </div>
+        <button class="nav-next" id="next-btn">Next</button>
+      </div>
+
+    </div>
+
+    <!-- ── RESULTS SCREEN ────────────────────────────────────────────────── -->
+    <div id="results-screen" class="screen">
+      <div class="results-card">
+        <div class="score-circle-wrap">
+          <svg class="score-svg" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="#e5e7eb" stroke-width="10"/>
+            <circle id="score-arc" cx="60" cy="60" r="52" fill="none" stroke="#1a73e8" stroke-width="10"
+              stroke-dasharray="327" stroke-dashoffset="327" stroke-linecap="round"
+              transform="rotate(-90 60 60)"/>
+          </svg>
+          <div class="score-inner-text">
+            <span class="score-big" id="r-pct">0%</span>
+          </div>
+        </div>
+
+        <h2 class="r-title">Quiz Complete!</h2>
+        <p class="r-sub" id="r-sub">Here's your result</p>
+
+        <div class="r-stats">
+          <div class="rstat correct"><span class="rval" id="r-correct">0</span><span class="rlab">Correct</span></div>
+          <div class="rstat wrong"><span class="rval" id="r-wrong">0</span><span class="rlab">Wrong</span></div>
+          <div class="rstat skipped"><span class="rval" id="r-skipped">0</span><span class="rlab">Skipped</span></div>
+          <div class="rstat disputed"><span class="rval" id="r-disputed">0</span><span class="rlab">No Key</span></div>
+        </div>
+
+        <!-- Review tabs -->
+        <div class="rtabs">
+          <button class="rtab active" data-filter="all">All</button>
+          <button class="rtab" data-filter="wrong">Wrong</button>
+          <button class="rtab" data-filter="correct">Correct</button>
+          <button class="rtab" data-filter="skipped">Skipped</button>
+        </div>
+
+        <div class="review-list" id="review-list"></div>
+
+        <div class="r-actions">
+          <button id="retake-btn" class="nav-next">Retake</button>
+          <button id="home-btn" class="nav-back">Home</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<script>
+  // ─── State ──────────────────────────────────────────────────────────────────
+  let allQ: any[] = (window as any).__QUIZ_DATA__ || [];
+  let qs: any[] = [];
+  let selected: Record<number, number> = {};
+  let answered: Record<number, boolean> = {}; // whether we've locked in
+  let cur = 0;
+  let correctCount = 0, wrongCount = 0;
+  let timerSecs = 150 * 60;
+  let timerInterval: ReturnType<typeof setInterval> | null = null;
+  let reviewFilter = 'all';
+
+  const $ = (id: string) => document.getElementById(id)!;
+
+  // ─── Screen switch ───────────────────────────────────────────────────────────
+  function show(id: string) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    $(id).classList.add('active');
+  }
+
+  // ─── Timer ──────────────────────────────────────────────────────────────────
+  function fmtTime(s: number) {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return `${m}:${sec.toString().padStart(2,'0')}`;
+  }
+
+  function startTimer() {
+    timerInterval = setInterval(() => {
+      timerSecs--;
+      const el = $('q-timer');
+      el.textContent = fmtTime(timerSecs);
+      if (timerSecs <= 300) el.classList.add('urgent');
+      if (timerSecs <= 0) { clearInterval(timerInterval!); submitQuiz(); }
+    }, 1000);
+  }
+
+  // ─── Progress dashes ────────────────────────────────────────────────────────
+  function buildDashes() {
+    const container = $('progress-dashes');
+    container.innerHTML = '';
+    // We'll show at most 40 dashes regardless of question count, mapping positions
+    const total = qs.length;
+    const dashCount = Math.min(total, 40);
+    for (let i = 0; i < dashCount; i++) {
+      const qIdx = Math.round((i / dashCount) * total);
+      const d = document.createElement('div');
+      d.className = 'pdash';
+      d.dataset.qi = qIdx.toString();
+      container.appendChild(d);
+    }
+    updateDashes();
+  }
+
+  function updateDashes() {
+    const dashes = document.querySelectorAll('.pdash');
+    const total = qs.length;
+    const dashCount = dashes.length;
+    dashes.forEach((d, i) => {
+      const qIdx = Math.round((i / dashCount) * total);
+      const q = qs[qIdx];
+      d.className = 'pdash';
+      if (qIdx === cur) d.classList.add('active');
+      else if (answered[q?.id]) {
+        const ua = selected[q.id];
+        if (q.answer === -1) d.classList.add('disputed');
+        else if (ua === q.answer) d.classList.add('correct');
+        else d.classList.add('wrong');
+      }
+    });
+    $('progress-label').textContent = `${cur + 1} / ${total}`;
+  }
+
+  // ─── Render Question ────────────────────────────────────────────────────────
+  function renderQuestion() {
+    const q = qs[cur];
+    if (!q) return;
+
+    $('q-part').textContent = `Part ${q.part}`;
+    $('q-topic').textContent = q.topic;
+    $('q-text').textContent = q.question;
+
+    const ol = $('options-list');
+    ol.innerHTML = '';
+    const labels = ['A','B','C','D'];
+    const isAnswered = answered[q.id];
+    const userAns = selected[q.id];
+    const correctAns = q.answer;
+
+    (q.options || []).forEach((opt: string, idx: number) => {
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn';
+
+      let state = '';
+      if (isAnswered) {
+        if (idx === correctAns) state = 'correct';
+        else if (idx === userAns && correctAns !== -1) state = 'wrong';
+        if (idx === userAns) btn.classList.add('user-pick');
+      } else if (userAns === idx) {
+        state = 'pending';
+      }
+      if (state) btn.classList.add(state);
+
+      // Inner HTML
+      let inner = `<span class="opt-lbl">${labels[idx]}</span><span class="opt-txt">${opt}</span>`;
+      if (isAnswered && idx === correctAns && correctAns !== -1) {
+        inner += `<div class="opt-feedback correct-fb"><span class="fb-check">✓</span><span class="fb-label">Right answer</span></div>`;
+      } else if (isAnswered && idx === userAns && idx !== correctAns && correctAns !== -1) {
+        inner += `<div class="opt-feedback wrong-fb"><span class="fb-x">✕</span><span class="fb-label">Your answer</span></div>`;
+      }
+
+      btn.innerHTML = inner;
+      if (!isAnswered) {
+        btn.addEventListener('click', () => selectOption(idx));
+      }
+      ol.appendChild(btn);
+    });
+
+    // Disputed notice
+    if (isAnswered && q.answer === -1) {
+      const note = document.createElement('div');
+      note.className = 'disputed-note';
+      note.innerHTML = '⚠️ This question is before the Expert Committee — no official answer key available.';
+      ol.appendChild(note);
+    }
+
+    // Prev/Next
+    const prevBtn = $('prev-btn') as HTMLButtonElement;
+    const nextBtn = $('next-btn') as HTMLButtonElement;
+    prevBtn.disabled = cur === 0;
+    nextBtn.textContent = cur === qs.length - 1 ? 'Submit' : 'Next';
+    nextBtn.classList.toggle('submit-mode', cur === qs.length - 1);
+
+    updateDashes();
+  }
+
+  function selectOption(idx: number) {
+    const q = qs[cur];
+    if (answered[q.id]) return;
+
+    selected[q.id] = idx;
+    answered[q.id] = true;
+
+    // Update scores
+    if (q.answer !== -1) {
+      if (idx === q.answer) {
+        correctCount++;
+        $('count-correct').textContent = correctCount.toString();
+      } else {
+        wrongCount++;
+        $('count-wrong').textContent = wrongCount.toString();
+      }
+    }
+
+    renderQuestion();
+
+    // Auto-advance after 1.2s
+    setTimeout(() => {
+      if (cur < qs.length - 1) {
+        cur++;
+        renderQuestion();
+      }
+    }, 1200);
+  }
+
+  // ─── Results ─────────────────────────────────────────────────────────────────
+  function submitQuiz() {
+    if (timerInterval) clearInterval(timerInterval);
+
+    let correct = 0, wrong = 0, skipped = 0, disputed = 0;
+    const answerableQs = qs.filter(q => q.answer !== -1);
+
+    for (const q of qs) {
+      if (q.answer === -1) { disputed++; continue; }
+      if (!answered[q.id]) { skipped++; continue; }
+      if (selected[q.id] === q.answer) correct++;
+      else wrong++;
+    }
+
+    const pct = answerableQs.length > 0 ? Math.round((correct / answerableQs.length) * 100) : 0;
+
+    $('r-pct').textContent = `${pct}%`;
+    $('r-correct').textContent = correct.toString();
+    $('r-wrong').textContent = wrong.toString();
+    $('r-skipped').textContent = skipped.toString();
+    $('r-disputed').textContent = disputed.toString();
+    $('r-sub').textContent = pct >= 80 ? '🌟 Excellent work!' : pct >= 60 ? '👍 Good job!' : pct >= 40 ? '📚 Keep studying!' : '💪 Don\'t give up!';
+
+    const arc = $('score-arc');
+    const circumference = 327;
+    setTimeout(() => {
+      arc.style.transition = 'stroke-dashoffset 1.2s ease';
+      arc.setAttribute('stroke-dashoffset', (circumference - pct / 100 * circumference).toString());
+      arc.style.stroke = pct >= 60 ? '#34a853' : pct >= 40 ? '#fbbc04' : '#ea4335';
+    }, 300);
+
+    renderReview();
+    show('results-screen');
+  }
+
+  function renderReview() {
+    const container = $('review-list');
+    container.innerHTML = '';
+    const labels = ['A','B','C','D'];
+
+    qs.forEach((q, i) => {
+      const ua = selected[q.id];
+      const ca = q.answer;
+      const isDisputed = ca === -1;
+      const isCorrect = !isDisputed && ua === ca;
+      const isWrong = !isDisputed && ua !== undefined && ua !== ca;
+      const isSkipped = !isDisputed && ua === undefined;
+
+      if (reviewFilter === 'correct' && !isCorrect) return;
+      if (reviewFilter === 'wrong' && !isWrong) return;
+      if (reviewFilter === 'skipped' && !isSkipped) return;
+
+      const card = document.createElement('div');
+      card.className = `rcard ${isDisputed ? 'r-disputed' : isCorrect ? 'r-correct' : isWrong ? 'r-wrong' : 'r-skipped'}`;
+
+      let optHTML = '';
+      (q.options || []).forEach((opt: string, idx: number) => {
+        let cls = 'ropt';
+        if (!isDisputed && idx === ca) cls += ' ropt-correct';
+        else if (idx === ua && ua !== ca) cls += ' ropt-wrong';
+        else if (idx === ua) cls += ' ropt-pick';
+        optHTML += `<div class="${cls}"><strong>${labels[idx]}.</strong> ${opt}${!isDisputed && idx === ca ? ' ✓' : ''}</div>`;
+      });
+
+      card.innerHTML = `
+        <div class="rcard-header">
+          <span class="rcard-num">Q${i+1}</span>
+          <span class="rcard-topic">${q.topic}</span>
+          <span class="rcard-status">${isDisputed ? '⚠️ No Key' : isCorrect ? '✓ Correct' : isWrong ? '✕ Wrong' : '— Skipped'}</span>
+        </div>
+        <p class="rcard-q">${q.question}</p>
+        ${isDisputed ? '<p class="rdisputed-note">Expert Committee question — no official answer.</p>' : `<div class="rcard-opts">${optHTML}</div>`}
+      `;
+      container.appendChild(card);
+    });
+
+    if (!container.children.length) {
+      container.innerHTML = '<p class="rempty">Nothing here.</p>';
+    }
+  }
+
+  // ─── Start Quiz ──────────────────────────────────────────────────────────────
+  function startQuiz() {
+    const topic = ($('filter-topic') as HTMLSelectElement).value;
+    const part = ($('filter-part') as HTMLSelectElement).value;
+
+    qs = allQ.filter(q => {
+      if (topic !== 'all' && q.topic !== topic) return false;
+      if (part !== 'all' && q.part !== part) return false;
+      return true;
+    });
+
+    if (!qs.length) { alert('No questions match your filter!'); return; }
+
+    selected = {}; answered = {};
+    correctCount = 0; wrongCount = 0;
+    cur = 0; timerSecs = 150 * 60;
+    $('count-correct').textContent = '0';
+    $('count-wrong').textContent = '0';
+    $('q-timer').textContent = '150:00';
+    $('q-timer').classList.remove('urgent');
+
+    buildDashes();
+    renderQuestion();
+    show('quiz-screen');
+    startTimer();
+  }
+
+  // ─── Events ──────────────────────────────────────────────────────────────────
+  $('start-btn').addEventListener('click', startQuiz);
+
+  $('prev-btn').addEventListener('click', () => {
+    if (cur > 0) { cur--; renderQuestion(); }
+  });
+
+  $('next-btn').addEventListener('click', () => {
+    if (cur === qs.length - 1) {
+      if (confirm('Submit the quiz?')) submitQuiz();
+    } else {
+      cur++;
+      renderQuestion();
+    }
+  });
+
+  $('mark-btn').addEventListener('click', () => {
+    // Skip — mark as skipped and move on
+    const q = qs[cur];
+    if (!answered[q.id]) {
+      answered[q.id] = true; // answered with no selection = skipped
+    }
+    if (cur < qs.length - 1) { cur++; renderQuestion(); }
+  });
+
+  $('retake-btn').addEventListener('click', () => show('start-screen'));
+  $('home-btn').addEventListener('click', () => { window.location.href = '/'; });
+
+  document.querySelectorAll('.rtab').forEach(tab => {
+    tab.addEventListener('click', e => {
+      document.querySelectorAll('.rtab').forEach(t => t.classList.remove('active'));
+      (e.currentTarget as HTMLElement).classList.add('active');
+      reviewFilter = (e.currentTarget as HTMLElement).dataset.filter || 'all';
+      renderReview();
+    });
+  });
+</script>
+
+<style>
+  /* ── Page wrapper ─────────────────────────────────────────────────── */
+  .pyq-wrap {
+    min-height: calc(100vh - 64px);
+    background: #f8f9fa;
+    font-family: 'Google Sans', 'DM Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .screen { display: none; }
+  .screen.active { display: flex; flex-direction: column; flex: 1; }
+
+  /* ── Start Screen ───────────────────────────────────────────────────── */
+  #start-screen {
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3rem 1rem;
+  }
+
+  .start-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    padding: 2.5rem;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .start-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .start-title { font-size: 1.8rem; font-weight: 700; color: #202124; margin: 0 0 0.4rem; font-family: 'Playfair Display', serif; }
+  .start-sub { color: #5f6368; font-size: 1rem; margin: 0 0 2rem; }
+
+  .start-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .sstat { display: flex; flex-direction: column; gap: 0.2rem; align-items: center; }
+  .sval { font-size: 1.8rem; font-weight: 700; color: #1a73e8; }
+  .slab { font-size: 0.75rem; color: #5f6368; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+
+  .topic-section { text-align: left; margin-bottom: 1.5rem; }
+  .topic-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #5f6368; margin: 0 0 0.75rem; }
+  .topic-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tchip { background: #e8f0fe; color: #1a73e8; font-size: 0.8rem; padding: 0.25rem 0.7rem; border-radius: 100px; font-weight: 500; }
+  .tchip strong { font-weight: 700; }
+
+  .filters { display: flex; gap: 1rem; margin-bottom: 1.5rem; text-align: left; }
+  .fgroup { flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+  .fgroup label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #5f6368; }
+  .fgroup select {
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    color: #202124;
+    background: #fff;
+    outline: none;
+    cursor: pointer;
+  }
+  .fgroup select:focus { border-color: #1a73e8; }
+
+  .start-btn {
+    display: inline-block;
+    background: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 0.85rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .start-btn:hover { background: #1557b0; }
+
+  .disclaimer { font-size: 0.78rem; color: #9aa0a6; line-height: 1.5; }
+
+  /* ── Quiz Screen ────────────────────────────────────────────────────── */
+  #quiz-screen {
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1.5rem 1rem 2rem;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  /* Top bar */
+  .quiz-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 0.25rem;
+  }
+  .quiz-title { font-size: 0.9rem; color: #5f6368; font-weight: 500; }
+  .topbar-right { display: flex; gap: 0.5rem; }
+
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .score-badge.correct { background: #e6f4ea; color: #137333; }
+  .score-badge.wrong { background: #fce8e6; color: #c5221f; }
+  .bicon { font-size: 0.8rem; }
+
+  /* Progress dashes */
+  .progress-track {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .progress-dashes {
+    flex: 1;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  :global(.pdash) {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: #dadce0;
+    transition: background 0.3s;
+  }
+  :global(.pdash.active) { background: #1a73e8; }
+  :global(.pdash.correct) { background: #34a853; }
+  :global(.pdash.wrong) { background: #ea4335; }
+  :global(.pdash.disputed) { background: #fbbc04; }
+
+  .progress-label { font-size: 0.8rem; color: #5f6368; font-weight: 600; white-space: nowrap; }
+
+  /* Question card */
+  .question-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    flex: 1;
+  }
+
+  .q-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .q-part {
+    background: #e8f0fe;
+    color: #1a73e8;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  .q-topic {
+    background: #f1f3f4;
+    color: #5f6368;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .q-timer {
+    margin-left: auto;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #202124;
+    font-variant-numeric: tabular-nums;
+  }
+  .q-timer.urgent { color: #ea4335; }
+
+  .q-text {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #202124;
+    line-height: 1.65;
+    margin: 0 0 1.5rem;
+    white-space: pre-wrap;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* Options */
+  :global(.options-list) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  :global(.opt-btn) {
+    width: 100%;
+    text-align: left;
+    border: 1.5px solid #dadce0;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #202124;
+    transition: border-color 0.15s, background 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+  }
+
+  :global(.opt-btn:hover):not([disabled]) {
+    border-color: #1a73e8;
+    background: #f8fbff;
+  }
+
+  :global(.opt-btn.pending) {
+    border-color: #1a73e8;
+    background: #e8f0fe;
+  }
+
+  :global(.opt-btn.correct) {
+    border-color: #34a853;
+    background: #e6f4ea;
+  }
+
+  :global(.opt-btn.wrong) {
+    border-color: #ea4335;
+    background: #fce8e6;
+  }
+
+  :global(.opt-lbl) {
+    font-weight: 600;
+    color: #5f6368;
+    display: inline;
+    margin-right: 0.6rem;
+  }
+
+  :global(.opt-btn.correct .opt-lbl) { color: #137333; }
+  :global(.opt-btn.wrong .opt-lbl) { color: #c5221f; }
+  :global(.opt-btn.pending .opt-lbl) { color: #1a73e8; }
+
+  :global(.opt-txt) { display: inline; color: #202124; line-height: 1.5; }
+  :global(.opt-btn.correct .opt-txt) { color: #137333; }
+  :global(.opt-btn.wrong .opt-txt) { color: #c5221f; }
+  :global(.opt-btn.pending .opt-txt) { color: #1a73e8; }
+
+  :global(.opt-feedback) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  :global(.correct-fb) { color: #137333; }
+  :global(.wrong-fb) { color: #c5221f; }
+  :global(.fb-check) { font-size: 0.9rem; }
+  :global(.fb-label) {}
+
+  :global(.disputed-note) {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #e37400;
+    padding: 0.75rem 1rem;
+    background: #fef7e0;
+    border: 1px solid #fdd663;
+    border-radius: 8px;
+  }
+
+  /* Bottom nav */
+  .quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.25rem;
+  }
+
+  .nav-back {
+    background: none;
+    border: none;
+    color: #1a73e8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    transition: background 0.15s;
+  }
+  .nav-back:hover { background: #e8f0fe; }
+  .nav-back:disabled { color: #dadce0; cursor: not-allowed; }
+  .nav-back:disabled:hover { background: none; }
+
+  .skip-btn {
+    background: none;
+    border: none;
+    color: #5f6368;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 0.8rem;
+    border-radius: 16px;
+    transition: background 0.15s;
+  }
+  .skip-btn:hover { background: #f1f3f4; }
+
+  .nav-next {
+    background: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 0.7rem 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .nav-next:hover { background: #1557b0; }
+  :global(.nav-next.submit-mode) { background: #34a853; }
+  :global(.nav-next.submit-mode:hover) { background: #2d8e47; }
+
+  /* ── Results Screen ─────────────────────────────────────────────────── */
+  #results-screen {
+    align-items: center;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+  }
+
+  .results-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    padding: 2.5rem;
+    max-width: 680px;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .score-circle-wrap {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 1.5rem;
+  }
+  .score-svg { width: 100%; height: 100%; }
+  .score-inner-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .score-big { font-size: 1.8rem; font-weight: 800; color: #202124; }
+
+  .r-title { text-align: center; font-size: 1.5rem; font-weight: 700; color: #202124; margin: 0 0 0.3rem; font-family: 'Playfair Display', serif;}
+  .r-sub { text-align: center; color: #5f6368; margin: 0 0 1.5rem; }
+
+  .r-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1.5rem;
+  }
+  .rstat { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
+  .rval { font-size: 1.5rem; font-weight: 700; }
+  .rlab { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #5f6368; font-weight: 600; }
+  .rstat.correct .rval { color: #34a853; }
+  .rstat.wrong .rval { color: #ea4335; }
+  .rstat.skipped .rval { color: #5f6368; }
+  .rstat.disputed .rval { color: #e37400; }
+
+  .rtabs {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .rtab {
+    padding: 0.4rem 1rem;
+    border: 1px solid #dadce0;
+    border-radius: 100px;
+    background: #fff;
+    color: #5f6368;
+    font-size: 0.83rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .rtab.active { background: #1a73e8; color: #fff; border-color: #1a73e8; }
+
+  .review-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+
+  :global(.rcard) {
+    border-radius: 12px;
+    border: 1.5px solid #dadce0;
+    padding: 1.25rem;
+    background: #fff;
+  }
+  :global(.rcard.r-correct) { border-color: #34a853; background: #f8fff9; }
+  :global(.rcard.r-wrong) { border-color: #ea4335; background: #fff8f7; }
+  :global(.rcard.r-skipped) { border-color: #dadce0; }
+  :global(.rcard.r-disputed) { border-color: #fdd663; background: #fef7e0; }
+
+  :global(.rcard-header) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+  :global(.rcard-num) { font-weight: 800; font-size: 0.82rem; color: #1a73e8; }
+  :global(.rcard-topic) { font-size: 0.72rem; background: #f1f3f4; color: #5f6368; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 600; }
+  :global(.rcard-status) { margin-left: auto; font-size: 0.8rem; font-weight: 700; color: #5f6368; }
+  :global(.rcard.r-correct .rcard-status) { color: #34a853; }
+  :global(.rcard.r-wrong .rcard-status) { color: #ea4335; }
+  :global(.rcard.r-disputed .rcard-status) { color: #e37400; }
+
+  :global(.rcard-q) { font-size: 0.9rem; color: #202124; line-height: 1.55; margin: 0 0 0.75rem; }
+  :global(.rcard-opts) { display: flex; flex-direction: column; gap: 0.35rem; }
+  :global(.ropt) { font-size: 0.83rem; color: #5f6368; padding: 0.3rem 0.5rem; border-radius: 6px; }
+  :global(.ropt-correct) { color: #137333; background: #e6f4ea; font-weight: 600; }
+  :global(.ropt-wrong) { color: #c5221f; background: #fce8e6; }
+  :global(.ropt-pick) { }
+  :global(.rdisputed-note) { font-size: 0.82rem; color: #e37400; font-style: italic; }
+
+  .r-actions { display: flex; gap: 1rem; justify-content: center; }
+
+  .rempty { text-align: center; color: #9aa0a6; padding: 2rem; font-style: italic; }
+
+  /* ── Responsive ─────────────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .start-stats { gap: 1.5rem; }
+    .filters { flex-direction: column; }
+    #quiz-screen { padding: 1rem 0.75rem 1.5rem; }
+    .question-card { padding: 1.25rem; }
+    .r-stats { gap: 1rem; }
+  }
+</style>

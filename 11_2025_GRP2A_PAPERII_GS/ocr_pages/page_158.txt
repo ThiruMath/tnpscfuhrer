@@ -1,0 +1,44 @@
+189. An address is given below which has been reproduced against the
+four alternatives; Of them, three have some mistake or the other,
+while one is exactly the same, select the option that is exactly the
+same as the given address. :
+
+Mr. B. JAYAPRAKASH, M.Sc., M.Sc., M.A.,
+No: 14/33, Station Road, Annanur,
+Chennai — 600077.
+(A) Mr. B. JAYAKUMAR, M.Sc., M.Sc., M.A.,
+No: 14/33, Station Road, Annanur,
+Chennai — 600077.
+(B) Mr. B. JAYAPRAKASH, M.Sc.,
+No: 14/33, Station Road, Annanur,
+Chennai — 600077.
+(C) Mr. B. JAYAPRAKASH, M.Sc., M.Sc., M.A.,
+No: 14, Station Road, Annanur,
+Chennai — 600077.
+வணி Mr. B. JAYAPRAKASH, M.Sc., M.Sc., M.A,
+No: 14/88, Station Road, Annanur,
+Chennai — 600077.
+(E) Answer not known
+ஒரு முகவரி கீழே கொடுக்கப்பட்டுள்ளது, அதில்‌ நான்கு மாற்றுகளுக்கு எதிராக
+மறு உருவாக்கம்‌ செய்யப்பட்டுள்ளது, மூன்றில்‌ சில தவறுகள்‌ அல்லது மற்றொன்று
+உள்ளது, அதே நேரத்தில்‌ ஒன்று சிய £ாக க்கும்‌, கொடுக்கப்பட்ட முகவரியைப்‌
+போலவே இருக்கும்‌ சரியான முகவரியைத்‌ தேர்ந்தெடுக்கவும்‌,
+Mr. 8. JAYAPRAKASH, M.Sc., M.Sc., M.A.,
+No: 14/33, Station Road, Annanur,
+Chennai — 600077.
+(A) Mr. B. JAYAKUMAR, M.Sc., M.Sc., M.A.,
+No: 14/33, Station Road, Annanur,
+Chennai — 600077. ,
+(B) Mr. B. JAYAPRAKASH, M.Sc.,
+No: 14/33, Station Road, Annanur,
+Chennai — 600077.
+(C) Mr. B. JAYAPRAKASH, M.Sc., M.Sc., M.A.,
+No: 14, Station Road, Annanur,
+Chennai — 600077.
+(D) Mr. B. JAYAPRAKASH, M.Sc., M.Sc., M.A.,
+No: 14/33, Station Road, Annanur,
+Chennai — 600077. :
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 158 B

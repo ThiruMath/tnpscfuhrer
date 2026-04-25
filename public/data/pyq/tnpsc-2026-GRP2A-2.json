@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "exam": "TNPSC Group 2A",
+    "paper_code": "GRP2A-2",
+    "total_questions": 2,
+    "extracted_at": "2026-04-12T00:33:30.604Z",
+    "source_file": "part2.pdf",
+    "model": "gemini-2.5-flash"
+  },
+  "questions": [
+    {
+      "id": 58,
+      "part": "A",
+      "lang": "en",
+      "question": "How many Coastal Districts of Tamilnadu are involved in the TN-SHORE (Neithal Meetchi Iyakkam) Project?",
+      "options": [
+        "14",
+        "12",
+        "08",
+        "20"
+      ],
+      "answer": 0,
+      "topic": "Environment",
+      "year": 2026,
+      "paper_code": "RE/GS2AM/2026"
+    },
+    {
+      "id": 59,
+      "part": "A",
+      "lang": "en",
+      "question": "Which of the following schemes is correctly matched?\n(i) Kalaignar Women's Rights Grant Scheme 2023\n(ii) Chief Minister's Thayumanavar Scheme 2025\n(iii) Chief Minister's Breakfast Scheme 2021",
+      "options": [
+        "(iii) only",
+        "(ii) and (iii) only",
+        "(i) and (iii) only",
+        "(i) and (ii) only"
+      ],
+      "answer": 3,
+      "topic": "Current Affairs",
+      "year": 2026,
+      "paper_code": "RE/GS2AM/2026"
+    }
+  ]
+}

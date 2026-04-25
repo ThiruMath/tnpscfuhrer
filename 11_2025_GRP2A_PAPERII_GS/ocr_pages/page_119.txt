@@ -1,0 +1,86 @@
+141. Match correctly the E-mail header fields to message transport :
+
+(a) To:
+
+(b) Cc:
+
+(c) Bec:
+
+(d) From:
+(a) ௫)
+
+(A) 4 2
+
+4 8
+(C) 1 4
+ட 1 2
+
+(E) Answer not known
+
+மின்னஞ்சல்‌ தலைப்புப்‌
+
+பொருத்தவும்‌.
+
+(a) To:
+
+(b) Cc:
+
+(c) Bec:
+
+(d) From:
+(a) டு)
+
+(A) 4 2
+
+(B) 4 3
+
+(0) 1 4
+
+(D) 1 2
+
+(E)
+
+விடை தெரியவில்லை
+
+RE/GS2AM/2026
+
+ia
+
+(c)
+
+3
+2
+2
+4
+
+Se Sips
+
+(9)
+
+இ WH NY லே
+
+Person or people who created the message
+Email address for blind carbon copies
+Email address of secondary recipient
+
+Email address of primary recipient
+
+(6)
+
+ஜே ஜே F&F: ஒம்‌
+
+புலங்களை செய்தி போக்குவரத்துடன்‌ சரியாகப்‌
+
+மின்னஞ்சல்‌ முகவரியை உருவாக்கிய நபர்‌
+
+குருட்டு கார்பன்‌ நகல்களுக்கான மின்னஞ்சல்‌ முகவரி
+இரண்டாம்‌ நிலை பெறுநரின்‌ மின்னஞ்சல்‌ முகவரி
+முதன்மை பெறுநரின்‌ மின்னஞ்சல்‌ முகவரி
+
+@
+
+wo wore ௨4
+
+119
+
+[Turn over

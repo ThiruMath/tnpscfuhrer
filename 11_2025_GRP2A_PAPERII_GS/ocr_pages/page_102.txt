@@ -1,0 +1,61 @@
+122. Arrange the following District Administrative officials in the
+
+hierarchial order.
+
+(1)
+(2)
+(3)
+(4)
+(A)
+(B)
+(C)
+
+பணி
+
+(E)
+
+Tahsildar
+
+District Revenue Officer
+District Collector
+
+Revenue Divisional Officer
+(1), (4), (2), @)
+
+(3), (4), (2), ()
+
+(3), 2), (1), (4)
+
+(3), (2), (4), (L)
+
+Answer not known
+
+பின்வரும்‌ மாவட்ட நிர்வாக அதிகாரிகளைப்‌ படிநிலை வரிசைப்படுத்தவும்‌.
+
+(1)
+(2)
+(3)
+(4)
+(A)
+(B)
+(C)
+(D)
+(E)
+
+வட்டாட்சியர்‌
+
+மாவட்ட வருவாய்‌ அலுவலர்‌
+மாவட்ட ஆட்சியர்‌
+கோட்டாட்சியர்‌
+
+(1), (4), (2), (8)
+
+(3), (4), (2), ()
+
+(3), (2), (1), (4)
+
+(3), (2), (4), (D)
+
+விடை தெரியவில்லை
+
+RE/GS2AM/2026 102 ன B

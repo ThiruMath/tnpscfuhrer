@@ -1,0 +1,29 @@
+177. Study the following figure carefully and answer the given questions.
+
+“a
+
+Singers
+Which region represents Dancers who are neither Singers
+
+nor actors?
+
+(A) 2 — (B) 3
+
+VS 6 டு) 7
+
+(E) Answer not known
+
+கொடுக்கப்பட்ட வரைபடத்தைக்‌ கவனமாகப்‌ பார்த்த பின்பு விடை தருக.
+
+நடிகர்கள்‌ 4[£ 1 (2) sens
+(22
+Z
+பாடகர்கள்‌
+
+பாடகர்களாகவும்‌, நடிகர்களாகவும்‌ இல்லாத நடனக்‌ கலைஞர்கள்‌ எத்தனை பேர்‌?
+(A) 2 (B) 3
+(C) 6 (D) 7
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 150 B

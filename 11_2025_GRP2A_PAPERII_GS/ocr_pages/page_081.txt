@@ -1,0 +1,39 @@
+95. Find the missing character from among the given alternatives.
+
+(A) 85:
+(C) 50 ,
+(E) Answer not known
+
+மேலே கொடுக்கப்பட்டவற்றுள்‌ விடுபட்ட இடத்தில்‌ சரியான விடையைத்‌
+
+தேர்ந்தெடுக்க.
+(A) 85 (B) 65
+(C) 50 (D) 60
+
+(0) விடை தெரியவில்லை
+
+96. Out of 5 consonants and 5 vowels, how many strings of 2 consonants
+and 3 vowels can be formed?
+(A) 1200 (B) 12500.
+12000 (D) 25000
+(E) Answer not known
+5 மெய்யெழுத்துகள்‌ மற்றும்‌ 5 உயிரெழுத்துகளில்‌ இருந்து 2 மெய்யெழுத்துகள்‌
+மற்றும்‌ 8 உயிரெழுத்துகள்‌ உள்ள எழுத்துச்‌ சரங்கள்‌ எத்தனை உருவாக்கலாம்‌?
+(A) 1200 (B) 12500
+(C) 12000 (D) 25000
+(E) விடை தெரியவில்லை
+
+97. What is the value of 100 Cgg— 1000?
+
+(A) 4550 ‘ (B) 4950
+(C) 4955 BY 4949
+(E) Answer not known
+
+100 Cgg— 1000%ேன்‌ மதிப்பு என்ன?
+
+(A) 4550 (B) 4950
+(C) 4955 (D) 4949
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 81
+[Turn over

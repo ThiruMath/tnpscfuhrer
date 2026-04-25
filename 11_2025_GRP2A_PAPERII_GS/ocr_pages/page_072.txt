@@ -1,0 +1,43 @@
+80. Read the given instructions carefully and answer :
+A sales representative plans to visit each of six companies
+M, N, P, Q, R and S exactly once during the course of one day. She is
+setting up her schedule for the day according to the following
+
+conditions
+
+(1) She rant visit M before N and R
+
+(2) She must visit N before Q
+
+(3) The third company she visits must be P.
+
+If the sales representative visits Q immediately before R and
+immediately after S, when must she visit Q?
+
+(A) First (B) Second
+(C) Fourth ரீ Fifth
+
+(E) Answer not known
+
+கொடுக்கப்பட்டுள்ள குறிப்புகளைக்‌ கவனமாகப்‌ படித்து விடையளிக்க :
+
+ஒரு விற்பனை பிரதிநிதி M, 14, P,Q, 8, 5 ஆகிய ஆறு நிறுவனங்களையும்‌ ஒரு
+நாளைக்கு ஒரு Yop சந்திக்க விரும்புகின்றார்‌. கீழ்காணும்‌ முறையில்‌
+தன்‌ பணியைத்‌ திட்டமிடுகிறார்‌.
+
+(0) 11, மக்கு முன்பு M ஐ சந்தித்து விட வேண்டும்‌
+
+(2) டுக்கு முன்பு N ஐ சந்தித்து விட வேண்டும்‌
+
+(8) மூன்றாவதாக P ஐத்‌ தான்‌ சந்திக்க வேண்டும்‌
+
+விற்பனை பிரதிநிதி % ஐ சந்திப்பதற்கு முன்பும்‌ 8 ஐ சந்தித்த உடனேயும்‌
+Q வை சந்தித்தால்‌, Q வை எப்பொழுது சந்திப்பார்‌?
+
+(A) முதலாவதாக (B) இரண்டாவதாக
+
+(0) நான்காவதாக (0). ஐந்தாவதாக
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 72 B

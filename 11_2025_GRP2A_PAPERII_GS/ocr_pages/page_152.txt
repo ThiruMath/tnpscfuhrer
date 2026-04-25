@@ -1,0 +1,31 @@
+180. A, B, C, D, E, F and G are members of a family consisting of four
+adults and three children, two of whom F and G are girls. A and D
+are brothers and A is a doctor. E is an engineer married to one of the
+brothers and has two children. B is married to D and G is their
+
+child. Who is C?
+
+(A) G’s father
+(B) F's father
+(0) 185 daughter
+
+கீ A’s son
+
+(E) Answer not known
+
+A, B, C, D, E, F மற்றும்‌ G என்பது நான்கு பெரியவர்கள்‌ மற்றும்‌ மூன்று
+குழந்தைகளைக்‌ கொண்ட ஒரு குடும்பத்தின்‌ உறுப்பினர்கள்‌, அவர்களில்‌ இருவர்‌
+F மற்றும்‌ G பெண்கள்‌. A மற்றும்‌ D சகோதரர்கள்‌ மற்றும்‌ A ஒரு மருத்துவர்‌.
+E பொறியாளர்‌, சகோதரர்களில்‌ ஒருவரைத்‌ திருமணம்‌ செய்து இரண்டு
+குழந்தைகள்‌ உள்ளனர்‌. 15, D-cow மணந்தார்‌, G அவர்களின்‌ குழந்தை. அப்படி
+
+என்றால்‌ யார்‌?
+
+(A) G's தந்தை
+(B) F's தந்‌ைத
+(C) E's மகள்‌
+(D) A’s மகன்‌
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 152 B

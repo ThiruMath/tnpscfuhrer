@@ -1,0 +1,43 @@
+178. One morning at 7 O’clock Raju started walking with his friend back
+towards the Sun. Then he turned towards left, walked straight and
+then turned towards right and walked straight. Then he again
+turned towards left. Now in which direction is he facing?
+
+(A) West : வளி South
+(C) North | (D) East
+
+(E) Answer not known
+
+ஒரு நாள்‌ காலை 7 மணிக்கு ராஜு தன்‌ நண்பனுடன்‌ சூரியனுக்கு எதிர்‌ திசையில்‌
+நடந்து சென்றான்‌. பிறகு இடப்பக்கம்‌ திரும்பி சிறிது தூரம்‌ நடந்தான்‌. பிறகு
+வலப்பக்கம்‌ திரும்பி நேராக நடந்தான்‌. மீண்டும்‌ . இடப்பக்கம்‌ திரும்பி நடக்க
+ஆரம்பித்தான்‌. இப்போது எந்தச்‌ திசை நோக்கி நடந்து கொண்டிருக்கிறான்‌?
+
+(A) மேற்கு (6) தெற்கு
+
+(0) வடக்கு (0) கிழக்கு
+
+(9) : விடை தெரியவில்லை (
+
+179. Jayashree was facing North-West direction. If she was playing -
+carrom with Hemalatha in the standard seating pattern, in which
+direction was Hemalatha facing?
+
+(A) North-West (B) North-East
+
+(C) South-West MP South-East
+
+(E) Answer not known
+
+ஜெயஸ்ரீ வடமேற்கு திசையை நோக்கி இருந்தாள்‌. எதிர்‌ எதிர்‌ அமரும்‌ முறையில்‌
+ஹேமலதாவுடன்‌ கேரம்‌ : விளையாடிக்‌ கொண்டிருந்தால்‌, ஹேமலதா எந்தத்‌
+திசையிலிருந்து எதிர்கொண்டார்‌?
+
+(A) வடமேற்கு (B) வட கிழக்கு
+
+(0) தென்‌ மேற்கு (D) தென்‌ கிழக்கு
+
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 151 B
+[Turn over

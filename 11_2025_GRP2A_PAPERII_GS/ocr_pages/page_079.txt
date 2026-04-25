@@ -1,0 +1,37 @@
+92. The total of ages of 4 persons is 86 years. What was their average
+age, 4 year ago?
+(A) 20.5 yr
+(B) 19.5 yr
+(C) 20yr
+17.5 yr
+(E) Answer not known
+
+4 நபர்களின்‌ மொத்த வயது 86. வருடம்‌. 4 வருடங்களுக்கு முன்‌ அவர்களுடைய
+சராசரி வயது எவ்வளவு?
+
+(A) 20.5 வருடம்‌
+
+(B) 19.5 வருடம்‌
+
+(C) 20 வருடம்‌
+
+(D) 17.5 வருடம்‌
+
+(5) விடை தெரியவில்லை
+
+93. If L stands for x, M stands for +, N stands for — and P stands for +,
+then what 15L 10M 33 P11 N 8= is?
+
+(A) 150 (B) 170
+145 (D) 120
+(E) Answer not known
+
+L என்பது X, M என்பது -, N என்பது -, மேலும்‌ P என்பது - குறிக்கும்‌ என்றால்‌
+151, 101 85 2 11 1 8 என்பதின்‌ மதிப்பைக்‌ கண்டுபிடி.
+(A) 150 (B) 170
+
+(C) 145 ~ (@) 120
+(E) விடை தெரியவில்லை
+
+RE/GS2AM/2026 79
+[Turn over
