@@ -107,15 +107,19 @@ for (const q of questions) {
 
       <!-- Question card -->
       <div class="question-card">
-        <div class="q-meta-row">
-          <span class="q-part" id="q-part">Part A</span>
-          <span class="q-topic" id="q-topic">History</span>
-          <span class="q-timer" id="q-timer">150:00</span>
+        <div class="q-left-col">
+          <div class="q-meta-row">
+            <span class="q-part" id="q-part">Part A</span>
+            <span class="q-topic" id="q-topic">History</span>
+            <span class="q-timer" id="q-timer">150:00</span>
+          </div>
+
+          <h2 class="q-text" id="q-text">Loading…</h2>
         </div>
 
-        <h2 class="q-text" id="q-text">Loading…</h2>
-
-        <div class="options-list" id="options-list"></div>
+        <div class="q-right-col">
+          <div class="options-list" id="options-list"></div>
+        </div>
       </div>
 
       <!-- Bottom nav -->
@@ -295,6 +299,8 @@ for (const q of questions) {
       btn.innerHTML = inner;
       if (!isAnswered) {
         btn.addEventListener('click', () => selectOption(idx));
+      } else {
+        btn.disabled = true;
       }
       ol.appendChild(btn);
     });
@@ -583,7 +589,7 @@ for (const q of questions) {
 
   /* ── Quiz Screen ────────────────────────────────────────────────────── */
   #quiz-screen {
-    max-width: 720px;
+    max-width: 1000px;
     margin: 0 auto;
     width: 100%;
     padding: 1.5rem 1rem 2rem;
@@ -649,10 +655,23 @@ for (const q of questions) {
     background: #fff;
     border-radius: 24px;
     border: none;
-    padding: 2.5rem;
+    padding: 2rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     flex: 1;
+  }
+
+  @media (min-width: 768px) {
+    .question-card {
+      flex-direction: row;
+      gap: 3rem;
+      padding: 2.5rem;
+    }
+    .q-left-col { flex: 1.2; }
+    .q-right-col { flex: 1; }
   }
 
   .q-meta-row {
@@ -715,10 +734,10 @@ for (const q of questions) {
     text-align: left;
     border: 1px solid #e3e3e3;
     border-radius: 16px;
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.25rem;
     background: #f8f9fa;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #1f1f1f;
     transition: all 0.2s ease;
     display: flex;
@@ -726,6 +745,15 @@ for (const q of questions) {
     gap: 0;
     font-family: 'Google Sans', 'DM Sans', sans-serif;
     position: relative;
+  }
+
+  :global(.opt-btn:active):not([disabled]) {
+    transform: scale(0.98);
+  }
+
+  :global(.opt-btn[disabled]) {
+    cursor: default;
+    opacity: 0.95;
   }
 
   :global(.opt-btn:hover):not([disabled]) {
