@@ -1,0 +1,3810 @@
+{
+  "meta": {
+    "exam": "TNPSC Group 4 2025 Comprehensive Exam",
+    "year": 2025,
+    "paper_code": "GRP4",
+    "total_questions": 199,
+    "disputed": 0,
+    "extracted_at": "2026-04-25T15:29:11.023Z",
+    "source_file": "TNPSC Group 4 2025 Comprehensive Exam Question Bank.docx"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the incorrect sentence.",
+      "options": [
+        "காளைகளைப் பூட்டி வயலை உழுதனர்",
+        "மலைமீது ஏறிக் கல்வெட்டுகளைக் கண்டறிந்தனர்",
+        "காளையில் பூத்த மல்லிகை மனம் வீசியது",
+        "நெற்பயிர்கள் மழைநீரில் மூழ்கின",
+        "காளையில் பூத்த மல்லிகை மனம் வீசியது",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "The correct word should be 'காலையில்' (Kālayil, meaning 'in the morning'), as jasmine (மல்லிகை) blooms in the morning. 'காளையில்' means 'on the bull' or 'in the day' in this context, making the sentence grammatically incorrect in meaning."
+    },
+    {
+      "id": 2,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the types of finite verbs (Vinai mutru):\n(a) அழிந்தது தீமை -\n1. சினைப்பெயர் கொண்டது\n(b) அற்றது பிறப்பு -\n2. இடப்பெயர் கொண்டது\n(c) நல்லது கை -",
+      "options": [],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 3,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "குணப்பெயர் கொண்டது\n(d) குளிர்ந்தது நிலம் -",
+      "options": [],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 4,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "தொழிற்பெயர் கொண்டது",
+      "options": [
+        "3 4 1 2",
+        "3 1 4 2",
+        "3 4 1 2",
+        "4 3 2 1",
+        "4 1 2 3",
+        "Answer not known / விடை தெரியவில்லை",
+        "கேண்மை",
+        "பகை",
+        "வண்மை",
+        "வன்மை",
+        "கேண்மை",
+        "Answer not known / விடை தெரியவில்லை",
+        "நிகழ்காலப் பெயரெச்சம்",
+        "இறந்தகாலப் பெயரெச்சம்",
+        "எதிர்காலப் பெயரெச்சம்",
+        "குறிப்புப் பெயரெச்சம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "'செற்றம்' (Setram) means hatred, anger, or enmity. 'கேண்மை' (Kēṇmai) means friendship or affection, making it the direct antonym.\n4. Identify the type of relative participle (Peyarechcham) in the phrase 'Paadum Paadal' (பாடும் பாடல்)."
+    },
+    {
+      "id": 5,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Find the Participial Noun (Vinayalanaiyum Peyar) for high-class (Uyarthinai) derived from the root word 'Nada' (நட).",
+      "options": [
+        "எதிர்காலப் பெயரெச்சம்",
+        "நடந்து",
+        "நடப்பது",
+        "நடப்பவை",
+        "நடந்தவன்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "The relative participle 'பாடும்' ends with the suffix 'உம்', which is the marker for the Future Tense (எதிர்காலம்) in relative participles."
+    },
+    {
+      "id": 6,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the Imperative Finite Verb (Eval Vinai Mutru) for the root word &quot;Vai&quot; (வை).",
+      "options": [
+        "நடந்தவன்",
+        "வைத்த",
+        "வைத்து",
+        "வைத்தது",
+        "வைத்தான்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "'நடந்தவன்' is the Participial Noun (Vinayalanaiyum Peyar) that refers to a person (rational being or Uyarthinai) who performed the action 'நட' (walk)."
+    },
+    {
+      "id": 7,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Assertion and",
+      "options": [
+        "Answer not known / விடை தெரியவில்லை",
+        "is the appropriate choice in a standard multiple-choice format.",
+        "கூற்று – சரி; காரணம் – தவறு",
+        "கூற்று – தவறு; காரணம் – சரி",
+        "கூற்று – சரி; காரணம் – சரி",
+        "கூற்று – தவறு; காரணம் – தவறு",
+        "கூற்று – சரி; காரணம் – தவறு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "Assertion is correct: letters used for pointing are demonstrative letters (சுட்டு எழுத்துகள்). Reason is incorrect: எ, யா, ஆ, ஓ, ஏ are Interrogative letters (வினா எழுத்துகள்), not demonstrative letters. The demonstrative letters are அ, இ, உ."
+    },
+    {
+      "id": 8,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Assertion and",
+      "options": [
+        "கூற்று – சரி; காரணம் – தவறு",
+        "கூற்று – தவறு; காரணம் – சரி",
+        "கூற்று – சரி; காரணம் – சரி",
+        "கூற்று, காரணம் இரண்டும் தவறு",
+        "கூற்று – சரி; காரணம் – சரி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "Assertion is correct: அப்பக்கம், இப்பக்கம், உப்பக்கம் are demonstrative words. Reason is correct: The letters அ, இ, உ are demonstrative letters used to indicate a place (இடப்பொருள்)."
+    },
+    {
+      "id": 9,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the mismatched pair.",
+      "options": [
+        "ஏ – எ",
+        "த – ந",
+        "ஐ – அ",
+        "ற – ன",
+        "Answer not known / விடை தெரியவில்லை",
+        "is the most accurate choice without external context.",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "All the pairs listed (A, B, C, D) represent valid phonetic or grammatical relationships in Tamil grammar, such as allied letters or common phonetic substitutions. Since the question asks for a *mismatched* pair, and all are related,"
+    },
+    {
+      "id": 10,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "குயில், நெடில் சொற்களுக்குச் சரியான பொருளைக் கண்டறிக.Identify the correct meanings for the words:  கண்டம் – காண்டம்.",
+      "options": [
+        "கூட்டம், பொருள்",
+        "பொருள், கூட்டம்",
+        "கூட்டம், காடு",
+        "காடு, தோட்டம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 11,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Choose the correct statement regarding &quot;Thandha Palagai&quot; (தந்தப் பலகை).Assertion:  'தந்தப் பலகை' என்பதன் பொருள் 'கொடுத்த பலகை' என்பதாகும்.",
+      "options": [
+        "கூட்டம், பொருள்",
+        "provides the most appropriate definitions from the choices.",
+        "கூற்று – சரி; காரணம் – தவறு",
+        "கூற்று – தவறு; காரணம் – சரி",
+        "கூற்று – சரி; காரணம் – சரி",
+        "கூற்று – தவறு; காரணம் – தவறு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "'கண்டம்' (Kandam, short 'க') means a group or crowd (கூட்டம்), among other meanings like continent. 'காண்டம்' (Kāndam, long 'கா') means a section, part, or chapter (பொருள்/பாகம்). Option"
+    },
+    {
+      "id": 12,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Select the sentence free of Sandhi errors (conjunction errors).",
+      "options": [
+        "அங்குக் கேட்டேன்",
+        "அங்கு கேட்டேன்",
+        "இங்கு பேசாதே",
+        "எங்கு சென்றாய்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 13,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Arrange the following words in Alphabetical Order: Kaapu, Sengheerai, Thaal, Sappaani, Mutham, Varugai, Ambuli.",
+      "options": [
+        "அம்புலி, காப்பு, சப்பாணி, தால், செங்கீரை, முத்தம், வருகை",
+        "அம்புலி, காப்பு, சப்பாணி, செங்கீரை, முத்தம், தால், வருகை",
+        "அம்புலி, காப்பு, சப்பாணி, செங்கீரை, தால், முத்தம், வருகை",
+        "அம்புலி, காப்பு, செங்கீரை, சப்பாணி, தால், முத்தம், வருகை",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 14,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Error Correction:Assertion:  ஒரு அணில் மரத்தில் ஏறியது.",
+      "options": [
+        "கூற்று – சரி; காரணம் – தவறு",
+        "கூற்று – தவறு; காரணம் – சரி",
+        "காரணம், கூற்று – இரண்டும் சரி",
+        "கூற்று, காரணம் – இரண்டும் தவறு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "உயிர் எழுத்துகளில் தொடங்கும் சொற்களுக்கு முன்னர் &quot;ஓர்&quot; பயன்படுத்த வேண்டும்."
+    },
+    {
+      "id": 15,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the town names with their corrupted forms (Maruu):\n(a) தேவகோட்டை -\n1. கோவை\n(b) கோயம்புத்தூர் -\n2. சோணாடு\n(c) பூந்தமல்லி -\n3. தேகோட்டை\n(d) சோழநாடு -\n4. பூவை",
+      "options": [
+        "1 2 3 4",
+        "3 1 4 2",
+        "2 1 4 3",
+        "4 3 2 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 16,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Provide two meanings for the word &quot;Tharani&quot; (தாரணி).",
+      "options": [
+        "சூரியன், உலகம்",
+        "கதிரவன், மதி",
+        "கடல், பூமி",
+        "பூமி, உலகம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 17,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the meaning of the phrase &quot;Meemisai Gnayiru&quot; (மீமிசை ஞாயிறு).",
+      "options": [
+        "பக்கப்பகுதி",
+        "கீழ்ப்பகுதி",
+        "நடுப்பகுதி",
+        "மேல்பகுதி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 18,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Find the odd word out.",
+      "options": [
+        "முரல்",
+        "வழுதி",
+        "வாளை",
+        "வியானம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 19,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Nannool lists 42 single-letter words. How many single-letter words are found when combining Kazhaga Tamil Dictionary (1964), Pavanthar Tamil Dictionary (1925), and Vetri Tamil Dictionary (1992)?",
+      "options": [
+        "42",
+        "40",
+        "82",
+        "70",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 20,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the antonyms used in the following song lines: &quot;...Uravor ayin uravor... Madavam aga, madandhai name!&quot;",
+      "options": [
+        "மடவம் × மடந்தை",
+        "உரவோர் ஆயின் × உரவோர் ஆக",
+        "உரவோர் × மடந்தை",
+        "உரவோர் × மடவம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 21,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the punctuation mark to be used when explaining a statement made by a person or a book.",
+      "options": [
+        "காற்புள்ளி",
+        "அரைப்புள்ளி",
+        "முக்காற்புள்ளி",
+        "முற்றுப்புள்ளி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 22,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the following:\n(a) சாந்து -\n1. இழிதல்\n(b) குருவி -\n2. குடை\n(c) சுளை -\n3. ஒப்பு\n(d) அருவி -\n4. அரை",
+      "options": [
+        "4 3 2 1",
+        "4 1 3 2",
+        "2 4 1 3",
+        "4 2 1 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 23,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the correct sound tradition (Oli Marabu) for &quot;Pul&quot; (Bird).",
+      "options": [
+        "நரலும்",
+        "கூவும்",
+        "சிலம்பும்",
+        "சீறும்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 24,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the correct present tense sentence.",
+      "options": [
+        "கண்ணன் நேற்று வருவான்",
+        "அன்பு நாளை வந்தான்",
+        "கவின்மொழி வருவாள்",
+        "பூமி சுழல்கிறது",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 25,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Assertion and",
+      "options": [
+        "கூற்று – சரி; காரணம் – சரி",
+        "கூற்று – தவறு; காரணம் – சரி",
+        "கூற்று – சரி; காரணம் – தவறு",
+        "கூற்று – தவறு; காரணம் – தவறு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "யானைகள் என்ற பலவின்பால் பெயருக்கு 'அது' என்ற ஒன்றன்பால் விகுதியே இடம்பெற வேண்டும்."
+    },
+    {
+      "id": 26,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the causative verb sentence (Piravinai).",
+      "options": [
+        "அன்பு பாடல் பாடினான்.",
+        "கவின்மொழி திருக்குறள் கற்றாள்.",
+        "அடிகள் மறை ஓதினார்.",
+        "அரசன் மாலை அணிவித்தான்.",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 27,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the verb type where the second case shifts to the first and the first shifts to the third.",
+      "options": [
+        "செய்வினை செயப்பாட்டு வினையாக மாறும்போது",
+        "செயப்பாட்டு வினை செய்வினையாக மாறும்போது",
+        "தன்வினை பிறவினையாக மாறும்போது",
+        "பிறவினை தன்வினையாக மாறும்போது",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 28,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "In History, identify the equivalent for the term &quot;Whitehall.&quot;",
+      "options": [
+        "வெள்ளை மாளிகை – அமெரிக்கா",
+        "ரஷ்ய – மாளிகை",
+        "வாடிகன் – மாளிகை",
+        "பிரிட்டானிய அரசு அலுவலகம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 29,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the Tamil equivalents:\n(a) Dark Fiber -\n1. பின்னணி நிரல்\n(b) Demon -\n2. அடர்த்தி\n(c) Darkest -\n3. மிகு இருண்மை\n(d) Density -\n4. இருட்டு இழை",
+      "options": [
+        "4 2 3 1",
+        "4 1 3 2",
+        "1 3 4 2",
+        "2 4 1 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 30,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "In Geography, provide the technical term for &quot;Advance.&quot;",
+      "options": [
+        "ஃபெல்ஸ்பார் கனிமவகை",
+        "கடற்கரையியக்கம்",
+        "பெரும் நில அதிர்விற்குப் பின்னான சிறு அதிர்வுகள்",
+        "வியாழனின் துணைக்கோள்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 31,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the following terms:\n(a) Pre-censorship -\n1. உடைமை\n(b) Possession -\n2. முன் தணிக்கை\n(c) Prescription -\n3. முனைமம்\n(d) Premium -\n4. நீடனுபோகம்",
+      "options": [
+        "2 1 4 3",
+        "1 2 3 4",
+        "4 3 2 1",
+        "1 4 3 2",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 32,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Provide the Tamil term for the technical word: Veteran.",
+      "options": [
+        "சோம்பல் உடையவர்",
+        "திறனாளர்",
+        "காலம் கடத்துபவர்",
+        "முன்கோபி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 33,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the Tamil equivalent for: Glacier.",
+      "options": [
+        "வெப்ப ஆறு",
+        "செவுள் இழை",
+        "செவுள் வலை",
+        "பனியாறு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 34,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the meaning of the proverb &quot;Thanimaram kadathal il&quot; (தனிமரம் காடாதல் இல்).",
+      "options": [
+        "ஆசையும் அழிவும்",
+        "தீயவரைத் தண்டித்தல்",
+        "பகையை நீக்குதல்",
+        "நட்பைப் பெருக்குதல்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 35,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the proverb associated with the Kural beginning &quot;Azhakkonda ellam...&quot;",
+      "options": [
+        "எறும்பு ஊரக் கல்லும் தேயும்",
+        "ஊரார் உடைமைக்குப் பேயாய்ப் பறவாதே",
+        "கிட்ட நெருங்க முட்டப்பகை",
+        "குந்தித் தின்றால் குன்றும் மாளும்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 36,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the idiomatic phrases to their meanings:\n(a) அடரடி படரடி -\n1. சித்தி அடைதல்\n(b) அகட விகடம் -\n2. உறுதியின்மை\n(c) ஈரொட்டு -\n3. தந்திரம்\n(d) கை கூடுதல் -\n4. பெருங்குழப்பம்",
+      "options": [
+        "4 1 2 3",
+        "4 3 2 1",
+        "3 4 2 1",
+        "3 2 4 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 37,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Complete the sound tradition phrase: &quot;In the forest, the lion ______, the elephant ______.&quot;",
+      "options": [
+        "அலறும், கத்தும்",
+        "உறுமும், பிளிறும்",
+        "முழங்கும், பிளிறும்",
+        "உறுமும், கத்தும்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 38,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the similes with their meanings:\n(a) அலை ஓய்ந்த கடல் போல் -\n1. நடுங்குதல்\n(b) அடியற்ற மரம் போல் -\n2. மனம் உடைதல்\n(c) மத்தில் அகப்பட்ட தயிர்போல் -\n3. அமைதி\n(d) புயலில் சிக்கிய பூங்கொடிபோல் -\n4. வீழ்தல்",
+      "options": [
+        "3 4 2 1",
+        "3 1 4 2",
+        "4 3 2 1",
+        "4 1 3 2",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 39,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "In the phrase &quot;Ugirsutrin mel ulakkai vizhunthar pola,&quot; what does &quot;Ugirsutru&quot; mean?",
+      "options": [
+        "கால்சுற்று",
+        "கைச்சுற்று",
+        "நகச்சுற்று",
+        "திருமணச்சுற்று",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 40,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the registers:\n(a) Call book -\n1. பதிவேடு வழங்கு குறிப்பேடு\n(b) Record issue register -\n2. வறியர் வழக்குப்பதிவேடு\n(c) Pauper suit register -\n3. செம்மைப்படி பதிவேடு\n(d) Fair copy register -\n4. மறுகவனிப்புப் பதிவேடு",
+      "options": [
+        "1 3 4 2",
+        "2 3 1 4",
+        "3 2 4 1",
+        "4 1 2 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 41,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Find the Tamil term for &quot;Adoring.&quot;",
+      "options": [
+        "முன்னேறுதல்",
+        "ஒப்புக்கொடுத்தல்",
+        "போற்றுதல்",
+        "துணை நிற்றல்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 42,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "From which language was the word &quot;Comrade&quot; (meaning friend) derived?",
+      "options": [
+        "ஜப்பான் மொழி",
+        "சீன மொழி",
+        "போர்த்துக்கீசிய மொழி",
+        "பிரெஞ்சு மொழி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 43,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the correct pair.\n(1) தாராபாரதி – ஆசியஜோதி\n(2) முடியரசன் – வீரகாவியம்\n(3) கவிமணி – இதய ஒலி\n(4) இரசிகமணி – விரல் நுனி வெளிச்சங்கள்",
+      "options": [
+        "(2) - சரி",
+        "(1) - சரி",
+        "(4) - சரி",
+        "(3) - சரி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 44,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the meaning of the word &quot;Pootkai&quot; (பூட்கை).",
+      "options": [
+        "படுக்கை",
+        "உடல்",
+        "குறிக்கோள்",
+        "மலை",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 45,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Who founded and served as the president of the World Tamil Association?",
+      "options": [
+        "இரா. இளங்குமரனார்",
+        "க. அப்பாதுரையார்",
+        "தேவநேயப் பாவாணர்",
+        "சி. இலக்குவனார்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 46,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify how the scripts written in Tamil Nadu during the last Sangam period were called.",
+      "options": [
+        "கோலாமி",
+        "பர்ஜி",
+        "கோண்டா",
+        "கண்ணெழுத்துகள்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 47,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Which medicinal ingredient is NOT found in the work &quot;Eladhi&quot;?\n(1) சுக்கு\n(2) திப்பிலி\n(3) கண்டங்கத்திரி\n(4) சிறுநாவற்பூ",
+      "options": [
+        "(1) மட்டும்",
+        "(2) மட்டும்",
+        "(3) மட்டும்",
+        "(4) மட்டும்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 48,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the book containing the line: &quot;Thootrin kan thooviya vithu.&quot;",
+      "options": [
+        "பழமொழி நானூறு",
+        "மூதுரை",
+        "நாலடியார்",
+        "திரிகடுகம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 49,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Assertion and",
+      "options": [
+        "A சரி R தவறு",
+        "A மற்றும் R இரண்டும் சரி",
+        "A மற்றும் R இரண்டும் தவறு",
+        "A தவறு R சரி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "Assertion A:  அழிவில்லாத சிறந்த செல்வம் கல்வியே.Reason R:  ஒருவருக்கு அதனை விடச் சிறந்த செல்வம் வேறு உண்டு."
+    },
+    {
+      "id": 50,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Complete the following sentence: &quot;Those who can clearly express what they have learned before scholars...&quot;",
+      "options": [
+        "கற்றவருள் மிகவும் கற்றவராக மதிக்கப்படுவார்",
+        "பிறர் மனத்தில் நன்கு பதியும்படி சொல்லுவார்",
+        "முன்வினையையும் தோற்கடித்து வெற்றியடைவார்",
+        "அரிய செயல்களை விரைந்து செய்து முடிப்பார்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 51,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the meaning of the underlined word in: “Thaguthiyan vendru vidal” (தகுதியான் வென்று விடல்).",
+      "options": [
+        "பெருமை",
+        "பொறுமை",
+        "கல்வி",
+        "பண்பு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 52,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Sentence Formation: Virinthu (விரிந்து) - Virithathu (விரித்தது).",
+      "options": [
+        "மாலை நேரத்தில் அல்லி இதழ் விரிந்தன; மயில் தோகை விரிந்தது",
+        "மாலை நேரத்தில் அல்லி இதழ்கள் விரிந்தன; மயில் தோகை விரிந்தன",
+        "மாலை நேரத்தில் அல்லியின் இதழ்கள் விரிந்தன; மயில் தோகை விரித்தது",
+        "மாலை நேரத்தில் அல்லியின் இதழ்கள் விரிந்தன; மயில் தோகையை விரித்தது",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 53,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Assertion and",
+      "options": [
+        "கூற்று – சரி; காரணம் – சரி",
+        "கூற்று – சரி; காரணம் – தவறு",
+        "கூற்று – தவறு; காரணம் – சரி",
+        "கூற்று – தவறு; காரணம் – தவறு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "இரண்டு சொற்களுக்கு இடையே 'க்' என்ற ஒற்று மிகுவதால் கலையைக் கற்பிக்கும் கழகம் என்று பொருள் கொள்ள வேண்டும்."
+    },
+    {
+      "id": 54,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the pure Tamil word among the following.",
+      "options": [
+        "காதி",
+        "சாவடி",
+        "சாம்பார்",
+        "உக்கை",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 55,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the foreign words mixed in Tamil as stated by Dewan Bahadur Bhavanandam Pillai in his Tamil dictionary appendix:\n(a) போர்த்துக்கீசிய மொழி - 1. 34\n(b) தெலுங்கு மொழி - 2. 486\n(c) அரபு, பாரசீக, இந்துஸ்தானி - 3. 06\n(d) ஆங்கில மொழி - 4. 411",
+      "options": [
+        "4 1 2 3",
+        "4 3 2 1",
+        "3 1 4 2",
+        "3 4 1 2",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 56,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the types of participles:\n(a) நிகழ்காலப் பெயரெச்சம் -\n1. இல்லாத பொருள்\n(b) உடன்பாட்டுப் பெயரெச்சம் -\n2. அறிந்த பையன்\n(c) குறிப்புப் பெயரெச்சம் -\n3. ஓடுகிற குதிரை\n(d) ஈறுகெட்ட எதிர்மறைப் பெயரெச்சம் -\n4. அறியாத குழந்தை",
+      "options": [
+        "3 2 4 1",
+        "4 1 2 3",
+        "1 2 4 3",
+        "4 2 1 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 57,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the root word of &quot;Olakkam&quot; (ஒலக்கம்).",
+      "options": [
+        "ஒல்",
+        "ஒலம்",
+        "ஒலகம்",
+        "ஓட்டோலக்கம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 58,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the following:\n(a) அணிகம் -\n1. காமன்\n(b) அதிகம் -\n2. சிவிகை\n(c) அனிகம் -\n3. படையின் ஓர் அளவு\n(d) அநங்கு -\n4. ஊர்தி",
+      "options": [
+        "4 3 2 1",
+        "4 2 3 1",
+        "4 1 2 3",
+        "3 2 4 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 59,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Assertion and",
+      "options": [
+        "கூற்று – சரி, காரணம் – தவறு",
+        "கூற்று – தவறு, காரணம் – சரி",
+        "கூற்று – தவறு, காரணம் – தவறு",
+        "கூற்று – சரி, காரணம் – சரி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "இவ்வினா எழுத்துகளை இடவினா எழுத்துகள் எனக் குறிக்கலாம்."
+    },
+    {
+      "id": 60,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Assertion and",
+      "options": [
+        "கூற்று – சரி; காரணம் – தவறு",
+        "கூற்று – தவறு; காரணம் – சரி",
+        "கூற்று – சரி; காரணம் – சரி",
+        "கூற்று – தவறு; காரணம் – தவறு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "உயிர் எழுத்துகளில் குறிலுக்கு நெடிலும், நெடிலுக்குக் குறிலும் இன எழுத்துகள் ஆகும்."
+    },
+    {
+      "id": 61,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the following:\n(a) மருப்பு -\n1. வடிவத்தோர்\n(b) விரகு -\n2. தந்திரம்\n(c) மருகன் -\n3. சிறிய அடி\n(d) சீறடி -\n4. யானைத் தந்தம்",
+      "options": [
+        "1 4 3 2",
+        "1 2 4 3",
+        "4 2 1 3",
+        "2 1 4 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 62,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the following:\n(a) மாணி -\n1. பொன்\n(b) மாநி -\n2. குள்ளன்\n(c) கனகம் -\n3. படை\n(d) கனிகம் -\n4. மாமன்",
+      "options": [
+        "1 2 3 4",
+        "2 4 3 1",
+        "4 3 2 1",
+        "3 1 4 2",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 63,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Join the words: Pala + Arumai (பலா + அருமை).",
+      "options": [
+        "பலாஅருமை",
+        "பலஅருமை",
+        "பலாவருமை",
+        "பலாப்பழம் அருமை",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 64,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Split the word: &quot;Gangaugam&quot; (கங்கௌகம்).",
+      "options": [
+        "கங் + கௌகம்",
+        "கங்கு + ஓகம்",
+        "கங்க + ஓகம்",
+        "கங்கா + ஒகம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 65,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Find a single word providing meanings like &quot;Koral&quot; or &quot;Kolluthal&quot; (killing).",
+      "options": [
+        "ஆடல்",
+        "அரவு",
+        "ஆடு",
+        "அடுதல்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 66,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Which single letter provides the meanings: bird, flower, removal, and destruction?",
+      "options": [
+        "கா",
+        "வீ",
+        "பூ",
+        "மா",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 67,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "A person who knows in advance what will happen later in the country is called ______.",
+      "options": [
+        "மறவி",
+        "நிறவி",
+        "மறதி",
+        "தீரவர்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 68,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Find an equivalent word for &quot;Kuthithal&quot; (Jumping).",
+      "options": [
+        "படிதல்",
+        "குடியமர்தல்",
+        "ஓழுங்காதல்",
+        "சீராதல்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 69,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Choose the sentence without spelling errors.",
+      "options": [
+        "எழும்பியிருக்க வேண்டுவன எழும்பி இனிதாகத் தோன்றும் அழகு",
+        "எழும்பியிருக்க வேண்டுவன எழும்பி இனிதாகத் தோன்றும் அழகு",
+        "எழும்பியிருக்க வேண்டுவன எழும்பி இனிதாகத் தோன்றும் அழகு",
+        "இவை எதுவும் இல்லை",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 70,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Choose the appropriate synonyms for: Malai (Mountain).",
+      "options": [
+        "வெற்பு, சிலம்பு, பொருப்பு",
+        "பொழிவு, எழில், வனப்பு",
+        "அருள், பரிவு, கருணை",
+        "ஆதவன், பகலவன், ஞாயிறு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 71,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Distinguish between the sounds and choose the correct meaning: Kali (கலி), Kazhi (கழி).",
+      "options": [
+        "போர், மிகுதி",
+        "கலித்தல், கழித்தல்",
+        "மகிழ்ச்சி, களித்தல்",
+        "கலித்தொகை, மாவு களி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 72,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Locations of Semicolons:Assertion:  கபிலர் பாரியைக் கண்டார்; புகழ்ந்து பாடினார்; பரிசு பெற்றார்.",
+      "options": [
+        "கூற்று சரி; காரணம் சரியன்று",
+        "கூற்று சரியன்று; காரணம் சரி",
+        "கூற்று, காரணம் இரண்டும் சரியன்று",
+        "கூற்று, காரணம் இரண்டும் சரி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "கபிலர் என்ற ஓர் எழுவாய் பல பயனிலைகளைக் கொண்டு முடிந்துள்ளன."
+    },
+    {
+      "id": 73,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Place the comma correctly in the sentence: &quot;The teacher came to Pugazhiniyall asked a question and made her answer.&quot;",
+      "options": [
+        "ஆசிரியர் புகழினியாளிடம் வந்து, கேள்வி கேட்டுப் பதில் கூறுமாறு செய்தார்.",
+        "ஆசிரியர், புகழினியாளிடம் வந்து, கேள்வி கேட்டுப், பதில் கூறுமாறு செய்தார்.",
+        "ஆசிரியர், புகழினியாளிடம் வந்து, கேள்வி கேட்டுப், பதில் கூறுமாறு, செய்தார்.",
+        "ஆசிரியர், புகழினியாளிடம், வந்து கேள்வி கேட்டுப், பதில் கூறுமாறு செய்தார்.",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 74,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match animals with their young ones' names:\n(a) நவ்வி -\n1. சினை\n(b) முதலை -\n2. ஓந்தி\n(c) உடும்பு -\n3. பார்ப்பு\n(d) மீன், கெண்டை -\n4. மறி",
+      "options": [
+        "4 3 2 1",
+        "4 1 2 3",
+        "4 2 1 3",
+        "1 4 3 2",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 75,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the part of a grass (Pul).",
+      "options": [
+        "தளிர்",
+        "முறி",
+        "குழை",
+        "ஓலை",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 76,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the non-human (Ahtrinai) sentence.",
+      "options": [
+        "மலர்கள் மலர்ந்தன",
+        "மக்கள் கூடினர்",
+        "மாணவர்கள் விளையாடினர்",
+        "ஆசிரியர்கள் மகிழ்ந்தனர்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 77,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the sentence free of singular/plural errors.",
+      "options": [
+        "அவர் கோவிலுக்குச் சென்றனர்.",
+        "மரம் முறிந்து விழுந்தன.",
+        "சீவகனிடம் விடாமுயற்சி இருந்தது.",
+        "சிறுவர் தெருவில் ஓடி விளையாடினர்.",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 78,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the sentence containing a particle/interjection (Idaichol).",
+      "options": [
+        "கடி மணம்",
+        "அழைத்தனர் உற்றார்",
+        "நிலவோ காய்ந்தது",
+        "அம்ம வாழி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 79,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Rearrange the words to form a proper sentence: &quot;Padarinthu ozhugal panbu enappaduvathu.&quot;",
+      "options": [
+        "பண்பு எனப்படுவது ஒழுகல் பாடறிந்து",
+        "பண்பு எனப்படுவது பாடறிந்து ஒழுகல்",
+        "பாடறிந்து பண்பு எனப்படுவது ஒழுகல்",
+        "ஒழுகல் எனப்படுவது பண்பு பாடறிந்து",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 80,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the Tamil equivalent for &quot;Visual Scanner.&quot;",
+      "options": [
+        "காட்சிப் பக்கம்",
+        "படப்பிடிப்பு",
+        "கட்புலமேவி",
+        "காட்சி உணர்தல்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 81,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Provide the technical term for &quot;Anchorage&quot; in engineering.",
+      "options": [
+        "நேர்கோட்டு வைப்பு",
+        "ஊன்றுதளை",
+        "வெட்டுமுகம்",
+        "நீர்க்குழல்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 82,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Provide the Tamil term for &quot;Monopoly Control.&quot;",
+      "options": [
+        "தனி ஆதிக்க விலை",
+        "தனி வல்லாண்மைக் கட்டுப்பாடு",
+        "தனி வல்லாளர்",
+        "தனி வரைவு கட்டுப்பாடு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 83,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the following:\n(a) Abulia -\n1. சீழ்கட்டி\n(b) Acomia -\n2. உடல் வழுக்கை\n(c) Abscess -\n3. மன உறுதிக் குறைபாடு\n(d) Alopecia Universalis -\n4. தலை வழுக்கை",
+      "options": [
+        "3 4 2 1",
+        "3 4 1 2",
+        "2 4 1 3",
+        "2 3 4 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 84,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Courtallam is called the 'Spa of South India.' Identify the waterfall known by this title.",
+      "options": [
+        "ஆகாயகங்கை அருவி",
+        "கேத்ரின் அருவி",
+        "சுருளி அருவி",
+        "குற்றால அருவி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 85,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "According to the Tamil Development Department 2024-2025 note, how many awardees are provided with houses annually under the 'Dream House Scheme'?",
+      "options": [
+        "9",
+        "17",
+        "8",
+        "10",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 86,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the meaning of the proverb: &quot;Kadugu siruthalum karam pogumo?&quot; (Does pungency leave even if the mustard is small?).",
+      "options": [
+        "பெருமை",
+        "கர்வம்",
+        "குறைத்து மதிப்பிடாதே",
+        "புகழ்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 87,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Match the idiomatic phrases with their meanings:\n(a) கடன் கழித்தல் -\n1. கலங்கல் நீர்\n(b) கடை விரித்தல் -\n2. முரண்படுதல்\n(c) கட்சைக் கட்டுதல் -\n3. தன் ஆற்றலைச் சொல்லுதல்\n(d) கக்கல் கரீசல் -\n4. மனமின்றிச் செய்தல்",
+      "options": [
+        "4 3 2 1",
+        "4 1 2 3",
+        "4 2 3 1",
+        "3 4 2 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 88,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the meaning of the idiomatic phrase &quot;Velai pisagu&quot; (வேளைப் பிசகு).",
+      "options": [
+        "நல்ல காலம்",
+        "தீய காலம்",
+        "கடந்த காலம்",
+        "வரும் காலம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 89,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the correct meaning of the simile: &quot;Appasaitha kurangathanai pola&quot; (Like the monkey that pulled the wedge).",
+      "options": [
+        "இன்பம்",
+        "ஏக்கம்",
+        "வேகம்",
+        "வேதனை",
+        "Answer not known / விடை தெரியவில்லைTechnical Summary\nfor Questions 90–92:  V.O. Chidambaranar was a prominent freedom fighter from Tamil Nadu. He established the Swadeshi Steam Navigation Company to challenge British shipping monopolies. He was a scholar in both Tamil and English and would regularly visit Bharatiyar whenever he went to Chennai."
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 90,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Who established the Swadeshi Steam Navigation Company?",
+      "options": [
+        "வ.உ. சிதம்பரனார்",
+        "பாரதியார்",
+        "சுபாஷ் சந்திரபோஸ்",
+        "பாரதிதாசன்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 91,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Whom did V.O.C. regularly visit when he went to Chennai?",
+      "options": [
+        "நேதாஜி",
+        "பாரதியார்",
+        "பாரதிதாசன்",
+        "திரு.வி.க.",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 92,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "In which languages was V.O.C. proficient?",
+      "options": [
+        "சமஸ்கிருதம், தமிழ்",
+        "ஆங்கிலம், கன்னடம்",
+        "தமிழ், ஆங்கிலம்",
+        "மலையாளம், தமிழ்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 93,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Provide the equivalent term for &quot;Proposal.&quot;",
+      "options": [
+        "உண்மை உரு",
+        "பொய் உரு",
+        "கருத்துரு",
+        "எண்ண உரு",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 94,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the Tamil equivalent for &quot;Irrigation Technology.&quot;",
+      "options": [
+        "தகவல் தொழில்நுட்பம்",
+        "குழலியல் தொழில்நுட்பம்",
+        "நீர்ப்பாசனத் தொழில்நுட்பம்",
+        "வெப்ப மண்டலத் தொழில்நுட்பம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 95,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Who praised Kayidhe Millath Muhammad Ismail as the &quot;ray of light that came to remove the darkness covering the Tamil political sky&quot;?",
+      "options": [
+        "தந்தை பெரியார்",
+        "அறிஞர் அண்ணா",
+        "ம.பொ. சிவஞானம்",
+        "ப. ஜீவானந்தம்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 96,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Which of the following is NOT associated with T.K. Chidambaranatha?\n(1) தமிழ் எழுத்தாளர்\n(2) திறனாய்வாளர்\n(3) வழக்கறிஞர்\n(4) பேராசிரியர்",
+      "options": [
+        "(1) மட்டும்",
+        "(2) மட்டும்",
+        "(3) மட்டும்",
+        "(4) மட்டும்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 97,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Assertion and",
+      "options": [
+        "A சரி ஆனால் R தவறு, R என்பது Aஐ விளக்கவில்லை",
+        "A மற்றும் R இரண்டும் சரி, R என்பது Aஐ விளக்கியுள்ளது",
+        "A மற்றும் R இரண்டும் தவறு",
+        "A தவறு ஆனால் R சரி",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "Assertion A:  உ.வே. சாமிநாதர் அனைவராலும் அன்போடும் உரிமையோடும் தமிழ்த்தாத்தா உ.வே.சா என்று அழைக்கப்படுகிறார்.Reason R:  அழிவு நிலையில் இருந்த பல்வேறு சுவடிகளைப் பலமுறை ஒப்பிட்டுப் பார்த்து வாசித்து, நமக்காகத் தாளில் எழுதி அச்சிட்டுப் புத்தகமாக இலக்கியங்களை வழங்கினார். தம் வாழ்நாள் முழுவதும் ஓய்வில்லாமல் பதிப்புப் பணியினை மேற்கொண்டார்."
+    },
+    {
+      "id": 98,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Identify the incorrect statement among the following.\n(1) இந்தியாவில் பேசப்படும் மொழிகளின் எண்ணிக்கை 1300க்கும் மேற்பட்டது.\n(2) பல கிளை மொழிகளும் இந்தியாவில் பேசப்படுவதால் இந்தியா மொழிப்பல்வகைமையின் காட்சிச்சாலையாகத் திகழ்கிறது.\n(3) திராவிடம் என்னும் சொல்லை முதலில் குறிப்பிட்டவர் ஹிராஸ் பாதிரியார்.\n(4) திராவிட மொழிக் குடும்பம், மொழிகள் பரவிய நில அடிப்படையின் மூன்றாக வகைப்படுத்தப்பட்டுள்ளது.",
+      "options": [
+        "(1) மட்டும்",
+        "(2) மட்டும்",
+        "(3) மட்டும்",
+        "(4) மட்டும்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 99,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "State the original name of the author of &quot;Nanmanikkadigai.&quot;",
+      "options": [
+        "நாயனார்",
+        "நல்லந்துவனார்",
+        "நாகனார்",
+        "சேந்தனார்",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 100,
+      "part": "A",
+      "lang": "ta/en",
+      "question": "Whom does Valluvar refer to as &quot;man konamalantha marathanaiyar&quot;?",
+      "options": [
+        "மனமார விருந்தினரை உபசரியாதவர்",
+        "பண்புடன் பழகாதவர்",
+        "இரக்கம் இல்லாதவர்",
+        "மேடைக்கு அஞ்சிச் சொல்ல மாட்டாதவர்",
+        "Answer not known / விடை தெரியவில்லை\n2. GENERAL STUDIES AND APTITUDE (QUESTIONS 101–200)\nTechnical Analysis:   Aptitude: High-Complexity Geometry Focus. Polity and Economics sections emphasize recent Tamil Nadu legislative and fiscal reports."
+      ],
+      "answer": -1,
+      "topic": "Tamil",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 101,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the following:\n(a) Financial Assistance to Dependent children -\n1. Between the age group of 18 and 21 years\n(b) Maintenance of Orphan and Destitute Girls -\n2. Providing destitute, orphan and unattached children\n(c) Foster Care Services Scheme -\n3. Children below the age of 16 years\n(d) State After-Care Home for Boys -\n4. Children between the age of 6 and 16 years",
+      "options": [
+        "2 3 1 4",
+        "4 2 3 1",
+        "3 4 2 1",
+        "2 4 1 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 102,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "As per the Tamilnadu Economic Survey of 2024-2025, arrange the following in ascending order based on productivity:  (1) Paddy productivity(2) Maize productivity(3) Oil seeds, Groundnut and Sugarcane productivity",
+      "options": [
+        "(1) (2) (3)",
+        "(3) (2) (1)",
+        "(2) (1) (3)",
+        "(3) (1) (2)",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 103,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Find the incorrect statement(s) about the Tamilnadu Health System Reform Program (TNHSRP):  (i) This program was supported by World Bank.(ii) This program is sponsored by the Central and State Government in the ratio of 60 : 40.(iii) It is implemented by the Department of Health and Family Welfare of Tamilnadu on Program for Results basis.(iv) This program aims to achieve the goal of SDG 9.",
+      "options": [
+        "(i) and (iii) only",
+        "(ii) and (iii) only",
+        "(ii) and (iv) only",
+        "(iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 104,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  In 1892, the Tremenheere report was accepted by the Government for increasing income by allotting poramboke land to the downtrodden community.Reason R:  In Chengalpet, the Panchamer Schools were run by philanthropic individuals on Panchami Land for promoting education for the downtrodden.",
+      "options": [
+        "A is true R is false",
+        "Both A and R are true and R is the correct explanation of A",
+        "A is false R is true",
+        "Both A and R are true but R is not the correct explanation of A",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 105,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Identify the incorrectly paired matches:  (1) Lokpal and Lokayuktas Act came into force – January 16th, 2014(2) Tamil declared as Classical Language – Oct 10, 2004(3) Election Commission of India – Article 324(4) National Integration Council in India – 1960",
+      "options": [
+        "(1) and (3)",
+        "(2) and (4)",
+        "(3) and (4)",
+        "(4) and (1)",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 106,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "The purpose of &quot;Surya Ghar Muft Bijli Yojana&quot; is:",
+      "options": [
+        "Installing roof top solar",
+        "Providing Houses to the poor",
+        "Insurance to old age people",
+        "Financing to small industries",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 107,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  The Zamindari system was created by the East India Company in 1793 when Lord Cornwallis entered into permanent settlement.Reason R:  Under the settlement, the landlords were declared full properties of large areas of land.",
+      "options": [
+        "A is true, R is false",
+        "A is false, R is true",
+        "Both A and R are false",
+        "Both A and R are true, but R is the correct explanation of A",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 108,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  Goods and Services Tax in India is a comprehensive, multistage, destination-based tax levied on every value addition.Reason R:  The moto is 'One Tax, One Market, One Nation'.",
+      "options": [
+        "A is true, but R is false",
+        "Both A and R are true; and R is the correct explanation of A",
+        "A is false, R is true",
+        "Both A and R are true, but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 109,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Arrange the following Finance Ministers of Tamil Nadu chronologically according to the Budget Year:\nMr. Paneerselvam\nDr. Nedunchezhiyan\nMr. Palanivel Thiagarajan\nMr. Thangam Thennarasu",
+      "options": [
+        "1 2 3 4",
+        "4 3 2 1",
+        "2 1 3 4",
+        "1 4 2 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 110,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  The plan period 1966 – 69 was called as &quot;Annual plans or plan holiday&quot;.Reason R:  This was because of the two major conflicts with China and Pakistan.",
+      "options": [
+        "A is true, R is false",
+        "Both A and R are true, but R is not a correct explanation of A",
+        "Both A and R are true, and R is the correct explanation of A",
+        "A is false, R is true",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 111,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Statement and",
+      "options": [
+        "Both Statement and Reason are correct",
+        "Reason is incorrect but Statement is correct",
+        "Both Statement and Reason are incorrect",
+        "Statement is incorrect but Reason is correct",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": "Thiruvalluvar wanted to portray the administrative skills of Kings."
+    },
+    {
+      "id": 112,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Give the chapter number in Thirukkural that talks about Ascetic Virtues.",
+      "options": [
+        "18",
+        "13",
+        "12",
+        "16",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 113,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Who is the author of &quot;Valluvarum Kuralum&quot;?",
+      "options": [
+        "Tamilannal",
+        "Ki.Aa.Pe. Vishwanatham",
+        "Ra.Pi. Sethupillai",
+        "Thiru.Vi. Kalyanasundaram",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 114,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Who was the first to draw the portrait of Thiruvalluvar?",
+      "options": [
+        "Venkata Krishna Pandithar",
+        "Venugopala Sharma",
+        "Saminatha Sharma",
+        "Vannacharaba Dheetchithar",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 115,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Choose the right matches:  (1) New India – Bharathi(2) Thesapakthan – V.V. Subramanian(3) Nava Sakthi – Thiru. V. Kalyanasundaram(4) The Hindu – G. Subramaniam",
+      "options": [
+        "(1) and (2) are correct",
+        "(2) and (3) are correct",
+        "(3) and (4) are correct",
+        "(1) and (4) are correct",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 116,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which of the following statements are true about the Theosophical Movement?  (i) The Theosophical society was founded by Madam Blavatsky and Col. H.S. Olcott in New York.(ii) In 1888 Mrs. Annie Besant joined the society in India.(iii) The headquarters of the society is in Adyar.",
+      "options": [
+        "(i) and (ii)",
+        "(ii) and (iii)",
+        "(i) and (iii)",
+        "(iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 117,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  E.V.R. Periyar started the Self-Respect Movement in 1925.Reason R:  New India was the official Newspaper of the Self-Respect Movement.",
+      "options": [
+        "A is true, but R is false",
+        "Both A and R are true, and R is the correct explanation of A",
+        "A is false, R is true",
+        "Both A and R are true, but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 118,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Consider the following statements and Identify the wrong answers:  (1) On 1st September 1798 Major Bannerman served an ultimatum directing Kattabomman to see him at Palayamkottai.(2) Kattabomman's Fort, 500 feet long and 300 feet broad, was constructed entirely of Mud.(3) On September 16, 1799 Veera Pandiya Kattabomman was tried before an assembly of Palayakkarars at Kayatar.(4) On 1st June, 1799 Kattabomman, attended by 500 men, proceeded to Sivagangai.",
+      "options": [
+        "(1) is wrong",
+        "(2) is wrong",
+        "(1) and (3) are wrong",
+        "(2) and (4) are wrong",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 119,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which of the following statements are true?  (1) Congress boycotted the election which was held in 1923 in Chennai.(2) Swaraj Party won 11 seats.(3) Justice Party formed Ministry in Chennai.(4) Kamaraj led the Non-Co-operation movement in Chennai.",
+      "options": [
+        "(1), (4) are correct",
+        "(1), (2) are correct",
+        "(1), (3) are correct",
+        "(1), (2), (3) are correct",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 120,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the following:\n(a) Karaikkal Ammaiyar -\n1. Thiruvantadi\n(b) Andal -\n2. Kachhikalambagam\n(c) Aranganadha Mudaliyar -\n3. Pavaippattu\n(d) Seraman Perumal Nayanar -\n4. Moothathiruppathigangal",
+      "options": [
+        "2 3 1 4",
+        "3 1 2 4",
+        "4 3 2 1",
+        "1 2 3 4",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 121,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which of the following statements are true about the Sivakalai excavation?  (i) Sivakalai excavation is located on the North shore of the river Thamiraparani.(ii) The Tamil society that lived in Sivakalai is considered very ancient.(iii) Copper and gold goods are found there.",
+      "options": [
+        "(i) only",
+        "(i) and (iii) only",
+        "(i) and (ii) only",
+        "(iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 122,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "What is the crucial role played by noncoding RNAs?",
+      "options": [
+        "encode for proteins",
+        "replications",
+        "gene regulation",
+        "carbohydrate synthesis",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 123,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Choose the right matches among the following:  (1) Five Kingdom System – R.H. Whittaker(2) Six Kingdom System – Carl Woese, et al(3) Four Kingdom System – Carl Linnaeus(4) Three Kingdom System – Ernst Haeckel",
+      "options": [
+        "(1) only correct",
+        "(1), (2) and (4) are correct",
+        "(1) and (2) are correct",
+        "(1), (2) and (3) are correct",
+        "Answer not known / விடை தெரியவில்லை124. 0.10 M of weak acid is found to be dissociated to the extent of 1.20% at 25°C. Its dissociation constant is:",
+        "1.44 × 10⁵",
+        "1.44 × 10⁻⁴",
+        "1.44 × 10⁻⁵",
+        "1.44 × 10⁴",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 125,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "The GSLV-F15 was launched by ISRO on:",
+      "options": [
+        "January 29, 2025",
+        "March 08, 2025",
+        "January 29, 2024",
+        "March 08, 2024",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 126,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which of the following is incorrectly matched?  (1) Trans Siberian Railway line – It connects Baltic Sea and Pacific Ocean(2) Trans Caspian Railway line – It connects Central Asia and Japan(3) Canadian Pacific Railway line – It connects Atlantic Ocean and Indian Ocean(4) Trans-Continental Railway line – It connects Buenos Aires with Valparaiso",
+      "options": [
+        "(1) only",
+        "(2) only",
+        "(3) only",
+        "(4) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 127,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Who was the Indian Prime Minister when the 42nd Amendment Act was passed?",
+      "options": [
+        "Jawaharlal Nehru",
+        "V.P. Singh",
+        "Indira Gandhi",
+        "Morarji Desai",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 128,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  The Pallavas constructed the Cave temples without brick, wood, metal, and sudhai.Reason R:  The stones kept one upon another and not bound with plaster is known as &quot;Katraligal&quot;.",
+      "options": [
+        "A true, but R false",
+        "A false but R true",
+        "Both A and R are true",
+        "Both A and R are false",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 129,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Choose the wrong pair:  (1) South Dravidian Language – Malayalam(2) East Dravidian Language – Munda(3) Central Dravidian Language – Telugu(4) North Dravidian Language – Kuruk",
+      "options": [
+        "(1)",
+        "(2)",
+        "(3)",
+        "(4)",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 130,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  Rabindranath Tagore surrendered his knighthood.Reason R:  On 13th April 1919 the Jalianwala Bagh Massacre occurred in Amritsar.",
+      "options": [
+        "A True R False",
+        "Both A and R are true and R is the correct explanation of A",
+        "A is False R is True",
+        "Both A and R are true but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 131,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  The Indian National Congress First Conference convened on 28th December 1885 in Bombay.Reason R:  The Tamil Nadu region was represented by 21 members.",
+      "options": [
+        "A is true but R is false",
+        "Both A and R are true and R is the correct explanation of A",
+        "A is false R is true",
+        "Both A and R are true but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 132,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which of the following statements are true about the Indus Civilisation?  (i) In the 1920s Mortimer Wheeler excavated the Harappan sites.(ii) The longest text has about twenty-six signs.(iii) The term &quot;Meluhha&quot; in the Prakrit inscriptions refers to the Indus region.(iv) The &quot;Priest King&quot; of steatite was discovered in Mohenjo-Daro.",
+      "options": [
+        "(i) and (ii) only",
+        "(i) and (iii) only",
+        "(ii) and (iii) only",
+        "(ii) and (iv) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 133,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Find the correct statements on the New Chief Election Commissioner of India:  (i) Gyanesh Kumar took charge as the 26th Chief Election Commissioner of India on February 19th, 2025.(ii) He is a Kerala cadre of the Indian Administrative Service from the 1989 batch.(iii) He has been responsible for various departments as the secretary to the government of Kerala.",
+      "options": [
+        "(i) only",
+        "(i) and (iii) only",
+        "(i) and (ii) only",
+        "(ii) and (iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 134,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the following:\n(a) Consumer Protection Rules - 1. 1930\n(b) Drug Control Act - 2. 1987\n(c) The monopolies and Restrictive Trade Practice Act - 3. 1950\n(d) Goods and Services Sales Act - 4. 1969",
+      "options": [
+        "2 3 4 1",
+        "3 1 2 4",
+        "1 3 4 2",
+        "4 1 2 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 135,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  Supreme court judges are to be appointed by the President.Reason R:  In the case of appointment of the Judges, the Law Minister of India shall always be consulted.",
+      "options": [
+        "Both A and R are true and R is the correct explanation of A",
+        "Both A and R are true but R is not a correct explanation of A",
+        "A is true but R is false",
+        "A is false but R is true",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 136,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Arrange the following Inter-State councils in chronological order:  (1) Punchhi Commission(2) Rajamannar Commission(3) Sarkaria Commission(4) Venkatachaliah Commission",
+      "options": [
+        "(3), (4), (2), (1)",
+        "(2), (1), (4), (3)",
+        "(2), (4), (3), (1)",
+        "(2), (3), (4), (1)",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 137,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Choose the right match:  (1) Retirement age of the Supreme Court Judge – 60 years(2) Minimum age for contesting for the President of India – 35 years(3) Minimum age for becoming Rajya Sabha member – 30 years(4) Minimum age for becoming Lok Sabha member – 21 years",
+      "options": [
+        "(1) and (3) are correct",
+        "(1) and (2) are correct",
+        "(2) and (3) are correct",
+        "(3) and (4) are correct",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 138,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Arrange the following awards in chronological order:\nBharat Ratna\nPadma Vibhushan\nPadma Sri\nPadma Bhushan",
+      "options": [
+        "2, 3, 1, 4",
+        "1, 2, 4, 3",
+        "4, 3, 2, 1",
+        "3, 1, 4, 2",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 139,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the states with their administrative parts:\n(a) Himachal Pradesh -\n1. A\n(b) Rajasthan -\n2. D\n(c) West Bengal -\n3. B\n(d) The Andaman and Nicobar Islands -\n4. C",
+      "options": [
+        "4 3 1 2",
+        "2 4 1 3",
+        "3 1 2 4",
+        "1 2 4 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 140,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "P and Q can do a piece of work in 20 days and 40 days respectively. They started the work together; Q left after some days and P finished the remaining work in 8 days. After how many days from the start did Q leave?",
+      "options": [
+        "9 days",
+        "10 days",
+        "8 days",
+        "11 days",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 141,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Divide Rs. 2,602 between A and B, so that the amount of A at the end of 6 years is equal to the amount of B at the end of 8 years, with compound interest at 4% per annum.",
+      "options": [
+        "Rs. 1,300, Rs. 1,252",
+        "Rs. 1,452, Rs. 1,150",
+        "Rs. 1,302, Rs. 1,300",
+        "Rs. 1,352, Rs. 1,250",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 142,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Find the simple interest on Rs. 68,000 at 16 2/3% per annum for 9 months.",
+      "options": [
+        "Rs. 8,500",
+        "Rs. 8,000",
+        "Rs. 9,400",
+        "Rs. 9,100",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 143,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "If a:b = 3:7 and b:c = 7:6, find the ratio between c and a.",
+      "options": [
+        "1 : 2",
+        "3 : 6",
+        "6 : 7",
+        "2 : 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 144,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "The ratio of two numbers is 3 : 4 and H.C.F is\n4. Their L.C.M. is:",
+      "options": [
+        "48",
+        "38",
+        "58",
+        "68",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 145,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "A number x is divisible by\n13. When this number is divided by 16, 24, and 32 it leaves a remainder of 6 in each case. The least value of x is:",
+      "options": [
+        "390",
+        "391",
+        "389",
+        "392",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 146,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "There are 80 students in a class. If 25% are absent on a particular day, find the number of students present.",
+      "options": [
+        "10",
+        "60",
+        "30",
+        "25",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 147,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "The ratio of boys and girls in a class is 5 :\n3. If 16% of boys and 8% of girls failed in an examination, find the percentage of passed students.",
+      "options": [
+        "87%",
+        "13%",
+        "84%",
+        "92%",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 148,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Find the sum of 1 + 3 + 5 + ... + 55.",
+      "options": [
+        "700",
+        "784",
+        "555",
+        "550",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 149,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Identify the next term in the sequence: 0, 2, 24, 252, 3120, _______",
+      "options": [
+        "42450",
+        "46650",
+        "38450",
+        "44650",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 150,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "In the series 6 4 1 2 2 8 7 4 2 1 5 3 8, how many pairs of successive numbers have a difference of 2 each?",
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 151,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "A die is thrown four times. Find the number on the face opposite to the face showing 2.",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 152,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Find the missing term: 7, 12, 19, 24, 43, _______, 91.",
+      "options": [
+        "50",
+        "45",
+        "48",
+        "63",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 153,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  Space MAITRI is a collaborative space mission between India and Australia.Reason R:  India aims to lower the cost of access to space through this mission.",
+      "options": [
+        "Both A and R are correct and R is the correct explanation",
+        "Both A and R are correct, but R is not the correct explanation",
+        "A is correct but R is wrong",
+        "A is wrong but R is correct",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 154,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which statement(s) is/are true about agricultural cultivation in Tamilnadu in 2021-2022?  (i) Mayiladuthurai District had more Paddy cultivation.(ii) Perambalur District had more Maize cultivation.(iii) Kallakurichi had more Sugarcane cultivation.",
+      "options": [
+        "(i) only",
+        "(i) and (iii) only",
+        "(i) and (ii) only",
+        "(ii) and (iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 155,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  Urban inflation in Tamilnadu dropped from 6% in 2019-2020 to 4.5% in 2024-2025, while rural inflation stayed static at 5.4%.Reason R:  This is due to Government policies like the Public Distribution System, Kalignar Mahalir Urimai Thittam, and employment guarantee schemes.",
+      "options": [
+        "A is true R is false",
+        "Both A and R are true and R is the correct explanation",
+        "A is false R is true",
+        "Both A and R are true but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 156,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  The &quot;Illam Thedi Kalvi&quot; scheme aims to bridge learning gaps caused by the Covid-19 Pandemic.Reason R:  The scheme involves volunteers providing remedial education to students at their homes.",
+      "options": [
+        "Both A and R are true and R is the correct explanation",
+        "Both A and R are true but R is not the correct explanation",
+        "A is true but R is false",
+        "A is false but R is true",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 157,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which statement(s) is/are true about &quot;The Mandal Commission Report&quot;?  (i) The commission used Three indicators: Social, Educational, and Economic.(ii) The social indicator used five criteria and educational indicators used two.(iii) The economic indicator used four criteria (Total 11 criteria).",
+      "options": [
+        "(i) only",
+        "(i) and (iii) only",
+        "(i) and (ii) only",
+        "(ii) and (iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 158,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "What was the cause for high inflation in India?",
+      "options": [
+        "High demand",
+        "Weaken rupee against the dollar",
+        "Low production",
+        "Low money supply",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 159,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Arrange the poverty eradication schemes in chronological order:\nNational Rural Livelihood Mission\nRajiv Awas Yojana\nBharat Nirman Yojana\nNational Food Security Scheme",
+      "options": [
+        "1 2 4 3",
+        "3 1 4 2",
+        "3 2 1 4",
+        "2 3 4 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 160,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which of the following is incorrectly paired?  (1) MFAL – Marginal Farmers and Agricultural Labourer Development Agency(2) DPAP – Drought Prone Area Programme(3) DDP – District Development Programme(4) HDA – Hills Development Agencies",
+      "options": [
+        "(1) and (2)",
+        "(1) and (3)",
+        "(3) and (4)",
+        "(2) and (3)",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 161,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Identify the incorrect Acronym:  (1) TSC – Total Sanitation Campaign(2) NIC – National Information Centre(3) MIS – Management Information System(4) IMIS – Integrated Management Infrastructure System",
+      "options": [
+        "(1), (2), (3) and (4)",
+        "(1), (2) and (3)",
+        "(1), (2) and (4)",
+        "(4) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 162,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Choose the correct pair:\nBombay plan – 1940\nGandhian plan – 1945\nPeople's plan – 1944\nSarvodaya plan – 1950",
+      "options": [
+        "2 and 3 are correct",
+        "1 and 2 are correct",
+        "1 and 4 are correct",
+        "2 and 4 are correct",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 163,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Regarding the Kural: &quot;Kokkokka Koompum Paruvaththu...&quot; (As Heron with folded wing...)  (1) Acting like a Heron is incorrect.(2) You must wait till the Time Ripens.(3) This Kural appears in the Chapter &quot;Therinthu Thelithal&quot;.(4) &quot;Vaadiyirukkumaam Kokku&quot; is the best-suited phrase.",
+      "options": [
+        "(1) – Right, (2) – Wrong, (3) – Wrong, (4) – Wrong",
+        "(1) – Wrong, (2) – Right, (3) – Right, (4) – Wrong",
+        "(1) – Wrong, (2) – Right, (3) – Wrong, (4) – Right",
+        "(1) – Right, (2) – Wrong, (3) – Right, (4) – Right",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 164,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Regarding &quot;Manaththodu vaiymai mozhiyin thavaththodu Thaananj Seiyvaarin Thalai&quot;:  Statement 1: Those who speak the TRUTH are superior to those practicing charity or penance.Statement 2: Those practicing charity and penance are far better than those speaking TRUTH.",
+      "options": [
+        "Statement 1 – Correct",
+        "Statement 2 – Correct",
+        "Statement 1 and 2 – Correct",
+        "Statement 1 and 2 – Incorrect",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 165,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the following:\n(a) Iyotheethass Pandithar -\n1. Tahdhip-ul-Akhluq\n(b) Ramalinga Adigal -\n2. Gulamgiri\n(c) Jotiba Phule -\n3. Thiruvarutpa\n(d) Syed Ahmed Khan -\n4. Oru Paisa Tamilan",
+      "options": [
+        "1 2 3 4",
+        "4 3 2 1",
+        "4 3 1 2",
+        "1 2 4 3",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 166,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  K.M. Balasubramanian compared Dr. C. Natesa Mudaliyar to Mahatma Gandhi.Reason R:  He was the heart of the Justice Party and an epitome of love, character, and tolerance.",
+      "options": [
+        "A is true but R is false",
+        "Both A and R are true and R is the correct explanation",
+        "A is false R is true",
+        "Both A and R are true but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 167,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which statement(s) are true about Ramalinga Adigal?  (i) He said the mind should unite apart from musical instruments.(ii) He started night schools for farmers.(iii) He taught that through human charity one should become one with God.",
+      "options": [
+        "(i) only",
+        "(i) and (iii) only",
+        "(i) and (ii) only",
+        "(ii) and (iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 168,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  In 1930 Muthulakshmi Ammaiyar introduced a Bill to prevent the dedication of women to Hindu temples in Madras.Reason R:  The Bill became the Devadasi Abolition Act, declaring the &quot;Pottukattu Ceremony&quot; illegal.",
+      "options": [
+        "A is true but R is false",
+        "A is false but R is true",
+        "Both A and R are true and R is the correct explanation",
+        "Both A and R are true but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 169,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  Under Rajaji, Congress boycotted the Simon Commission in Chennai.Reason R:  The commission had only white members and no Indians.",
+      "options": [
+        "A is true, R is false",
+        "Both A and R are true, and R is the correct explanation",
+        "A is false, R is true",
+        "Both A and R are true, and R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 170,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the books with their authors:\n(a) Vetriverkai -\n1. Avaiyar\n(b) Nanneri -\n2. Kumara Kurubarar\n(c) Neethinerivilakam -\n3. Athiveerarama Pandiyar\n(d) Nalvazhi -\n4. Duraimangalam Sivaprakasar",
+      "options": [
+        "1 3 4 2",
+        "1 4 2 3",
+        "3 4 2 1",
+        "3 4 1 2",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 171,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the excavated places with their districts:\n(a) Azhagankulam -\n1. Sivagangai\n(b) Vasavasamudram -\n2. Erode\n(c) Kodumanal -\n3. Kanchipuram\n(d) Keezhadi -\n4. Ramanathapuram",
+      "options": [
+        "1 4 3 2",
+        "4 2 3 1",
+        "3 1 2 4",
+        "4 3 2 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 172,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the diseases with the site of infection:\n(a) Dengue -\n1. Intestine, Brain\n(b) Poliomyelitis -\n2. Skin and Blood\n(c) Measles -\n3. Respiratory tract and Nervous system\n(d) Chicken Pox -\n4. Skin and Respiratory tract",
+      "options": [
+        "2 1 4 3",
+        "2 1 3 4",
+        "2 4 3 1",
+        "1 3 2 4",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 173,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  Cobalt-60 is useful in cancer therapy.Reason R:  It is a source of gamma-radiations capable of killing cancer cells.",
+      "options": [
+        "Both A and R are correct and R is the correct explanation",
+        "Both A and R are correct but R is not the correct explanation",
+        "A is correct but R is incorrect",
+        "Both A and R are incorrect",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 174,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "In Tamil Nadu, the Vidiyal Payanam Scheme was introduced in:",
+      "options": [
+        "May, 2021",
+        "December, 2021",
+        "March, 2022",
+        "October, 2021",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 175,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  Climate, Relief, Soil and Natural resources influence population distribution.Reason R:  Birth and death rates do not affect population distribution.",
+      "options": [
+        "A is true, but R is false",
+        "A is false, but R is true",
+        "Both A and R are true, and R is the correct explanation",
+        "Both A and R are true, but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 176,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the shifting cultivation with the region:\n(a) Ladang -\n1. Malaysia\n(b) Milpa -\n2. Vietnam\n(c) Roca -\n3. Brazil\n(d) Ray -\n4. Mexico",
+      "options": [
+        "1 4 3 2",
+        "3 4 1 2",
+        "4 2 3 1",
+        "2 3 4 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 177,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the authors with their work:\n(a) Amoghavarsha -\n1. Mahapurana\n(b) Jinasena -\n2. Kavirajamarga\n(c) Gunabhadra -\n3. Kadambari\n(d) Bana -\n4. Adipurana",
+      "options": [
+        "2 4 3 1",
+        "2 4 1 3",
+        "2 3 4 1",
+        "2 3 1 4",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 178,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which statement(s) are true about Velu Nachiyar?  (i) She was the daughter of Chellamuthu Sethupathi, King of Sivagangai.(ii) Her husband was killed by the Nawab Army; she joined Gopal Naicker and Hyder Ali to attack the British.(iii) She died due to illness in 1790.",
+      "options": [
+        "(ii) only",
+        "(i) and (iii)",
+        "(i) and (ii)",
+        "(ii) and (iii)",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 179,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Which points were accepted in the Gandhi-Irwin Pact?  (i) People allowed to make salt for self-consumption.(ii) Not releasing political prisoners not involved in violence.(iii) Permitted picketing of foreign cloth shops.(iv) Reduced the death sentence of Bhagat Singh.",
+      "options": [
+        "(i) and (ii) only",
+        "(i) and (iii) only",
+        "(ii) and (iii) only",
+        "(ii) and (iv) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 180,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Consider the following and identify the correct statements:  (1) Madurai Harvi Mill strike happened in 1918.(2) B.B. Wadhiya led the union.(3) Dr. P. Varadharajulu's speech opened the government's eyes.(4) Dr. P. Varadharajulu authored &quot;Prabanja Mitran&quot; Magazine.",
+      "options": [
+        "(1) only",
+        "(2) only",
+        "(1), (3) and (4) only",
+        "(1), (2) and (3) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 181,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Identify the false statement(s) about Subhas Chandra Bose:  (i) He was born on 23rd January 1897, in Calcutta.(ii) India declared his birthday as &quot;Parakram Diwas&quot; ( தைரிய நாள் ).(iii) 23rd January is a National holiday to honor him.",
+      "options": [
+        "(iii) only",
+        "(i) and (ii) only",
+        "(ii) and (iii) only",
+        "(i) and (iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 182,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Match the Presidents with their Republic Day guests:\n(a) Droupadi Murmu -\n1. Cyril Ramaphosa\n(b) A.P.J. Abdul Kalam -\n2. Prabowo Subianto\n(c) Pranab Mukherjee -\n3. Vladimir Putin\n(d) Ram Nath Kovind -\n4. Barack Obama",
+      "options": [
+        "1 4 3 2",
+        "2 3 4 1",
+        "3 4 1 2",
+        "4 2 3 1",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 183,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Identify the toll-free number for the Directorate of Vigilance and Anti-corruption Tamil Nadu:",
+      "options": [
+        "1068 and 1969",
+        "1064 and 1965",
+        "1062 and 1963",
+        "1066 and 1967",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 184,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Find the correct statements on elections:  (i) EVMs were used in all state elections in 2003.(ii) The commission used only EVMs for the 2004 Lok Sabha election.(iii) Two million EVMs were used in these elections.",
+      "options": [
+        "(i) only",
+        "(i) and (iii) only",
+        "(i) and (ii) only",
+        "(ii) and (iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 185,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Choose the right matches:  (1) Committee on Panchayat Raj Election – K. Santhanam(2) Committee on Rationalisation of Panchayat statistics – G. Ramachandran(3) Committee on Panchayat Raj Training centres – V.K. Rao(4) Study team on Panchayat Raj Administration – V. Iswaran",
+      "options": [
+        "(1) and (3) are correct",
+        "(1) and (4) are correct",
+        "(2) and (3) are correct",
+        "(3) and (4) are correct",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 186,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Find the correct statements on Directive Principles of State Policy:  (i) Provided in Article 36 to 51.(ii) Idea borrowed from the Spanish constitution.(iii) They form the soul of the constitution.",
+      "options": [
+        "(i) only",
+        "(i) and (iii) only",
+        "(i) and (ii) only",
+        "(ii) and (iii) only",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 187,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  The Indian constitution is federal in nature.Reason R:  The Indian constitution provides dual citizenship like the USA.",
+      "options": [
+        "A is false R is true",
+        "Both A and R are true and R is the correct explanation",
+        "A is true R is false",
+        "Both A and R are true but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 188,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Assertion A and Reason R:Assertion A:  The Indian constitution is both rigid and flexible.Reason R:  It has been amended over 100 times without changing its foundations.",
+      "options": [
+        "A is true but R is false",
+        "Both A and R are true and R is the correct explanation",
+        "A is false, but R is true",
+        "Both A and R are true, but R is not the correct explanation",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 189,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Technical Field Book Data Analysis: Find the total area of the field based on the following chainage and offset measurements:\nTo C: 150m (Terminal)\nAt 120m: 20m offset to D\nAt 80m: 50m offset to B\nAt 30m: 50m offset to E\nFrom A: 0m (Start)",
+      "options": [
+        "6550 m²",
+        "7550 m²",
+        "5750 m²",
+        "5650 m²",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 190,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "A person distributes pens among four friends A, B, C and D in the ratio 1/3 : 1/4 : 1/5 : 1/\n6. What is the minimum number of pens the person should have?",
+      "options": [
+        "23",
+        "55",
+        "57",
+        "65",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 191,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "If the numbers 2, 5, x, 20 are in proportion, find the value of x.",
+      "options": [
+        "50",
+        "10",
+        "8",
+        "4",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 192,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "If the HCF of 108 and 234 is expressible in the form 23x - 51, find x.",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "5",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 193,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Find the HCF of the polynomials x³ + x² - x + 2 and 2x³ - 5x² + 5x - 3.",
+      "options": [
+        "x² - x + 1",
+        "x² + x - 1",
+        "-7x² + 7x - 7",
+        "7x² - 7x + 7",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 194,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Simplify: (4⁻¹ + 4⁻² + 4⁻³)⁰ × (4⁻¹ + 4⁻² + 4⁻³)¹.",
+      "options": [
+        "63/19",
+        "19/63",
+        "21/64",
+        "64/21",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 195,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "The average mark of 25 students was 78.\n4. Later, it was found that 96 was misread as\n69. Find the correct mean.",
+      "options": [
+        "77.32",
+        "79.48",
+        "78.42",
+        "78.24",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 196,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "D, F, G, H, I and M sit in a row. I and M are in the centre; F and D are at the ends. G is left of D. Who is right of F?",
+      "options": [
+        "H",
+        "I",
+        "M",
+        "G",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 197,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "If A = 26, SUN = 27, then CAT = ?",
+      "options": [
+        "24",
+        "27",
+        "57",
+        "58",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 198,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "If a ≠ b ≠ c is given, which of the following is correct?",
+      "options": [
+        "b ≠ a ≠ c",
+        "a, b, c are distinct",
+        "a = b = c",
+        "a ≠ c or a = c",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 199,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Find the missing term in the series: 2 X 2, 7 T 4, 14 P 12, 23 L 48, _______",
+      "options": [
+        "34 H 240",
+        "34 H 144",
+        "30 H 100",
+        "30 H 120",
+        "Answer not known / விடை தெரியவில்லை"
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    },
+    {
+      "id": 200,
+      "part": "B",
+      "lang": "ta/en",
+      "question": "Two dice are rolled. Find the probability that the product of face values is 4 OR the difference is 5.",
+      "options": [
+        "1/12",
+        "5/36",
+        "1/9",
+        "7/36",
+        "Answer not known / விடை தெரியவில்லை\n3. TECHNICAL GLOSSARY AND TERMS\nEnglish Technical Term,Tamil Equivalent\nAbscess,சீழ்கட்டி\nAbulia,மன உறுதிக் குறைபாடு\nAcomia,தலை வழுக்கை\nAdoring,போற்றுதல்\nAdvance,கடற்கரையியக்கம்\nAlopecia Universalis,உடல் வழுக்கை\nAnchorage,ஊன்றுதளை\nCall book,மறுகவனிப்புப் பதிவேடு\nComrade,தோழன்\nDark Fiber,இருட்டு இழை\nDarkest,மிகு இருண்மை\nDemon,பின்னணி நிரல்\nDensity,அடர்த்தி\nFair copy register,செம்மைப்படி பதிவேடு\nGlacier,பனியாறு\nIrrigation Technology,நீர்ப்பாசனத் தொழில்நுட்பம்\nMonopoly Control,தனி வல்லாண்மைக் கட்டுப்பாடு\nPauper suit register,வறியர் வழக்குப்பதிவேடு\nPossession,உடைமை\nPre-censorship,முன் தணிக்கை\nPremium,முனைமம்\nPrescription,நீடனுபோகம்\nProposal,கருத்துரு\nRecord issue register,பதிவேடு வழங்கு குறிப்பேடு\nVeteran,திறனாளர்\nVisual Scanner,கட்புலமேவி\nWhitehall,பிரிட்டானிய அரசு அலுவலகம்\nDOCUMENT INSTRUCTIONS FOR USERS\nVerification:  Numerical values for aptitude questions (140–152) and engineering calculations (189–200) were transcribed directly from the exam source.\nIntegrity:  Directives in the Tamil section are translated for accessibility, but all linguistic technical options remain in Tamil script."
+      ],
+      "answer": -1,
+      "topic": "General Studies",
+      "year": 2025,
+      "paper_code": "GRP4",
+      "disputed": false,
+      "explanation": ""
+    }
+  ]
+}
