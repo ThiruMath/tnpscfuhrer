@@ -1,11 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
+<Layout title="Home">
 
-<Layout title="Tamil Literature History – TNPSC Unit 8" description="Complete study material for TNPSC Unit 8: History of Tamil Literature from Sangam Age to Modern Era." active="Topics">
-  <div class="tamil-lit-wrapper">
-    <!-- ═══ HERO ═══ -->
-    
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg">
     <div class="hero-orb hero-orb--1"></div>
@@ -54,8 +52,8 @@ import Layout from '../layouts/Layout.astro';
       from Sangam love poems to Thirukkural's timeless wisdom.
     </p>
     <div class="hero-cta animate-fadeup" style="animation-delay:0.5s">
-      <a href="#timeline" class="btn btn--primary">Explore the Timeline</a>
-      <a href="/pyq" class="btn btn--ghost">Start PYQ Practice</a>
+      <a href="/sangam" class="btn btn--primary">Begin the Journey</a>
+      <a href="/kurals" class="btn btn--ghost">Read Thirukkural</a>
     </div>
     <div class="hero-stat-row animate-fadeup" style="animation-delay:0.65s">
       <div class="hero-stat">
@@ -81,30 +79,7 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
-
-
-    <!-- ═══ WHY STUDY TAMIL LIT (TNPSC FOCUS) ═══ -->
-    <section class="intro-focus">
-      <div class="container">
-        <div class="intro-grid">
-          <div class="intro-text">
-            <p class="section-label">Unit 8 Syllabus</p>
-            <h2 class="section-title">Why Study Tamil Literature?</h2>
-            <p class="prose">For TNPSC aspirants, Tamil Literature isn't just a subject; it's the core of <strong>Unit 8</strong>. A deep understanding of literary history helps you trace the socio-political evolution of the Tamil landscape, unlocking critical marks in Group 1, 2, and 4 examinations.</p>
-          </div>
-          <div class="intro-kural">
-            <div class="kural-box">
-              <p class="kural-tamil">"எண்ணென்ப ஏனை எழுத்தென்ப இவ்விரண்டும்<br/>கண்ணென்ப வாழும் உயிர்க்கு."</p>
-              <p class="kural-translation">Numbers and letters, they are known as<br/>eyes to living beings.</p>
-              <p class="kural-meta">— Thirukkural (392)</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ FLOATING SCRIPT SECTION ═══ -->
-    
+<!-- ═══ FLOATING SCRIPT SECTION ═══ -->
 <section class="script-showcase">
   <div class="container">
     <p class="section-label">The Living Script</p>
@@ -129,11 +104,8 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
-
-
-    <!-- ═══ FEATURED ERAS TIMELINE ═══ -->
-    
-<section class="timeline-section" id="timeline">
+<!-- ═══ FEATURED ERAS TIMELINE ═══ -->
+<section class="timeline-section">
   <div class="container">
     <p class="section-label">Through the Ages</p>
     <h2 class="section-title">A Timeline of Tamil Literature</h2>
@@ -201,506 +173,64 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
-
-
-    <!-- ═══ EXAM FOCUS AREAS ═══ -->
-    <section class="exam-focus">
-      <div class="container">
-        <p class="section-label">Strategy</p>
-        <h2 class="section-title">TNPSC Exam Focus Areas</h2>
-        <div class="focus-grid">
-          <div class="focus-card card">
-             <div class="focus-icon">✦</div>
-             <h3 class="focus-title">Samacheer Textbooks</h3>
-             <p class="focus-desc">The 6th to 12th standard Tamil textbooks are the Bible for this topic. Pay special attention to the "Nool Veli" (author notes) at the end of every poem.</p>
-          </div>
-          <div class="focus-card card">
-             <div class="focus-icon">❖</div>
-             <h3 class="focus-title">Thirukkural</h3>
-             <p class="focus-desc">A standalone heavily weighted topic. Focus on its secular nature, administrative principles, and everyday ethics. Memorizing key couplets is a major advantage.</p>
-          </div>
-          <div class="focus-card card">
-             <div class="focus-icon">❋</div>
-             <h3 class="focus-title">Authors & Pen Names</h3>
-             <p class="focus-desc">Match the following questions frequently test the real names, pen names, and titles conferred upon modern writers (e.g., Kavimani, Namakkal Kavignar).</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ CALL TO ACTION ═══ -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-inner">
-          <h2 class="cta-title">Ready to Master Unit 8?</h2>
-          <p class="cta-body">Access our curated quiz bank containing hundreds of previous year questions (PYQs) focused specifically on Tamil Literature and Culture.</p>
-          <div class="cta-buttons">
-            <a href="/pyq" class="btn btn--primary">Start PYQ Practice</a>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- ═══ KURAL SPOTLIGHT ═══ -->
+<section class="kural-spotlight">
+  <div class="kural-bg"></div>
+  <div class="container kural-inner">
+    <p class="section-label" style="color: rgba(201,152,58,0.7)">Thirukkural</p>
+    <h2 class="kural-heading">The Universal Wisdom</h2>
+    <div class="kural-verse">
+      <p class="kural-tamil">அகர முதல எழுத்தெல்லாம் ஆதி<br/>பகவன் முதற்றே உலகு.</p>
+      <p class="kural-translation">"As 'A' is the first of all letters,<br/>so is the Eternal the first in the world."</p>
+      <p class="kural-meta">— Kural 1, Thiruvalluvar</p>
+    </div>
+    <a href="/kurals" class="btn btn--gold">Read All 1,330 Kurals</a>
   </div>
+</section>
+
+<!-- ═══ FEATURED POETS ═══ -->
+<section class="poets-preview">
+  <div class="container">
+    <p class="section-label">Voices Through Time</p>
+    <h2 class="section-title">The Great Poets</h2>
+    <div class="poets-grid">
+      {[
+        { name: 'Thiruvalluvar', tamil: 'திருவள்ளுவர்', period: '~300 BCE', known: 'Thirukkural', icon: '✦' },
+        { name: 'Ilango Adigal', tamil: 'இளங்கோ அடிகள்', period: '~2nd century CE', known: 'Silappadikaram', icon: '◆' },
+        { name: 'Avvaiyar', tamil: 'ஔவையார்', period: 'Sangam era', known: 'Wisdom poems & Purananuru', icon: '❋' },
+        { name: 'Kambar', tamil: 'கம்பர்', period: '12th century CE', known: 'Kambaramayanam', icon: '◇' },
+        { name: 'Manikkavacakar', tamil: 'மாணிக்கவாசகர்', period: '9th century CE', known: 'Thiruvasagam', icon: '✿' },
+        { name: 'Nammalvar', tamil: 'நம்மாழ்வார்', period: '9th century CE', known: 'Thiruvaymoli', icon: '❖' },
+      ].map(poet => (
+        <a href="/poets" class="poet-card">
+          <div class="poet-icon">{poet.icon}</div>
+          <h3 class="poet-name">{poet.name}</h3>
+          <p class="poet-tamil">{poet.tamil}</p>
+          <p class="poet-period">{poet.period}</p>
+          <p class="poet-known">{poet.known}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CALL TO ACTION ═══ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-title">Dive into Two Millennia of Words</h2>
+      <p class="cta-body">The Tamil language has never ceased to be spoken, written, and sung. Explore a living tradition from its ancient roots to its modern flowering.</p>
+      <div class="cta-buttons">
+        <a href="/sangam" class="btn btn--primary">Start with Sangam</a>
+        <a href="/epics" class="btn btn--ghost">Discover the Epics</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </Layout>
 
-<style is:global>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+Tamil:wght@300;400;600&display=swap');
-
-/* ═══════════════════════════════════════════
-   TAMIL LITERATURE — GLOBAL DESIGN SYSTEM
-   Aesthetic: Ancient manuscript meets modern elegance
-   Palette: Deep crimson, burnished gold, ink black, aged parchment
-═══════════════════════════════════════════ */
-
-.tamil-lit-wrapper {
-  --crimson:     #8B1A1A;
-  --crimson-deep:#5C0F0F;
-  --crimson-light:#C4443A;
-  --gold:        #C9983A;
-  --gold-light:  #E8C06A;
-  --gold-pale:   #F5E6C4;
-  --ink:         #0F0A06;
-  --ink-mid:     #2A1F15;
-  --ink-soft:    #4A3728;
-  --parchment:   #F7F0E4;
-  --parchment-dark: #EDE3CF;
-  --cream:       #FBF6EE;
-  --text-body:   #2A1F15;
-  --text-muted:  #6B5040;
-  --text-faint:  #9E8070;
-
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body:    'Crimson Pro', serif;
-  --font-tamil:   'Noto Sans Tamil', sans-serif;
-
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-.tamil-lit-wrapper {
-  background: var(--ink);
-  color: var(--parchment);
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.75;
-  overflow-x: hidden;
-}
-
-/* ─── SCROLLBAR ─── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--ink); }
-::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 3px; }
-
-/* ─── NAVIGATION ─── */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 4rem;
-  background: linear-gradient(to bottom, rgba(15,10,6,0.95) 0%, transparent 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: padding 0.3s var(--ease-out);
-}
-
-.nav::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 4rem; right: 4rem;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,152,58,0.3), transparent);
-}
-
-.nav-brand {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-  text-decoration: none;
-}
-
-.nav-tamil {
-  font-family: var(--font-tamil);
-  font-size: 1.1rem;
-  color: var(--gold);
-  letter-spacing: 0.05em;
-}
-
-.nav-english {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  color: var(--text-faint);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.nav-links a {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--parchment-dark);
-  text-decoration: none;
-  letter-spacing: 0.08em;
-  position: relative;
-  transition: color 0.25s;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -3px; left: 0;
-  width: 0; height: 1px;
-  background: var(--gold);
-  transition: width 0.3s var(--ease-out);
-}
-
-.nav-links a:hover { color: var(--gold); }
-.nav-links a:hover::after { width: 100%; }
-
-.nav-menu-btn {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.nav-menu-btn span {
-  display: block;
-  width: 24px; height: 1.5px;
-  background: var(--parchment);
-  transition: all 0.3s;
-}
-
-/* ─── FOOTER ─── */
-.footer {
-  background: var(--ink-mid);
-  border-top: 1px solid rgba(201,152,58,0.2);
-  padding: 4rem;
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 3rem;
-  padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(201,152,58,0.15);
-}
-
-.footer-tamil {
-  font-family: var(--font-tamil);
-  font-size: 1.5rem;
-  color: var(--gold);
-  margin-bottom: 0.5rem;
-}
-
-.footer-sub {
-  font-family: var(--font-body);
-  font-style: italic;
-  color: var(--text-faint);
-  font-size: 1rem;
-}
-
-.footer-links {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.footer-links a {
-  font-family: var(--font-display);
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 1rem;
-  letter-spacing: 0.08em;
-  transition: color 0.25s;
-}
-
-.footer-links a:hover { color: var(--gold); }
-
-.footer-bottom p {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  color: var(--text-faint);
-  letter-spacing: 0.05em;
-  font-style: italic;
-  text-align: center;
-}
-
-/* ─── UTILITY ─── */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 4rem;
-}
-
-.section-label {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.section-label::before {
-  content: '';
-  display: inline-block;
-  width: 2rem; height: 1px;
-  background: var(--gold);
-}
-
-.divider {
-  width: 4rem; height: 1px;
-  background: linear-gradient(to right, var(--gold), transparent);
-  margin: 2rem 0;
-}
-
-/* ─── PROSE ─── */
-.prose {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  line-height: 1.85;
-  color: var(--parchment-dark);
-  max-width: 65ch;
-}
-
-.prose p { margin-bottom: 1.5em; }
-
-.verse {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: var(--gold-light);
-  padding: 2rem;
-  border-left: 2px solid var(--crimson);
-  background: rgba(139,26,26,0.08);
-  position: relative;
-}
-
-.verse::before {
-  content: '"';
-  position: absolute;
-  top: 0.5rem; left: 1rem;
-  font-size: 3rem;
-  color: var(--crimson);
-  opacity: 0.4;
-  font-family: var(--font-display);
-  line-height: 1;
-}
-
-/* ─── CARDS ─── */
-.card {
-  background: rgba(42,31,21,0.6);
-  border: 1px solid rgba(201,152,58,0.15);
-  border-radius: 2px;
-  overflow: hidden;
-  transition: transform 0.35s var(--ease-out), border-color 0.35s;
-  cursor: default;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(201,152,58,0.4);
-}
-
-/* ─── ANIMATIONS ─── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes shimmer {
-  0%   { background-position: -400px 0; }
-  100% { background-position: 400px 0; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-12px); }
-}
-
-@keyframes rotate-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-.animate-fadeup { animation: fadeUp 1s var(--ease-out) both; }
-.animate-fadein { animation: fadeIn 1.2s ease both; }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 768px) {
-  .nav { padding: 1rem 1.5rem; }
-  .nav::after { left: 1.5rem; right: 1.5rem; }
-  .nav-links { display: none; }
-  .nav-menu-btn { display: flex; }
-  .nav--open .nav-links {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(15,10,6,0.98);
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
-    z-index: -1;
-  }
-  .nav--open .nav-links a { font-size: 1.5rem; }
-  .container { padding: 0 1.5rem; }
-  .footer { padding: 2.5rem 1.5rem; }
-  .footer-inner { flex-direction: column; gap: 2rem; }
-}
-
-
-/* ═══════════════════════════════════════════
-   TAMIL LITERATURE — INTERACTIONS CSS
-═══════════════════════════════════════════ */
-
-/* ─── SCROLL REVEAL ─── */
-.scroll-hidden {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.scroll-hidden.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Staggered siblings */
-.scroll-hidden:nth-child(2) { transition-delay: 0.08s; }
-.scroll-hidden:nth-child(3) { transition-delay: 0.16s; }
-.scroll-hidden:nth-child(4) { transition-delay: 0.24s; }
-.scroll-hidden:nth-child(5) { transition-delay: 0.32s; }
-.scroll-hidden:nth-child(6) { transition-delay: 0.40s; }
-
-/* ─── NAV SCROLLED STATE ─── */
-.nav--scrolled {
-  padding-top: 0.8rem !important;
-  padding-bottom: 0.8rem !important;
-  background: rgba(15,10,6,0.96) !important;
-  border-bottom: 1px solid rgba(201,152,58,0.12);
-}
-
-/* ─── ACTIVE NAV ─── */
-.nav-links a.nav-active {
-  color: var(--gold) !important;
-}
-.nav-links a.nav-active::after {
-  width: 100% !important;
-}
-
-/* ─── PAGE TRANSITIONS ─── */
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-main {
-  animation: pageEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* ─── LINK HOVER GLOW ─── */
-.btn--primary:hover {
-  box-shadow: 0 0 24px rgba(139,26,26,0.4);
-}
-
-.btn--gold:hover {
-  box-shadow: 0 0 24px rgba(201,152,58,0.3);
-}
-
-/* ─── CURSOR CUSTOM ─── */
-@media (pointer: fine) {
-  .tamil-lit-wrapper { cursor: none; }
-
-  .custom-cursor {
-    position: fixed;
-    top: 0; left: 0;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s, width 0.25s, height 0.25s, opacity 0.25s;
-    mix-blend-mode: difference;
-  }
-
-  .custom-cursor-ring {
-    position: fixed;
-    top: 0; left: 0;
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,152,58,0.5);
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.18s cubic-bezier(0.16,1,0.3,1),
-                width 0.3s, height 0.3s, opacity 0.3s;
-  }
-
-  .custom-cursor--hover {
-    width: 14px; height: 14px;
-    background: var(--crimson-light);
-  }
-
-  .custom-cursor-ring--hover {
-    width: 48px; height: 48px;
-    border-color: rgba(196,68,58,0.4);
-  }
-
-  a:hover ~ .custom-cursor,
-  button:hover ~ .custom-cursor { width: 14px; height: 14px; }
-}
-
-/* ─── SELECTION ─── */
-::selection {
-  background: rgba(139,26,26,0.45);
-  color: var(--gold-light);
-}
-
-/* ─── FOCUS VISIBLE ─── */
-:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 3px;
-  border-radius: 1px;
-}
-
-/* ─── LOADING SHIMMER on images ─── */
-@keyframes skeleton-shimmer {
-  0%   { background-position: -600px 0; }
-  100% { background-position: 600px 0; }
-}
-
-
-
+<style>
 /* ─── HERO ─── */
 .hero {
   position: relative;
@@ -1316,107 +846,5 @@ main {
 @media (max-width: 480px) {
   .poets-grid { grid-template-columns: 1fr; }
   .script-grid { grid-template-columns: repeat(4, 1fr); }
-}
-
-
-/* Extra styles for TNPSC specific sections */
-.intro-focus {
-  padding: 8rem 0;
-  background: var(--ink-mid);
-  border-top: 1px solid rgba(201,152,58,0.1);
-}
-
-.intro-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.kural-box {
-  padding: 3rem;
-  border: 1px solid rgba(201,152,58,0.2);
-  position: relative;
-  background: rgba(139,26,26,0.08);
-}
-
-.kural-box::before, .kural-box::after {
-  content: '';
-  position: absolute;
-  width: 20px; height: 20px;
-  border-color: var(--gold);
-  border-style: solid;
-  opacity: 0.4;
-}
-
-.kural-box::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
-.kural-box::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
-
-.kural-tamil {
-  font-family: var(--font-tamil);
-  font-size: 1.2rem;
-  color: var(--gold-light);
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
-
-.kural-translation {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--parchment-dark);
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
-
-.kural-meta {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--text-faint);
-  letter-spacing: 0.05em;
-}
-
-.exam-focus {
-  padding: 8rem 0;
-}
-
-.focus-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.focus-card {
-  padding: 2.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.focus-icon {
-  font-size: 2rem;
-  color: var(--gold);
-  margin-bottom: 1.5rem;
-}
-
-.focus-title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: var(--parchment);
-  margin-bottom: 1rem;
-}
-
-.focus-desc {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 </style>
