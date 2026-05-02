@@ -1,0 +1,190 @@
+---
+import Layout from '../../layouts/TamilLitLayout.astro';
+import { works } from '../../data/works.js';
+
+const periods = [
+  { id: 'all', label: 'All Works' },
+  { id: 'pre-sangam', label: 'Pre-Sangam' },
+  { id: 'sangam', label: 'Sangam Age' },
+  { id: 'post-sangam', label: 'Post-Sangam' },
+  { id: 'bhakti', label: 'Bhakti Age' },
+  { id: 'medieval', label: 'Medieval' },
+];
+---
+<Layout title="Tamil Literary Works" description="Full scholarly study of Tamil literature's major works — Tolkappiyam, Purananuru, Thirukkural, Silappadikaram, Tevaram, Kambaramayanam and more.">
+
+<section class="page-hero">
+  <div class="ph-bg"></div>
+  <div class="container ph-content">
+    <p class="section-label">The Canon</p>
+    <h1 class="page-title">
+      <span class="pt-ta">இலக்கியங்கள்</span>
+      <span class="pt-en">The Works</span>
+    </h1>
+    <p class="page-intro">
+      Every major text in the Tamil literary tradition — with full studies of their structure, grammar, political context, key poems from the TN syllabus, and their place in world literary history. Not summaries. Studies.
+    </p>
+  </div>
+</section>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <div class="container filter-inner">
+    {periods.map(p => (
+      <button class={`filter-btn ${p.id === 'all' ? 'active' : ''}`} data-period={p.id}>
+        {p.label}
+      </button>
+    ))}
+  </div>
+</div>
+
+<!-- WORKS TABLE -->
+<section class="works-section">
+  <div class="container">
+    <div class="works-table" id="worksTable">
+      {works.map((work, i) => (
+        <a href={`/works/${work.slug}`} class="work-row" data-period={work.period} style={`animation-delay: ${i * 0.05}s`}>
+          <div class="wr-left">
+            <div class="wr-period-dot"></div>
+            <div>
+              <h3 class="wr-title">{work.title}</h3>
+              <p class="wr-tamil">{work.tamil}</p>
+            </div>
+          </div>
+          <div class="wr-meta">
+            <span class="wr-author">{work.author}</span>
+            <span class="wr-dates">{work.dates}</span>
+            <span class="wr-form">{work.form}</span>
+            <span class="wr-verses">{work.verses}</span>
+          </div>
+          <div class="wr-era">
+            <span class="wr-era-label">{work.era_label}</span>
+          </div>
+          <span class="wr-arrow">→</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SOURCES -->
+<section class="sources-section">
+  <div class="container">
+    <div class="sources-block">
+      <p class="section-label">About This Study</p>
+      <h2 class="sources-title">Sources & Method</h2>
+      <div class="sources-grid">
+        <div class="src-card">
+          <div class="src-icon">📚</div>
+          <h3>Mu. Varadarajan</h3>
+          <p><em>Tamil Ilakkiya Varalaru</em> (Tamil Literary History) is the primary framework for periodization, context, and critical judgment throughout this site.</p>
+        </div>
+        <div class="src-card">
+          <div class="src-icon">📜</div>
+          <h3>Project Madurai</h3>
+          <p>Every work page links directly to the full Tamil text on projectmadurai.org — a free, nonprofit digital archive of classical Tamil literature. No paywalls.</p>
+          <a href="https://www.projectmadurai.org" target="_blank" rel="noopener" class="src-link">projectmadurai.org ↗</a>
+        </div>
+        <div class="src-card">
+          <div class="src-icon">🎓</div>
+          <h3>Tamil Virtual University</h3>
+          <p>Academic lessons, commentary, and structured curriculum for every major work. Used for syllabus organization and scholarly commentary references.</p>
+          <a href="https://www.tamilvu.org" target="_blank" rel="noopener" class="src-link">tamilvu.org ↗</a>
+        </div>
+        <div class="src-card">
+          <div class="src-icon">🏫</div>
+          <h3>TN State Curriculum</h3>
+          <p>Poems and excerpts are drawn from TN state board Tamil textbooks Std. 6–12 and standard UG/PG curriculum. Every poem is marked with its grade level.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.page-hero {
+  position: relative; min-height: 50vh;
+  display: flex; align-items: center; padding: 9rem 0 4rem; overflow: hidden;
+}
+.ph-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 35% 50%, rgba(92,15,15,.3), transparent 65%);
+}
+.ph-content { position: relative; z-index: 1; }
+.page-title { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+.pt-ta { font-family: var(--font-tamil); font-size: clamp(1.5rem,4vw,2.5rem); color: var(--gold); font-weight: 300; }
+.pt-en { font-family: var(--font-display); font-size: clamp(3rem,9vw,6.5rem); font-weight: 300; color: var(--parchment); line-height: 1; }
+.page-intro { font-family: var(--font-body); font-size: 1.1rem; color: var(--parchment-dark); max-width: 65ch; line-height: 1.85; }
+
+.filter-bar { position: sticky; top: 0; z-index: 50; background: rgba(15,10,6,.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,152,58,.1); }
+.filter-inner { display: flex; overflow-x: auto; scrollbar-width: none; }
+.filter-inner::-webkit-scrollbar { display: none; }
+.filter-btn { padding: .8rem 1.5rem; background: transparent; border: none; border-right: 1px solid rgba(201,152,58,.08); border-bottom: 2px solid transparent; cursor: pointer; font-family: var(--font-display); font-size: .78rem; letter-spacing: .1em; color: var(--text-faint); white-space: nowrap; transition: all .25s; }
+.filter-btn:hover { color: var(--gold); background: rgba(201,152,58,.04); }
+.filter-btn.active { color: var(--gold); border-bottom-color: var(--crimson); background: rgba(139,26,26,.08); }
+
+.works-section { padding: 4rem 0 8rem; }
+.works-table { display: flex; flex-direction: column; gap: 1px; border: 1px solid rgba(201,152,58,.08); }
+.work-row {
+  display: grid; grid-template-columns: 1fr auto auto 40px;
+  gap: 2rem; padding: 1.75rem 2rem;
+  background: rgba(15,10,6,.3); text-decoration: none;
+  align-items: center; transition: background .3s;
+  animation: fadeUp .7s var(--ease-out) both;
+  border-left: 2px solid transparent;
+}
+.work-row:hover { background: rgba(42,31,21,.5); border-left-color: var(--crimson); }
+.work-row.hidden { display: none; }
+.wr-left { display: flex; align-items: center; gap: 1.25rem; }
+.wr-period-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); opacity: .5; flex-shrink: 0; }
+.work-row:hover .wr-period-dot { opacity: 1; background: var(--crimson-light); }
+.wr-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--parchment); margin-bottom: .15rem; }
+.wr-tamil { font-family: var(--font-tamil); font-size: .88rem; color: var(--gold); }
+.wr-meta { display: flex; flex-direction: column; gap: .2rem; text-align: right; }
+.wr-author { font-family: var(--font-body); font-style: italic; font-size: .88rem; color: var(--parchment-dark); }
+.wr-dates { font-family: var(--font-display); font-size: .72rem; letter-spacing: .07em; color: var(--text-faint); }
+.wr-form { font-family: var(--font-body); font-size: .78rem; color: var(--text-muted); }
+.wr-verses { font-family: var(--font-display); font-size: .72rem; color: var(--gold); }
+.wr-era { }
+.wr-era-label { font-family: var(--font-display); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); border: 1px solid rgba(201,152,58,.15); padding: .2rem .7rem; white-space: nowrap; }
+.wr-arrow { font-family: var(--font-display); font-size: 1rem; color: var(--text-faint); transition: color .25s, transform .25s; }
+.work-row:hover .wr-arrow { color: var(--gold); transform: translateX(4px); }
+
+/* SOURCES */
+.sources-section { padding: 6rem 0; background: var(--ink-mid); border-top: 1px solid rgba(201,152,58,.08); }
+.sources-block { }
+.sources-title { font-family: var(--font-display); font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 400; color: var(--parchment); margin-bottom: 2.5rem; }
+.sources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; border: 1px solid rgba(201,152,58,.1); }
+.src-card { padding: 2rem 1.75rem; background: rgba(15,10,6,.4); display: flex; flex-direction: column; gap: .5rem; }
+.src-icon { font-size: 1.4rem; margin-bottom: .25rem; }
+.src-card h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; color: var(--parchment); }
+.src-card p { font-family: var(--font-body); font-size: .9rem; color: var(--text-muted); line-height: 1.7; flex: 1; }
+.src-link { font-family: var(--font-display); font-size: .8rem; letter-spacing: .07em; color: var(--gold); text-decoration: none; margin-top: auto; }
+
+@media (max-width: 768px) {
+  .work-row { grid-template-columns: 1fr 40px; gap: 1rem; }
+  .wr-meta, .wr-era { display: none; }
+}
+</style>
+
+<script>
+const btns = document.querySelectorAll('.filter-btn');
+const rows = document.querySelectorAll('.work-row');
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const period = (btn as HTMLElement).dataset.period;
+    rows.forEach(row => {
+      const el = row as HTMLElement;
+      if (period === 'all' || el.dataset.period === period) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+  });
+});
+</script>

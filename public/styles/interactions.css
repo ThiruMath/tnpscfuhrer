@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════════
+   TAMIL LITERATURE — INTERACTIONS CSS
+═══════════════════════════════════════════ */
+
+/* ─── SCROLL REVEAL ─── */
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-hidden.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered siblings */
+.scroll-hidden:nth-child(2) { transition-delay: 0.08s; }
+.scroll-hidden:nth-child(3) { transition-delay: 0.16s; }
+.scroll-hidden:nth-child(4) { transition-delay: 0.24s; }
+.scroll-hidden:nth-child(5) { transition-delay: 0.32s; }
+.scroll-hidden:nth-child(6) { transition-delay: 0.40s; }
+
+/* ─── NAV SCROLLED STATE ─── */
+.nav--scrolled {
+  padding-top: 0.8rem !important;
+  padding-bottom: 0.8rem !important;
+  background: rgba(15,10,6,0.96) !important;
+  border-bottom: 1px solid rgba(201,152,58,0.12);
+}
+
+/* ─── ACTIVE NAV ─── */
+.nav-links a.nav-active {
+  color: var(--gold) !important;
+}
+.nav-links a.nav-active::after {
+  width: 100% !important;
+}
+
+/* ─── PAGE TRANSITIONS ─── */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+main {
+  animation: pageEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ─── LINK HOVER GLOW ─── */
+.btn--primary:hover {
+  box-shadow: 0 0 24px rgba(139,26,26,0.4);
+}
+
+.btn--gold:hover {
+  box-shadow: 0 0 24px rgba(201,152,58,0.3);
+}
+
+/* ─── CURSOR CUSTOM ─── */
+@media (pointer: fine) {
+  body { cursor: none; }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.25s, height 0.25s, opacity 0.25s;
+    mix-blend-mode: difference;
+  }
+
+  .custom-cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,152,58,0.5);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s cubic-bezier(0.16,1,0.3,1),
+                width 0.3s, height 0.3s, opacity 0.3s;
+  }
+
+  .custom-cursor--hover {
+    width: 14px; height: 14px;
+    background: var(--crimson-light);
+  }
+
+  .custom-cursor-ring--hover {
+    width: 48px; height: 48px;
+    border-color: rgba(196,68,58,0.4);
+  }
+
+  a:hover ~ .custom-cursor,
+  button:hover ~ .custom-cursor { width: 14px; height: 14px; }
+}
+
+/* ─── SELECTION ─── */
+::selection {
+  background: rgba(139,26,26,0.45);
+  color: var(--gold-light);
+}
+
+/* ─── FOCUS VISIBLE ─── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* ─── LOADING SHIMMER on images ─── */
+@keyframes skeleton-shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}

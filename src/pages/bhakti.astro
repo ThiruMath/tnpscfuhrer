@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/TamilLitLayout.astro';
+import { getPoetsByPeriod } from '../data/poets';
+import { getWorksByPeriod } from '../data/works';
+
+const poets = getPoetsByPeriod('bhakti');
+const works = getWorksByPeriod('bhakti');
+---
+<Layout title="Bhakti Movement – Tamil Literature">
+  <div class="tamil-lit-wrapper">
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1 class="hero-title"><span class="tamil-text">பக்தி இலக்கியம்</span> The Bhakti Movement</h1>
+        <p class="hero-subtitle">The Age of Devotion and Imperial Ascendancy (600 CE – 900 CE)</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>The Political Realities of Devotion</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="prose">
+          <p>The Bhakti period represents a massive paradigm shift in Tamil literature and politics. Following the Kalabhra interregnum, the Pallava and Pandya dynasties sought to consolidate power. The Nayanmars (Saivite) and Alvars (Vaishnavite) led a populist, musical, and emotionally intense religious movement that effectively marginalized Jainism and Buddhism in the Tamil country.</p>
+          <div class="callout-box">
+            <p><strong>Critical Note:</strong> The Bhakti movement is often presented purely as a spiritual awakening, but it was deeply political. The hymns of Campantar and Appar contain explicit polemics against Jains and Buddhists, reflecting the royal patronage shift back to Vedic-Agamic traditions.</p>
+          </div>
+          <p>Unlike the Sangam era, where poets were often wandering bards dependent on chieftains, the Bhakti saints were elevated to the status of deities themselves. The temples became massive land-owning institutions and centers of economic power.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

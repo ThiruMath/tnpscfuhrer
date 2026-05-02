@@ -1,0 +1,659 @@
+---
+import Layout from '../layouts/TamilLitLayout.astro';
+
+const alphabet = [
+  { char: 'அ', roman: 'a' }, { char: 'ஆ', roman: 'ā' }, { char: 'இ', roman: 'i' },
+  { char: 'ஈ', roman: 'ī' }, { char: 'உ', roman: 'u' }, { char: 'ஊ', roman: 'ū' },
+  { char: 'எ', roman: 'e' }, { char: 'ஏ', roman: 'ē' }, { char: 'ஐ', roman: 'ai' },
+  { char: 'ஒ', roman: 'o' }, { char: 'ஓ', roman: 'ō' }, { char: 'ஔ', roman: 'au' },
+  { char: 'க', roman: 'ka' }, { char: 'ங', roman: 'ṅa' }, { char: 'ச', roman: 'ca' },
+  { char: 'ஞ', roman: 'ña' }, { char: 'ட', roman: 'ṭa' }, { char: 'ண', roman: 'ṇa' },
+  { char: 'த', roman: 'ta' }, { char: 'ந', roman: 'na' }, { char: 'ப', roman: 'pa' },
+  { char: 'ம', roman: 'ma' }, { char: 'ய', roman: 'ya' }, { char: 'ர', roman: 'ra' },
+  { char: 'ல', roman: 'la' }, { char: 'வ', roman: 'va' }, { char: 'ழ', roman: 'ḻa' },
+  { char: 'ள', roman: 'ḷa' }, { char: 'ற', roman: 'ṟa' }, { char: 'ன', roman: 'ṉa' },
+];
+
+const facts = [
+  { num: '5th', label: 'century BCE', detail: 'Earliest dated Tamil inscriptions — among the oldest in South Asia.' },
+  { num: '80+', label: 'languages', detail: 'The Thirukkural has been translated into more languages than any other Indian text.' },
+  { num: '2,500+', label: 'Sangam poems', detail: 'Preserved in the eight anthologies, collected over several centuries.' },
+  { num: '1', label: 'living classical language', detail: 'Tamil is the only ancient classical language with an unbroken living tradition.' },
+  { num: '18', label: 'minor works', detail: 'The Pathinenkilkanakku — eighteen minor works of the post-Sangam era.' },
+  { num: '3', label: 'books of the Kural', detail: 'Aram (virtue), Porul (wealth), and Inbam (love) — all of human life in couplets.' },
+];
+
+const words = [
+  { word: 'அகம்', roman: 'akam', meaning: 'The interior — love poetry of the private heart' },
+  { word: 'புறம்', roman: 'puram', meaning: 'The exterior — public poetry of war and kings' },
+  { word: 'திணை', roman: 'tiṇai', meaning: 'Landscape-based genre — the tinai system' },
+  { word: 'உரை', roman: 'urai', meaning: 'Classical commentary — the living tradition of interpretation' },
+  { word: 'கட்டளை', roman: 'kaṭṭaḷai', meaning: 'The meter — precise rhythmic rules governing Tamil verse' },
+  { word: 'மரபு', roman: 'marabu', meaning: 'The tradition — the unbroken thread of Tamil letters' },
+  { word: 'சுவை', roman: 'cuvai', meaning: 'Aesthetic flavour — the rasa of Tamil poetic experience' },
+  { word: 'கலை', roman: 'kalai', meaning: 'Art — the integration of music, dance, and poetry' },
+];
+---
+<Layout title="Explore Tamil Literature" description="Explore the Tamil script, key facts, literary vocabulary, and resources.">
+
+<!-- HERO -->
+<section class="explore-hero">
+  <div class="explore-hero-bg"></div>
+  <div class="container explore-hero-content">
+    <p class="section-label">An Interactive Journey</p>
+    <h1 class="explore-title">
+      <span class="explore-title-ta">ஆராயுங்கள்</span>
+      <span class="explore-title-en">Explore</span>
+    </h1>
+    <p class="explore-intro">
+      The Tamil script. Key numbers. Literary vocabulary. Everything you need to begin exploring the world's oldest living classical literary tradition.
+    </p>
+  </div>
+</section>
+
+<!-- TAMIL SCRIPT FULL ALPHABET -->
+<section class="alphabet-section">
+  <div class="container">
+    <p class="section-label">The Tamil Script</p>
+    <h2 class="section-title">The Living Alphabet</h2>
+    <p class="section-desc">
+      Tamil script is a Brahmic abugida with 12 vowels, 18 consonants, and 216 combined consonant-vowel forms. It has remained largely unchanged for over 1,500 years.
+    </p>
+    <div class="alphabet-grid">
+      {alphabet.map((letter, i) => (
+        <div class="alpha-cell" style={`animation-delay: ${i * 0.03}s`}>
+          <span class="alpha-char">{letter.char}</span>
+          <span class="alpha-roman">{letter.roman}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- KEY FACTS -->
+<section class="facts-section">
+  <div class="container">
+    <p class="section-label">In Numbers</p>
+    <h2 class="section-title">Tamil Literature by the Numbers</h2>
+    <div class="facts-grid">
+      {facts.map((f, i) => (
+        <div class="fact-card" style={`animation-delay: ${i * 0.1}s`}>
+          <span class="fact-num">{f.num}</span>
+          <span class="fact-label">{f.label}</span>
+          <p class="fact-detail">{f.detail}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- LITERARY VOCABULARY -->
+<section class="vocab-section">
+  <div class="container">
+    <p class="section-label">The Language of Tamil Poetics</p>
+    <h2 class="section-title">Key Literary Terms</h2>
+    <div class="vocab-grid">
+      {words.map((w, i) => (
+        <div class="vocab-card" style={`animation-delay: ${i * 0.08}s`}>
+          <div class="vocab-word">{w.word}</div>
+          <div class="vocab-roman">{w.roman}</div>
+          <div class="vocab-meaning">{w.meaning}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE KURAL RANDOMIZER -->
+<section class="kural-random-section">
+  <div class="container">
+    <p class="section-label">Daily Wisdom</p>
+    <h2 class="section-title">A Random Kural</h2>
+    <div class="kural-rand-card" id="kuralCard">
+      <div class="krc-num" id="kuralNum">Kural 1</div>
+      <p class="krc-tamil" id="kuralTamil">அகர முதல எழுத்தெல்லாம் ஆதி<br/>பகவன் முதற்றே உலகு.</p>
+      <div class="krc-line"></div>
+      <p class="krc-en" id="kuralEn">As the letter "A" is the first of all letters, so the Eternal is first in the world.</p>
+      <p class="krc-chapter" id="kuralChapter">Chapter: The Praise of God · Book of Virtue</p>
+    </div>
+    <button class="kural-next-btn" id="nextKural">Next Kural ↻</button>
+  </div>
+</section>
+
+<!-- TIMELINE VISUAL -->
+<section class="visual-timeline">
+  <div class="container">
+    <p class="section-label">The Sweep of Time</p>
+    <h2 class="section-title">Tamil Literary History at a Glance</h2>
+    <div class="vt-track">
+      {[
+        { year: '~500 BCE', event: 'Earliest Tamil Brahmi inscriptions', type: 'milestone' },
+        { year: '~300 BCE', event: 'Sangam academy (legend)', type: 'era' },
+        { year: '~200 BCE', event: 'Tolkappiyam — Tamil grammar', type: 'milestone' },
+        { year: '~100 CE', event: 'Peak of Sangam poetry', type: 'era' },
+        { year: '~200 CE', event: 'Silappadikaram composed', type: 'milestone' },
+        { year: '~300 CE', event: 'Thirukkural composed', type: 'milestone' },
+        { year: '~500 CE', event: 'Manimekalai, Civaka Cintamani', type: 'milestone' },
+        { year: '~700 CE', event: 'Nayanmars compose Tevaram', type: 'era' },
+        { year: '~900 CE', event: 'Nammalvar — Thiruvaymoli', type: 'milestone' },
+        { year: '~1180 CE', event: 'Kambar — Kambaramayanam', type: 'milestone' },
+        { year: 'Today', event: 'Tamil spoken by 80 million people worldwide', type: 'present' },
+      ].map((item, i) => (
+        <div class={`vt-item vt-item--${item.type}`} style={`animation-delay: ${i * 0.06}s`}>
+          <div class="vt-dot"></div>
+          <div class="vt-body">
+            <span class="vt-year">{item.year}</span>
+            <span class="vt-event">{item.event}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- NAV CARDS TO OTHER SECTIONS -->
+<section class="explore-nav-section">
+  <div class="container">
+    <p class="section-label">Where to Next</p>
+    <div class="explore-nav-grid">
+      <a href="/sangam" class="enav-card">
+        <span class="enav-ta">சங்க காலம்</span>
+        <h3>Sangam Era</h3>
+        <p>Ancient love poems and war ballads from 300 BCE onwards</p>
+        <span class="enav-arrow">→</span>
+      </a>
+      <a href="/epics" class="enav-card">
+        <span class="enav-ta">காப்பியங்கள்</span>
+        <h3>The Epics</h3>
+        <p>Five great narrative epics — Jain, Buddhist, and Hindu</p>
+        <span class="enav-arrow">→</span>
+      </a>
+      <a href="/poets" class="enav-card">
+        <span class="enav-ta">கவிஞர்கள்</span>
+        <h3>The Poets</h3>
+        <p>Thiruvalluvar, Avvaiyar, Kambar, and the great voices</p>
+        <span class="enav-arrow">→</span>
+      </a>
+      <a href="/kurals" class="enav-card">
+        <span class="enav-ta">திருக்குறள்</span>
+        <h3>Thirukkural</h3>
+        <p>1,330 couplets on virtue, wealth, and love</p>
+        <span class="enav-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const kurals = [
+    { num: 1, tamil: 'அகர முதல எழுத்தெல்லாம் ஆதி<br/>பகவன் முதற்றே உலகு.', en: 'As the letter "A" is the first of all letters, so the Eternal is first in the world.', chapter: 'The Praise of God · Book of Virtue' },
+    { num: 215, tamil: 'நன்றிமறப்பது நன்றன்று நன்றல்லது<br/>அன்றே மறப்பது நன்று.', en: 'To forget a kindness is not good; it is good to forget, at once, an unkindness.', chapter: 'Gratitude · Book of Virtue' },
+    { num: 391, tamil: 'அழுக்காறு உடையார்க்கு அதுசாலும்<br/>வழுக்கியும் கேடீன்பது இல்.', en: 'Envy itself is sufficient punishment for the envious; no enemy need add to their ruin.', chapter: 'The Avoidance of Envy · Book of Virtue' },
+    { num: 625, tamil: 'ஒற்கத்தில் ஒல்கார் உரவோர் இடர்வரினும்<br/>தற்கொல் தகுதியே கொள்.', en: 'The strong do not bend in adversity; when trouble comes, they accept what is fitting.', chapter: 'Maintaining Dignity in Poverty · Book of Wealth' },
+    { num: 1101, tamil: 'கண்டுகேட்டு உண்டுயிர்த்து உற்றறிவும் ஐம்புலனும்<br/>ஒண்டொடி கண்ணே உள.', en: 'The five senses — sight, hearing, taste, smell, and touch — all reside in the one with shining bangles.', chapter: 'The Praise of Her Beauty · Book of Love' },
+    { num: 10, tamil: 'பிறவிப் பெருங்கடல் நீந்துவர் நீந்தார்<br/>இறைவன் அடிசேரா தார்.', en: 'They will cross the great sea of births who seek the feet of God; those who do not, cannot.', chapter: 'The Praise of God · Book of Virtue' },
+    { num: 423, tamil: 'அரம்பொருத பண்டம் போல் அன்னார்க்கு உற்ற<br/>விரம்பியும் ஊக்கம் தரும்.', en: 'Like a file sharpening iron tools, hardship only makes the strong grow stronger.', chapter: 'The Greatness of Fortitude · Book of Wealth' },
+  ];
+
+  let current = 0;
+  const card = document.getElementById('kuralCard');
+  const numEl = document.getElementById('kuralNum');
+  const tamilEl = document.getElementById('kuralTamil');
+  const enEl = document.getElementById('kuralEn');
+  const chEl = document.getElementById('kuralChapter');
+  const btn = document.getElementById('nextKural');
+
+  function showKural(k) {
+    if (!card || !numEl || !tamilEl || !enEl || !chEl) return;
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(10px)';
+    setTimeout(() => {
+      numEl.textContent = 'Kural ' + k.num;
+      tamilEl.innerHTML = k.tamil;
+      enEl.textContent = k.en;
+      chEl.textContent = 'Chapter: ' + k.chapter;
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, 300);
+  }
+
+  btn?.addEventListener('click', () => {
+    current = (current + 1) % kurals.length;
+    showKural(kurals[current]);
+  });
+</script>
+
+</Layout>
+
+<style>
+.explore-hero {
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  padding: 10rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.explore-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 40%, rgba(42,31,21,0.8) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(201,152,58,0.06) 0%, transparent 60%);
+}
+
+.explore-hero-content { position: relative; z-index: 1; }
+
+.explore-title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.explore-title-ta {
+  font-family: var(--font-tamil);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.explore-title-en {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  font-weight: 300;
+  color: var(--parchment);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.explore-intro {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--parchment-dark);
+  max-width: 60ch;
+  line-height: 1.85;
+}
+
+/* ─── ALPHABET ─── */
+.alphabet-section {
+  padding: 8rem 0;
+  background: var(--ink-mid);
+  border-top: 1px solid rgba(201,152,58,0.08);
+}
+
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 1px;
+  margin-top: 3rem;
+  border: 1px solid rgba(201,152,58,0.1);
+}
+
+.alpha-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0.5rem;
+  background: rgba(15,10,6,0.5);
+  cursor: default;
+  transition: background 0.25s, transform 0.25s;
+  animation: fadeUp 0.6s var(--ease-out) both;
+}
+
+.alpha-cell:hover {
+  background: rgba(139,26,26,0.2);
+  transform: scale(1.05);
+  z-index: 1;
+  position: relative;
+}
+
+.alpha-char {
+  font-family: var(--font-tamil);
+  font-size: 2rem;
+  color: var(--gold-light);
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+  transition: color 0.25s;
+}
+
+.alpha-cell:hover .alpha-char { color: var(--gold); }
+
+.alpha-roman {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+/* ─── FACTS ─── */
+.facts-section { padding: 8rem 0; }
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+  margin-top: 3rem;
+}
+
+.fact-card {
+  padding: 2.5rem 2rem;
+  background: rgba(15,10,6,0.35);
+  border-bottom: 1px solid rgba(201,152,58,0.06);
+  transition: background 0.3s;
+  animation: fadeUp 0.8s var(--ease-out) both;
+}
+
+.fact-card:hover { background: rgba(42,31,21,0.6); }
+
+.fact-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.1rem;
+}
+
+.fact-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+.fact-detail {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ─── VOCAB ─── */
+.vocab-section {
+  padding: 8rem 0;
+  background: var(--ink-mid);
+  border-top: 1px solid rgba(201,152,58,0.08);
+  border-bottom: 1px solid rgba(201,152,58,0.08);
+}
+
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  margin-top: 3rem;
+  border: 1px solid rgba(201,152,58,0.1);
+}
+
+.vocab-card {
+  padding: 2rem 1.75rem;
+  background: rgba(15,10,6,0.4);
+  transition: background 0.3s;
+  animation: fadeUp 0.8s var(--ease-out) both;
+}
+
+.vocab-card:hover { background: rgba(139,26,26,0.1); }
+
+.vocab-word {
+  font-family: var(--font-tamil);
+  font-size: 1.8rem;
+  color: var(--gold-light);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.vocab-roman {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.vocab-meaning {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── KURAL RANDOMIZER ─── */
+.kural-random-section { padding: 8rem 0; }
+
+.kural-rand-card {
+  max-width: 680px;
+  padding: 3.5rem;
+  background: rgba(15,10,6,0.5);
+  border: 1px solid rgba(201,152,58,0.18);
+  position: relative;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  margin-bottom: 2rem;
+}
+
+.kural-rand-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--crimson), var(--gold), transparent);
+}
+
+.krc-num {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.krc-tamil {
+  font-family: var(--font-tamil);
+  font-size: 1.3rem;
+  color: var(--gold-light);
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.krc-line {
+  width: 3rem;
+  height: 1px;
+  background: rgba(201,152,58,0.25);
+  margin-bottom: 1.5rem;
+}
+
+.krc-en {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--parchment-dark);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.krc-chapter {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.kural-next-btn {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid rgba(201,152,58,0.3);
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+}
+
+.kural-next-btn:hover {
+  background: rgba(201,152,58,0.08);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* ─── VISUAL TIMELINE ─── */
+.visual-timeline {
+  padding: 8rem 0;
+  background: var(--ink-mid);
+  border-top: 1px solid rgba(201,152,58,0.08);
+}
+
+.vt-track {
+  position: relative;
+  margin-top: 3rem;
+  padding-left: 2rem;
+}
+
+.vt-track::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(201,152,58,0.3) 5%, rgba(201,152,58,0.3) 95%, transparent);
+}
+
+.vt-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.7s var(--ease-out) both;
+}
+
+.vt-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 0.35rem;
+  margin-left: -2.25rem;
+  opacity: 0.6;
+}
+
+.vt-item--milestone .vt-dot {
+  background: var(--crimson-light);
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(196,68,58,0.4);
+}
+
+.vt-item--present .vt-dot {
+  background: var(--gold);
+  opacity: 1;
+  box-shadow: 0 0 12px rgba(201,152,58,0.5);
+  animation: float 2s ease-in-out infinite;
+}
+
+.vt-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.vt-year {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.vt-item--milestone .vt-year { color: var(--crimson-light); }
+.vt-item--present .vt-year { color: var(--gold-light); }
+
+.vt-event {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--parchment-dark);
+}
+
+/* ─── EXPLORE NAV ─── */
+.explore-nav-section { padding: 8rem 0; }
+
+.explore-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  margin-top: 3rem;
+  border: 1px solid rgba(201,152,58,0.1);
+}
+
+.enav-card {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 2rem;
+  background: rgba(15,10,6,0.35);
+  text-decoration: none;
+  transition: background 0.35s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.enav-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--crimson), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.enav-card:hover { background: rgba(139,26,26,0.12); }
+.enav-card:hover::after { transform: scaleX(1); }
+
+.enav-ta {
+  font-family: var(--font-tamil);
+  font-size: 0.95rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.enav-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--parchment);
+  margin-bottom: 0.5rem;
+}
+
+.enav-card p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.enav-arrow {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text-faint);
+  margin-top: 1.5rem;
+  transition: color 0.25s, transform 0.25s;
+  display: inline-block;
+}
+
+.enav-card:hover .enav-arrow {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .alphabet-grid { grid-template-columns: repeat(6, 1fr); }
+  .facts-grid { grid-template-columns: 1fr 1fr; }
+  .kural-rand-card { padding: 1.75rem; }
+}
+</style>

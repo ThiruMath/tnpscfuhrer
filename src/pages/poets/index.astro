@@ -1,0 +1,310 @@
+---
+import Layout from '../../layouts/TamilLitLayout.astro';
+import { poets } from '../../data/poets.js';
+
+const eras = [
+  { id: 'all', label: 'All Periods' },
+  { id: 'pre-sangam', label: 'Pre-Sangam', tamil: 'முச்சங்கம்' },
+  { id: 'sangam', label: 'Sangam Age', tamil: 'சங்க காலம்' },
+  { id: 'post-sangam', label: 'Post-Sangam', tamil: 'பிற்சங்க காலம்' },
+  { id: 'bhakti', label: 'Bhakti Age', tamil: 'பக்தி காலம்' },
+  { id: 'medieval', label: 'Medieval', tamil: 'இடைக்கால' },
+];
+---
+<Layout title="Tamil Poets" description="Profiles of the great poets of Tamil literature — Kapilar, Avvaiyar, Thiruvalluvar, Manikkavacakar, Nammalvar, Andal, Kambar and more. Each with full historical, political, and literary analysis.">
+
+<section class="page-hero">
+  <div class="ph-bg"></div>
+  <div class="container ph-content">
+    <p class="section-label">The Voices</p>
+    <h1 class="page-title">
+      <span class="pt-ta">கவிஞர்கள்</span>
+      <span class="pt-en">The Poets</span>
+    </h1>
+    <p class="page-intro">
+      From anonymous Sangam singers to celebrated Bhakti saints, from woman ascetics to royal ministers — Tamil literature's voices span every social position, every century, every human condition. These are not just names in a curriculum. These are people whose words are still in daily use.
+    </p>
+    <div class="hero-count-row">
+      <div class="hc"><span class="hc-n">{poets.length}</span><span class="hc-l">Poets profiled</span></div>
+      <div class="hc-sep"></div>
+      <div class="hc"><span class="hc-n">5</span><span class="hc-l">Literary eras</span></div>
+      <div class="hc-sep"></div>
+      <div class="hc"><span class="hc-n">30+</span><span class="hc-l">Named women poets (Sangam alone)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <div class="container filter-inner">
+    {eras.map(era => (
+      <button class={`filter-btn ${era.id === 'all' ? 'active' : ''}`} data-era={era.id}>
+        <span class="fb-label">{era.label}</span>
+        {era.tamil && <span class="fb-tamil">{era.tamil}</span>}
+      </button>
+    ))}
+  </div>
+</div>
+
+<!-- POETS LIST -->
+<section class="poets-list-section">
+  <div class="container">
+    {eras.filter(e => e.id !== 'all').map(era => {
+      const eraPoets = poets.filter(p => p.period === era.id);
+      if (eraPoets.length === 0) return null;
+      return (
+        <div class="era-group" data-era-group={era.id}>
+          <div class="era-group-header">
+            <h2 class="egh-name">{era.label}</h2>
+            <span class="egh-tamil">{era.tamil}</span>
+            <span class="egh-count">{eraPoets.length} poets</span>
+          </div>
+          <div class="poets-cards-grid">
+            {eraPoets.map((poet, i) => (
+              <a href={`/poets/${poet.slug}`} class="poet-card" data-era={poet.period} style={`--pa: ${poet.accent}; animation-delay: ${i * 0.07}s`}>
+                <div class="pc-accent-line"></div>
+                <div class="pc-body">
+                  <div class="pc-top">
+                    <div class="pc-icon-wrap">
+                      <span class="pc-icon">{poet.icon}</span>
+                    </div>
+                    <div>
+                      <h3 class="pc-name">{poet.name}</h3>
+                      <p class="pc-tamil">{poet.tamil}</p>
+                    </div>
+                  </div>
+                  <div class="pc-meta">
+                    <span class="pc-dates">{poet.dates}</span>
+                    <span class="pc-dot">·</span>
+                    <span class="pc-religion">{poet.religion.split('—')[0].trim()}</span>
+                  </div>
+                  <p class="pc-known">{poet.known_for}</p>
+                  <p class="pc-identity-snippet">
+                    {poet.identity.slice(0, 140)}...
+                  </p>
+                  <div class="pc-works-row">
+                    {(poet.works || []).slice(0, 3).map(w => (
+                      <span class="pc-work-tag">{w.replace(/-/g, ' ')}</span>
+                    ))}
+                  </div>
+                  <span class="pc-read-link">Read full profile →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<!-- NOTE ON ANONYMOUS POETS -->
+<section class="anon-note-section">
+  <div class="container anon-inner">
+    <div class="anon-block">
+      <p class="section-label">A Critical Note</p>
+      <h2 class="anon-title">The Named and the Unnamed</h2>
+      <p class="anon-body">
+        The Sangam anthologies preserve over <strong>473 named poets</strong> — an extraordinary record of individual authorship for any ancient literary tradition. Among these are more than <strong>30 named women poets</strong>: Vennikuyathiar, Kakkaipadiniyar, Ponmudiaar, Nakkannaiyar, and others. Their poems survive; their biographies largely do not.
+      </p>
+      <p class="anon-body">
+        Compare this to classical Greece: <strong>Sappho of Lesbos</strong> is virtually the only woman poet whose name is preserved from the classical period — and most of her work is lost. Tamil literature from the same period has thirty women by name.
+      </p>
+      <p class="anon-body">
+        Many Sangam poems are also attributed to anonymous poets. Some attributions in the anthologies are clearly to fictional speakers — the "woman waiting" is not necessarily a named biographical person. The Sangam convention allowed the poet to inhabit a persona entirely. Separating the biographical poet from the fictional speaker is one of the ongoing challenges of Sangam scholarship.
+      </p>
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.page-hero {
+  position: relative; min-height: 55vh;
+  display: flex; align-items: center; padding: 10rem 0 5rem; overflow: hidden;
+}
+.ph-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 40% 50%, rgba(92,15,15,.35), transparent 65%),
+              radial-gradient(ellipse 50% 70% at 80% 80%, rgba(201,152,58,.06), transparent 60%);
+}
+.ph-content { position: relative; z-index: 1; }
+.page-title { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+.pt-ta {
+  font-family: var(--font-tamil); font-size: clamp(1.5rem,4vw,2.8rem);
+  color: var(--gold); font-weight: 300;
+}
+.pt-en {
+  font-family: var(--font-display); font-size: clamp(3rem,10vw,7rem);
+  font-weight: 300; color: var(--parchment); line-height: 1;
+}
+.page-intro {
+  font-family: var(--font-body); font-size: 1.1rem;
+  color: var(--parchment-dark); max-width: 65ch; line-height: 1.85; margin-bottom: 3rem;
+}
+.hero-count-row { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.hc { display: flex; flex-direction: column; }
+.hc-n {
+  font-family: var(--font-display); font-size: 2rem;
+  font-weight: 600; color: var(--gold-light); line-height: 1;
+}
+.hc-l {
+  font-family: var(--font-body); font-size: .8rem;
+  letter-spacing: .08em; color: var(--text-faint);
+}
+.hc-sep { width: 1px; height: 2.5rem; background: linear-gradient(to bottom, transparent, rgba(201,152,58,.3), transparent); }
+
+/* FILTER */
+.filter-bar {
+  position: sticky; top: 0; z-index: 50; background: rgba(15,10,6,.96);
+  backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,152,58,.1);
+}
+.filter-inner { display: flex; overflow-x: auto; scrollbar-width: none; }
+.filter-inner::-webkit-scrollbar { display: none; }
+.filter-btn {
+  display: flex; flex-direction: column; align-items: flex-start;
+  padding: .7rem 1.4rem; background: transparent; border: none;
+  border-right: 1px solid rgba(201,152,58,.08);
+  border-bottom: 2px solid transparent; cursor: pointer;
+  transition: all .25s; white-space: nowrap;
+}
+.filter-btn:hover { background: rgba(201,152,58,.05); }
+.filter-btn.active { border-bottom-color: var(--crimson); background: rgba(139,26,26,.08); }
+.fb-label {
+  font-family: var(--font-display); font-size: .78rem;
+  letter-spacing: .08em; color: var(--text-faint); transition: color .25s;
+}
+.filter-btn:hover .fb-label, .filter-btn.active .fb-label { color: var(--gold); }
+.fb-tamil {
+  font-family: var(--font-tamil); font-size: .72rem;
+  color: var(--text-faint); margin-top: .1rem;
+}
+
+/* POETS LIST */
+.poets-list-section { padding: 5rem 0 8rem; }
+
+.era-group { margin-bottom: 5rem; transition: opacity .4s; }
+.era-group.hidden { display: none; }
+
+.era-group-header {
+  display: flex; align-items: baseline; gap: 1.25rem;
+  margin-bottom: 2rem; padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(201,152,58,.12);
+}
+.egh-name {
+  font-family: var(--font-display); font-size: 1.8rem;
+  font-weight: 400; color: var(--parchment);
+}
+.egh-tamil {
+  font-family: var(--font-tamil); font-size: 1rem; color: var(--gold);
+}
+.egh-count {
+  font-family: var(--font-display); font-size: .75rem;
+  letter-spacing: .1em; color: var(--text-faint); margin-left: auto;
+}
+
+.poets-cards-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1px;
+}
+.poet-card {
+  display: flex; flex-direction: column;
+  background: rgba(15,10,6,.35); text-decoration: none;
+  transition: background .35s, transform .35s var(--ease-out);
+  position: relative; overflow: hidden;
+  animation: fadeUp .8s var(--ease-out) both;
+}
+.poet-card:hover { background: rgba(42,31,21,.6); transform: translateY(-2px); }
+.pc-accent-line {
+  height: 2px; background: var(--pa); opacity: .7;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .4s var(--ease-out);
+}
+.poet-card:hover .pc-accent-line { transform: scaleX(1); }
+.pc-body { padding: 2rem; display: flex; flex-direction: column; flex: 1; }
+.pc-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.pc-icon-wrap {
+  width: 44px; height: 44px; border: 1px solid rgba(201,152,58,.18);
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(15,10,6,.5); flex-shrink: 0;
+}
+.pc-icon { font-size: 1.2rem; color: var(--pa); }
+.pc-name {
+  font-family: var(--font-display); font-size: 1.3rem;
+  font-weight: 500; color: var(--parchment); margin-bottom: .15rem;
+}
+.pc-tamil { font-family: var(--font-tamil); font-size: .9rem; color: var(--pa); }
+.pc-meta {
+  display: flex; align-items: center; gap: .5rem;
+  margin-bottom: .75rem; flex-wrap: wrap;
+}
+.pc-dates {
+  font-family: var(--font-body); font-size: .82rem; color: var(--text-faint);
+}
+.pc-dot { color: var(--text-faint); font-size: .7rem; }
+.pc-religion { font-family: var(--font-body); font-size: .82rem; color: var(--text-faint); }
+.pc-known {
+  font-family: var(--font-body); font-style: italic;
+  font-size: .9rem; color: var(--gold); margin-bottom: .75rem;
+}
+.pc-identity-snippet {
+  font-family: var(--font-body); font-size: .92rem;
+  color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; flex: 1;
+}
+.pc-works-row { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+.pc-work-tag {
+  font-family: var(--font-display); font-size: .7rem;
+  letter-spacing: .06em; color: var(--gold);
+  border: 1px solid rgba(201,152,58,.2); padding: .15rem .6rem;
+  border-radius: 1px; text-transform: capitalize;
+}
+.pc-read-link {
+  font-family: var(--font-display); font-size: .82rem;
+  letter-spacing: .08em; color: var(--text-faint);
+  transition: color .25s; margin-top: auto;
+}
+.poet-card:hover .pc-read-link { color: var(--gold); }
+
+/* ANON NOTE */
+.anon-note-section {
+  padding: 6rem 0; background: var(--ink-mid);
+  border-top: 1px solid rgba(201,152,58,.08);
+}
+.anon-inner {}
+.anon-block { max-width: 800px; }
+.anon-title {
+  font-family: var(--font-display); font-size: clamp(1.6rem,3.5vw,2.5rem);
+  font-weight: 400; color: var(--parchment); margin-bottom: 1.5rem;
+}
+.anon-body {
+  font-family: var(--font-body); font-size: 1.05rem;
+  color: var(--parchment-dark); line-height: 1.9; margin-bottom: 1.25rem; max-width: 72ch;
+}
+.anon-body strong { color: var(--gold-light); }
+
+@media (max-width: 768px) {
+  .poets-cards-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+const btns = document.querySelectorAll('.filter-btn');
+const groups = document.querySelectorAll('.era-group');
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const era = (btn as HTMLElement).dataset.era;
+    groups.forEach(g => {
+      const el = g as HTMLElement;
+      if (era === 'all' || el.dataset.eraGroup === era) {
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    });
+  });
+});
+</script>

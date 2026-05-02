@@ -1,0 +1,473 @@
+---
+import Layout from '../../layouts/TamilLitLayout.astro';
+import { poets } from '../../data/poets.js';
+import { works } from '../../data/works.js';
+
+export async function getStaticPaths() {
+  return poets.map(poet => ({ params: { slug: poet.slug }, props: { poet } }));
+}
+
+const { poet } = Astro.props;
+
+const poetWorks = poet.works
+  ? poet.works.map(wslug => works.find(w => w.slug === wslug)).filter(Boolean)
+  : [];
+---
+<Layout title={poet.name} description={`${poet.name} — ${poet.known_for}. A full scholarly study of the poet's life, work, ethics, and historical context.`}>
+
+<!-- HERO -->
+<section class="poet-hero">
+  <div class="ph-bg" style={`--pa: ${poet.accent}`}></div>
+  <div class="ph-glow" style={`background: ${poet.accent}20`}></div>
+  <div class="container ph-inner">
+    <a href="/poets" class="back-link">← All Poets</a>
+    <div class="ph-icon-wrap" style={`border-color: ${poet.accent}40`}>
+      <span class="ph-icon" style={`color: ${poet.accent}`}>{poet.icon}</span>
+    </div>
+    <h1 class="ph-name">{poet.name}</h1>
+    <p class="ph-tamil">{poet.tamil}</p>
+    <p class="ph-known">{poet.known_for}</p>
+    <div class="ph-meta-row">
+      <span class="ph-meta-pill">{poet.era_label}</span>
+      <span class="ph-meta-pill">{poet.dates}</span>
+      <span class="ph-meta-pill">{poet.religion}</span>
+    </div>
+  </div>
+</section>
+
+<!-- NAVIGATION TABS -->
+<div class="tab-bar" id="tabBar">
+  <div class="container tab-bar-inner">
+    <a href="#identity" class="tab-link">Identity</a>
+    <a href="#context" class="tab-link">Historical Context</a>
+    <a href="#style" class="tab-link">Style & Form</a>
+    <a href="#ethics" class="tab-link">Ethics & Philosophy</a>
+    <a href="#poems" class="tab-link">Key Poems</a>
+    <a href="#legacy" class="tab-link">Legacy</a>
+    <a href="#access" class="tab-link">Full Texts</a>
+  </div>
+</div>
+
+<div class="poet-body container">
+
+  <!-- IDENTITY -->
+  <section class="poet-section" id="identity">
+    <div class="section-label-sm">Who Was This Person</div>
+    <h2 class="section-h2">Identity</h2>
+    <div class="prose-block">
+      <p>{poet.identity}</p>
+    </div>
+    <div class="identity-grid">
+      <div class="id-card"><span class="id-label">Era</span><span class="id-val">{poet.era_label}</span></div>
+      <div class="id-card"><span class="id-label">Period</span><span class="id-val">{poet.dates}</span></div>
+      <div class="id-card"><span class="id-label">Religion / Background</span><span class="id-val">{poet.religion}</span></div>
+      <div class="id-card"><span class="id-label">Region</span><span class="id-val">{poet.region}</span></div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- HISTORICAL CONTEXT -->
+  <section class="poet-section" id="context">
+    <div class="section-label-sm">The World They Lived In</div>
+    <h2 class="section-h2">Historical & Political Context</h2>
+    <div class="prose-block context-block">
+      <p>{poet.historical_context}</p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SIGNATURE STYLE -->
+  <section class="poet-section" id="style">
+    <div class="section-label-sm">Craft & Form</div>
+    <h2 class="section-h2">Signature Style</h2>
+    <div class="prose-block">
+      <p>{poet.signature_style}</p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ETHICS & PHILOSOPHY -->
+  <section class="poet-section" id="ethics">
+    <div class="section-label-sm">What They Believed</div>
+    <h2 class="section-h2">Ethics & Philosophy</h2>
+    <div class="prose-block ethics-block">
+      <p>{poet.ethical_philosophical}</p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- KEY POEMS -->
+  {poet.key_poems && poet.key_poems.length > 0 && (
+    <section class="poet-section" id="poems">
+      <div class="section-label-sm">Primary Sources</div>
+      <h2 class="section-h2">Key Poems with Commentary</h2>
+      <div class="poems-list">
+        {poet.key_poems.map((poem, i) => (
+          <article class="poem-block">
+            <div class="poem-block-header">
+              <div>
+                <span class="poem-source">{poem.source}</span>
+                {poem.grade && <span class="poem-grade">📚 {poem.grade}</span>}
+              </div>
+            </div>
+            <div class="poem-columns">
+              <div class="poem-original">
+                <div class="poem-col-label">Tamil Original</div>
+                <blockquote class="poem-tamil-text">{poem.tamil}</blockquote>
+              </div>
+              <div class="poem-translated">
+                <div class="poem-col-label">English Translation</div>
+                <p class="poem-trans-text">{poem.translation}</p>
+              </div>
+            </div>
+            <div class="poem-commentary">
+              <div class="commentary-label">Commentary</div>
+              <p class="commentary-text">{poem.commentary}</p>
+            </div>
+            {poem.political_note && (
+              <div class="political-note">
+                <span class="pn-tag">⚑ Political & Historical Note</span>
+                <p>{poem.political_note}</p>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <div class="section-divider"></div>
+
+  <!-- LEGACY -->
+  <section class="poet-section" id="legacy">
+    <div class="section-label-sm">Influence Through Time</div>
+    <h2 class="section-h2">Legacy</h2>
+    <div class="prose-block">
+      <p>{poet.legacy}</p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- WORKS -->
+  {poetWorks.length > 0 && (
+    <section class="poet-section">
+      <div class="section-label-sm">Their Writings</div>
+      <h2 class="section-h2">Major Works</h2>
+      <div class="works-grid">
+        {poetWorks.map(work => (
+          <a href={`/works/${work.slug}`} class="work-card">
+            <h3 class="wc-title">{work.title}</h3>
+            <p class="wc-tamil">{work.tamil}</p>
+            <p class="wc-form">{work.form}</p>
+            <p class="wc-verses">{work.verses}</p>
+            <span class="wc-link">Read full study →</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <div class="section-divider"></div>
+
+  <!-- FULL TEXT ACCESS -->
+  <section class="poet-section" id="access">
+    <div class="section-label-sm">Primary Source Access</div>
+    <h2 class="section-h2">Read the Full Texts</h2>
+    <div class="access-grid">
+      {poet.project_madurai && (
+        <a href={poet.project_madurai} target="_blank" rel="noopener noreferrer" class="access-card">
+          <div class="ac-icon">📜</div>
+          <h3 class="ac-title">Project Madurai</h3>
+          <p class="ac-desc">Free digital archive of the complete Tamil text. UTF-8 encoded. No account required.</p>
+          <span class="ac-link">Open archive ↗</span>
+        </a>
+      )}
+      {poet.tamilvu && (
+        <a href={poet.tamilvu} target="_blank" rel="noopener noreferrer" class="access-card">
+          <div class="ac-icon">🎓</div>
+          <h3 class="ac-title">Tamil Virtual University</h3>
+          <p class="ac-desc">Academic lessons, commentaries, and structured study modules for this poet's works.</p>
+          <span class="ac-link">Open course ↗</span>
+        </a>
+      )}
+      <div class="access-card access-card--info">
+        <div class="ac-icon">📚</div>
+        <h3 class="ac-title">Mu. Varadarajan Reference</h3>
+        <p class="ac-desc">All content on this page draws from Mu. Varadarajan's <em>Tamil Ilakkiya Varalaru</em> — the authoritative academic history of Tamil literature.</p>
+        <span class="ac-link">tamilvu.org/muva ↗</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</Layout>
+
+<style>
+/* ─── HERO ─── */
+.poet-hero {
+  position: relative;
+  padding: 9rem 0 5rem;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(201,152,58,.1);
+}
+.ph-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 30% 50%, color-mix(in srgb, var(--pa) 20%, transparent) 0%, transparent 70%);
+}
+.ph-glow {
+  position: absolute; width: 500px; height: 500px;
+  top: -100px; right: -100px; border-radius: 50%;
+  filter: blur(100px); pointer-events: none;
+  animation: float 10s ease-in-out infinite;
+}
+.ph-inner { position: relative; z-index: 1; }
+.back-link {
+  font-family: var(--font-display); font-size: .85rem;
+  letter-spacing: .1em; color: var(--text-faint);
+  text-decoration: none; display: inline-block;
+  margin-bottom: 2rem; transition: color .25s;
+}
+.back-link:hover { color: var(--gold); }
+.ph-icon-wrap {
+  width: 64px; height: 64px; border: 1px solid;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(15,10,6,.6); margin-bottom: 1.5rem;
+}
+.ph-icon { font-size: 1.6rem; }
+.ph-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 400; color: var(--parchment);
+  line-height: 1; margin-bottom: .4rem;
+}
+.ph-tamil {
+  font-family: var(--font-tamil); font-size: 1.4rem;
+  color: var(--gold); margin-bottom: .75rem;
+}
+.ph-known {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 1.05rem; color: var(--text-muted);
+  max-width: 60ch; margin-bottom: 1.5rem;
+}
+.ph-meta-row { display: flex; gap: .75rem; flex-wrap: wrap; }
+.ph-meta-pill {
+  font-family: var(--font-display); font-size: .75rem;
+  letter-spacing: .08em; padding: .25rem .85rem;
+  border: 1px solid rgba(201,152,58,.2); color: var(--text-muted);
+  border-radius: 1px;
+}
+
+/* ─── TAB BAR ─── */
+.tab-bar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(15,10,6,.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,152,58,.1);
+}
+.tab-bar-inner {
+  display: flex; overflow-x: auto; gap: 0;
+  padding: 0;
+  scrollbar-width: none;
+}
+.tab-bar-inner::-webkit-scrollbar { display: none; }
+.tab-link {
+  font-family: var(--font-display); font-size: .78rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-faint); text-decoration: none;
+  padding: .85rem 1.4rem; white-space: nowrap;
+  border-right: 1px solid rgba(201,152,58,.08);
+  border-bottom: 2px solid transparent;
+  transition: all .25s;
+}
+.tab-link:hover { color: var(--gold); background: rgba(201,152,58,.04); }
+.tab-link.tab-active { color: var(--gold); border-bottom-color: var(--crimson); }
+
+/* ─── BODY ─── */
+.poet-body { padding: 5rem 3rem 8rem; max-width: 900px; }
+.poet-section { scroll-margin-top: 80px; }
+
+.section-label-sm {
+  font-family: var(--font-display); font-size: .7rem;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .5rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.section-label-sm::before {
+  content: ''; width: 1.5rem; height: 1px; background: var(--gold);
+}
+.section-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 400; color: var(--parchment);
+  margin-bottom: 1.75rem; line-height: 1.2;
+}
+.section-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, rgba(201,152,58,.15), transparent);
+  margin: 4rem 0;
+}
+
+/* ─── PROSE ─── */
+.prose-block p {
+  font-family: var(--font-body); font-size: 1.08rem;
+  color: var(--parchment-dark); line-height: 1.9;
+  margin-bottom: 1.2em; max-width: 72ch;
+}
+.context-block { border-left: 3px solid var(--crimson); padding-left: 1.5rem; }
+.ethics-block { border-left: 3px solid var(--gold); padding-left: 1.5rem; }
+
+/* ─── IDENTITY GRID ─── */
+.identity-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px; margin-top: 2rem;
+  border: 1px solid rgba(201,152,58,.1);
+}
+.id-card {
+  padding: 1.25rem 1.5rem; background: rgba(15,10,6,.3);
+  display: flex; flex-direction: column; gap: .3rem;
+}
+.id-label {
+  font-family: var(--font-display); font-size: .7rem;
+  letter-spacing: .15em; text-transform: uppercase; color: var(--text-faint);
+}
+.id-val {
+  font-family: var(--font-body); font-size: .95rem;
+  color: var(--parchment-dark); line-height: 1.5;
+}
+
+/* ─── POEMS ─── */
+.poems-list { display: flex; flex-direction: column; gap: 2px; }
+.poem-block {
+  background: rgba(15,10,6,.35);
+  border: 1px solid rgba(201,152,58,.08);
+  border-left: 3px solid var(--crimson);
+  padding: 2.5rem;
+  transition: background .3s;
+}
+.poem-block:hover { background: rgba(42,31,21,.5); }
+.poem-block-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: .5rem;
+}
+.poem-source {
+  font-family: var(--font-display); font-size: .8rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--gold);
+}
+.poem-grade {
+  font-family: var(--font-body); font-size: .8rem;
+  color: var(--text-faint); margin-left: 1rem;
+}
+.poem-columns {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2rem; margin-bottom: 1.5rem;
+}
+.poem-col-label {
+  font-family: var(--font-display); font-size: .7rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--text-faint); margin-bottom: .6rem;
+}
+.poem-tamil-text {
+  font-family: var(--font-tamil); font-size: 1.1rem;
+  color: var(--gold-light); line-height: 2;
+  white-space: pre-line; margin: 0;
+}
+.poem-trans-text {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.05rem; color: var(--parchment-dark);
+  line-height: 1.75; margin: 0;
+}
+.commentary-label {
+  font-family: var(--font-display); font-size: .7rem;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--text-faint); margin-bottom: .6rem;
+}
+.commentary-text {
+  font-family: var(--font-body); font-size: 1rem;
+  color: var(--parchment-dark); line-height: 1.85;
+  max-width: 70ch; margin-bottom: 1.25rem;
+}
+.political-note {
+  background: rgba(139,26,26,.1); border: 1px solid rgba(139,26,26,.2);
+  padding: 1.25rem 1.5rem; margin-top: 1rem;
+}
+.pn-tag {
+  font-family: var(--font-display); font-size: .7rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--crimson-light); display: block; margin-bottom: .6rem;
+}
+.political-note p {
+  font-family: var(--font-body); font-size: .95rem;
+  color: var(--parchment-dark); line-height: 1.8; margin: 0;
+}
+
+/* ─── WORKS GRID ─── */
+.works-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px; border: 1px solid rgba(201,152,58,.1);
+}
+.work-card {
+  padding: 2rem 1.75rem; background: rgba(15,10,6,.35);
+  text-decoration: none; transition: background .3s;
+  display: flex; flex-direction: column; gap: .3rem;
+  position: relative;
+}
+.work-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(to right, var(--crimson), var(--gold));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .4s var(--ease-out);
+}
+.work-card:hover { background: rgba(139,26,26,.1); }
+.work-card:hover::after { transform: scaleX(1); }
+.wc-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--parchment); }
+.wc-tamil { font-family: var(--font-tamil); font-size: .9rem; color: var(--gold); }
+.wc-form, .wc-verses { font-family: var(--font-body); font-size: .85rem; color: var(--text-muted); }
+.wc-link { font-family: var(--font-display); font-size: .85rem; color: var(--text-faint); margin-top: auto; transition: color .25s; }
+.work-card:hover .wc-link { color: var(--gold); }
+
+/* ─── ACCESS ─── */
+.access-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px; border: 1px solid rgba(201,152,58,.1);
+}
+.access-card {
+  padding: 2rem 1.75rem; background: rgba(15,10,6,.35);
+  text-decoration: none; transition: background .3s;
+  display: flex; flex-direction: column; gap: .4rem;
+}
+.access-card:hover { background: rgba(42,31,21,.5); }
+.access-card--info { cursor: default; }
+.ac-icon { font-size: 1.5rem; margin-bottom: .25rem; }
+.ac-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; color: var(--parchment); }
+.ac-desc { font-family: var(--font-body); font-size: .9rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+.ac-link { font-family: var(--font-display); font-size: .82rem; letter-spacing: .08em; color: var(--gold); margin-top: auto; }
+
+@media (max-width: 768px) {
+  .poet-body { padding: 3rem 1.25rem 5rem; }
+  .poem-columns { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+// Sticky tab highlighting on scroll
+const sections = document.querySelectorAll('.poet-section[id]');
+const links = document.querySelectorAll('.tab-link');
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('tab-active'));
+        const active = document.querySelector(`.tab-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('tab-active');
+      }
+    });
+  },
+  { rootMargin: '-30% 0px -60% 0px' }
+);
+sections.forEach(s => observer.observe(s));
+</script>

@@ -1,0 +1,379 @@
+---
+import Layout from '../layouts/TamilLitLayout.astro';
+
+const epics = [
+  {
+    title: 'Silappadikaram',
+    tamil: 'சிலப்பதிகாரம்',
+    meaning: '"The Tale of the Anklet"',
+    author: 'Ilango Adigal',
+    period: '~2nd century CE',
+    cantos: 30,
+    verses: '5730+',
+    synopsis: 'Kannagi and Kovalan marry in great happiness, but Kovalan squanders their wealth on a dancer, Madhavi. He returns to Kannagi and they travel to Madurai to sell her golden anklet and restart their life. Falsely accused of theft by the king, Kovalan is executed. Kannagi marches to the court and proves her husband\'s innocence — then tears off her breast and throws it at the city, burning Madurai to the ground.',
+    themes: ['Justice & injustice', 'Faithful love', 'Divine retribution', 'Urban life in ancient Tamil Nadu'],
+    quote: '"She who bears the anklet of gold is the Goddess of Chastity."',
+    color: '#C4443A',
+  },
+  {
+    title: 'Manimekalai',
+    tamil: 'மணிமேகலை',
+    meaning: '"She of the gem-girdle"',
+    author: 'Sithalai Sattanar',
+    period: '~5th century CE',
+    cantos: 30,
+    verses: '4761',
+    synopsis: 'The sequel to Silappadikaram follows Manimekalai, the daughter of Kovalan and Madhavi, who becomes a Buddhist saint. She possesses a magical bowl that never empties. Pursued by a prince who loves her, she renounces the world to practice compassion and seek liberation from the cycle of rebirth.',
+    themes: ['Buddhist philosophy', 'Compassion', 'Renunciation', 'Karma and rebirth'],
+    quote: '"She who feeds the hungry feeds the world itself."',
+    color: '#3A6B8B',
+  },
+  {
+    title: 'Civaka Cintamani',
+    tamil: 'சிவக சிந்தாமணி',
+    meaning: '"The Wishing Gem of Civaka"',
+    author: 'Tiruttakkatevar',
+    period: '~10th century CE',
+    cantos: 13,
+    verses: '3145',
+    synopsis: 'A Jain epic tracing the adventures of the hero-prince Civaka through battles, multiple loves, and triumphs, before he ultimately renounces all worldly pleasures to become a Jain ascetic. Rich in poetic ornament — considered one of the most embellished works in Tamil.',
+    themes: ['Heroism & valour', 'Jain ethics', 'Beauty of women & nature', 'Renunciation'],
+    quote: '"Even beauty is a cage when the soul seeks freedom."',
+    color: '#5C6B3A',
+  },
+  {
+    title: 'Valayapathi',
+    tamil: 'வளையாபதி',
+    meaning: '"The Lord of the Bangle"',
+    author: 'Unknown',
+    period: '~7th century CE',
+    cantos: 13,
+    verses: 'Fragmentary',
+    synopsis: 'One of the five great epics, though largely lost. The surviving fragments suggest a Buddhist narrative of tragic love and spiritual renunciation, involving a prince named Valayapathi and his devoted lover.',
+    themes: ['Buddhist devotion', 'Love & loss', 'Spiritual liberation'],
+    quote: '(Largely lost — only fragments survive)',
+    color: '#6B4A8B',
+  },
+  {
+    title: 'Kundalakesi',
+    tamil: 'குண்டலகேசி',
+    meaning: '"She with curly hair"',
+    author: 'Nadinilai (Nagadhanar)',
+    period: '~5th century CE',
+    cantos: 99,
+    verses: 'Fragmentary',
+    synopsis: 'A Buddhist heroine who, after witnessing the execution of her beloved and becoming a Buddhist nun, travels across India defeating scholars in debate. Only fragments of this epic survive.',
+    themes: ['Buddhist philosophy', 'Female heroism', 'Debate & intellect', 'Grief & transformation'],
+    quote: '"From the funeral pyre of love was born the torch of wisdom."',
+    color: '#8B6B2A',
+  },
+];
+---
+<Layout title="Tamil Epics" description="Discover the Five Great Epics of Tamil literature — Silappadikaram, Manimekalai, and more.">
+
+<section class="page-hero epics-hero">
+  <div class="epics-bg">
+    <div class="eb-orb" style="width:800px;height:400px;top:-100px;left:-150px;background:rgba(139,26,26,0.25);filter:blur(120px);position:absolute;border-radius:50%;animation:float 11s ease-in-out infinite;"></div>
+    <div class="eb-orb" style="width:400px;height:400px;bottom:0;right:10%;background:rgba(58,107,139,0.12);filter:blur(80px);position:absolute;border-radius:50%;animation:float 8s ease-in-out infinite reverse;"></div>
+  </div>
+  <div class="container page-hero-content">
+    <p class="section-label">200 CE – 1000 CE</p>
+    <h1 class="page-title">
+      <span class="page-title-ta">காப்பியங்கள்</span>
+      <span class="page-title-en">The Five Great Epics</span>
+    </h1>
+    <p class="page-intro">
+      Five epics stand as the crown of classical Tamil narrative literature. Together they represent every major faith of ancient South India — Jainism, Buddhism, and the emerging Shaivite devotion — woven into stories of love, loss, justice, and liberation.
+    </p>
+  </div>
+</section>
+
+<!-- EPICS LIST -->
+<section class="epics-list-section">
+  <div class="container">
+    {epics.map((epic, i) => (
+      <article class="epic-card" style={`--ec: ${epic.color}; animation-delay: ${i * 0.12}s`}>
+        <div class="epic-number">{String(i + 1).padStart(2, '0')}</div>
+        <div class="epic-body">
+          <div class="epic-header">
+            <div>
+              <h2 class="epic-title">{epic.title}</h2>
+              <p class="epic-tamil">{epic.tamil}</p>
+            </div>
+            <div class="epic-meta-block">
+              <p class="epic-meaning">{epic.meaning}</p>
+              <div class="epic-meta-row">
+                <span class="epic-stat"><strong>{epic.cantos}</strong> cantos</span>
+                <span class="epic-stat"><strong>{epic.verses}</strong> verses</span>
+                <span class="epic-stat">by <em>{epic.author}</em></span>
+                <span class="epic-period">{epic.period}</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="epic-synopsis">{epic.synopsis}</p>
+
+          <div class="epic-themes-row">
+            {epic.themes.map(t => (
+              <span class="epic-theme-tag">{t}</span>
+            ))}
+          </div>
+
+          <blockquote class="epic-quote">{epic.quote}</blockquote>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison-section">
+  <div class="container">
+    <p class="section-label">The Tradition</p>
+    <h2 class="section-title">What Makes Tamil Epics Unique</h2>
+    <div class="comparison-grid">
+      <div class="comp-card">
+        <span class="comp-icon">⊕</span>
+        <h3>Multi-Faith Perspective</h3>
+        <p>The five epics were composed by poets of Jain, Buddhist, and Hindu faith — yet all are considered part of the shared Tamil literary canon. No other classical tradition has this breadth of spiritual perspective within its epic literature.</p>
+      </div>
+      <div class="comp-card">
+        <span class="comp-icon">⊗</span>
+        <h3>Women at the Center</h3>
+        <p>Unlike the Greek and Sanskrit epics where women are secondary figures, Tamil epics place women — Kannagi, Manimekalai, Kundalakesi — as the primary moral and narrative force. Kannagi's agency reshapes an entire kingdom.</p>
+      </div>
+      <div class="comp-card">
+        <span class="comp-icon">⊙</span>
+        <h3>Social Realism</h3>
+        <p>Silappadikaram describes ancient cities — Puhar, Madurai, Vanji — with extraordinary detail: their streets, festivals, guilds, dancers, and merchants. It functions as a social document alongside its poetic achievement.</p>
+      </div>
+      <div class="comp-card">
+        <span class="comp-icon">⊞</span>
+        <h3>Sangam Continuity</h3>
+        <p>The epics inherit and extend Sangam conventions — the tinai landscape system, the vocabulary of love and war — while adding narrative scale and spiritual depth. Classical Tamil literature is a seamless tradition, not a series of ruptures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.epics-hero {
+  min-height: 65vh;
+  padding: 10rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.epics-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 100% 60% at 40% 50%, rgba(92,15,15,0.35) 0%, transparent 65%);
+}
+
+.page-hero-content { position: relative; z-index: 1; }
+.page-title { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+.page-title-en {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7vw, 5rem);
+  font-weight: 300;
+  color: var(--parchment);
+  line-height: 1.1;
+}
+.page-title-ta {
+  font-family: var(--font-tamil);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--gold);
+  font-weight: 300;
+}
+.page-intro {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--parchment-dark);
+  max-width: 65ch;
+  line-height: 1.85;
+}
+
+.epics-list-section { padding: 6rem 0 8rem; }
+
+.epic-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(201,152,58,0.1);
+  animation: fadeUp 0.8s var(--ease-out) both;
+  position: relative;
+}
+.epic-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 2px; height: 0;
+  background: #8B1A1A;
+  transition: height 0.4s var(--ease-out);
+}
+.epic-card:hover::before { height: 100%; }
+
+.epic-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(201,152,58,0.2);
+  line-height: 1;
+  text-align: right;
+  padding-top: 0.3rem;
+}
+
+.epic-body {}
+
+.epic-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.epic-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 500;
+  color: var(--parchment);
+  margin-bottom: 0.25rem;
+}
+
+.epic-tamil {
+  font-family: var(--font-tamil);
+  font-size: 1.1rem;
+  color: var(--ec, #C9983A);
+}
+
+.epic-meta-block { text-align: right; }
+
+.epic-meaning {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.epic-meta-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.epic-stat {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}
+.epic-stat strong { color: var(--parchment-dark); }
+.epic-stat em { font-style: italic; color: var(--text-muted); }
+
+.epic-period {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--ec, #C9983A);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,152,58,0.15);
+  padding: 0.2rem 0.7rem;
+  border-radius: 1px;
+}
+
+.epic-synopsis {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--parchment-dark);
+  line-height: 1.85;
+  max-width: 75ch;
+  margin-bottom: 1.5rem;
+}
+
+.epic-themes-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.epic-theme-tag {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.07em;
+  color: var(--ec, #C9983A);
+  border: 1px solid rgba(201,152,58,0.2);
+  padding: 0.2rem 0.7rem;
+  border-radius: 1px;
+  opacity: 0.8;
+}
+
+.epic-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  padding-left: 1.25rem;
+  border-left: 2px solid #8B1A1A;
+  max-width: 60ch;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* COMPARISON */
+.comparison-section {
+  padding: 8rem 0;
+  background: var(--ink-mid);
+  border-top: 1px solid rgba(201,152,58,0.08);
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  margin-top: 3rem;
+}
+
+.comp-card {
+  padding: 2.5rem 2rem;
+  background: rgba(15,10,6,0.4);
+  transition: background 0.3s;
+  border-bottom: 1px solid rgba(201,152,58,0.06);
+}
+.comp-card:hover { background: rgba(42,31,21,0.6); }
+
+.comp-icon {
+  font-size: 1.5rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+.comp-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--parchment);
+  margin-bottom: 0.75rem;
+}
+.comp-card p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .epic-card { grid-template-columns: 1fr; gap: 0.5rem; }
+  .epic-number { text-align: left; font-size: 1.5rem; }
+  .epic-header { flex-direction: column; }
+  .epic-meta-block { text-align: left; }
+  .epic-meta-row { justify-content: flex-start; }
+}
+</style>

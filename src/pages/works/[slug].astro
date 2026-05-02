@@ -1,0 +1,599 @@
+---
+import Layout from '../../layouts/TamilLitLayout.astro';
+import { works } from '../../data/works.js';
+import { poets } from '../../data/poets.js';
+
+export async function getStaticPaths() {
+  return works.map(work => ({ params: { slug: work.slug }, props: { work } }));
+}
+
+const { work } = Astro.props;
+const author = work.author_slug ? poets.find(p => p.slug === work.author_slug) : null;
+---
+<Layout title={work.title} description={`${work.title} (${work.tamil}) — full scholarly study: structure, grammar, key poems from TN school syllabus, political context, and comparison with Greek and Latin literature.`}>
+
+<!-- HERO -->
+<section class="work-hero">
+  <div class="wh-bg"></div>
+  <div class="wh-glow"></div>
+  <div class="container wh-inner">
+    <a href="/works" class="back-link">← All Works</a>
+    <div class="wh-top">
+      <div>
+        <h1 class="wh-title">{work.title}</h1>
+        <p class="wh-tamil">{work.tamil}</p>
+        <p class="wh-author">
+          By {author ? <a href={`/poets/${author.slug}`} class="author-link">{work.author}</a> : work.author}
+        </p>
+      </div>
+      <div class="wh-vitals">
+        <div class="vital"><span class="vital-label">Form</span><span class="vital-val">{work.form}</span></div>
+        <div class="vital"><span class="vital-label">Metre</span><span class="vital-val">{work.metre}</span></div>
+        <div class="vital"><span class="vital-label">Verses</span><span class="vital-val">{work.verses}</span></div>
+        <div class="vital"><span class="vital-label">Period</span><span class="vital-val">{work.dates}</span></div>
+        <div class="vital"><span class="vital-label">Language</span><span class="vital-val">{work.language}</span></div>
+        <div class="vital"><span class="vital-label">Religious Context</span><span class="vital-val">{work.religion_context}</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAB BAR -->
+<div class="tab-bar" id="tabBar">
+  <div class="container tab-bar-inner">
+    <a href="#overview" class="tab-link">Overview</a>
+    <a href="#political" class="tab-link">Political Context</a>
+    <a href="#structure" class="tab-link">Structure</a>
+    {work.tinai_system && <a href="#tinai" class="tab-link">Tinai System</a>}
+    <a href="#what-it-says" class="tab-link">What It Says</a>
+    <a href="#poems" class="tab-link">Key Poems</a>
+    {work.greek_latin_compare && <a href="#compare" class="tab-link">World Context</a>}
+    <a href="#syllabus" class="tab-link">Study Guide</a>
+    <a href="#access" class="tab-link">Full Text</a>
+  </div>
+</div>
+
+<div class="work-body container">
+
+  <!-- OVERVIEW -->
+  <section class="work-section" id="overview">
+    <div class="section-label-sm">The Text</div>
+    <h2 class="section-h2">Overview</h2>
+    <div class="prose-block"><p>{work.overview}</p></div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- POLITICAL CONTEXT -->
+  <section class="work-section" id="political">
+    <div class="section-label-sm">Power, Dynasty, Society</div>
+    <h2 class="section-h2">Political & Historical Context</h2>
+    <div class="prose-block context-block"><p>{work.political_context}</p></div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- STRUCTURE -->
+  {work.structure && (
+    <section class="work-section" id="structure">
+      <div class="section-label-sm">Architecture of the Text</div>
+      <h2 class="section-h2">Structure & Grammar</h2>
+      <p class="structure-overview">{work.structure.overview}</p>
+      <div class="books-list">
+        {work.structure.books.map((book, i) => (
+          <div class="book-block">
+            <div class="book-num">{'0' + (i + 1)}</div>
+            <div class="book-content">
+              <h3 class="book-name">{book.name}</h3>
+              {book.meaning && <p class="book-meaning">{book.meaning}</p>}
+              {book.sutras && <p class="book-meta">{book.sutras} sutras · {book.chapters} chapters</p>}
+              {book.chapters && typeof book.chapters === 'string' && <p class="book-meta">{book.chapters}</p>}
+              {book.cantos && <p class="book-meta">Cantos {book.cantos}</p>}
+              <p class="book-desc">{book.content}</p>
+              {book.key_sutra && (
+                <div class="key-sutra">
+                  <div class="ks-label">Key Sutra / Passage</div>
+                  <p class="ks-text">{book.key_sutra.text}</p>
+                  <p class="ks-trans">"{book.key_sutra.translation}"</p>
+                  <p class="ks-note">{book.key_sutra.note}</p>
+                </div>
+              )}
+              {book.key_chapter && (
+                <div class="key-sutra">
+                  <div class="ks-label">Notable Chapter</div>
+                  <p class="ks-note">{book.key_chapter}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {work.structure && <div class="section-divider"></div>}
+
+  <!-- TINAI SYSTEM -->
+  {work.tinai_system && (
+    <section class="work-section" id="tinai">
+      <div class="section-label-sm">The Five Landscapes</div>
+      <h2 class="section-h2">The Tinai System</h2>
+      <div class="prose-block"><p>{work.tinai_system.overview}</p></div>
+      <div class="tinai-grid">
+        {work.tinai_system.tinais.map(tinai => (
+          <div class="tinai-block">
+            <h3 class="tinai-name">{tinai.name}</h3>
+            <div class="tinai-attrs">
+              <div class="ta"><span class="ta-k">Region</span><span class="ta-v">{tinai.region}</span></div>
+              <div class="ta"><span class="ta-k">Season</span><span class="ta-v">{tinai.season}</span></div>
+              <div class="ta"><span class="ta-k">Time</span><span class="ta-v">{tinai.time}</span></div>
+              <div class="ta"><span class="ta-k">Flower</span><span class="ta-v">{tinai.flower}</span></div>
+              <div class="ta"><span class="ta-k">Bird</span><span class="ta-v">{tinai.bird}</span></div>
+              <div class="ta"><span class="ta-k">Deity</span><span class="ta-v">{tinai.deity}</span></div>
+              <div class="ta ta--full"><span class="ta-k">Emotional Theme</span><span class="ta-v ta-theme">{tinai.theme}</span></div>
+            </div>
+            <p class="tinai-note">{tinai.note}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {work.tinai_system && <div class="section-divider"></div>}
+
+  <!-- WHAT IT SAYS -->
+  {work.what_it_says && (
+    <section class="work-section" id="what-it-says">
+      <div class="section-label-sm">Central Arguments</div>
+      <h2 class="section-h2">What This Work Says</h2>
+      <div class="prose-block ethics-block">
+        {work.what_it_says.split('\n\n').map(para => (
+          <p set:html={para.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}></p>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {work.what_it_says && <div class="section-divider"></div>}
+
+  <!-- KEY POEMS -->
+  {work.key_poems && work.key_poems.length > 0 && (
+    <section class="work-section" id="poems">
+      <div class="section-label-sm">Primary Sources with Commentary</div>
+      <h2 class="section-h2">Key Poems — TN Syllabus & MuVa Selections</h2>
+      <div class="poems-list">
+        {work.key_poems.map(poem => (
+          <article class="poem-block">
+            <div class="poem-block-header">
+              <div>
+                <span class="poem-source">{poem.number} — {poem.chapter || poem.tinai || ''}</span>
+                {poem.poet && <span class="poem-poet">by {poem.poet}</span>}
+              </div>
+              {poem.grade && <span class="poem-grade">📚 {poem.grade}</span>}
+            </div>
+            <div class="poem-columns">
+              <div>
+                <div class="poem-col-label">Tamil Original</div>
+                <blockquote class="poem-tamil-text">{poem.tamil}</blockquote>
+              </div>
+              <div>
+                <div class="poem-col-label">English Translation</div>
+                <p class="poem-trans-text">{poem.translation}</p>
+              </div>
+            </div>
+            {poem.commentary && (
+              <div class="poem-commentary">
+                <div class="commentary-label">Commentary</div>
+                <p class="commentary-text">{poem.commentary}</p>
+              </div>
+            )}
+            {poem.line_commentary && poem.line_commentary.length > 0 && (
+              <div class="line-by-line">
+                <div class="commentary-label">Line-by-Line Analysis</div>
+                {poem.line_commentary.map(lc => (
+                  <div class="lc-item">
+                    <span class="lc-lines">Lines {lc.lines}</span>
+                    <p class="lc-comment">{lc.comment}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            {poem.political_note && (
+              <div class="political-note">
+                <span class="pn-tag">⚑ Political & Historical Note</span>
+                <p>{poem.political_note}</p>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {work.key_poems && work.key_poems.length > 0 && <div class="section-divider"></div>}
+
+  <!-- WORLD CONTEXT -->
+  {work.greek_latin_compare && (
+    <section class="work-section" id="compare">
+      <div class="section-label-sm">Global Literary History</div>
+      <h2 class="section-h2">Tamil, Greek, Latin & Sanskrit: Placing This Work in World Literature</h2>
+      <div class="prose-block compare-block">
+        {work.greek_latin_compare.split('\n\n').map(para => (
+          <p set:html={para.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}></p>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {work.greek_latin_compare && <div class="section-divider"></div>}
+
+  <!-- SCHOOL SYLLABUS -->
+  {work.school_syllabus && work.school_syllabus.length > 0 && (
+    <section class="work-section" id="syllabus">
+      <div class="section-label-sm">Educational Reference</div>
+      <h2 class="section-h2">Study Guide — TN Curriculum to PG Level</h2>
+      <div class="syllabus-table">
+        {work.school_syllabus.map(row => (
+          <div class="syllabus-row">
+            <span class="syl-grade">{row.grade}</span>
+            <span class="syl-content">{row.content}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {work.school_syllabus && <div class="section-divider"></div>}
+
+  <!-- ACCESS -->
+  <section class="work-section" id="access">
+    <div class="section-label-sm">Read the Full Text</div>
+    <h2 class="section-h2">Primary Source Access</h2>
+    <div class="access-grid">
+      {work.project_madurai && (
+        <a href={work.project_madurai} target="_blank" rel="noopener noreferrer" class="access-card">
+          <div class="ac-icon">📜</div>
+          <h3 class="ac-title">Project Madurai</h3>
+          <p class="ac-desc">Complete text of {work.title} in Tamil Unicode (UTF-8). Free, no account required. The most comprehensive Tamil digital archive.</p>
+          <span class="ac-link">projectmadurai.org ↗</span>
+        </a>
+      )}
+      {work.tamilvu && (
+        <a href={work.tamilvu} target="_blank" rel="noopener noreferrer" class="access-card">
+          <div class="ac-icon">🎓</div>
+          <h3 class="ac-title">Tamil Virtual University</h3>
+          <p class="ac-desc">Academic course modules, commentary, lesson plans, and structured study for {work.title}. {work.tamilvu_lesson || ''}</p>
+          <span class="ac-link">tamilvu.org ↗</span>
+        </a>
+      )}
+      <div class="access-card">
+        <div class="ac-icon">📖</div>
+        <h3 class="ac-title">Source Reference</h3>
+        <p class="ac-desc">This page draws primarily from Mu. Varadarajan's <em>Tamil Ilakkiya Varalaru</em>, TN state board textbooks (Std. 6–12), and standard UG/PG Tamil curriculum texts.</p>
+        <span class="ac-link">tamilvu.org/muva ↗</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+</Layout>
+
+<style>
+.work-hero {
+  position: relative; padding: 9rem 0 5rem; overflow: hidden;
+  border-bottom: 1px solid rgba(201,152,58,.1);
+}
+.wh-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 30% 50%, rgba(92,15,15,.35), transparent 65%);
+}
+.wh-glow {
+  position: absolute; width: 600px; height: 400px;
+  top: -100px; right: -100px; border-radius: 50%;
+  background: rgba(201,152,58,.06); filter: blur(100px);
+  pointer-events: none; animation: float 9s ease-in-out infinite;
+}
+.wh-inner { position: relative; z-index: 1; }
+.back-link {
+  font-family: var(--font-display); font-size: .85rem;
+  letter-spacing: .1em; color: var(--text-faint); text-decoration: none;
+  display: inline-block; margin-bottom: 2rem; transition: color .25s;
+}
+.back-link:hover { color: var(--gold); }
+.wh-top {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 3rem; align-items: start;
+}
+.wh-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 400; color: var(--parchment);
+  line-height: 1; margin-bottom: .4rem;
+}
+.wh-tamil {
+  font-family: var(--font-tamil); font-size: 1.6rem;
+  color: var(--gold); margin-bottom: .6rem;
+}
+.wh-author {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 1rem; color: var(--text-muted);
+}
+.author-link { color: var(--gold-light); text-decoration: none; transition: color .25s; }
+.author-link:hover { color: var(--gold); }
+.wh-vitals {
+  background: rgba(15,10,6,.5); border: 1px solid rgba(201,152,58,.12);
+  padding: 1.25rem; display: flex; flex-direction: column; gap: .75rem;
+  min-width: 240px;
+}
+.vital { display: flex; flex-direction: column; gap: .15rem; }
+.vital-label {
+  font-family: var(--font-display); font-size: .65rem;
+  letter-spacing: .15em; text-transform: uppercase; color: var(--text-faint);
+}
+.vital-val {
+  font-family: var(--font-body); font-size: .9rem; color: var(--parchment-dark);
+  line-height: 1.4;
+}
+
+.tab-bar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(15,10,6,.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,152,58,.1);
+}
+.tab-bar-inner {
+  display: flex; overflow-x: auto; gap: 0;
+  scrollbar-width: none;
+}
+.tab-bar-inner::-webkit-scrollbar { display: none; }
+.tab-link {
+  font-family: var(--font-display); font-size: .75rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-faint); text-decoration: none;
+  padding: .85rem 1.25rem; white-space: nowrap;
+  border-right: 1px solid rgba(201,152,58,.08);
+  border-bottom: 2px solid transparent; transition: all .25s;
+}
+.tab-link:hover { color: var(--gold); background: rgba(201,152,58,.04); }
+.tab-link.tab-active { color: var(--gold); border-bottom-color: var(--crimson); }
+
+.work-body { padding: 5rem 3rem 8rem; max-width: 960px; }
+.work-section { scroll-margin-top: 80px; }
+
+.section-label-sm {
+  font-family: var(--font-display); font-size: .7rem;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .5rem;
+  display: flex; align-items: center; gap: .75rem;
+}
+.section-label-sm::before { content: ''; width: 1.5rem; height: 1px; background: var(--gold); }
+.section-h2 {
+  font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 400; color: var(--parchment); margin-bottom: 1.75rem; line-height: 1.2;
+}
+.section-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, rgba(201,152,58,.15), transparent);
+  margin: 4rem 0;
+}
+
+.prose-block p {
+  font-family: var(--font-body); font-size: 1.08rem;
+  color: var(--parchment-dark); line-height: 1.9;
+  margin-bottom: 1.2em; max-width: 75ch;
+}
+.context-block { border-left: 3px solid var(--crimson); padding-left: 1.5rem; }
+.ethics-block { border-left: 3px solid var(--gold); padding-left: 1.5rem; }
+.compare-block { border-left: 3px solid #3A6B8B; padding-left: 1.5rem; }
+
+.structure-overview {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 1rem; color: var(--text-muted);
+  margin-bottom: 2rem; max-width: 65ch;
+}
+
+.books-list { display: flex; flex-direction: column; gap: 1px; }
+.book-block {
+  display: grid; grid-template-columns: 60px 1fr;
+  gap: 2rem; padding: 2rem;
+  background: rgba(15,10,6,.3); border-left: 2px solid rgba(201,152,58,.15);
+  transition: background .3s;
+}
+.book-block:hover { background: rgba(42,31,21,.4); }
+.book-num {
+  font-family: var(--font-display); font-size: 2rem;
+  font-weight: 300; color: rgba(201,152,58,.25); line-height: 1;
+}
+.book-name {
+  font-family: var(--font-display); font-size: 1.3rem;
+  font-weight: 500; color: var(--parchment); margin-bottom: .25rem;
+}
+.book-meaning {
+  font-family: var(--font-body); font-style: italic;
+  font-size: .9rem; color: var(--text-faint); margin-bottom: .5rem;
+}
+.book-meta {
+  font-family: var(--font-display); font-size: .75rem;
+  letter-spacing: .08em; color: var(--gold); margin-bottom: .75rem;
+}
+.book-desc {
+  font-family: var(--font-body); font-size: 1rem;
+  color: var(--parchment-dark); line-height: 1.8; max-width: 65ch;
+}
+.key-sutra {
+  margin-top: 1.25rem; padding: 1.25rem;
+  background: rgba(201,152,58,.04); border-left: 2px solid rgba(201,152,58,.25);
+}
+.ks-label {
+  font-family: var(--font-display); font-size: .68rem;
+  letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem;
+}
+.ks-text {
+  font-family: var(--font-tamil); font-size: 1rem;
+  color: var(--gold-light); line-height: 1.8; margin-bottom: .5rem;
+}
+.ks-trans {
+  font-family: var(--font-display); font-style: italic;
+  font-size: .95rem; color: var(--parchment-dark); margin-bottom: .5rem;
+}
+.ks-note {
+  font-family: var(--font-body); font-size: .88rem;
+  color: var(--text-muted); line-height: 1.7;
+}
+
+/* TINAI GRID */
+.tinai-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px; border: 1px solid rgba(201,152,58,.1); margin-top: 2rem;
+}
+.tinai-block {
+  padding: 1.75rem; background: rgba(15,10,6,.35);
+  transition: background .3s;
+}
+.tinai-block:hover { background: rgba(42,31,21,.5); }
+.tinai-name {
+  font-family: var(--font-display); font-size: 1.2rem;
+  font-weight: 500; color: var(--parchment); margin-bottom: 1rem;
+}
+.tinai-attrs { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+.ta { display: flex; gap: .75rem; align-items: baseline; }
+.ta-k {
+  font-family: var(--font-display); font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); min-width: 65px;
+}
+.ta-v { font-family: var(--font-body); font-size: .9rem; color: var(--parchment-dark); }
+.ta--full { flex-direction: column; gap: .2rem; }
+.ta-theme { font-style: italic; color: var(--gold-light); }
+.tinai-note {
+  font-family: var(--font-body); font-size: .88rem;
+  color: var(--text-muted); line-height: 1.7;
+  border-top: 1px solid rgba(201,152,58,.1); padding-top: 1rem;
+}
+
+/* POEMS */
+.poems-list { display: flex; flex-direction: column; gap: 2px; }
+.poem-block {
+  background: rgba(15,10,6,.35); border: 1px solid rgba(201,152,58,.08);
+  border-left: 3px solid var(--crimson); padding: 2.5rem; transition: background .3s;
+}
+.poem-block:hover { background: rgba(42,31,21,.45); }
+.poem-block-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: .5rem;
+}
+.poem-source {
+  font-family: var(--font-display); font-size: .8rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--gold);
+}
+.poem-poet {
+  font-family: var(--font-body); font-style: italic;
+  font-size: .85rem; color: var(--text-faint); margin-left: 1rem;
+}
+.poem-grade { font-family: var(--font-body); font-size: .8rem; color: var(--text-faint); }
+.poem-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
+.poem-col-label {
+  font-family: var(--font-display); font-size: .68rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: .6rem;
+}
+.poem-tamil-text {
+  font-family: var(--font-tamil); font-size: 1.1rem;
+  color: var(--gold-light); line-height: 2; white-space: pre-line; margin: 0;
+}
+.poem-trans-text {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.05rem; color: var(--parchment-dark); line-height: 1.75; margin: 0;
+}
+.commentary-label {
+  font-family: var(--font-display); font-size: .68rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: .6rem;
+}
+.commentary-text {
+  font-family: var(--font-body); font-size: 1rem;
+  color: var(--parchment-dark); line-height: 1.85; max-width: 72ch; margin-bottom: 1rem;
+}
+.line-by-line { margin-top: 1rem; }
+.lc-item {
+  display: grid; grid-template-columns: 90px 1fr;
+  gap: 1rem; padding: .75rem 0;
+  border-top: 1px solid rgba(201,152,58,.08);
+}
+.lc-lines {
+  font-family: var(--font-display); font-size: .75rem;
+  letter-spacing: .08em; color: var(--gold); padding-top: .1rem;
+}
+.lc-comment {
+  font-family: var(--font-body); font-size: .95rem;
+  color: var(--parchment-dark); line-height: 1.75; margin: 0;
+}
+.political-note {
+  background: rgba(139,26,26,.1); border: 1px solid rgba(139,26,26,.2);
+  padding: 1.25rem 1.5rem; margin-top: 1.25rem;
+}
+.pn-tag {
+  font-family: var(--font-display); font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--crimson-light); display: block; margin-bottom: .6rem;
+}
+.political-note p {
+  font-family: var(--font-body); font-size: .95rem;
+  color: var(--parchment-dark); line-height: 1.8; margin: 0;
+}
+
+/* SYLLABUS */
+.syllabus-table { border: 1px solid rgba(201,152,58,.1); }
+.syllabus-row {
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: 1.5rem; padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(201,152,58,.06);
+  background: rgba(15,10,6,.25); transition: background .25s;
+}
+.syllabus-row:last-child { border-bottom: none; }
+.syllabus-row:hover { background: rgba(42,31,21,.4); }
+.syl-grade {
+  font-family: var(--font-display); font-size: .8rem;
+  letter-spacing: .08em; color: var(--gold); padding-top: .1rem;
+}
+.syl-content { font-family: var(--font-body); font-size: .95rem; color: var(--parchment-dark); line-height: 1.6; }
+
+/* ACCESS */
+.access-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px; border: 1px solid rgba(201,152,58,.1);
+}
+.access-card {
+  padding: 2rem 1.75rem; background: rgba(15,10,6,.35);
+  text-decoration: none; transition: background .3s;
+  display: flex; flex-direction: column; gap: .4rem;
+}
+.access-card:hover { background: rgba(42,31,21,.5); }
+.ac-icon { font-size: 1.5rem; margin-bottom: .25rem; }
+.ac-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; color: var(--parchment); }
+.ac-desc { font-family: var(--font-body); font-size: .9rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+.ac-link { font-family: var(--font-display); font-size: .8rem; letter-spacing: .08em; color: var(--gold); margin-top: auto; }
+
+@media (max-width: 768px) {
+  .work-body { padding: 3rem 1.25rem 5rem; }
+  .wh-top { grid-template-columns: 1fr; }
+  .poem-columns { grid-template-columns: 1fr; }
+  .lc-item { grid-template-columns: 1fr; gap: .4rem; }
+  .book-block { grid-template-columns: 1fr; gap: .75rem; }
+  .book-num { font-size: 1.2rem; }
+}
+</style>
+
+<script>
+const sections = document.querySelectorAll('.work-section[id]');
+const links = document.querySelectorAll('.tab-link');
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('tab-active'));
+        const active = document.querySelector(`.tab-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('tab-active');
+      }
+    });
+  },
+  { rootMargin: '-25% 0px -65% 0px' }
+);
+sections.forEach(s => observer.observe(s));
+</script>

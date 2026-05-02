@@ -1,0 +1,430 @@
+---
+import Layout from '../layouts/TamilLitLayout.astro';
+
+const kurals = [
+  { num: 1, tamil: 'அகர முதல எழுத்தெல்லாம் ஆதி\nபகவன் முதற்றே உலகு.', en: 'As the letter "A" is the first of all letters, so the eternal God is first in the world.', chapter: 'The Praise of God', book: 'Virtue' },
+  { num: 2, tamil: 'கற்றதனால் ஆய பயனென்கொல் வாலறிவன்\nநற்றாள் தொழாஅர் எனின்.', en: 'What profit has a man derived from learning, if he worships not the good feet of Him who is possessed of pure knowledge?', chapter: 'The Praise of God', book: 'Virtue' },
+  { num: 10, tamil: 'பிறவிப் பெருங்கடல் நீந்துவர் நீந்தார்\nஇறைவன் அடிசேரா தார்.', en: 'They will cross the great sea of births who seek the feet of God; those who do not, cannot.', chapter: 'The Praise of God', book: 'Virtue' },
+  { num: 215, tamil: 'நன்றிமறப்பது நன்றன்று நன்றல்லது\nஅன்றே மறப்பது நன்று.', en: 'To forget a kindness is not good; it is good to forget, at once, an unkindness.', chapter: 'Gratitude', book: 'Virtue' },
+  { num: 391, tamil: 'அழுக்காறு உடையார்க்கு அதுசாலும் ஒன்னார்\nவழுக்கியும் கேடீன்பது இல்.', en: 'Envy itself is sufficient punishment for the envious; no enemy need add to their ruin.', chapter: 'The Avoidance of Envy', book: 'Virtue' },
+  { num: 423, tamil: 'அரம்பொருத பண்டம் போல் அன்னார்க்கு உற்ற\nவிரம்பியும் ஊக்கம் தரும்.', en: 'Like a file sharpening iron tools, hardship only makes the strong grow stronger.', chapter: 'The Greatness of Fortitude', book: 'Wealth' },
+  { num: 625, tamil: 'ஒற்கத்தில் ஒல்கார் உரவோர் இடர்வரினும்\nதற்கொல் தகுதியே கொள்.', en: 'The strong do not bend in adversity; when trouble comes, they accept what is fitting.', chapter: 'Maintaining Dignity in Poverty', book: 'Wealth' },
+  { num: 1101, tamil: 'கண்டுகேட்டு உண்டுயிர்த்து உற்றறிவும் ஐம்புலனும்\nஒண்டொடி கண்ணே உள.', en: 'The five senses — sight, hearing, taste, smell, and touch — all belong to the woman with shining bangles.', chapter: 'The Praise of Her Beauty', book: 'Love' },
+  { num: 1330, tamil: 'அன்பிற்கும் உண்டோ அடைக்கும் தாழ் ஆர்வலர்\nபுன்கணீர் பூசல் தரும்.', en: 'Is there a bolt that can shut out Love? The tears of those who love deeply are its only guard.', chapter: 'The Joys of Reunion', book: 'Love' },
+];
+---
+<Layout title="Thirukkural" description="Read Thirukkural — 1,330 couplets of timeless wisdom by Thiruvalluvar, translated and explained.">
+
+<section class="page-hero kural-hero">
+  <div class="kural-hero-bg">
+    <svg class="kural-pattern" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      {Array.from({length: 12}).map((_, i) => (
+        <rect
+          x={40 + (i % 6) * 55}
+          y={40 + Math.floor(i / 6) * 160}
+          width="40" height="120"
+          fill="none"
+          stroke="rgba(201,152,58,0.08)"
+          stroke-width="1"
+          transform={`rotate(${i * 7.5} 200 200)`}
+        />
+      ))}
+      <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(201,152,58,0.05)" stroke-width="1" stroke-dasharray="4 8"/>
+      <circle cx="200" cy="200" r="140" fill="none" stroke="rgba(201,152,58,0.06)" stroke-width="1"/>
+      <circle cx="200" cy="200" r="8"   fill="rgba(201,152,58,0.2)"/>
+    </svg>
+  </div>
+  <div class="container page-hero-content">
+    <p class="section-label">~300 BCE</p>
+    <h1 class="page-title">
+      <span class="page-title-ta">திருக்குறள்</span>
+      <span class="page-title-en">Thirukkural</span>
+    </h1>
+    <p class="page-intro">
+      1,330 couplets on virtue, wealth, and love — composed by Thiruvalluvar. Translated into over 80 languages, the Kural is the most celebrated work of Tamil literature and one of the great ethical texts of the world.
+    </p>
+    <div class="kural-books">
+      <div class="kural-book"><span class="kb-num">380</span><span class="kb-name">Aram (Virtue)</span></div>
+      <div class="kural-book-sep"></div>
+      <div class="kural-book"><span class="kb-num">700</span><span class="kb-name">Porul (Wealth)</span></div>
+      <div class="kural-book-sep"></div>
+      <div class="kural-book"><span class="kb-num">250</span><span class="kb-name">Inbam (Love)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED KURAL -->
+<section class="featured-kural">
+  <div class="container">
+    <p class="section-label">Featured Couplet</p>
+    <div class="fk-card">
+      <div class="fk-num">குறள் 215</div>
+      <p class="fk-tamil">நன்றிமறப்பது நன்றன்று நன்றல்லது<br/>அன்றே மறப்பது நன்று.</p>
+      <div class="fk-divider"></div>
+      <p class="fk-translation">"To forget a kindness is not good; it is good to forget, at once, an unkindness."</p>
+      <p class="fk-chapter">Chapter: Gratitude — Book of Virtue</p>
+    </div>
+  </div>
+</section>
+
+<!-- KURAL BROWSER -->
+<section class="kural-browser">
+  <div class="container">
+    <p class="section-label">Browse the Kurals</p>
+    <h2 class="section-title">Selected Couplets</h2>
+
+    <div class="book-filter" id="bookFilter">
+      <button class="book-btn active" data-book="all">All</button>
+      <button class="book-btn" data-book="Virtue">Virtue (Aram)</button>
+      <button class="book-btn" data-book="Wealth">Wealth (Porul)</button>
+      <button class="book-btn" data-book="Love">Love (Inbam)</button>
+    </div>
+
+    <div class="kural-list" id="kuralList">
+      {kurals.map((k, i) => (
+        <article class="kural-item" data-book={k.book} style={`animation-delay: ${i * 0.07}s`}>
+          <div class="ki-left">
+            <span class="ki-num">{k.num}</span>
+            <span class="ki-chapter">{k.chapter}</span>
+            <span class={`ki-book ki-book--${k.book.toLowerCase()}`}>{k.book}</span>
+          </div>
+          <div class="ki-content">
+            <p class="ki-tamil">{k.tamil}</p>
+            <p class="ki-en">{k.en}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE -->
+<section class="structure-section">
+  <div class="container">
+    <p class="section-label">The Architecture</p>
+    <h2 class="section-title">Structure of the Kural</h2>
+    <div class="structure-grid">
+      <div class="str-card">
+        <div class="str-icon">I</div>
+        <h3>Aram</h3>
+        <p class="str-ta">அறம்</p>
+        <p>Virtue — ethics, personal conduct, domestic life, and renunciation. 380 couplets in 38 chapters.</p>
+      </div>
+      <div class="str-card">
+        <div class="str-icon">II</div>
+        <h3>Porul</h3>
+        <p class="str-ta">பொருள்</p>
+        <p>Wealth — statecraft, administration, army, diplomacy, and economics. 700 couplets in 70 chapters.</p>
+      </div>
+      <div class="str-card">
+        <div class="str-icon">III</div>
+        <h3>Inbam</h3>
+        <p class="str-ta">இன்பம்</p>
+        <p>Love — the joy and sorrow of romantic love, desire, and union. 250 couplets in 25 chapters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll('.book-btn');
+  const items = document.querySelectorAll('.kural-item') as NodeListOf<HTMLElement>;
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const book = (btn as HTMLElement).dataset.book;
+      items.forEach(item => {
+        const show = book === 'all' || item.dataset.book === book;
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</Layout>
+
+<style>
+.kural-hero {
+  min-height: 70vh;
+  padding: 10rem 0 5rem;
+}
+
+.kural-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(42,31,21,0.8) 0%, rgba(15,10,6,0) 70%);
+}
+
+.kural-pattern {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 70vmin; height: 70vmin;
+  animation: rotate-slow 90s linear infinite;
+  pointer-events: none;
+}
+
+.page-hero-content { position: relative; z-index: 1; }
+
+.page-title { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+.page-title-en {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 9vw, 6rem);
+  font-weight: 300;
+  color: var(--parchment);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.page-title-ta {
+  font-family: var(--font-tamil);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  color: var(--gold-light);
+  font-weight: 300;
+  order: -1;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.page-intro {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--parchment-dark);
+  max-width: 65ch;
+  line-height: 1.85;
+  margin-bottom: 3rem;
+}
+
+.kural-books {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.kural-book { display: flex; flex-direction: column; }
+.kb-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.kb-name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+}
+.kural-book-sep {
+  width: 1px; height: 2.5rem;
+  background: rgba(201,152,58,0.2);
+}
+
+.featured-kural {
+  padding: 6rem 0;
+  background: var(--ink-mid);
+  border-top: 1px solid rgba(201,152,58,0.08);
+  border-bottom: 1px solid rgba(201,152,58,0.08);
+}
+
+.fk-card {
+  max-width: 700px;
+  padding: 3.5rem;
+  background: rgba(15,10,6,0.6);
+  border: 1px solid rgba(201,152,58,0.2);
+  position: relative;
+}
+.fk-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--crimson), var(--gold), transparent);
+}
+.fk-num {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.fk-tamil {
+  font-family: var(--font-tamil);
+  font-size: 1.4rem;
+  color: var(--gold-light);
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+.fk-divider {
+  width: 3rem; height: 1px;
+  background: rgba(201,152,58,0.25);
+  margin-bottom: 1.5rem;
+}
+.fk-translation {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--parchment-dark);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.fk-chapter {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}
+
+.kural-browser { padding: 8rem 0; }
+
+.book-filter {
+  display: flex;
+  gap: 1px;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(201,152,58,0.15);
+  width: fit-content;
+}
+
+.book-btn {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.book-btn:hover { background: rgba(201,152,58,0.06); color: var(--parchment); }
+.book-btn.active { background: var(--crimson); color: var(--parchment); }
+
+.kural-list { display: flex; flex-direction: column; gap: 1px; }
+
+.kural-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  padding: 2.5rem;
+  background: rgba(15,10,6,0.35);
+  border-left: 2px solid transparent;
+  transition: background 0.3s, border-color 0.3s;
+  animation: fadeUp 0.8s var(--ease-out) both;
+}
+.kural-item:hover {
+  background: rgba(42,31,21,0.5);
+  border-left-color: var(--crimson);
+}
+
+.ki-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 0.3rem;
+}
+.ki-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.ki-chapter {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  margin-bottom: 0.5rem;
+}
+.ki-book {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.6rem;
+  border-radius: 1px;
+  width: fit-content;
+}
+.ki-book--virtue   { background: rgba(58,107,58,0.2); color: #7BC47B; border: 1px solid rgba(58,107,58,0.3); }
+.ki-book--wealth   { background: rgba(58,91,107,0.2); color: #7BAFC4; border: 1px solid rgba(58,91,107,0.3); }
+.ki-book--love     { background: rgba(139,26,26,0.2); color: var(--crimson-light); border: 1px solid rgba(139,26,26,0.3); }
+
+.ki-content {}
+.ki-tamil {
+  font-family: var(--font-tamil);
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  line-height: 2;
+  margin-bottom: 1rem;
+  white-space: pre-line;
+}
+.ki-en {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--parchment-dark);
+  line-height: 1.7;
+}
+
+.structure-section {
+  padding: 8rem 0;
+  background: var(--ink-mid);
+}
+
+.structure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+  margin-top: 3rem;
+}
+
+.str-card {
+  padding: 3rem 2.5rem;
+  background: rgba(15,10,6,0.5);
+  transition: background 0.3s;
+  position: relative;
+}
+.str-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, var(--crimson), transparent);
+}
+.str-card:hover { background: rgba(42,31,21,0.7); }
+
+.str-icon {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--crimson);
+  opacity: 0.5;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+.str-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--parchment);
+  margin-bottom: 0.25rem;
+}
+.str-ta {
+  font-family: var(--font-tamil);
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.str-card p:last-child {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .kural-item { grid-template-columns: 1fr; gap: 1rem; }
+  .ki-left { flex-direction: row; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .kural-books { flex-wrap: wrap; gap: 1rem; }
+}
+</style>
