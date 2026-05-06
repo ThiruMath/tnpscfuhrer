@@ -1,22 +1,116 @@
 ---
 import Layout from '../layouts/TamilLitLayout.astro';
 ---
-<Layout title="Comparative Classical Literature">
-  <div class="tamil-lit-wrapper">
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title"><span class="tamil-text">ஒப்பீட்டிலக்கியம்</span> Comparative Literature</h1>
-        <p class="hero-subtitle">Tamil, Greek, Latin, and Sanskrit</p>
-      </div>
-    </section>
+<Layout title="Comparative Classical Literature" description="A comparative study of Tamil classical literature alongside Greek, Latin, and Sanskrit.">
 
-    <section class="section">
-      <div class="container">
-        <div class="prose">
-          <p>Tamil literature stands alongside Greek, Latin, and Sanskrit as one of the great classical traditions of the ancient world. However, unlike Greek and Latin, Tamil has maintained an unbroken literary continuum into the modern era.</p>
-          <p>The secular, humanistic approach of Sangam Akam and Puram poetry finds its closest parallels not in the Vedic hymns of North India, but in the lyric poetry of ancient Greece.</p>
-        </div>
-      </div>
-    </section>
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <div class="ph-orb ph-orb--1"></div>
+    <div class="ph-orb ph-orb--2"></div>
   </div>
+  <div class="container page-hero-content">
+    <p class="section-label">World Literature</p>
+    <h1 class="page-title">
+      <span class="page-title-en">Comparative Literature</span>
+      <span class="page-title-ta">ஒப்பீட்டிலக்கியம்</span>
+    </h1>
+    <p class="page-intro">
+      Tamil literature stands alongside Greek, Latin, and Sanskrit as one of the great classical traditions of the ancient world. However, unlike Greek and Latin, Tamil has maintained an unbroken literary continuum into the modern era.
+    </p>
+  </div>
+  <div class="page-scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- THE POLITICAL REALITIES -->
+<section class="section prose-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Analysis</p>
+      <h2 class="section-title">Parallels and Divergences</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="prose">
+      <p>The secular, humanistic approach of Sangam Akam and Puram poetry finds its closest parallels not in the Vedic hymns of North India, but in the lyric poetry of ancient Greece. Both traditions developed a highly sophisticated poetics based on human emotion, particularly love and war, stripped of mythological intervention.</p>
+      
+      <div class="callout-box">
+        <p><strong>Aesthetic Theory:</strong> The <em>Tolkappiyam</em> provides a complete theory of poetics and grammar. Its closest equivalent in the ancient world is Aristotle’s <em>Poetics</em> or Bharata’s <em>Natyashastra</em>, yet it predates or matches them in antiquity and offers a uniquely ecological framework for human emotion (the <em>tinai</em> system).</p>
+      </div>
+
+      <p>In comparison to Sanskrit epics, Tamil epics like <em>Silappadikaram</em> are striking for their focus on human tragedy rather than divine action. While the <em>Mahabharata</em> and <em>Ramayana</em> focus on Kshatriya dharma and divine avatars, the <em>Silappadikaram</em> centers on a merchant-class woman who demands justice from the state and receives it through cosmic means.</p>
+
+      <p>Compared to Latin literature, which was heavily influenced by earlier Greek models, ancient Tamil literature developed its own indigenous aesthetic system before later integrating with pan-Indic forms during the Bhakti and Medieval periods.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON GRID -->
+<section class="anthologies-section" style="background: var(--ink-mid);">
+  <div class="container">
+    <p class="section-label">Traditions</p>
+    <h2 class="section-title">Classical Civilizations</h2>
+    <div class="anthologies-grid">
+      <div class="anthology-card">
+        <h3 class="anth-name">Tamil</h3>
+        <p class="anth-theme">Sangam, Tolkappiyam</p>
+        <p class="anth-mood">Secular love, ecological poetics, humanism, continuous living tradition.</p>
+      </div>
+      <div class="anthology-card">
+        <h3 class="anth-name">Greek</h3>
+        <p class="anth-theme">Homer, Sappho</p>
+        <p class="anth-mood">Heroic epics, lyric poetry, tragedy, foundational to Western canon.</p>
+      </div>
+      <div class="anthology-card">
+        <h3 class="anth-name">Latin</h3>
+        <p class="anth-theme">Virgil, Ovid</p>
+        <p class="anth-mood">Imperial narrative, rhetorical polish, synthesis of Greek forms.</p>
+      </div>
+      <div class="anthology-card">
+        <h3 class="anth-name">Sanskrit</h3>
+        <p class="anth-theme">Vedas, Kalidasa</p>
+        <p class="anth-mood">Religious hymns, courtly Kavya, complex dramaturgy, pan-Indic influence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 </Layout>
+
+<style>
+.page-hero { min-height: 70vh; display: flex; align-items: center; padding: 10rem 0 6rem; position: relative; overflow: hidden; }
+.page-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 100% 80% at 30% 50%, rgba(92,15,15,0.4) 0%, rgba(15,10,6,0) 60%); }
+.ph-orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+.ph-orb--1 { width: 700px; height: 400px; top: -100px; left: -200px; background: rgba(92,15,15,0.3); animation: float 9s ease-in-out infinite; }
+.ph-orb--2 { width: 400px; height: 400px; bottom: -100px; right: 10%; background: rgba(201,152,58,0.07); animation: float 12s ease-in-out infinite reverse; }
+.page-hero-content { position: relative; z-index: 1; }
+.page-title { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+.page-title-en { font-family: var(--font-display); font-size: clamp(3rem, 10vw, 7rem); font-weight: 300; color: var(--parchment); line-height: 1; letter-spacing: -0.01em; }
+.page-title-ta { font-family: var(--font-tamil); font-size: clamp(1.5rem, 5vw, 3rem); color: var(--gold); font-weight: 300; }
+.page-intro { font-family: var(--font-body); font-size: 1.15rem; color: var(--parchment-dark); max-width: 65ch; line-height: 1.85; }
+.page-scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); }
+.scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, rgba(201,152,58,0.4), transparent); animation: float 2s ease-in-out infinite; }
+
+.section-label { font-family: var(--font-display); font-size: 1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+.section-title { font-family: var(--font-display); font-size: 3rem; color: var(--parchment); margin-bottom: 1.5rem; }
+
+.prose-section { padding: 8rem 0; }
+.prose { max-width: 75ch; margin: 0 auto; }
+.prose p { font-family: var(--font-body); font-size: 1.15rem; color: var(--parchment-dark); line-height: 1.85; margin-bottom: 1.5rem; }
+.callout-box { background: rgba(139,26,26,0.1); border-left: 3px solid var(--crimson); padding: 1.5rem 2rem; margin: 2rem 0; }
+.callout-box p { margin: 0; color: var(--parchment); font-size: 1.1rem; }
+.callout-box strong { color: var(--crimson-light); font-weight: 600; }
+
+.anthologies-section { padding: 8rem 0; }
+.anthologies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; margin-top: 3rem; border: 1px solid rgba(201,152,58,0.1); }
+.anthology-card { padding: 2rem 1.5rem; background: rgba(15,10,6,0.3); transition: background 0.3s; border-bottom: 1px solid rgba(201,152,58,0.06); }
+.anthology-card:hover { background: rgba(139,26,26,0.1); }
+.anth-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--parchment); margin-bottom: 0.5rem; }
+.anth-theme { font-family: var(--font-body); font-size: 0.95rem; color: var(--gold); margin-bottom: 0.5rem; }
+.anth-mood { font-family: var(--font-body); font-style: italic; font-size: 1rem; color: var(--parchment-dark); margin-top: 0.5rem; line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .page-hero { padding: 8rem 0 4rem; }
+  .prose-section .container, .anthologies-section .container { padding: 0 1rem; }
+}
+</style>

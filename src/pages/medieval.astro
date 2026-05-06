@@ -1,28 +1,206 @@
 ---
 import Layout from '../layouts/TamilLitLayout.astro';
----
-<Layout title="Medieval Tamil Literature – Imperial Cholas">
-  <div class="tamil-lit-wrapper">
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title"><span class="tamil-text">இடைக்கால இலக்கியம்</span> Medieval Literature</h1>
-        <p class="hero-subtitle">The Imperial Chola Era (900 CE – 1300 CE)</p>
-      </div>
-    </section>
+import { poets } from '../data/poets.js';
 
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2>The Age of Epics and Commentaries</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="prose">
-          <p>Under the Imperial Cholas, Tamil literature reached a new pinnacle of structural complexity and courtly grandeur. This was the era of Kambar's Ramavataram, Sekkizhar's Periyapuranam, and Jayamkondar's Kalingattuparani.</p>
-          <div class="callout-box">
-            <p><strong>Historical Context:</strong> Literature in this period was deeply tied to the legitimacy of the Chola state. The Periyapuranam was commissioned by Kulothunga II explicitly to counter the influence of Jain epics like Civaka Cintamani, solidifying Saiva Siddhanta as the state religion.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+const medievalPoetsSlugs = [
+  'kambar', 'sekkizhar', 'avvaiyar-medieval', 'tiruttakkatevar'
+];
+
+const medievalPoets = poets.filter(p => medievalPoetsSlugs.includes(p.slug));
+
+const featuredPoems = [
+  {
+    id: 1,
+    anthology: 'Kambaramayanam',
+    number: 'Sundara Kandam',
+    tamil: 'கற்பகம் ஒத்தாள் — கடவுட் பேர் எழில்\nநற்பகல் வந்த நலங்கிளர் வண்ணமும்\nபொற்பு அமர் ஞாயிறு போல் ஒளி வீசும்\nஅ அற்புத மென்னை அடைந்தது அவ்வோ!',
+    translation: '"She was like the wish-granting tree of heaven — the radiance of the gods\' own beauty come in the good afternoon sun... O wonder, what wonder has found me!"',
+    poet: 'Kambar',
+    theme: 'epic',
+    themeLabel: 'Epic Grandeur'
+  },
+  {
+    id: 2,
+    anthology: 'Civaka Cintamani',
+    number: 'Mukti Ilambakam',
+    tamil: 'என்றிலம் உணர்வும் இல்லை இம்மையோர் இருமைதானும்\nதுன்றலர் தொடுத்து நிற்பார் தோன்றுவர் போவர் தோற்றம்\nஇன்றென நின்றார் இல்லை...',
+    translation: '"There is no \'now\' for understanding, no \'this life\' nor \'both lives\'... no one has remained saying \'today is forever\'."',
+    poet: 'Tiruttakkatevar',
+    theme: 'philosophy',
+    themeLabel: 'Jain Ethics'
+  }
+];
+---
+<Layout title="Medieval Tamil Literature – Imperial Cholas" description="The Imperial Chola Era – The Age of Epics and Commentaries in Tamil Literature.">
+
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <div class="ph-orb ph-orb--1"></div>
+    <div class="ph-orb ph-orb--2"></div>
   </div>
+  <div class="container page-hero-content">
+    <p class="section-label">900 CE – 1300 CE</p>
+    <h1 class="page-title">
+      <span class="page-title-en">Medieval Literature</span>
+      <span class="page-title-ta">இடைக்கால இலக்கியம்</span>
+    </h1>
+    <p class="page-intro">
+      Under the Imperial Cholas, Tamil literature reached a new pinnacle of structural complexity and courtly grandeur. This was the era of massive epics, meticulous grammar commentaries, and the synthesis of pan-Indic narratives with Tamil aesthetics.
+    </p>
+  </div>
+  <div class="page-scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- OVERVIEW GRID -->
+<section class="overview">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-card">
+        <span class="ov-num">10k+</span>
+        <span class="ov-label">Verses in Kambar</span>
+        <p class="ov-detail">The Kambaramayanam is a colossal achievement in the <em>viruttam</em> metre.</p>
+      </div>
+      <div class="overview-card">
+        <span class="ov-num">5</span>
+        <span class="ov-label">Great Epics</span>
+        <p class="ov-detail">Civaka Cintamani and others set the template for the Tamil <em>perunkappiyam</em>.</p>
+      </div>
+      <div class="overview-card">
+        <span class="ov-num">Jain</span>
+        <span class="ov-label">& Shaiva</span>
+        <p class="ov-detail">The literary landscape was marked by intense competition between religious traditions.</p>
+      </div>
+      <div class="overview-card">
+        <span class="ov-num">Urai</span>
+        <span class="ov-label">Commentaries</span>
+        <p class="ov-detail">Scholars like Parimelazhagar wrote definitive commentaries on older texts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE POLITICAL REALITIES -->
+<section class="section prose-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Context</p>
+      <h2 class="section-title">The Age of Epics and Empire</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="prose">
+      <p>The medieval period in Tamil literature cannot be separated from the geopolitical reality of the Imperial Chola dynasty. As the Cholas expanded their empire across South India and into Southeast Asia, their courts patronized literature that reflected this imperial ambition and scale.</p>
+      <div class="callout-box">
+        <p><strong>Historical Context:</strong> Literature in this period was deeply tied to the legitimacy of the state. Sekkizhar's <em>Periyapuranam</em> was commissioned by Kulothunga II explicitly to counter the influence of Jain epics like <em>Civaka Cintamani</em>, thereby solidifying Saiva Siddhanta as the state religion.</p>
+      </div>
+      <p>This period saw the perfection of the <em>viruttam</em> metre, which allowed for rhythmic density and musicality perfectly suited for long narrative epics. Poets like Kambar did not merely translate Sanskrit works; they reimagined them entirely within the Tamil aesthetic framework, producing works of original genius.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED POEMS -->
+<section class="poems-section">
+  <div class="container">
+    <p class="section-label">Selected Verses</p>
+    <h2 class="section-title">The Grand Narrative</h2>
+    <div class="poems-list">
+      {featuredPoems.map((poem, i) => (
+        <article class="poem-card" style={`animation-delay: ${i * 0.12}s`}>
+          <div class="poem-header">
+            <div>
+              <span class="poem-anthology">{poem.anthology}</span>
+              <span class="poem-num">({poem.number})</span>
+            </div>
+            <span class={`poem-theme poem-theme--${poem.theme}`}>{poem.themeLabel}</span>
+          </div>
+          <blockquote class="poem-tamil">{poem.tamil}</blockquote>
+          <div class="poem-divider"></div>
+          <p class="poem-translation">{poem.translation}</p>
+          <p class="poem-poet">— {poem.poet}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- SAINTS & POETS GRID -->
+<section class="anthologies-section">
+  <div class="container">
+    <p class="section-label">The Epic Poets</p>
+    <h2 class="section-title">Architects of the Medieval Canon</h2>
+    <div class="anthologies-grid">
+      {medievalPoets.map((p, i) => (
+        <a href={`/poets/${p.slug}`} class="anthology-card" style={`animation-delay: ${i * 0.07}s; text-decoration: none;`}>
+          <h3 class="anth-name" style={`color: ${p.accent || 'var(--parchment)'}`}>{p.name}</h3>
+          <p class="anth-tamil">{p.tamil}</p>
+          <p class="anth-theme">{p.religion}</p>
+          <p class="anth-mood">{p.known_for}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
 </Layout>
+
+<style>
+.page-hero { min-height: 70vh; display: flex; align-items: center; padding: 10rem 0 6rem; position: relative; overflow: hidden; }
+.page-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 100% 80% at 30% 50%, rgba(92,15,15,0.4) 0%, rgba(15,10,6,0) 60%); }
+.ph-orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+.ph-orb--1 { width: 700px; height: 400px; top: -100px; left: -200px; background: rgba(92,15,15,0.3); animation: float 9s ease-in-out infinite; }
+.ph-orb--2 { width: 400px; height: 400px; bottom: -100px; right: 10%; background: rgba(201,152,58,0.07); animation: float 12s ease-in-out infinite reverse; }
+.page-hero-content { position: relative; z-index: 1; }
+.page-title { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+.page-title-en { font-family: var(--font-display); font-size: clamp(3rem, 10vw, 7rem); font-weight: 300; color: var(--parchment); line-height: 1; letter-spacing: -0.01em; }
+.page-title-ta { font-family: var(--font-tamil); font-size: clamp(1.5rem, 5vw, 3rem); color: var(--gold); font-weight: 300; }
+.page-intro { font-family: var(--font-body); font-size: 1.15rem; color: var(--parchment-dark); max-width: 65ch; line-height: 1.85; }
+.page-scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); }
+.scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, rgba(201,152,58,0.4), transparent); animation: float 2s ease-in-out infinite; }
+
+.section-label { font-family: var(--font-display); font-size: 1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+.section-title { font-family: var(--font-display); font-size: 3rem; color: var(--parchment); margin-bottom: 1.5rem; }
+
+.overview { padding: 5rem 0; background: var(--ink-mid); border-top: 1px solid rgba(201,152,58,0.1); border-bottom: 1px solid rgba(201,152,58,0.1); }
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; }
+.overview-card { display: flex; flex-direction: column; padding: 2.5rem 2rem; background: rgba(15,10,6,0.4); }
+.ov-num { font-family: var(--font-display); font-size: 3rem; font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 0.25rem; }
+.ov-label { font-family: var(--font-display); font-size: 1rem; font-weight: 500; color: var(--parchment); margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+.ov-detail { font-family: var(--font-body); font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+.prose-section { padding: 8rem 0; }
+.prose { max-width: 75ch; margin: 0 auto; }
+.prose p { font-family: var(--font-body); font-size: 1.15rem; color: var(--parchment-dark); line-height: 1.85; margin-bottom: 1.5rem; }
+.callout-box { background: rgba(139,26,26,0.1); border-left: 3px solid var(--crimson); padding: 1.5rem 2rem; margin: 2rem 0; }
+.callout-box p { margin: 0; color: var(--parchment); font-size: 1.1rem; }
+.callout-box strong { color: var(--crimson-light); font-weight: 600; }
+
+.poems-section { padding: 8rem 0; background: var(--ink-mid); }
+.poems-list { display: flex; flex-direction: column; gap: 2px; margin-top: 3rem; }
+.poem-card { background: rgba(15,10,6,0.5); padding: 3rem; border-left: 3px solid var(--crimson); }
+.poem-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.poem-anthology { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); margin-right: 0.5rem; }
+.poem-num { font-family: var(--font-display); font-size: 0.85rem; color: var(--gold); }
+.poem-theme { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.1em; padding: 0.25rem 0.75rem; border-radius: 1px; }
+.poem-theme--epic { background: rgba(58,91,107,0.2); color: #7BA8C4; border: 1px solid rgba(58,91,107,0.3); }
+.poem-theme--philosophy { background: rgba(107,74,42,0.2); color: #D4A373; border: 1px solid rgba(107,74,42,0.3); }
+.poem-tamil { font-family: var(--font-tamil); font-size: 1.15rem; color: var(--gold-light); line-height: 2; margin-bottom: 1.5rem; white-space: pre-line; }
+.poem-divider { width: 3rem; height: 1px; background: rgba(201,152,58,0.2); margin-bottom: 1.5rem; }
+.poem-translation { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--parchment-dark); line-height: 1.7; max-width: 65ch; margin-bottom: 1rem; }
+.poem-poet { font-family: var(--font-body); font-size: 0.9rem; color: var(--text-faint); }
+
+.anthologies-section { padding: 8rem 0; }
+.anthologies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; margin-top: 3rem; border: 1px solid rgba(201,152,58,0.1); }
+.anthology-card { padding: 2rem 1.5rem; background: rgba(15,10,6,0.3); transition: background 0.3s; border-bottom: 1px solid rgba(201,152,58,0.06); }
+.anthology-card:hover { background: rgba(139,26,26,0.1); }
+.anth-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; margin-bottom: 0.2rem; }
+.anth-tamil { font-family: var(--font-tamil); font-size: 0.9rem; color: var(--gold); margin-bottom: 0.75rem; }
+.anth-theme { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-faint); margin-bottom: 0.25rem; }
+.anth-mood { font-family: var(--font-body); font-style: italic; font-size: 0.9rem; color: var(--crimson-light); margin-top: 0.5rem; }
+
+@media (max-width: 768px) {
+  .page-hero { padding: 8rem 0 4rem; }
+  .poems-section .container, .anthologies-section .container { padding: 0 1rem; }
+  .poem-card { padding: 1.5rem; }
+}
+</style>

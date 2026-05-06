@@ -1,35 +1,210 @@
 ---
 import Layout from '../layouts/TamilLitLayout.astro';
-import { getPoetsByPeriod } from '../data/poets';
-import { getWorksByPeriod } from '../data/works';
+import { poets } from '../data/poets.js';
+import { works } from '../data/works.js';
 
-const poets = getPoetsByPeriod('bhakti');
-const works = getWorksByPeriod('bhakti');
+const bhaktiPoetsSlugs = [
+  'thirugnanasambandar', 'appar', 'sundarar', 'manikkavacakar', 'periyalvar', 'andal', 'nammalvar'
+];
+const bhaktiWorksSlugs = [
+  'tevaram', 'thiruvasagam', 'thiruvaymoli', 'thirupavai'
+];
+
+const bhaktiPoets = poets.filter(p => bhaktiPoetsSlugs.includes(p.slug));
+const bhaktiWorks = works.filter(w => bhaktiWorksSlugs.includes(w.slug));
+
+const featuredPoems = [
+  {
+    id: 1,
+    anthology: 'Tevaram',
+    number: 'Tirumurai 1',
+    tamil: 'தோடுடைய செவியன் விடையேறியோர் தூவெண் மதிசூடிக்\nகாடுடையசுட லைப்பொடிபூசனி யென்னுள்ளங் கவர் கள்வன்\nஏடுடையமல ரான்முனைநாட்பணிந் தேத்தவருள் செய்த\nபீடுடையபிர மாபுரமேவிய பெம்மானிவ னன்றே.',
+    translation: '"He wears a rolled leaf in His ear, rides a bull, is crowned by the pure white moon, and smears Himself with the ash of the cremation ground... He is the thief who stole my heart."',
+    poet: 'Thirugnanasambandar',
+    theme: 'devotion',
+    themeLabel: 'Shaiva Bhakti'
+  },
+  {
+    id: 2,
+    anthology: 'Thirupavai',
+    number: 'Verse 1',
+    tamil: 'மார்கழித் திங்கள் மதிநிறைந்த நன்னாளால்\nநீராட போதுவீர் போதுமினோ நேரிழையீர்',
+    translation: '"The bright full-moon night of Margazhi has come — come, you who are adorned with fine jewels, come to bathe, come now..."',
+    poet: 'Andal',
+    theme: 'devotion',
+    themeLabel: 'Vaishnava Bhakti'
+  }
+];
 ---
-<Layout title="Bhakti Movement – Tamil Literature">
-  <div class="tamil-lit-wrapper">
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-content">
-        <h1 class="hero-title"><span class="tamil-text">பக்தி இலக்கியம்</span> The Bhakti Movement</h1>
-        <p class="hero-subtitle">The Age of Devotion and Imperial Ascendancy (600 CE – 900 CE)</p>
-      </div>
-    </section>
+<Layout title="Bhakti Movement – Tamil Literature" description="Explore the Bhakti Movement in Tamil Nadu – The Age of Devotion, the Nayanmars, and the Alvars.">
 
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <h2>The Political Realities of Devotion</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="prose">
-          <p>The Bhakti period represents a massive paradigm shift in Tamil literature and politics. Following the Kalabhra interregnum, the Pallava and Pandya dynasties sought to consolidate power. The Nayanmars (Saivite) and Alvars (Vaishnavite) led a populist, musical, and emotionally intense religious movement that effectively marginalized Jainism and Buddhism in the Tamil country.</p>
-          <div class="callout-box">
-            <p><strong>Critical Note:</strong> The Bhakti movement is often presented purely as a spiritual awakening, but it was deeply political. The hymns of Campantar and Appar contain explicit polemics against Jains and Buddhists, reflecting the royal patronage shift back to Vedic-Agamic traditions.</p>
-          </div>
-          <p>Unlike the Sangam era, where poets were often wandering bards dependent on chieftains, the Bhakti saints were elevated to the status of deities themselves. The temples became massive land-owning institutions and centers of economic power.</p>
-        </div>
-      </div>
-    </section>
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <div class="ph-orb ph-orb--1"></div>
+    <div class="ph-orb ph-orb--2"></div>
   </div>
+  <div class="container page-hero-content">
+    <p class="section-label">600 CE – 900 CE</p>
+    <h1 class="page-title">
+      <span class="page-title-en">The Bhakti Movement</span>
+      <span class="page-title-ta">பக்தி இலக்கியம்</span>
+    </h1>
+    <p class="page-intro">
+      The Bhakti period represents a massive paradigm shift in Tamil literature and politics. Following the Kalabhra interregnum, the Nayanmars (Shaivite) and Alvars (Vaishnavite) led a populist, musical, and emotionally intense religious movement.
+    </p>
+  </div>
+  <div class="page-scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- OVERVIEW GRID -->
+<section class="overview">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-card">
+        <span class="ov-num">63</span>
+        <span class="ov-label">Nayanmars</span>
+        <p class="ov-detail">The Shaiva poet-saints whose hymns formed the foundational Tevaram corpus.</p>
+      </div>
+      <div class="overview-card">
+        <span class="ov-num">12</span>
+        <span class="ov-label">Alvars</span>
+        <p class="ov-detail">The Vaishnava poet-saints whose verses form the Divya Prabandham.</p>
+      </div>
+      <div class="overview-card">
+        <span class="ov-num">Music</span>
+        <span class="ov-label">Pann System</span>
+        <p class="ov-detail">Hymns were set to traditional Tamil musical modes (Panns) to be sung in temples.</p>
+      </div>
+      <div class="overview-card">
+        <span class="ov-num">Populism</span>
+        <span class="ov-label">Vernacular Devotion</span>
+        <p class="ov-detail">Democratized access to the divine through the Tamil language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE POLITICAL REALITIES -->
+<section class="section prose-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Context</p>
+      <h2 class="section-title">The Political Realities of Devotion</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="prose">
+      <p>The Bhakti movement is often presented purely as a spiritual awakening, but it was deeply political. The hymns of Campantar and Appar contain explicit polemics against Jains and Buddhists, reflecting the royal patronage shift back to Vedic-Agamic traditions under the Pallavas and Pandyas.</p>
+      <div class="callout-box">
+        <p><strong>Critical Note:</strong> Unlike the Sangam era, where poets were often wandering bards dependent on chieftains, the Bhakti saints were elevated to the status of deities themselves. The temples became massive land-owning institutions and centers of economic power.</p>
+      </div>
+      <p>The movement systematically marginalized Jainism and Buddhism in the Tamil country by blending deeply emotional poetry with royal endorsement. The literature is characterized by its intense longing for the divine, often drawing on the Sangam <em>Akam</em> (love poetry) conventions to express the devotee's relationship with God.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED POEMS -->
+<section class="poems-section">
+  <div class="container">
+    <p class="section-label">Selected Verses</p>
+    <h2 class="section-title">The Language of Ecstasy</h2>
+    <div class="poems-list">
+      {featuredPoems.map((poem, i) => (
+        <article class="poem-card" style={`animation-delay: ${i * 0.12}s`}>
+          <div class="poem-header">
+            <div>
+              <span class="poem-anthology">{poem.anthology}</span>
+              <span class="poem-num">({poem.number})</span>
+            </div>
+            <span class={`poem-theme poem-theme--${poem.theme}`}>{poem.themeLabel}</span>
+          </div>
+          <blockquote class="poem-tamil">{poem.tamil}</blockquote>
+          <div class="poem-divider"></div>
+          <p class="poem-translation">{poem.translation}</p>
+          <p class="poem-poet">— {poem.poet}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- SAINTS & POETS GRID -->
+<section class="anthologies-section">
+  <div class="container">
+    <p class="section-label">The Visionaries</p>
+    <h2 class="section-title">Key Figures of the Bhakti Age</h2>
+    <div class="anthologies-grid">
+      {bhaktiPoets.map((p, i) => (
+        <a href={`/poets/${p.slug}`} class="anthology-card" style={`animation-delay: ${i * 0.07}s; text-decoration: none;`}>
+          <h3 class="anth-name" style={`color: ${p.accent || 'var(--parchment)'}`}>{p.name}</h3>
+          <p class="anth-tamil">{p.tamil}</p>
+          <p class="anth-theme">{p.religion}</p>
+          <p class="anth-mood">{p.known_for}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
 </Layout>
+
+<style>
+.page-hero { min-height: 70vh; display: flex; align-items: center; padding: 10rem 0 6rem; position: relative; overflow: hidden; }
+.page-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 100% 80% at 30% 50%, rgba(92,15,15,0.4) 0%, rgba(15,10,6,0) 60%); }
+.ph-orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+.ph-orb--1 { width: 700px; height: 400px; top: -100px; left: -200px; background: rgba(92,15,15,0.3); animation: float 9s ease-in-out infinite; }
+.ph-orb--2 { width: 400px; height: 400px; bottom: -100px; right: 10%; background: rgba(201,152,58,0.07); animation: float 12s ease-in-out infinite reverse; }
+.page-hero-content { position: relative; z-index: 1; }
+.page-title { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+.page-title-en { font-family: var(--font-display); font-size: clamp(3rem, 10vw, 7rem); font-weight: 300; color: var(--parchment); line-height: 1; letter-spacing: -0.01em; }
+.page-title-ta { font-family: var(--font-tamil); font-size: clamp(1.5rem, 5vw, 3rem); color: var(--gold); font-weight: 300; }
+.page-intro { font-family: var(--font-body); font-size: 1.15rem; color: var(--parchment-dark); max-width: 65ch; line-height: 1.85; }
+.page-scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); }
+.scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, rgba(201,152,58,0.4), transparent); animation: float 2s ease-in-out infinite; }
+
+.section-label { font-family: var(--font-display); font-size: 1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+.section-title { font-family: var(--font-display); font-size: 3rem; color: var(--parchment); margin-bottom: 1.5rem; }
+
+.overview { padding: 5rem 0; background: var(--ink-mid); border-top: 1px solid rgba(201,152,58,0.1); border-bottom: 1px solid rgba(201,152,58,0.1); }
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; }
+.overview-card { display: flex; flex-direction: column; padding: 2.5rem 2rem; background: rgba(15,10,6,0.4); }
+.ov-num { font-family: var(--font-display); font-size: 3rem; font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 0.25rem; }
+.ov-label { font-family: var(--font-display); font-size: 1rem; font-weight: 500; color: var(--parchment); margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+.ov-detail { font-family: var(--font-body); font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+.prose-section { padding: 8rem 0; }
+.prose { max-width: 75ch; margin: 0 auto; }
+.prose p { font-family: var(--font-body); font-size: 1.15rem; color: var(--parchment-dark); line-height: 1.85; margin-bottom: 1.5rem; }
+.callout-box { background: rgba(139,26,26,0.1); border-left: 3px solid var(--crimson); padding: 1.5rem 2rem; margin: 2rem 0; }
+.callout-box p { margin: 0; color: var(--parchment); font-size: 1.1rem; }
+.callout-box strong { color: var(--crimson-light); font-weight: 600; }
+
+.poems-section { padding: 8rem 0; background: var(--ink-mid); }
+.poems-list { display: flex; flex-direction: column; gap: 2px; margin-top: 3rem; }
+.poem-card { background: rgba(15,10,6,0.5); padding: 3rem; border-left: 3px solid var(--crimson); }
+.poem-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.poem-anthology { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); margin-right: 0.5rem; }
+.poem-num { font-family: var(--font-display); font-size: 0.85rem; color: var(--gold); }
+.poem-theme { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.1em; padding: 0.25rem 0.75rem; border-radius: 1px; }
+.poem-theme--devotion { background: rgba(155,90,155,0.2); color: #C48EC4; border: 1px solid rgba(155,90,155,0.3); }
+.poem-tamil { font-family: var(--font-tamil); font-size: 1.15rem; color: var(--gold-light); line-height: 2; margin-bottom: 1.5rem; white-space: pre-line; }
+.poem-divider { width: 3rem; height: 1px; background: rgba(201,152,58,0.2); margin-bottom: 1.5rem; }
+.poem-translation { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; color: var(--parchment-dark); line-height: 1.7; max-width: 65ch; margin-bottom: 1rem; }
+.poem-poet { font-family: var(--font-body); font-size: 0.9rem; color: var(--text-faint); }
+
+.anthologies-section { padding: 8rem 0; }
+.anthologies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; margin-top: 3rem; border: 1px solid rgba(201,152,58,0.1); }
+.anthology-card { padding: 2rem 1.5rem; background: rgba(15,10,6,0.3); transition: background 0.3s; border-bottom: 1px solid rgba(201,152,58,0.06); }
+.anthology-card:hover { background: rgba(139,26,26,0.1); }
+.anth-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; margin-bottom: 0.2rem; }
+.anth-tamil { font-family: var(--font-tamil); font-size: 0.9rem; color: var(--gold); margin-bottom: 0.75rem; }
+.anth-theme { font-family: var(--font-body); font-size: 0.85rem; color: var(--text-faint); margin-bottom: 0.25rem; }
+.anth-mood { font-family: var(--font-body); font-style: italic; font-size: 0.9rem; color: var(--crimson-light); margin-top: 0.5rem; }
+
+@media (max-width: 768px) {
+  .page-hero { padding: 8rem 0 4rem; }
+  .poems-section .container, .anthologies-section .container { padding: 0 1rem; }
+  .poem-card { padding: 1.5rem; }
+}
+</style>
