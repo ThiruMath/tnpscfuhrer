@@ -1,4 +1,4 @@
-export const works = [
+const _works = [
   {
     slug: "tolkappiyam",
     title: "Tolkappiyam",
@@ -1142,3 +1142,5 @@ export function getWorkBySlug(slug) {
 export function getWorksByPeriod(period) {
   return works.filter(w => w.period === period);
 }
+
+export const works = _works.filter(Boolean);

@@ -1,4 +1,4 @@
-export const poets = [
+const _poets = [
   {
     slug: "tolkappiyar",
     name: "Tolkappiyar",
@@ -918,3 +918,5 @@ export function getPoetBySlug(slug) {
 export function getPoetsByPeriod(period) {
   return poets.filter(p => p.period === period);
 }
+
+export const poets = _poets.filter(Boolean);
