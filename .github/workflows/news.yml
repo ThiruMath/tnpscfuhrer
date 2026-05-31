@@ -1,32 +1,38 @@
-# ARCHIVED: Current Affairs Pipeline
-# This workflow has been archived. News auto-crawl is no longer active.
-# Focus shifted to TNPSC Calendar, PYQ Practice, and Study Planner.
-
-name: "[ARCHIVED] Current Affairs Pipeline"
+name: "Current Affairs PDF Ingestion Pipeline"
 
 on:
-  workflow_dispatch: # Manual trigger only — cron disabled
+  push:
+    paths:
+      - 'uploads/**.pdf'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write # Needed to commit and push changes back to the repo
 
 jobs:
-  build:
-    if: false # Disabled
+  ingest-news:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    - uses: actions/setup-python@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        python-version: "3.10"
+        node-version: '20'
+        cache: 'npm'
 
-    - run: pip install -r requirements.txt
+    - name: Install dependencies
+      run: npm ci
 
-    - run: python scripts/crawler.py
-    
-    - run: python scripts/revision_generator.py
+    - name: Process PDF News and Generate Revision Set
+      run: node scripts/process_news_pdf.mjs
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
-    - name: Commit changes
+    - name: Commit and push changes
       run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "github-actions@github.com"
-        git add public/data/news.json public/data/revision.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update current affairs and revision set" && git push)
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add public/data/news.json public/data/revision.json public/data/revision-history/ uploads/processed/
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-process uploaded news PDFs and update revision set" && git push)

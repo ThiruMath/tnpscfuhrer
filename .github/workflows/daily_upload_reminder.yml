@@ -1,0 +1,41 @@
+name: "Daily Upload Reminder"
+
+on:
+  schedule:
+    # Run every day at 02:00 UTC (7:30 AM IST)
+    - cron: "0 2 * * *"
+  workflow_dispatch: # Allow manual trigger to test
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send Daily Email Reminder
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ${{ secrets.SMTP_SERVER }}
+        server_port: ${{ secrets.SMTP_PORT }}
+        username: ${{ secrets.SMTP_USERNAME }}
+        password: ${{ secrets.SMTP_PASSWORD }}
+        subject: "⏰ Daily Reminder: Upload TNPSC/UPSC News PDFs"
+        to: ${{ secrets.RECIPIENT_EMAIL }}
+        from: "TNPSC Fuhrer Bot <noreply@tnpscfuhrer.dev>"
+        secure: true
+        body: |
+          Good morning!
+
+          This is your daily reminder to upload today's Current Affairs news PDFs.
+
+          Click the link below to drag and drop your PDFs directly into the repository uploads folder:
+          https://github.com/${{ github.repository }}/upload/main/uploads
+
+          Once you upload the files and commit, the platform will automatically:
+          1. Parse the news contents using Gemini.
+          2. Link the news to your syllabus topics, study notes, and PYQs.
+          3. Generate today's personalized AI revision questions.
+          4. Automatically rebuild and redeploy the site on Cloudflare Pages.
+
+          Have a productive study day!
+
+          Best regards,
+          TNPSC Fuhrer Bot
