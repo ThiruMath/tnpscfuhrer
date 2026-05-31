@@ -101,8 +101,13 @@ for (const q of questions) {
 
       <!-- Progress bar -->
       <div class="progress-track">
+        <div class="progress-header">
+          <span id="progress-text">Question 1 of 0</span>
+          <div class="progress-bar-container">
+            <div id="progress-bar"></div>
+          </div>
+        </div>
         <div class="progress-dashes" id="progress-dashes"></div>
-        <div class="progress-label" id="progress-label">1 / 0</div>
       </div>
 
       <!-- Question card -->
@@ -257,7 +262,13 @@ for (const q of questions) {
         else d.classList.add('wrong');
       }
     });
-    $('progress-label').textContent = `${cur + 1} / ${total}`;
+    if (total > 0) {
+      $('progress-text').textContent = `Question ${cur + 1} of ${total}`;
+      $('progress-bar').style.width = `${((cur + 1) / total) * 100}%`;
+    } else {
+      $('progress-text').textContent = `No questions`;
+      $('progress-bar').style.width = `0%`;
+    }
   }
 
   // ─── Render Question ────────────────────────────────────────────────────────
@@ -630,19 +641,54 @@ for (const q of questions) {
   .score-badge.wrong { background: #fce8e6; color: #c5221f; }
   .bicon { font-size: 0.8rem; }
 
-  /* Progress dashes */
+  /* Progress Track & Bar */
   .progress-track {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.75rem;
     margin-bottom: 1.5rem;
+    background: #fff;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  #progress-text {
+    font-size: 14px;
+    color: #5f6368;
+    font-weight: 600;
+  }
+
+  .progress-bar-container {
+    background-color: #e4e6eb;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex: 1;
+    margin-left: 1rem;
+  }
+
+  #progress-bar {
+    background-color: #1a73e8;
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
   }
 
   .progress-dashes {
-    flex: 1;
     display: flex;
     gap: 4px;
     align-items: center;
+    width: 100%;
+    margin-top: 0.25rem;
   }
 
   :global(.pdash) {
@@ -653,11 +699,9 @@ for (const q of questions) {
     transition: background 0.3s;
   }
   :global(.pdash.active) { background: #1a73e8; }
-  :global(.pdash.correct) { background: #34a853; }
-  :global(.pdash.wrong) { background: #ea4335; }
-  :global(.pdash.disputed) { background: #fbbc04; }
-
-  .progress-label { font-size: 0.8rem; color: #5f6368; font-weight: 600; white-space: nowrap; }
+  :global(.pdash.correct) { background: #2db85c; }
+  :global(.pdash.wrong) { background: #fa3e3e; }
+  :global(.pdash.disputed) { background: #fdd663; }
 
   /* Question card */
   .question-card {
@@ -779,72 +823,74 @@ for (const q of questions) {
   :global(.options-list) {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 12px;
   }
 
   :global(.opt-btn) {
     width: 100%;
     text-align: left;
-    border: 1px solid transparent;
-    border-radius: 20px;
-    padding: 1.25rem 1.5rem;
-    background: #f0f4f9;
+    background-color: #f7f8fa;
+    border: 2px solid #e4e6eb;
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #050505;
     cursor: pointer;
-    font-size: 1rem;
-    color: #1f1f1f;
     display: flex;
     flex-direction: column;
     gap: 0;
     font-family: 'Google Sans', 'DM Sans', sans-serif;
     position: relative;
-    transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+    transition: all 0.2s ease;
   }
 
   :global(.opt-btn:active):not([disabled]) {
-    transform: scale(0.98);
+    transform: scale(0.99);
   }
 
   :global(.opt-btn[disabled]) {
-    cursor: default;
-    opacity: 0.95;
+    cursor: not-allowed;
   }
 
   :global(.opt-btn:hover):not([disabled]) {
-    background: #e4e9f1;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    background-color: #e7f3ff;
+    border-color: #1a73e8;
   }
 
   :global(.opt-btn.pending) {
-    background: #d3e3fd;
-    color: #0b57d0;
+    background-color: #e7f3ff;
+    border-color: #1a73e8;
+    color: #1a73e8;
   }
 
   :global(.opt-btn.correct) {
-    background: #c4eed0;
-    border-color: #c4eed0;
+    background-color: #e7f7ed;
+    border-color: #2db85c;
+    color: #196934;
   }
 
   :global(.opt-btn.wrong) {
-    background: #f2b8b5;
-    border-color: #f2b8b5;
+    background-color: #ffebe9;
+    border-color: #fa3e3e;
+    color: #901717;
   }
 
   :global(.opt-lbl) {
     font-weight: 600;
-    color: #5f6368;
+    color: #65676b;
     display: inline;
     margin-right: 0.6rem;
   }
 
-  :global(.opt-btn.correct .opt-lbl) { color: #0f5223; }
-  :global(.opt-btn.wrong .opt-lbl) { color: #8c1d18; }
-  :global(.opt-btn.pending .opt-lbl) { color: #0b57d0; }
+  :global(.opt-btn.correct .opt-lbl) { color: #196934; }
+  :global(.opt-btn.wrong .opt-lbl) { color: #901717; }
+  :global(.opt-btn.pending .opt-lbl) { color: #1a73e8; }
 
-  :global(.opt-txt) { display: inline; color: #1f1f1f; line-height: 1.5; font-weight: 500; }
-  :global(.opt-btn.correct .opt-txt) { color: #0f5223; }
-  :global(.opt-btn.wrong .opt-txt) { color: #8c1d18; }
-  :global(.opt-btn.pending .opt-txt) { color: #0b57d0; }
+  :global(.opt-txt) { display: inline; color: #050505; line-height: 1.5; font-weight: 500; }
+  :global(.opt-btn.correct .opt-txt) { color: #196934; }
+  :global(.opt-btn.wrong .opt-txt) { color: #901717; }
+  :global(.opt-btn.pending .opt-txt) { color: #1a73e8; }
 
   :global(.opt-feedback) {
     display: flex;
@@ -854,8 +900,8 @@ for (const q of questions) {
     font-size: 0.82rem;
     font-weight: 600;
   }
-  :global(.correct-fb) { color: #0f5223; }
-  :global(.wrong-fb) { color: #8c1d18; }
+  :global(.correct-fb) { color: #196934; }
+  :global(.wrong-fb) { color: #901717; }
   :global(.fb-check) { font-size: 0.9rem; }
   :global(.fb-label) {}
 
@@ -983,8 +1029,8 @@ for (const q of questions) {
   .rstat { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
   .rval { font-size: 1.5rem; font-weight: 700; }
   .rlab { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #5f6368; font-weight: 600; }
-  .rstat.correct .rval { color: #34a853; }
-  .rstat.wrong .rval { color: #ea4335; }
+  .rstat.correct .rval { color: #2db85c; }
+  .rstat.wrong .rval { color: #fa3e3e; }
   .rstat.skipped .rval { color: #5f6368; }
   .rstat.disputed .rval { color: #e37400; }
 
@@ -1014,8 +1060,8 @@ for (const q of questions) {
     padding: 1.25rem;
     background: #fff;
   }
-  :global(.rcard.r-correct) { border-color: #34a853; background: #f8fff9; }
-  :global(.rcard.r-wrong) { border-color: #ea4335; background: #fff8f7; }
+  :global(.rcard.r-correct) { border-color: #2db85c; background: #e7f7ed; }
+  :global(.rcard.r-wrong) { border-color: #fa3e3e; background: #ffebe9; }
   :global(.rcard.r-skipped) { border-color: #dadce0; }
   :global(.rcard.r-disputed) { border-color: #fdd663; background: #fef7e0; }
 
@@ -1036,8 +1082,8 @@ for (const q of questions) {
   :global(.rcard-q) { font-size: 0.9rem; color: #202124; line-height: 1.55; margin: 0 0 0.75rem; }
   :global(.rcard-opts) { display: flex; flex-direction: column; gap: 0.35rem; }
   :global(.ropt) { font-size: 0.83rem; color: #5f6368; padding: 0.3rem 0.5rem; border-radius: 6px; }
-  :global(.ropt-correct) { color: #137333; background: #e6f4ea; font-weight: 600; }
-  :global(.ropt-wrong) { color: #c5221f; background: #fce8e6; }
+  :global(.ropt-correct) { color: #196934; background: #e7f7ed; font-weight: 600; }
+  :global(.ropt-wrong) { color: #901717; background: #ffebe9; }
   :global(.ropt-pick) { }
   :global(.rdisputed-note) { font-size: 0.82rem; color: #e37400; font-style: italic; }
 

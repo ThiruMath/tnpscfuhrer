@@ -368,7 +368,211 @@ Working system should include:
 ✔ automated news crawler
 ✔ syllabus topic tagging
 ✔ PYQ integration
+```text
+"inflation" → Economy
+"parliament" → Polity
+```
+
+---
+
+# Phase 4 — PYQ Integration (Day 5)
+
+Create file:
+
+```text
+/public/data/pyq.json
+```
+
+Example:
+
+```json
+[
+ {
+  "topic":"Economy",
+  "year":"UPSC 2022",
+  "question":"Explain the role of RBI in controlling inflation."
+ }
+]
+```
+
+Crawler attaches relevant PYQ.
+
+Output example:
+
+```json
+{
+ "title":"RBI keeps repo rate unchanged",
+ "topic":"Economy",
+ "pyq":[...]
+}
+```
+
+---
+
+# Phase 5 — Notes Linking (Day 6)
+
+Goal:
+
+```text
+Connect news topics with existing notes
+```
+
+Mapping file:
+
+```text
+/public/data/topic_notes.json
+```
+
+Example:
+
+```json
+{
+ "Economy":"monetary-policy",
+ "Polity":"parliament",
+ "Environment":"climate-change"
+}
+```
+
+Output:
+
+```text
+/news → related notes
+```
+
+---
+
+# Phase 6 — Astro Current Affairs Page (Day 7–8)
+
+Create pages:
+
+```text
+/src/pages/current-affairs/index.astro
+/src/pages/current-affairs/[slug].astro
+```
+
+---
+
+### Task 6.1 List news
+
+Load:
+
+```text
+/public/data/news.json
+```
+
+Display:
+
+```text
+Title
+Summary
+Topic tag
+```
+
+---
+
+### Task 6.2 Article page
+
+Display:
+
+```text
+Title
+Summary
+Source
+Topic
+Related Notes
+PYQ
+```
+
+---
+
+# Phase 7 — GitHub Automation (Day 9)
+
+Create workflow:
+
+```text
+.github/workflows/news.yml
+```
+
+Schedule:
+
+```text
+Every 12 hours
+```
+
+Steps:
+
+```text
+Install Python
+Run crawler
+Commit news.json
+Push changes
+```
+
+Automation tool:
+
+GitHub Actions
+
+---
+
+# Phase 8 — Testing (Day 10)
+
+Test:
+
+```text
+Crawler runs
+JSON generated
+Astro page renders
+Links work
+```
+
+Verify:
+
+```text
+notes link
+pyq link
+topic tag
+```
+
+---
+
+# Phase 9 — Deployment (Day 11)
+
+Push to:
+
+```text
+GitHub
+```
+
+Automatic build on:
+
+Cloudflare Pages
+
+Verify:
+
+```text
+site updates automatically
+```
+
+---
+
+# MVP Feature Checklist
+
+Working system should include:
+
+```text
+✔ automated news crawler
+✔ syllabus topic tagging
+✔ PYQ integration
 ✔ notes linking
 ✔ Astro current affairs page
 ✔ GitHub automation
 ```
+
+# Phase 10 — Quiz Page UI & Styles Modernization
+- [x] Component 1: Quiz Page UI & Styles Modernization
+  - [x] Update `src/pages/pyq/[id].astro` HTML layout to implement card structure and a solid progress bar.
+  - [x] Implement color scheme, hover states, selection feedback, and transitions in CSS styles.
+  - [x] Refactor client-side JavaScript in `<script>` block to update progress bar width, apply option states, and retain existing game loops.
+- [x] Component 2: Verification & Testing
+  - [x] Compile the project with `npm.cmd run build` to verify no Astro build/Type errors exist.
+  - [x] Confirm layout aesthetics and flow.
