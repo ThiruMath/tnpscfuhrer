@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/TamilLitLayout.astro';
+import { poets } from '../data/poets.js';
+import { works } from '../data/works.js';
 ---
 <Layout title="Home">
 
@@ -120,7 +122,12 @@ import Layout from '../layouts/TamilLitLayout.astro';
           desc: 'The golden age of Tamil poetry. Love, war, and nature described in vivid, emotional verse by hundreds of named poets.',
           color: '#C9983A',
           href: '/sangam',
-          works: ['Akananuru', 'Purananuru', 'Natrinai', 'Kurunthokai'],
+          works: [
+            { name: 'Akananuru', href: '/works/akananuru' },
+            { name: 'Purananuru', href: '/works/purananuru' },
+            { name: 'Natrinai', href: '/works/natrinai' },
+            { name: 'Kurunthokai', href: '/works/kurunthokai' }
+          ],
         },
         {
           era: '200 CE – 600 CE',
@@ -129,7 +136,11 @@ import Layout from '../layouts/TamilLitLayout.astro';
           desc: 'The era of great epics and didactic literature. Thirukkural, Silappadikaram, and Manimekalai emerge as eternal masterpieces.',
           color: '#8B1A1A',
           href: '/epics',
-          works: ['Thirukkural', 'Silappadikaram', 'Manimekalai'],
+          works: [
+            { name: 'Thirukkural', href: '/works/thirukkural' },
+            { name: 'Silappadikaram', href: '/works/silappadikaram' },
+            { name: 'Manimekalai', href: '/works/manimekalai' }
+          ],
         },
         {
           era: '600 CE – 900 CE',
@@ -137,8 +148,11 @@ import Layout from '../layouts/TamilLitLayout.astro';
           tamil: 'பக்தி காலம்',
           desc: 'Nayanmars and Alvars compose devotional hymns of extraordinary beauty. The Thevarams and Divya Prabandhams still ring in temples.',
           color: '#5C6B3A',
-          href: '/poets',
-          works: ['Tevaram', 'Thiruvasagam', 'Nalayira Divya Prabandham'],
+          href: '/bhakti',
+          works: [
+            { name: 'Thiruvasagam', href: '/poets/manikkavacakar' },
+            { name: 'Thiruppavai', href: '/poets/andal' }
+          ],
         },
         {
           era: '900 CE – 1200 CE',
@@ -147,7 +161,10 @@ import Layout from '../layouts/TamilLitLayout.astro';
           desc: 'The Chola empire patronises literature. Kamban\'s Ramavataram reimagines the Ramayana in a distinctly Tamil voice.',
           color: '#3A5B6B',
           href: '/poets',
-          works: ['Kambaramayanam', 'Periyapuranam'],
+          works: [
+            { name: 'Kambaramayanam', href: '/poets/kambar' },
+            { name: 'Periyapuranam', href: '/poets/sekkizhar' }
+          ],
         },
       ].map((era, i) => (
         <div class="timeline-item" style={`--accent: ${era.color}; animation-delay: ${i * 0.15}s`}>
@@ -162,7 +179,7 @@ import Layout from '../layouts/TamilLitLayout.astro';
             <p class="timeline-desc">{era.desc}</p>
             <div class="timeline-works">
               {era.works.map(w => (
-                <span class="timeline-tag">{w}</span>
+                <a href={w.href} class="timeline-tag">{w.name}</a>
               ))}
             </div>
             <a href={era.href} class="timeline-link">Explore this era →</a>
@@ -195,20 +212,87 @@ import Layout from '../layouts/TamilLitLayout.astro';
     <h2 class="section-title">The Great Poets</h2>
     <div class="poets-grid">
       {[
-        { name: 'Thiruvalluvar', tamil: 'திருவள்ளுவர்', period: '~300 BCE', known: 'Thirukkural', icon: '✦' },
-        { name: 'Ilango Adigal', tamil: 'இளங்கோ அடிகள்', period: '~2nd century CE', known: 'Silappadikaram', icon: '◆' },
-        { name: 'Avvaiyar', tamil: 'ஔவையார்', period: 'Sangam era', known: 'Wisdom poems & Purananuru', icon: '❋' },
-        { name: 'Kambar', tamil: 'கம்பர்', period: '12th century CE', known: 'Kambaramayanam', icon: '◇' },
-        { name: 'Manikkavacakar', tamil: 'மாணிக்கவாசகர்', period: '9th century CE', known: 'Thiruvasagam', icon: '✿' },
-        { name: 'Nammalvar', tamil: 'நம்மாழ்வார்', period: '9th century CE', known: 'Thiruvaymoli', icon: '❖' },
+        { name: 'Thiruvalluvar', tamil: 'திருவள்ளுவர்', period: '~300 BCE', known: 'Thirukkural', icon: '✦', slug: 'thiruvalluvar' },
+        { name: 'Ilango Adigal', tamil: 'இளங்கோ அடிகள்', period: '~2nd century CE', known: 'Silappadikaram', icon: '◆', slug: 'ilango-adigal' },
+        { name: 'Avvaiyar (Sangam)', tamil: 'ஔவையார்', period: 'Sangam era', known: 'Wisdom poems & Purananuru', icon: '❋', slug: 'avvaiyar-sangam' },
+        { name: 'Kambar', tamil: 'கம்பர்', period: '12th century CE', known: 'Kambaramayanam', icon: '◇', slug: 'kambar' },
+        { name: 'Manikkavadocar', tamil: 'மாணிக்கவாசகர்', period: '9th century CE', known: 'Thiruvasagam', icon: '✿', slug: 'manikkavacakar' },
+        { name: 'Nammalvar', tamil: 'நம்மாழ்வார்', period: '9th century CE', known: 'Thiruvaymoli', icon: '❖', slug: 'nammalvar' },
       ].map(poet => (
-        <a href="/poets" class="poet-card">
+        <a href={`/poets/${poet.slug}`} class="poet-card">
           <div class="poet-icon">{poet.icon}</div>
           <h3 class="poet-name">{poet.name}</h3>
           <p class="poet-tamil">{poet.tamil}</p>
           <p class="poet-period">{poet.period}</p>
           <p class="poet-known">{poet.known}</p>
         </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTAL DIRECTORY ═══ -->
+<section class="portal-section" id="portal">
+  <div class="container">
+    <p class="section-label">Interactive Directory</p>
+    <h2 class="section-title">Classical Tamil Library Portal</h2>
+    <p class="section-desc">Search and browse detailed scholarly profiles for every major work and author in our database.</p>
+
+    <!-- Search and Filter Bar -->
+    <div class="portal-controls">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="lit-search" placeholder="Search by name, author, period, key themes..." aria-label="Search literature" />
+      </div>
+      <div class="portal-tabs">
+        <button class="portal-tab-btn active" id="tab-works" data-target="works">
+          <span>Major Works</span> <span class="badge">{works.length}</span>
+        </button>
+        <button class="portal-tab-btn" id="tab-poets" data-target="poets">
+          <span>Famous Authors</span> <span class="badge">{poets.length}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Works Grid -->
+    <div class="portal-grid active" id="grid-works">
+      {works.map((work) => (
+        <div class="portal-card" data-search={`${work.title} ${work.tamil} ${work.author} ${work.era_label} ${work.overview} ${work.form}`.toLowerCase()}>
+          <div class="card-accent" style={`background: ${work.accent || '#C9983A'}`}></div>
+          <div class="card-body">
+            <span class="card-era">{work.era_label}</span>
+            <h3 class="card-name">{work.title}</h3>
+            <p class="card-tamil">{work.tamil}</p>
+            <div class="card-meta">
+              <span>✍ {work.author}</span>
+              <span>•</span>
+              <span>{work.verses}</span>
+            </div>
+            <p class="card-snippet">{work.overview.slice(0, 140)}...</p>
+            <a href={`/works/${work.slug}`} class="card-link">Read Full Study →</a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Poets Grid -->
+    <div class="portal-grid" id="grid-poets">
+      {poets.map((poet) => (
+        <div class="portal-card" data-search={`${poet.name} ${poet.tamil} ${poet.known_for} ${poet.era_label} ${poet.identity} ${poet.religion}`.toLowerCase()}>
+          <div class="card-accent" style={`background: ${poet.accent || '#C9983A'}`}></div>
+          <div class="card-body">
+            <span class="card-era">{poet.era_label}</span>
+            <h3 class="card-name">{poet.name}</h3>
+            <p class="card-tamil">{poet.tamil}</p>
+            <div class="card-meta">
+              <span>📅 {poet.dates}</span>
+              <span>•</span>
+              <span>{poet.religion.split('—')[0].trim()}</span>
+            </div>
+            <p class="card-snippet">{poet.identity.slice(0, 140)}...</p>
+            <a href={`/poets/${poet.slug}`} class="card-link">Read Scholar Profile →</a>
+          </div>
+        </div>
       ))}
     </div>
   </div>
@@ -227,6 +311,59 @@ import Layout from '../layouts/TamilLitLayout.astro';
     </div>
   </div>
 </section>
+
+<script>
+  const searchInput = document.getElementById('lit-search') as HTMLInputElement;
+  const tabWorksBtn = document.getElementById('tab-works');
+  const tabPoetsBtn = document.getElementById('tab-poets');
+  const gridWorks = document.getElementById('grid-works');
+  const gridPoets = document.getElementById('grid-poets');
+
+  let activeTab = 'works';
+
+  function switchTab(tab: string) {
+    activeTab = tab;
+    if (tab === 'works') {
+      tabWorksBtn?.classList.add('active');
+      tabPoetsBtn?.classList.remove('active');
+      gridWorks?.classList.add('active');
+      gridPoets?.classList.remove('active');
+    } else {
+      tabWorksBtn?.classList.remove('active');
+      tabPoetsBtn?.classList.add('active');
+      gridWorks?.classList.remove('active');
+      gridPoets?.classList.add('active');
+    }
+    filterItems();
+  }
+
+  function filterItems() {
+    const query = searchInput?.value.toLowerCase().trim() || '';
+    const activeGrid = activeTab === 'works' ? gridWorks : gridPoets;
+    const inactiveGrid = activeTab === 'works' ? gridPoets : gridWorks;
+
+    if (inactiveGrid) {
+      inactiveGrid.querySelectorAll('.portal-card').forEach(card => {
+        (card as HTMLElement).style.display = 'none';
+      });
+    }
+
+    if (activeGrid) {
+      activeGrid.querySelectorAll('.portal-card').forEach(card => {
+        const searchText = (card as HTMLElement).dataset.search || '';
+        if (query === '' || searchText.includes(query)) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    }
+  }
+
+  tabWorksBtn?.addEventListener('click', () => switchTab('works'));
+  tabPoetsBtn?.addEventListener('click', () => switchTab('poets'));
+  searchInput?.addEventListener('input', filterItems);
+</script>
 
 </Layout>
 
@@ -846,5 +983,208 @@ import Layout from '../layouts/TamilLitLayout.astro';
 @media (max-width: 480px) {
   .poets-grid { grid-template-columns: 1fr; }
   .script-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ─── PORTAL DIRECTORY ─── */
+.portal-section {
+  padding: 8rem 0;
+  background: var(--ink-mid);
+  border-top: 1px solid rgba(201,152,58,0.1);
+  border-bottom: 1px solid rgba(201,152,58,0.1);
+}
+
+.portal-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+  max-width: 480px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-faint);
+  font-size: 1.1rem;
+}
+
+#lit-search {
+  width: 100%;
+  background: rgba(15, 10, 6, 0.6);
+  border: 1px solid rgba(201, 152, 58, 0.2);
+  padding: 1rem 1.25rem 1rem 3rem;
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.3s var(--ease-out);
+}
+
+#lit-search:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(201, 152, 58, 0.15);
+  background: rgba(15, 10, 6, 0.8);
+}
+
+.portal-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(15, 10, 6, 0.4);
+  padding: 0.25rem;
+  border: 1px solid rgba(201, 152, 58, 0.1);
+  border-radius: 4px;
+}
+
+.portal-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+
+.portal-tab-btn:hover {
+  color: var(--gold-light);
+}
+
+.portal-tab-btn.active {
+  background: var(--crimson);
+  color: var(--parchment);
+}
+
+.portal-tab-btn .badge {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--parchment);
+  font-size: 0.75rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  font-family: var(--font-body);
+}
+
+.portal-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.portal-grid.active {
+  display: grid;
+}
+
+.portal-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(15, 10, 6, 0.45);
+  border: 1px solid rgba(201, 152, 58, 0.08);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s var(--ease-out);
+}
+
+.portal-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 152, 58, 0.25);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  background: rgba(42, 31, 21, 0.4);
+}
+
+.card-accent {
+  height: 3px;
+  width: 100%;
+}
+
+.card-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-era {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--parchment);
+  margin-bottom: 0.25rem;
+}
+
+.card-tamil {
+  font-family: var(--font-tamil);
+  font-size: 0.95rem;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.card-meta {
+  display: flex;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.card-snippet {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.card-link {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--gold-light);
+  text-decoration: none;
+  transition: color 0.25s;
+  margin-top: auto;
+}
+
+.portal-card:hover .card-link {
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .portal-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-wrap {
+    max-width: 100%;
+  }
 }
 </style>
