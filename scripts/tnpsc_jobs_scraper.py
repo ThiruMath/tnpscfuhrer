@@ -10,6 +10,7 @@ HEADERS = {
 
 def scrape_tnpsc():
     jobs = []
+    # 1. Scrape notifications.html
     try:
         url = "https://www.tnpsc.gov.in/notifications.html"
         res = requests.get(url, headers=HEADERS, timeout=15)
@@ -38,9 +39,50 @@ def scrape_tnpsc():
                         "source": "tnpsc.gov.in"
                     })
     except Exception as e:
-        print(f"TNPSC scrape error: {e}")
+        print(f"TNPSC notifications scrape error: {e}")
 
-    return jobs
+    # 2. Scrape Exam Dashboard
+    try:
+        dashboard_url = "https://tnpsc.gov.in/web/examdashboard/index.aspx"
+        res = requests.get(dashboard_url, headers=HEADERS, timeout=15)
+        soup = BeautifulSoup(res.text, "html.parser")
+        
+        for a in soup.find_all("a"):
+            href = a.get("href", "")
+            if "notid=" in href:
+                title = a.get_text(strip=True)
+                # Remove index prefixes if any (e.g. "1. ", "2. ")
+                import re
+                title = re.sub(r'^\d+\.\s*', '', title).strip()
+                
+                link = href
+                if not link.startswith("http"):
+                    link = "https://tnpsc.gov.in/web/examdashboard/" + link.lstrip("/")
+                
+                if title:
+                    jobs.append({
+                        "title": title,
+                        "dept": "Tamil Nadu PSC",
+                        "type": "State",
+                        "posts": "Various",
+                        "deadline": "Check Portal",
+                        "status": "Open",
+                        "link": link,
+                        "source": "tnpsc.gov.in"
+                    })
+    except Exception as e:
+        print(f"TNPSC exam dashboard scrape error: {e}")
+
+    # 3. Deduplicate by title (case-insensitive)
+    seen_titles = set()
+    deduped_jobs = []
+    for job in jobs:
+        title_key = job["title"].lower().strip()
+        if title_key not in seen_titles:
+            seen_titles.add(title_key)
+            deduped_jobs.append(job)
+
+    return deduped_jobs
 
 
 def scrape_tnusrb():
