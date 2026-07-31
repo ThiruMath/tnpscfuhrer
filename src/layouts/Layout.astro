@@ -20,6 +20,7 @@ const navLinks = [
   { href: '/revision', label: 'Daily Revision' },
   { href: '/syllabus', label: 'Syllabus' },
   { href: '/tnpsc', label: 'TNPSC' },
+  { href: '/vle', label: 'VLE' },
   { href: '/tamil-literature', label: 'Tamil Literature' },
   { href: '/math', label: 'Math' },
   { href: '/about', label: 'About' },
@@ -37,13 +38,32 @@ const navLinks = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark-theme');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+      }
+    </script>
   </head>
   <body>
     <nav>
       <a href="/" class="nav-logo">TNPSC <span>Fuhrer</span></a>
-      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
       <ul class="nav-links" id="nav-links">
         {navLinks.map(link => (
           <li>
@@ -70,6 +90,7 @@ const navLinks = [
           <a href="/current-affairs">Current Affairs</a>
           <a href="/revision">Daily Revision</a>
           <a href="/syllabus">Syllabus</a>
+          <a href="/vle">VLE</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -90,6 +111,20 @@ const navLinks = [
     toggle.addEventListener('click', () => {
       navLinks.classList.toggle('open');
       toggle.classList.toggle('open');
+    });
+  }
+
+  // Theme toggle script
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    // Set initial icon
+    const isDark = document.documentElement.classList.contains('dark-theme');
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+
+    themeToggle.addEventListener('click', () => {
+      const isNowDark = document.documentElement.classList.toggle('dark-theme');
+      localStorage.setItem('theme', isNowDark ? 'dark' : 'light');
+      themeToggle.textContent = isNowDark ? '☀️' : '🌙';
     });
   }
 </script>

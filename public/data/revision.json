@@ -1,35 +1,35 @@
 {
-  "date": "2026-06-12",
+  "date": "2026-05-31",
   "questions": [
     {
-      "question": "Critically analyze the evolution and current functions of the NITI Aayog, highlighting its role in fostering cooperative federalism and promoting 'Team India' spirit in policy formulation. How does it differ from its predecessor, the Planning Commission?",
-      "topic": "Polity/Economy",
+      "question": "Explain the concept of 'inflation targeting' as a monetary policy strategy adopted by the Reserve Bank of India. Discuss the primary tools RBI employs to achieve price stability, especially in the context of maintaining interest rates.",
+      "topic": "Economy",
       "source": "concept",
-      "reference": "NITI Aayog's mandate, structure, and key initiatives since its inception."
+      "reference": "Hints: Monetary Policy Committee, Repo Rate, Reverse Repo Rate, CRR, SLR, Open Market Operations."
     },
     {
-      "question": "Examine the geopolitical significance of the Strait of Hormuz as a global maritime chokepoint. Discuss the various factors, including regional conflicts and international power dynamics, that contribute to its strategic volatility and impact on global energy security.",
-      "topic": "International Relations/Geography",
+      "question": "Elaborate on the 'Basic Structure Doctrine' of the Indian Constitution, tracing its evolution through landmark Supreme Court judgments. What are its implications for parliamentary sovereignty and the power to amend the Constitution?",
+      "topic": "Polity",
       "source": "concept",
-      "reference": "Global oil trade routes, Iran's strategic position, US presence, regional conflicts."
+      "reference": "Hints: Kesavananda Bharati case (1973), Minerva Mills case (1980), Waman Rao case (1981)."
     },
     {
-      "question": "Recent incidents involving US military actions and attacks on tankers near the Oman coast have heightened risks in the Strait of Hormuz. Discuss the implications of these escalating tensions for India's energy security, maritime trade, and the safety of its seafarers, citing specific challenges faced by the Indian government.",
+      "question": "In light of potential West Asia supply shocks, analyze India's strategic preparedness to ensure crude oil and fuel security. What are the economic ramifications of such shocks on India's balance of payments and domestic economy, and what measures can India take to mitigate these risks?",
       "topic": "International Relations",
       "source": "news",
-      "reference": "Article 2"
+      "reference": "https://www.thehindu.com/news/national/india-well-placed-to-deal-with-any-situation-on-crude-oil-fuel-amid-west-asia-supply-shock-piyush-goyal/article70745651.ece"
     },
     {
-      "question": "At the NITI Aayog Governing Council meeting, the Prime Minister emphasized the need for states to develop district-level GDP estimates. Explain the rationale behind this initiative and its potential benefits for decentralized planning, equitable development, and attracting investments at the grassroots level in India.",
-      "topic": "Economy",
+      "question": "The data indicating high child malnutrition rates in Gujarat, particularly among tribal communities, highlights a critical public health challenge. Discuss the multi-faceted causes contributing to this issue and suggest comprehensive policy interventions to address it effectively.",
+      "topic": "Social Issues",
       "source": "news",
-      "reference": "Article 3"
+      "reference": "https://www.thehindu.com/data/fact-check-are-40-out-of-100-children-malnourished-in-gujarat/article70744284.ece"
     },
     {
-      "question": "The 'Urban Heat Island' phenomenon is a growing environmental concern in rapidly urbanizing areas. Discuss the primary causes of this effect, its adverse impacts on urban ecosystems and human health, and outline effective mitigation strategies that can be adopted by city planners.",
-      "topic": "Environment/Urban Planning",
+      "question": "Consider the following statements regarding the election of members to the Rajya Sabha:\n1. Members are elected by the elected members of the State Legislative Assemblies.\n2. The election is held using the system of proportional representation by means of the single transferable vote.\n3. The term of a Rajya Sabha member is 6 years, with one-third of its members retiring every two years.\nWhich of the statements given above are correct?\n(A) 1 and 2 only\n(B) 2 and 3 only\n(C) 1 and 3 only\n(D) 1, 2 and 3",
+      "topic": "Polity",
       "source": "pyq",
-      "reference": "Causes (e.g., impervious surfaces, lack of vegetation, anthropogenic heat), impacts (e.g., increased energy consumption, air pollution, heat-related illnesses), solutions (e.g., cool roofs, green infrastructure, urban forestry)."
+      "reference": ""
     }
   ]
 }

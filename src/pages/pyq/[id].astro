@@ -125,6 +125,22 @@ for (const q of questions) {
         </div>
       </div>
 
+      <!-- Quiz Subbar for Flashcard & Bookmark filters -->
+      <div class="quiz-subbar">
+        <div class="subbar-left">
+          <label class="fc-toggle-label">
+            <input type="checkbox" id="fc-toggle" />
+            <span class="fc-toggle-slider"></span>
+            <span class="fc-toggle-text">⚡ Flashcard Mode</span>
+          </label>
+        </div>
+        <div class="subbar-right">
+          <button class="subbar-btn" id="filter-flagged-btn" title="Practice bookmarked questions">
+            ⭐ Bookmarked (<span id="flagged-count">0</span>)
+          </button>
+        </div>
+      </div>
+
       <!-- Progress bar -->
       <div class="progress-track">
         <div class="progress-header">
@@ -143,6 +159,9 @@ for (const q of questions) {
           <div class="q-meta-row">
             <span class="q-part" id="q-part">Part A</span>
             <span class="q-topic" id="q-topic">History</span>
+            <button class="flag-btn" id="flag-btn" title="Bookmark Question">
+              <span class="flag-star">☆</span> <span class="flag-label">Bookmark</span>
+            </button>
             <span class="q-timer" id="q-timer">150:00</span>
           </div>
           <h2 class="q-text" id="q-text">Loading…</h2>
@@ -234,7 +253,45 @@ for (const q of questions) {
   let timerInterval: ReturnType<typeof setInterval> | null = null;
   let reviewFilter = 'all';
 
+  // Gamification & Revision Toggles
+  let flaggedIds = new Set<string>();
+  let flashcardMode = false;
+  let filterFlaggedOnly = false;
+  const examId = (window as any).__QUIZ_META__?.paper_code || 'quiz';
+
   const $ = (id: string) => document.getElementById(id)!;
+
+  // ─── Bookmarking / Flagging Logic ───────────────────────────────────────────
+  function loadFlagged() {
+    flaggedIds.clear();
+    const stored = localStorage.getItem('flagged-questions-' + examId);
+    if (stored) {
+      try {
+        const arr = JSON.parse(stored);
+        arr.forEach((id: string) => flaggedIds.add(id));
+      } catch(e) {}
+    }
+    updateFlaggedUI();
+  }
+
+  function saveFlagged() {
+    localStorage.setItem('flagged-questions-' + examId, JSON.stringify(Array.from(flaggedIds)));
+    updateFlaggedUI();
+  }
+
+  function updateFlaggedUI() {
+    const elCount = $('flagged-count');
+    if (elCount) elCount.textContent = flaggedIds.size.toString();
+    
+    const q = qs[cur];
+    const flagBtn = $('flag-btn');
+    if (q && flagBtn) {
+      const isFlagged = flaggedIds.has(q.id);
+      const star = flagBtn.querySelector('.flag-star');
+      if (star) star.textContent = isFlagged ? '★' : '☆';
+      flagBtn.classList.toggle('active', isFlagged);
+    }
+  }
 
   // ─── Screen switch ───────────────────────────────────────────────────────────
   function show(id: string) {
@@ -263,7 +320,6 @@ for (const q of questions) {
   function buildDashes() {
     const container = $('progress-dashes');
     container.innerHTML = '';
-    // We'll show at most 40 dashes regardless of question count, mapping positions
     const total = qs.length;
     const dashCount = Math.min(total, 40);
     for (let i = 0; i < dashCount; i++) {
@@ -310,6 +366,8 @@ for (const q of questions) {
     $('q-topic').textContent = q.topic;
     $('q-text').textContent = q.question;
 
+    updateFlaggedUI();
+
     const ol = $('options-list');
     ol.innerHTML = '';
     const labels = ['A','B','C','D','E','F'];
@@ -317,40 +375,69 @@ for (const q of questions) {
     const userAns = selected[q.id];
     const correctAns = q.answer;
 
-    (q.options || []).forEach((opt: string, idx: number) => {
-      const btn = document.createElement('button');
-      btn.className = 'opt-btn';
-
-      let state = '';
-      if (isAnswered) {
-        if (idx === correctAns) state = 'correct';
-        else if (idx === userAns && correctAns !== -1) state = 'wrong';
-        if (idx === userAns) btn.classList.add('user-pick');
-      } else if (userAns === idx) {
-        state = 'pending';
-      }
-      if (state) btn.classList.add(state);
-
-      // Inner HTML
-      let inner = `<span class="opt-lbl">${labels[idx] || ''}</span><span class="opt-txt">${opt}</span>`;
-      if (isAnswered && idx === correctAns && correctAns !== -1) {
-        inner += `<div class="opt-feedback correct-fb">
-                    <span class="fb-check">✓</span><span class="fb-label">That's right!</span>
-                  </div>`;
-      } else if (isAnswered && idx === userAns && idx !== correctAns && correctAns !== -1) {
-        inner += `<div class="opt-feedback wrong-fb">
-                    <span class="fb-x">✕</span><span class="fb-label">Not quite</span>
-                  </div>`;
-      }
-
-      btn.innerHTML = inner;
-      if (!isAnswered && !answered[q.id]) {
-        btn.addEventListener('click', () => selectOption(idx));
+    if (flashcardMode) {
+      if (!isAnswered) {
+        ol.innerHTML = `
+          <div class="flashcard-face-down">
+            <p>🤔 Think of the answer. Ready to check?</p>
+            <button class="flip-btn" id="flip-btn">Reveal Option & Explanation</button>
+          </div>
+        `;
+        $('flip-btn').addEventListener('click', () => revealFlashcard(q));
       } else {
-        btn.disabled = true;
+        const correctOptText = q.options[correctAns] || '';
+        const wasCorrect = userAns === correctAns;
+        ol.innerHTML = `
+          <div class="flashcard-face-up">
+            <div class="fc-correct-answer">
+              <span class="fc-correct-label">Correct Option: ${labels[correctAns] || ''}</span>
+              <p class="fc-correct-text">${correctOptText}</p>
+            </div>
+            <div class="fc-eval-status">
+              <span>Self-Evaluation:</span>
+              <span class="status-badge ${wasCorrect ? 'correct' : 'wrong'}">
+                ${wasCorrect ? '✓ Mastered' : '✕ Needs Review'}
+              </span>
+            </div>
+          </div>
+        `;
       }
-      ol.appendChild(btn);
-    });
+    } else {
+      (q.options || []).forEach((opt: string, idx: number) => {
+        const btn = document.createElement('button');
+        btn.className = 'opt-btn';
+
+        let state = '';
+        if (isAnswered) {
+          if (idx === correctAns) state = 'correct';
+          else if (idx === userAns && correctAns !== -1) state = 'wrong';
+          if (idx === userAns) btn.classList.add('user-pick');
+        } else if (userAns === idx) {
+          state = 'pending';
+        }
+        if (state) btn.classList.add(state);
+
+        // Inner HTML
+        let inner = `<span class="opt-lbl">${labels[idx] || ''}</span><span class="opt-txt">${opt}</span>`;
+        if (isAnswered && idx === correctAns && correctAns !== -1) {
+          inner += `<div class="opt-feedback correct-fb">
+                      <span class="fb-check">✓</span><span class="fb-label">That's right!</span>
+                    </div>`;
+        } else if (isAnswered && idx === userAns && idx !== correctAns && correctAns !== -1) {
+          inner += `<div class="opt-feedback wrong-fb">
+                      <span class="fb-x">✕</span><span class="fb-label">Not quite</span>
+                    </div>`;
+        }
+
+        btn.innerHTML = inner;
+        if (!isAnswered && !answered[q.id]) {
+          btn.addEventListener('click', () => selectOption(idx));
+        } else {
+          btn.disabled = true;
+        }
+        ol.appendChild(btn);
+      });
+    }
 
     const reasonCol = $('q-reason-col');
     const reasonContent = $('reason-content');
@@ -381,6 +468,53 @@ for (const q of questions) {
     nextBtn.classList.toggle('submit-mode', cur === qs.length - 1);
 
     updateDashes();
+  }
+
+  function revealFlashcard(q: any) {
+    const ol = $('options-list');
+    const correctAns = q.answer;
+    const labels = ['A','B','C','D','E','F'];
+    const correctOptText = q.options[correctAns] || 'No option';
+
+    ol.innerHTML = `
+      <div class="flashcard-face-up">
+        <div class="fc-correct-answer">
+          <span class="fc-correct-label">Correct Option: ${labels[correctAns] || ''}</span>
+          <p class="fc-correct-text">${correctOptText}</p>
+        </div>
+        <div class="fc-self-eval">
+          <p>Were you correct?</p>
+          <div class="fc-eval-buttons">
+            <button class="fc-eval-btn wrong" id="fc-needs-review">✕ Needs Review</button>
+            <button class="fc-eval-btn correct" id="fc-mastered">✓ Mastered</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Also reveal explanation column
+    const reasonCol = $('q-reason-col');
+    const reasonContent = $('reason-content');
+    reasonCol.style.display = 'block';
+    let html = '';
+    if (q.answer === -1) {
+       html += '<div class="disputed-note">⚠️ This question is before the Expert Committee — no official answer key available.</div>';
+    }
+    if (q.explanation) {
+       html += `<div class="reason-text">${q.explanation.replace(/\\n/g, '<br/>')}</div>`;
+    } else if (q.answer !== -1) {
+       html += `<div class="reason-text">No additional explanation provided.</div>`;
+    }
+    reasonContent.innerHTML = html;
+
+    $('fc-needs-review').addEventListener('click', () => {
+      // Simulate wrong selection
+      selectOption(correctAns === 0 ? 1 : 0);
+    });
+    $('fc-mastered').addEventListener('click', () => {
+      // Simulate correct selection
+      selectOption(correctAns);
+    });
   }
 
   function selectOption(idx: number) {
@@ -549,6 +683,57 @@ for (const q of questions) {
   $('retake-btn').addEventListener('click', () => show('start-screen'));
   $('home-btn').addEventListener('click', () => { window.location.href = '/'; });
 
+  // Bookmark / Flag click event
+  $('flag-btn').addEventListener('click', () => {
+    const q = qs[cur];
+    if (!q) return;
+    if (flaggedIds.has(q.id)) {
+      flaggedIds.delete(q.id);
+    } else {
+      flaggedIds.add(q.id);
+    }
+    saveFlagged();
+  });
+
+  // Flashcard Mode toggle change event
+  $('fc-toggle').addEventListener('change', (e) => {
+    flashcardMode = (e.target as HTMLInputElement).checked;
+    renderQuestion();
+  });
+
+  // Filter bookmarked questions only toggle
+  $('filter-flagged-btn').addEventListener('click', () => {
+    filterFlaggedOnly = !filterFlaggedOnly;
+    const btn = $('filter-flagged-btn');
+    if (filterFlaggedOnly) {
+      btn.classList.add('active');
+      const flaggedQs = allQ.filter(q => flaggedIds.has(q.id));
+      if (!flaggedQs.length) {
+        alert('You have no bookmarked questions to practice!');
+        filterFlaggedOnly = false;
+        btn.classList.remove('active');
+        return;
+      }
+      qs = flaggedQs;
+    } else {
+      btn.classList.remove('active');
+      const topic = ($('filter-topic') as HTMLSelectElement).value;
+      const part = ($('filter-part') as HTMLSelectElement).value;
+      qs = allQ.filter(q => {
+        if (topic !== 'all' && q.topic !== topic) return false;
+        if (part !== 'all' && q.part !== part) return false;
+        return true;
+      });
+    }
+    cur = 0;
+    selected = {}; answered = {};
+    correctCount = 0; wrongCount = 0;
+    $('count-correct').textContent = '0';
+    $('count-wrong').textContent = '0';
+    buildDashes();
+    renderQuestion();
+  });
+
   document.querySelectorAll('.rtab').forEach(tab => {
     tab.addEventListener('click', e => {
       document.querySelectorAll('.rtab').forEach(t => t.classList.remove('active'));
@@ -574,6 +759,7 @@ for (const q of questions) {
     });
   }
   initDarkMode();
+  loadFlagged();
 
   // ─── Confetti Animation ────────────────────────────────────────────────────
   function launchConfetti() {
@@ -663,6 +849,17 @@ for (const q of questions) {
       const wrongW = data.total > 0 ? (data.wrong / data.total) * 100 : 0;
       const skippedW = data.total > 0 ? (data.skipped / data.total) * 100 : 0;
       const disputedW = data.total > 0 ? (data.disputed / data.total) * 100 : 0;
+
+      // SVG stacked bar chart
+      const svgBarChart = `
+        <svg class="tb-svg-bar" width="100%" height="12" viewBox="0 0 100 12" preserveAspectRatio="none" style="display: block; border-radius: 6px; overflow: hidden; margin-top: 8px;">
+          <rect x="0" y="0" width="100" height="12" fill="var(--border)" />
+          <rect x="0" y="0" width="${correctW}" height="12" fill="#34a853" />
+          <rect x="${correctW}" y="0" width="${wrongW}" height="12" fill="#ea4335" />
+          <rect x="${correctW + wrongW}" y="0" width="${skippedW}" height="12" fill="#9aa0a6" />
+          <rect x="${correctW + wrongW + skippedW}" y="0" width="${disputedW}" height="12" fill="#fbbc04" />
+        </svg>
+      `;
 
       html += `
         <div class="tb-row">
@@ -1653,6 +1850,230 @@ for (const q of questions) {
   }
   .rtab:hover { border-color: var(--blue); color: var(--blue); }
   .rtab.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+  .r-actions { display: flex; gap: 1rem; justify-content: center; }
+
+  /* Quiz Subbar */
+  .quiz-subbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  }
+
+  /* Flashcard toggle slider */
+  .fc-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .fc-toggle-label input {
+    display: none;
+  }
+  .fc-toggle-slider {
+    width: 36px;
+    height: 20px;
+    background-color: var(--border);
+    border-radius: 20px;
+    position: relative;
+    transition: background-color 0.2s;
+  }
+  .fc-toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: white;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s;
+  }
+  .fc-toggle-label input:checked + .fc-toggle-slider {
+    background-color: var(--blue);
+  }
+  .fc-toggle-label input:checked + .fc-toggle-slider::before {
+    transform: translateX(16px);
+  }
+
+  /* Subbar button (filter flagged) */
+  .subbar-btn {
+    background: none;
+    border: 1.5px solid var(--border);
+    padding: 0.35rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .subbar-btn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+  .subbar-btn.active {
+    background: var(--blue-soft);
+    color: var(--blue);
+    border-color: var(--blue);
+  }
+
+  /* Flag / Bookmark button inside question card */
+  .flag-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 0.22rem 0.65rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .flag-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .flag-btn.active {
+    background: var(--amber-soft);
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
+  /* Flashcard render layout */
+  .flashcard-face-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    background: var(--surface);
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    height: 100%;
+    min-height: 200px;
+    box-sizing: border-box;
+  }
+  .flashcard-face-down p {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .flip-btn {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+    box-shadow: 0 4px 12px rgba(26,115,232,0.25);
+  }
+  .flip-btn:hover {
+    transform: scale(1.02);
+    background: #1557b0;
+  }
+
+  .flashcard-face-up {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+    padding: 1rem;
+  }
+  .fc-correct-answer {
+    background: var(--green-soft);
+    border: 1.5px solid var(--green);
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+  .fc-correct-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .fc-correct-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .fc-self-eval {
+    text-align: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+  .fc-self-eval p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .fc-eval-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .fc-eval-btn {
+    border: none;
+    padding: 0.65rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .fc-eval-btn.correct {
+    background: var(--green);
+    color: white;
+  }
+  .fc-eval-btn.wrong {
+    background: var(--accent);
+    color: white;
+  }
+  .fc-eval-btn:hover {
+    transform: scale(1.02);
+  }
+
+  .fc-eval-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* SVG bar breakdown styles */
+  .tb-bar-svg-wrap {
+    margin-top: 0.25rem;
+  }
+  .tb-svg-bar {
+    width: 100%;
+    height: 12px;
+  }
 
   .review-list { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.5rem; }
 

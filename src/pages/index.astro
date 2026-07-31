@@ -54,34 +54,63 @@ function daysUntil(dateStr: string): number {
             </div>
           </div>
 
-          <!-- Countdown Card -->
-          <div class="countdown-panel">
-            <div class="countdown-header">
-              <span class="countdown-live"></span>
-              <span>Next Exam</span>
-            </div>
-            <h3 class="countdown-exam">{upcomingExams[0].name}</h3>
-            <div class="countdown-grid">
-              <div class="cd-unit">
-                <span class="cd-val" id="cd-days">{daysUntil(upcomingExams[0].date)}</span>
-                <span class="cd-label">Days</span>
+          <!-- Dashboard Sidebar (Countdown + Coverage) -->
+          <div class="hero-sidebar">
+            <!-- Countdown Card -->
+            <div class="countdown-panel">
+              <div class="countdown-header">
+                <span class="countdown-live"></span>
+                <span>Next Exam</span>
               </div>
-              <div class="cd-sep">:</div>
-              <div class="cd-unit">
-                <span class="cd-val" id="cd-hours">00</span>
-                <span class="cd-label">Hours</span>
+              <h3 class="countdown-exam">{upcomingExams[0].name}</h3>
+              <div class="countdown-grid">
+                <div class="cd-unit">
+                  <span class="cd-val" id="cd-days">{daysUntil(upcomingExams[0].date)}</span>
+                  <span class="cd-label">Days</span>
+                </div>
+                <div class="cd-sep">:</div>
+                <div class="cd-unit">
+                  <span class="cd-val" id="cd-hours">00</span>
+                  <span class="cd-label">Hours</span>
+                </div>
+                <div class="cd-sep">:</div>
+                <div class="cd-unit">
+                  <span class="cd-val" id="cd-mins">00</span>
+                  <span class="cd-label">Mins</span>
+                </div>
               </div>
-              <div class="cd-sep">:</div>
-              <div class="cd-unit">
-                <span class="cd-val" id="cd-mins">00</span>
-                <span class="cd-label">Mins</span>
+              <div class="countdown-meta">
+                <span>{upcomingExams[0].vacancies} vacancies</span>
+                <span class={`status-chip ${upcomingExams[0].status.toLowerCase()}`}>{upcomingExams[0].status}</span>
+              </div>
+              <a href="/calendar" class="cd-link">View all exams →</a>
+            </div>
+
+            <!-- Syllabus Coverage Card -->
+            <div class="coverage-panel">
+              <div class="coverage-header">
+                <span class="coverage-icon">📊</span>
+                <span>Your Study Progress</span>
+              </div>
+              <div class="coverage-body">
+                <div class="coverage-circle-wrap">
+                  <svg class="coverage-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" fill="none" class="circle-bg" stroke-width="8"/>
+                    <circle id="coverage-arc" cx="50" cy="50" r="42" fill="none" class="circle-arc" stroke-width="8"
+                      stroke-dasharray="264" stroke-dashoffset="264" stroke-linecap="round"
+                      transform="rotate(-90 50 50)"/>
+                  </svg>
+                  <div class="coverage-inner-text">
+                    <span class="coverage-percent" id="coverage-pct">0%</span>
+                  </div>
+                </div>
+                <div class="coverage-info">
+                  <h4 class="coverage-title">Syllabus Covered</h4>
+                  <p class="coverage-desc"><span id="coverage-completed">0</span> of <span id="coverage-total">134</span> topics</p>
+                  <a href="/syllabus" class="coverage-link">Resume studying →</a>
+                </div>
               </div>
             </div>
-            <div class="countdown-meta">
-              <span>{upcomingExams[0].vacancies} vacancies</span>
-              <span class={`status-chip ${upcomingExams[0].status.toLowerCase()}`}>{upcomingExams[0].status}</span>
-            </div>
-            <a href="/calendar" class="cd-link">View all exams →</a>
           </div>
         </div>
       </div>
@@ -206,12 +235,45 @@ function daysUntil(dateStr: string): number {
   }
   updateCountdown();
   setInterval(updateCountdown, 60000);
+
+  // Dynamic syllabus progress loader from local storage
+  function updateSyllabusProgress() {
+    const totalTopics = 134; // standard base count for prep portal
+    let completedCount = 0;
+    
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('syllabus-checked-') && localStorage.getItem(key) === 'true') {
+        completedCount++;
+      }
+    }
+    
+    const pct = Math.min(100, Math.round((completedCount / totalTopics) * 100)) || 0;
+    
+    const pctEl = document.getElementById('coverage-pct');
+    const compEl = document.getElementById('coverage-completed');
+    const totEl = document.getElementById('coverage-total');
+    const arc = document.getElementById('coverage-arc');
+    
+    if (pctEl) pctEl.textContent = `${pct}%`;
+    if (compEl) compEl.textContent = completedCount.toString();
+    if (totEl) totEl.textContent = totalTopics.toString();
+    
+    if (arc) {
+      const circumference = 264;
+      const offset = circumference - (pct / 100) * circumference;
+      arc.style.strokeDashoffset = offset.toString();
+    }
+  }
+  
+  updateSyllabusProgress();
+  window.addEventListener('storage', updateSyllabusProgress);
 </script>
 
 <style>
   /* ─── Hero ──────────────────────────────────────────────────────── */
   .hero {
-    background: linear-gradient(160deg, #fff 0%, var(--bg) 40%, #fff0f0 100%);
+    background: linear-gradient(160deg, var(--surface) 0%, var(--bg) 45%, var(--accent-soft) 100%);
     padding: 5rem 0 3rem;
     border-bottom: 1px solid var(--border);
   }
@@ -220,7 +282,112 @@ function daysUntil(dateStr: string): number {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     gap: 3rem;
+    align-items: flex-start;
+  }
+
+  /* ─── Hero Sidebar ────────────────────────────────────────────────── */
+  .hero-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeInUp 0.6s ease 0.4s both;
+  }
+
+  /* ─── Coverage Panel ──────────────────────────────────────────────── */
+  .coverage-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .coverage-panel:hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .coverage-header {
+    display: flex;
     align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .coverage-body {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .coverage-circle-wrap {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+  }
+
+  .coverage-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .circle-bg {
+    stroke: var(--border);
+  }
+
+  .circle-arc {
+    stroke: var(--accent);
+    transition: stroke-dashoffset 1s ease-out;
+  }
+
+  .coverage-inner-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .coverage-percent {
+    font-size: 0.95rem;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+  }
+
+  .coverage-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .coverage-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .coverage-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .coverage-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.15s;
+    margin-top: 0.25rem;
+  }
+  .coverage-link:hover {
+    opacity: 0.8;
   }
 
   .hero-badge {

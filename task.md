@@ -568,6 +568,10 @@ Working system should include:
 ✔ GitHub automation
 ```
 
+# Phase 1 — Catalog Setup
+- [x] Create directory structure under `public/data/pyq-chapterwise`
+- [x] Create index file `public/data/pyq-chapterwise/index.json` representing all subjects, sub-subjects, chapters, and page ranges from the Table of Contents.
+
 # Phase 10 — Quiz Page UI & Styles Modernization
 - [x] Component 1: Quiz Page UI & Styles Modernization
   - [x] Update `src/pages/pyq/[id].astro` HTML layout to implement card structure and a solid progress bar.

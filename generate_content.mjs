@@ -115,7 +115,7 @@ async function generateContent(type, name) {
   const shape = type === 'poet' ? poetShapeStr : workShapeStr;
   const prompt = PROMPT.replace('[TYPE]', type).replace('[NAME]', name).replace('[SHAPE]', shape);
   const model = genAI.getGenerativeModel({
-    model: 'gemini-1.5-flash',
+    model: 'gemini-2.5-flash',
     generationConfig: { responseMimeType: 'application/json' }
   });
   console.log(`Generating ${type}: ${name}...`);

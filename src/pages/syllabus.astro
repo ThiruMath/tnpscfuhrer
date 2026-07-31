@@ -300,20 +300,33 @@ for (const part of syllabus.parts) {
             <div class="unit-card" data-part="A">
               <div class="unit-header">
                 <div class="unit-num" style="--uc:#C1121F">Unit {unit.num}</div>
-                <div class="unit-qs">{unit.questions} Questions</div>
+                <div class="unit-progress-text" id={`progress-text-A-${unit.num}`}>0 / {unit.topics.length}</div>
+                <div class="unit-qs">{unit.questions} Qs</div>
+              </div>
+              <div class="unit-progress-track">
+                <div class="unit-progress-bar" id={`progress-bar-A-${unit.num}`} style="--uc:#C1121F"></div>
               </div>
               <h3 class="unit-title">{unit.title}</h3>
               <ul class="topic-list">
-                {unit.topics.map((t: string) => (
-                  <li><span class="bullet" style="--bc:#C1121F"></span>{t}</li>
-                ))}
+                {unit.topics.map((t: string, tIdx: number) => {
+                  const uniqueId = `topic-A-${unit.num}-${tIdx}`;
+                  return (
+                    <li class="topic-item">
+                      <label class="topic-checkbox-label">
+                        <input type="checkbox" class="topic-checkbox" data-id={uniqueId} data-unit={unit.num} data-part="A" />
+                        <span class="topic-custom-box" style="--bc: #C1121F"></span>
+                        <span class="topic-text">{t}</span>
+                      </label>
+                    </li>
+                  );
+                })}
               </ul>
               {unit.relatedNotes.length > 0 && (
                 <div class="related-notes">
                   <div class="notes-label">📝 Related Notes</div>
                   <div class="notes-chips">
                     {unit.relatedNotes.map((n: any) => (
-                      <a href={`/notes/${n.slug}`} class="note-chip">
+                      <a href={`/notes/${n.slug}`} class="note-chip" data-note-slug={n.slug}>
                         {n.title.length > 28 ? n.title.slice(0, 28) + '…' : n.title}
                       </a>
                     ))}
@@ -341,20 +354,33 @@ for (const part of syllabus.parts) {
             <div class="unit-card" data-part="B">
               <div class="unit-header">
                 <div class="unit-num" style="--uc:#0a6e4f">Unit {unit.num}</div>
-                <div class="unit-qs">{unit.questions} Questions</div>
+                <div class="unit-progress-text" id={`progress-text-B-${unit.num}`}>0 / {unit.topics.length}</div>
+                <div class="unit-qs">{unit.questions} Qs</div>
+              </div>
+              <div class="unit-progress-track">
+                <div class="unit-progress-bar" id={`progress-bar-B-${unit.num}`} style="--uc:#0a6e4f"></div>
               </div>
               <h3 class="unit-title">{unit.title}</h3>
               <ul class="topic-list">
-                {unit.topics.map((t: string) => (
-                  <li><span class="bullet" style="--bc:#0a6e4f"></span>{t}</li>
-                ))}
+                {unit.topics.map((t: string, tIdx: number) => {
+                  const uniqueId = `topic-B-${unit.num}-${tIdx}`;
+                  return (
+                    <li class="topic-item">
+                      <label class="topic-checkbox-label">
+                        <input type="checkbox" class="topic-checkbox" data-id={uniqueId} data-unit={unit.num} data-part="B" />
+                        <span class="topic-custom-box" style="--bc: #0a6e4f"></span>
+                        <span class="topic-text">{t}</span>
+                      </label>
+                    </li>
+                  );
+                })}
               </ul>
               {unit.relatedNotes.length > 0 && (
                 <div class="related-notes">
                   <div class="notes-label">📝 Related Notes</div>
                   <div class="notes-chips">
                     {unit.relatedNotes.map((n: any) => (
-                      <a href={`/notes/${n.slug}`} class="note-chip note-chip--green">
+                      <a href={`/notes/${n.slug}`} class="note-chip note-chip--green" data-note-slug={n.slug}>
                         {n.title.length > 28 ? n.title.slice(0, 28) + '…' : n.title}
                       </a>
                     ))}
@@ -390,23 +416,36 @@ for (const part of syllabus.parts) {
           </div>
           <div class="units-grid">
             {syllabus.parts[2].sections?.[0].units.map((unit: any) => (
-              <div class="unit-card" data-part="C">
+              <div class="unit-card" data-part="C-tamil">
                 <div class="unit-header">
                   <div class="unit-num" style="--uc:#7c3aed">அலகு {unit.num}</div>
-                  <div class="unit-qs">{unit.questions} கேள்விகள்</div>
+                  <div class="unit-progress-text" id={`progress-text-C-tamil-${unit.num}`}>0 / {unit.topics.length}</div>
+                  <div class="unit-qs">{unit.questions} Qs</div>
+                </div>
+                <div class="unit-progress-track">
+                  <div class="unit-progress-bar" id={`progress-bar-C-tamil-${unit.num}`} style="--uc:#7c3aed"></div>
                 </div>
                 <h3 class="unit-title">{unit.title}</h3>
                 <ul class="topic-list">
-                  {unit.topics.map((t: string) => (
-                    <li><span class="bullet" style="--bc:#7c3aed"></span>{t}</li>
-                  ))}
+                  {unit.topics.map((t: string, tIdx: number) => {
+                    const uniqueId = `topic-C-tamil-${unit.num}-${tIdx}`;
+                    return (
+                      <li class="topic-item">
+                        <label class="topic-checkbox-label">
+                          <input type="checkbox" class="topic-checkbox" data-id={uniqueId} data-unit={unit.num} data-part="C-tamil" />
+                          <span class="topic-custom-box" style="--bc: #7c3aed"></span>
+                          <span class="topic-text">{t}</span>
+                        </label>
+                      </li>
+                    );
+                  })}
                 </ul>
                 {unit.relatedNotes.length > 0 && (
                   <div class="related-notes">
                     <div class="notes-label">📝 Related Notes</div>
                     <div class="notes-chips">
                       {unit.relatedNotes.map((n: any) => (
-                        <a href={`/notes/${n.slug}`} class="note-chip note-chip--purple">
+                        <a href={`/notes/${n.slug}`} class="note-chip note-chip--purple" data-note-slug={n.slug}>
                           {n.title.length > 28 ? n.title.slice(0, 28) + '…' : n.title}
                         </a>
                       ))}
@@ -426,23 +465,36 @@ for (const part of syllabus.parts) {
           </div>
           <div class="units-grid">
             {syllabus.parts[2].sections?.[1].units.map((unit: any) => (
-              <div class="unit-card" data-part="C">
+              <div class="unit-card" data-part="C-english">
                 <div class="unit-header">
                   <div class="unit-num" style="--uc:#be185d">Unit {unit.num}</div>
-                  <div class="unit-qs">{unit.questions} Questions</div>
+                  <div class="unit-progress-text" id={`progress-text-C-english-${unit.num}`}>0 / {unit.topics.length}</div>
+                  <div class="unit-qs">{unit.questions} Qs</div>
+                </div>
+                <div class="unit-progress-track">
+                  <div class="unit-progress-bar" id={`progress-bar-C-english-${unit.num}`} style="--uc:#be185d"></div>
                 </div>
                 <h3 class="unit-title">{unit.title}</h3>
                 <ul class="topic-list">
-                  {unit.topics.map((t: string) => (
-                    <li><span class="bullet" style="--bc:#be185d"></span>{t}</li>
-                  ))}
+                  {unit.topics.map((t: string, tIdx: number) => {
+                    const uniqueId = `topic-C-english-${unit.num}-${tIdx}`;
+                    return (
+                      <li class="topic-item">
+                        <label class="topic-checkbox-label">
+                          <input type="checkbox" class="topic-checkbox" data-id={uniqueId} data-unit={unit.num} data-part="C-english" />
+                          <span class="topic-custom-box" style="--bc: #be185d"></span>
+                          <span class="topic-text">{t}</span>
+                        </label>
+                      </li>
+                    );
+                  })}
                 </ul>
                 {unit.relatedNotes.length > 0 && (
                   <div class="related-notes">
                     <div class="notes-label">📝 Related Notes</div>
                     <div class="notes-chips">
                       {unit.relatedNotes.map((n: any) => (
-                        <a href={`/notes/${n.slug}`} class="note-chip note-chip--pink">
+                        <a href={`/notes/${n.slug}`} class="note-chip note-chip--pink" data-note-slug={n.slug}>
                           {n.title.length > 28 ? n.title.slice(0, 28) + '…' : n.title}
                         </a>
                       ))}
@@ -494,6 +546,55 @@ for (const part of syllabus.parts) {
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // Syllabus Tracker script
+  function updateProgress() {
+    document.querySelectorAll('.unit-card').forEach(card => {
+      const checkboxes = card.querySelectorAll('.topic-checkbox') as NodeListOf<HTMLInputElement>;
+      const total = checkboxes.length;
+      let checked = 0;
+
+      checkboxes.forEach(cb => {
+        const id = cb.dataset.id || '';
+        const isChecked = localStorage.getItem('syllabus-checked-' + id) === 'true';
+        cb.checked = isChecked;
+        if (isChecked) checked++;
+      });
+
+      // Update unit counter and progress bar
+      const textEl = card.querySelector('.unit-progress-text');
+      const barEl = card.querySelector('.unit-progress-bar') as HTMLElement;
+      if (textEl) textEl.textContent = `${checked} / ${total}`;
+      if (barEl) {
+        const pct = total > 0 ? (checked / total) * 100 : 0;
+        barEl.style.width = `${pct}%`;
+      }
+
+      // Update related note chips
+      const noteChips = card.querySelectorAll('.note-chip') as NodeListOf<HTMLElement>;
+      noteChips.forEach(chip => {
+        const slug = chip.dataset.noteSlug || '';
+        const isRead = localStorage.getItem('note-read-' + slug) === 'true';
+        // Mark as completed if note is read OR if the entire unit is fully checked
+        const isCompleted = isRead || (checked === total && total > 0);
+        chip.classList.toggle('completed-note', isCompleted);
+      });
+    });
+  }
+
+  // Bind change events
+  document.querySelectorAll('.topic-checkbox').forEach(cb => {
+    cb.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      const id = target.dataset.id || '';
+      localStorage.setItem('syllabus-checked-' + id, target.checked ? 'true' : 'false');
+      updateProgress();
+    });
+  });
+
+  // Run on load
+  document.addEventListener('DOMContentLoaded', updateProgress);
+  updateProgress();
 </script>
 
 <style>
@@ -804,6 +905,117 @@ for (const part of syllabus.parts) {
     color: #92400e;
   }
   .official-note span { font-size: 1.2rem; margin-top: -2px; }
+
+  /* Checkboxes */
+  .topic-item {
+    width: 100%;
+  }
+  .topic-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+  }
+  .topic-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  .topic-custom-box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    margin-top: 0.2rem;
+    position: relative;
+    transition: all 0.2s ease;
+    background: var(--surface);
+  }
+  .topic-checkbox-label:hover .topic-custom-box {
+    border-color: var(--bc);
+  }
+  .topic-checkbox:checked ~ .topic-custom-box {
+    background: var(--bc);
+    border-color: var(--bc);
+  }
+  .topic-checkbox:checked ~ .topic-custom-box::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .topic-text {
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.5;
+    transition: color 0.2s, text-decoration 0.2s;
+  }
+  .topic-checkbox:checked ~ .topic-text {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  /* Unit Progress track */
+  .unit-progress-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .unit-progress-track {
+    width: 100%;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: -0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .unit-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--uc);
+    border-radius: 2px;
+    transition: width 0.3s ease-out;
+  }
+
+  /* Completed notes badge */
+  .note-chip.completed-note {
+    background: var(--green-soft) !important;
+    border-color: var(--green) !important;
+    color: var(--green) !important;
+  }
+  .note-chip.completed-note::before {
+    content: '✓ ';
+    font-weight: bold;
+  }
+
+  /* Theme adaptations */
+  .unit-card:hover {
+    border-color: var(--accent);
+  }
+  .unit-num {
+    background: color-mix(in srgb, var(--uc) 12%, var(--surface));
+  }
+  .unit-title {
+    color: var(--text);
+  }
+  .part-header h2 {
+    color: var(--text);
+  }
+  .part-header {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--part-color) 8%, var(--surface)), color-mix(in srgb, var(--part-color) 3%, var(--surface)));
+  }
 
   /* Responsive */
   @media (max-width: 600px) {

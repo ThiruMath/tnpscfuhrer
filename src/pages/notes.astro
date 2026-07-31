@@ -112,21 +112,24 @@ const uniqueSubjects = orderedCats.length;
       </div>
 
       <!-- Notes by Category -->
-      <div id="notesContainer">
         {orderedCats.map(cat => {
           const meta = categoryMap[cat] || { icon: '📁', color: '#6b7280', desc: '' };
+          const sluggedCat = cat.toLowerCase().replace(/\s/g,'-');
           return (
-          <section class="cat-section" data-category={cat} id={`cat-${cat.toLowerCase().replace(/\s/g,'-')}`}>
-            <div class="cat-header" style={`--cc:${meta.color}`}>
+          <section class="cat-section" data-category={cat} id={`cat-${sluggedCat}`}>
+            <div class="cat-header collapsible-header" style={`--cc:${meta.color}`} data-target={`grid-${sluggedCat}`}>
               <span class="cat-icon">{meta.icon}</span>
               <div>
                 <h2>{cat}</h2>
                 <p>{meta.desc}</p>
               </div>
-              <div class="cat-badge">{categories[cat].length} notes</div>
+              <div class="cat-badge-wrap">
+                <span class="cat-badge">{categories[cat].length} notes</span>
+                <span class="accordion-arrow">▼</span>
+              </div>
             </div>
 
-            <div class="notes-grid">
+            <div class="notes-grid accordion-content open" id={`grid-${sluggedCat}`}>
               {categories[cat].map(note => {
                 const title = note.data.title || note.slug.replace(/[-_]/g, ' ').replace(/\.md$/, '');
                 const tags: string[] = note.data.topics || note.data.tags || [];
@@ -134,32 +137,57 @@ const uniqueSubjects = orderedCats.length;
                   ? new Date(note.data.last_updated).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })
                   : '';
                 const displayTitle = title.length > 60 ? title.slice(0, 60) + '…' : title;
+
+                // Dynamic Reading Time & Difficulty heuristics
+                const wordsCount = note.body ? note.body.split(/\s+/).length : 0;
+                const readingTime = Math.max(1, Math.round(wordsCount / 200));
+
+                let difficulty = note.data.difficulty;
+                if (!difficulty) {
+                  if (wordsCount < 600) difficulty = 'easy';
+                  else if (wordsCount < 1800) difficulty = 'medium';
+                  else difficulty = 'hard';
+                }
+
                 return (
-                  <a
-                    href={`/notes/${note.slug}`}
+                  <div
                     class="note-card"
                     data-title={title.toLowerCase()}
                     data-cat={cat}
                     style={`--nc:${meta.color}`}
                     data-topics={tags.join(',').toLowerCase()}
+                    data-slug={note.slug}
                   >
-                    <div class="note-card-inner">
-                      <div class="note-top">
-                        <span class="note-cat-dot" style={`background:${meta.color}`}></span>
-                        {date && <span class="note-date">{date}</span>}
-                      </div>
-                      <h3 class="note-title">{displayTitle}</h3>
-                      {tags.length > 0 && (
-                        <div class="note-tags">
-                          {tags.slice(0, 3).map((tag: string) => (
-                            <span class="note-tag">{tag}</span>
-                          ))}
-                          {tags.length > 3 && <span class="note-tag note-tag--more">+{tags.length - 3}</span>}
-                        </div>
-                      )}
+                    <div class="note-card-actions">
+                      <label class="note-read-label" title="Mark as Completed">
+                        <input type="checkbox" class="note-read-checkbox" data-slug={note.slug} />
+                        <span class="note-read-checkmark"></span>
+                      </label>
                     </div>
-                    <div class="note-arrow">→</div>
-                  </a>
+
+                    <a href={`/notes/${note.slug}`} class="note-card-link">
+                      <div class="note-card-inner">
+                        <div class="note-top">
+                          <span class="note-cat-dot" style={`background:${meta.color}`}></span>
+                          {date && <span class="note-date">{date}</span>}
+                        </div>
+                        <h3 class="note-title">{displayTitle}</h3>
+                        <div class="note-meta-strip">
+                          <span class={`diff-badge ${difficulty}`}>{difficulty}</span>
+                          <span class="reading-time">⏱️ {readingTime}m read</span>
+                        </div>
+                        {tags.length > 0 && (
+                          <div class="note-tags">
+                            {tags.slice(0, 3).map((tag: string) => (
+                              <span class="note-tag">{tag}</span>
+                            ))}
+                            {tags.length > 3 && <span class="note-tag note-tag--more">+{tags.length - 3}</span>}
+                          </div>
+                        )}
+                      </div>
+                      <div class="note-arrow">→</div>
+                    </a>
+                  </div>
                 );
               })}
             </div>
@@ -208,7 +236,17 @@ const uniqueSubjects = orderedCats.length;
         if (show) { visible++; sectionVisible++; }
       });
 
-      section.style.display = catMatch && sectionVisible > 0 ? '' : 'none';
+      const sectionContent = section.querySelector('.accordion-content') as HTMLElement;
+      if (catMatch && sectionVisible > 0) {
+        section.style.display = '';
+        // Auto-expand accordion if search query is active
+        if (searchQuery || activeCat !== 'all') {
+          sectionContent?.classList.add('open');
+          section.querySelector('.accordion-arrow')?.classList.add('collapsed');
+        }
+      } else {
+        section.style.display = 'none';
+      }
     });
 
     resultsCount.textContent = `${visible} note${visible !== 1 ? 's' : ''}`;
@@ -251,16 +289,55 @@ const uniqueSubjects = orderedCats.length;
     applyFilters();
   };
 
+  // Accordion Logic
+  document.querySelectorAll('.collapsible-header').forEach(header => {
+    header.addEventListener('click', () => {
+      // Don't toggle accordion if searching to prevent hiding matches
+      if (searchQuery) return;
+      const targetId = (header as HTMLElement).dataset.target;
+      const content = document.getElementById(targetId || '');
+      const arrow = header.querySelector('.accordion-arrow');
+      if (content) {
+        content.classList.toggle('open');
+        arrow?.classList.toggle('collapsed');
+      }
+    });
+  });
+
+  // Read Checkbox Logic
+  function initReadCheckboxes() {
+    document.querySelectorAll('.note-card').forEach(card => {
+      const slug = (card as HTMLElement).dataset.slug || '';
+      const checkbox = card.querySelector('.note-read-checkbox') as HTMLInputElement;
+      
+      const isRead = localStorage.getItem('note-read-' + slug) === 'true';
+      if (checkbox) {
+        checkbox.checked = isRead;
+      }
+      card.classList.toggle('note-completed', isRead);
+
+      if (checkbox) {
+        checkbox.addEventListener('change', (e) => {
+          const state = (e.target as HTMLInputElement).checked;
+          localStorage.setItem('note-read-' + slug, state ? 'true' : 'false');
+          card.classList.toggle('note-completed', state);
+        });
+      }
+    });
+  }
+
+  // Run initializations
+  initReadCheckboxes();
   applyFilters();
 </script>
 
 <style>
   /* Hero */
   .notes-hero {
-    background: linear-gradient(135deg, #14213D 0%, #1d3461 60%, #C1121F22 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, color-mix(in srgb, var(--navy) 85%, var(--bg)) 60%, var(--accent-soft) 100%);
     padding: 4rem 0 3rem;
     color: #fff;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid var(--border);
   }
   .hero-badge {
     display: inline-flex;
@@ -403,16 +480,11 @@ const uniqueSubjects = orderedCats.length;
     font-size: 0.85rem;
     color: var(--muted);
   }
-  #resultsCount { font-weight: 600; color: var(--text); }
-  .results-hint { color: var(--muted); }
-
-  /* Category Section */
-  .cat-section { margin-bottom: 3.5rem; }
-  .cat-header {
+  #resultsCount { font-weight: 600; color: var(--text); }  .cat-header {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--cc) 8%, white), color-mix(in srgb, var(--cc) 2%, white));
+    background: linear-gradient(135deg, color-mix(in srgb, var(--cc) 8%, var(--surface)), color-mix(in srgb, var(--cc) 2%, var(--surface)));
     border: 1px solid color-mix(in srgb, var(--cc) 20%, var(--border));
     border-radius: 14px;
     padding: 1.25rem 1.75rem;
@@ -432,12 +504,11 @@ const uniqueSubjects = orderedCats.length;
   .cat-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: 1.25rem;
-    color: var(--navy);
+    color: var(--text);
     margin: 0;
   }
   .cat-header p { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.85rem; }
   .cat-badge {
-    margin-left: auto;
     background: var(--cc);
     color: #fff;
     font-size: 0.82rem;
@@ -447,45 +518,148 @@ const uniqueSubjects = orderedCats.length;
     white-space: nowrap;
   }
 
+  /* Collapsible / Accordion Styles */
+  .collapsible-header {
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .collapsible-header:hover {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--cc) 12%, var(--surface)), color-mix(in srgb, var(--cc) 4%, var(--surface)));
+  }
+  .accordion-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .accordion-arrow.collapsed {
+    transform: rotate(90deg);
+  }
+  .accordion-content {
+    display: none;
+    transition: all 0.3s ease;
+  }
+  .accordion-content.open {
+    display: grid;
+  }
+  .cat-badge-wrap {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
   /* Notes Grid */
   .notes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 0.85rem;
   }
 
   /* Note Card */
   .note-card {
     display: flex;
-    align-items: stretch;
-    justify-content: space-between;
+    flex-direction: column;
     background: var(--surface);
     border: 1.5px solid var(--border);
     border-radius: 12px;
-    padding: 1.1rem 1.25rem;
-    text-decoration: none;
-    color: inherit;
+    padding: 0;
     transition: all 0.22s ease;
     position: relative;
     overflow: hidden;
-    gap: 0.75rem;
-  }
-  .note-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--nc);
-    opacity: 0;
-    transition: opacity 0.2s;
   }
   .note-card:hover {
-    box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+    box-shadow: var(--shadow);
     transform: translateY(-2px);
     border-color: color-mix(in srgb, var(--nc) 35%, var(--border));
   }
-  .note-card:hover::before { opacity: 1; }
-  .note-card-inner { flex: 1; display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
+  
+  .note-card-actions {
+    position: absolute;
+    top: 1.15rem;
+    left: 1.25rem;
+    z-index: 10;
+  }
+
+  /* Note card checkbox styled */
+  .note-read-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .note-read-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .note-read-checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s;
+    background: var(--surface);
+  }
+  .note-read-label:hover .note-read-checkmark {
+    border-color: var(--nc);
+  }
+  .note-read-checkbox:checked ~ .note-read-checkmark {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .note-read-checkbox:checked ~ .note-read-checkmark::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  /* Complete highlights */
+  .note-card.note-completed {
+    border-color: var(--green) !important;
+    background: color-mix(in srgb, var(--green) 4%, var(--surface));
+  }
+  .note-card.note-completed::after {
+    content: '✓ READ';
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.62rem;
+    font-weight: 800;
+    color: var(--green);
+    background: var(--green-soft);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .note-card-link {
+    display: flex;
+    padding: 1.1rem 1.25rem;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .note-card-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    min-width: 0;
+    padding-left: 1.65rem; /* space for checkmark */
+  }
   .note-top { display: flex; align-items: center; gap: 0.5rem; }
   .note-cat-dot {
     width: 8px; height: 8px; min-width: 8px;
@@ -493,13 +667,39 @@ const uniqueSubjects = orderedCats.length;
   }
   .note-date { font-size: 0.72rem; color: var(--muted); margin-left: auto; }
   .note-title {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     font-weight: 600;
-    color: var(--navy);
+    color: var(--text);
     line-height: 1.4;
     margin: 0;
     word-break: break-word;
   }
+
+  .note-meta-strip {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.1rem;
+  }
+  
+  .diff-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+  .diff-badge.easy { background: var(--green-soft); color: var(--green); }
+  .diff-badge.medium { background: var(--amber-soft); color: var(--amber); }
+  .diff-badge.hard { background: var(--accent-soft); color: var(--accent); }
+
+  .reading-time {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
   .note-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.2rem; }
   .note-tag {
     font-size: 0.68rem;
@@ -511,7 +711,7 @@ const uniqueSubjects = orderedCats.length;
     font-weight: 500;
     line-height: 1.5;
   }
-  .note-tag--more { background: color-mix(in srgb, var(--nc) 10%, white); color: var(--nc); border-color: color-mix(in srgb, var(--nc) 25%, var(--border)); }
+  .note-tag--more { background: color-mix(in srgb, var(--nc) 10%, var(--surface)); color: var(--nc); border-color: color-mix(in srgb, var(--nc) 25%, var(--border)); }
   .note-arrow {
     display: flex;
     align-items: center;
@@ -521,12 +721,12 @@ const uniqueSubjects = orderedCats.length;
     align-self: center;
     flex-shrink: 0;
   }
-  .note-card:hover .note-arrow { transform: translateX(3px); color: var(--nc); }
-
+  .note-card-link:hover .note-arrow { transform: translateX(3px); color: var(--nc); }
+ 
   /* No results */
   .no-results { text-align: center; padding: 4rem 2rem; color: var(--muted); }
   .no-results-icon { font-size: 3rem; margin-bottom: 1rem; }
-  .no-results h3 { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .no-results h3 { font-family: 'Playfair Display', serif; color: var(--text); font-size: 1.4rem; margin-bottom: 0.5rem; }
   .no-results p { font-size: 0.95rem; margin-bottom: 1.5rem; }
   .reset-btn {
     background: var(--accent);
@@ -539,12 +739,12 @@ const uniqueSubjects = orderedCats.length;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
   }
-
+ 
   /* Responsive */
   @media (max-width: 640px) {
     .notes-grid { grid-template-columns: 1fr; }
     .hero-stats { flex-direction: row; }
     .search-filter-bar { top: 0; position: inherit; }
-    .cat-badge { display: none; }
+    .cat-badge-wrap { display: none; }
   }
 </style>
