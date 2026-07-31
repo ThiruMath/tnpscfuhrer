@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro';
+const kurals = [
+  { num:1, chapter:"The Praise of God", book:"Virtue", tamil:"அகர முதல எழுத்தெல்லாம் ஆதி\nபகவன் முதற்றே உலகு.", en:"As 'A' is the first of all letters, so the Primal One is first in the world.", grade:"Std. 6+" },
+  { num:215, chapter:"Gratitude", book:"Virtue", tamil:"நன்றிமறப்பது நன்றன்று நன்றல்லது\nஅன்றே மறப்பது நன்று.", en:"To forget a kindness is not good; it is good to forget, at once, an unkindness.", grade:"Std. 9" },
+  { num:241, chapter:"Compassion", book:"Virtue", tamil:"அருட்செல்வம் செல்வத்துள் செல்வம் — பொருட்செல்வம்\nபண்பிலார் கண்ணும் உள.", en:"Among all wealth, compassion-wealth is highest. Material wealth exists even among the ignoble.", grade:"Std. 10" },
+  { num:320, chapter:"Not Eating Flesh", book:"Virtue", tamil:"தன்னூன் பெருக்கற்குத் தான்பிறிது ஊனுண்பான்\nஎங்ஙனம் ஆளும் அருள்.", en:"How can compassion live in one who fattens his own flesh by eating the flesh of others?", grade:"Std. 11" },
+  { num:391, chapter:"Avoidance of Envy", book:"Virtue", tamil:"அழுக்காறு உடையார்க்கு அதுசாலும் ஒன்னார்\nவழுக்கியும் கேடீன்பது இல்.", en:"Envy alone is enough to destroy the envious; no enemy need help it.", grade:"Std. 10" },
+  { num:544, chapter:"Justice", book:"Wealth", tamil:"கண்ணின்று கண்ணறச் செய்யும் — கொலைவல்லான்\nகோல்போல் தொழுதுவிடும்.", en:"The king's scepter, like a spear in an executioner's hand, destroys the very eye it should protect.", grade:"Std. 11" },
+  { num:625, chapter:"Dignity in Poverty", book:"Wealth", tamil:"ஒற்கத்தில் ஒல்கார் உரவோர் இடர்வரினும்\nதற்கொல் தகுதியே கொள்.", en:"The strong do not bend in adversity; when trouble comes, they accept what is fitting.", grade:"Std. 10" },
+  { num:1080, chapter:"The Woman's Beauty", book:"Love", tamil:"நலத்தகை நல்லவர் என்பர் — அவருள்\nகலத்தகை யாரோடும் இல்.", en:"They call her good and beautiful — but among all those who call her so, none is her equal.", grade:"Std. 12" },
+  { num:1330, chapter:"Joys of Reunion", book:"Love", tamil:"அன்பிற்கும் உண்டோ அடைக்கும் தாழ் ஆர்வலர்\nபுன்கணீர் பூசல் தரும்.", en:"Is there a bolt that can shut out Love? The tears of those who love are its only guard.", grade:"Std. 12" },
+];
+let activeBook = "all";
+---
+<Layout title="Thirukkural" description="Read and study Thirukkural — 1,330 couplets by Thiruvalluvar on virtue, statecraft, and love. With Tamil original, English translation, commentary, and political context.">
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-eyebrow">~1st century CE · Thiruvalluvar</div>
+    <h1>
+      <span class="hero-title-ta">திருக்குறள்</span>
+      <span class="hero-title-en">Thirukkural</span>
+    </h1>
+    <p class="hero-intro">1,330 couplets in the kuṟaḷ veṇpā metre — two lines, seven syllable-feet. On virtue, statecraft, and love. Translated into over 80 languages. Claimed by every religious community and every political tradition in Tamil history. Its silence on God's name, on caste, and on sectarian theology is not ambiguity — it is strategy.</p>
+    <div class="stat-row" style="margin-top:2rem">
+      <div class="stat"><span class="stat-num">1,330</span><span class="stat-label">Couplets</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num">133</span><span class="stat-label">Chapters</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Books — Virtue, Wealth, Love</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num">80+</span><span class="stat-label">Languages translated into</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="kural-intro-section">
+  <div class="container">
+    <div class="kural-intro-grid">
+      <div class="kural-intro-main">
+        <div class="section-label">The Three Books</div>
+        <h2 class="section-title">Structure of the Kural</h2>
+        <div class="books-row">
+          <div class="book-card">
+            <div class="book-num">I</div>
+            <h3 class="book-name">Aram <span class="book-ta">அறம்</span></h3>
+            <p class="book-desc">Virtue. Chapters 1–38. Personal ethics, domestic life, gratitude, compassion, truth, self-control, not killing, not lying. The final chapter (38) is on renunciation: cutting off the pride of "I" and "mine." That is the qualification for governance. Book II follows immediately.</p>
+          </div>
+          <div class="book-card">
+            <div class="book-num">II</div>
+            <h3 class="book-name">Porul <span class="book-ta">பொருள்</span></h3>
+            <p class="book-desc">Wealth & Statecraft. Chapters 39–108. The longest book. The ideal king, minister, diplomacy, army, fortress, knowing the right moment, the nature of friendship and enmity. More sophisticated than most political science written before Kautilya — and less ruthless.</p>
+          </div>
+          <div class="book-card">
+            <div class="book-num">III</div>
+            <h3 class="book-name">Inbam <span class="book-ta">இன்பம்</span></h3>
+            <p class="book-desc">Love. Chapters 109–133. Spoken in the woman's voice, following the akam convention. The sequence: first sight, mutual desire, meeting, separation, endurance, reunion. Treated with the same intellectual seriousness as governance. Historically de-emphasised in school curricula. Rehabilitated by 20th-century scholarship.</p>
+          </div>
+        </div>
+
+        <div class="callout callout--critical" style="margin-top:2rem">
+          <div class="callout-icon">⚑</div>
+          <div>
+            <div class="callout-head">The Contested Text</div>
+            <p>Thirukkural does not name a God. It does not name a caste. It does not name a sectarian theology. The word "Bhagavan" in Kural 1 has been interpreted as Shiva (by Shaiva commentators), as the Jain tirthankara (by Jain scholars), as God the Father (by 19th-century Christian missionaries), and as proof that the text is atheist (by rationalists). The blank space is deliberate. Ten major ancient commentators exist — they disagree on the meaning of many kurals. Parimelazhagar's 13th-century Brahminic commentary became dominant; the Dravidian movement spent the 20th century contesting it.</p>
+          </div>
+        </div>
+      </div>
+      <aside class="kural-sidebar">
+        <div class="side-box side-box--highlight">
+          <div class="sb-label">About the Author</div>
+          <p><a href="/poets/thiruvalluvar">Thiruvalluvar</a> — we know his text completely and almost nothing about him. Every religious community claims his identity. A statue of him stands 133 feet tall at Kanyakumari — one foot per chapter.</p>
+        </div>
+        <div class="side-box">
+          <div class="sb-label">Full Text Access</div>
+          <p><a href="https://www.projectmadurai.org/pm_etexts/utf8/pmuni0025.html" target="_blank" rel="noopener">All 1,330 kurals — Project Madurai ↗</a></p>
+          <p style="margin-top:0.5rem"><a href="https://www.tamilvu.org/courses/degree/p101/p1014/html/p1014ind.htm" target="_blank" rel="noopener">Academic course — Tamil VU ↗</a></p>
+        </div>
+        <div class="side-box">
+          <div class="sb-label">Grade Reference</div>
+          <p>Kurals appear in TN curriculum from Std. 6 through PG. Every kural below is marked with its grade level.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="kural-browser-section">
+  <div class="container">
+    <hr class="rule"/>
+    <div class="section-label">Selected Couplets</div>
+    <h2 class="section-title">Key Kurals with Commentary</h2>
+    <div class="filter-bar" style="position:relative;top:auto;margin-bottom:2rem;border:1px solid var(--rule)">
+      <div class="filter-inner">
+        <button class="filter-btn active" data-book="all">All Books</button>
+        <button class="filter-btn" data-book="Virtue">Virtue (Aram)</button>
+        <button class="filter-btn" data-book="Wealth">Wealth (Porul)</button>
+        <button class="filter-btn" data-book="Love">Love (Inbam)</button>
+      </div>
+    </div>
+    <div class="kural-list" id="kuralList">
+      {kurals.map(k => (
+        <article class="kural-item" data-book={k.book}>
+          <div class="ki-header">
+            <div class="ki-num">Kural {k.num}</div>
+            <div class="ki-chapter">{k.chapter}</div>
+            <span class={`ki-book-tag ki-book-tag--${k.book.toLowerCase()}`}>{k.book}</span>
+            <span class="ki-grade">📚 {k.grade}</span>
+          </div>
+          <div class="ki-body">
+            <div class="ki-tamil">{k.tamil}</div>
+            <div class="ki-translation">{k.en}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.kural-intro-section { padding: 5rem 0; background: var(--bg-alt); border-bottom: 1px solid var(--rule); }
+.kural-intro-grid { display: grid; grid-template-columns: 1fr 220px; gap: 3.5rem; align-items: start; }
+.kural-sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 1px; }
+.side-box { padding: 1.25rem; background: var(--bg); border: 1px solid var(--rule); border-top: 3px solid var(--rule); margin-bottom: 1px; }
+.side-box--highlight { border-top-color: var(--crimson); }
+.sb-label { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.5rem; }
+.side-box p { font-family: var(--font-body); font-size: 0.9rem; color: var(--ink-mid); line-height: 1.7; margin: 0; }
+.side-box a { color: var(--crimson); }
+
+.books-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0; }
+.book-card { background: var(--bg); padding: 1.5rem; }
+.book-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--rule); line-height: 1; margin-bottom: 0.5rem; }
+.book-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; }
+.book-ta { font-family: var(--font-tamil); font-size: 0.9rem; color: var(--tamil-red); font-weight: 400; margin-left: 0.35rem; }
+.book-desc { font-family: var(--font-body); font-size: 0.92rem; color: var(--ink-mid); line-height: 1.8; margin: 0; }
+
+.kural-browser-section { padding: 5rem 0 7rem; }
+.kural-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--rule); }
+.kural-item { padding: 1.75rem 2rem; background: var(--bg); border-bottom: 1px solid var(--rule-light); transition: background 0.2s; }
+.kural-item:last-child { border-bottom: none; }
+.kural-item:hover { background: var(--bg-alt); }
+.kural-item.hidden { display: none; }
+.ki-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.ki-num { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; color: var(--crimson); }
+.ki-chapter { font-family: var(--font-display); font-size: 0.9rem; color: var(--ink-soft); }
+.ki-book-tag { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.1em; padding: 0.15rem 0.65rem; border-radius: 2px; }
+.ki-book-tag--virtue { background: #EEF5EE; color: #2A5C2A; border: 1px solid #C5DEC5; }
+.ki-book-tag--wealth { background: #EEF0F5; color: #1A3A6B; border: 1px solid #C5CCDE; }
+.ki-book-tag--love { background: var(--crimson-pale); color: var(--crimson); border: 1px solid rgba(139,26,26,0.2); }
+.ki-grade { font-family: var(--font-body); font-size: 0.82rem; color: var(--ink-faint); margin-left: auto; }
+.ki-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.ki-tamil { font-family: var(--font-tamil); font-size: 1.15rem; color: var(--tamil-red); line-height: 2.1; white-space: pre-line; }
+.ki-translation { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--ink-mid); line-height: 1.8; padding-left: 1.25rem; border-left: 2px solid var(--rule); }
+
+@media (max-width: 900px) {
+  .kural-intro-grid { grid-template-columns: 1fr; }
+  .kural-sidebar { position: static; }
+  .books-row { grid-template-columns: 1fr; }
+  .ki-body { grid-template-columns: 1fr; gap: 1rem; }
+  .ki-translation { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 1rem; }
+}
+</style>
+
+<script>
+const btns = document.querySelectorAll('.filter-btn');
+const items = document.querySelectorAll('.kural-item') as NodeListOf<HTMLElement>;
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const book = (btn as HTMLElement).dataset.book;
+    items.forEach(item => {
+      item.classList.toggle('hidden', book !== 'all' && item.dataset.book !== book);
+    });
+  });
+});
+</script>

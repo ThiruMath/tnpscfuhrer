@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Page Not Found">
+<section class="not-found">
+  <div class="container">
+    <div class="nf-inner">
+      <div class="nf-num">404</div>
+      <div class="verse-block" style="max-width:480px;margin:2rem 0">
+        <div class="verse-tamil">கல்தோன்றி மண்தோன்றாக்
+காலத்தே வாளொடு முன்தோன்றிய
+மூத்தகுடி தமிழ்குடி.</div>
+        <div class="verse-translation">"Before rock was formed, before earth took shape, in those ancient times — the Tamil people were already here, the eldest of families."</div>
+      </div>
+      <h1 class="nf-title">This page wandered into the Paalai wasteland</h1>
+      <p class="nf-body">Like a poem lost from its anthology — the page you are looking for cannot be found. The Paalai tinai, the landscape of separation and long journeys, has claimed it.</p>
+      <div class="nf-links">
+        <a href="/" class="btn btn--primary">Return Home</a>
+        <a href="/history" class="btn btn--outline">Begin the History</a>
+      </div>
+      <div class="nf-nav">
+        <a href="/sangam">Sangam Era</a>
+        <a href="/epics">The Epics</a>
+        <a href="/poets">The Poets</a>
+        <a href="/works">The Works</a>
+        <a href="/kurals">Thirukkural</a>
+      </div>
+    </div>
+  </div>
+</section>
+</Layout>
+
+<style>
+.not-found { min-height: 100vh; display: flex; align-items: center; padding: 8rem 0 5rem; }
+.nf-inner { max-width: 580px; }
+.nf-num { font-family: var(--font-display); font-size: 8rem; font-weight: 300; color: var(--rule); line-height: 1; margin-bottom: 0; }
+.nf-title { font-family: var(--font-display); font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 400; color: var(--ink); margin-bottom: 1rem; }
+.nf-body { font-family: var(--font-body); font-style: italic; font-size: 1rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 2rem; }
+.nf-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.nf-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.nf-nav a { font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.06em; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+.nf-nav a:hover { color: var(--crimson); }
+</style>

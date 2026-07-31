@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+const epics = [
+  {
+    num:"01", title:"Silappadikaram", tamil:"சிலப்பதிகாரம்", meaning:"The Tale of the Anklet",
+    author:"Ilango Adigal", period:"~2nd–5th century CE", faith:"Buddhist/Jain-influenced",
+    cantos:30, verses:"5,730+",
+    synopsis:"Kannagi and Kovalan marry happily. Kovalan wastes their wealth on a dancer, returns to Kannagi, and they travel to Madurai to start over. A lying goldsmith accuses Kovalan of theft. The Pandya king executes him without investigation. Kannagi proves her husband's innocence — then tears off her breast and throws it at Madurai. The city burns for fourteen days.",
+    significance:"A complete theory of conditional kingship — a king who fails to ensure justice loses divine protection. The earliest detailed portrait of ancient Tamil city life. Kannagi became a goddess worshipped across Tamil Nadu and Sri Lanka.",
+    href:"/works/silappadikaram"
+  },
+  {
+    num:"02", title:"Manimekalai", tamil:"மணிமேகலை", meaning:"She of the Gem-Girdle",
+    author:"Sithalai Sattanar", period:"~5th century CE", faith:"Buddhist",
+    cantos:30, verses:"4,761",
+    synopsis:"Sequel to Silappadikaram. Manimekalai — daughter of Madhavi the dancer and Kovalan — renounces the world to become a Buddhist saint. She possesses a magic bowl (Amudhasurabi) that never empties when used to feed the hungry. She is pursued by a prince who loves her and defeats scholars across India in philosophical debate.",
+    significance:"One of the earliest depictions of a famine and organised public charity in Indian literature. The most sustained Buddhist philosophical poem in Tamil. Argues for compassion as a political act, not just a personal virtue.",
+    href:"/works/silappadikaram"
+  },
+  {
+    num:"03", title:"Civaka Cintamani", tamil:"சீவகசிந்தாமணி", meaning:"The Wishing Gem of Civaka",
+    author:"Tiruttakkatevar", period:"~10th century CE", faith:"Jain",
+    cantos:13, verses:"3,145",
+    synopsis:"The most ornate Tamil epic. The hero-prince Civaka battles enemies, loves many women, achieves victory after victory — then renounces all worldly glory to become a Jain ascetic. MuVa considers it the highest point of Tamil poetic craft between the Sangam age and the medieval period.",
+    significance:"The densest, most technically elaborate Tamil epic. Its similes are studied as the peak of classical Tamil ornament. Demonstrates that Jain literature could achieve supreme literary quality — something the later Shaiva tradition preferred to minimise.",
+    href:"/works/silappadikaram"
+  },
+  {
+    num:"04", title:"Valayapathi", tamil:"வளையாபதி", meaning:"The Lord of the Bangle",
+    author:"Unknown", period:"~7th century CE", faith:"Buddhist",
+    cantos:13, verses:"Fragmentary",
+    synopsis:"Largely lost. The surviving fragments suggest a Buddhist narrative of tragic love and spiritual renunciation involving a prince named Valayapathi and his devoted partner. One of the five great epics that the tradition preserves by name even when the text is almost gone.",
+    significance:"Its loss is itself historically significant. The near-total destruction of Buddhist and Jain epic literature in Tamil Nadu tracks directly with the Bhakti movement's cultural reconquest after the Kalabhra period. Valayapathi did not survive that reconquest intact.",
+    href:"/works/silappadikaram"
+  },
+  {
+    num:"05", title:"Kundalakesi", tamil:"குண்டலகேசி", meaning:"She with Curly Hair",
+    author:"Nagadhanar", period:"~5th century CE", faith:"Buddhist",
+    cantos:99, verses:"Fragmentary",
+    synopsis:"A woman witnesses the execution of her beloved, becomes a Buddhist nun, and travels across India defeating scholars in debate. The heroine transforms grief into intellect. Only fragments survive — preserved mainly in the quotations of later commentators who disagreed with its Buddhist arguments.",
+    significance:"The Tamil literary tradition's most radical female protagonist before the Bhakti saints. A woman who turns personal catastrophe into philosophical weaponry. Preserved by her opponents — quoted specifically to be refuted — which is the only reason any of it survives.",
+    href:"/works/silappadikaram"
+  }
+];
+---
+<Layout title="The Five Great Epics" description="The five great Tamil epics — Silappadikaram, Manimekalai, Civaka Cintamani, Valayapathi, and Kundalakesi — with full political and religious context.">
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-eyebrow">200 CE – 900 CE</div>
+    <h1>
+      <span class="hero-title-ta">ஐம்பெரும் காப்பியங்கள்</span>
+      <span class="hero-title-en">The Five Great Epics</span>
+    </h1>
+    <p class="hero-intro">Five epics. Three faiths — Jain, Buddhist, and emerging Shaiva. Women at the centre, not the margin. Cities described with the precision of a sociologist's field report. A theory of justice that burns cities when kings fail. Two of the five are almost entirely lost — and the losses are not accidental.</p>
+  </div>
+</section>
+
+<section class="epics-section">
+  <div class="container">
+
+    <div class="context-block">
+      <div class="section-label">Historical Context</div>
+      <h2 class="section-title">The World That Made These Epics</h2>
+      <div class="prose-block">
+        <p>The Five Great Epics emerged from the post-Sangam period — the centuries when the Kalabhra rulers had displaced the traditional crowned kingdoms and when Jainism and Buddhism were the dominant intellectual forces in Tamil Nadu. This context is not incidental to the literature. <strong>Three of the five epics are explicitly Buddhist or Jain in their religious orientation.</strong> The only epic with clear Shaiva leanings (the partial Valayapathi) is one of the two that barely survived.</p>
+        <p>When the Pallavas and later Pandyas drove out the Kalabhras and the Bhakti movement began its cultural reconquest, the fate of these texts diverged sharply. Silappadikaram and Manimekalai survived — possibly because their heroines (Kannagi, Manimekalai) had become too embedded in Tamil cultural identity to erase. Civaka Cintamani survived as a literary masterpiece despite its Jain framework. Valayapathi and Kundalakesi survived only in fragments — preserved, ironically, by the scholars who quoted them in order to refute them.</p>
+      </div>
+      <div class="callout callout--critical">
+        <div class="callout-icon">⚑</div>
+        <div>
+          <div class="callout-head">What the losses tell us</div>
+          <p>The fragmentary survival of Valayapathi and Kundalakesi is not an accident of time. Manuscripts were copied by hand; what got copied was what scribal communities thought worth preserving. Jain and Buddhist literary culture in Tamil Nadu was systematically marginalised after the Bhakti period. The survival pattern of the Five Epics is a map of that marginalisation.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule"/>
+
+    {epics.map(epic => (
+      <article class="epic-article">
+        <div class="epic-header">
+          <div class="epic-num">{epic.num}</div>
+          <div class="epic-title-block">
+            <h2 class="epic-title">{epic.title} <span class="epic-ta">{epic.tamil}</span></h2>
+            <p class="epic-meaning">"{epic.meaning}"</p>
+          </div>
+        </div>
+        <div class="epic-body">
+          <div class="epic-main">
+            <div class="epic-meta-row">
+              <span class="epic-meta-pill">By {epic.author}</span>
+              <span class="epic-meta-pill">{epic.period}</span>
+              <span class="epic-meta-pill">{epic.faith}</span>
+              <span class="epic-meta-pill">{epic.cantos} cantos · {epic.verses} verses</span>
+            </div>
+            <h3>The Story</h3>
+            <p>{epic.synopsis}</p>
+            <h3>Why It Matters</h3>
+            <p>{epic.significance}</p>
+            <a href={epic.href} class="read-more-link">Full study →</a>
+          </div>
+        </div>
+        <hr class="rule"/>
+      </article>
+    ))}
+
+    <div class="comparison-block">
+      <div class="section-label">Tamil, Greek & Latin</div>
+      <h2 class="section-title">The Epics in World Context</h2>
+      <div class="prose-block">
+        <p>The closest Greek parallel to Silappadikaram is the Oresteia of Aeschylus (458 BCE) — both concern a woman whose husband is unjustly killed, who demands justice from a system that fails her, and whose action precipitates divine intervention. In Aeschylus, justice is ultimately institutionalised — a court is established. In Silappadikaram, justice operates through divine fire, not institutional reform. A different theory of how civilisation corrects itself.</p>
+        <p>Manimekalai has no Greek or Latin parallel. A Buddhist woman philosopher who feeds the hungry with a magic bowl and defeats male scholars in public debate — this character type does not exist in Greek or Latin epic. The closest might be Hypatia of Alexandria (360–415 CE), the Neoplatonist philosopher — but Hypatia is historical, not literary, and she was murdered by a Christian mob rather than celebrated in a national epic.</p>
+        <p><strong>Crucially:</strong> Silappadikaram and Manimekalai were compiled after the Western Roman Empire fell in 476 CE. Latin literature enters a centuries-long silence at exactly the moment Tamil epic literature reaches its height. Tamil is not peripheral to world literary history. It is one of the centres that remained active when others went dark.</p>
+      </div>
+      <a href="https://www.projectmadurai.org/pm_etexts/utf8/pmuni0018.html" target="_blank" rel="noopener" class="access-link">📜 Silappadikaram full text — Project Madurai ↗</a>
+    </div>
+
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.epics-section { padding: 5rem 0 7rem; }
+.context-block { margin-bottom: 3rem; }
+.context-block .prose-block p { font-family: var(--font-body); font-size: 1.02rem; color: var(--ink-mid); line-height: 1.9; max-width: 70ch; margin-bottom: 1.2em; }
+.context-block .prose-block p strong { color: var(--ink); }
+
+.epic-article { margin-bottom: 1rem; }
+.epic-header { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.75rem; }
+.epic-num { font-family: var(--font-display); font-size: 3rem; font-weight: 300; color: var(--rule); line-height: 1; flex-shrink: 0; }
+.epic-title { font-family: var(--font-display); font-size: clamp(1.5rem,3.5vw,2.2rem); font-weight: 400; color: var(--ink); margin-bottom: 0.25rem; }
+.epic-ta { font-family: var(--font-tamil); font-size: 1rem; color: var(--tamil-red); font-weight: 400; margin-left: 0.5rem; }
+.epic-meaning { font-family: var(--font-body); font-style: italic; font-size: 1rem; color: var(--ink-soft); }
+
+.epic-body { padding-left: 4.5rem; }
+.epic-meta-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+.epic-meta-pill { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.07em; color: var(--ink-soft); border: 1px solid var(--rule); padding: 0.2rem 0.75rem; border-radius: 2px; }
+.epic-main h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 500; color: var(--crimson); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.75rem; margin: 1.25rem 0 0.5rem; }
+.epic-main p { font-family: var(--font-body); font-size: 1.02rem; color: var(--ink-mid); line-height: 1.88; max-width: 68ch; margin-bottom: 0.75rem; }
+
+.read-more-link { display: inline-block; margin-top: 0.75rem; font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.08em; color: var(--crimson); text-decoration: none; border-bottom: 1px solid rgba(139,26,26,0.3); padding-bottom: 2px; transition: all 0.2s; }
+.read-more-link:hover { letter-spacing: 0.12em; }
+
+.comparison-block .prose-block p { font-family: var(--font-body); font-size: 1.02rem; color: var(--ink-mid); line-height: 1.9; max-width: 70ch; margin-bottom: 1.2em; }
+.comparison-block .prose-block p strong { color: var(--ink); }
+</style>

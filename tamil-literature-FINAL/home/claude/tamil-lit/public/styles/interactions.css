@@ -1,0 +1,11 @@
+/* ─── INTERACTIONS v3 — light theme ─── */
+
+/* Nav scrolled */
+.nav--scrolled { box-shadow: 0 1px 16px rgba(26,22,20,0.07); }
+
+/* Page enter */
+@keyframes pageEnter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+main { animation: pageEnter 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* Active nav */
+.nav-links a.nav-active { color: var(--crimson); }

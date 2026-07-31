@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const vleFeatures = [
+  {
+    title: 'Study Materials & E-Content',
+    description: 'Access official study materials, PDF notes, and structured e-content curated by the Department of Employment and Training for various competitive exams.',
+    icon: '📚'
+  },
+  {
+    title: 'Mock Tests & Practice',
+    description: 'Take online practice tests and mock exams designed to simulate the real testing environment and assess your preparation.',
+    icon: '📝'
+  },
+  {
+    title: 'Previous Year Papers',
+    description: 'Download and review official previous year question papers to understand exam patterns and frequently asked questions.',
+    icon: '📄'
+  },
+  {
+    title: 'Video Tutorials',
+    description: 'Watch video lessons and tutorials on the official TN Career Services Employment YouTube channel.',
+    icon: '🎥'
+  }
+];
+
+const importantLinks = [
+  {
+    name: 'VLE Portal Home',
+    url: 'https://tamilnaducareerservices.tn.gov.in/vle/',
+    type: 'primary'
+  },
+  {
+    name: 'Browse Courses',
+    url: 'https://tamilnaducareerservices.tn.gov.in/vle/courses',
+    type: 'secondary'
+  },
+  {
+    name: 'Official YouTube Channel',
+    url: 'https://www.youtube.com/channel/UCY7sYV3Q8w44gJ1k4_w05eA',
+    type: 'secondary'
+  }
+];
+---
+
+<Layout title="TN Career Services VLE" description="Access materials from the Virtual Learning Environment (VLE) of Tamil Nadu Career Services." active="VLE">
+  <main class="container">
+    <div class="page-header">
+      <span class="badge">Official Resources</span>
+      <h1>TN Career Services VLE</h1>
+      <p>The Virtual Learning Environment (VLE) is an initiative by the Department of Employment and Training, Government of Tamil Nadu, designed to assist aspirants preparing for various government competitive examinations.</p>
+    </div>
+
+    <!-- Features Grid -->
+    <section class="section">
+      <h2>What the VLE Offers</h2>
+      <div class="syllabus-grid">
+        {vleFeatures.map(feature => (
+          <div class="card syllabus-card">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">{feature.icon}</div>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Important Links -->
+    <section class="section">
+      <h2>Official Links & Access</h2>
+      <div class="card" style="background: var(--surface-2); text-align: center; padding: 2rem;">
+        <p style="margin-bottom: 1.5rem; max-width: 600px; margin-inline: auto;">
+          To access the complete study materials, mock tests, and previous year papers, you must register and log in to the official VLE portal.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          {importantLinks.map(link => (
+            <a 
+              href={link.url} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class={`btn ${link.type === 'primary' ? 'btn-primary' : 'btn-outline'}`}
+            >
+              {link.name} ↗
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How to use -->
+    <section class="section tips-section">
+      <h2>How to Use These Materials</h2>
+      <div class="card">
+        <ul class="tips-list">
+          <li><strong>Registration:</strong> Create an account on the official portal using your details to unlock all e-content.</li>
+          <li><strong>Supplement Your Prep:</strong> Use the official VLE materials alongside standard textbooks (Samacheer Kalvi) for comprehensive coverage.</li>
+          <li><strong>Take Mock Tests:</strong> Regularly attempt the mock tests provided on the portal to improve time management and accuracy.</li>
+          <li><strong>Watch Tutorials:</strong> The TN Career Services YouTube channel regularly posts updates, syllabus breakdowns, and subject tutorials which are highly beneficial.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    border: 2px solid var(--primary);
+  }
+  
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--primary);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--border);
+  }
+  
+  .btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .tips-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .tips-list li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .tips-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+  }
+</style>

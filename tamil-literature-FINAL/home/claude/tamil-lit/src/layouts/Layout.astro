@@ -1,0 +1,87 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "A scholarly history of Tamil literature — 2,000 years of poetry, politics, and civilisation. Based on Mu. Varadarajan's Tamil Ilakkiya Varalaru." } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | தமிழ் இலக்கிய வரலாறு</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+Tamil:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/interactions.css" />
+  </head>
+  <body>
+    <nav class="nav" id="mainNav">
+      <div class="nav-inner">
+        <a href="/" class="nav-brand">
+          <span class="nav-brand-ta">தமிழ் இலக்கியம்</span>
+          <span class="nav-brand-en">Tamil Literature</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/">Home</a></li>
+          <li><a href="/history">History</a></li>
+          <li><a href="/sangam">Sangam</a></li>
+          <li><a href="/works">Works</a></li>
+          <li><a href="/poets">Poets</a></li>
+          <li><a href="/kurals">Thirukkural</a></li>
+          <li><a href="/explore">Explore</a></li>
+        </ul>
+        <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main><slot /></main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <span class="footer-brand-ta">தமிழ் இலக்கிய வரலாறு</span>
+          <span class="footer-brand-sub">Two thousand years of words that endure.</span>
+        </div>
+        <nav class="footer-links">
+          <a href="/history">History</a>
+          <a href="/sangam">Sangam</a>
+          <a href="/epics">Epics</a>
+          <a href="/works">Works</a>
+          <a href="/poets">Poets</a>
+          <a href="/kurals">Thirukkural</a>
+          <a href="/explore">Explore</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>Based on Mu. Varadarajan's <em>Tamil Ilakkiya Varalaru</em>. Full texts via
+        <a href="https://www.projectmadurai.org" target="_blank" rel="noopener">Project Madurai</a> and
+        <a href="https://www.tamilvu.org" target="_blank" rel="noopener">Tamil Virtual University</a>.</p>
+      </div>
+    </footer>
+
+    <script>
+      const nav = document.getElementById('mainNav');
+      window.addEventListener('scroll', () => {
+        nav?.classList.toggle('nav--scrolled', window.scrollY > 40);
+      }, { passive: true });
+      document.getElementById('menuBtn')?.addEventListener('click', () => nav?.classList.toggle('nav--open'));
+      const path = window.location.pathname.replace(/\/$/, '') || '/';
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        const href = a.getAttribute('href')?.replace(/\/$/, '') || '/';
+        if (href === path || (href !== '/' && path.startsWith(href))) a.classList.add('nav-active');
+      });
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 55); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    </script>
+  </body>
+</html>

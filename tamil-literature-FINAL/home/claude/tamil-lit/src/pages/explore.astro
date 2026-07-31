@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+const alphabet = [
+  {char:'அ',roman:'a'},{char:'ஆ',roman:'ā'},{char:'இ',roman:'i'},{char:'ஈ',roman:'ī'},
+  {char:'உ',roman:'u'},{char:'ஊ',roman:'ū'},{char:'எ',roman:'e'},{char:'ஏ',roman:'ē'},
+  {char:'ஐ',roman:'ai'},{char:'ஒ',roman:'o'},{char:'ஓ',roman:'ō'},{char:'ஔ',roman:'au'},
+  {char:'க',roman:'ka'},{char:'ங',roman:'ṅa'},{char:'ச',roman:'ca'},{char:'ஞ',roman:'ña'},
+  {char:'ட',roman:'ṭa'},{char:'ண',roman:'ṇa'},{char:'த',roman:'ta'},{char:'ந',roman:'na'},
+  {char:'ப',roman:'pa'},{char:'ம',roman:'ma'},{char:'ய',roman:'ya'},{char:'ர',roman:'ra'},
+  {char:'ல',roman:'la'},{char:'வ',roman:'va'},{char:'ழ',roman:'ḻa'},{char:'ள',roman:'ḷa'},
+  {char:'ற',roman:'ṟa'},{char:'ன',roman:'ṉa'},
+];
+const terms = [
+  {word:'அகம்',roman:'akam',meaning:'The interior — love poetry of the private heart'},
+  {word:'புறம்',roman:'puram',meaning:'The exterior — public poetry of war and kings'},
+  {word:'திணை',roman:'tiṇai',meaning:'Landscape-based genre — the five tinai system'},
+  {word:'உரை',roman:'urai',meaning:'Classical commentary — the living tradition of interpretation'},
+  {word:'கட்டளை',roman:'kaṭṭaḷai',meaning:'Metre — precise rhythmic rules governing Tamil verse'},
+  {word:'மரபு',roman:'marabu',meaning:'The tradition — the unbroken thread of Tamil letters'},
+  {word:'சுவை',roman:'cuvai',meaning:'Aesthetic flavour — the rasa of Tamil poetic experience'},
+  {word:'கலை',roman:'kalai',meaning:'Art — the integration of music, dance, and poetry'},
+];
+const timeline = [
+  {year:'~500 BCE',event:'Earliest Tamil Brahmi inscriptions — among the oldest in South Asia',type:'milestone'},
+  {year:'~300 BCE',event:'Tolkappiyam composed — oldest surviving Tamil text and grammar',type:'milestone'},
+  {year:'~200 BCE–300 CE',event:'Peak of Sangam poetry — Eight Anthologies compiled',type:'era'},
+  {year:'~1st century CE',event:'Roman trade active — coins of Augustus found in Tamil Nadu',type:'milestone'},
+  {year:'~200 CE',event:'Silappadikaram composed — first great Tamil epic',type:'milestone'},
+  {year:'~300 CE',event:'Thirukkural composed — 1,330 couplets on virtue, wealth, and love',type:'milestone'},
+  {year:'300–600 CE',event:'Kalabhra period — Jain and Buddhist literary dominance',type:'era'},
+  {year:'~600–900 CE',event:'Bhakti age — 63 Nayanmars and 12 Alvars compose the Tevaram and Divya Prabandham',type:'era'},
+  {year:'~1180 CE',event:'Kambar composes Kambaramayanam — Tamil Ramayana in 10,000 verses',type:'milestone'},
+  {year:'1010 CE',event:'Rajaraja Chola I completes Thanjavur Brihadeesvarar temple — peak of Chola empire',type:'milestone'},
+  {year:'Today',event:'Tamil spoken by 80 million people. The only ancient classical language never interrupted.',type:'present'},
+];
+---
+<Layout title="Explore Tamil Literature" description="Explore Tamil script, literary vocabulary, key facts, and an interactive timeline of Tamil literary history.">
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-eyebrow">An Interactive Introduction</div>
+    <h1>
+      <span class="hero-title-ta">ஆராயுங்கள்</span>
+      <span class="hero-title-en">Explore</span>
+    </h1>
+    <p class="hero-intro">The Tamil script. Literary vocabulary. A timeline from 500 BCE to today. Start here if you are new to Tamil literature — or return here to anchor what you have read.</p>
+  </div>
+</section>
+
+<section class="explore-section">
+  <div class="container">
+
+    <div class="section-label">The Script</div>
+    <h2 class="section-title">The Tamil Alphabet <span style="font-family:var(--font-tamil);font-size:1.2rem;color:var(--tamil-red)">தமிழ் எழுத்துக்கள்</span></h2>
+    <p class="section-intro">Tamil script is a Brahmic abugida with 12 vowels, 18 consonants, and 216 combined forms. It has remained largely unchanged for over 1,500 years. Tolkappiyam codified its phonemic rules in the 3rd century BCE.</p>
+    <div class="alpha-grid">
+      {alphabet.map(l => (
+        <div class="alpha-cell reveal">
+          <span class="alpha-char">{l.char}</span>
+          <span class="alpha-roman">{l.roman}</span>
+        </div>
+      ))}
+    </div>
+
+    <hr class="rule"/>
+
+    <div class="section-label">Literary Vocabulary</div>
+    <h2 class="section-title">Key Terms in Tamil Poetics</h2>
+    <div class="terms-grid">
+      {terms.map(t => (
+        <div class="term-card reveal">
+          <div class="term-word">{t.word}</div>
+          <div class="term-roman">{t.roman}</div>
+          <div class="term-meaning">{t.meaning}</div>
+        </div>
+      ))}
+    </div>
+
+    <hr class="rule"/>
+
+    <div class="section-label">In Numbers</div>
+    <h2 class="section-title">Tamil Literature at a Glance</h2>
+    <div class="facts-grid">
+      {[
+        {num:'5th C. BCE',label:'Earliest Tamil script',detail:'Tamil Brahmi inscriptions found at Adichanallur and Kodumanal — among the oldest writing in South Asia.'},
+        {num:'80+',label:'Languages',detail:'The Thirukkural has been translated into more languages than any other Indian classical text.'},
+        {num:'2,500+',label:'Sangam poems',detail:'Preserved in the eight anthologies, compiled over six centuries of continuous poetic production.'},
+        {num:'1',label:'Uninterrupted language',detail:'Tamil is the only ancient classical language still spoken as a mother tongue by its original community without interruption.'},
+        {num:'30+',label:'Named women poets',detail:'In the Sangam anthologies alone — at a time when Greece preserved exactly one named woman poet (Sappho), most of whose work is lost.'},
+        {num:'10',label:'Major commentators',detail:'Ten ancient scholars wrote full commentaries on Thirukkural. They still disagree on many kurals.'},
+      ].map(f => (
+        <div class="fact-card reveal">
+          <div class="fact-num">{f.num}</div>
+          <div class="fact-label">{f.label}</div>
+          <p class="fact-detail">{f.detail}</p>
+        </div>
+      ))}
+    </div>
+
+    <hr class="rule"/>
+
+    <div class="section-label">The Long View</div>
+    <h2 class="section-title">A Timeline of Tamil Literary History</h2>
+    <div class="timeline">
+      {timeline.map(t => (
+        <div class={`tl-item tl-item--${t.type} reveal`}>
+          <div class="tl-year">{t.year}</div>
+          <div class="tl-dot"></div>
+          <div class="tl-event">{t.event}</div>
+        </div>
+      ))}
+    </div>
+
+    <hr class="rule"/>
+
+    <div class="section-label">Where to Next</div>
+    <h2 class="section-title">Continue Your Study</h2>
+    <div class="card-grid">
+      <a href="/history" class="card reveal">
+        <div class="card-eyebrow">Full narrative history</div>
+        <div class="card-title">The History</div>
+        <div class="card-body">Six chapters from the Three Sangams to the Medieval period. Politics, people, beliefs — and the silences the tradition deliberately created.</div>
+        <div class="card-link">Begin the history →</div>
+      </a>
+      <a href="/works" class="card reveal">
+        <div class="card-eyebrow">Deep studies</div>
+        <div class="card-title">The Works</div>
+        <div class="card-body">Full studies of Tolkappiyam, Purananuru, Thirukkural, and Silappadikaram. Structure, grammar, key poems, political context.</div>
+        <div class="card-link">Browse the works →</div>
+      </a>
+      <a href="/poets" class="card reveal">
+        <div class="card-eyebrow">Who wrote it</div>
+        <div class="card-title">The Poets</div>
+        <div class="card-body">10 full poet profiles — from Kapilar's grief for Pari to Andal's refusal of human marriage. People, not just names.</div>
+        <div class="card-link">Meet the poets →</div>
+      </a>
+      <a href="/kurals" class="card reveal">
+        <div class="card-eyebrow">Read it directly</div>
+        <div class="card-title">Thirukkural</div>
+        <div class="card-body">Browse selected kurals with Tamil original, English translation, commentary, and political notes. Every poem marked by TN school grade.</div>
+        <div class="card-link">Read the Kural →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.explore-section { padding: 5rem 0 7rem; }
+.alpha-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 1rem; }
+.alpha-cell { background: var(--bg); padding: 1.25rem 0.5rem; display: flex; flex-direction: column; align-items: center; transition: background 0.2s; cursor: default; }
+.alpha-cell:hover { background: var(--bg-alt); }
+.alpha-char { font-family: var(--font-tamil); font-size: 1.8rem; color: var(--tamil-red); line-height: 1.2; margin-bottom: 0.25rem; }
+.alpha-roman { font-family: var(--font-display); font-style: italic; font-size: 0.72rem; color: var(--ink-faint); }
+
+.terms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 1rem; }
+.term-card { background: var(--bg); padding: 1.5rem; transition: background 0.2s; }
+.term-card:hover { background: var(--bg-alt); }
+.term-word { font-family: var(--font-tamil); font-size: 1.6rem; color: var(--tamil-red); line-height: 1.3; margin-bottom: 0.2rem; }
+.term-roman { font-family: var(--font-display); font-style: italic; font-size: 0.9rem; color: var(--ink-faint); margin-bottom: 0.5rem; }
+.term-meaning { font-family: var(--font-body); font-size: 0.92rem; color: var(--ink-mid); line-height: 1.65; }
+
+.facts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 1rem; }
+.fact-card { background: var(--bg); padding: 1.75rem; transition: background 0.2s; }
+.fact-card:hover { background: var(--bg-alt); }
+.fact-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 500; color: var(--crimson); line-height: 1; margin-bottom: 0.2rem; }
+.fact-label { font-family: var(--font-display); font-size: 0.85rem; font-weight: 500; color: var(--ink); margin-bottom: 0.6rem; }
+.fact-detail { font-family: var(--font-body); font-size: 0.92rem; color: var(--ink-soft); line-height: 1.75; margin: 0; }
+
+.timeline { border-left: 1px solid var(--rule); padding-left: 2rem; margin-bottom: 1rem; }
+.tl-item { display: grid; grid-template-columns: 140px 12px 1fr; gap: 1rem; align-items: start; margin-bottom: 1.75rem; }
+.tl-year { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.06em; color: var(--crimson); text-align: right; padding-top: 0.1rem; }
+.tl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rule); margin-top: 0.3rem; flex-shrink: 0; }
+.tl-item--milestone .tl-dot { background: var(--crimson); }
+.tl-item--present .tl-dot { background: var(--crimson); box-shadow: 0 0 0 3px rgba(139,26,26,0.15); }
+.tl-event { font-family: var(--font-body); font-size: 0.97rem; color: var(--ink-mid); line-height: 1.7; }
+.tl-item--present .tl-event { color: var(--ink); font-weight: 500; }
+</style>

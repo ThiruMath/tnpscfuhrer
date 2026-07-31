@@ -1,0 +1,427 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const poets = [
+  {
+    name: 'Thiruvalluvar',
+    tamil: 'திருவள்ளுவர்',
+    period: '~300 BCE',
+    era: 'Post-Sangam',
+    known: 'Thirukkural',
+    bio: 'The sage-poet whose 1,330 couplets on virtue, wealth, and love stand as the universal ethical text of the Tamil world. His true identity remains a mystery, making him all the more mythic.',
+    quote: 'The strength of the strong is their forbearance.',
+    icon: '✦',
+    accent: '#C9983A',
+  },
+  {
+    name: 'Avvaiyar',
+    tamil: 'ஔவையார்',
+    period: 'Sangam era (~3rd century BCE)',
+    era: 'Sangam',
+    known: 'Wisdom verses, Purananuru',
+    bio: 'Perhaps the most beloved Tamil poet — a woman sage who moved freely in kings courts and composed both powerful battle hymns and tender moral verses. Avvaiyar means respected older woman, a title given to several female poets across different centuries.',
+    quote: 'What you have learned is a handful; what you have not is the size of the world.',
+    icon: '❋',
+    accent: '#9B7BB5',
+  },
+  {
+    name: 'Ilango Adigal',
+    tamil: 'இளங்கோ அடிகள்',
+    period: '~2nd century CE',
+    era: 'Post-Sangam',
+    known: 'Silappadikaram',
+    bio: 'A Jain or Buddhist prince who renounced the throne to compose the Silappadikaram — The Tale of the Anklet — one of the five great Tamil epics. A story of love, betrayal, and divine justice.',
+    quote: 'The anklet that jingled with her step became the instrument of a queen\'s wrath.',
+    icon: '◆',
+    accent: '#C4443A',
+  },
+  {
+    name: 'Kambar',
+    tamil: 'கம்பர்',
+    period: '12th century CE',
+    era: 'Medieval',
+    known: 'Kambaramayanam',
+    bio: 'The Tamil Homer who transformed the Sanskrit Ramayana into the Kambaramayanam — not a translation, but a radical reimagining. His Rama speaks Tamil, thinks Tamil, and dreams in Tamil metaphors drawn from Sangam tradition.',
+    quote: 'Even in pain, the noble heart does not lose its grace.',
+    icon: '◇',
+    accent: '#3A6B8B',
+  },
+  {
+    name: 'Manikkavacakar',
+    tamil: 'மாணிக்கவாசகர்',
+    period: '9th century CE',
+    era: 'Bhakti',
+    known: 'Thiruvasagam',
+    bio: 'A prime minister who surrendered his kingdom for God. His Thiruvasagam is among the most intense devotional poetry in any language — oscillating between ecstasy, anguish, and surrender.',
+    quote: 'He made me His, and I am remade.',
+    icon: '✿',
+    accent: '#A07830',
+  },
+  {
+    name: 'Nammalvar',
+    tamil: 'நம்மாழ்வார்',
+    period: '9th century CE',
+    era: 'Bhakti',
+    known: 'Thiruvaymoli',
+    bio: 'The greatest of the twelve Alvars, whose 4,000-verse Nalayira Divya Prabandham is considered the Tamil Veda. Born in mystic silence, he finally spoke only in poetry of such depth that it became scripture.',
+    quote: 'The Lord entered my heart and would not leave.',
+    icon: '❖',
+    accent: '#3A7A5A',
+  },
+  {
+    name: 'Sundarar',
+    tamil: 'சுந்தரர்',
+    period: '8th century CE',
+    era: 'Bhakti',
+    known: 'Tevaram',
+    bio: 'One of the three canonical Nayanmars who composed the Tevaram. Known for his intimate, even argumentative relationship with Shiva — friend more than supplicant.',
+    quote: 'I call You my old companion; You cannot refuse.',
+    icon: '✺',
+    accent: '#9E5A2A',
+  },
+  {
+    name: 'Kapilar',
+    tamil: 'கபிலர்',
+    period: 'Sangam era',
+    era: 'Sangam',
+    known: 'Kurinji Pattu, Purananuru',
+    bio: 'The greatest of Sangam poets — a Brahmin who composed the celebrated Kurinji Pattu and some of the most moving elegies in Purananuru for his patron, the chieftain Pari.',
+    quote: 'The mountains bloom with kurinji, and I think of you.',
+    icon: '⬡',
+    accent: '#3A7A3A',
+  },
+];
+
+const eras = [
+  { era: 'Sangam', range: '300 BCE – 300 CE', color: '#C9983A', desc: 'Secular, classical, nature-based. Hundreds of named poets writing about love and war. No religious agenda — just the human heart.' },
+  { era: 'Post-Sangam', range: '200 CE – 600 CE', color: '#8B1A1A', desc: 'The era of the great epics: Silappadikaram, Manimekalai, and Thirukkural. More narrative, more philosophical.' },
+  { era: 'Bhakti', range: '600 CE – 1000 CE', color: '#9B7BB5', desc: 'Intense devotional poetry by Nayanmars (Shaiva) and Alvars (Vaishnava). The emotional range is vast — from tender surrender to ecstatic union.' },
+  { era: 'Medieval', range: '900 CE – 1300 CE', color: '#3A6B8B', desc: 'Kambar reimagines the Ramayana. Chola patronage produces encyclopaedic works. Literature becomes grand and courtly.' },
+];
+---
+<Layout title="Tamil Poets" description="Meet the great poets of Tamil literature — Thiruvalluvar, Avvaiyar, Kambar, and more.">
+
+<section class="poets-hero">
+  <div class="poets-hero-bg"></div>
+  <div class="ph-glow"></div>
+  <div class="container poets-hero-content">
+    <p class="section-label">The Voices</p>
+    <h1 class="poets-page-title">
+      <span class="poets-title-ta">கவிஞர்கள்</span>
+      <span class="poets-title-en">The Poets</span>
+    </h1>
+    <p class="poets-intro">
+      From anonymous Sangam singers to celebrated court poets, from wandering saint-women to philosopher-kings — the poets of Tamil literature span two thousand years, every era, and every human condition.
+    </p>
+  </div>
+</section>
+
+<section class="poets-grid-section">
+  <div class="container">
+    {poets.map((poet, i) => (
+      <article class="poet-card-full" style={`--pa: ${poet.accent}; animation-delay: ${i * 0.1}s`}>
+        <div class="pcf-bar"></div>
+        <div class="pcf-inner">
+          <div class="pcf-head">
+            <div class="pcf-icon-box">
+              <span class="pcf-icon">{poet.icon}</span>
+            </div>
+            <div class="pcf-name-block">
+              <h2 class="pcf-name">{poet.name}</h2>
+              <p class="pcf-tamil">{poet.tamil}</p>
+            </div>
+          </div>
+          <div class="pcf-meta">
+            <span class="pcf-period">{poet.period}</span>
+            <span class="pcf-era-tag">{poet.era}</span>
+            <span class="pcf-known">Known for: <em>{poet.known}</em></span>
+          </div>
+          <p class="pcf-bio">{poet.bio}</p>
+          <blockquote class="pcf-quote">
+            <span class="pcf-qmark">"</span>{poet.quote}
+          </blockquote>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="eras-section">
+  <div class="container">
+    <p class="section-label">Context</p>
+    <h2 class="section-title">Eras of Tamil Poetry</h2>
+    <div class="eras-grid">
+      {eras.map((e) => (
+        <div class="era-item" style={`--ea: ${e.color}`}>
+          <div class="era-dot"></div>
+          <h3 class="era-name">{e.era}</h3>
+          <p class="era-range">{e.range}</p>
+          <p class="era-desc">{e.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.poets-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  padding: 10rem 0 5rem;
+  overflow: hidden;
+}
+
+.poets-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(42,31,21,0.7) 0%, transparent 70%);
+}
+
+.ph-glow {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  top: -100px;
+  right: -100px;
+  border-radius: 50%;
+  background: rgba(155,123,181,0.15);
+  filter: blur(100px);
+  animation: float 10s ease-in-out infinite;
+}
+
+.poets-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.poets-page-title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.poets-title-ta {
+  font-family: var(--font-tamil);
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.poets-title-en {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 300;
+  color: var(--parchment);
+  line-height: 1;
+}
+
+.poets-intro {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--parchment-dark);
+  max-width: 65ch;
+  line-height: 1.85;
+}
+
+.poets-grid-section {
+  padding: 6rem 0 8rem;
+}
+
+.poet-card-full {
+  display: flex;
+  flex-direction: column;
+  background: rgba(15,10,6,0.3);
+  border: 1px solid rgba(201,152,58,0.08);
+  margin-bottom: 2px;
+  overflow: hidden;
+  transition: background 0.35s;
+  animation: fadeUp 0.8s var(--ease-out) both;
+  position: relative;
+}
+
+.poet-card-full:hover {
+  background: rgba(42,31,21,0.5);
+}
+
+.pcf-bar {
+  height: 2px;
+  background: var(--pa);
+  opacity: 0.7;
+}
+
+.pcf-inner {
+  padding: 2.5rem 3rem;
+}
+
+.pcf-head {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.pcf-icon-box {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(201,152,58,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15,10,6,0.6);
+  flex-shrink: 0;
+}
+
+.pcf-icon {
+  font-size: 1.4rem;
+  color: var(--pa);
+}
+
+.pcf-name {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--parchment);
+  margin-bottom: 0.15rem;
+}
+
+.pcf-tamil {
+  font-family: var(--font-tamil);
+  font-size: 1rem;
+  color: var(--pa);
+}
+
+.pcf-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.pcf-period {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}
+
+.pcf-era-tag {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.65rem;
+  border: 1px solid rgba(201,152,58,0.2);
+  color: var(--gold);
+}
+
+.pcf-known {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.pcf-known em {
+  color: var(--parchment-dark);
+  font-style: italic;
+}
+
+.pcf-bio {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--parchment-dark);
+  max-width: 75ch;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.pcf-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  border-left: 2px solid var(--pa);
+  padding-left: 1.25rem;
+  max-width: 65ch;
+  margin: 0;
+}
+
+.pcf-qmark {
+  font-size: 1.5rem;
+  opacity: 0.5;
+  margin-right: 0.15rem;
+  font-style: normal;
+  line-height: 1;
+  color: var(--pa);
+}
+
+.eras-section {
+  padding: 8rem 0;
+  background: var(--ink-mid);
+  border-top: 1px solid rgba(201,152,58,0.08);
+}
+
+.eras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px;
+  margin-top: 3rem;
+}
+
+.era-item {
+  padding: 2.5rem 2rem;
+  background: rgba(15,10,6,0.4);
+  transition: background 0.3s;
+}
+
+.era-item:hover {
+  background: rgba(42,31,21,0.6);
+}
+
+.era-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ea);
+  margin-bottom: 1rem;
+}
+
+.era-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--parchment);
+  margin-bottom: 0.25rem;
+}
+
+.era-range {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--ea);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.era-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .pcf-inner {
+    padding: 1.5rem;
+  }
+  .pcf-head {
+    flex-wrap: wrap;
+  }
+  .poets-grid-section .container {
+    padding: 0 1rem;
+  }
+}
+</style>

@@ -12,19 +12,28 @@ const {
 } = Astro.props;
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/calendar', label: 'Calendar' },
-  { href: '/pyq', label: 'PYQ Quiz' },
-  { href: '/notes', label: 'Notes' },
-  { href: '/current-affairs', label: 'Current Affairs' },
-  { href: '/revision', label: 'Daily Revision' },
-  { href: '/syllabus', label: 'Syllabus' },
-  { href: '/tnpsc', label: 'TNPSC' },
-  { href: '/vle', label: 'VLE' },
-  { href: '/tamil-literature', label: 'Tamil Literature' },
-  { href: '/math', label: 'Math' },
-  { href: '/about', label: 'About' },
+  { href: '/', label: 'Dashboard', icon: '🏠', section: 'main' },
+  { href: '/syllabus', label: 'Syllabus & Exam', icon: '📋', section: 'main' },
+  { href: '/pyq', label: 'Stats & Quiz', icon: '📊', section: 'main' },
+  { href: '/current-affairs', label: 'Current Affairs', icon: '📰', section: 'main' },
+  { href: '/notes', label: 'Study Notes', icon: '📚', section: 'study' },
+  { href: '/vle', label: 'VLE Material', icon: '🎓', section: 'study' },
+  { href: '/revision', label: 'Daily Revision', icon: '🔥', section: 'study' },
+  { href: '/tamil-literature', label: 'Tamil Literature', icon: '📖', section: 'subject' },
+  { href: '/math', label: 'Math', icon: '🧮', section: 'subject' },
+  { href: '/tnpsc', label: 'TNPSC Info', icon: 'ℹ️', section: 'other' },
+  { href: '/calendar', label: 'Exam Calendar', icon: '📅', section: 'other' },
 ];
+
+const sections = [
+  { key: 'main', label: 'Main' },
+  { key: 'study', label: 'Study' },
+  { key: 'subject', label: 'Subjects' },
+  { key: 'other', label: 'Other' },
+];
+
+// Derive page title from active prop
+const pageTitle = active || 'Dashboard';
 ---
 
 <!DOCTYPE html>
@@ -37,66 +46,79 @@ const navLinks = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <script is:inline>
       const theme = (() => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
           return localStorage.getItem('theme');
         }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
+        return 'dark';
       })();
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark-theme');
+      if (theme === 'light') {
+        document.documentElement.classList.add('light-theme');
       } else {
-        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.classList.remove('light-theme');
       }
     </script>
   </head>
   <body>
-    <nav>
-      <a href="/" class="nav-logo">TNPSC <span>Fuhrer</span></a>
-      <div class="nav-actions">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-      <ul class="nav-links" id="nav-links">
-        {navLinks.map(link => (
-          <li>
-            <a href={link.href} class={active === link.label ? 'active' : ''}>
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div class="app-shell">
+      <!-- Sidebar Overlay (mobile) -->
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-    <slot />
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <a href="/" class="sidebar-logo">
+            <span class="logo-icon">TF</span>
+            <span>TNPSC <span class="logo-accent">Fuhrer</span></span>
+          </a>
+        </div>
 
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <span class="footer-logo">TNPSC <strong>Fuhrer</strong></span>
-          <p>Your companion for cracking TNPSC exams.</p>
+        <nav class="sidebar-nav">
+          {sections.map(section => (
+            <>
+              <span class="sidebar-section-label">{section.label}</span>
+              {navLinks.filter(l => l.section === section.key).map(link => (
+                <a href={link.href} class={`sidebar-link ${active === link.label ? 'active' : ''}`}>
+                  <span class="nav-icon">{link.icon}</span>
+                  <span>{link.label}</span>
+                </a>
+              ))}
+            </>
+          ))}
+        </nav>
+
+        <div class="sidebar-footer">
+          <button id="theme-toggle" class="sidebar-link" style="width:100%; border:none; cursor:pointer; background:none;">
+            <span class="nav-icon" id="theme-icon">🌙</span>
+            <span id="theme-label">Light Mode</span>
+          </button>
         </div>
-        <div class="footer-links">
-          <a href="/calendar">Exam Calendar</a>
-          <a href="/pyq">PYQ Practice</a>
-          <a href="/notes">Study Notes</a>
-          <a href="/current-affairs">Current Affairs</a>
-          <a href="/revision">Daily Revision</a>
-          <a href="/syllabus">Syllabus</a>
-          <a href="/vle">VLE</a>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="mobile-sidebar-toggle" id="mobile-sidebar-toggle" aria-label="Toggle sidebar">
+              ☰
+            </button>
+            <h1 class="topbar-title">{pageTitle}</h1>
+          </div>
+          <div class="topbar-right">
+            <button class="topbar-btn" id="topbar-theme-toggle" aria-label="Toggle theme">🌙</button>
+            <a href="/current-affairs" class="topbar-btn" aria-label="Notifications">🔔</a>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+          <slot />
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} TNPSC Fuhrer — Built for aspirants, by aspirants.</p>
-      </div>
-    </footer>
+    </div>
   </body>
 </html>
 
@@ -105,26 +127,70 @@ const navLinks = [
 </style>
 
 <script>
-  const toggle = document.getElementById('mobile-toggle');
-  const navLinks = document.getElementById('nav-links');
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      toggle.classList.toggle('open');
+  // Sidebar toggle (mobile)
+  const sidebarToggle = document.getElementById('mobile-sidebar-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  function toggleSidebar() {
+    sidebar?.classList.toggle('open');
+    overlay?.classList.toggle('active');
+  }
+
+  sidebarToggle?.addEventListener('click', toggleSidebar);
+  overlay?.addEventListener('click', toggleSidebar);
+
+  // Theme toggle
+  function setupThemeToggle(btnId: string) {
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+
+    const updateIcon = () => {
+      const isLight = document.documentElement.classList.contains('light-theme');
+      const iconEl = btn.querySelector('#theme-icon') || btn;
+      const labelEl = btn.querySelector('#theme-label');
+      if (iconEl && btnId === 'theme-toggle') {
+        iconEl.textContent = isLight ? '🌙' : '☀️';
+      } else if (btnId === 'topbar-theme-toggle') {
+        btn.textContent = isLight ? '🌙' : '☀️';
+      }
+      if (labelEl) labelEl.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+    };
+
+    updateIcon();
+
+    btn.addEventListener('click', () => {
+      const isNowLight = document.documentElement.classList.toggle('light-theme');
+      localStorage.setItem('theme', isNowLight ? 'light' : 'dark');
+      updateIcon();
+      // Sync both buttons
+      const otherBtnId = btnId === 'theme-toggle' ? 'topbar-theme-toggle' : 'theme-toggle';
+      const otherBtn = document.getElementById(otherBtnId);
+      if (otherBtn) {
+        const isLight = document.documentElement.classList.contains('light-theme');
+        if (otherBtnId === 'topbar-theme-toggle') {
+          otherBtn.textContent = isLight ? '🌙' : '☀️';
+        } else {
+          const icon = otherBtn.querySelector('#theme-icon');
+          const label = otherBtn.querySelector('#theme-label');
+          if (icon) icon.textContent = isLight ? '🌙' : '☀️';
+          if (label) label.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+        }
+      }
     });
   }
 
-  // Theme toggle script
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    // Set initial icon
-    const isDark = document.documentElement.classList.contains('dark-theme');
-    themeToggle.textContent = isDark ? '☀️' : '🌙';
+  setupThemeToggle('theme-toggle');
+  setupThemeToggle('topbar-theme-toggle');
 
-    themeToggle.addEventListener('click', () => {
-      const isNowDark = document.documentElement.classList.toggle('dark-theme');
-      localStorage.setItem('theme', isNowDark ? 'dark' : 'light');
-      themeToggle.textContent = isNowDark ? '☀️' : '🌙';
+  // Close sidebar on nav link click (mobile)
+  document.querySelectorAll('.sidebar-link').forEach(link => {
+    if (link.id === 'theme-toggle') return;
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        sidebar?.classList.remove('open');
+        overlay?.classList.remove('active');
+      }
     });
-  }
+  });
 </script>

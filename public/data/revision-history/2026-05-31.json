@@ -1,0 +1,35 @@
+{
+  "date": "2026-05-31",
+  "questions": [
+    {
+      "question": "Explain the concept of 'inflation targeting' as a monetary policy strategy adopted by the Reserve Bank of India. Discuss the primary tools RBI employs to achieve price stability, especially in the context of maintaining interest rates.",
+      "topic": "Economy",
+      "source": "concept",
+      "reference": "Hints: Monetary Policy Committee, Repo Rate, Reverse Repo Rate, CRR, SLR, Open Market Operations."
+    },
+    {
+      "question": "Elaborate on the 'Basic Structure Doctrine' of the Indian Constitution, tracing its evolution through landmark Supreme Court judgments. What are its implications for parliamentary sovereignty and the power to amend the Constitution?",
+      "topic": "Polity",
+      "source": "concept",
+      "reference": "Hints: Kesavananda Bharati case (1973), Minerva Mills case (1980), Waman Rao case (1981)."
+    },
+    {
+      "question": "In light of potential West Asia supply shocks, analyze India's strategic preparedness to ensure crude oil and fuel security. What are the economic ramifications of such shocks on India's balance of payments and domestic economy, and what measures can India take to mitigate these risks?",
+      "topic": "International Relations",
+      "source": "news",
+      "reference": "https://www.thehindu.com/news/national/india-well-placed-to-deal-with-any-situation-on-crude-oil-fuel-amid-west-asia-supply-shock-piyush-goyal/article70745651.ece"
+    },
+    {
+      "question": "The data indicating high child malnutrition rates in Gujarat, particularly among tribal communities, highlights a critical public health challenge. Discuss the multi-faceted causes contributing to this issue and suggest comprehensive policy interventions to address it effectively.",
+      "topic": "Social Issues",
+      "source": "news",
+      "reference": "https://www.thehindu.com/data/fact-check-are-40-out-of-100-children-malnourished-in-gujarat/article70744284.ece"
+    },
+    {
+      "question": "Consider the following statements regarding the election of members to the Rajya Sabha:\n1. Members are elected by the elected members of the State Legislative Assemblies.\n2. The election is held using the system of proportional representation by means of the single transferable vote.\n3. The term of a Rajya Sabha member is 6 years, with one-third of its members retiring every two years.\nWhich of the statements given above are correct?\n(A) 1 and 2 only\n(B) 2 and 3 only\n(C) 1 and 3 only\n(D) 1, 2 and 3",
+      "topic": "Polity",
+      "source": "pyq",
+      "reference": ""
+    }
+  ]
+}

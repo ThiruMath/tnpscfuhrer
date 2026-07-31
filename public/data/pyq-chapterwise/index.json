@@ -1,0 +1,1420 @@
+[
+  {
+    "id": "history",
+    "name": "History",
+    "sub_subjects": [
+      {
+        "name": "Ancient History",
+        "chapters": [
+          {
+            "id": "historical-sources-and-pre-historic-period",
+            "number": 1,
+            "name": "Historical Sources and Pre-Historic Period",
+            "book_pages": [
+              1,
+              5
+            ]
+          },
+          {
+            "id": "indus-valley-harappan-civilisation",
+            "number": 2,
+            "name": "Indus Valley (Harappan) Civilisation",
+            "book_pages": [
+              6,
+              11
+            ]
+          },
+          {
+            "id": "the-vedic-era-and-mahajanapadas",
+            "number": 3,
+            "name": "The Vedic Era and Mahajanapadas",
+            "book_pages": [
+              12,
+              17
+            ]
+          },
+          {
+            "id": "religious-movements-of-6th-century-bce",
+            "number": 4,
+            "name": "Religious Movements of 6th Century BCE",
+            "book_pages": [
+              18,
+              26
+            ]
+          },
+          {
+            "id": "mauryan-and-post-mauryan-period",
+            "number": 5,
+            "name": "Mauryan and Post-Mauryan Period",
+            "book_pages": [
+              27,
+              34
+            ]
+          },
+          {
+            "id": "the-gupta-and-the-post-gupta-period",
+            "number": 6,
+            "name": "The Gupta and the Post-Gupta Period",
+            "book_pages": [
+              35,
+              43
+            ]
+          },
+          {
+            "id": "early-medieval-period-800-1200-ce",
+            "number": 7,
+            "name": "Early Medieval Period (800-1200 CE)",
+            "book_pages": [
+              44,
+              52
+            ]
+          },
+          {
+            "id": "sangam-period",
+            "number": 8,
+            "name": "Sangam Period",
+            "book_pages": [
+              53,
+              56
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Medieval History",
+        "chapters": [
+          {
+            "id": "arab-and-turkish-invasion",
+            "number": 9,
+            "name": "Arab and Turkish Invasion",
+            "book_pages": [
+              57,
+              59
+            ]
+          },
+          {
+            "id": "delhi-sultanate",
+            "number": 10,
+            "name": "Delhi Sultanate",
+            "book_pages": [
+              60,
+              69
+            ]
+          },
+          {
+            "id": "vijaynagara-and-bahmani-kingdoms",
+            "number": 11,
+            "name": "Vijaynagara and Bahmani Kingdoms",
+            "book_pages": [
+              70,
+              73
+            ]
+          },
+          {
+            "id": "emergence-of-provincial-kingdoms-north-and-south-india",
+            "number": 12,
+            "name": "Emergence of Provincial Kingdoms (North and South India)",
+            "book_pages": [
+              74,
+              77
+            ]
+          },
+          {
+            "id": "religious-movements-of-15th-and-16th-century-ce",
+            "number": 13,
+            "name": "Religious Movements of 15th and 16th Century CE",
+            "book_pages": [
+              78,
+              84
+            ]
+          },
+          {
+            "id": "mughal-empire",
+            "number": 14,
+            "name": "Mughal Empire",
+            "book_pages": [
+              85,
+              97
+            ]
+          },
+          {
+            "id": "post-mughal-period-1707-1857",
+            "number": 15,
+            "name": "Post-Mughal Period (1707-1857)",
+            "book_pages": [
+              98,
+              100
+            ]
+          },
+          {
+            "id": "the-maratha-empire-and-confederatory",
+            "number": 16,
+            "name": "The Maratha Empire and Confederatory",
+            "book_pages": [
+              101,
+              105
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Modern History",
+        "chapters": [
+          {
+            "id": "rise-of-new-states",
+            "number": 17,
+            "name": "Rise of New States",
+            "book_pages": [
+              106,
+              109
+            ]
+          },
+          {
+            "id": "advent-of-european-companies-in-india",
+            "number": 18,
+            "name": "Advent of European Companies in India",
+            "book_pages": [
+              110,
+              113
+            ]
+          },
+          {
+            "id": "british-policies-and-its-economic-impact-in-india",
+            "number": 19,
+            "name": "British Policies and Its Economic Impact in India",
+            "book_pages": [
+              114,
+              119
+            ]
+          },
+          {
+            "id": "peasants-tribal-and-trade-union-movements",
+            "number": 20,
+            "name": "Peasants, Tribal and Trade Union Movements",
+            "book_pages": [
+              120,
+              126
+            ]
+          },
+          {
+            "id": "socio-religious-and-cultural-reforms",
+            "number": 21,
+            "name": "Socio-Religious and Cultural Reforms",
+            "book_pages": [
+              127,
+              135
+            ]
+          },
+          {
+            "id": "development-of-press-and-education-system-in-modern-india",
+            "number": 22,
+            "name": "Development of Press and Education System in Modern India",
+            "book_pages": [
+              136,
+              141
+            ]
+          },
+          {
+            "id": "revolt-of-1857",
+            "number": 23,
+            "name": "Revolt of 1857",
+            "book_pages": [
+              142,
+              148
+            ]
+          },
+          {
+            "id": "indian-national-movement-phase-i-1885-1905",
+            "number": 24,
+            "name": "Indian National Movement Phase-I (1885-1905)",
+            "book_pages": [
+              149,
+              158
+            ]
+          },
+          {
+            "id": "indian-national-movement-phase-ii-1905-1919",
+            "number": 25,
+            "name": "Indian National Movement Phase-II (1905-1919)",
+            "book_pages": [
+              159,
+              164
+            ]
+          },
+          {
+            "id": "indian-national-movement-phase-iii-1919-1947",
+            "number": 26,
+            "name": "Indian National Movement Phase-III (1919-1947)",
+            "book_pages": [
+              165,
+              183
+            ]
+          },
+          {
+            "id": "communalism-and-leftist-politics",
+            "number": 27,
+            "name": "Communalism and Leftist Politics",
+            "book_pages": [
+              184,
+              187
+            ]
+          },
+          {
+            "id": "the-british-governor-generals-and-viceroys",
+            "number": 28,
+            "name": "The British Governor-Generals and Viceroys",
+            "book_pages": [
+              188,
+              194
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Art, Culture & World History",
+        "chapters": [
+          {
+            "id": "art-culture-and-cultural-traditions",
+            "name": "Art, Culture and Cultural Traditions",
+            "book_pages": [
+              195,
+              216
+            ]
+          },
+          {
+            "id": "world-history",
+            "name": "World History",
+            "book_pages": [
+              217,
+              227
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "geography",
+    "name": "Geography",
+    "sub_subjects": [
+      {
+        "name": "World Geography",
+        "chapters": [
+          {
+            "id": "universe-and-solar-system",
+            "number": 1,
+            "name": "Universe and Solar System",
+            "book_pages": [
+              228,
+              232
+            ]
+          },
+          {
+            "id": "the-earth",
+            "number": 2,
+            "name": "The Earth",
+            "book_pages": [
+              233,
+              238
+            ]
+          },
+          {
+            "id": "geomorphology",
+            "number": 3,
+            "name": "Geomorphology",
+            "book_pages": [
+              239,
+              244
+            ]
+          },
+          {
+            "id": "climatology",
+            "number": 4,
+            "name": "Climatology",
+            "book_pages": [
+              245,
+              253
+            ]
+          },
+          {
+            "id": "oceanography",
+            "number": 5,
+            "name": "Oceanography",
+            "book_pages": [
+              254,
+              261
+            ]
+          },
+          {
+            "id": "biogeography",
+            "number": 6,
+            "name": "Biogeography",
+            "book_pages": [
+              262,
+              267
+            ]
+          },
+          {
+            "id": "agriculture-geography",
+            "number": 7,
+            "name": "Agriculture Geography",
+            "book_pages": [
+              268,
+              274
+            ]
+          },
+          {
+            "id": "minerals-and-energy-resources",
+            "number": 8,
+            "name": "Minerals and Energy Resources",
+            "book_pages": [
+              275,
+              279
+            ]
+          },
+          {
+            "id": "industry-and-transport",
+            "number": 9,
+            "name": "Industry and Transport",
+            "book_pages": [
+              280,
+              284
+            ]
+          },
+          {
+            "id": "social-and-cultural-geography",
+            "number": 10,
+            "name": "Social and Cultural Geography",
+            "book_pages": [
+              285,
+              289
+            ]
+          },
+          {
+            "id": "continent-and-countries",
+            "number": 11,
+            "name": "Continent and Countries",
+            "book_pages": [
+              290,
+              298
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Indian Geography",
+        "chapters": [
+          {
+            "id": "general-introduction-of-india",
+            "number": 12,
+            "name": "General Introduction of India",
+            "book_pages": [
+              299,
+              300
+            ]
+          },
+          {
+            "id": "geological-structure-of-india",
+            "number": 13,
+            "name": "Geological Structure of India",
+            "book_pages": [
+              301,
+              303
+            ]
+          },
+          {
+            "id": "physical-division-of-india",
+            "number": 14,
+            "name": "Physical Division of India",
+            "book_pages": [
+              304,
+              308
+            ]
+          },
+          {
+            "id": "drainage-system-of-india",
+            "number": 15,
+            "name": "Drainage System of India",
+            "book_pages": [
+              309,
+              317
+            ]
+          },
+          {
+            "id": "climate-of-india",
+            "number": 16,
+            "name": "Climate of India",
+            "book_pages": [
+              318,
+              323
+            ]
+          },
+          {
+            "id": "natural-vegetation-and-wildlife",
+            "number": 17,
+            "name": "Natural Vegetation and Wildlife",
+            "book_pages": [
+              324,
+              331
+            ]
+          },
+          {
+            "id": "soils-of-india",
+            "number": 18,
+            "name": "Soils of India",
+            "book_pages": [
+              332,
+              335
+            ]
+          },
+          {
+            "id": "agriculture-irrigation-and-animal-husbandry-in-india",
+            "number": 19,
+            "name": "Agriculture, Irrigation and Animal Husbandry in India",
+            "book_pages": [
+              336,
+              346
+            ]
+          },
+          {
+            "id": "minerals-and-energy-resources",
+            "number": 20,
+            "name": "Minerals and Energy Resources",
+            "book_pages": [
+              347,
+              353
+            ]
+          },
+          {
+            "id": "industries-and-research-centres-in-india",
+            "number": 21,
+            "name": "Industries and Research Centres in India",
+            "book_pages": [
+              354,
+              360
+            ]
+          },
+          {
+            "id": "transportation-and-communication",
+            "number": 22,
+            "name": "Transportation and Communication",
+            "book_pages": [
+              361,
+              365
+            ]
+          },
+          {
+            "id": "human-resources",
+            "number": 23,
+            "name": "Human Resources",
+            "book_pages": [
+              366,
+              371
+            ]
+          },
+          {
+            "id": "states-and-union-territories-of-india",
+            "number": 24,
+            "name": "States and Union Territories of India",
+            "book_pages": [
+              372,
+              374
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Environment & Ecology",
+        "chapters": [
+          {
+            "id": "environment-and-ecology",
+            "number": 25,
+            "name": "Environment and Ecology",
+            "book_pages": [
+              375,
+              380
+            ]
+          },
+          {
+            "id": "pollution",
+            "number": 26,
+            "name": "Pollution",
+            "book_pages": [
+              381,
+              389
+            ]
+          },
+          {
+            "id": "climate-change",
+            "number": 27,
+            "name": "Climate Change",
+            "book_pages": [
+              390,
+              399
+            ]
+          },
+          {
+            "id": "biodiversity",
+            "number": 28,
+            "name": "Biodiversity",
+            "book_pages": [
+              400,
+              406
+            ]
+          },
+          {
+            "id": "environmental-planning-and-management",
+            "number": 29,
+            "name": "Environmental Planning and Management",
+            "book_pages": [
+              407,
+              410
+            ]
+          },
+          {
+            "id": "sustainable-development-and-natural-disaster",
+            "number": 30,
+            "name": "Sustainable Development and Natural Disaster",
+            "book_pages": [
+              411,
+              416
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "indian-polity",
+    "name": "Indian Polity",
+    "sub_subjects": [
+      {
+        "name": "",
+        "chapters": [
+          {
+            "id": "constitutional-development",
+            "number": 1,
+            "name": "Constitutional Development",
+            "book_pages": [
+              417,
+              420
+            ]
+          },
+          {
+            "id": "framing-of-indian-constitution",
+            "number": 2,
+            "name": "Framing of Indian Constitution",
+            "book_pages": [
+              421,
+              427
+            ]
+          },
+          {
+            "id": "the-preamble",
+            "number": 3,
+            "name": "The Preamble",
+            "book_pages": [
+              428,
+              430
+            ]
+          },
+          {
+            "id": "citizenship-and-union-and-its-territory",
+            "number": 4,
+            "name": "Citizenship and Union and Its Territory",
+            "book_pages": [
+              431,
+              436
+            ]
+          },
+          {
+            "id": "fundamental-rights",
+            "number": 5,
+            "name": "Fundamental Rights",
+            "book_pages": [
+              437,
+              446
+            ]
+          },
+          {
+            "id": "directive-principles-of-state-policy-dpsp",
+            "number": 6,
+            "name": "Directive Principles of State Policy (DPSP)",
+            "book_pages": [
+              447,
+              450
+            ]
+          },
+          {
+            "id": "fundamental-duties",
+            "number": 7,
+            "name": "Fundamental Duties",
+            "book_pages": [
+              451,
+              452
+            ]
+          },
+          {
+            "id": "union-executive",
+            "number": 8,
+            "name": "Union Executive",
+            "book_pages": [
+              453,
+              460
+            ]
+          },
+          {
+            "id": "the-union-legislature",
+            "number": 9,
+            "name": "The Union Legislature",
+            "book_pages": [
+              461,
+              471
+            ]
+          },
+          {
+            "id": "judiciary",
+            "number": 10,
+            "name": "Judiciary",
+            "book_pages": [
+              472,
+              477
+            ]
+          },
+          {
+            "id": "state-administration",
+            "number": 11,
+            "name": "State Administration",
+            "book_pages": [
+              478,
+              483
+            ]
+          },
+          {
+            "id": "centre-state-relationship",
+            "number": 12,
+            "name": "Centre-State Relationship",
+            "book_pages": [
+              484,
+              487
+            ]
+          },
+          {
+            "id": "local-self-government",
+            "number": 13,
+            "name": "Local Self Government",
+            "book_pages": [
+              488,
+              493
+            ]
+          },
+          {
+            "id": "electoral-system-and-party-system",
+            "number": 14,
+            "name": "Electoral System and Party System",
+            "book_pages": [
+              494,
+              498
+            ]
+          },
+          {
+            "id": "constitutional-and-non-constitutional-bodies",
+            "number": 15,
+            "name": "Constitutional and Non-Constitutional Bodies",
+            "book_pages": [
+              499,
+              505
+            ]
+          },
+          {
+            "id": "emergency-provisions",
+            "number": 16,
+            "name": "Emergency Provisions",
+            "book_pages": [
+              506,
+              508
+            ]
+          },
+          {
+            "id": "official-language",
+            "number": 17,
+            "name": "Official Language",
+            "book_pages": [
+              509,
+              510
+            ]
+          },
+          {
+            "id": "constitutional-amendment-and-special-provisions-for-states",
+            "number": 18,
+            "name": "Constitutional Amendment and Special Provisions for States",
+            "book_pages": [
+              511,
+              514
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "indian-economy",
+    "name": "Indian Economy",
+    "sub_subjects": [
+      {
+        "name": "",
+        "chapters": [
+          {
+            "id": "basic-concepts-and-structure-of-indian-economy",
+            "number": 1,
+            "name": "Basic Concepts and Structure of Indian Economy",
+            "book_pages": [
+              515,
+              517
+            ]
+          },
+          {
+            "id": "national-income-and-economic-development",
+            "number": 2,
+            "name": "National Income and Economic Development",
+            "book_pages": [
+              518,
+              523
+            ]
+          },
+          {
+            "id": "economic-planning",
+            "number": 3,
+            "name": "Economic Planning",
+            "book_pages": [
+              524,
+              528
+            ]
+          },
+          {
+            "id": "poverty-unemployment-and-related-schemes",
+            "number": 4,
+            "name": "Poverty, Unemployment and Related Schemes",
+            "book_pages": [
+              529,
+              540
+            ]
+          },
+          {
+            "id": "indian-agriculture",
+            "number": 5,
+            "name": "Indian Agriculture",
+            "book_pages": [
+              541,
+              548
+            ]
+          },
+          {
+            "id": "indian-industries-and-industrial-policy",
+            "number": 6,
+            "name": "Indian Industries and Industrial Policy",
+            "book_pages": [
+              549,
+              554
+            ]
+          },
+          {
+            "id": "money-and-banking",
+            "number": 7,
+            "name": "Money and Banking",
+            "book_pages": [
+              555,
+              564
+            ]
+          },
+          {
+            "id": "financial-market",
+            "number": 8,
+            "name": "Financial Market",
+            "book_pages": [
+              565,
+              569
+            ]
+          },
+          {
+            "id": "public-finance",
+            "number": 9,
+            "name": "Public Finance",
+            "book_pages": [
+              570,
+              576
+            ]
+          },
+          {
+            "id": "balance-of-payment-and-foreign-investments",
+            "number": 10,
+            "name": "Balance of Payment and Foreign Investments",
+            "book_pages": [
+              577,
+              582
+            ]
+          },
+          {
+            "id": "international-financial-institutions",
+            "number": 11,
+            "name": "International Financial Institutions",
+            "book_pages": [
+              583,
+              587
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "general-science",
+    "name": "General Science",
+    "sub_subjects": [
+      {
+        "name": "Physics",
+        "chapters": [
+          {
+            "id": "measurement",
+            "number": 1,
+            "name": "Measurement",
+            "book_pages": [
+              588,
+              590
+            ]
+          },
+          {
+            "id": "motion",
+            "number": 2,
+            "name": "Motion",
+            "book_pages": [
+              591,
+              593
+            ]
+          },
+          {
+            "id": "the-forces-and-law-of-motion",
+            "number": 3,
+            "name": "The Forces and Law of Motion",
+            "book_pages": [
+              594,
+              596
+            ]
+          },
+          {
+            "id": "work-energy-and-power",
+            "number": 4,
+            "name": "Work, Energy and Power",
+            "book_pages": [
+              597,
+              598
+            ]
+          },
+          {
+            "id": "gravitation",
+            "number": 5,
+            "name": "Gravitation",
+            "book_pages": [
+              599,
+              601
+            ]
+          },
+          {
+            "id": "mechanical-properties-of-matter",
+            "number": 6,
+            "name": "Mechanical Properties of Matter",
+            "book_pages": [
+              602,
+              606
+            ]
+          },
+          {
+            "id": "oscillation-wave-and-sound",
+            "number": 7,
+            "name": "Oscillation, Wave and Sound",
+            "book_pages": [
+              607,
+              611
+            ]
+          },
+          {
+            "id": "heat-and-thermodynamics",
+            "number": 8,
+            "name": "Heat and Thermodynamics",
+            "book_pages": [
+              612,
+              616
+            ]
+          },
+          {
+            "id": "wave-optics",
+            "number": 9,
+            "name": "Wave Optics",
+            "book_pages": [
+              617,
+              623
+            ]
+          },
+          {
+            "id": "electricity",
+            "number": 10,
+            "name": "Electricity",
+            "book_pages": [
+              624,
+              628
+            ]
+          },
+          {
+            "id": "magnetism",
+            "number": 11,
+            "name": "Magnetism",
+            "book_pages": [
+              629,
+              631
+            ]
+          },
+          {
+            "id": "photoelectric-effect",
+            "number": 12,
+            "name": "Photoelectric Effect",
+            "book_pages": [
+              632,
+              633
+            ]
+          },
+          {
+            "id": "atomic-and-nuclear-physics",
+            "number": 13,
+            "name": "Atomic and Nuclear Physics",
+            "book_pages": [
+              634,
+              635
+            ]
+          },
+          {
+            "id": "electronics-or-semiconductor-device",
+            "number": 14,
+            "name": "Electronics or Semiconductor Device",
+            "book_pages": [
+              636,
+              637
+            ]
+          },
+          {
+            "id": "communication-system",
+            "number": 15,
+            "name": "Communication System",
+            "book_pages": [
+              638,
+              639
+            ]
+          },
+          {
+            "id": "nano-technology",
+            "number": 16,
+            "name": "Nano Technology",
+            "book_pages": [
+              640,
+              641
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Chemistry",
+        "chapters": [
+          {
+            "id": "atomic-structure-and-radioactivity",
+            "number": 1,
+            "name": "Atomic Structure and Radioactivity",
+            "book_pages": [
+              642,
+              646
+            ]
+          },
+          {
+            "id": "chemical-bonding",
+            "number": 2,
+            "name": "Chemical Bonding",
+            "book_pages": [
+              647,
+              648
+            ]
+          },
+          {
+            "id": "state-of-matter",
+            "number": 3,
+            "name": "State of Matter",
+            "book_pages": [
+              649,
+              652
+            ]
+          },
+          {
+            "id": "acids-bases-and-salts",
+            "number": 4,
+            "name": "Acids, Bases and Salts",
+            "book_pages": [
+              653,
+              655
+            ]
+          },
+          {
+            "id": "oxidation-reduction-and-chemical-reaction",
+            "number": 5,
+            "name": "Oxidation, Reduction and Chemical Reaction",
+            "book_pages": [
+              656,
+              657
+            ]
+          },
+          {
+            "id": "solutions-and-surface-chemistry",
+            "number": 6,
+            "name": "Solutions and Surface Chemistry",
+            "book_pages": [
+              658,
+              660
+            ]
+          },
+          {
+            "id": "thermochemistry",
+            "number": 7,
+            "name": "Thermochemistry",
+            "book_pages": [
+              661,
+              663
+            ]
+          },
+          {
+            "id": "periodic-classification-of-elements",
+            "number": 8,
+            "name": "Periodic Classification of Elements",
+            "book_pages": [
+              664,
+              665
+            ]
+          },
+          {
+            "id": "metal-and-its-compounds",
+            "number": 9,
+            "name": "Metal and its Compounds",
+            "book_pages": [
+              666,
+              669
+            ]
+          },
+          {
+            "id": "non-metal-and-its-compounds",
+            "number": 10,
+            "name": "Non-metal and its Compounds",
+            "book_pages": [
+              670,
+              672
+            ]
+          },
+          {
+            "id": "metallurgy",
+            "number": 11,
+            "name": "Metallurgy",
+            "book_pages": [
+              673,
+              674
+            ]
+          },
+          {
+            "id": "organic-chemistry",
+            "number": 12,
+            "name": "Organic Chemistry",
+            "book_pages": [
+              675,
+              679
+            ]
+          },
+          {
+            "id": "biomolecules-and-polymers",
+            "number": 13,
+            "name": "Biomolecules and Polymers",
+            "book_pages": [
+              680,
+              682
+            ]
+          },
+          {
+            "id": "environmental-chemistry",
+            "number": 14,
+            "name": "Environmental Chemistry",
+            "book_pages": [
+              683,
+              684
+            ]
+          },
+          {
+            "id": "chemistry-in-everyday-life",
+            "number": 15,
+            "name": "Chemistry in Everyday Life",
+            "book_pages": [
+              685,
+              688
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Biology",
+        "chapters": [
+          {
+            "id": "living-world-and-classification-of-organisms",
+            "number": 1,
+            "name": "Living World & Classification of Organisms",
+            "book_pages": [
+              689,
+              699
+            ]
+          },
+          {
+            "id": "cell-biology",
+            "number": 2,
+            "name": "Cell Biology",
+            "book_pages": [
+              700,
+              704
+            ]
+          },
+          {
+            "id": "structural-organisation-of-plants-and-animals",
+            "number": 3,
+            "name": "Structural Organisation of Plants and Animals",
+            "book_pages": [
+              705,
+              709
+            ]
+          },
+          {
+            "id": "plant-physiology",
+            "number": 4,
+            "name": "Plant Physiology",
+            "book_pages": [
+              710,
+              715
+            ]
+          },
+          {
+            "id": "animal-and-human-physiology",
+            "number": 5,
+            "name": "Animal and Human Physiology",
+            "book_pages": [
+              716,
+              728
+            ]
+          },
+          {
+            "id": "genetics-the-science-of-heredity",
+            "number": 6,
+            "name": "Genetics : The Science of Heredity",
+            "book_pages": [
+              729,
+              732
+            ]
+          },
+          {
+            "id": "origin-of-life",
+            "number": 7,
+            "name": "Origin of Life",
+            "book_pages": [
+              733,
+              736
+            ]
+          },
+          {
+            "id": "health-and-disease",
+            "number": 8,
+            "name": "Health and Disease",
+            "book_pages": [
+              737,
+              744
+            ]
+          },
+          {
+            "id": "economic-botany-and-agricultural-science",
+            "number": 9,
+            "name": "Economic Botany and Agricultural Science",
+            "book_pages": [
+              745,
+              748
+            ]
+          },
+          {
+            "id": "animal-husbandry-and-economic-zoology",
+            "number": 10,
+            "name": "Animal Husbandry and Economic Zoology",
+            "book_pages": [
+              749,
+              753
+            ]
+          },
+          {
+            "id": "biotechnology",
+            "number": 11,
+            "name": "Biotechnology",
+            "book_pages": [
+              754,
+              756
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Science & Technology",
+        "chapters": [
+          {
+            "id": "space-technology",
+            "number": 1,
+            "name": "Space Technology",
+            "book_pages": [
+              757,
+              762
+            ]
+          },
+          {
+            "id": "nuclear-energy",
+            "number": 2,
+            "name": "Nuclear Energy",
+            "book_pages": [
+              763,
+              766
+            ]
+          },
+          {
+            "id": "defence",
+            "number": 3,
+            "name": "Defence",
+            "book_pages": [
+              767,
+              773
+            ]
+          },
+          {
+            "id": "introduction-to-computer",
+            "number": 4,
+            "name": "Introduction to Computer",
+            "book_pages": [
+              774,
+              784
+            ]
+          },
+          {
+            "id": "network-and-internet",
+            "number": 5,
+            "name": "Network and Internet",
+            "book_pages": [
+              785,
+              791
+            ]
+          },
+          {
+            "id": "telecommunications",
+            "number": 6,
+            "name": "Telecommunications",
+            "book_pages": [
+              792,
+              800
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "general-knowledge",
+    "name": "General Knowledge",
+    "sub_subjects": [
+      {
+        "name": "",
+        "chapters": [
+          {
+            "id": "india-and-world",
+            "number": 1,
+            "name": "India and World",
+            "book_pages": [
+              801,
+              806
+            ]
+          },
+          {
+            "id": "national-and-international-days-and-dates",
+            "number": 2,
+            "name": "National and International Days and Dates",
+            "book_pages": [
+              807,
+              811
+            ]
+          },
+          {
+            "id": "abbreviations-and-acronyms",
+            "number": 3,
+            "name": "Abbreviations and Acronyms",
+            "book_pages": [
+              812,
+              816
+            ]
+          },
+          {
+            "id": "books-and-authors",
+            "number": 4,
+            "name": "Books and Authors",
+            "book_pages": [
+              817,
+              822
+            ]
+          },
+          {
+            "id": "prominent-personalities-nicknames-places",
+            "number": 5,
+            "name": "Prominent Personalities/Nicknames/Places",
+            "book_pages": [
+              823,
+              827
+            ]
+          },
+          {
+            "id": "awards-and-honours",
+            "number": 6,
+            "name": "Awards and Honours",
+            "book_pages": [
+              828,
+              836
+            ]
+          },
+          {
+            "id": "organisations-and-institutions",
+            "number": 7,
+            "name": "Organisations and Institutions",
+            "book_pages": [
+              837,
+              844
+            ]
+          },
+          {
+            "id": "commissions-and-committees",
+            "number": 8,
+            "name": "Commissions and Committees",
+            "book_pages": [
+              845,
+              849
+            ]
+          },
+          {
+            "id": "sports",
+            "number": 9,
+            "name": "Sports",
+            "book_pages": [
+              850,
+              856
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

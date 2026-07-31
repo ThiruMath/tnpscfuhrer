@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro';
+const tinais = [
+  { name:'Kurinji குறிஞ்சி', region:'Mountains', season:'Cool season', time:'Night & pre-dawn', flower:'Kurinji (blooms once in 12 years)', bird:'Peacock', deity:'Murugan', theme:'Union — first meeting, secret trysts' },
+  { name:'Mullai முல்லை', region:'Forest & pastoral', season:'Rainy season', time:'Evening', flower:'Jasmine', bird:'Kuyil (cuckoo)', deity:'Mayon (proto-Vishnu)', theme:'Waiting — patient longing for the absent lover' },
+  { name:'Marutam மருதம்', region:'Fertile farmland', season:'All seasons', time:'Dawn', flower:'Marutam blossom', bird:'Heron', deity:'Indra', theme:'Quarrel — infidelity, lovers\' dispute, reconciliation' },
+  { name:'Neytal நெய்தல்', region:'Seashore', season:'All seasons', time:'Afternoon', flower:'Blue waterlily', bird:'Seagull', deity:'Varunan', theme:'Longing & anxiety — the lover has gone to sea' },
+  { name:'Paalai பாலை', region:'Wasteland / drought', season:'Summer', time:'Midday', flower:'Paalai blossom', bird:'Cuckoo in distress', deity:'Korravai (goddess of war)', theme:'Separation — the long journey, the woman alone in harsh landscape' },
+];
+const anthologies = [
+  { name:'Natrinai', tamil:'நற்றிணை', poems:400, type:'Akam', note:'All five tinais. The most formally refined anthology.' },
+  { name:'Kurunthokai', tamil:'குறுந்தொகை', poems:401, type:'Akam', note:'Short poems of intimate love. Fewest words, deepest feeling.' },
+  { name:'Ainkurunuru', tamil:'ஐங்குறுநூறு', poems:500, type:'Akam', note:'100 poems per tinai. Musical and patterned — a five-movement song cycle.' },
+  { name:'Padirruppattu', tamil:'பதிற்றுப்பத்து', poems:80, type:'Puram', note:'Praise of Chera kings only. Two sections lost.' },
+  { name:'Purananuru', tamil:'புறநானூறு', poems:400, type:'Puram', note:'War, death, philosophy. Contains the most quoted Tamil poem.' },
+  { name:'Akananuru', tamil:'அகநானூறு', poems:400, type:'Akam', note:'Long, elaborately described love poems. The most cinematic anthology.' },
+  { name:'Kalittokai', tamil:'கலித்தொகை', poems:150, type:'Akam', note:'Dramatic dialogues between lovers. The most theatrical anthology.' },
+  { name:'Paripatal', tamil:'பரிபாடல்', poems:70, type:'Mixed', note:'48 of 70 poems lost. Devotional — a bridge to the Bhakti age.' },
+];
+---
+<Layout title="Sangam Literature" description="A full study of Sangam literature — the Eight Anthologies, Ten Idylls, the tinai system, and the world they came from.">
+
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-eyebrow">300 BCE – 300 CE</div>
+    <h1>
+      <span class="hero-title-ta">சங்க இலக்கியம்</span>
+      <span class="hero-title-en">Sangam Literature</span>
+    </h1>
+    <p class="hero-intro">The Eight Anthologies and Ten Idylls. 473 named poets including 30+ women. Roman coins in Tamil soil. A civilisation at the height of its trade wealth, composing secular, humanist poetry of extraordinary quality while the Roman Empire was still intact. This is what the Sangam world made.</p>
+  </div>
+</section>
+
+<section class="sangam-section">
+  <div class="container content-grid">
+    <div class="main-column">
+
+      <div class="section-label">What Is Sangam Literature</div>
+      <h2 class="section-title">The Historical Record in Verse</h2>
+      <div class="prose-block">
+        <p>The Sangam age has left us almost no royal inscriptions, no chronicles, no administrative records. What it has left us is poetry — and that poetry is the historical record. The Eight Anthologies and Ten Idylls tell us what Sangam people ate, how their cities were organised, who their gods were, how they thought about death, how women spoke about desire, and what they valued in a king. To study Sangam literature is to study Sangam civilisation. There is no other archive.</p>
+        <p>The term "Sangam literature" refers specifically to the corpus produced by the Third Sangam academy in historical Madurai — the anthologies compiled over roughly six centuries (300 BCE to 300 CE), edited and preserved by later scholars. The compilation project itself was an act of cultural conservatism: by the time these poems were collected, the world they described was already changing.</p>
+      </div>
+
+      <hr class="rule-sm"/>
+
+      <div class="section-label">The Organising System</div>
+      <h2 class="section-title">The Five Tinais <span style="font-family:var(--font-tamil);font-size:1.5rem;color:var(--tamil-red)">திணை</span></h2>
+      <div class="prose-block">
+        <p>Every Sangam poem belongs to one of five tinais — landscape-based emotional categories codified in Tolkappiyam. The tinai is not a setting or a backdrop. It is the emotional argument of the poem. A reader encountering a Sangam poem knows, from its tinai, what the emotional situation is before a word is read. This is the most systematic ancient theory of the relationship between nature and human feeling in any literature.</p>
+        <p>The kurinji flower (Strobilanthes kunthiana) blooms only once every twelve years in the Nilgiri hills. A poem in the kurinji tinai implies something rare, temporary, precious — exactly the character of first love. This is ecological knowledge embedded in poetics.</p>
+      </div>
+      <div class="tinai-grid">
+        {tinais.map(t => (
+          <div class="tinai-card reveal">
+            <h3 class="tinai-name">{t.name}</h3>
+            <div class="tinai-attrs">
+              <div class="ta-row"><span class="ta-key">Region</span><span class="ta-val">{t.region}</span></div>
+              <div class="ta-row"><span class="ta-key">Season</span><span class="ta-val">{t.season}</span></div>
+              <div class="ta-row"><span class="ta-key">Time</span><span class="ta-val">{t.time}</span></div>
+              <div class="ta-row"><span class="ta-key">Flower</span><span class="ta-val">{t.flower}</span></div>
+              <div class="ta-row"><span class="ta-key">Bird</span><span class="ta-val">{t.bird}</span></div>
+              <div class="ta-row"><span class="ta-key">Deity</span><span class="ta-val">{t.deity}</span></div>
+              <div class="ta-row ta-theme"><span class="ta-key">Theme</span><span class="ta-val ta-theme-val">{t.theme}</span></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <hr class="rule-sm"/>
+
+      <div class="section-label">The Canon</div>
+      <h2 class="section-title">The Eight Anthologies</h2>
+      <div class="prose-block">
+        <p>The Ettuthokai (எட்டுத்தொகை — Eight Anthologies) are the core of Sangam literature. They are divided into akam (அகம் — interior/love) and puram (புறம் — exterior/public) poetry. Akam covers the emotional life of love — union, waiting, quarrel, longing, separation. Puram covers the public world — war, heroism, death, kings, philosophy. Both are treated as equally serious subjects of poetry. This equality is Tolkappiyam's foundational claim made actual.</p>
+      </div>
+      <div class="anthologies-table">
+        {anthologies.map(a => (
+          <div class="anth-row reveal">
+            <div class="anth-left">
+              <span class="anth-name">{a.name}</span>
+              <span class="anth-tamil">{a.tamil}</span>
+            </div>
+            <div class="anth-right">
+              <span class="anth-poems">{a.poems} poems</span>
+              <span class={`anth-type anth-type--${a.type.toLowerCase()}`}>{a.type}</span>
+              <span class="anth-note">{a.note}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <hr class="rule-sm"/>
+
+      <div class="section-label">A Featured Poem</div>
+      <h2 class="section-title">Kurunthokai 40 — Kapilar</h2>
+      <div class="prose-block">
+        <p>Six lines. Five questions about kinship. One image. This poem — composed over two thousand years ago — is still in every TN school syllabus. Its image of red earth and rain is one of the most celebrated in Tamil literature.</p>
+      </div>
+      <div class="verse-block">
+        <div class="verse-tamil">யாயும் ஞாயும் யாரா கியரோ
+எந்தையும் நுந்தையும் எம்முறைக் கேளிர்
+யானும் நீயும் எவ்வழி அறிதும்
+செம்புலப் பெயல்நீர் போல
+அன்புடை நெஞ்சம் தாம் கலந்தனவே.</div>
+        <div class="verse-translation">"What kin was my mother to yours? What kin my father to yours? How did you and I come to know each other? Yet our loving hearts have mingled like red earth and pouring rain."</div>
+        <div class="verse-attribution">— Kapilar, Kurunthokai 40 · TN Std. 9</div>
+      </div>
+      <div class="prose-block">
+        <p>When rain falls on laterite (red earth) soil, the water turns red and the earth dissolves into the water. You cannot separate them. That is the image Kapilar uses for love: not a meeting of two separate things, but a dissolution into one. No family connection, no social logic, no explanation — just this chemical merging. The five questions in the first three lines ask: by what known framework can we understand what has happened between us? The answer in the last two lines: no framework applies. Only the image of earth and rain.</p>
+      </div>
+      <div class="political-note">
+        <span class="political-note-tag">⚑ Political & Social Note</span>
+        <p>Sangam akam poetry theoretically allowed love across social categories. The absence of explicit caste markers in these poems has led some scholars to read them as evidence of an open, pre-caste society. This is probably an over-reading. The poems describe an ideal emotional world, not a sociological one. That the ideal excluded caste hierarchy is itself significant — but it is an ideal, not a description of how Sangam society actually functioned.</p>
+      </div>
+
+      <hr class="rule-sm"/>
+      <div class="access-row">
+        <a href="https://www.projectmadurai.org/pm_etexts/utf8/pmuni0099.html" target="_blank" rel="noopener" class="access-link">📜 Full text on Project Madurai ↗</a>
+        <a href="https://www.tamilvu.org/courses/degree/p101/p1012/html/p1012ind.htm" target="_blank" rel="noopener" class="access-link">🎓 Tamil Virtual University course ↗</a>
+      </div>
+
+    </div>
+
+    <aside class="side-column">
+      <div class="side-box">
+        <div class="sb-label">At a glance</div>
+        <p><strong>Period:</strong> 300 BCE – 300 CE</p>
+        <p><strong>Anthologies:</strong> 8 (Ettuthokai)</p>
+        <p><strong>Idylls:</strong> 10 (Pathupattu)</p>
+        <p><strong>Named poets:</strong> 473+</p>
+        <p><strong>Named women:</strong> 30+</p>
+        <p><strong>Language:</strong> Old Tamil (செந்தமிழ்)</p>
+      </div>
+      <div class="side-box">
+        <div class="sb-label">Key Poets</div>
+        <p><a href="/poets/kapilar">Kapilar</a> — 200+ poems, elegies for Pari</p>
+        <p><a href="/poets/avvaiyar-sangam">Avvaiyar</a> — fierce, direct, independent</p>
+        <p><a href="/poets/kaniyan-pungundranar">Kaniyan Pungundranar</a> — Purananuru 192</p>
+      </div>
+      <div class="side-box">
+        <div class="sb-label">Key Works</div>
+        <p><a href="/works/purananuru">Purananuru</a> — 400 public poems</p>
+        <p><a href="/works/tolkappiyam">Tolkappiyam</a> — the grammar behind it all</p>
+      </div>
+      <div class="side-box side-box--note">
+        <div class="sb-label">Paalai — a unique case</div>
+        <p>Paalai (wasteland) is not a separate landscape. Tolkappiyam says it emerges from the harshest elements of all four other tinais — when the landscape of love has been destroyed. It is absence made into a place. No other ancient poetics system has a category like this.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.sangam-section { padding: 5rem 0 7rem; }
+.content-grid { display: grid; grid-template-columns: 1fr 240px; gap: 4rem; align-items: start; }
+.main-column {}
+.side-column { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 1px; }
+.side-box { padding: 1.25rem; background: var(--bg-alt); border: 1px solid var(--rule); border-top: 3px solid var(--rule); margin-bottom: 1px; }
+.side-box--note { border-top-color: var(--crimson); }
+.sb-label { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.5rem; }
+.side-box p { font-family: var(--font-body); font-size: 0.9rem; color: var(--ink-mid); line-height: 1.7; margin-bottom: 0.5em; }
+.side-box a { color: var(--crimson); }
+
+.tinai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0; }
+.tinai-card { background: var(--bg); padding: 1.5rem; transition: background 0.2s; }
+.tinai-card:hover { background: var(--bg-alt); }
+.tinai-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 0.75rem; }
+.tinai-attrs { display: flex; flex-direction: column; gap: 0.3rem; }
+.ta-row { display: flex; gap: 0.75rem; align-items: baseline; }
+.ta-key { font-family: var(--font-display); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); min-width: 55px; flex-shrink: 0; }
+.ta-val { font-family: var(--font-body); font-size: 0.88rem; color: var(--ink-mid); line-height: 1.4; }
+.ta-theme { margin-top: 0.4rem; flex-direction: column; gap: 0.15rem; }
+.ta-theme-val { font-style: italic; color: var(--crimson); font-size: 0.92rem; }
+
+.anthologies-table { border: 1px solid var(--rule); margin: 1.5rem 0; }
+.anth-row { display: grid; grid-template-columns: 180px 1fr; gap: 1.25rem; padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--rule-light); background: var(--bg); transition: background 0.2s; align-items: start; }
+.anth-row:last-child { border-bottom: none; }
+.anth-row:hover { background: var(--bg-alt); }
+.anth-left { display: flex; flex-direction: column; gap: 0.2rem; }
+.anth-name { font-family: var(--font-display); font-size: 1rem; font-weight: 500; color: var(--ink); }
+.anth-tamil { font-family: var(--font-tamil); font-size: 0.85rem; color: var(--tamil-red); }
+.anth-right { display: flex; flex-direction: column; gap: 0.2rem; }
+.anth-poems { font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--crimson); }
+.anth-type { font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.1em; padding: 0.1rem 0.5rem; border-radius: 1px; width: fit-content; }
+.anth-type--akam { background: #EEF5EE; color: #2A5C2A; border: 1px solid #C5DEC5; }
+.anth-type--puram { background: #FEF5EE; color: #7A3A1A; border: 1px solid #DEC5A5; }
+.anth-type--mixed { background: var(--bg-alt); color: var(--ink-soft); border: 1px solid var(--rule); }
+.anth-note { font-family: var(--font-body); font-style: italic; font-size: 0.88rem; color: var(--ink-soft); }
+
+@media (max-width: 900px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .side-column { position: static; }
+  .tinai-grid { grid-template-columns: 1fr; }
+  .anth-row { grid-template-columns: 1fr; }
+}
+</style>
