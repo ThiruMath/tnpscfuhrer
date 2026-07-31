@@ -9,7 +9,7 @@ const upcomingExams = [
     status: 'Confirmed',
     posts: 'Combined Civil Services Examination - II',
     vacancies: '6,318',
-    color: '#C1121F'
+    color: '#C92C2E'
   },
   {
     name: 'Group IV (CSSE-IV)',
@@ -25,7 +25,7 @@ const upcomingExams = [
     status: 'Tentative',
     posts: 'Deputy Collector, DSP, Assistant Commissioner',
     vacancies: '92',
-    color: '#F59E0B'
+    color: '#FF9D73'
   },
 ];
 
@@ -43,80 +43,67 @@ const nextDays = daysUntil(nextExam.date);
 <Layout title="Dashboard" active="Dashboard">
 
   <!-- KPI Stats Row -->
-  <div class="dash-grid dash-grid-4 mb-3" style="animation: fadeInUp 0.4s ease both;">
-    <div class="kpi-card">
-      <div class="kpi-icon" style="background: var(--accent-soft); color: var(--accent);">📅</div>
-      <div class="kpi-info">
-        <div class="kpi-value" id="cd-days">{nextDays}</div>
-        <div class="kpi-label">Days to Next Exam</div>
-      </div>
+  <div class="dash-grid dash-grid-4 mb-3">
+    <!-- Highlight Stat -->
+    <div class="kpi-card" style="border-top: 4px solid var(--accent);">
+      <div class="kpi-header">Next Exam In</div>
+      <div class="kpi-value" id="cd-days-kpi" style="color: var(--accent);">{nextDays} <span style="font-size:1rem; color:var(--text-muted); font-weight:500;">Days</span></div>
+      <div class="kpi-footer">{nextExam.name}</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-icon" style="background: var(--blue-soft); color: var(--blue);">📚</div>
-      <div class="kpi-info">
-        <div class="kpi-value">900+</div>
-        <div class="kpi-label">Study Notes</div>
-      </div>
+      <div class="kpi-header">Study Notes</div>
+      <div class="kpi-value">900+</div>
+      <div class="kpi-footer">Across all subjects</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-icon" style="background: var(--green-soft); color: var(--green);">📝</div>
-      <div class="kpi-info">
-        <div class="kpi-value">120+</div>
-        <div class="kpi-label">PYQ Questions</div>
-      </div>
+      <div class="kpi-header">PYQ Questions</div>
+      <div class="kpi-value">120+</div>
+      <div class="kpi-footer"><span class="kpi-trend trend-up">↑ 12</span> this week</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-icon" style="background: var(--purple-soft); color: var(--purple);">📊</div>
-      <div class="kpi-info">
-        <div class="kpi-value" id="coverage-pct-kpi">0%</div>
-        <div class="kpi-label">Syllabus Covered</div>
-      </div>
+      <div class="kpi-header">Syllabus Covered</div>
+      <div class="kpi-value" id="coverage-pct-kpi">0%</div>
+      <div class="kpi-footer">Of total topics</div>
     </div>
   </div>
 
   <!-- Main Dashboard Grid -->
-  <div class="dash-grid dash-grid-2-1" style="animation: fadeInUp 0.5s ease 0.1s both;">
+  <div class="dash-grid dash-grid-2-1">
 
     <!-- Left Column -->
     <div class="dash-col">
 
-      <!-- Countdown Card -->
-      <div class="d-card countdown-card mb-3">
+      <!-- Countdown Card (Red highlight style from mockup) -->
+      <div class="d-card card-solid-accent countdown-card mb-3">
         <div class="d-card-header">
-          <span class="d-card-title">
-            <span class="live-dot"></span>
-            Exam Countdown
-          </span>
-          <a href="/calendar" class="d-card-action">View Calendar →</a>
+          <span class="d-card-title">Exam Countdown</span>
+          <a href="/calendar" class="d-card-action" style="color: rgba(255,255,255,0.8);">Calendar ↗</a>
         </div>
         <div class="countdown-body">
+          <div class="countdown-msg">The next exam is approaching. Keep preparing!</div>
           <div class="countdown-exam-name">{nextExam.name}</div>
+          
           <div class="countdown-timer">
             <div class="cd-unit">
               <span class="cd-val" id="cd-days-lg">{nextDays}</span>
               <span class="cd-label">Days</span>
             </div>
-            <span class="cd-sep">:</span>
             <div class="cd-unit">
               <span class="cd-val" id="cd-hours">00</span>
-              <span class="cd-label">Hours</span>
+              <span class="cd-label">Hrs</span>
             </div>
-            <span class="cd-sep">:</span>
             <div class="cd-unit">
               <span class="cd-val" id="cd-mins">00</span>
-              <span class="cd-label">Mins</span>
+              <span class="cd-label">Min</span>
             </div>
-            <span class="cd-sep">:</span>
             <div class="cd-unit">
               <span class="cd-val" id="cd-secs">00</span>
-              <span class="cd-label">Secs</span>
+              <span class="cd-label">Sec</span>
             </div>
           </div>
-          <div class="countdown-meta">
-            <span>{nextExam.vacancies} vacancies</span>
-            <span class={`badge ${nextExam.status === 'Confirmed' ? 'badge-green' : 'badge-amber'}`}>
-              {nextExam.status}
-            </span>
+          
+          <div style="margin-top: 1.5rem;">
+            <a href="/syllabus" class="btn-primary" style="background: white; color: var(--accent); padding: 0.6rem 1.25rem;">Start studying ↗</a>
           </div>
         </div>
       </div>
@@ -125,14 +112,12 @@ const nextDays = daysUntil(nextExam.date);
       <div class="d-card mb-3">
         <div class="d-card-header">
           <span class="d-card-title">Upcoming Exams</span>
-          <a href="/calendar" class="d-card-action">View All →</a>
         </div>
         <table class="d-table">
           <thead>
             <tr>
               <th>Exam</th>
               <th>Date</th>
-              <th>Days Left</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -141,11 +126,11 @@ const nextDays = daysUntil(nextExam.date);
               <tr>
                 <td>
                   <div style="font-weight: 600; color: var(--text);">{exam.name}</div>
-                  <div style="font-size: 0.75rem; color: var(--text-faint);">{exam.posts}</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">{exam.posts}</div>
                 </td>
-                <td>{new Date(exam.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</td>
                 <td>
-                  <span style={`color: ${exam.color}; font-weight: 700;`}>{daysUntil(exam.date)}</span>
+                  <div style="font-weight: 500;">{new Date(exam.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
+                  <div style="font-size: 0.75rem; color: var(--accent); font-weight:600;">{daysUntil(exam.date)} days left</div>
                 </td>
                 <td>
                   <span class={`badge ${exam.status === 'Confirmed' ? 'badge-green' : 'badge-amber'}`}>
@@ -158,35 +143,6 @@ const nextDays = daysUntil(nextExam.date);
         </table>
       </div>
 
-      <!-- Quick Navigation Cards -->
-      <div class="d-card-title mb-2" style="padding-left: 0.25rem;">Quick Access</div>
-      <div class="dash-grid dash-grid-3" style="margin-bottom: 1.5rem;">
-        <a href="/pyq" class="nav-widget">
-          <span class="nav-widget-icon" style="background: var(--accent-soft); color: var(--accent);">📝</span>
-          <span class="nav-widget-label">Take PYQ Quiz</span>
-        </a>
-        <a href="/notes" class="nav-widget">
-          <span class="nav-widget-icon" style="background: var(--blue-soft); color: var(--blue);">📚</span>
-          <span class="nav-widget-label">Study Notes</span>
-        </a>
-        <a href="/revision" class="nav-widget">
-          <span class="nav-widget-icon" style="background: var(--purple-soft); color: var(--purple);">🔥</span>
-          <span class="nav-widget-label">Daily Revision</span>
-        </a>
-        <a href="/syllabus" class="nav-widget">
-          <span class="nav-widget-icon" style="background: var(--green-soft); color: var(--green);">📋</span>
-          <span class="nav-widget-label">Syllabus Tracker</span>
-        </a>
-        <a href="/current-affairs" class="nav-widget">
-          <span class="nav-widget-icon" style="background: var(--amber-soft); color: var(--amber);">📰</span>
-          <span class="nav-widget-label">Current Affairs</span>
-        </a>
-        <a href="/tamil-literature" class="nav-widget">
-          <span class="nav-widget-icon" style="background: var(--purple-soft); color: var(--purple);">📖</span>
-          <span class="nav-widget-label">Tamil Literature</span>
-        </a>
-      </div>
-
     </div>
 
     <!-- Right Column -->
@@ -195,75 +151,54 @@ const nextDays = daysUntil(nextExam.date);
       <!-- Study Progress Card -->
       <div class="d-card mb-3">
         <div class="d-card-header">
-          <span class="d-card-title">Study Progress</span>
-          <a href="/syllabus" class="d-card-action">Details →</a>
+          <span class="d-card-title">Syllabus Progress</span>
+          <a href="/syllabus" class="d-card-action">Details ↗</a>
         </div>
         <div class="progress-ring-wrap">
           <svg class="progress-ring" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="10"/>
-            <circle id="progress-arc" cx="60" cy="60" r="50" fill="none" stroke="var(--accent)" stroke-width="10"
+            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--border)" stroke-width="12"/>
+            <circle id="progress-arc" cx="60" cy="60" r="50" fill="none" stroke="var(--accent)" stroke-width="12"
               stroke-dasharray="314" stroke-dashoffset="314" stroke-linecap="round"
               transform="rotate(-90 60 60)"
               style="transition: stroke-dashoffset 1.2s ease-out;"/>
           </svg>
           <div class="progress-ring-text">
             <span class="progress-pct" id="coverage-pct">0%</span>
-            <span class="progress-label">Complete</span>
           </div>
         </div>
         <div class="progress-stats">
           <div class="progress-stat">
-            <span class="progress-stat-val" id="coverage-completed">0</span>
             <span class="progress-stat-label">Completed</span>
+            <span class="progress-stat-val" id="coverage-completed">0</span>
           </div>
           <div class="progress-stat">
-            <span class="progress-stat-val" id="coverage-remaining">134</span>
-            <span class="progress-stat-label">Remaining</span>
-          </div>
-          <div class="progress-stat">
+            <span class="progress-stat-label">Total Topics</span>
             <span class="progress-stat-val" id="coverage-total">134</span>
-            <span class="progress-stat-label">Total</span>
           </div>
         </div>
       </div>
 
-      <!-- Recent Activity -->
-      <div class="d-card">
+      <!-- Quick Navigation Cards -->
+      <div class="d-card mb-3">
         <div class="d-card-header">
-          <span class="d-card-title">Resources</span>
+          <span class="d-card-title">Quick Access</span>
         </div>
-        <div class="resource-list">
-          <a href="/vle" class="resource-item">
-            <span class="resource-icon">🎓</span>
-            <div class="resource-info">
-              <span class="resource-name">TN VLE Portal</span>
-              <span class="resource-desc">Official study materials</span>
-            </div>
-            <span class="resource-arrow">→</span>
+        <div class="nav-widget-grid">
+          <a href="/pyq" class="nav-widget">
+            <span class="nav-widget-icon">📝</span>
+            <span class="nav-widget-label">PYQ Quiz</span>
           </a>
-          <a href="/math" class="resource-item">
-            <span class="resource-icon">🧮</span>
-            <div class="resource-info">
-              <span class="resource-name">Math Formulas</span>
-              <span class="resource-desc">Aptitude reference</span>
-            </div>
-            <span class="resource-arrow">→</span>
+          <a href="/notes" class="nav-widget">
+            <span class="nav-widget-icon">📚</span>
+            <span class="nav-widget-label">Notes</span>
           </a>
-          <a href="/tnpsc" class="resource-item">
-            <span class="resource-icon">ℹ️</span>
-            <div class="resource-info">
-              <span class="resource-name">Exam Guide</span>
-              <span class="resource-desc">Eligibility & pattern</span>
-            </div>
-            <span class="resource-arrow">→</span>
+          <a href="/revision" class="nav-widget">
+            <span class="nav-widget-icon">🔥</span>
+            <span class="nav-widget-label">Revision</span>
           </a>
-          <a href="/calendar" class="resource-item">
-            <span class="resource-icon">📅</span>
-            <div class="resource-info">
-              <span class="resource-name">Exam Calendar</span>
-              <span class="resource-desc">All upcoming exams</span>
-            </div>
-            <span class="resource-arrow">→</span>
+          <a href="/vle" class="nav-widget">
+            <span class="nav-widget-icon">🎓</span>
+            <span class="nav-widget-label">VLE Portal</span>
           </a>
         </div>
       </div>
@@ -290,7 +225,6 @@ const nextDays = daysUntil(nextExam.date);
       if (el) el.textContent = val;
     };
 
-    set('cd-days', days.toString());
     set('cd-days-lg', days.toString());
     set('cd-hours', hours.toString().padStart(2, '0'));
     set('cd-mins', mins.toString().padStart(2, '0'));
@@ -312,7 +246,6 @@ const nextDays = daysUntil(nextExam.date);
     }
 
     const pct = Math.min(100, Math.round((completedCount / totalTopics) * 100)) || 0;
-    const remaining = totalTopics - completedCount;
 
     const set = (id: string, val: string) => {
       const el = document.getElementById(id);
@@ -322,7 +255,6 @@ const nextDays = daysUntil(nextExam.date);
     set('coverage-pct', `${pct}%`);
     set('coverage-pct-kpi', `${pct}%`);
     set('coverage-completed', completedCount.toString());
-    set('coverage-remaining', remaining.toString());
     set('coverage-total', totalTopics.toString());
 
     const arc = document.getElementById('progress-arc');
@@ -338,69 +270,68 @@ const nextDays = daysUntil(nextExam.date);
 </script>
 
 <style>
-  /* ─── Countdown Card ─────────────────────────────────────────────── */
+  /* ─── Countdown Card (Mockup Style) ────────────────────────────── */
   .countdown-card {
-    border-left: 4px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Decorative abstract shape behind the content */
+  .countdown-card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    z-index: 0;
   }
 
-  .live-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: var(--green);
-    border-radius: 50%;
-    margin-right: 0.4rem;
-    animation: pulse-glow 2s infinite;
+  .countdown-body { 
+    position: relative;
+    z-index: 1;
   }
 
-  .countdown-body { }
+  .countdown-msg {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+  }
 
   .countdown-exam-name {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
   }
 
   .countdown-timer {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
+    gap: 1.5rem;
   }
 
-  .cd-unit { text-align: center; }
+  .cd-unit { 
+    display: flex;
+    flex-direction: column;
+  }
+  
   .cd-val {
-    display: block;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--accent);
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
     line-height: 1;
     font-variant-numeric: tabular-nums;
   }
+  
   .cd-label {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-faint);
-    font-weight: 600;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
     margin-top: 0.2rem;
-  }
-  .cd-sep {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-faint);
-    padding-bottom: 0.8rem;
-  }
-
-  .countdown-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.82rem;
-    color: var(--text-muted);
   }
 
   /* ─── Progress Ring ──────────────────────────────────────────────── */
@@ -408,7 +339,7 @@ const nextDays = daysUntil(nextExam.date);
     position: relative;
     width: 140px;
     height: 140px;
-    margin: 0 auto 1.25rem;
+    margin: 0 auto 1.5rem;
   }
   .progress-ring {
     width: 100%;
@@ -423,121 +354,74 @@ const nextDays = daysUntil(nextExam.date);
     justify-content: center;
   }
   .progress-pct {
-    font-size: 1.8rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--text);
     line-height: 1;
   }
-  .progress-label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    margin-top: 0.2rem;
-  }
 
   .progress-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
     padding-top: 1rem;
     border-top: 1px solid var(--border);
   }
+  .progress-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .progress-stat-val {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--text);
   }
   .progress-stat-label {
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     font-weight: 500;
   }
 
   /* ─── Quick Navigation Widgets ───────────────────────────────────── */
+  .nav-widget-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
   .nav-widget {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
-    padding: 1.25rem 0.75rem;
-    background: var(--surface);
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.25rem 0.5rem;
+    background: var(--bg);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-sm);
     text-decoration: none;
     transition: all var(--transition);
-    text-align: center;
   }
   .nav-widget:hover {
-    border-color: var(--border-hover);
-    box-shadow: var(--shadow-card);
-    transform: translateY(-2px);
+    border-color: var(--accent);
+    color: var(--accent);
   }
   .nav-widget-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   .nav-widget-label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-  }
-
-  /* ─── Resource List ──────────────────────────────────────────────── */
-  .resource-list {
-    display: flex;
-    flex-direction: column;
-  }
-  .resource-item {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    padding: 0.85rem 0;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    transition: all var(--transition);
-  }
-  .resource-item:last-child { border-bottom: none; }
-  .resource-item:hover {
-    padding-left: 0.5rem;
-  }
-  .resource-icon {
-    font-size: 1.3rem;
-    flex-shrink: 0;
-  }
-  .resource-info { flex: 1; }
-  .resource-name {
-    display: block;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text);
   }
-  .resource-desc {
-    font-size: 0.75rem;
-    color: var(--text-faint);
-  }
-  .resource-arrow {
-    color: var(--text-faint);
-    font-size: 0.9rem;
-    transition: all var(--transition);
-  }
-  .resource-item:hover .resource-arrow {
+  .nav-widget:hover .nav-widget-label {
     color: var(--accent);
-    transform: translateX(3px);
   }
 
   /* ─── Responsive ─────────────────────────────────────────────────── */
   @media (max-width: 640px) {
-    .countdown-timer { gap: 0.3rem; }
-    .cd-val { font-size: 1.6rem; }
-    .cd-sep { font-size: 1rem; }
-    .progress-ring-wrap { width: 110px; height: 110px; }
-    .progress-pct { font-size: 1.4rem; }
+    .countdown-timer { gap: 1rem; }
+    .cd-val { font-size: 2rem; }
   }
 </style>

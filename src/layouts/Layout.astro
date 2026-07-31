@@ -46,20 +46,7 @@ const pageTitle = active || 'Dashboard';
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <script is:inline>
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        return 'dark';
-      })();
-      if (theme === 'light') {
-        document.documentElement.classList.add('light-theme');
-      } else {
-        document.documentElement.classList.remove('light-theme');
-      }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div class="app-shell">
@@ -88,13 +75,6 @@ const pageTitle = active || 'Dashboard';
             </>
           ))}
         </nav>
-
-        <div class="sidebar-footer">
-          <button id="theme-toggle" class="sidebar-link" style="width:100%; border:none; cursor:pointer; background:none;">
-            <span class="nav-icon" id="theme-icon">🌙</span>
-            <span id="theme-label">Light Mode</span>
-          </button>
-        </div>
       </aside>
 
       <!-- Main Content -->
@@ -108,8 +88,12 @@ const pageTitle = active || 'Dashboard';
             <h1 class="topbar-title">{pageTitle}</h1>
           </div>
           <div class="topbar-right">
-            <button class="topbar-btn" id="topbar-theme-toggle" aria-label="Toggle theme">🌙</button>
-            <a href="/current-affairs" class="topbar-btn" aria-label="Notifications">🔔</a>
+            <a href="/current-affairs" class="topbar-btn" aria-label="Notifications">
+              <span style="position:relative">
+                🔔
+                <span class="notification-badge"></span>
+              </span>
+            </a>
           </div>
         </header>
 
@@ -140,52 +124,8 @@ const pageTitle = active || 'Dashboard';
   sidebarToggle?.addEventListener('click', toggleSidebar);
   overlay?.addEventListener('click', toggleSidebar);
 
-  // Theme toggle
-  function setupThemeToggle(btnId: string) {
-    const btn = document.getElementById(btnId);
-    if (!btn) return;
-
-    const updateIcon = () => {
-      const isLight = document.documentElement.classList.contains('light-theme');
-      const iconEl = btn.querySelector('#theme-icon') || btn;
-      const labelEl = btn.querySelector('#theme-label');
-      if (iconEl && btnId === 'theme-toggle') {
-        iconEl.textContent = isLight ? '🌙' : '☀️';
-      } else if (btnId === 'topbar-theme-toggle') {
-        btn.textContent = isLight ? '🌙' : '☀️';
-      }
-      if (labelEl) labelEl.textContent = isLight ? 'Dark Mode' : 'Light Mode';
-    };
-
-    updateIcon();
-
-    btn.addEventListener('click', () => {
-      const isNowLight = document.documentElement.classList.toggle('light-theme');
-      localStorage.setItem('theme', isNowLight ? 'light' : 'dark');
-      updateIcon();
-      // Sync both buttons
-      const otherBtnId = btnId === 'theme-toggle' ? 'topbar-theme-toggle' : 'theme-toggle';
-      const otherBtn = document.getElementById(otherBtnId);
-      if (otherBtn) {
-        const isLight = document.documentElement.classList.contains('light-theme');
-        if (otherBtnId === 'topbar-theme-toggle') {
-          otherBtn.textContent = isLight ? '🌙' : '☀️';
-        } else {
-          const icon = otherBtn.querySelector('#theme-icon');
-          const label = otherBtn.querySelector('#theme-label');
-          if (icon) icon.textContent = isLight ? '🌙' : '☀️';
-          if (label) label.textContent = isLight ? 'Dark Mode' : 'Light Mode';
-        }
-      }
-    });
-  }
-
-  setupThemeToggle('theme-toggle');
-  setupThemeToggle('topbar-theme-toggle');
-
   // Close sidebar on nav link click (mobile)
   document.querySelectorAll('.sidebar-link').forEach(link => {
-    if (link.id === 'theme-toggle') return;
     link.addEventListener('click', () => {
       if (window.innerWidth <= 1024) {
         sidebar?.classList.remove('open');
