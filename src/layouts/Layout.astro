@@ -11,28 +11,57 @@ const {
   active = '',
 } = Astro.props;
 
+// Lucide icon paths (inline SVG — no npm dependency)
+const icons: Record<string, string> = {
+  home:        '<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+  clipboard:   '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
+  barchart:    '<line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/>',
+  newspaper:   '<path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/>',
+  bookopen:    '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+  graduationcap:'<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',
+  flame:       '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>',
+  scroll:      '<path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2"/>',
+  calculator:  '<rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/>',
+  info:        '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>',
+  calendar:    '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+  search:      '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+  bell:        '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+  pin:         '<line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/>',
+  menu:        '<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>',
+  chevright:   '<path d="m9 18 6-6-6-6"/>',
+  clock:       '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+};
+
 const navLinks = [
-  { href: '/', label: 'Dashboard', icon: '🏠', section: 'main' },
-  { href: '/syllabus', label: 'Syllabus & Exam', icon: '📋', section: 'main' },
-  { href: '/pyq', label: 'Stats & Quiz', icon: '📊', section: 'main' },
-  { href: '/current-affairs', label: 'Current Affairs', icon: '📰', section: 'main' },
-  { href: '/notes', label: 'Study Notes', icon: '📚', section: 'study' },
-  { href: '/vle', label: 'VLE Material', icon: '🎓', section: 'study' },
-  { href: '/revision', label: 'Daily Revision', icon: '🔥', section: 'study' },
-  { href: '/tamil-literature', label: 'Tamil Literature', icon: '📖', section: 'subject' },
-  { href: '/math', label: 'Math', icon: '🧮', section: 'subject' },
-  { href: '/tnpsc', label: 'TNPSC Info', icon: 'ℹ️', section: 'other' },
-  { href: '/calendar', label: 'Exam Calendar', icon: '📅', section: 'other' },
+  { href: '/',               label: 'Dashboard',       icon: 'home',          section: 'main' },
+  { href: '/syllabus',       label: 'Syllabus',        icon: 'clipboard',     section: 'main' },
+  { href: '/pyq',            label: 'PYQ Quiz',        icon: 'barchart',      section: 'main' },
+  { href: '/current-affairs', label: 'Current Affairs', icon: 'newspaper',     section: 'main' },
+  { href: '/notes',          label: 'Study Notes',      icon: 'bookopen',      section: 'study' },
+  { href: '/vle',            label: 'VLE Material',     icon: 'graduationcap', section: 'study' },
+  { href: '/revision',       label: 'Daily Revision',   icon: 'flame',         section: 'study' },
+  { href: '/tamil-literature', label: 'Tamil Lit',      icon: 'scroll',        section: 'subject' },
+  { href: '/math',           label: 'Math',             icon: 'calculator',    section: 'subject' },
+  { href: '/tnpsc',          label: 'TNPSC Info',       icon: 'info',          section: 'other' },
+  { href: '/calendar',       label: 'Exam Calendar',    icon: 'calendar',      section: 'other' },
 ];
 
 const sections = [
-  { key: 'main', label: 'Main' },
-  { key: 'study', label: 'Study' },
+  { key: 'main',    label: 'Main' },
+  { key: 'study',   label: 'Study' },
   { key: 'subject', label: 'Subjects' },
-  { key: 'other', label: 'Other' },
+  { key: 'other',   label: 'Other' },
 ];
 
-// Derive page title from active prop
+// Mobile nav — top 5 items
+const mobileNavItems = [
+  { href: '/',          label: 'Home',     icon: 'home' },
+  { href: '/notes',     label: 'Notes',    icon: 'bookopen' },
+  { href: '/pyq',       label: 'Quiz',     icon: 'barchart' },
+  { href: '/revision',  label: 'Revision', icon: 'flame' },
+  { href: '/calendar',  label: 'Calendar', icon: 'calendar' },
+];
+
 const pageTitle = active || 'Dashboard';
 ---
 
@@ -46,35 +75,42 @@ const pageTitle = active || 'Dashboard';
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div class="app-shell">
-      <!-- Sidebar Overlay (mobile) -->
+      <!-- Sidebar Overlay -->
       <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
       <!-- Sidebar -->
       <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
           <a href="/" class="sidebar-logo">
-            <span class="logo-icon">TF</span>
-            <span>TNPSC <span class="logo-accent">Fuhrer</span></span>
+            <div class="logo-mark">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <span class="logo-text">TNPSC <span>Fuhrer</span></span>
           </a>
         </div>
 
         <nav class="sidebar-nav">
           {sections.map(section => (
             <>
-              <span class="sidebar-section-label">{section.label}</span>
+              <span class="nav-section-label">{section.label}</span>
               {navLinks.filter(l => l.section === section.key).map(link => (
-                <a href={link.href} class={`sidebar-link ${active === link.label ? 'active' : ''}`}>
-                  <span class="nav-icon">{link.icon}</span>
-                  <span>{link.label}</span>
+                <a href={link.href} class={`nav-link ${active === link.label ? 'active' : ''}`} title={link.label}>
+                  <svg class="nav-icon" viewBox="0 0 24 24" set:html={icons[link.icon]} />
+                  <span class="nav-label">{link.label}</span>
                 </a>
               ))}
             </>
           ))}
         </nav>
+
+        <button class="sidebar-pin" id="sidebar-pin" title="Pin sidebar">
+          <svg class="nav-icon" viewBox="0 0 24 24" set:html={icons.pin} />
+          <span class="pin-label">Pin sidebar</span>
+        </button>
       </aside>
 
       <!-- Main Content -->
@@ -82,17 +118,32 @@ const pageTitle = active || 'Dashboard';
         <!-- Topbar -->
         <header class="topbar">
           <div class="topbar-left">
-            <button class="mobile-sidebar-toggle" id="mobile-sidebar-toggle" aria-label="Toggle sidebar">
-              ☰
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+              <svg viewBox="0 0 24 24" set:html={icons.menu} />
             </button>
-            <h1 class="topbar-title">{pageTitle}</h1>
+            <nav class="breadcrumb">
+              <a href="/">Home</a>
+              {active && active !== 'Dashboard' && (
+                <>
+                  <span class="breadcrumb-sep">/</span>
+                  <span class="breadcrumb-current">{pageTitle}</span>
+                </>
+              )}
+            </nav>
           </div>
+
           <div class="topbar-right">
-            <a href="/current-affairs" class="topbar-btn" aria-label="Notifications">
-              <span style="position:relative">
-                🔔
-                <span class="notification-badge"></span>
-              </span>
+            <div class="countdown-chip" id="topbar-countdown">
+              <svg viewBox="0 0 24 24" set:html={icons.clock} />
+              <span id="cd-chip-text">--d --h</span>
+            </div>
+            <button class="search-trigger" id="search-trigger">
+              <svg viewBox="0 0 24 24" set:html={icons.search} />
+              <span>Search</span>
+              <kbd>⌘K</kbd>
+            </button>
+            <a href="/current-affairs" class="btn-ghost" aria-label="Notifications" style="position:relative;">
+              <svg style="width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;" viewBox="0 0 24 24" set:html={icons.bell} />
             </a>
           </div>
         </header>
@@ -102,6 +153,36 @@ const pageTitle = active || 'Dashboard';
           <slot />
         </div>
       </div>
+
+      <!-- Command Palette -->
+      <div class="cmd-backdrop" id="cmd-backdrop">
+        <div class="cmd-palette" role="dialog" aria-label="Search">
+          <div class="cmd-input-wrap">
+            <svg viewBox="0 0 24 24" set:html={icons.search} />
+            <input type="text" class="cmd-input" id="cmd-input" placeholder="Search notes, pages, topics..." autocomplete="off" />
+          </div>
+          <div class="cmd-results" id="cmd-results">
+            <!-- Quick links rendered by JS -->
+          </div>
+          <div class="cmd-footer">
+            <span><kbd>↑↓</kbd> Navigate</span>
+            <span><kbd>↵</kbd> Open</span>
+            <span><kbd>esc</kbd> Close</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Nav -->
+      <nav class="mobile-nav">
+        <div class="mobile-nav-inner">
+          {mobileNavItems.map(item => (
+            <a href={item.href} class={`mobile-nav-link ${active === item.label || (item.href === '/' && active === 'Dashboard') ? 'active' : ''}`}>
+              <svg viewBox="0 0 24 24" set:html={icons[item.icon]} />
+              <span>{item.label}</span>
+            </a>
+          ))}
+        </div>
+      </nav>
     </div>
   </body>
 </html>
@@ -111,26 +192,135 @@ const pageTitle = active || 'Dashboard';
 </style>
 
 <script>
-  // Sidebar toggle (mobile)
-  const sidebarToggle = document.getElementById('mobile-sidebar-toggle');
+  // === Sidebar toggle (mobile) ===
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('sidebar-overlay');
+  const mobileToggle = document.getElementById('mobile-toggle');
 
-  function toggleSidebar() {
+  function toggleMobileSidebar() {
     sidebar?.classList.toggle('open');
     overlay?.classList.toggle('active');
   }
+  mobileToggle?.addEventListener('click', toggleMobileSidebar);
+  overlay?.addEventListener('click', toggleMobileSidebar);
 
-  sidebarToggle?.addEventListener('click', toggleSidebar);
-  overlay?.addEventListener('click', toggleSidebar);
-
-  // Close sidebar on nav link click (mobile)
-  document.querySelectorAll('.sidebar-link').forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 1024) {
-        sidebar?.classList.remove('open');
-        overlay?.classList.remove('active');
-      }
-    });
+  // === Pin sidebar (desktop) ===
+  const pinBtn = document.getElementById('sidebar-pin');
+  pinBtn?.addEventListener('click', () => {
+    sidebar?.classList.toggle('pinned');
+    const isPinned = sidebar?.classList.contains('pinned');
+    if (pinBtn) {
+      const label = pinBtn.querySelector('.pin-label');
+      if (label) label.textContent = isPinned ? 'Unpin sidebar' : 'Pin sidebar';
+    }
   });
+
+  // === Command Palette ===
+  const cmdBackdrop = document.getElementById('cmd-backdrop');
+  const cmdInput = document.getElementById('cmd-input') as HTMLInputElement;
+  const cmdResults = document.getElementById('cmd-results');
+  const searchTrigger = document.getElementById('search-trigger');
+
+  // Quick links data for command palette
+  const quickLinks = [
+    { title: 'Dashboard', href: '/', icon: '🏠', meta: 'Home' },
+    { title: 'Study Notes', href: '/notes', icon: '📖', meta: '600+ notes' },
+    { title: 'PYQ Quiz', href: '/pyq', icon: '📝', meta: 'Practice questions' },
+    { title: 'Syllabus', href: '/syllabus', icon: '📋', meta: 'Group 2 & 2A' },
+    { title: 'Current Affairs', href: '/current-affairs', icon: '📰', meta: 'Latest updates' },
+    { title: 'Daily Revision', href: '/revision', icon: '🔥', meta: 'AI-generated' },
+    { title: 'Math Formulas', href: '/math', icon: '🧮', meta: '12 topics' },
+    { title: 'Tamil Literature', href: '/tamil-literature', icon: '📜', meta: 'Classical works' },
+    { title: 'Exam Calendar', href: '/calendar', icon: '📅', meta: 'Upcoming exams' },
+    { title: 'VLE Material', href: '/vle', icon: '🎓', meta: 'Official resources' },
+    { title: 'TNPSC Info', href: '/tnpsc', icon: 'ℹ️', meta: 'Exam details' },
+    { title: 'About', href: '/about', icon: '💡', meta: 'About this platform' },
+  ];
+
+  function openPalette() {
+    cmdBackdrop?.classList.add('open');
+    setTimeout(() => cmdInput?.focus(), 100);
+    renderResults('');
+  }
+
+  function closePalette() {
+    cmdBackdrop?.classList.remove('open');
+    if (cmdInput) cmdInput.value = '';
+  }
+
+  function renderResults(query: string) {
+    if (!cmdResults) return;
+    const q = query.toLowerCase().trim();
+    const filtered = q
+      ? quickLinks.filter(l => l.title.toLowerCase().includes(q) || l.meta.toLowerCase().includes(q))
+      : quickLinks;
+
+    cmdResults.innerHTML = filtered.map((link, i) =>
+      `<a href="${link.href}" class="cmd-result ${i === 0 ? 'selected' : ''}">
+        <div class="cmd-result-icon">${link.icon}</div>
+        <div class="cmd-result-text">
+          <div class="cmd-result-title">${link.title}</div>
+          <div class="cmd-result-meta">${link.meta}</div>
+        </div>
+      </a>`
+    ).join('');
+  }
+
+  searchTrigger?.addEventListener('click', openPalette);
+  cmdBackdrop?.addEventListener('click', (e) => {
+    if (e.target === cmdBackdrop) closePalette();
+  });
+  cmdInput?.addEventListener('input', () => renderResults(cmdInput.value));
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      const isOpen = cmdBackdrop?.classList.contains('open');
+      isOpen ? closePalette() : openPalette();
+    }
+    if (e.key === 'Escape') closePalette();
+
+    // Arrow key navigation in results
+    if (cmdBackdrop?.classList.contains('open')) {
+      const results = cmdResults?.querySelectorAll('.cmd-result');
+      if (!results?.length) return;
+      const current = cmdResults?.querySelector('.cmd-result.selected');
+      const idx = current ? Array.from(results).indexOf(current) : -1;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        current?.classList.remove('selected');
+        const next = idx < results.length - 1 ? idx + 1 : 0;
+        results[next]?.classList.add('selected');
+        (results[next] as HTMLElement)?.scrollIntoView({ block: 'nearest' });
+      }
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        current?.classList.remove('selected');
+        const prev = idx > 0 ? idx - 1 : results.length - 1;
+        results[prev]?.classList.add('selected');
+        (results[prev] as HTMLElement)?.scrollIntoView({ block: 'nearest' });
+      }
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const selected = cmdResults?.querySelector('.cmd-result.selected') as HTMLAnchorElement;
+        if (selected?.href) window.location.href = selected.href;
+      }
+    }
+  });
+
+  // === Topbar Countdown ===
+  const targetDate = new Date('2026-08-22T10:00:00+05:30');
+  function updateChip() {
+    const now = new Date();
+    const diff = targetDate.getTime() - now.getTime();
+    if (diff <= 0) return;
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const el = document.getElementById('cd-chip-text');
+    if (el) el.textContent = `CTS in ${d}d ${h}h`;
+  }
+  updateChip();
+  setInterval(updateChip, 60000);
 </script>
