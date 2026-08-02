@@ -5,7 +5,6 @@ import revisionData from "../../public/data/revision.json";
 const { date, questions } = revisionData;
 const displayDate = new Date(date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 
-// Define a simple Interface for questions to avoid TS implicitly any errors
 interface Question {
   question: string;
   topic: string;
@@ -13,182 +12,198 @@ interface Question {
   reference?: string;
 }
 
-// Categorize questions
 const conceptQs = (questions as Question[]).filter(q => q.source === "concept");
 const newsQs = (questions as Question[]).filter(q => q.source === "news");
 const pyqQs = (questions as Question[]).filter(q => q.source === "pyq");
+
+const sourceColors: Record<string, { bg: string; text: string; badge: string }> = {
+  news: { bg: 'var(--amber-soft)', text: 'var(--amber)', badge: 'badge-amber' },
+  concept: { bg: 'var(--blue-soft)', text: 'var(--blue)', badge: 'badge-blue' },
+  pyq: { bg: 'var(--green-soft)', text: 'var(--green)', badge: 'badge-green' },
+};
 ---
 
-<Layout title="Daily AI Revision | TNPSC Fuhrer" active="Revision">
-  <main class="revision-container">
-    <div class="header">
-      <div class="streak-badge">🔥 7 Day Revision Streak</div>
-      <h1>Daily AI Revision</h1>
-      <p>Your personalized study set generated from today's Current Affairs, your Official Notes, and official PYQs.</p>
-      <span class="date">Set for: {displayDate}</span>
-    </div>
+<Layout title="Daily AI Revision" description="Your daily AI-generated revision set from current affairs, study notes, and PYQs." active="Daily Revision">
 
-    <!-- Stats Row -->
-    <div class="stats-row">
-      <div class="stat-box">
-        <span class="num">{questions.length}</span>
-        <span class="label">Total Questions</span>
-      </div>
-      <div class="stat-box">
-        <span class="num">{newsQs.length}</span>
-        <span class="label">News Based</span>
-      </div>
-      <div class="stat-box">
-        <span class="num">{conceptQs.length}</span>
-        <span class="label">Concept Based</span>
-      </div>
-      <div class="stat-box">
-        <span class="num">{pyqQs.length}</span>
-        <span class="label">PYQ Based</span>
-      </div>
+  <div class="page-header animate-in">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="badge badge-accent">🔥 Daily Revision</span>
+      <span class="badge badge-neutral">{displayDate}</span>
     </div>
+    <h1>Daily AI Revision</h1>
+    <p>Your personalized study set — generated from today's current affairs, your notes, and official PYQs.</p>
+  </div>
 
-    <!-- Question Feed -->
-    <div class="questions-feed">
-      {(questions as Question[]).map((q: Question, index: number) => (
-        <div class={`question-card type-${q.source}`}>
-          <div class="card-top">
-            <a href={`/topics/${q.topic.toLowerCase().replace(/\s+/g, '-').replace(/[#?/\\%&]/g, '')}`} class="topic-tag-link">
-              <span class="topic-tag">{q.topic}</span>
+  <!-- Stats -->
+  <div class="grid grid-4 mb-6 stagger">
+    <div class="stat-card" style="border-top: 3px solid var(--accent);">
+      <div class="stat-label">Total Questions</div>
+      <div class="stat-value">{questions.length}</div>
+      <div class="stat-footer">in today's set</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label" style="color: var(--amber);">News Based</div>
+      <div class="stat-value">{newsQs.length}</div>
+      <div class="stat-footer">from current affairs</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label" style="color: var(--blue);">Concept Based</div>
+      <div class="stat-value">{conceptQs.length}</div>
+      <div class="stat-footer">from study notes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label" style="color: var(--green);">PYQ Based</div>
+      <div class="stat-value">{pyqQs.length}</div>
+      <div class="stat-footer">from past papers</div>
+    </div>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="flex gap-2 mb-6 animate-in" style="animation-delay: 200ms;">
+    <button class="rev-tab active" data-filter="all">All</button>
+    <button class="rev-tab" data-filter="news">News</button>
+    <button class="rev-tab" data-filter="concept">Concept</button>
+    <button class="rev-tab" data-filter="pyq">PYQ</button>
+  </div>
+
+  <!-- Questions -->
+  <div class="stack gap-3 stagger" id="rev-list">
+    {(questions as Question[]).map((q: Question, index: number) => (
+      <div class="rev-card" data-source={q.source}>
+        <div class="rev-card-top">
+          <div class="flex items-center gap-2">
+            <span class="text-mono" style={`font-size: 0.78rem; font-weight: 700; color: ${sourceColors[q.source]?.text || 'var(--text-muted)'};`}>Q{String(index + 1).padStart(2, '0')}</span>
+            <a href={`/topics/${q.topic.toLowerCase().replace(/\s+/g, '-').replace(/[#?/\\%&]/g, '')}`} class="rev-topic-chip">
+              {q.topic}
             </a>
-            <span class="source-tag">{q.source.toUpperCase()}</span>
           </div>
-          
-          <div class="q-content">
-            <span class="q-num">Q{index + 1}.</span>
-            <p>{q.question}</p>
-          </div>
+          <span class={`badge ${sourceColors[q.source]?.badge || 'badge-neutral'}`}>{q.source.toUpperCase()}</span>
+        </div>
 
-          <div class="card-bottom">
-            <button class="reveal-btn">Show Answer / Reference</button>
-            <div class="answer-panel hidden">
-              {q.source === 'news' && q.reference && (
-                <p><strong>Reference:</strong> Review today's article <a href={q.reference} target="_blank">here</a> to verify the implications.</p>
-              )}
-              {q.source === 'concept' && (
-                <p><strong>Self-Check:</strong> Verify your answer against the <a href={`/notes/${q.topic.toLowerCase().replace(/\s+/g, '-')}`}>official {q.topic} notes</a>.</p>
-              )}
-               {q.source === 'pyq' && (
-                <p><strong>Self-Check:</strong> Consider how recent current affairs have changed the context for this official past question.</p>
-              )}
-            </div>
+        <p class="rev-question">{q.question}</p>
+
+        <div class="rev-card-bottom">
+          <button class="rev-reveal-btn">
+            <svg style="width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2;" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            Show Reference
+          </button>
+          <div class="rev-answer hidden">
+            {q.source === 'news' && q.reference && (
+              <p><strong>Reference:</strong> Review the article <a href={q.reference} target="_blank" rel="noopener" class="text-accent">here ↗</a></p>
+            )}
+            {q.source === 'concept' && (
+              <p><strong>Self-Check:</strong> Verify against <a href={`/notes/${q.topic.toLowerCase().replace(/\s+/g, '-')}`} class="text-accent">{q.topic} notes ↗</a></p>
+            )}
+            {q.source === 'pyq' && (
+              <p><strong>Self-Check:</strong> Consider how recent affairs have changed context for this past question.</p>
+            )}
           </div>
         </div>
-      ))}
-    </div>
-
-    {questions.length === 0 && (
-      <div class="empty-state">
-        <p>Your revision set is being prepared. Check back shortly!</p>
       </div>
-    )}
+    ))}
+  </div>
 
-    <!-- Revision History List -->
-    <div class="history-section">
-      <h3>📁 Past Revision Sets</h3>
-      <p class="history-desc">Revisit older questions to reinforce your memory and maintain your streak.</p>
-      
-      <!-- In Astro, we can read the history directory at build time, 
-           but for simplicity in this MVP snippet we're demonstrating the UI structure.
-           A real implementation would use Astro.glob('../public/data/revision-history/*.json') -->
-      <div class="history-links">
-        <a href="#" class="history-link">
-          <span class="hl-date">March 15, 2026</span>
-          <span class="hl-tag">5 Questions</span>
-        </a>
-        <a href="#" class="history-link">
-          <span class="hl-date">March 14, 2026</span>
-          <span class="hl-tag">5 Questions</span>
-        </a>
-        <a href="#" class="history-link">
-          <span class="hl-date">March 13, 2026</span>
-          <span class="hl-tag">5 Questions</span>
-        </a>
-      </div>
-    </div>
-  </main>
 </Layout>
 
+<style>
+  .rev-tab {
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 0.82rem; font-weight: 500;
+    color: var(--text-muted); cursor: pointer;
+    transition: all var(--duration-fast);
+  }
+  .rev-tab:hover { border-color: var(--border-hover); color: var(--text); }
+  .rev-tab.active { background: var(--text); color: var(--text-inverse); border-color: var(--text); }
+
+  .rev-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--space-5);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+  .rev-card:hover { box-shadow: var(--shadow); border-color: var(--border-hover); }
+
+  .rev-card-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: var(--space-3);
+  }
+
+  .rev-topic-chip {
+    padding: 2px var(--space-2);
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.72rem; font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all var(--duration-fast);
+  }
+  .rev-topic-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+  .rev-question {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: var(--space-4);
+    font-weight: 500;
+  }
+
+  .rev-card-bottom {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: var(--space-3);
+  }
+
+  .rev-reveal-btn {
+    display: flex; align-items: center; gap: var(--space-2);
+    background: none; border: none; cursor: pointer;
+    font-size: 0.82rem; font-weight: 500;
+    color: var(--text-muted);
+    transition: color var(--duration-fast);
+  }
+  .rev-reveal-btn:hover { color: var(--accent); }
+  .rev-reveal-btn svg { transition: transform var(--duration-fast); }
+  .rev-reveal-btn.open svg { transform: rotate(90deg); }
+
+  .rev-answer {
+    margin-top: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-raised);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .rev-answer a { font-weight: 600; }
+  .hidden { display: none; }
+</style>
+
 <script>
-  // Simple reveal logic
-  const revealBtns = document.querySelectorAll('.reveal-btn');
-  revealBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const panel = (e.target as HTMLElement).nextElementSibling;
-      if (panel) {
-        panel.classList.toggle('hidden');
-        if (!panel.classList.contains('hidden')) {
-          (e.target as HTMLElement).textContent = "Hide Details";
-        } else {
-          (e.target as HTMLElement).textContent = "Show Answer / Reference";
-        }
+  // Filter tabs
+  document.querySelectorAll('.rev-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.rev-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = (btn as HTMLElement).dataset.filter;
+      document.querySelectorAll('.rev-card').forEach(card => {
+        const el = card as HTMLElement;
+        el.style.display = filter === 'all' || el.dataset.source === filter ? '' : 'none';
+      });
+    });
+  });
+
+  // Reveal answers
+  document.querySelectorAll('.rev-reveal-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling as HTMLElement;
+      if (answer) {
+        answer.classList.toggle('hidden');
+        btn.classList.toggle('open');
+        (btn as HTMLElement).querySelector('svg')?.style;
       }
     });
   });
 </script>
-
-<style>
-  .revision-container { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
-  
-  .header { text-align: center; margin-bottom: 3rem; }
-  .streak-badge { display: inline-block; background: #fffbeb; color: #d97706; border: 1px solid #fde68a; font-weight: 800; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; font-size: 0.9rem;}
-  .header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #14213D; margin: 0 0 1rem; }
-  .header p { color: #6b7280; font-size: 1.1rem; max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.6;}
-  .date { display: inline-block; font-weight: 600; color: #1d4ed8; background: #eff6ff; padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.9rem;}
-
-  /* Stats */
-  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 3rem; }
-  .stat-box { background: #fff; border: 1px solid #E8E5DF; padding: 1.5rem 1rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.02);}
-  .num { display: block; font-size: 2rem; font-family: 'Playfair Display', serif; font-weight: 700; color: #14213D; margin-bottom: 0.25rem;}
-  .label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #9ca3af; letter-spacing: 0.05em;}
-
-  /* Feed */
-  .questions-feed { display: flex; flex-direction: column; gap: 1.5rem; }
-  
-  .question-card { background: #fff; border: 1px solid #E8E5DF; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.03);  transition: border-color 0.2s; border-left-width: 4px; }
-  
-  .type-news { border-left-color: #3b82f6; } /* Blue */
-  .type-concept { border-left-color: #10b981; } /* Green */
-  .type-pyq { border-left-color: #f59e0b; } /* Orange */
-
-  .card-top { display: flex; justify-content: space-between; margin-bottom: 1.5rem; }
-  .topic-tag-link { text-decoration: none; }
-  .topic-tag { font-weight: 700; font-size: 0.8rem; color: #4b5563; background: #f3f4f6; padding: 0.3rem 0.8rem; border-radius: 4px; transition: all 0.2s;}
-  .topic-tag-link:hover .topic-tag { background: #e5e7eb; color: #111827; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-  .source-tag { font-weight: 800; font-size: 0.75rem; letter-spacing: 0.05em; color: #14213D; }
-
-  .q-content { display: flex; gap: 1rem; margin-bottom: 2rem; }
-  .q-num { font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 700; color: #C1121F; }
-  .q-content p { margin: 0; font-size: 1.2rem; color: #1f2937; line-height: 1.6; font-weight: 500; }
-
-  /* Interactive Bottom */
-  .card-bottom { border-top: 1px solid #f3f4f6; padding-top: 1.5rem; }
-  .reveal-btn { background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif;}
-  .reveal-btn:hover { background: #e2e8f0; color: #0f172a; }
-  
-  .answer-panel { margin-top: 1rem; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1.25rem; border-radius: 8px; color: #166534; font-size: 0.95rem; line-height: 1.5;}
-  .answer-panel a { color: #15803d; font-weight: bold; text-decoration: underline;}
-  .hidden { display: none; }
-
-  /* History */
-  .history-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
-  .history-section h3 { margin: 0 0 0.5rem; font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #14213D;}
-  .history-desc { color: #6b7280; font-size: 0.95rem; margin-bottom: 2rem; }
-  
-  .history-links { display: flex; flex-direction: column; gap: 0.75rem; }
-  .history-link { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; border: 1px solid #e2e8f0; padding: 1rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
-  .history-link:hover { border-color: #cbd5e1; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transform: translateX(4px); }
-  
-  .hl-date { font-weight: 700; color: #1e293b; }
-  .hl-tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #475569; background: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 4px;}
-
-  @media (max-width: 600px) {
-    .stats-row { grid-template-columns: 1fr 1fr; }
-    .header h1 { font-size: 2.2rem; }
-  }
-</style>

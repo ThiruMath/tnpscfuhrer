@@ -13,31 +13,31 @@ import { works } from '../data/works.js';
   </div>
 
   <!-- ─── Dashboard Stats Grid ─── -->
-  <div class="dash-grid dash-grid-4 mb-4">
-    <div class="kpi-card" style="border-top: 4px solid var(--accent);">
-      <div class="kpi-header">Heritage</div>
-      <div class="kpi-value" style="color: var(--accent);">2,000+</div>
-      <div class="kpi-footer">Years of Literature</div>
+  <div class="grid grid-4 mb-4">
+    <div class="stat-card" style="border-top: 4px solid var(--accent);">
+      <div class="stat-label">Heritage</div>
+      <div class="stat-value text-mono" style="color: var(--accent);">2,000+</div>
+      <div class="stat-footer">Years of Literature</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-header">Thirukkural</div>
-      <div class="kpi-value">1,330</div>
-      <div class="kpi-footer">Couplets</div>
+    <div class="stat-card">
+      <div class="stat-label">Thirukkural</div>
+      <div class="stat-value text-mono">1,330</div>
+      <div class="stat-footer">Couplets</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-header">Sangam Poems</div>
-      <div class="kpi-value">473</div>
-      <div class="kpi-footer">Preserved</div>
+    <div class="stat-card">
+      <div class="stat-label">Sangam Poems</div>
+      <div class="stat-value text-mono">473</div>
+      <div class="stat-footer">Preserved</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-header">Epics</div>
-      <div class="kpi-value">5</div>
-      <div class="kpi-footer">Great epics</div>
+    <div class="stat-card">
+      <div class="stat-label">Epics</div>
+      <div class="stat-value text-mono">5</div>
+      <div class="stat-footer">Great epics</div>
     </div>
   </div>
 
   <!-- ─── Kural Spotlight (Solid Accent Card) ─── -->
-  <div class="d-card card-solid-accent mb-4" style="position: relative; overflow: hidden; padding: 3rem;">
+  <div class="card card-solid mb-4" style="position: relative; overflow: hidden; padding: 3rem;">
     <!-- Decorative background -->
     <div style="position: absolute; right: -50px; bottom: -50px; opacity: 0.1; font-size: 15rem; font-family: var(--font-tamil); line-height: 1;">அ</div>
     
@@ -57,7 +57,7 @@ import { works } from '../data/works.js';
   <!-- ─── The Living Script ─── -->
   <div class="mb-4">
     <h2 class="mb-2">The Living Script</h2>
-    <div class="dash-grid dash-grid-4">
+    <div class="grid grid-4">
       {[
         { tamil: 'அ', roman: 'a', meaning: 'The First Letter' },
         { tamil: 'அகம்', roman: 'akam', meaning: 'Interior / Love' },
@@ -68,7 +68,7 @@ import { works } from '../data/works.js';
         { tamil: 'வாழ்க்கை', roman: 'vāḻkkai', meaning: 'Life' },
         { tamil: 'ஒளி', roman: 'oḷi', meaning: 'Light' },
       ].map(item => (
-        <div class="d-card" style="text-align: center; padding: 1.5rem;">
+        <div class="card" style="text-align: center; padding: 1.5rem;">
           <div style="font-family: var(--font-tamil); font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem; line-height: 1;">{item.tamil}</div>
           <div style="font-family: var(--font-display); font-weight: 500; font-size: 0.9rem; margin-bottom: 0.25rem;">{item.roman}</div>
           <div style="font-size: 0.8rem; color: var(--text-muted);">{item.meaning}</div>
@@ -78,10 +78,10 @@ import { works } from '../data/works.js';
   </div>
 
   <!-- ─── Eras & Timeline ─── -->
-  <div class="dash-grid dash-grid-2 mb-4">
-    <div class="dash-col">
+  <div class="grid grid-2 mb-6">
+    <div class="stack">
       <h2 class="mb-2">Through the Ages</h2>
-      <div class="d-card">
+      <div class="card">
         <div class="lit-timeline">
           {[
             {
@@ -136,9 +136,9 @@ import { works } from '../data/works.js';
       </div>
     </div>
 
-    <div class="dash-col">
+    <div class="stack">
       <h2 class="mb-2">The Great Poets</h2>
-      <div class="dash-grid dash-grid-2">
+      <div class="grid grid-2">
         {[
           { name: 'Thiruvalluvar', tamil: 'திருவள்ளுவர்', period: '~300 BCE', known: 'Thirukkural', slug: 'thiruvalluvar' },
           { name: 'Ilango Adigal', tamil: 'இளங்கோ அடிகள்', period: '~2nd century CE', known: 'Silappadikaram', slug: 'ilango-adigal' },
@@ -147,7 +147,7 @@ import { works } from '../data/works.js';
           { name: 'Manikkavadocar', tamil: 'மாணிக்கவாசகர்', period: '9th century CE', known: 'Thiruvasagam', slug: 'manikkavacakar' },
           { name: 'Nammalvar', tamil: 'நம்மாழ்வார்', period: '9th century CE', known: 'Thiruvaymoli', slug: 'nammalvar' },
         ].map(poet => (
-          <a href={`/poets/${poet.slug}`} class="d-card" style="display: flex; flex-direction: column; text-decoration: none;">
+          <a href={`/poets/${poet.slug}`} class="card card-interactive" style="display: flex; flex-direction: column; text-decoration: none;">
             <div style="margin-bottom: 0.5rem;">
               <h3 style="font-size: 1.1rem;">{poet.name}</h3>
               <div style="font-family: var(--font-tamil); font-size: 0.9rem; color: var(--accent);">{poet.tamil}</div>
@@ -180,9 +180,9 @@ import { works } from '../data/works.js';
     </div>
 
     <!-- Works Grid -->
-    <div class="dash-grid dash-grid-3 portal-grid active" id="grid-works">
+    <div class="grid grid-3 portal-grid active" id="grid-works">
       {works.map((work) => (
-        <div class="d-card portal-card" data-search={`${work.title} ${work.tamil} ${work.author} ${work.era_label} ${work.overview} ${work.form}`.toLowerCase()}>
+        <div class="card portal-card card-interactive" data-search={`${work.title} ${work.tamil} ${work.author} ${work.era_label} ${work.overview} ${work.form}`.toLowerCase()}>
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
             <div>
               <h3 style="font-size: 1.2rem;">{work.title}</h3>
@@ -209,9 +209,9 @@ import { works } from '../data/works.js';
     </div>
 
     <!-- Poets Grid -->
-    <div class="dash-grid dash-grid-3 portal-grid" id="grid-poets">
+    <div class="grid grid-3 portal-grid" id="grid-poets">
       {poets.map((poet) => (
-        <div class="d-card portal-card" data-search={`${poet.name} ${poet.tamil} ${poet.known_for} ${poet.era_label} ${poet.identity} ${poet.religion}`.toLowerCase()}>
+        <div class="card portal-card card-interactive" data-search={`${poet.name} ${poet.tamil} ${poet.known_for} ${poet.era_label} ${poet.identity} ${poet.religion}`.toLowerCase()}>
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
             <div>
               <h3 style="font-size: 1.2rem;">{poet.name}</h3>
@@ -361,7 +361,7 @@ import { works } from '../data/works.js';
     display: grid;
   }
   .portal-card {
-    transition: all var(--transition);
+    transition: all var(--duration-normal) var(--ease-out);
   }
   .portal-card:hover {
     border-color: var(--border-hover);

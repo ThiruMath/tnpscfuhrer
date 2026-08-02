@@ -2,162 +2,95 @@
 import Layout from '../layouts/Layout.astro';
 
 const exams = [
-  {
-    name: 'Group 2 (Interview)',
-    code: 'Gr. 2',
-    posts: 'Deputy Collector, DSP, AO, etc.',
-    eligibility: 'Any Degree',
-    age: '18–32',
-    papers: 'Paper I + II + Interview',
-  },
-  {
-    name: 'Group 2A (Non-Interview)',
-    code: 'Gr. 2A',
-    posts: 'Junior Assistant, Steno, Typist, etc.',
-    eligibility: 'Any Degree / Diploma',
-    age: '18–32',
-    papers: 'Paper I + II',
-  },
-  {
-    name: 'Group 4',
-    code: 'Gr. 4',
-    posts: 'Junior Assistant, Typist, Bill Collector',
-    eligibility: 'HSC (10+2)',
-    age: '18–30',
-    papers: 'Paper I + II',
-  },
-  {
-    name: 'VAO (Village Admin Officer)',
-    code: 'VAO',
-    posts: 'Village Administrative Officer',
-    eligibility: 'HSC (10+2)',
-    age: '18–30',
-    papers: 'Paper I + II',
-  },
+  { name: 'Group 2 (Interview)', code: 'Gr. 2', posts: 'Deputy Collector, DSP, AO, etc.', eligibility: 'Any Degree', age: '18–32', papers: 'Paper I + II + Interview' },
+  { name: 'Group 2A (Non-Interview)', code: 'Gr. 2A', posts: 'Junior Assistant, Steno, Typist', eligibility: 'Any Degree / Diploma', age: '18–32', papers: 'Paper I + II' },
+  { name: 'Group 4', code: 'Gr. 4', posts: 'Junior Assistant, Typist, Bill Collector', eligibility: 'HSC (10+2)', age: '18–30', papers: 'Paper I + II' },
+  { name: 'VAO', code: 'VAO', posts: 'Village Administrative Officer', eligibility: 'HSC (10+2)', age: '18–30', papers: 'Paper I + II' },
 ];
 
 const syllabus = [
-  { subject: 'General Studies', topics: 'History, Geography, Polity, Economics, Science, Environment' },
-  { subject: 'Current Affairs', topics: 'National, International, Tamil Nadu specific events' },
-  { subject: 'Tamil', topics: 'Literature, Grammar, Poets, Sangam, Modern Tamil' },
-  { subject: 'Aptitude', topics: 'Mathematics, Reasoning, Mental Ability (Group 4/VAO only)' },
+  { subject: 'General Studies', topics: 'History, Geography, Polity, Economics, Science, Environment', color: 'var(--accent)', icon: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>' },
+  { subject: 'Current Affairs', topics: 'National, International, Tamil Nadu events', color: 'var(--amber)', icon: '<path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/>' },
+  { subject: 'Tamil / English', topics: 'Literature, Grammar, Poets, Sangam, Modern Tamil', color: 'var(--purple)', icon: '<path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2"/>' },
+  { subject: 'Aptitude', topics: 'Maths, Reasoning, Mental Ability (Group 4/VAO)', color: 'var(--green)', icon: '<rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/>' },
+];
+
+const tips = [
+  'Start with NCERT books for History, Geography, and Science fundamentals.',
+  'Focus on Tamil Nadu-specific history, geography, and current affairs — high weightage in all groups.',
+  'Solve previous year question papers for all TNPSC groups.',
+  'Follow monthly current affairs — TNPSC gives 15–20% weightage to current events.',
+  'Revise using short notes — don\'t try to read textbooks in the last 30 days.',
 ];
 ---
 
-<Layout title="TNPSC Guide" description="Complete TNPSC exam guide — syllabus, eligibility, exam pattern for Group 2, 2A, 4 and VAO." active="TNPSC">
-  <main class="container">
-    <div class="page-header">
-      <span class="badge">Exam Guide</span>
-      <h1>TNPSC Overview</h1>
-      <p>Everything you need to know about Tamil Nadu Public Service Commission exams — eligibility, syllabus, and exam pattern.</p>
+<Layout title="TNPSC Guide" description="Complete TNPSC exam guide — syllabus, eligibility, exam pattern for Group 2, 2A, 4 and VAO." active="TNPSC Info">
+
+  <div class="page-header animate-in">
+    <span class="badge badge-accent mb-3">Exam Guide</span>
+    <h1>TNPSC Overview</h1>
+    <p>Everything about Tamil Nadu Public Service Commission exams — eligibility, syllabus, and exam pattern at a glance.</p>
+  </div>
+
+  <!-- Exams Table -->
+  <div class="card mb-6 animate-in" style="animation-delay: 100ms; overflow-x: auto;">
+    <div class="card-header">
+      <span class="card-title">Exam Groups at a Glance</span>
     </div>
-
-    <!-- Exams Table -->
-    <section class="section">
-      <h2>Exam Groups at a Glance</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Exam</th>
-              <th>Posts</th>
-              <th>Eligibility</th>
-              <th>Age Limit</th>
-              <th>Pattern</th>
-            </tr>
-          </thead>
-          <tbody>
-            {exams.map(e => (
-              <tr>
-                <td><strong>{e.name}</strong></td>
-                <td>{e.posts}</td>
-                <td>{e.eligibility}</td>
-                <td>{e.age}</td>
-                <td>{e.papers}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Syllabus -->
-    <section class="section">
-      <h2>Syllabus Breakdown</h2>
-      <div class="syllabus-grid">
-        {syllabus.map(s => (
-          <div class="card syllabus-card">
-            <h3>{s.subject}</h3>
-            <p>{s.topics}</p>
-            <a href="/notes" class="study-link">Study Notes →</a>
-          </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Exam</th>
+          <th>Posts</th>
+          <th>Eligibility</th>
+          <th>Age</th>
+          <th>Pattern</th>
+        </tr>
+      </thead>
+      <tbody>
+        {exams.map(e => (
+          <tr>
+            <td><strong style="color: var(--text);">{e.name}</strong></td>
+            <td>{e.posts}</td>
+            <td><span class="badge badge-neutral">{e.eligibility}</span></td>
+            <td class="text-mono">{e.age}</td>
+            <td>{e.papers}</td>
+          </tr>
         ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Syllabus Cards -->
+  <h2 class="mb-4 animate-in" style="animation-delay: 150ms;">Syllabus Breakdown</h2>
+  <div class="grid grid-2 mb-8 stagger">
+    {syllabus.map(s => (
+      <div class="card">
+        <div class="flex items-center gap-3 mb-3">
+          <div style={`width: 40px; height: 40px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, ${s.color} 10%, transparent);`}>
+            <svg style={`width: 20px; height: 20px; stroke: ${s.color}; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;`} viewBox="0 0 24 24" set:html={s.icon} />
+          </div>
+          <h3 style="font-size: 1rem;">{s.subject}</h3>
+        </div>
+        <p class="text-secondary" style="font-size: 0.875rem; line-height: 1.6; margin-bottom: var(--space-4);">{s.topics}</p>
+        <a href="/notes" class="text-accent" style="font-size: 0.85rem; font-weight: 600;">Study Notes →</a>
       </div>
-    </section>
+    ))}
+  </div>
 
-    <!-- Tips -->
-    <section class="section tips-section">
-      <h2>Preparation Tips</h2>
-      <ol class="tips-list">
-        <li>Start with NCERT books for History, Geography, and Science fundamentals.</li>
-        <li>Focus on Tamil Nadu-specific history, geography, and current affairs — high weightage in all groups.</li>
-        <li>Solve previous year question papers for all TNPSC groups.</li>
-        <li>Follow monthly current affairs — TNPSC gives 15–20% weightage to current events.</li>
-        <li>Revise using short notes — don't try to read textbooks in the last 30 days.</li>
-      </ol>
-    </section>
-  </main>
+  <!-- Prep Tips -->
+  <div class="card animate-in" style="animation-delay: 300ms;">
+    <div class="card-header">
+      <span class="card-title">Preparation Tips</span>
+    </div>
+    <div class="stack gap-3">
+      {tips.map((tip, i) => (
+        <div class="flex gap-3" style="align-items: flex-start;">
+          <span class="text-mono" style="font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-top: 2px; flex-shrink: 0;">{String(i + 1).padStart(2, '0')}</span>
+          <p class="text-secondary" style="font-size: 0.9rem; line-height: 1.6;">{tip}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
 </Layout>
-
-<style>
-  .section { margin-bottom: 3.5rem; }
-  .section h2 {
-    font-size: 1.6rem;
-    color: var(--navy);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .table-wrap { overflow-x: auto; }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    background: var(--surface);
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-
-  thead { background: var(--navy); color: #fff; }
-  th { padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; }
-  td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border); color: var(--muted); }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: var(--bg); }
-  td strong { color: var(--text); }
-
-  .syllabus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.25rem;
-  }
-
-  .syllabus-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; font-family: 'DM Sans', sans-serif; font-weight: 600; }
-  .syllabus-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
-
-  .study-link { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
-  .study-link:hover { text-decoration: underline; }
-
-  .tips-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
-
-  .tips-list {
-    padding-left: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .tips-list li { color: var(--muted); font-size: 0.93rem; line-height: 1.7; padding-left: 0.25rem; }
-</style>

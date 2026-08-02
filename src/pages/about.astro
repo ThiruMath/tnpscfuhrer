@@ -3,119 +3,86 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="About" description="Learn about TNPSC Fuhrer — a free exam prep platform for Tamil Nadu aspirants." active="About">
-  <main class="container">
-    <div class="page-header">
-      <span class="badge">Who We Are</span>
-      <h1>About TNPSC Fuhrer</h1>
-      <p>A free, open platform built for every Tamil Nadu government job aspirant.</p>
-    </div>
 
-    <div class="about-grid">
-      <div class="about-content">
-        <section class="about-section">
-          <h2>Our Mission</h2>
-          <p>TNPSC Fuhrer was built with one goal — to make high-quality TNPSC study material accessible to everyone, regardless of coaching fees or location. We believe every aspirant deserves a fair shot at clearing Tamil Nadu's government exams.</p>
-        </section>
+  <div class="page-header animate-in">
+    <span class="badge badge-accent mb-3">Who We Are</span>
+    <h1>About TNPSC Fuhrer</h1>
+    <p>A free, open platform built for every Tamil Nadu government job aspirant.</p>
+  </div>
 
-        <section class="about-section">
-          <h2>What We Offer</h2>
-          <ul class="offer-list">
-            <li><span>📚</span> Concise, exam-focused study notes</li>
-            <li><span>💼</span> Daily government job notifications</li>
-            <li><span>📰</span> Current affairs tailored for TNPSC</li>
-            <li><span>🎯</span> Syllabus guides for Group 2, 2A, 4 &amp; VAO</li>
-            <li><span>✍️</span> Strategy blogs and preparation tips</li>
-          </ul>
-        </section>
+  <div class="about-layout animate-in" style="animation-delay: 100ms;">
+    <div class="about-main">
 
-        <section class="about-section">
-          <h2>Open Source</h2>
-          <p>This entire platform is open source. Found an error? Want to contribute notes or improvements? We welcome contributions from the community.</p>
-          <a href="https://github.com/ThiruMath/tnpscfuhrer" target="_blank" class="github-link">
-            View on GitHub →
-          </a>
-        </section>
+      <div class="card mb-6">
+        <h2 style="font-size: 1.15rem; margin-bottom: var(--space-3);">Our Mission</h2>
+        <p class="text-secondary" style="line-height: 1.8;">
+          TNPSC Fuhrer was built with one goal — to make high-quality TNPSC study material accessible to everyone, regardless of coaching fees or location. We believe every aspirant deserves a fair shot at clearing Tamil Nadu's government exams.
+        </p>
       </div>
 
-      <aside class="about-sidebar">
-        <div class="card">
-          <h3>Quick Facts</h3>
-          <dl>
-            <dt>Platform</dt><dd>TNPSC Fuhrer</dd>
-            <dt>Focus</dt><dd>Tamil Nadu PSC Exams</dd>
-            <dt>Cost</dt><dd>Always Free</dd>
-            <dt>Source</dt><dd>Open Source</dd>
-            <dt>Exams Covered</dt><dd>Group 2, 2A, 4, VAO</dd>
-          </dl>
+      <div class="card mb-6">
+        <h2 style="font-size: 1.15rem; margin-bottom: var(--space-4);">What We Offer</h2>
+        <div class="stack gap-3">
+          {[
+            { icon: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>', text: 'Concise, exam-focused study notes', color: 'var(--blue)' },
+            { icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>', text: 'Daily government job notifications', color: 'var(--green)' },
+            { icon: '<path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>', text: 'Current affairs tailored for TNPSC', color: 'var(--amber)' },
+            { icon: '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>', text: 'Syllabus guides for Group 2, 2A, 4 & VAO', color: 'var(--accent)' },
+            { icon: '<line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/>', text: 'PYQ practice with topic analysis', color: 'var(--purple)' },
+          ].map(item => (
+            <div class="flex items-center gap-3">
+              <div style={`width: 36px; height: 36px; background: color-mix(in srgb, ${item.color} 10%, transparent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0;`}>
+                <svg style={`width: 18px; height: 18px; stroke: ${item.color}; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;`} viewBox="0 0 24 24" set:html={item.icon} />
+              </div>
+              <span style="font-size: 0.9rem; color: var(--text-secondary);">{item.text}</span>
+            </div>
+          ))}
         </div>
-      </aside>
+      </div>
+
+      <div class="card">
+        <h2 style="font-size: 1.15rem; margin-bottom: var(--space-3);">Open Source</h2>
+        <p class="text-secondary" style="line-height: 1.8; margin-bottom: var(--space-4);">
+          This entire platform is open source. Found an error? Want to contribute notes or improvements? We welcome contributions from the community.
+        </p>
+        <a href="https://github.com/ThiruMath/tnpscfuhrer" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: var(--space-2);">
+          View on GitHub
+          <svg style="width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2;" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+        </a>
+      </div>
     </div>
-  </main>
+
+    <aside class="about-aside">
+      <div class="card">
+        <span class="text-muted" style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: var(--space-4);">Quick Facts</span>
+        <div class="stack gap-3">
+          {[
+            ['Platform', 'TNPSC Fuhrer'],
+            ['Focus', 'Tamil Nadu PSC Exams'],
+            ['Cost', 'Always Free'],
+            ['Source', 'Open Source'],
+            ['Exams', 'Group 2, 2A, 4, VAO'],
+          ].map(([label, value]) => (
+            <div class="flex justify-between">
+              <span class="text-muted" style="font-size: 0.85rem;">{label}</span>
+              <span style="font-size: 0.85rem; font-weight: 600;">{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </aside>
+  </div>
+
 </Layout>
 
 <style>
-  .about-grid {
+  .about-layout {
     display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 3rem;
+    grid-template-columns: 1fr 280px;
+    gap: var(--space-6);
     align-items: start;
   }
-
   @media (max-width: 768px) {
-    .about-grid { grid-template-columns: 1fr; }
+    .about-layout { grid-template-columns: 1fr; }
   }
-
-  .about-section { margin-bottom: 2.5rem; }
-  .about-section h2 {
-    font-size: 1.4rem;
-    color: var(--navy);
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--accent);
-    display: inline-block;
-  }
-
-  .about-section p { color: var(--muted); line-height: 1.8; }
-
-  .offer-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .offer-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--muted);
-    font-size: 0.95rem;
-  }
-
-  .offer-list span { font-size: 1.2rem; }
-
-  .github-link {
-    display: inline-block;
-    margin-top: 1rem;
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: gap 0.15s;
-  }
-  .github-link:hover { text-decoration: underline; }
-
-  .card h3 {
-    font-size: 1rem;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
-    color: var(--navy);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.8rem;
-  }
-
-  dl { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 1rem; font-size: 0.9rem; }
-  dt { color: var(--muted); }
-  dd { color: var(--text); font-weight: 500; }
 </style>

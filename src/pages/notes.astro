@@ -4,27 +4,27 @@ import { getCollection } from 'astro:content';
 
 const allNotes = await getCollection('notes');
 
-// Group notes by subject category
-const categoryMap: Record<string, { icon: string; color: string; desc: string }> = {
-  'History':        { icon: '🏛️', color: '#C1121F', desc: 'Ancient, Medieval, Modern & Tamil History' },
-  'Polity':         { icon: '⚖️', color: '#14213D', desc: 'Constitution, Rights, Parliament & Judiciary' },
-  'Economy':        { icon: '📊', color: '#0a6e4f', desc: 'Indian Economy, Banking, Planning & GST' },
-  'Geography':      { icon: '🌍', color: '#0369a1', desc: 'Physical, Human & Tamil Nadu Geography' },
-  'Science':        { icon: '🔬', color: '#7c3aed', desc: 'Physics, Chemistry, Biology & Environment' },
-  'Tamil':          { icon: '📜', color: '#be185d', desc: 'Tamil Literature, Grammar & Scholars' },
-  'Current Affairs':{ icon: '📰', color: '#d97706', desc: 'Monthly Current Affairs & News Updates' },
-  'Aptitude':       { icon: '🧮', color: '#0891b2', desc: 'Maths, Reasoning & Mental Ability' },
-  'Other':          { icon: '📁', color: '#6b7280', desc: 'General Knowledge & Miscellaneous' },
+// Category mapping
+const categoryMap: Record<string, { color: string; desc: string }> = {
+  'History':        { color: 'var(--accent)',  desc: 'Ancient, Medieval, Modern & Tamil History' },
+  'Polity':         { color: 'var(--blue)',    desc: 'Constitution, Rights, Parliament & Judiciary' },
+  'Economy':        { color: 'var(--green)',   desc: 'Indian Economy, Banking, Planning & GST' },
+  'Geography':      { color: '#0369a1',        desc: 'Physical, Human & Tamil Nadu Geography' },
+  'Science':        { color: 'var(--purple)',  desc: 'Physics, Chemistry, Biology & Environment' },
+  'Tamil':          { color: '#be185d',        desc: 'Tamil Literature, Grammar & Scholars' },
+  'Current Affairs':{ color: 'var(--amber)',   desc: 'Monthly Updates & News' },
+  'Aptitude':       { color: '#0891b2',        desc: 'Maths, Reasoning & Mental Ability' },
+  'Other':          { color: 'var(--text-muted)', desc: 'General Knowledge & Miscellaneous' },
 };
 
-// Sort notes newest first
+// Sort by update date
 const sortedNotes = [...allNotes].sort((a, b) => {
   const dateA = a.data.last_updated ? new Date(a.data.last_updated).getTime() : 0;
   const dateB = b.data.last_updated ? new Date(b.data.last_updated).getTime() : 0;
   return dateB - dateA;
 });
 
-// Categorize each note
+// Categorize
 function getCategory(note: any): string {
   if (note.data.subject) return note.data.subject;
   const slug = note.slug.toLowerCase();
@@ -41,710 +41,203 @@ function getCategory(note: any): string {
   return 'Other';
 }
 
-// Build category buckets
 const categories: Record<string, any[]> = {};
 for (const note of sortedNotes) {
   const cat = getCategory(note);
   if (!categories[cat]) categories[cat] = [];
-  categories[cat].push(note);
+  categories[cat].push({ ...note, category: cat });
 }
 
-// Order categories nicely
 const catOrder = ['History','Polity','Economy','Geography','Science','Tamil','Current Affairs','Aptitude','Other'];
 const orderedCats = catOrder.filter(c => categories[c]?.length > 0);
-
-// Stats
 const totalNotes = allNotes.length;
-const uniqueSubjects = orderedCats.length;
+
+// Flatten for search
+const allNotesFlat = sortedNotes.map(n => ({
+  title: n.data.title || n.slug.replace(/-/g, ' '),
+  slug: n.slug,
+  category: getCategory(n),
+  wordCount: Math.round((n.body || '').length / 5),
+}));
 ---
 
-<Layout title="Study Notes Library – TNPSC Fuhrer" description="Structured study notes for TNPSC Group II/IIA, covering History, Polity, Economy, Geography, Science and Tamil in an easy searchable format." active="Notes">
-  <main>
-    <!-- Hero Banner -->
-    <div class="notes-hero">
-      <div class="container">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          {totalNotes}+ Notes Available
-        </div>
-        <h1>Study Notes Library</h1>
-        <p class="hero-sub">Structured, exam-ready notes for TNPSC Group II/IIA — organized by subject for faster revision.</p>
-        <div class="hero-stats">
-          <div class="stat-pill">
-            <span class="stat-num">{totalNotes}</span>
-            <span class="stat-label">Total Notes</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num">{uniqueSubjects}</span>
-            <span class="stat-label">Subjects</span>
-          </div>
-          <div class="stat-pill">
-            <span class="stat-num">Free</span>
-            <span class="stat-label">Forever</span>
-          </div>
-        </div>
-      </div>
+<Layout title="Study Notes Library" description="900+ searchable study notes for TNPSC Group II/IIA, organized by subject." active="Study Notes">
+
+  <!-- Header -->
+  <div class="page-header animate-in">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="badge badge-blue">{totalNotes}+ Notes</span>
+      <span class="badge badge-green">{orderedCats.length} Subjects</span>
     </div>
+    <h1>Study Notes Library</h1>
+    <p>Structured, exam-ready notes organized by subject. Search, filter, and track your reading.</p>
+  </div>
 
-    <div class="container notes-body">
-      <!-- Search + Filter Bar -->
-      <div class="search-filter-bar">
-        <div class="search-wrap">
-          <svg class="search-icon" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M15 15l-3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <input type="text" id="searchInput" placeholder="Search notes by topic, title…" autocomplete="off" />
-          <button id="clearSearch" class="clear-btn" aria-label="Clear">✕</button>
+  <!-- Search bar -->
+  <div class="notes-search-wrap animate-in mb-6" style="animation-delay: 100ms;">
+    <svg class="notes-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.3-4.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input type="text" id="notes-search" placeholder="Search notes by topic, title, keyword..." autocomplete="off" />
+    <span class="notes-search-count text-mono text-muted" id="notes-count">{totalNotes} notes</span>
+  </div>
+
+  <!-- Category filter pills -->
+  <div class="flex gap-2 mb-6 flex-wrap animate-in" style="animation-delay: 150ms;">
+    <button class="cat-pill active" data-cat="all">All</button>
+    {orderedCats.map(cat => (
+      <button class="cat-pill" data-cat={cat}>
+        {cat} <span class="cat-pill-count">{categories[cat]?.length}</span>
+      </button>
+    ))}
+  </div>
+
+  <!-- Notes grid -->
+  <div class="notes-grid stagger" id="notes-grid">
+    {allNotesFlat.map(note => (
+      <a href={`/notes/${note.slug}`} class="note-card card-interactive" data-title={note.title.toLowerCase()} data-category={note.category}>
+        <div class="flex items-center justify-between mb-3">
+          <span class="badge badge-neutral" style="font-size: 0.65rem;">{note.category}</span>
+          {note.wordCount > 50 && (
+            <span class="text-muted" style="font-size: 0.7rem;">{Math.round(note.wordCount / 200)} min read</span>
+          )}
         </div>
-        <div class="cat-filters">
-          <button class="cat-btn active" data-cat="all">All</button>
-          {orderedCats.map(cat => (
-            <button class="cat-btn" data-cat={cat} style={`--cc:${categoryMap[cat]?.color || '#6b7280'}`}>
-              {categoryMap[cat]?.icon} {cat}
-              <span class="cat-count">{categories[cat].length}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+        <h3 class="note-card-title">{note.title}</h3>
+        {note.wordCount > 0 && (
+          <div class="text-muted" style="font-size: 0.75rem; margin-top: auto; padding-top: var(--space-3);">
+            {note.wordCount.toLocaleString()} words
+          </div>
+        )}
+      </a>
+    ))}
+  </div>
 
-      <!-- Results counter -->
-      <div class="results-bar">
-        <span id="resultsCount">{totalNotes} notes</span>
-        <span class="results-hint">Click any note to read →</span>
-      </div>
+  <!-- Empty state -->
+  <div id="notes-empty" style="display: none; text-align: center; padding: var(--space-12) 0; color: var(--text-muted);">
+    <div style="font-size: 2rem; margin-bottom: var(--space-4);">🔍</div>
+    <p style="font-size: 1rem; font-weight: 500;">No notes found</p>
+    <p style="font-size: 0.85rem;">Try a different search term or category</p>
+  </div>
 
-      <!-- Notes by Category -->
-        {orderedCats.map(cat => {
-          const meta = categoryMap[cat] || { icon: '📁', color: '#6b7280', desc: '' };
-          const sluggedCat = cat.toLowerCase().replace(/\s/g,'-');
-          return (
-          <section class="cat-section" data-category={cat} id={`cat-${sluggedCat}`}>
-            <div class="cat-header collapsible-header" style={`--cc:${meta.color}`} data-target={`grid-${sluggedCat}`}>
-              <span class="cat-icon">{meta.icon}</span>
-              <div>
-                <h2>{cat}</h2>
-                <p>{meta.desc}</p>
-              </div>
-              <div class="cat-badge-wrap">
-                <span class="cat-badge">{categories[cat].length} notes</span>
-                <span class="accordion-arrow">▼</span>
-              </div>
-            </div>
-
-            <div class="notes-grid accordion-content open" id={`grid-${sluggedCat}`}>
-              {categories[cat].map(note => {
-                const title = note.data.title || note.slug.replace(/[-_]/g, ' ').replace(/\.md$/, '');
-                const tags: string[] = note.data.topics || note.data.tags || [];
-                const date = note.data.last_updated
-                  ? new Date(note.data.last_updated).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })
-                  : '';
-                const displayTitle = title.length > 60 ? title.slice(0, 60) + '…' : title;
-
-                // Dynamic Reading Time & Difficulty heuristics
-                const wordsCount = note.body ? note.body.split(/\s+/).length : 0;
-                const readingTime = Math.max(1, Math.round(wordsCount / 200));
-
-                let difficulty = note.data.difficulty;
-                if (!difficulty) {
-                  if (wordsCount < 600) difficulty = 'easy';
-                  else if (wordsCount < 1800) difficulty = 'medium';
-                  else difficulty = 'hard';
-                }
-
-                return (
-                  <div
-                    class="note-card"
-                    data-title={title.toLowerCase()}
-                    data-cat={cat}
-                    style={`--nc:${meta.color}`}
-                    data-topics={tags.join(',').toLowerCase()}
-                    data-slug={note.slug}
-                  >
-                    <div class="note-card-actions">
-                      <label class="note-read-label" title="Mark as Completed">
-                        <input type="checkbox" class="note-read-checkbox" data-slug={note.slug} />
-                        <span class="note-read-checkmark"></span>
-                      </label>
-                    </div>
-
-                    <a href={`/notes/${note.slug}`} class="note-card-link">
-                      <div class="note-card-inner">
-                        <div class="note-top">
-                          <span class="note-cat-dot" style={`background:${meta.color}`}></span>
-                          {date && <span class="note-date">{date}</span>}
-                        </div>
-                        <h3 class="note-title">{displayTitle}</h3>
-                        <div class="note-meta-strip">
-                          <span class={`diff-badge ${difficulty}`}>{difficulty}</span>
-                          <span class="reading-time">⏱️ {readingTime}m read</span>
-                        </div>
-                        {tags.length > 0 && (
-                          <div class="note-tags">
-                            {tags.slice(0, 3).map((tag: string) => (
-                              <span class="note-tag">{tag}</span>
-                            ))}
-                            {tags.length > 3 && <span class="note-tag note-tag--more">+{tags.length - 3}</span>}
-                          </div>
-                        )}
-                      </div>
-                      <div class="note-arrow">→</div>
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-          );
-        })}
-
-        <!-- No results -->
-        <div id="noResults" class="no-results" style="display:none">
-          <div class="no-results-icon">🔍</div>
-          <h3>No notes found</h3>
-          <p>Try a different search term or browse all categories.</p>
-          <button onclick="clearSearch()" class="reset-btn">Clear search</button>
-        </div>
-      </div>
-    </div>
-  </main>
 </Layout>
 
-<script>
-  const searchInput = document.getElementById('searchInput') as HTMLInputElement;
-  const clearBtn = document.getElementById('clearSearch') as HTMLButtonElement;
-  const resultsCount = document.getElementById('resultsCount')!;
-  const catBtns = document.querySelectorAll('.cat-btn');
-  const allSections = document.querySelectorAll('.cat-section') as NodeListOf<HTMLElement>;
-  const noResults = document.getElementById('noResults')!;
-
-  let activeCat = 'all';
-  let searchQuery = '';
-
-  function applyFilters() {
-    let visible = 0;
-    allSections.forEach(section => {
-      const cat = section.dataset.category || '';
-      const cards = section.querySelectorAll('.note-card') as NodeListOf<HTMLElement>;
-      let sectionVisible = 0;
-
-      const catMatch = activeCat === 'all' || cat === activeCat;
-
-      cards.forEach(card => {
-        const title = card.dataset.title || '';
-        const topics = card.dataset.topics || '';
-        const searchMatch = !searchQuery || title.includes(searchQuery) || topics.includes(searchQuery) || cat.toLowerCase().includes(searchQuery);
-        const show = catMatch && searchMatch;
-        card.style.display = show ? '' : 'none';
-        if (show) { visible++; sectionVisible++; }
-      });
-
-      const sectionContent = section.querySelector('.accordion-content') as HTMLElement;
-      if (catMatch && sectionVisible > 0) {
-        section.style.display = '';
-        // Auto-expand accordion if search query is active
-        if (searchQuery || activeCat !== 'all') {
-          sectionContent?.classList.add('open');
-          section.querySelector('.accordion-arrow')?.classList.add('collapsed');
-        }
-      } else {
-        section.style.display = 'none';
-      }
-    });
-
-    resultsCount.textContent = `${visible} note${visible !== 1 ? 's' : ''}`;
-    noResults.style.display = visible === 0 ? '' : 'none';
-    clearBtn.style.display = searchQuery ? '' : 'none';
-  }
-
-  // Category buttons
-  catBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      catBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeCat = (btn as HTMLElement).dataset.cat || 'all';
-      applyFilters();
-      if (activeCat !== 'all') {
-        const target = document.getElementById(`cat-${activeCat.toLowerCase().replace(/\s/g,'-')}`);
-        target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // Search
-  searchInput.addEventListener('input', () => {
-    searchQuery = searchInput.value.trim().toLowerCase();
-    applyFilters();
-  });
-
-  clearBtn.addEventListener('click', () => {
-    searchInput.value = '';
-    searchQuery = '';
-    applyFilters();
-  });
-
-  (window as any).clearSearch = () => {
-    searchInput.value = '';
-    searchQuery = '';
-    catBtns.forEach(b => b.classList.remove('active'));
-    catBtns[0].classList.add('active');
-    activeCat = 'all';
-    applyFilters();
-  };
-
-  // Accordion Logic
-  document.querySelectorAll('.collapsible-header').forEach(header => {
-    header.addEventListener('click', () => {
-      // Don't toggle accordion if searching to prevent hiding matches
-      if (searchQuery) return;
-      const targetId = (header as HTMLElement).dataset.target;
-      const content = document.getElementById(targetId || '');
-      const arrow = header.querySelector('.accordion-arrow');
-      if (content) {
-        content.classList.toggle('open');
-        arrow?.classList.toggle('collapsed');
-      }
-    });
-  });
-
-  // Read Checkbox Logic
-  function initReadCheckboxes() {
-    document.querySelectorAll('.note-card').forEach(card => {
-      const slug = (card as HTMLElement).dataset.slug || '';
-      const checkbox = card.querySelector('.note-read-checkbox') as HTMLInputElement;
-      
-      const isRead = localStorage.getItem('note-read-' + slug) === 'true';
-      if (checkbox) {
-        checkbox.checked = isRead;
-      }
-      card.classList.toggle('note-completed', isRead);
-
-      if (checkbox) {
-        checkbox.addEventListener('change', (e) => {
-          const state = (e.target as HTMLInputElement).checked;
-          localStorage.setItem('note-read-' + slug, state ? 'true' : 'false');
-          card.classList.toggle('note-completed', state);
-        });
-      }
-    });
-  }
-
-  // Run initializations
-  initReadCheckboxes();
-  applyFilters();
-</script>
-
 <style>
-  /* Hero */
-  .notes-hero {
-    background: linear-gradient(135deg, var(--navy) 0%, color-mix(in srgb, var(--navy) 85%, var(--bg)) 60%, var(--accent-soft) 100%);
-    padding: 4rem 0 3rem;
-    color: #fff;
-    border-bottom: 1px solid var(--border);
-  }
-  .hero-badge {
-    display: inline-flex;
+  /* Search */
+  .notes-search-wrap {
+    position: relative;
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.18);
-    padding: 0.3rem 0.9rem;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    color: #e5e7eb;
-    margin-bottom: 1.25rem;
-    backdrop-filter: blur(8px);
-  }
-  .badge-dot {
-    width: 6px; height: 6px;
-    background: #22c55e;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  .notes-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
-    color: #fff;
-    margin: 0 0 0.5rem;
-  }
-  .hero-sub { color: #9ca3af; font-size: 1.05rem; margin-bottom: 2rem; max-width: 560px; }
-  .hero-stats { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .stat-pill {
-    display: flex;
-    flex-direction: column;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 10px;
-    padding: 0.75rem 1.5rem;
-    min-width: 90px;
-    backdrop-filter: blur(10px);
-  }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-  }
-  .stat-label { font-size: 0.75rem; color: #9ca3af; margin-top: 0.2rem; }
-
-  /* Body */
-  .notes-body { padding-top: 1.5rem; }
-
-  /* Search + Filter */
-  .search-filter-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    padding: 1.25rem 1.5rem;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    position: sticky;
-    top: 64px;
-    z-index: 50;
+    border-radius: var(--radius);
+    padding: var(--space-3) var(--space-5);
+    transition: border-color var(--duration-fast);
   }
-  .search-wrap {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 0 0.85rem;
-    transition: border-color 0.2s;
+  .notes-search-wrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .notes-search-icon { width: 18px; height: 18px; color: var(--text-muted); flex-shrink: 0; margin-right: var(--space-3); }
+  #notes-search {
+    flex: 1; border: none; outline: none; background: transparent;
+    font-size: 0.95rem; color: var(--text);
   }
-  .search-wrap:focus-within { border-color: var(--accent); }
-  .search-icon { width: 16px; height: 16px; color: var(--muted); flex-shrink: 0; }
-  #searchInput {
-    flex: 1;
-    padding: 0.7rem 0;
-    border: none;
-    background: transparent;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: var(--text);
-    outline: none;
-  }
-  #searchInput::placeholder { color: var(--muted); }
-  .clear-btn {
-    border: none;
-    background: none;
-    color: var(--muted);
-    cursor: pointer;
-    font-size: 0.85rem;
-    padding: 0.2rem;
-    display: none;
-    line-height: 1;
-  }
+  #notes-search::placeholder { color: var(--text-faint); }
+  .notes-search-count { font-size: 0.78rem; flex-shrink: 0; }
 
-  /* Category filter pills */
-  .cat-filters {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  .cat-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.38rem 0.9rem;
-    border-radius: 100px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    cursor: pointer;
-    border: 1.5px solid var(--border);
+  /* Category pills */
+  .cat-pill {
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border);
     background: var(--surface);
-    color: var(--muted);
-    transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif;
-    white-space: nowrap;
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--text-muted); cursor: pointer;
+    transition: all var(--duration-fast);
   }
-  .cat-btn:hover { border-color: var(--cc, var(--accent)); color: var(--cc, var(--accent)); }
-  .cat-btn.active { background: var(--cc, var(--accent)); color: #fff; border-color: var(--cc, var(--accent)); }
-  .cat-count {
-    background: rgba(255,255,255,0.25);
-    border-radius: 100px;
-    padding: 0 0.4rem;
-    font-size: 0.72rem;
-    line-height: 1.5;
+  .cat-pill:hover { border-color: var(--border-hover); color: var(--text); }
+  .cat-pill.active { background: var(--text); color: var(--text-inverse); border-color: var(--text); }
+  .cat-pill-count {
+    background: rgba(0,0,0,0.1);
+    padding: 0 var(--space-2);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono); font-size: 0.7rem;
   }
-  .cat-btn:not(.active) .cat-count { background: var(--bg); color: var(--muted); }
+  .cat-pill.active .cat-pill-count { background: rgba(255,255,255,0.2); }
 
-  /* Results bar */
-  .results-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-  #resultsCount { font-weight: 600; color: var(--text); }  .cat-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--cc) 8%, var(--surface)), color-mix(in srgb, var(--cc) 2%, var(--surface)));
-    border: 1px solid color-mix(in srgb, var(--cc) 20%, var(--border));
-    border-radius: 14px;
-    padding: 1.25rem 1.75rem;
-    margin-bottom: 1.25rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .cat-header::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: var(--cc);
-    border-radius: 4px 0 0 4px;
-  }
-  .cat-icon { font-size: 1.8rem; }
-  .cat-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    color: var(--text);
-    margin: 0;
-  }
-  .cat-header p { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.85rem; }
-  .cat-badge {
-    background: var(--cc);
-    color: #fff;
-    font-size: 0.82rem;
-    font-weight: 700;
-    padding: 0.35rem 0.9rem;
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-
-  /* Collapsible / Accordion Styles */
-  .collapsible-header {
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.2s;
-  }
-  .collapsible-header:hover {
-    background: linear-gradient(135deg, color-mix(in srgb, var(--cc) 12%, var(--surface)), color-mix(in srgb, var(--cc) 4%, var(--surface)));
-  }
-  .accordion-arrow {
-    display: inline-block;
-    transition: transform 0.25s ease;
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-  .accordion-arrow.collapsed {
-    transform: rotate(90deg);
-  }
-  .accordion-content {
-    display: none;
-    transition: all 0.3s ease;
-  }
-  .accordion-content.open {
-    display: grid;
-  }
-  .cat-badge-wrap {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  /* Notes Grid */
+  /* Notes grid */
   .notes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 0.85rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-4);
   }
 
-  /* Note Card */
+  /* Note card */
   .note-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--space-5);
+    text-decoration: none;
     display: flex;
     flex-direction: column;
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    padding: 0;
-    transition: all 0.22s ease;
-    position: relative;
-    overflow: hidden;
+    min-height: 120px;
+    transition: all var(--duration-normal) var(--ease-out);
   }
   .note-card:hover {
-    box-shadow: var(--shadow);
     transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--nc) 35%, var(--border));
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-hover);
   }
-  
-  .note-card-actions {
-    position: absolute;
-    top: 1.15rem;
-    left: 1.25rem;
-    z-index: 10;
-  }
-
-  /* Note card checkbox styled */
-  .note-read-label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  .note-read-checkbox {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
-  .note-read-checkmark {
-    width: 18px;
-    height: 18px;
-    border: 2px solid var(--border);
-    border-radius: 50%;
-    display: inline-block;
-    position: relative;
-    transition: all 0.2s;
-    background: var(--surface);
-  }
-  .note-read-label:hover .note-read-checkmark {
-    border-color: var(--nc);
-  }
-  .note-read-checkbox:checked ~ .note-read-checkmark {
-    background: var(--green);
-    border-color: var(--green);
-  }
-  .note-read-checkbox:checked ~ .note-read-checkmark::after {
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 2px;
-    width: 4px;
-    height: 7px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-
-  /* Complete highlights */
-  .note-card.note-completed {
-    border-color: var(--green) !important;
-    background: color-mix(in srgb, var(--green) 4%, var(--surface));
-  }
-  .note-card.note-completed::after {
-    content: '✓ READ';
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 0.62rem;
-    font-weight: 800;
-    color: var(--green);
-    background: var(--green-soft);
-    padding: 0.15rem 0.4rem;
-    border-radius: 4px;
-    letter-spacing: 0.05em;
-  }
-
-  .note-card-link {
-    display: flex;
-    padding: 1.1rem 1.25rem;
-    height: 100%;
-    color: inherit;
-    text-decoration: none;
-    align-items: stretch;
-    justify-content: space-between;
-    gap: 0.75rem;
-  }
-
-  .note-card-inner {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    min-width: 0;
-    padding-left: 1.65rem; /* space for checkmark */
-  }
-  .note-top { display: flex; align-items: center; gap: 0.5rem; }
-  .note-cat-dot {
-    width: 8px; height: 8px; min-width: 8px;
-    border-radius: 50%;
-  }
-  .note-date { font-size: 0.72rem; color: var(--muted); margin-left: auto; }
-  .note-title {
-    font-size: 0.92rem;
+  .note-card-title {
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text);
     line-height: 1.4;
-    margin: 0;
-    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .note-meta-strip {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: 0.1rem;
-  }
-  
-  .diff-badge {
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 0.1rem 0.45rem;
-    border-radius: 4px;
-    letter-spacing: 0.04em;
-  }
-  .diff-badge.easy { background: var(--green-soft); color: var(--green); }
-  .diff-badge.medium { background: var(--amber-soft); color: var(--amber); }
-  .diff-badge.hard { background: var(--accent-soft); color: var(--accent); }
-
-  .reading-time {
-    font-size: 0.72rem;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  .note-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.2rem; }
-  .note-tag {
-    font-size: 0.68rem;
-    padding: 0.12rem 0.5rem;
-    border-radius: 100px;
-    background: var(--bg);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    font-weight: 500;
-    line-height: 1.5;
-  }
-  .note-tag--more { background: color-mix(in srgb, var(--nc) 10%, var(--surface)); color: var(--nc); border-color: color-mix(in srgb, var(--nc) 25%, var(--border)); }
-  .note-arrow {
-    display: flex;
-    align-items: center;
-    color: var(--muted);
-    font-size: 1rem;
-    transition: transform 0.2s, color 0.2s;
-    align-self: center;
-    flex-shrink: 0;
-  }
-  .note-card-link:hover .note-arrow { transform: translateX(3px); color: var(--nc); }
- 
-  /* No results */
-  .no-results { text-align: center; padding: 4rem 2rem; color: var(--muted); }
-  .no-results-icon { font-size: 3rem; margin-bottom: 1rem; }
-  .no-results h3 { font-family: 'Playfair Display', serif; color: var(--text); font-size: 1.4rem; margin-bottom: 0.5rem; }
-  .no-results p { font-size: 0.95rem; margin-bottom: 1.5rem; }
-  .reset-btn {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    padding: 0.65rem 1.5rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-  }
- 
-  /* Responsive */
-  @media (max-width: 640px) {
+  @media (max-width: 480px) {
     .notes-grid { grid-template-columns: 1fr; }
-    .hero-stats { flex-direction: row; }
-    .search-filter-bar { top: 0; position: inherit; }
-    .cat-badge-wrap { display: none; }
   }
 </style>
+
+<script>
+  const searchInput = document.getElementById('notes-search') as HTMLInputElement;
+  const notesGrid = document.getElementById('notes-grid')!;
+  const notesCount = document.getElementById('notes-count')!;
+  const emptyState = document.getElementById('notes-empty')!;
+  const catPills = document.querySelectorAll('.cat-pill');
+  const allCards = Array.from(notesGrid.querySelectorAll('.note-card')) as HTMLElement[];
+
+  let activeCat = 'all';
+
+  function filterNotes() {
+    const query = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+
+    allCards.forEach(card => {
+      const title = card.dataset.title || '';
+      const category = card.dataset.category || '';
+      const matchesSearch = !query || title.includes(query);
+      const matchesCat = activeCat === 'all' || category === activeCat;
+      const show = matchesSearch && matchesCat;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    notesCount.textContent = `${visible} notes`;
+    emptyState.style.display = visible === 0 ? '' : 'none';
+    notesGrid.style.display = visible === 0 ? 'none' : '';
+  }
+
+  searchInput.addEventListener('input', filterNotes);
+
+  catPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      catPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeCat = (pill as HTMLElement).dataset.cat || 'all';
+      filterNotes();
+    });
+  });
+</script>
