@@ -1,175 +1,215 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { parts, tamilUnits } from '../data/syllabus.ts';
+
+const meta = {
+  "gs-I": { icon: "🧪", color: "#3b82f6" }, 
+  "gs-II": { icon: "🌍", color: "#22c55e" }, 
+  "gs-III": { icon: "🏛️", color: "#f97316" }, 
+  "gs-IV": { icon: "⚖️", color: "#a855f7" }, 
+  "gs-V": { icon: "📈", color: "#ec4899" }, 
+  "gs-VI": { icon: "🦁", color: "#ef4444" }, 
+  "aptitude-I": { icon: "🧮", color: "#6366f1" }, 
+  "aptitude-II": { icon: "🧠", color: "#06b6d4" }, 
+  "lang-I": { icon: "📝", color: "#10b981" },
+  "lang-II": { icon: "📖", color: "#10b981" },
+  "lang-III": { icon: "✍️", color: "#10b981" },
+  "lang-IV": { icon: "⚙️", color: "#10b981" },
+  "lang-V": { icon: "🧐", color: "#10b981" },
+  "lang-VI": { icon: "🔄", color: "#10b981" },
+  "lang-VII": { icon: "📚", color: "#10b981" }
+};
+
+function getMeta(partId: string, unitNum: string) {
+  return meta[`${partId}-${unitNum}` as keyof typeof meta] || { icon: "📌", color: "#8b5cf6" };
+}
 ---
-<Layout title="TNPSC Group II & IIA Syllabus">
-  <!-- HERO SECTION WITH ABSTRACT IMAGE -->
-  <div class="syllabus-hero animate-in mb-8">
-    <div class="hero-content">
-      <div class="flex items-center gap-3 mb-3">
-        <span class="badge badge-accent">Code 495</span>
-        <span class="badge badge-neutral bg-white/20 text-white border-none">Updated Dec 2024</span>
+<Layout title="TNPSC Group II & IIA Syllabus - Infographic">
+  <div class="syllabus-hero animate-in mb-12">
+    <div class="hero-content text-center">
+      <div class="inline-flex items-center gap-3 mb-4 justify-center">
+        <span class="badge bg-white/20 text-white border-none backdrop-blur-md">Code 495</span>
+        <span class="badge bg-white/20 text-white border-none backdrop-blur-md">Updated Dec 2024</span>
       </div>
-      <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">TNPSC Group II & IIA Syllabus</h1>
-      <p class="text-white/80">Combined Civil Services Preliminary Examination Reference Guide.</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">TNPSC Group II & IIA</h1>
+      <p class="text-white/90 text-lg max-w-2xl mx-auto font-medium">The Ultimate Visual Syllabus Map</p>
     </div>
   </div>
 
-  <!-- EXAM SCHEME & WEIGHTAGE GRAPHS -->
-  <div class="grid md:grid-cols-2 gap-6 mb-10 animate-in" style="--stagger: 1">
-    
-    <!-- EXAM SCHEME TABLE -->
-    <div class="card bg-surface p-6 border border-border-subtle rounded-xl shadow-sm">
-      <h3 class="text-lg font-bold mb-4">Exam Pattern (200 Qs / 300 Marks)</h3>
-      <table class="w-full text-sm text-left">
-        <thead class="text-xs uppercase bg-surface-sunken border-b border-border">
-          <tr>
-            <th class="px-4 py-3">Subject</th>
-            <th class="px-4 py-3 text-center">Standard</th>
-            <th class="px-4 py-3 text-center">Questions</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-border-subtle">
-          <tr>
-            <td class="px-4 py-3 font-medium">A. General Studies</td>
-            <td class="px-4 py-3 text-center text-text-muted">Degree</td>
-            <td class="px-4 py-3 text-center">75</td>
-          </tr>
-          <tr>
-            <td class="px-4 py-3 font-medium">B. Aptitude</td>
-            <td class="px-4 py-3 text-center text-text-muted">SSLC</td>
-            <td class="px-4 py-3 text-center">25</td>
-          </tr>
-          <tr>
-            <td class="px-4 py-3 font-medium">C. Language</td>
-            <td class="px-4 py-3 text-center text-text-muted">SSLC</td>
-            <td class="px-4 py-3 text-center">100</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- THE BIG 200 QUESTION BREAKDOWN -->
+  <div class="mb-16 animate-in" style="--stagger: 1">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-extrabold mb-2">The 200 Question Mastery</h2>
+      <p class="text-text-muted">A detailed breakdown of where your marks come from.</p>
     </div>
 
-    <!-- WEIGHTAGE GRAPHS -->
-    <div class="card bg-surface p-6 border border-border-subtle rounded-xl shadow-sm">
-      <h3 class="text-lg font-bold mb-4">Question Weightage</h3>
-      <div class="flex flex-col gap-4">
-        <!-- GS -->
-        <div>
-          <div class="flex justify-between text-sm font-medium mb-1">
-            <span>General Studies (75 Qs)</span>
-            <span class="text-accent">37.5%</span>
-          </div>
-          <div class="h-3 w-full bg-surface-sunken rounded-full overflow-hidden">
-            <div class="h-full bg-accent rounded-full" style="width: 37.5%"></div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- GS INFOGRAPHIC -->
+      <div class="info-card">
+        <div class="info-header" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6)">
+          <h3>General Studies</h3>
+          <div class="big-number">75 <span>Qs</span></div>
+        </div>
+        <div class="info-body">
+          <div class="chart-container">
+             {parts[0].units.map(u => {
+                const m = getMeta("gs", u.num);
+                const pct = (u.questions / 75) * 100;
+                return (
+                  <div class="chart-row">
+                    <div class="chart-label">
+                      <span class="icon">{m.icon}</span>
+                      <span class="name">Unit {u.num}</span>
+                    </div>
+                    <div class="chart-bar-wrap" title={`${u.title} (${u.questions} Qs)`}>
+                      <div class="chart-bar" style={`width: ${pct}%; background-color: ${m.color};`}></div>
+                      <span class="chart-val" style={`color: ${m.color};`}>{u.questions}</span>
+                    </div>
+                  </div>
+                )
+             })}
           </div>
         </div>
-        <!-- Aptitude -->
-        <div>
-          <div class="flex justify-between text-sm font-medium mb-1">
-            <span>Aptitude (25 Qs)</span>
-            <span class="text-purple">12.5%</span>
-          </div>
-          <div class="h-3 w-full bg-surface-sunken rounded-full overflow-hidden">
-            <div class="h-full bg-purple rounded-full" style="width: 12.5%"></div>
+      </div>
+
+      <!-- APTITUDE INFOGRAPHIC -->
+      <div class="info-card">
+        <div class="info-header" style="background: linear-gradient(135deg, #3730a3, #6366f1)">
+          <h3>Aptitude</h3>
+          <div class="big-number">25 <span>Qs</span></div>
+        </div>
+        <div class="info-body flex flex-col justify-center h-full">
+          <div class="chart-container">
+             {parts[1].units.map(u => {
+                const m = getMeta("aptitude", u.num);
+                const pct = (u.questions / 25) * 100;
+                return (
+                  <div class="chart-row">
+                    <div class="chart-label">
+                      <span class="icon">{m.icon}</span>
+                      <span class="name">Unit {u.num}</span>
+                    </div>
+                    <div class="chart-bar-wrap" title={`${u.title} (${u.questions} Qs)`}>
+                      <div class="chart-bar" style={`width: ${pct}%; background-color: ${m.color};`}></div>
+                      <span class="chart-val" style={`color: ${m.color};`}>{u.questions}</span>
+                    </div>
+                  </div>
+                )
+             })}
           </div>
         </div>
-        <!-- Language -->
-        <div>
-          <div class="flex justify-between text-sm font-medium mb-1">
-            <span>Language (100 Qs)</span>
-            <span class="text-green">50.0%</span>
-          </div>
-          <div class="h-3 w-full bg-surface-sunken rounded-full overflow-hidden">
-            <div class="h-full bg-green rounded-full" style="width: 50%"></div>
+      </div>
+
+      <!-- LANGUAGE INFOGRAPHIC -->
+      <div class="info-card">
+        <div class="info-header" style="background: linear-gradient(135deg, #065f46, #10b981)">
+          <h3>Language</h3>
+          <div class="big-number">100 <span>Qs</span></div>
+        </div>
+        <div class="info-body flex items-center justify-center h-full flex-col">
+          <div class="donut-chart" style="background: conic-gradient(#10b981 100%, transparent 0);">
+            <div class="donut-inner">
+              <span class="icon text-4xl mb-1">📝</span>
+              <span class="font-bold text-2xl text-text leading-none">50%</span>
+              <span class="text-xs text-text-muted text-center leading-tight mt-1 font-bold">OF ENTIRE<br>EXAM</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="flex gap-2 mb-6 overflow-x-auto pb-2 animate-in" style="--stagger: 2">
-    <button class="syl-tab active" data-target="all">All Parts</button>
-    {parts.map(p => (
-      <button class="syl-tab" data-target={p.id}>{p.title}</button>
-    ))}
-    <button class="syl-tab" data-target="lang">Part C: Language</button>
+  <!-- THE DETAILED SYLLABUS CARDS -->
+  <div class="text-center mb-10 animate-in" style="--stagger: 2">
+    <h2 class="text-3xl font-extrabold mb-2">The Syllabus Map</h2>
+    <p class="text-text-muted">Explore the exact topics required for mastery.</p>
   </div>
 
-  {parts.map((part, index) => (
-    <section id={part.id} class="syl-part animate-in" style={`--stagger: ${3 + index}`}>
-      <div class="syl-part-header">
-        <div>
-          <h2 class="text-xl font-bold mb-1">{part.title}</h2>
-          <div class="text-sm text-text-muted">{part.standard} • {part.total} Questions</div>
-        </div>
-      </div>
-
-      <div class="syl-units">
-        {part.units.map(unit => (
-          <div class="syl-unit">
-            <div class="syl-unit-top">
-              <div class="flex items-center gap-3">
-                <span class="syl-unit-num bg-surface-raised border border-border">Unit {unit.num}</span>
-                <h3 class="text-base font-bold m-0">{unit.title}</h3>
+  {parts.map((part, pIdx) => (
+    <div class="mb-16 animate-in" style={`--stagger: ${3 + pIdx}`}>
+      <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-text text-surface flex items-center justify-center text-lg font-bold shadow-md">{part.id === 'gs' ? 'A' : 'B'}</span>
+        {part.title}
+      </h3>
+      
+      <div class="grid md:grid-cols-2 gap-8 gap-y-12 mt-8">
+        {part.units.map(unit => {
+          const m = getMeta(part.id, unit.num);
+          return (
+            <div class="floating-card" style={`--theme-color: ${m.color};`}>
+              <div class="card-icon-wrapper" style={`background-color: ${m.color}15; color: ${m.color}; border: 1px solid ${m.color}30;`}>
+                <span class="text-3xl">{m.icon}</span>
               </div>
-              <div class="badge badge-neutral text-xs">
-                {unit.questions} Questions
+              <div class="card-content">
+                <div class="flex justify-between items-start mb-4 pr-16">
+                  <div>
+                    <div class="text-xs font-bold uppercase tracking-widest mb-1" style={`color: ${m.color};`}>Unit {unit.num}</div>
+                    <h4 class="text-xl font-bold leading-tight text-text">{unit.title}</h4>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 mb-6">
+                  <div class="q-badge" style={`background-color: ${m.color};`}>{unit.questions} Qs</div>
+                  <div class="tags-container">
+                    {unit.tags.map(tag => (
+                      <span class="infographic-tag" style={`background-color: ${m.color}10; color: ${m.color}; border: 1px solid ${m.color}30;`}>#{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                <ul class="topic-list">
+                  {unit.topics.map(topic => (
+                    <li>
+                      <span class="bullet" style={`color: ${m.color};`}>✦</span>
+                      <span>{topic}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-            
-            <ul class="syl-topics">
-              {unit.topics.map(topic => (
-                <li class="syl-topic">
-                  <span class="syl-topic-bullet">•</span>
-                  <span class="syl-topic-text">{topic}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          )
+        })}
       </div>
-    </section>
+    </div>
   ))}
 
-  <section id="lang" class="syl-part animate-in" style="--stagger: 6">
-    <div class="syl-part-header">
-      <div>
-        <h2 class="text-xl font-bold mb-1">Part C: Language</h2>
-        <div class="text-sm text-text-muted">SSLC Standard • 100 Questions</div>
-      </div>
-    </div>
-
-    <div class="flex gap-2 mb-4">
-      <button class="lang-tab active" data-lang="tamil">General Tamil</button>
-      <button class="lang-tab" data-lang="english" disabled title="Coming soon">General English (Soon)</button>
-    </div>
-
-    <div class="lang-panel" data-lang-panel="tamil">
-      <div class="syl-units">
-        {tamilUnits.map(unit => (
-          <div class="syl-unit">
-            <div class="syl-unit-top">
-              <div class="flex items-center gap-3">
-                <span class="syl-unit-num bg-surface-raised border border-border">அலகு {unit.num}</span>
-                <h3 class="text-base font-bold m-0">{unit.title}</h3>
-              </div>
-              <div class="badge badge-neutral text-xs">
-                {unit.questions} Questions
-              </div>
+  <!-- LANGUAGE SECTION -->
+  <div class="mb-16 animate-in" style="--stagger: 6">
+    <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 mt-12">
+      <span class="w-10 h-10 rounded-xl bg-text text-surface flex items-center justify-center text-lg font-bold shadow-md">C</span>
+      Part C: Language (General Tamil)
+    </h3>
+    
+    <div class="grid md:grid-cols-2 gap-8 gap-y-12 mt-8">
+      {tamilUnits.map(unit => {
+        const m = getMeta("lang", unit.num);
+        return (
+          <div class="floating-card" style={`--theme-color: ${m.color};`}>
+            <div class="card-icon-wrapper" style={`background-color: ${m.color}15; color: ${m.color}; border: 1px solid ${m.color}30;`}>
+              <span class="text-3xl">{m.icon}</span>
             </div>
-            <ul class="syl-topics">
-              {unit.topics.map(topic => (
-                <li class="syl-topic">
-                  <span class="syl-topic-bullet">•</span>
-                  <span class="syl-topic-text">{topic}</span>
-                </li>
-              ))}
-            </ul>
+            <div class="card-content">
+              <div class="flex justify-between items-start mb-4 pr-16">
+                <div>
+                  <div class="text-xs font-bold uppercase tracking-widest mb-1" style={`color: ${m.color};`}>அலகு {unit.num}</div>
+                  <h4 class="text-xl font-bold leading-tight text-text">{unit.title}</h4>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 mb-6">
+                <div class="q-badge" style={`background-color: ${m.color};`}>{unit.questions} Qs</div>
+              </div>
+              <ul class="topic-list">
+                {unit.topics.map(topic => (
+                  <li>
+                    <span class="bullet" style={`color: ${m.color};`}>✦</span>
+                    <span>{topic}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        ))}
-      </div>
+        )
+      })}
     </div>
-  </section>
+  </div>
 </Layout>
 
 <style>
@@ -182,14 +222,15 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: var(--space-12) var(--space-8);
-    box-shadow: var(--shadow-md);
+    padding: var(--space-16) var(--space-8);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
   }
   .syllabus-hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.5), rgba(59, 130, 246, 0.4));
+    backdrop-filter: blur(2px);
     z-index: 1;
   }
   .hero-content {
@@ -197,109 +238,106 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
     z-index: 2;
   }
 
-  /* Colors for graphs */
-  .bg-purple { background-color: var(--purple, #9333ea); }
-  .bg-green { background-color: var(--green, #16a34a); }
-  .text-purple { color: var(--purple, #9333ea); }
-  .text-green { color: var(--green, #16a34a); }
-
-  /* Part header */
-  .syl-part { margin-bottom: var(--space-8); }
-  .syl-part-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: var(--space-4) var(--space-5);
+  /* Info Cards (Top Stats) */
+  .info-card {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    margin-bottom: var(--space-4);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal);
   }
-
-  /* Tabs */
-  .syl-tab, .lang-tab {
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    font-size: 0.82rem; font-weight: 500;
-    color: var(--text-muted); cursor: pointer;
-    transition: all var(--duration-fast);
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
   }
-  .syl-tab:hover, .lang-tab:hover { border-color: var(--border-hover); color: var(--text); }
-  .syl-tab.active { background: var(--text); color: var(--text-inverse); border-color: var(--text); }
-  .lang-tab.active { background: var(--purple, #9333ea); color: white; border-color: var(--purple, #9333ea); }
-
-  /* Unit cards */
-  .syl-units { display: flex; flex-direction: column; gap: var(--space-4); }
-  .syl-unit {
-    background: var(--surface-sunken);
-    border: 1px solid transparent;
-    border-radius: var(--radius-lg);
+  .info-header {
     padding: var(--space-6);
-    transition: all var(--duration-normal) var(--ease-out);
+    color: white;
+    text-align: center;
   }
-  .syl-unit:hover { background: var(--surface); box-shadow: var(--shadow-sm); border-color: var(--border-subtle); }
-  .syl-unit-top {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: var(--space-4);
-    padding-bottom: var(--space-3);
-    border-bottom: 1px solid var(--border-subtle);
+  .info-header h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
+  .big-number { font-size: 3.5rem; font-weight: 900; line-height: 1; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+  .big-number span { font-size: 1rem; font-weight: 600; opacity: 0.8; }
+  .info-body { padding: var(--space-6) var(--space-5); background: var(--surface); flex: 1; }
+
+  /* Charts */
+  .chart-container { display: flex; flex-direction: column; gap: var(--space-4); width: 100%; }
+  .chart-row { display: flex; align-items: center; gap: var(--space-3); }
+  .chart-label { width: 65px; display: flex; align-items: center; gap: var(--space-2); font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
+  .chart-label .icon { font-size: 1.1rem; }
+  .chart-bar-wrap { flex: 1; display: flex; align-items: center; gap: var(--space-3); }
+  .chart-bar { height: 12px; border-radius: 6px; position: relative; min-width: 4px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
+  .chart-val { font-size: 0.85rem; font-weight: 900; width: 16px; text-align: right; }
+
+  .donut-chart {
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 0 10px var(--surface-sunken);
   }
-  .syl-unit-num {
-    padding: var(--space-1) var(--space-3);
-    border-radius: var(--radius-xs);
-    font-size: 0.72rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.04em;
-    white-space: nowrap;
+  .donut-inner {
+    width: 120px; height: 120px;
+    background: var(--surface);
+    border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
   }
 
-  /* Topics without checkboxes */
-  .syl-topics { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
-  .syl-topic { 
-    font-size: 0.875rem; 
-    display: flex; 
-    align-items: flex-start; 
-    gap: var(--space-3); 
+  /* Floating Cards */
+  .floating-card {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-6) var(--space-8);
+    position: relative;
+    border: 1px solid var(--border-subtle);
+    border-top: 5px solid var(--theme-color);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal);
+    z-index: 1;
+    margin-top: 10px;
   }
-  .syl-topic-bullet {
-    color: var(--text-muted);
-    font-size: 1.2rem;
-    line-height: 1.2;
+  .floating-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+    z-index: 10;
   }
-  .syl-topic-text { 
-    line-height: 1.6; 
-    color: var(--text-secondary); 
+  .card-icon-wrapper {
+    position: absolute;
+    top: -24px; right: 24px;
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+    transform: rotate(5deg);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
+  .floating-card:hover .card-icon-wrapper { transform: rotate(-5deg) scale(1.15); }
+  .card-content { margin-top: 0; }
+  
+  .q-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    box-shadow: 0 4px 10px -2px rgba(0,0,0,0.3);
+  }
+
+  .tags-container { display: flex; flex-wrap: wrap; gap: 6px; }
+  .infographic-tag {
+    font-size: 0.7rem; font-weight: 800;
+    padding: 4px 10px; border-radius: 12px;
+    letter-spacing: 0.03em; text-transform: uppercase;
+  }
+
+  .topic-list { display: flex; flex-direction: column; gap: var(--space-4); }
+  .topic-list li { display: flex; gap: var(--space-3); font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary); }
+  .bullet { font-size: 1.2rem; line-height: 1.3; flex-shrink: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
   @media (max-width: 768px) {
-    .syl-units { padding-left: 0; }
+    .chart-label { width: 50px; }
   }
 </style>
-
-<script>
-  // === Tab filtering ===
-  document.querySelectorAll('.syl-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.syl-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const target = (btn as HTMLElement).dataset.target;
-      document.querySelectorAll('.syl-part').forEach(s => {
-        const el = s as HTMLElement;
-        if (target === 'all') { el.style.display = ''; }
-        else { el.style.display = el.id === target ? '' : 'none'; }
-      });
-    });
-  });
-
-  // === Language toggle (Part C) ===
-  document.querySelectorAll('.lang-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.lang-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const lang = (btn as HTMLElement).dataset.lang;
-      document.querySelectorAll('.lang-panel').forEach(p => {
-        const el = p as HTMLElement;
-        el.style.display = el.dataset.langPanel === lang ? '' : 'none';
-      });
-    });
-  });
-</script>
