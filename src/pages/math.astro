@@ -6,18 +6,18 @@ const mathTopics = [
   {
     id: 'simplification',
     title: 'Simplification & Percentages',
-    icon: '📊',
+    icon: '<path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
     desc: 'BODMAS rules, percentages, decimals, fractions, and ratio conversions.',
     formulas: [
-      { name: 'BODMAS Order', rule: 'Bracket ( ), Of, Division (÷), Multiplication (×), Addition (+), Subtraction (-)' },
+      { name: 'BODMAS Order', rule: 'Bracket ( ), Of, Div (÷), Mul (×), Add (+), Sub (-)' },
       { name: 'Percentage Increase', rule: 'Increase % = (Increase Value / Original Value) × 100' },
-      { name: 'Salary / Consumption Rule', rule: 'If A is R% more than B, then B is [R / (100 + R)] × 100 % less than A' }
+      { name: 'Salary Rule', rule: 'If A is R% more than B, B is [R / (100 + R)] × 100 % less than A' }
     ]
   },
   {
     id: 'lcm-hcf',
     title: 'HCF & LCM',
-    icon: '🧮',
+    icon: '<rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="9" y2="21"/>',
     desc: 'Common factors, common multiples, division methods, and relationship properties.',
     formulas: [
       { name: 'Fundamental Relation', rule: 'HCF(a, b) × LCM(a, b) = a × b' },
@@ -28,7 +28,7 @@ const mathTopics = [
   {
     id: 'interest',
     title: 'Simple & Compound Interest',
-    icon: '💰',
+    icon: '<path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
     desc: 'Annual interest rates, principal, accrued amounts, and compound frequency.',
     formulas: [
       { name: 'Simple Interest (SI)', rule: 'SI = (P × T × R) / 100' },
@@ -39,23 +39,23 @@ const mathTopics = [
   {
     id: 'time-work',
     title: 'Time & Work',
-    icon: '⏱️',
+    icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
     desc: 'Individual rates, group coordination, pipes, cisterns, and work efficiency.',
     formulas: [
-      { name: 'Combined Work Rate', rule: 'If A takes X days and B takes Y days, together they take (X × Y) / (X + Y) days' },
+      { name: 'Combined Work Rate', rule: 'X & Y together take (X × Y) / (X + Y) days' },
       { name: 'Efficiency Rule', rule: 'Work Done = Efficiency × Time Taken' },
       { name: 'Chain Rule', rule: '(M1 × D1 × H1) / W1 = (M2 × D2 × H2) / W2' }
     ]
   },
   {
     id: 'mensuration',
-    title: 'Mensuration (Area & Volume)',
-    icon: '📐',
+    title: 'Mensuration',
+    icon: '<path d="M3 21h18L12 3z"/><path d="m3 21 9-9"/><path d="M12 12v9"/>',
     desc: '2D shapes, 3D solids, surface area, volumes, and geometric measurements.',
     formulas: [
-      { name: 'Circle Area & Circumference', rule: 'Area = πr², Circumference = 2πr (π ≈ 22/7 or 3.14)' },
-      { name: 'Sphere Volume & Surface Area', rule: 'Volume = (4/3)πr³, Surface Area = 4πr²' },
-      { name: 'Cylinder Volume & Curved SA', rule: 'Volume = πr²h, Curved Surface Area = 2πrh' }
+      { name: 'Circle Area & Circ.', rule: 'Area = πr², Circ = 2πr (π ≈ 22/7)' },
+      { name: 'Sphere Volume & SA', rule: 'Volume = (4/3)πr³, Surface Area = 4πr²' },
+      { name: 'Cylinder Vol & CSA', rule: 'Volume = πr²h, Curved SA = 2πrh' }
     ]
   }
 ];
@@ -109,881 +109,368 @@ const quizQuestions = [
     ],
     correct: "A",
     explanation: "Applying BODMAS: \n1. First resolve Parenthesis (25 - 5 × 4) -> 5 is multiplied by 4 first, giving 20. Then 25 - 20 = 5.\n2. The expression becomes: 125 × 8 ÷ 5 + 12.\n3. Perform division and multiplication from left to right: 125 × 8 = 1000. Then 1000 ÷ 5 = 200.\n4. Perform addition: 200 + 12 = 212."
-  },
-  {
-    id: 5,
-    question: "If A's salary is 25% more than B's salary, then by what percentage is B's salary less than A's salary?",
-    options: [
-      { label: "A", text: "25%" },
-      { label: "B", text: "20%" },
-      { label: "C", text: "15%" },
-      { label: "D", text: "33.33%" }
-    ],
-    correct: "B",
-    explanation: "Let B's salary = 100. A's salary is 25% more, so A's salary = 125. B's salary is less than A's salary by 125 - 100 = 25. Percentage less = (Difference / A's Salary) × 100 = (25 / 125) × 100 = (1 / 5) × 100 = 20%. Shortcut: [R / (100 + R)] × 100 = [25 / 125] × 100 = 20%."
   }
 ];
 ---
 
-<Layout title="Aptitude & Mental Ability | TNPSC Fuhrer" active="Math">
-  <main class="math-portal">
-    <!-- HERO SECTION -->
-    <section class="math-hero">
-      <div class="math-hero-bg"></div>
-      <div class="container hero-content">
-        <span class="math-badge">Unit 10: Aptitude & Mental Ability</span>
-        <h1>Master the Math.<br/><span class="highlight">Secure Your 25 Questions.</span></h1>
-        <p class="subtitle">Aptitude constitutes 12.5% of the total questions in TNPSC Group 4 and Group 2 exams. Solve faster and smarter with formula sheets, dynamic interactive calculators, and practice questions.</p>
-        <div class="stats-row">
-          <div class="stat-card">
-            <span class="num">25</span>
-            <span class="label">Questions in Exam</span>
+<Layout title="Aptitude & Mental Ability" description="Master TNPSC Math with formula sheets, interactive calculators, and practice questions." active="Aptitude">
+  
+  <!-- Hero Section -->
+  <div class="page-header animate-in">
+    <span class="badge badge-accent mb-3">Unit 10: Aptitude</span>
+    <h1>Master the Math.</h1>
+    <p>Aptitude is 12.5% of the total questions in TNPSC Group 4 and Group 2. Solve faster and smarter with our tools.</p>
+  </div>
+
+  <div class="grid grid-3 mb-8 stagger">
+    <div class="stat-card" style="border-top: 3px solid var(--accent);">
+      <div class="stat-label">Questions in Exam</div>
+      <div class="stat-value text-mono">25</div>
+      <div class="stat-footer">Compulsory</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Marks</div>
+      <div class="stat-value text-mono">37.5</div>
+      <div class="stat-footer">High Yield</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Syllabus Coverage</div>
+      <div class="stat-value text-mono">100%</div>
+      <div class="stat-footer">All Topics Covered</div>
+    </div>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <div class="flex gap-2 mb-6 animate-in" style="animation-delay: 200ms;">
+    <button class="portal-nav-btn active" data-target="formulas-section">📋 Formulas</button>
+    <button class="portal-nav-btn" data-target="solvers-section">⚡ Interactive Solvers</button>
+    <button class="portal-nav-btn" data-target="quiz-section">📝 Practice Quiz</button>
+  </div>
+
+  <!-- SECTION 1: FORMULAS -->
+  <div id="formulas-section" class="portal-pane active animate-in" style="animation-delay: 300ms;">
+    <div class="mb-6">
+      <h2 style="font-size: 1.25rem; margin-bottom: var(--space-2);">Essential Exam Formulas</h2>
+      <p class="text-secondary" style="font-size: 0.9rem;">Quick-reference cheat sheets for high-yield TNPSC Aptitude modules.</p>
+    </div>
+    
+    <div class="grid grid-2">
+      {mathTopics.map(topic => (
+        <div class="card card-interactive">
+          <div class="flex items-center gap-3 mb-3">
+            <div style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--accent) 10%, transparent);">
+              <svg style="width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;" viewBox="0 0 24 24" set:html={topic.icon} />
+            </div>
+            <h3 style="font-size: 1.05rem;">{topic.title}</h3>
           </div>
-          <div class="stat-card">
-            <span class="num">37.5</span>
-            <span class="label">Total Marks</span>
-          </div>
-          <div class="stat-card">
-            <span class="num">100%</span>
-            <span class="label">Syllabus Coverage</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTENT SECTIONS TABS -->
-    <section class="tabbed-layout container">
-      <div class="portal-nav">
-        <button class="portal-nav-btn active" data-target="formulas-section">📋 Formula Cheat Sheet</button>
-        <button class="portal-nav-btn" data-target="solvers-section">⚡ Interactive Step Solvers</button>
-        <button class="portal-nav-btn" data-target="quiz-section">📝 Practice Quiz</button>
-      </div>
-
-      <!-- SECTION 1: FORMULAS -->
-      <div id="formulas-section" class="portal-pane active">
-        <div class="pane-header">
-          <h2>Essential Exam Formulas</h2>
-          <p>Quick-reference cheat sheets for high-yield TNPSC Aptitude modules.</p>
-        </div>
-        <div class="formulas-grid">
-          {mathTopics.map(topic => (
-            <div class="formula-card">
-              <div class="card-head">
-                <span class="card-icon">{topic.icon}</span>
-                <h3>{topic.title}</h3>
+          <p class="text-muted" style="font-size: 0.85rem; margin-bottom: var(--space-4); min-height: 2.5rem;">{topic.desc}</p>
+          
+          <div class="stack gap-3 mt-auto">
+            {topic.formulas.map(f => (
+              <div>
+                <strong style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: var(--space-1);">{f.name}</strong>
+                <code style="display: block; background: var(--surface-raised); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); font-size: 0.8rem; color: var(--text); font-family: var(--font-mono); border: 1px solid var(--border-subtle);">{f.rule}</code>
               </div>
-              <p class="card-desc">{topic.desc}</p>
-              <ul class="formula-list">
-                {topic.formulas.map(f => (
-                  <li>
-                    <strong>{f.name}:</strong>
-                    <code class="formula-code">{f.rule}</code>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- SECTION 2: INTERACTIVE SOLVERS -->
-      <div id="solvers-section" class="portal-pane">
-        <div class="pane-header">
-          <h2>Interactive Step-by-Step Solvers</h2>
-          <p>Practice with your own numbers. Enter values and watch the script compute and lay out the complete working steps.</p>
-        </div>
-
-        <div class="solvers-grid">
-          <!-- SOLVER A: HCF & LCM -->
-          <div class="solver-card">
-            <div class="solver-header">
-              <span class="solver-icon">🧮</span>
-              <h3>LCM & HCF Step-by-Step Solver</h3>
-            </div>
-            <p class="solver-desc">Enter up to three positive integers to compute their Highest Common Factor and Lowest Common Multiple with steps.</p>
-            
-            <div class="solver-inputs">
-              <div class="input-group">
-                <label for="num1">Num 1</label>
-                <input type="number" id="num1" value="12" min="1" max="99999" />
-              </div>
-              <div class="input-group">
-                <label for="num2">Num 2</label>
-                <input type="number" id="num2" value="18" min="1" max="99999" />
-              </div>
-              <div class="input-group">
-                <label for="num3">Num 3 (Optional)</label>
-                <input type="number" id="num3" placeholder="e.g. 30" min="1" max="99999" />
-              </div>
-            </div>
-            
-            <button id="calc-lcm-hcf" class="calc-btn">Compute LCM & HCF</button>
-
-            <div id="lcm-hcf-result" class="solver-results-box hidden">
-              <!-- JS Injected Result -->
-            </div>
-          </div>
-
-          <!-- SOLVER B: SIMPLE VS COMPOUND INTEREST -->
-          <div class="solver-card">
-            <div class="solver-header">
-              <span class="solver-icon">💰</span>
-              <h3>Interest Rates Comparison Tool</h3>
-            </div>
-            <p class="solver-desc">Compare Simple Interest and Compound Interest (compounded annually) for your principal, rate, and time.</p>
-
-            <div class="solver-inputs">
-              <div class="input-group full-width">
-                <label for="principal">Principal Amount (P) in ₹</label>
-                <input type="number" id="principal" value="10000" min="100" max="99999999" />
-              </div>
-              <div class="input-group">
-                <label for="rate">Rate of Interest (R) %</label>
-                <input type="number" id="rate" value="10" step="0.1" min="0.1" max="100" />
-              </div>
-              <div class="input-group">
-                <label for="time">Time Period (T) in Years</label>
-                <input type="number" id="time" value="2" min="1" max="50" />
-              </div>
-            </div>
-
-            <button id="calc-interest" class="calc-btn">Compare Interest Options</button>
-
-            <div id="interest-result" class="solver-results-box hidden">
-              <!-- JS Injected Result -->
-            </div>
+            ))}
           </div>
         </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- SECTION 2: INTERACTIVE SOLVERS -->
+  <div id="solvers-section" class="portal-pane" style="display: none;">
+    <div class="mb-6">
+      <h2 style="font-size: 1.25rem; margin-bottom: var(--space-2);">Step-by-Step Solvers</h2>
+      <p class="text-secondary" style="font-size: 0.9rem;">Practice with your own numbers. Enter values and watch the script compute the working steps.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <!-- SOLVER A: HCF & LCM -->
+      <div class="card">
+        <h3 style="font-size: 1.1rem; margin-bottom: var(--space-2);">LCM & HCF Solver</h3>
+        <p class="text-muted" style="font-size: 0.85rem; margin-bottom: var(--space-4);">Enter up to three positive integers to compute their Highest Common Factor and Lowest Common Multiple.</p>
+        
+        <div class="grid grid-3" style="margin-bottom: var(--space-4);">
+          <div class="stack gap-1">
+            <label class="text-secondary" style="font-size: 0.8rem; font-weight: 500;">Num 1</label>
+            <input type="number" id="num1" value="12" class="form-input" />
+          </div>
+          <div class="stack gap-1">
+            <label class="text-secondary" style="font-size: 0.8rem; font-weight: 500;">Num 2</label>
+            <input type="number" id="num2" value="18" class="form-input" />
+          </div>
+          <div class="stack gap-1">
+            <label class="text-secondary" style="font-size: 0.8rem; font-weight: 500;">Num 3 (Opt)</label>
+            <input type="number" id="num3" placeholder="e.g. 30" class="form-input" />
+          </div>
+        </div>
+        
+        <button id="calc-lcm-hcf" class="btn btn-primary w-full">Compute LCM & HCF</button>
+        <div id="lcm-hcf-result" class="solver-result hidden"></div>
       </div>
 
-      <!-- SECTION 3: PRACTICE QUIZ -->
-      <div id="quiz-section" class="portal-pane">
-        <div class="pane-header">
-          <h2>Interactive Revision Quiz</h2>
-          <p>Test your conceptual understanding and calculation speed. Get instant visual feedback and view explanations.</p>
+      <!-- SOLVER B: SIMPLE VS COMPOUND INTEREST -->
+      <div class="card">
+        <h3 style="font-size: 1.1rem; margin-bottom: var(--space-2);">Interest Comparison Tool</h3>
+        <p class="text-muted" style="font-size: 0.85rem; margin-bottom: var(--space-4);">Compare Simple Interest and Compound Interest (compounded annually).</p>
+
+        <div class="grid grid-3" style="margin-bottom: var(--space-4);">
+          <div class="stack gap-1" style="grid-column: span 3;">
+            <label class="text-secondary" style="font-size: 0.8rem; font-weight: 500;">Principal Amount (P) in ₹</label>
+            <input type="number" id="principal" value="10000" class="form-input" />
+          </div>
+          <div class="stack gap-1">
+            <label class="text-secondary" style="font-size: 0.8rem; font-weight: 500;">Rate (R) %</label>
+            <input type="number" id="rate" value="10" step="0.1" class="form-input" />
+          </div>
+          <div class="stack gap-1" style="grid-column: span 2;">
+            <label class="text-secondary" style="font-size: 0.8rem; font-weight: 500;">Time Period (T) Years</label>
+            <input type="number" id="time" value="2" class="form-input" />
+          </div>
         </div>
 
-        <div class="quiz-layout">
-          {quizQuestions.map(q => (
-            <div class="quiz-question-card" data-qid={q.id} data-correct={q.correct}>
-              <div class="q-header">
-                <span class="q-number">Question {q.id} of {quizQuestions.length}</span>
-                <span class="q-badge hidden">Correct Answer</span>
-              </div>
-              <p class="q-text">{q.question}</p>
-              
-              <div class="q-options">
-                {q.options.map(opt => (
-                  <button class="opt-btn" data-opt={opt.label}>
-                    <span class="opt-lbl">{opt.label}</span>
-                    <span class="opt-txt">{opt.text}</span>
-                  </button>
-                ))}
-              </div>
-
-              <div class="explanation-box hidden">
-                <div class="exp-title">🔑 Detailed Solver Steps</div>
-                <p class="exp-content">{q.explanation}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <button id="calc-interest" class="btn btn-primary w-full">Compare Interest Options</button>
+        <div id="interest-result" class="solver-result hidden"></div>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
+
+  <!-- SECTION 3: PRACTICE QUIZ -->
+  <div id="quiz-section" class="portal-pane" style="display: none;">
+    <div class="mb-6">
+      <h2 style="font-size: 1.25rem; margin-bottom: var(--space-2);">Interactive Revision Quiz</h2>
+      <p class="text-secondary" style="font-size: 0.9rem;">Test your conceptual understanding and calculation speed with instant visual feedback.</p>
+    </div>
+
+    <div class="stack gap-6 mx-auto" style="max-width: 750px;">
+      {quizQuestions.map(q => (
+        <div class="card quiz-card" data-qid={q.id} data-correct={q.correct}>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-mono text-muted" style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Question {q.id} of {quizQuestions.length}</span>
+            <span class="badge badge-green q-badge hidden">Correct</span>
+          </div>
+          
+          <p style="font-size: 1.1rem; font-weight: 500; color: var(--text); margin-bottom: var(--space-5); line-height: 1.5;">{q.question}</p>
+          
+          <div class="grid grid-2" style="gap: var(--space-3); margin-bottom: var(--space-5);">
+            {q.options.map(opt => (
+              <button class="opt-btn" data-opt={opt.label}>
+                <span class="opt-lbl">{opt.label}</span>
+                <span class="opt-txt">{opt.text}</span>
+              </button>
+            ))}
+          </div>
+
+          <div class="exp-box hidden">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--green); text-transform: uppercase; margin-bottom: var(--space-2);">🔑 Detailed Steps</div>
+            <p style="font-size: 0.9rem; color: color-mix(in srgb, var(--green) 80%, black); line-height: 1.6; white-space: pre-line;">{q.explanation}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
 </Layout>
 
 <style>
-  /* Base Colors & Theming */
-  .math-portal {
-    --primary: #0891b2;
-    --primary-light: #ecfeff;
-    --primary-glow: rgba(8, 145, 178, 0.1);
-    --secondary: #1a73e8;
-    --secondary-glow: rgba(26, 115, 232, 0.15);
-    background: var(--bg);
-    padding-bottom: 5rem;
-  }
-
-  /* Hero Section */
-  .math-hero {
-    position: relative;
-    background: radial-gradient(circle at 70% 30%, var(--primary-glow), transparent 60%),
-                radial-gradient(circle at 10% 80%, var(--secondary-glow), transparent 50%),
-                var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 5rem 0 4rem;
-    overflow: hidden;
-  }
-  .math-badge {
-    background: var(--primary-light);
-    color: var(--primary);
-    font-weight: 600;
-    padding: 0.4rem 0.8rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(8, 145, 178, 0.2);
-  }
-  .math-hero h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: var(--navy);
-    line-height: 1.15;
-    margin-bottom: 1rem;
-    letter-spacing: -0.03em;
-  }
-  .highlight {
-    color: var(--primary);
-  }
-  .subtitle {
-    max-width: 700px;
-    font-size: 1.1rem;
-    color: var(--muted);
-    margin-bottom: 2.5rem;
-  }
-
-  /* Stats cards */
-  .stats-row {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.25rem 2rem;
-    min-width: 160px;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  }
-  .stat-card .num {
-    display: block;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--navy);
-    line-height: 1.2;
-  }
-  .stat-card .label {
-    font-size: 0.85rem;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  /* Tabbed Portal Navigation */
-  .portal-nav {
-    display: flex;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--border);
-    padding: 2.5rem 0 1rem;
-    position: sticky;
-    top: 64px;
-    background: rgba(248, 247, 244, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 10;
-  }
+  /* Tabs */
   .portal-nav-btn {
-    border: none;
-    background: transparent;
-    padding: 0.75rem 1.25rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--muted);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--text-muted); cursor: pointer;
+    transition: all var(--duration-fast);
   }
-  .portal-nav-btn:hover {
-    color: var(--text);
-    background: rgba(0, 0, 0, 0.03);
-  }
-  .portal-nav-btn.active {
-    color: var(--primary);
-    background: var(--primary-light);
-    box-shadow: inset 0 0 0 1px rgba(8, 145, 178, 0.15);
-  }
+  .portal-nav-btn:hover { border-color: var(--border-hover); color: var(--text); }
+  .portal-nav-btn.active { background: var(--text); color: var(--text-inverse); border-color: var(--text); }
 
-  /* Portal Pane visibility */
-  .portal-pane {
-    display: none;
-    padding-top: 2rem;
-  }
-  .portal-pane.active {
-    display: block;
-    animation: fadeIn 0.3s ease-out;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .pane-header {
-    margin-bottom: 2rem;
-  }
-  .pane-header h2 {
-    font-size: 1.75rem;
-    color: var(--navy);
-    margin-bottom: 0.3rem;
-  }
-  .pane-header p {
-    color: var(--muted);
-    font-size: 0.95rem;
-  }
-
-  /* Formulas pane styles */
-  .formulas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5rem;
-  }
-  .formula-card {
+  /* Solver inputs & results */
+  .form-input {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-  }
-  .card-head {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-  .card-icon {
-    font-size: 1.5rem;
-  }
-  .card-head h3 {
-    font-size: 1.25rem;
-    color: var(--navy);
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-  }
-  .card-desc {
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-    line-height: 1.45;
-  }
-  .formula-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: auto;
-  }
-  .formula-list li {
-    font-size: 0.85rem;
-    color: var(--text);
-  }
-  .formula-list li strong {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--navy);
-    margin-bottom: 0.2rem;
-  }
-  .formula-code {
-    display: block;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    padding: 0.4rem 0.6rem;
-    border-radius: 6px;
-    font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 0.82rem;
-    color: #0366d6;
-    word-break: break-all;
-  }
-
-  /* Solver Tool Layout */
-  .solvers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
-    gap: 2rem;
-  }
-  @media (max-width: 540px) {
-    .solvers-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .solver-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    box-shadow: var(--shadow);
-  }
-  .solver-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
-  }
-  .solver-icon {
-    font-size: 1.6rem;
-  }
-  .solver-header h3 {
-    font-size: 1.35rem;
-    color: var(--navy);
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-  }
-  .solver-desc {
-    font-size: 0.9rem;
-    color: var(--muted);
-    margin-bottom: 1.5rem;
-  }
-  .solver-inputs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  .input-group {
-    flex: 1 1 calc(50% - 0.5rem);
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .input-group.full-width {
-    flex: 1 1 100%;
-  }
-  .input-group label {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--navy);
-  }
-  .input-group input {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.6rem 0.8rem;
-    font-size: 0.95rem;
     font-family: inherit;
     color: var(--text);
     outline: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition: all var(--duration-fast);
   }
-  .input-group input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--primary-glow);
-  }
-  .calc-btn {
-    width: 100%;
-    background: var(--navy);
-    color: var(--surface);
-    border: none;
-    border-radius: 8px;
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s ease;
-  }
-  .calc-btn:hover {
-    background: #0d162a;
-  }
-  
-  /* Solver Results Presentation styling */
-  .solver-results-box {
-    margin-top: 1.5rem;
-    padding: 1.25rem;
-    border-radius: 8px;
-    background: var(--primary-light);
-    border: 1px solid rgba(8, 145, 178, 0.15);
-    animation: slideDown 0.25s ease-out;
-  }
-  .solver-results-box.hidden {
-    display: none;
-  }
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent); }
 
-  /* Interactive Quiz Style */
-  .quiz-layout {
-    max-width: 750px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .quiz-question-card {
-    background: var(--surface);
+  .solver-result {
+    margin-top: var(--space-4);
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    background: var(--surface-raised);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    box-shadow: var(--shadow);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    position: relative;
-    overflow: hidden;
+    animation: fadeUp var(--duration-normal) var(--ease-out);
   }
-  .q-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-  }
-  .q-number {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .q-badge {
-    background: var(--green-soft);
-    color: var(--green);
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-  }
-  .q-badge.hidden {
-    display: none;
-  }
-  .q-text {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 1.5rem;
-    line-height: 1.45;
-  }
-  .q-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
+  .solver-result.hidden { display: none; }
+
+  /* Quiz styles */
+  .quiz-card { transition: border-color 0.2s; }
+  
   .opt-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.85rem 1.25rem;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.95rem;
-    text-align: left;
-    color: var(--text);
-    transition: all 0.15s ease;
+    display: flex; align-items: center; gap: var(--space-3);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: var(--space-3);
+    cursor: pointer; text-align: left; color: var(--text);
+    transition: all 0.15s; font-size: 0.95rem; font-family: inherit;
   }
-  .opt-btn:hover {
-    background: var(--surface);
-    border-color: var(--primary);
-  }
+  .opt-btn:hover { background: var(--surface-raised); border-color: var(--border-hover); }
   .opt-lbl {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--muted);
+    display: flex; align-items: center; justify-content: center;
+    background: var(--surface-raised); border: 1px solid var(--border-subtle);
+    width: 24px; height: 24px; border-radius: var(--radius-xs);
+    font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
     flex-shrink: 0;
   }
   
-  /* Answer Selection states */
-  .opt-btn.correct {
-    background: var(--green-soft);
-    border-color: var(--green);
-    color: #1b5e20;
-  }
-  .opt-btn.correct .opt-lbl {
-    background: var(--green);
-    color: var(--surface);
-    border-color: var(--green);
-  }
-
-  .opt-btn.wrong {
-    background: var(--accent-soft);
-    border-color: var(--accent);
-    color: #b71c1c;
-  }
-  .opt-btn.wrong .opt-lbl {
-    background: var(--accent);
-    color: var(--surface);
-    border-color: var(--accent);
-  }
+  .opt-btn.correct { background: color-mix(in srgb, var(--green) 10%, transparent); border-color: var(--green); color: var(--green); }
+  .opt-btn.correct .opt-lbl { background: var(--green); color: white; border-color: var(--green); }
   
-  .opt-btn.disabled {
-    pointer-events: none;
-    opacity: 0.8;
-  }
+  .opt-btn.wrong { background: color-mix(in srgb, var(--accent) 10%, transparent); border-color: var(--accent); color: var(--accent); }
+  .opt-btn.wrong .opt-lbl { background: var(--accent); color: white; border-color: var(--accent); }
+  
+  .opt-btn.disabled { pointer-events: none; opacity: 0.8; }
 
-  /* Explanation panel container */
-  .explanation-box {
-    margin-top: 1.5rem;
-    padding: 1.25rem;
-    border-radius: 8px;
-    background: #f0fdf4;
-    border: 1px solid rgba(52, 168, 83, 0.15);
-    animation: slideDown 0.3s ease-out;
+  .exp-box {
+    margin-top: var(--space-4); padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--green) 5%, transparent);
+    border: 1px solid color-mix(in srgb, var(--green) 20%, transparent);
+    animation: fadeUp 0.3s ease-out;
   }
-  .explanation-box.hidden {
-    display: none;
-  }
-  .exp-title {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--green);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .exp-content {
-    font-size: 0.92rem;
-    color: #2e7d32;
-    line-height: 1.6;
-    white-space: pre-line;
-  }
+  .exp-box.hidden { display: none; }
 </style>
 
 <script>
-  // Tabs Navigation implementation
+  // Tabs
   const tabButtons = document.querySelectorAll('.portal-nav-btn');
   const panes = document.querySelectorAll('.portal-pane');
 
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Remove active states
       tabButtons.forEach(b => b.classList.remove('active'));
-      panes.forEach(p => p.classList.remove('active'));
-
-      // Add active state to clicked button and relative section
+      panes.forEach(p => (p as HTMLElement).style.display = 'none');
       btn.classList.add('active');
       const targetId = btn.getAttribute('data-target');
-      document.getElementById(targetId)?.classList.add('active');
+      document.getElementById(targetId!)!.style.display = 'block';
+      document.getElementById(targetId!)!.classList.add('animate-in');
     });
   });
 
-  // SOLVER A: LCM & HCF Solver Core JS
-  const calcLcmHcfBtn = document.getElementById('calc-lcm-hcf');
-  const num1Input = document.getElementById('num1') as HTMLInputElement;
-  const num2Input = document.getElementById('num2') as HTMLInputElement;
-  const num3Input = document.getElementById('num3') as HTMLInputElement;
-  const lcmHcfResult = document.getElementById('lcm-hcf-result');
+  // Math Solvers
+  const getPrimeFactors = (num: number) => {
+    let temp = num; const factors: Record<number, number> = {};
+    for (let i = 2; i <= temp; i++) {
+      while (temp % i === 0) { factors[i] = (factors[i] || 0) + 1; temp /= i; }
+    }
+    return factors;
+  };
+  const factorString = (factors: Record<number, number>) => Object.keys(factors).map(prime => `${prime}<sup>${factors[parseInt(prime)]}</sup>`).join(" × ") || "1";
+  const gcdTwo = (a: number, b: number): number => b === 0 ? a : gcdTwo(b, a % b);
+  const lcmTwo = (a: number, b: number): number => (a * b) / gcdTwo(a, b);
 
-  calcLcmHcfBtn?.addEventListener('click', () => {
-    const n1 = parseInt(num1Input.value);
-    const n2 = parseInt(num2Input.value);
-    const n3Val = num3Input.value.trim();
+  document.getElementById('calc-lcm-hcf')?.addEventListener('click', () => {
+    const n1 = parseInt((document.getElementById('num1') as HTMLInputElement).value);
+    const n2 = parseInt((document.getElementById('num2') as HTMLInputElement).value);
+    const n3Val = (document.getElementById('num3') as HTMLInputElement).value.trim();
     const n3 = n3Val !== "" ? parseInt(n3Val) : null;
 
     if (isNaN(n1) || n1 <= 0 || isNaN(n2) || n2 <= 0 || (n3 !== null && (isNaN(n3) || n3 <= 0))) {
-      alert("Please enter valid positive integers.");
-      return;
+      alert("Please enter valid positive integers."); return;
     }
 
-    // Mathematical Helpers
-    const getPrimeFactors = (num: number): { [key: number]: number } => {
-      let temp = num;
-      const factors: { [key: number]: number } = {};
-      for (let i = 2; i <= temp; i++) {
-        while (temp % i === 0) {
-          factors[i] = (factors[i] || 0) + 1;
-          temp /= i;
-        }
-      }
-      return factors;
-    };
+    const f1 = getPrimeFactors(n1); const f2 = getPrimeFactors(n2); const f3 = n3 ? getPrimeFactors(n3) : null;
+    let hcf = gcdTwo(n1, n2); let lcm = lcmTwo(n1, n2);
+    if (n3) { hcf = gcdTwo(hcf, n3); lcm = lcmTwo(lcm, n3); }
 
-    const factorString = (factors: { [key: number]: number }): string => {
-      return Object.keys(factors)
-        .map(prime => `${prime}<sup>${factors[parseInt(prime)]}</sup>`)
-        .join(" × ") || "1";
-    };
-
-    const gcdTwo = (a: number, b: number): number => b === 0 ? a : gcdTwo(b, a % b);
-    const lcmTwo = (a: number, b: number): number => (a * b) / gcdTwo(a, b);
-
-    // Factors calculations
-    const f1 = getPrimeFactors(n1);
-    const f2 = getPrimeFactors(n2);
-    const f3 = n3 ? getPrimeFactors(n3) : null;
-
-    let hcf = gcdTwo(n1, n2);
-    let lcm = lcmTwo(n1, n2);
-
-    if (n3) {
-      hcf = gcdTwo(hcf, n3);
-      lcm = lcmTwo(lcm, n3);
-    }
-
-    // Structure Result Steps HTML
-    let html = `
-      <div style="font-family: inherit; font-size: 0.95rem; line-height: 1.5;">
-        <h4 style="margin-bottom: 0.75rem; color: #0e7490; font-size: 1.1rem; font-weight: 700;">🔑 Solver Working Steps:</h4>
-        <div style="margin-bottom: 1rem; border-left: 3px solid #22d3ee; padding-left: 0.75rem; background: rgba(255,255,255,0.4); padding: 0.5rem 0.75rem; border-radius: 4px;">
-          <strong>Prime Factorization:</strong><br/>
+    const resBox = document.getElementById('lcm-hcf-result')!;
+    resBox.innerHTML = `
+      <div style="font-size: 0.9rem;">
+        <strong style="display: block; margin-bottom: 0.5rem;">Prime Factorization:</strong>
+        <div style="margin-bottom: 1rem; color: var(--text-secondary);">
           • ${n1} = ${factorString(f1)}<br/>
           • ${n2} = ${factorString(f2)}<br/>
-          ${n3 && f3 ? `• ${n3} = ${factorString(f3)}<br/>` : ''}
+          ${n3 ? `• ${n3} = ${factorString(f3!)}` : ''}
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
-          <div style="background: #ffffff; padding: 0.75rem; border-radius: 6px; border: 1px solid rgba(8, 145, 178, 0.15);">
-            <strong style="color: #0e7490; font-size: 0.8rem; text-transform: uppercase;">Highest Common Factor (HCF)</strong>
-            <span style="display: block; font-size: 1.6rem; font-weight: 800; color: #155e75; margin-top: 0.25rem;">${hcf}</span>
+        <div class="grid grid-2" style="gap: var(--space-3);">
+          <div style="background: var(--surface); padding: var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">HCF</div>
+            <div class="text-mono" style="font-size: 1.5rem; font-weight: 700; color: var(--text);">${hcf}</div>
           </div>
-          <div style="background: #ffffff; padding: 0.75rem; border-radius: 6px; border: 1px solid rgba(8, 145, 178, 0.15);">
-            <strong style="color: #0e7490; font-size: 0.8rem; text-transform: uppercase;">Lowest Common Multiple (LCM)</strong>
-            <span style="display: block; font-size: 1.6rem; font-weight: 800; color: #155e75; margin-top: 0.25rem;">${lcm}</span>
+          <div style="background: var(--surface); padding: var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">LCM</div>
+            <div class="text-mono" style="font-size: 1.5rem; font-weight: 700; color: var(--text);">${lcm}</div>
           </div>
         </div>
       </div>
     `;
-
-    if (lcmHcfResult) {
-      lcmHcfResult.innerHTML = html;
-      lcmHcfResult.classList.remove('hidden');
-    }
+    resBox.classList.remove('hidden');
   });
 
-  // SOLVER B: Interest comparison solver
-  const calcInterestBtn = document.getElementById('calc-interest');
-  const principalInput = document.getElementById('principal') as HTMLInputElement;
-  const rateInput = document.getElementById('rate') as HTMLInputElement;
-  const timeInput = document.getElementById('time') as HTMLInputElement;
-  const interestResult = document.getElementById('interest-result');
-
-  calcInterestBtn?.addEventListener('click', () => {
-    const P = parseFloat(principalInput.value);
-    const R = parseFloat(rateInput.value);
-    const T = parseInt(timeInput.value);
+  document.getElementById('calc-interest')?.addEventListener('click', () => {
+    const P = parseFloat((document.getElementById('principal') as HTMLInputElement).value);
+    const R = parseFloat((document.getElementById('rate') as HTMLInputElement).value);
+    const T = parseInt((document.getElementById('time') as HTMLInputElement).value);
 
     if (isNaN(P) || P <= 0 || isNaN(R) || R <= 0 || isNaN(T) || T <= 0) {
-      alert("Please enter valid interest values.");
-      return;
+      alert("Please enter valid positive values."); return;
     }
 
-    // Calculations
     const si = (P * T * R) / 100;
     const siTotal = P + si;
-
     const ciTotal = P * Math.pow((1 + R / 100), T);
     const ci = ciTotal - P;
     const diff = ci - si;
 
-    // Create annual table breakdown
-    let tableRows = "";
-    let tempPrincipal = P;
-    for (let yr = 1; yr <= T; yr++) {
-      const yearInterest = tempPrincipal * (R / 100);
-      const endingBalance = tempPrincipal + yearInterest;
-      
-      tableRows += `
-        <tr>
-          <td style="padding: 0.5rem; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.85rem;">Year ${yr}</td>
-          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.85rem;">₹${tempPrincipal.toFixed(2)}</td>
-          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.85rem;">₹${yearInterest.toFixed(2)}</td>
-          <td style="padding: 0.5rem; text-align: right; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.85rem;">₹${endingBalance.toFixed(2)}</td>
-        </tr>
-      `;
-      tempPrincipal = endingBalance;
-    }
-
-    let html = `
-      <div style="font-family: inherit; font-size: 0.95rem; line-height: 1.5;">
-        <h4 style="margin-bottom: 0.75rem; color: #0e7490; font-size: 1.1rem; font-weight: 700;">⚖️ Interest Options Comparison:</h4>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-          <div style="background: #ffffff; padding: 0.75rem; border-radius: 6px; border: 1px solid rgba(8, 145, 178, 0.15);">
-            <strong style="color: #64748b; font-size: 0.75rem; text-transform: uppercase;">Simple Interest (SI) Accrued</strong>
-            <span style="display: block; font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-top: 0.25rem;">₹${si.toFixed(2)}</span>
-            <small style="color: #64748b; display: block; margin-top: 0.15rem;">Total Amount: ₹${siTotal.toFixed(2)}</small>
-          </div>
-          <div style="background: #ffffff; padding: 0.75rem; border-radius: 6px; border: 1px solid rgba(8, 145, 178, 0.15);">
-            <strong style="color: #64748b; font-size: 0.75rem; text-transform: uppercase;">Compound Interest (CI) Accrued</strong>
-            <span style="display: block; font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-top: 0.25rem;">₹${ci.toFixed(2)}</span>
-            <small style="color: #64748b; display: block; margin-top: 0.15rem;">Total Amount: ₹${ciTotal.toFixed(2)}</small>
-          </div>
+    const resBox = document.getElementById('interest-result')!;
+    resBox.innerHTML = `
+      <div class="grid grid-2" style="gap: var(--space-3); margin-bottom: var(--space-3);">
+        <div style="background: var(--surface); padding: var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Simple Interest (SI)</div>
+          <div class="text-mono" style="font-size: 1.25rem; font-weight: 700; color: var(--text);">₹${si.toFixed(2)}</div>
+          <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px;">Total: ₹${siTotal.toFixed(2)}</div>
         </div>
-        
-        <div style="background: #e2fbfb; border: 1px dashed rgba(8,145,178,0.3); padding: 0.6rem 0.8rem; border-radius: 6px; margin-bottom: 1rem; font-size: 0.9rem;">
-          💡 <strong>Difference (CI - SI):</strong> The compound interest Option earns <strong style="color: #0e7490;">₹${diff.toFixed(2)}</strong> more than the simple interest Option.
+        <div style="background: var(--surface); padding: var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border);">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Compound Interest (CI)</div>
+          <div class="text-mono" style="font-size: 1.25rem; font-weight: 700; color: var(--text);">₹${ci.toFixed(2)}</div>
+          <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px;">Total: ₹${ciTotal.toFixed(2)}</div>
         </div>
-
-        ${T <= 10 ? `
-          <div style="margin-top: 1rem; background: #ffffff; border-radius: 6px; border: 1px solid var(--border); overflow: hidden;">
-            <div style="background: #f8fafc; padding: 0.5rem; border-bottom: 1px solid var(--border); font-size: 0.8rem; font-weight: 700; color: #475569;">
-              📈 Annual Compound Interest Accrual Table
-            </div>
-            <table style="width: 100%; border-collapse: collapse;">
-              <thead>
-                <tr style="background: #f1f5f9;">
-                  <th style="padding: 0.5rem; text-align: center; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: #475569;">Year</th>
-                  <th style="padding: 0.5rem; text-align: right; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: #475569;">Beginning Principal</th>
-                  <th style="padding: 0.5rem; text-align: right; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: #475569;">Interest Earned</th>
-                  <th style="padding: 0.5rem; text-align: right; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: #475569;">Ending Balance</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${tableRows}
-              </tbody>
-            </table>
-          </div>
-        ` : ''}
+      </div>
+      <div style="background: color-mix(in srgb, var(--accent) 5%, transparent); padding: var(--space-3); border-radius: var(--radius-sm); font-size: 0.85rem; border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);">
+        💡 <strong>Difference (CI - SI):</strong> Compound interest earns <strong style="color: var(--accent);">₹${diff.toFixed(2)}</strong> more.
       </div>
     `;
-
-    if (interestResult) {
-      interestResult.innerHTML = html;
-      interestResult.classList.remove('hidden');
-    }
+    resBox.classList.remove('hidden');
   });
 
-  // SECTION 3: PRACTICE QUIZ JAVASCRIPT
-  const questions = document.querySelectorAll('.quiz-question-card');
-
-  questions.forEach(qCard => {
-    const qid = qCard.getAttribute('data-qid');
+  // Quiz Logic
+  document.querySelectorAll('.quiz-card').forEach(qCard => {
     const correctOpt = qCard.getAttribute('data-correct');
     const optButtons = qCard.querySelectorAll('.opt-btn');
-    const explanationBox = qCard.querySelector('.explanation-box');
+    const explanationBox = qCard.querySelector('.exp-box');
     const badge = qCard.querySelector('.q-badge');
 
     optButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const selected = btn.getAttribute('data-opt');
+        optButtons.forEach(b => b.classList.add('disabled'));
 
-        // Disable all option buttons for this question card
-        optButtons.forEach(b => {
-          b.classList.add('disabled');
-        });
-
-        // Apply feedback
         if (selected === correctOpt) {
           btn.classList.add('correct');
           badge?.classList.remove('hidden');
-          qCard.style.borderColor = 'var(--green)';
+          (qCard as HTMLElement).style.borderColor = 'var(--green)';
         } else {
           btn.classList.add('wrong');
-          // Highlight correct answer in green
-          optButtons.forEach(b => {
-            if (b.getAttribute('data-opt') === correctOpt) {
-              b.classList.add('correct');
-            }
-          });
-          qCard.style.borderColor = 'var(--accent)';
+          optButtons.forEach(b => { if (b.getAttribute('data-opt') === correctOpt) b.classList.add('correct'); });
+          (qCard as HTMLElement).style.borderColor = 'var(--accent)';
         }
-
-        // Show Explanation
         explanationBox?.classList.remove('hidden');
       });
     });

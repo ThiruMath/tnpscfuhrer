@@ -38,7 +38,7 @@ for (const q of questions) {
     window.__QUIZ_META__ = quizMeta;
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <div class="pyq-wrap">
 
@@ -934,25 +934,25 @@ for (const q of questions) {
 
   /* ── Page wrapper ─────────────────────────────────────────────────── */
   .pyq-wrap {
-    --bg: #f0f2f5;
-    --surface: #ffffff;
-    --surface-border: #e0e0e0;
-    --text: #202124;
-    --text-muted: #5f6368;
-    --text-faint: #9aa0a6;
-    --accent: #C1121F;
-    --navy: #14213D;
-    --blue: #1a73e8;
-    --blue-hover: #1557b0;
-    --green: #34a853;
-    --red: #ea4335;
-    --amber: #fbbc04;
-    --orange: #e37400;
-    --card-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
-    --card-radius: 16px;
+    --bg: var(--bg, #F8F7F4);
+    --surface: var(--surface, #FFFFFF);
+    --surface-border: var(--border, #E5E5E5);
+    --text: var(--text, #1A1A1A);
+    --text-muted: var(--text-muted, #737373);
+    --text-faint: var(--text-muted, #737373);
+    --accent: var(--accent, #D92323);
+    --navy: var(--secondary, #2A2A2A);
+    --blue: var(--accent, #D92323);
+    --blue-hover: #b91d1d;
+    --green: #2B7A0B;
+    --red: #D92323;
+    --amber: #D97706;
+    --orange: #D97706;
+    --card-shadow: 0 4px 16px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02);
+    --card-radius: var(--radius-lg, 12px);
     --pill-radius: 100px;
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Inter', 'DM Sans', 'Google Sans', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
 
     min-height: calc(100vh - 64px);
     background: var(--bg);

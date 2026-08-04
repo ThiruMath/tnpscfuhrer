@@ -50,7 +50,7 @@ import { works } from '../data/works.js';
         "As 'A' is the first of all letters,<br/>so is the Eternal the first in the world."
       </p>
       <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 2rem;">— Kural 1, Thiruvalluvar</div>
-      <a href="/kurals" class="btn-primary" style="background: white; color: var(--accent);">Read All 1,330 Kurals ↗</a>
+      <a href="/kurals" class="btn btn-outline" style="background: white; color: var(--accent); border: none;">Read All 1,330 Kurals ↗</a>
     </div>
   </div>
 
@@ -165,12 +165,12 @@ import { works } from '../data/works.js';
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
       <h2>Classical Tamil Library Portal</h2>
       
-      <div class="portal-tabs">
-        <button class="btn-outline active" id="tab-works" data-target="works" style="border-radius: 4px;">
-          Major Works <span class="badge" style="margin-left: 0.5rem; background: var(--surface-raised); border: 1px solid var(--border);">{works.length}</span>
+      <div class="portal-tabs flex gap-2">
+        <button class="btn btn-accent active" id="tab-works" data-target="works">
+          Major Works <span class="badge badge-neutral" style="margin-left: 0.5rem;">{works.length}</span>
         </button>
-        <button class="btn-outline" id="tab-poets" data-target="poets" style="border-radius: 4px;">
-          Famous Authors <span class="badge" style="margin-left: 0.5rem; background: var(--surface-raised); border: 1px solid var(--border);">{poets.length}</span>
+        <button class="btn btn-outline" id="tab-poets" data-target="poets">
+          Famous Authors <span class="badge badge-neutral" style="margin-left: 0.5rem;">{poets.length}</span>
         </button>
       </div>
     </div>
@@ -253,22 +253,22 @@ import { works } from '../data/works.js';
     activeTab = tab;
     if (tab === 'works') {
       tabWorksBtn?.classList.add('active');
-      tabWorksBtn?.classList.add('btn-primary');
+      tabWorksBtn?.classList.add('btn-accent');
       tabWorksBtn?.classList.remove('btn-outline');
       
       tabPoetsBtn?.classList.remove('active');
-      tabPoetsBtn?.classList.remove('btn-primary');
+      tabPoetsBtn?.classList.remove('btn-accent');
       tabPoetsBtn?.classList.add('btn-outline');
       
       gridWorks?.classList.add('active');
       gridPoets?.classList.remove('active');
     } else {
       tabWorksBtn?.classList.remove('active');
-      tabWorksBtn?.classList.remove('btn-primary');
+      tabWorksBtn?.classList.remove('btn-accent');
       tabWorksBtn?.classList.add('btn-outline');
       
       tabPoetsBtn?.classList.add('active');
-      tabPoetsBtn?.classList.add('btn-primary');
+      tabPoetsBtn?.classList.add('btn-accent');
       tabPoetsBtn?.classList.remove('btn-outline');
       
       gridWorks?.classList.remove('active');
@@ -302,7 +302,7 @@ import { works } from '../data/works.js';
 
   // Initialize tabs correctly based on active class
   if (tabWorksBtn && tabPoetsBtn) {
-    tabWorksBtn.classList.add('btn-primary');
+    tabWorksBtn.classList.add('btn-accent');
     tabWorksBtn.classList.remove('btn-outline');
   }
 

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import downloads from '../../public/data/vle-downloads.json';
 
 const vleFeatures = [
   { title: 'Study Materials & E-Content', description: 'Access official study materials, PDF notes, and structured e-content curated by the Department of Employment and Training.', icon: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>', color: 'var(--blue)' },
@@ -9,10 +10,18 @@ const vleFeatures = [
 ];
 
 const importantLinks = [
-  { name: 'VLE Portal Home', url: 'https://tamilnaducareerservices.tn.gov.in/vle/', primary: true },
-  { name: 'Browse Courses', url: 'https://tamilnaducareerservices.tn.gov.in/vle/courses', primary: false },
+  { name: 'VLE Portal Home', url: 'https://tamilnaducareerservices.tn.gov.in/', primary: true },
+  { name: 'Browse Courses', url: 'https://tamilnaducareerservices.tn.gov.in/courses', primary: false },
   { name: 'Official YouTube', url: 'https://www.youtube.com/channel/UCY7sYV3Q8w44gJ1k4_w05eA', primary: false },
 ];
+
+// Group downloads by unit
+const downloadsByUnit = downloads.reduce((acc: any, dl: any) => {
+  const unitName = dl.unit || 'General Materials';
+  if (!acc[unitName]) acc[unitName] = [];
+  acc[unitName].push(dl);
+  return acc;
+}, {});
 ---
 
 <Layout title="TN Career Services VLE" description="Access official Virtual Learning Environment materials for TNPSC preparation." active="VLE Material">
@@ -38,11 +47,57 @@ const importantLinks = [
     ))}
   </div>
 
+  <!-- Direct Downloads Hub -->
+  <div class="mb-10 animate-in" style="animation-delay: 200ms;">
+    <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+      <h2>Direct Downloads Hub</h2>
+      <span class="badge badge-accent">Hosted on Cloudflare R2</span>
+    </div>
+    <p class="text-muted mb-6" style="max-width: 600px; font-size: 0.95rem;">
+      Struggling to download from the official portal? We've mirrored the most important VLE study materials here for fast, direct downloading, organized by syllabus unit.
+    </p>
+
+    <div class="stack gap-6">
+      {Object.entries(downloadsByUnit).map(([unit, items]: [string, any]) => (
+        <div class="unit-section">
+          <h3 class="mb-4 pb-2" style="font-size: 1.25rem; color: var(--text); border-bottom: 2px solid var(--surface-sunken);">{unit}</h3>
+          
+          <div class="grid grid-2 stagger">
+            {items.map((dl: any) => (
+              <div class="card card-interactive flex flex-col h-full" style="padding: var(--space-4);">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="badge badge-neutral text-mono" style="font-size: 0.7rem;">{dl.subject}</span>
+                  <span class="text-muted text-mono" style="font-size: 0.75rem;">{dl.size} {dl.pages ? `• ${dl.pages} pages` : ''}</span>
+                </div>
+                
+                <h4 style="font-size: 1.1rem; margin-bottom: var(--space-1);">{dl.title}</h4>
+                <p class="text-secondary mb-3" style="font-size: 0.85rem;">Target: <span style="font-weight: 500; color: var(--text);">{dl.exam}</span></p>
+                
+                {dl.description && (
+                  <p class="text-muted mb-4" style="font-size: 0.85rem; line-height: 1.5; flex: 1;">
+                    {dl.description}
+                  </p>
+                )}
+                
+                <div class="flex justify-end mt-auto pt-3" style="border-top: 1px solid var(--border-subtle);">
+                  <a href={dl.url} download target="_blank" rel="noopener noreferrer" class="btn btn-accent" style="font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; width: 100%; justify-content: center;">
+                    <svg style="width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    Download PDF
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
   <!-- Access Links -->
-  <div class="card mb-8 animate-in" style="animation-delay: 200ms; text-align: center; padding: var(--space-8);">
+  <div class="card mb-8 animate-in" style="animation-delay: 300ms; text-align: center; padding: var(--space-8);">
     <h2 style="font-size: 1.2rem; margin-bottom: var(--space-2);">Access the Official Portal</h2>
     <p class="text-muted" style="font-size: 0.875rem; margin-bottom: var(--space-6); max-width: 500px; margin-inline: auto;">
-      Register on the official VLE portal to unlock study materials, mock tests, and previous year papers.
+      Register on the official VLE portal to unlock additional study materials, mock tests, and previous year papers.
     </p>
     <div class="flex gap-3 justify-center flex-wrap" style="justify-content: center;">
       {importantLinks.map(link => (
@@ -57,7 +112,7 @@ const importantLinks = [
   </div>
 
   <!-- Tips -->
-  <div class="card animate-in" style="animation-delay: 300ms;">
+  <div class="card animate-in" style="animation-delay: 400ms;">
     <div class="card-header">
       <span class="card-title">How to Use These Materials</span>
     </div>
