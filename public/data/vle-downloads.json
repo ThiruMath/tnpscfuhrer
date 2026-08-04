@@ -2,12 +2,65 @@
   {
     "id": "vle-unit9-1",
     "unit": "Unit 9 - Development Administration in Tamil Nadu",
-    "title": "அரசியல் கட்சிகளும் பலதரப்பு மக்களுக்கான நலத்திட்டங்களும்",
+    "title": "அரசியல் கட்சிகளும் பலதரப்பு மக்களுக்கான நலத்திட்டங்களும் (Chapter 1)",
     "subject": "தமிழக வளர்ச்சி நிர்வாகம்",
     "exam": "Group I/II - Prelims",
-    "description": "இப்பாடக்குறிப்பானது,தமிழகத்தின் சமூக பொருளாதார வளர்ச்சிக்கு சமூக மறுமலர்ச்சி இயக்கங்களின் பங்களிப்பு,அரசியல் கட்சிகள்,மக்களுக்கான நலத்திட்டங்கள்,இட ஒதுக்கீடு, சமூக வளங்களைப் பெறும் வாய்ப்புகள்,சமூக நீதி, நல்லிணக்கம்,தமிழகப் புவியியல் கூறுகள் பொருளாதார வளர்ச்சியில் அவற்றின் தாக்கம்,தமிழகத்தில் மின்னாளுகை,தமிழகம் நிகழ்த்தியுள்ள சாதனைகள் ஆகிய தலைப்புகளின் கீழ் குறிப்புகளை வழங்குகிறது.",
+    "description": "தமிழகத்தின் சமூக பொருளாதார வளர்ச்சிக்கு சமூக மறுமலர்ச்சி இயக்கங்களின் பங்களிப்பு, அரசியல் கட்சிகள், மக்களுக்கான நலத்திட்டங்கள்.",
     "size": "PDF",
-    "pages": "Detailed",
     "url": "https://files.tnpscfuhrer.in/New%20folder/%E0%AE%85%E0%AE%B0%E0%AE%9A%E0%AE%BF%E0%AE%AF%E0%AE%B2%E0%AF%8D%20%E0%AE%95%E0%AE%9F%E0%AF%8D%E0%AE%9A%E0%AE%BF%E0%AE%95%E0%AE%B3%E0%AF%81%E0%AE%AE%E0%AF%8D%20%E0%AE%AA%E0%AE%B2%E0%AE%A4%E0%AE%B0%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81%20%E0%AE%AE%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%81%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BE%E0%AE%A9%20%E0%AE%A8%E0%AE%B2%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AE%BF%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%81%E0%AE%AE%E0%AF%8D_1st_chapter.pdf"
+  },
+  {
+    "id": "vle-unit9-2",
+    "unit": "Unit 9 - Development Administration in Tamil Nadu",
+    "title": "தமிழகப் புவியியல் கூறுகளும் பொருளாதார வளர்ச்சியில் அவற்றின் தாக்கமும் (Chapter 1)",
+    "subject": "தமிழக வளர்ச்சி நிர்வாகம்",
+    "exam": "Group I/II - Prelims",
+    "size": "PDF",
+    "url": "https://files.tnpscfuhrer.in/New%20folder/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AE%95%E0%AE%AA%E0%AF%8D%20%E0%AE%AA%E0%AF%81%E0%AE%B5%E0%AE%BF%E0%AE%AF%E0%AE%BF%E0%AE%AF%E0%AE%B2%E0%AF%8D%20%E0%AE%95%E0%AF%82%E0%AE%B1%E0%AF%81%E0%AE%95%E0%AE%B3%E0%AF%81%E0%AE%AE%E0%AF%8D%20%E0%AE%AA%E0%AF%8A%E0%AE%B0%E0%AF%81%E0%AE%B3%E0%AE%BE%E0%AE%A4%E0%AE%BE%E0%AE%B0%20%E0%AE%B5%E0%AE%B3%E0%AE%B0%E0%AF%8D%E0%AE%9A%E0%AF%8D%E0%AE%9A%E0%AE%BF%E0%AE%AF%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%85%E0%AE%B5%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AE%BF%E0%AE%A9%E0%AF%8D%20%E0%AE%A4%E0%AE%BE%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%81%E0%AE%AE%E0%AF%8D_1st_chapter.pdf"
+  },
+  {
+    "id": "vle-unit9-3",
+    "unit": "Unit 9 - Development Administration in Tamil Nadu",
+    "title": "தமிழகப் புவியியல் கூறுகளும் பொருளாதார வளர்ச்சியில் அவற்றின் தாக்கமும் (Chapter 2)",
+    "subject": "தமிழக வளர்ச்சி நிர்வாகம்",
+    "exam": "Group I/II - Prelims",
+    "size": "PDF",
+    "url": "https://files.tnpscfuhrer.in/New%20folder/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AE%95%E0%AE%AA%E0%AF%8D%20%E0%AE%AA%E0%AF%81%E0%AE%B5%E0%AE%BF%E0%AE%AF%E0%AE%BF%E0%AE%AF%E0%AE%B2%E0%AF%8D%20%E0%AE%95%E0%AF%82%E0%AE%B1%E0%AF%81%E0%AE%95%E0%AE%B3%E0%AF%81%E0%AE%AE%E0%AF%8D%20%E0%AE%AA%E0%AF%8A%E0%AE%B0%E0%AF%81%E0%AE%B3%E0%AE%BE%E0%AE%A4%E0%AE%BE%E0%AE%B0%20%E0%AE%B5%E0%AE%B3%E0%AE%B0%E0%AF%8D%E0%AE%9A%E0%AF%8D%E0%AE%9A%E0%AE%BF%E0%AE%AF%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%85%E0%AE%B5%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AE%BF%E0%AE%A9%E0%AF%8D%20%E0%AE%A4%E0%AE%BE%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%81%E0%AE%AE%E0%AF%8D_2nd_chapter.pdf"
+  },
+  {
+    "id": "vle-unit9-4",
+    "unit": "Unit 9 - Development Administration in Tamil Nadu",
+    "title": "தமிழகத்தில் மின்னாளுகை (Chapter 1)",
+    "subject": "தமிழக வளர்ச்சி நிர்வாகம்",
+    "exam": "Group I/II - Prelims",
+    "size": "PDF",
+    "url": "https://files.tnpscfuhrer.in/New%20folder/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AE%95%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AE%BF%E0%AE%B2%E0%AF%8D%20%E0%AE%AE%E0%AE%BF%E0%AE%A9%E0%AF%8D%E0%AE%A9%E0%AE%BE%E0%AE%B3%E0%AF%81%E0%AE%95%E0%AF%88_1st_chapter.pdf"
+  },
+  {
+    "id": "vle-unit9-5",
+    "unit": "Unit 9 - Development Administration in Tamil Nadu",
+    "title": "சமூக மறுமலர்ச்சி இயக்கங்களின் பங்களிப்பு (Chapter 1)",
+    "subject": "தமிழக வளர்ச்சி நிர்வாகம்",
+    "exam": "Group I/II - Prelims",
+    "size": "PDF",
+    "url": "https://files.tnpscfuhrer.in/New%20folder/%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AE%95%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AE%BF%E0%AE%A9%E0%AF%8D%20%E0%AE%9A%E0%AE%AE%E0%AF%82%E0%AE%95%20%E0%AE%AA%E0%AF%8A%E0%AE%B0%E0%AF%81%E0%AE%B3%E0%AE%BE%E0%AE%A4%E0%AE%BE%E0%AE%B0%20%E0%AE%B5%E0%AE%B3%E0%AE%B0%E0%AF%8D%E0%AE%9A%E0%AF%8D%E0%AE%9A%E0%AE%BF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%81%20%E0%AE%9A%E0%AE%AE%E0%AF%82%E0%AE%95%20%E0%AE%AE%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AE%B2%E0%AE%B0%E0%AF%8D%E0%AE%9A%E0%AF%8D%E0%AE%9A%E0%AE%BF%20%E0%AE%87%E0%AE%AF%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AE%BF%E0%AE%A9%E0%AF%8D%20%E0%AE%AA%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AE%BF%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81_1st_chapter.pdf"
+  },
+  {
+    "id": "vle-unit9-6",
+    "unit": "Unit 9 - Development Administration in Tamil Nadu",
+    "title": "சமூக நீதியும் நல்லிணக்கமும் (Chapter 1)",
+    "subject": "தமிழக வளர்ச்சி நிர்வாகம்",
+    "exam": "Group I/II - Prelims",
+    "size": "PDF",
+    "url": "https://files.tnpscfuhrer.in/New%20folder/%E0%AE%9A%E0%AE%AE%E0%AF%82%E0%AE%95%20%E0%AE%A8%E0%AF%80%E0%AE%A4%E0%AE%BF%E0%AE%AF%E0%AF%81%E0%AE%AE%E0%AF%8D%20%E0%AE%A8%E0%AE%B2%E0%AF%8D%E0%AE%B2%E0%AE%BF%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%81%E0%AE%AE%E0%AF%8D_1st_chapter.pdf"
+  },
+  {
+    "id": "vle-unit9-7",
+    "unit": "Unit 9 - Development Administration in Tamil Nadu",
+    "title": "இட ஒதுக்கீடும் சமூக வளங்களைப் பெறும் வாய்ப்புகளும் (Chapter 1)",
+    "subject": "தமிழக வளர்ச்சி நிர்வாகம்",
+    "exam": "Group I/II - Prelims",
+    "size": "PDF",
+    "url": "https://files.tnpscfuhrer.in/New%20folder/%E0%AE%87%E0%AE%9F%20%E0%AE%92%E0%AE%A4%E0%AF%81%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%80%E0%AE%9F%E0%AF%81%E0%AE%AE%E0%AF%8D%20%E0%AE%9A%E0%AE%AE%E0%AF%82%E0%AE%95%20%E0%AE%B5%E0%AE%B3%E0%AE%99%E0%AF%8D%E0%AE%95%E0%AE%B3%E0%AF%88%E0%AE%AA%E0%AF%8D%20%E0%AE%AA%E0%AF%86%E0%AE%B1%E0%AF%81%E0%AE%AE%E0%AF%8D%20%E0%AE%B5%E0%AE%BE%E0%AE%AF%E0%AF%8D%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%B3%E0%AF%81%E0%AE%AE%E0%AF%8D_1st_chapter.pdf"
   }
 ]
