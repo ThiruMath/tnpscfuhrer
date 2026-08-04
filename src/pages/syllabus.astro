@@ -3,83 +3,91 @@ import Layout from '../layouts/Layout.astro';
 import { parts, tamilUnits } from '../data/syllabus.ts';
 ---
 <Layout title="TNPSC Group II & IIA Syllabus">
-  <div class="page-header animate-in">
-    <div class="flex items-center gap-3 mb-3">
-      <span class="badge badge-accent">Code 495</span>
-      <span class="badge badge-neutral">Updated Dec 2024</span>
+  <!-- HERO SECTION WITH ABSTRACT IMAGE -->
+  <div class="syllabus-hero animate-in mb-8">
+    <div class="hero-content">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="badge badge-accent">Code 495</span>
+        <span class="badge badge-neutral bg-white/20 text-white border-none">Updated Dec 2024</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">TNPSC Group II & IIA Syllabus</h1>
+      <p class="text-white/80">Combined Civil Services Preliminary Examination Reference Guide.</p>
     </div>
-    <h1>TNPSC Group II & IIA Syllabus</h1>
-    <p>Combined Civil Services Preliminary Examination — track your progress, check linked notes, and stay focused.</p>
   </div>
 
-  <!-- EXAM SCHEME -->
-  <div class="card bg-surface-sunken p-6 mb-8 border border-border-subtle rounded-xl animate-in" style="--stagger: 1">
-    <h3 class="text-lg font-bold mb-4">Exam Pattern (Revised 2024)</h3>
-    <div class="overflow-x-auto">
-      <table class="w-full text-sm text-left mb-6">
-        <thead class="text-xs uppercase bg-surface border-b border-border">
+  <!-- EXAM SCHEME & WEIGHTAGE GRAPHS -->
+  <div class="grid md:grid-cols-2 gap-6 mb-10 animate-in" style="--stagger: 1">
+    
+    <!-- EXAM SCHEME TABLE -->
+    <div class="card bg-surface p-6 border border-border-subtle rounded-xl shadow-sm">
+      <h3 class="text-lg font-bold mb-4">Exam Pattern (200 Qs / 300 Marks)</h3>
+      <table class="w-full text-sm text-left">
+        <thead class="text-xs uppercase bg-surface-sunken border-b border-border">
           <tr>
-            <th class="px-4 py-3">Prelims (Group II & IIA)</th>
-            <th class="px-4 py-3">Standard</th>
-            <th class="px-4 py-3">Type</th>
+            <th class="px-4 py-3">Subject</th>
+            <th class="px-4 py-3 text-center">Standard</th>
             <th class="px-4 py-3 text-center">Questions</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-border-subtle">
           <tr>
             <td class="px-4 py-3 font-medium">A. General Studies</td>
-            <td class="px-4 py-3 text-text-muted">Degree</td>
-            <td class="px-4 py-3 text-text-muted">Objective</td>
+            <td class="px-4 py-3 text-center text-text-muted">Degree</td>
             <td class="px-4 py-3 text-center">75</td>
           </tr>
           <tr>
-            <td class="px-4 py-3 font-medium">B. Aptitude & Mental Ability</td>
-            <td class="px-4 py-3 text-text-muted">SSLC</td>
-            <td class="px-4 py-3 text-text-muted">Objective</td>
+            <td class="px-4 py-3 font-medium">B. Aptitude</td>
+            <td class="px-4 py-3 text-center text-text-muted">SSLC</td>
             <td class="px-4 py-3 text-center">25</td>
           </tr>
           <tr>
-            <td class="px-4 py-3 font-medium">C. Language (Tamil or English)</td>
-            <td class="px-4 py-3 text-text-muted">SSLC</td>
-            <td class="px-4 py-3 text-text-muted">Objective</td>
+            <td class="px-4 py-3 font-medium">C. Language</td>
+            <td class="px-4 py-3 text-center text-text-muted">SSLC</td>
             <td class="px-4 py-3 text-center">100</td>
-          </tr>
-          <tr class="bg-surface font-bold">
-            <td colspan="3" class="px-4 py-3 text-right">Total (300 Marks)</td>
-            <td class="px-4 py-3 text-center text-accent">200</td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
 
-  <!-- ANALYTICS DASHBOARD -->
-  <div class="card p-6 mb-8 border border-border-subtle rounded-xl animate-in" style="--stagger: 2">
-    <h3 class="text-lg font-bold mb-4 flex items-center justify-between">
-      <span>Deep Analytics</span>
-      <span id="global-progress-text" class="text-sm font-medium text-accent">0% Complete</span>
-    </h3>
-    
-    <div class="grid grid-3 gap-6 mb-2">
-      <div class="analytics-card">
-        <div class="analytics-title">General Studies (75 Qs)</div>
-        <div class="analytics-value" id="gs-mastery">0%</div>
-        <div class="syl-progress-track mt-2"><div class="syl-progress-fill bg-accent" id="gs-bar"></div></div>
-      </div>
-      <div class="analytics-card">
-        <div class="analytics-title">Aptitude (25 Qs)</div>
-        <div class="analytics-value" id="aptitude-mastery">0%</div>
-        <div class="syl-progress-track mt-2"><div class="syl-progress-fill bg-purple" id="aptitude-bar"></div></div>
-      </div>
-      <div class="analytics-card">
-        <div class="analytics-title">Language (100 Qs)</div>
-        <div class="analytics-value" id="language-mastery">0%</div>
-        <div class="syl-progress-track mt-2"><div class="syl-progress-fill bg-green" id="language-bar"></div></div>
+    <!-- WEIGHTAGE GRAPHS -->
+    <div class="card bg-surface p-6 border border-border-subtle rounded-xl shadow-sm">
+      <h3 class="text-lg font-bold mb-4">Question Weightage</h3>
+      <div class="flex flex-col gap-4">
+        <!-- GS -->
+        <div>
+          <div class="flex justify-between text-sm font-medium mb-1">
+            <span>General Studies (75 Qs)</span>
+            <span class="text-accent">37.5%</span>
+          </div>
+          <div class="h-3 w-full bg-surface-sunken rounded-full overflow-hidden">
+            <div class="h-full bg-accent rounded-full" style="width: 37.5%"></div>
+          </div>
+        </div>
+        <!-- Aptitude -->
+        <div>
+          <div class="flex justify-between text-sm font-medium mb-1">
+            <span>Aptitude (25 Qs)</span>
+            <span class="text-purple">12.5%</span>
+          </div>
+          <div class="h-3 w-full bg-surface-sunken rounded-full overflow-hidden">
+            <div class="h-full bg-purple rounded-full" style="width: 12.5%"></div>
+          </div>
+        </div>
+        <!-- Language -->
+        <div>
+          <div class="flex justify-between text-sm font-medium mb-1">
+            <span>Language (100 Qs)</span>
+            <span class="text-green">50.0%</span>
+          </div>
+          <div class="h-3 w-full bg-surface-sunken rounded-full overflow-hidden">
+            <div class="h-full bg-green rounded-full" style="width: 50%"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="flex gap-2 mb-6 overflow-x-auto pb-2 animate-in" style="--stagger: 3">
+  <div class="flex gap-2 mb-6 overflow-x-auto pb-2 animate-in" style="--stagger: 2">
     <button class="syl-tab active" data-target="all">All Parts</button>
     {parts.map(p => (
       <button class="syl-tab" data-target={p.id}>{p.title}</button>
@@ -87,15 +95,12 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
     <button class="syl-tab" data-target="lang">Part C: Language</button>
   </div>
 
-  {parts.map(part => (
-    <section id={part.id} class="syl-part animate-in" style="--stagger: 4">
+  {parts.map((part, index) => (
+    <section id={part.id} class="syl-part animate-in" style={`--stagger: ${3 + index}`}>
       <div class="syl-part-header">
         <div>
           <h2 class="text-xl font-bold mb-1">{part.title}</h2>
           <div class="text-sm text-text-muted">{part.standard} • {part.total} Questions</div>
-        </div>
-        <div class="text-right">
-          <div class="text-sm font-medium mb-1 text-accent" id={`part-${part.id}-progress`}>0%</div>
         </div>
       </div>
 
@@ -107,23 +112,16 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
                 <span class="syl-unit-num bg-surface-raised border border-border">Unit {unit.num}</span>
                 <h3 class="text-base font-bold m-0">{unit.title}</h3>
               </div>
-              <div class="text-sm font-medium text-text-muted">
-                <span id={`u-${part.id}-${unit.num}`}>0/{unit.topics.length}</span>
+              <div class="badge badge-neutral text-xs">
+                {unit.questions} Questions
               </div>
             </div>
             
-            <div class="syl-progress-track">
-              <div class="syl-progress-fill bg-accent" id={`bar-${part.id}-${unit.num}`}></div>
-            </div>
-
             <ul class="syl-topics">
-              {unit.topics.map((topic, i) => (
+              {unit.topics.map(topic => (
                 <li class="syl-topic">
-                  <label class="syl-check-label">
-                    <input type="checkbox" class="syl-checkbox" data-id={`cb-${part.id}-${unit.num}-${i}`} data-part={part.id} data-unit={unit.num} />
-                    <div class="syl-check-box"></div>
-                    <span class="syl-topic-text">{topic}</span>
-                  </label>
+                  <span class="syl-topic-bullet">•</span>
+                  <span class="syl-topic-text">{topic}</span>
                 </li>
               ))}
             </ul>
@@ -133,14 +131,11 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
     </section>
   ))}
 
-  <section id="lang" class="syl-part animate-in" style="--stagger: 5">
+  <section id="lang" class="syl-part animate-in" style="--stagger: 6">
     <div class="syl-part-header">
       <div>
         <h2 class="text-xl font-bold mb-1">Part C: Language</h2>
         <div class="text-sm text-text-muted">SSLC Standard • 100 Questions</div>
-      </div>
-      <div class="text-right">
-        <div class="text-sm font-medium mb-1 text-accent" id="part-language-progress">0%</div>
       </div>
     </div>
 
@@ -158,21 +153,15 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
                 <span class="syl-unit-num bg-surface-raised border border-border">அலகு {unit.num}</span>
                 <h3 class="text-base font-bold m-0">{unit.title}</h3>
               </div>
-              <div class="text-sm font-medium text-text-muted">
-                <span id={`u-language-${unit.num}`}>0/{unit.topics.length}</span>
+              <div class="badge badge-neutral text-xs">
+                {unit.questions} Questions
               </div>
             </div>
-            <div class="syl-progress-track">
-              <div class="syl-progress-fill bg-green" id={`bar-language-${unit.num}`}></div>
-            </div>
             <ul class="syl-topics">
-              {unit.topics.map((topic, i) => (
+              {unit.topics.map(topic => (
                 <li class="syl-topic">
-                  <label class="syl-check-label">
-                    <input type="checkbox" class="syl-checkbox" data-id={`cb-language-${unit.num}-${i}`} data-part="language" data-unit={unit.num} />
-                    <div class="syl-check-box"></div>
-                    <span class="syl-topic-text">{topic}</span>
-                  </label>
+                  <span class="syl-topic-bullet">•</span>
+                  <span class="syl-topic-text">{topic}</span>
                 </li>
               ))}
             </ul>
@@ -181,22 +170,38 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
       </div>
     </div>
   </section>
-
 </Layout>
 
 <style>
-  /* Analytics styles */
-  .analytics-card {
-    background: var(--surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    padding: var(--space-4);
-    text-align: center;
+  /* Hero Image styling */
+  .syllabus-hero {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background-image: url('/images/syllabus-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: var(--space-12) var(--space-8);
+    box-shadow: var(--shadow-md);
   }
-  .analytics-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: var(--space-2); }
-  .analytics-value { font-size: 2rem; font-weight: 800; color: var(--text); }
+  .syllabus-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Colors for graphs */
   .bg-purple { background-color: var(--purple, #9333ea); }
   .bg-green { background-color: var(--green, #16a34a); }
+  .text-purple { color: var(--purple, #9333ea); }
+  .text-green { color: var(--green, #16a34a); }
 
   /* Part header */
   .syl-part { margin-bottom: var(--space-8); }
@@ -208,20 +213,9 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
     border-radius: var(--radius);
     margin-bottom: var(--space-4);
   }
-  /* Tabs */
-  .syl-tab {
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    font-size: 0.82rem; font-weight: 500;
-    color: var(--text-muted); cursor: pointer;
-    transition: all var(--duration-fast);
-  }
-  .syl-tab:hover { border-color: var(--border-hover); color: var(--text); }
-  .syl-tab.active { background: var(--text); color: var(--text-inverse); border-color: var(--text); }
 
-  .lang-tab {
+  /* Tabs */
+  .syl-tab, .lang-tab {
     padding: var(--space-2) var(--space-4);
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
@@ -230,6 +224,8 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
     color: var(--text-muted); cursor: pointer;
     transition: all var(--duration-fast);
   }
+  .syl-tab:hover, .lang-tab:hover { border-color: var(--border-hover); color: var(--text); }
+  .syl-tab.active { background: var(--text); color: var(--text-inverse); border-color: var(--text); }
   .lang-tab.active { background: var(--purple, #9333ea); color: white; border-color: var(--purple, #9333ea); }
 
   /* Unit cards */
@@ -244,7 +240,9 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
   .syl-unit:hover { background: var(--surface); box-shadow: var(--shadow-sm); border-color: var(--border-subtle); }
   .syl-unit-top {
     display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--border-subtle);
   }
   .syl-unit-num {
     padding: var(--space-1) var(--space-3);
@@ -254,54 +252,26 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
     white-space: nowrap;
   }
 
-  /* Progress */
-  .syl-progress-track {
-    height: 4px; background: var(--surface); border-radius: 2px;
-    margin-bottom: var(--space-4); overflow: hidden;
+  /* Topics without checkboxes */
+  .syl-topics { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
+  .syl-topic { 
+    font-size: 0.875rem; 
+    display: flex; 
+    align-items: flex-start; 
+    gap: var(--space-3); 
   }
-  .syl-progress-fill {
-    height: 100%; width: 0%; border-radius: 2px;
-    transition: width 0.5s var(--ease-out);
+  .syl-topic-bullet {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    line-height: 1.2;
   }
-
-  /* Topics */
-  .syl-topics { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
-  .syl-topic { font-size: 0.875rem; }
-  .syl-check-label {
-    display: flex; align-items: flex-start; gap: var(--space-3); cursor: pointer;
-    padding: var(--space-2) 0;
+  .syl-topic-text { 
+    line-height: 1.6; 
+    color: var(--text-secondary); 
   }
-  .syl-checkbox { display: none; }
-  .syl-check-box {
-    width: 18px; height: 18px; flex-shrink: 0;
-    border: 2px solid var(--border-hover);
-    border-radius: var(--radius-xs);
-    display: flex; align-items: center; justify-content: center;
-    transition: all var(--duration-fast);
-    margin-top: 1px;
-    position: relative;
-  }
-  .syl-checkbox:checked + .syl-check-box {
-    background: var(--check-color, #2563eb);
-    border-color: var(--check-color, #2563eb);
-  }
-  .syl-checkbox:checked + .syl-check-box::after {
-    content: '';
-    width: 5px; height: 9px;
-    border: solid white; border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-    margin-bottom: 2px;
-  }
-  .syl-checkbox:checked ~ .syl-topic-text {
-    text-decoration: line-through;
-    color: var(--text-faint);
-  }
-  .syl-topic-text { line-height: 1.5; color: var(--text-secondary); }
 
   @media (max-width: 768px) {
     .syl-units { padding-left: 0; }
-    .syl-unit-top { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
-    .grid-3 { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -332,79 +302,4 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
       });
     });
   });
-
-  // === Checkbox persistence & progress ===
-  const allBoxes = document.querySelectorAll('.syl-checkbox') as NodeListOf<HTMLInputElement>;
-
-  // Restore state
-  allBoxes.forEach(cb => {
-    const id = cb.dataset.id!;
-    if (localStorage.getItem(id) === 'true') cb.checked = true;
-  });
-
-  // Save & update on change
-  allBoxes.forEach(cb => {
-    cb.addEventListener('change', () => {
-      localStorage.setItem(cb.dataset.id!, cb.checked.toString());
-      updateProgress();
-    });
-  });
-
-  function updateProgress() {
-    // Per-unit progress
-    const unitMap: Record<string, { done: number; total: number }> = {};
-    allBoxes.forEach(cb => {
-      const key = `${cb.dataset.part}-${cb.dataset.unit}`;
-      if (!unitMap[key]) unitMap[key] = { done: 0, total: 0 };
-      unitMap[key].total++;
-      if (cb.checked) unitMap[key].done++;
-    });
-
-    for (const [key, { done, total }] of Object.entries(unitMap)) {
-      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-      const bar = document.getElementById(`bar-${key}`);
-      const text = document.getElementById(`u-${key}`);
-      if (bar) bar.style.width = `${pct}%`;
-      if (text) text.textContent = `${done}/${total}`;
-    }
-
-    // Per-part progress (gs, aptitude, language)
-    const partMap: Record<string, { done: number; total: number }> = {};
-    allBoxes.forEach(cb => {
-      const partId = cb.dataset.part!;
-      if (!partMap[partId]) partMap[partId] = { done: 0, total: 0 };
-      partMap[partId].total++;
-      if (cb.checked) partMap[partId].done++;
-    });
-
-    for (const [partId, { done, total }] of Object.entries(partMap)) {
-      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
-      const el = document.getElementById(`part-${partId}-progress`);
-      if (el) el.textContent = `${pct}% Complete`;
-      
-      // Update Analytics Dashboard
-      const mastery = document.getElementById(`${partId}-mastery`);
-      const bar = document.getElementById(`${partId}-bar`);
-      if (mastery) mastery.textContent = `${pct}%`;
-      if (bar) bar.style.width = `${pct}%`;
-    }
-
-    // Global progress
-    let totalDone = 0;
-    let totalAll = 0;
-    allBoxes.forEach(cb => { totalAll++; if (cb.checked) totalDone++; });
-    const globalPct = totalAll > 0 ? Math.round((totalDone / totalAll) * 100) : 0;
-    const gText = document.getElementById('global-progress-text');
-    if (gText) {
-      if (globalPct === 100) gText.textContent = `🎯 100% Mastered!`;
-      else gText.textContent = `${globalPct}% Overall Complete`;
-    }
-  }
-
-  // Initialize progress on load
-  document.addEventListener("DOMContentLoaded", () => {
-    updateProgress();
-  });
-  // Execute immediately just in case
-  updateProgress();
 </script>
