@@ -1,92 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-
-const allNotes = await getCollection('notes');
-
-function findRelatedNotes(keywords: string[]) {
-  return allNotes
-    .filter(note => {
-      const titleLower = note.slug.toLowerCase().replace(/-/g, ' ');
-      const bodyLower = (note.body || '').toLowerCase().slice(0, 500);
-      return keywords.some(kw => titleLower.includes(kw) || bodyLower.includes(kw));
-    })
-    .slice(0, 4)
-    .map(n => ({ title: n.data.title || n.slug.replace(/-/g, ' '), slug: n.slug }));
-}
-
-// Syllabus Data — same data, reused from original
-const parts = [
-  {
-    id: "A", name: "General Studies", standard: "Degree Standard", total: 75,
-    color: "var(--accent)", colorSoft: "var(--accent-soft)",
-    units: [
-      { num: "I", title: "General Science", questions: 5, tags: ["science","physics","chemistry","biology"], topics: ["Scientific knowledge and scientific temper", "Power of reasoning - Rote learning vs conceptual learning", "Science as a tool to understand past, present, future", "Nature of universe - General scientific laws", "Mechanics - Properties of matter, force, motion, energy", "Everyday application of mechanics, electricity, magnetism, light, sound, heat, nuclear physics, laser, electronics, communications", "Elements and compounds, acids, bases, salts", "Petroleum products, fertilizers, pesticides", "Main concepts of life science, classification of living organisms", "Evolution, genetics, physiology, nutrition, health, hygiene, human diseases", "Environment and ecology", "Latest inventions in science and technology", "Current affairs"] },
-      { num: "II", title: "Geography of India", questions: 5, tags: ["geography","monsoon","climate","rivers"], topics: ["Location - Physical features", "Monsoon, rainfall, weather and climate", "Water resources - Rivers in India", "Soil, Minerals and Natural Resources", "Forest and Wildlife - Agricultural pattern", "Transport - Communication", "Social Geography - Population density and distribution", "Racial, linguistic groups and major tribes", "Natural calamity - Disaster management", "Environmental pollution - Reasons and preventive measures", "Climate change - Green energy", "Geographical landmarks", "Current affairs"] },
-      { num: "III", title: "History, Culture of India & Indian National Movement", questions: 10, tags: ["history","culture","national movement","leaders"], topics: ["Indus Valley Civilization", "Guptas, Delhi Sultans, Mughals, and Marathas", "Age of Vijayanagaram and Bahmani Kingdoms", "South Indian History", "National Renaissance - Early uprising against British rule", "Indian National Congress - Emergence of leaders", "Different modes of agitation: Satyagraha and Militant Movements", "Communalism and Partition", "Change and continuity in socio-cultural history of India", "Characteristics of Indian Culture, Unity in Diversity", "India as a secular state, Social harmony", "Prominent personalities in Arts, Science, Literature, Philosophy"] },
-      { num: "IV", title: "Indian Polity", questions: 15, tags: ["polity","constitution","rights","government"], topics: ["Constitution of India - Preamble", "Salient features of the Constitution", "Union, State and Union Territory", "Citizenship, Fundamental Rights & Duties", "Directive Principles of State Policy", "Union Executive, Union Legislature", "State Executive, State Legislature", "Local Governments, Panchayat Raj", "Spirit of federalism: Centre - State relationships", "Election - Judiciary in India - Rule of Law", "Corruption in public life - Anti-corruption measures", "Lokpal and Lok Ayukta - Right to Information", "Empowerment of Women", "Consumer Protection Forums, Human Rights Charter", "Political parties and political system in India", "Current affairs"] },
-      { num: "V", title: "Indian Economy and Development Administration in TN", questions: 20, tags: ["economy","development","tamil nadu","welfare","planning"], topics: ["Nature of Indian Economy - Five-year plan models", "Planning Commission and Niti Aayog", "Sources of revenue - Reserve Bank of India", "Fiscal Policy and Monetary Policy", "Finance Commission - Resource sharing between Union and State", "Goods and Services Tax", "Structure of Indian Economy and Employment Generation", "Land Reforms and Agriculture", "Industrial growth - Rural welfare oriented programmes", "Social problems - Population, Education, Health, Employment, Poverty", "Human Development Indicators in Tamil Nadu", "Impact of social reform movements in TN development", "Political parties, and welfare schemes for various sections", "Rationale behind reservation policy, access to social resources", "Economic trends in Tamil Nadu", "Role of social welfare schemes in TN development", "Social Justice and social harmony", "Education and health systems in Tamil Nadu", "Geography of TN and impact on economic growth", "Achievements of Tamil Nadu in various fields", "e-Governance in Tamil Nadu", "Public awareness and General administration", "Welfare oriented Government schemes, Problems in public delivery systems", "Current socio-economic issues", "Current affairs"] },
-      { num: "VI", title: "TN History, Culture, Heritage, & Socio-Political", questions: 20, tags: ["tamil society","thirukkural","dravidian movement","periyar"], topics: ["History of Tamil Society, archaeological discoveries", "Tamil literature from Sangam age till contemporary times", "Thirukkural - Significance as secular literature", "Relevance of Thirukkural to everyday life & humanity", "Thirukkural and universal values, Socio-politico-economic relevance", "Philosophical content in Thirukkural", "Role of Tamil Nadu in freedom struggle - Early agitations", "Role of women in freedom struggle", "Evolution of 19th & 20th century socio-political movements in TN", "Justice Party, Growth of Rationalism - Self Respect Movement", "Dravidian Movement, and underlying principles", "Contributions of Thanthai Periyar and Perarignar Anna"] }
-    ]
-  },
-  {
-    id: "B", name: "Aptitude & Mental Ability", standard: "SSLC Standard", total: 25,
-    color: "var(--green)", colorSoft: "var(--green-soft)",
-    units: [
-      { num: "I", title: "Aptitude", questions: 15, tags: ["aptitude","math","simplification","interest"], topics: ["Simplification", "Percentage", "Highest Common Factor (HCF)", "Lowest Common Multiple (LCM)", "Ratio and Proportion", "Simple interest", "Compound interest", "Area", "Volume", "Time and Work"] },
-      { num: "II", title: "Reasoning", questions: 10, tags: ["reasoning","logical","puzzles"], topics: ["Logical reasoning", "Puzzles", "Dice", "Visual reasoning", "Alpha numeric reasoning", "Number series"] }
-    ]
-  },
-  {
-    id: "C", name: "Language (Tamil / English)", standard: "SSLC Standard", total: 100,
-    color: "var(--purple)", colorSoft: "var(--purple-soft)",
-    tamilUnits: [
-      { num: "I", title: "இலக்கணம் / Grammar", questions: 25, tags: ["tamil grammar","ilakkanam"], topics: ["எழுத்து – பிரித்து / சேர்த்து எழுதுதல், சந்திப்பிழை","குறில்/நெடில், லகர/ளகர/ழகர வேறுபாடு","வேர்ச்சொல், எதிர்ச்சொல், வினைச்சொல்","எழுத்துப்பிழை, ஒற்றுப்பிழை"] },
-      { num: "II", title: "சொல்லகராதி / Vocabulary", questions: 15, tags: ["tamil vocabulary"], topics: ["எதிர்ச்சொல்","ஓரெழுத்து ஒருமொழி","பொருத்தமான சொல் தேர்வு","பேச்சு vs எழுத்து வழக்கு"] },
-      { num: "III", title: "எழுதும் திறன் / Writing", questions: 15, tags: ["tamil writing"], topics: ["சொற்களை ஒழுங்குபடுத்துதல்","மரபுத்தமிழ் – திணை, பால், காலம்","நிறுத்தல் குறியீடுகள்"] },
-      { num: "IV", title: "கலைச்சொற்கள் / Technical", questions: 10, tags: ["tamil technical terms"], topics: ["அறிவியல், கல்வி, மருத்துவக் கலைச்சொற்கள்","Gene – மரபணு, Allergy – ஒவ்வாமை"] },
-      { num: "V", title: "வாசிப்புத் திறன் / Comprehension", questions: 15, tags: ["tamil comprehension"], topics: ["பத்தியிலிருந்து கேள்விகளுக்கு விடை","அரசு சார்ந்த செய்திகள்","உவமை, மரபுத்தொடர்"] },
-      { num: "VI", title: "மொழி பெயர்ப்பு / Translation", questions: 5, tags: ["translation"], topics: ["ஆங்கிலம் → தமிழ் சொற்கள்","ஆவணத் தலைப்புகள், கோப்புகள்"] },
-      { num: "VII", title: "இலக்கியம் & அறிஞர்கள் / Literature", questions: 15, tags: ["thirukkural","sangam literature"], topics: ["திருக்குறள் – 20 அதிகாரங்கள்","நாலடியார், பழமொழி நானூறு","உ.வே.சா, தே.போ.மீ, சி.இலக்குவனார்","பாவேந்தர், கண்ணதாசன், தாராபாரதி"] }
-    ],
-    englishUnits: [
-      { num: "I", title: "Grammar", questions: 25, tags: ["english grammar","tense","voice"], topics: ["Parts of Speech, Tense, Concord","Active / Passive Voice","Transformations, Question Tags","Direct / Indirect Speech, Synthesis"] },
-      { num: "II", title: "Vocabulary", questions: 15, tags: ["synonyms","antonyms","idioms"], topics: ["Synonyms, Antonyms, Homonyms","Idioms & Phrases, Phrasal Verbs","One-word substitution","Figures of speech"] },
-      { num: "III", title: "Writing Skills", questions: 10, tags: ["letter writing"], topics: ["Formal / Informal letters","Jumbled sentences","Inferences, Substitutions"] },
-      { num: "IV", title: "Technical Terms", questions: 10, tags: ["administrative terms"], topics: ["Administrative Terms","Official Correspondence"] },
-      { num: "V", title: "Reading Comprehension", questions: 20, tags: ["comprehension","reading"], topics: ["Unseen passages","Government news","Sentence Completion, Fact ascertainment"] },
-      { num: "VI", title: "Translation", questions: 5, tags: ["translation"], topics: ["Word & Sentence Translation","Tense / Voice tasks"] },
-      { num: "VII", title: "Literary Works", questions: 15, tags: ["poetry","prose","literature"], topics: ["Poetry: Sea Fever, A Poison Tree, Stopping by Woods...","Prose: His First Flight, The Last Lesson","Biography of Srinivasa Ramanujan","A Birthday Letter by Nehru"] }
-    ]
-  }
-];
-
-// Build related notes
-for (const part of parts) {
-  if (part.units) {
-    for (const unit of part.units as any[]) {
-      unit.relatedNotes = findRelatedNotes(unit.tags);
-    }
-  }
-  if (part.tamilUnits) {
-    for (const unit of part.tamilUnits as any[]) { unit.relatedNotes = findRelatedNotes(unit.tags); }
-  }
-  if (part.englishUnits) {
-    for (const unit of part.englishUnits as any[]) { unit.relatedNotes = findRelatedNotes(unit.tags); }
-  }
-}
-
-const totalTopics = parts.reduce((acc, p) => {
-  let c = 0;
-  if (p.units) c += p.units.reduce((a: number, u: any) => a + u.topics.length, 0);
-  if (p.tamilUnits) c += p.tamilUnits.reduce((a: number, u: any) => a + u.topics.length, 0);
-  return acc + c;
-}, 0);
+import { parts, tamilUnits } from '../data/syllabus.ts';
 ---
-
-<Layout title="Syllabus — TNPSC Group II/IIA" description="Complete TNPSC Group II & IIA syllabus with progress tracking, unit-wise breakdown, and linked study notes." active="Syllabus">
-
-  <!-- Page Header -->
+<Layout title="TNPSC Group II & IIA Syllabus">
   <div class="page-header animate-in">
     <div class="flex items-center gap-3 mb-3">
       <span class="badge badge-accent">Code 495</span>
@@ -96,172 +12,192 @@ const totalTopics = parts.reduce((acc, p) => {
     <p>Combined Civil Services Preliminary Examination — track your progress, check linked notes, and stay focused.</p>
   </div>
 
-  <!-- Overview Stats -->
-  <div class="grid grid-3 mb-6 stagger">
-    {parts.map(p => (
-      <div class="stat-card" style={`border-left: 3px solid ${p.color};`}>
-        <div class="stat-label">Part {p.id}</div>
-        <div class="stat-value" style={`font-size: 1.5rem; color: ${p.color};`}>{p.total}</div>
-        <div class="stat-footer">{p.name} · {p.standard}</div>
+  <!-- EXAM SCHEME -->
+  <div class="card bg-surface-sunken p-6 mb-8 border border-border-subtle rounded-xl animate-in" style="--stagger: 1">
+    <h3 class="text-lg font-bold mb-4">Exam Pattern (Revised 2024)</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left mb-6">
+        <thead class="text-xs uppercase bg-surface border-b border-border">
+          <tr>
+            <th class="px-4 py-3">Prelims (Group II & IIA)</th>
+            <th class="px-4 py-3">Standard</th>
+            <th class="px-4 py-3">Type</th>
+            <th class="px-4 py-3 text-center">Questions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-border-subtle">
+          <tr>
+            <td class="px-4 py-3 font-medium">A. General Studies</td>
+            <td class="px-4 py-3 text-text-muted">Degree</td>
+            <td class="px-4 py-3 text-text-muted">Objective</td>
+            <td class="px-4 py-3 text-center">75</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium">B. Aptitude & Mental Ability</td>
+            <td class="px-4 py-3 text-text-muted">SSLC</td>
+            <td class="px-4 py-3 text-text-muted">Objective</td>
+            <td class="px-4 py-3 text-center">25</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-medium">C. Language (Tamil or English)</td>
+            <td class="px-4 py-3 text-text-muted">SSLC</td>
+            <td class="px-4 py-3 text-text-muted">Objective</td>
+            <td class="px-4 py-3 text-center">100</td>
+          </tr>
+          <tr class="bg-surface font-bold">
+            <td colspan="3" class="px-4 py-3 text-right">Total (300 Marks)</td>
+            <td class="px-4 py-3 text-center text-accent">200</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ANALYTICS DASHBOARD -->
+  <div class="card p-6 mb-8 border border-border-subtle rounded-xl animate-in" style="--stagger: 2">
+    <h3 class="text-lg font-bold mb-4 flex items-center justify-between">
+      <span>Deep Analytics</span>
+      <span id="global-progress-text" class="text-sm font-medium text-accent">0% Complete</span>
+    </h3>
+    
+    <div class="grid grid-3 gap-6 mb-2">
+      <div class="analytics-card">
+        <div class="analytics-title">General Studies (75 Qs)</div>
+        <div class="analytics-value" id="gs-mastery">0%</div>
+        <div class="syl-progress-track mt-2"><div class="syl-progress-fill bg-accent" id="gs-bar"></div></div>
       </div>
-    ))}
+      <div class="analytics-card">
+        <div class="analytics-title">Aptitude (25 Qs)</div>
+        <div class="analytics-value" id="aptitude-mastery">0%</div>
+        <div class="syl-progress-track mt-2"><div class="syl-progress-fill bg-purple" id="aptitude-bar"></div></div>
+      </div>
+      <div class="analytics-card">
+        <div class="analytics-title">Language (100 Qs)</div>
+        <div class="analytics-value" id="language-mastery">0%</div>
+        <div class="syl-progress-track mt-2"><div class="syl-progress-fill bg-green" id="language-bar"></div></div>
+      </div>
+    </div>
   </div>
 
-  <!-- Global progress -->
-  <div class="card mb-6 animate-in" style="animation-delay: 200ms;">
-    <div class="card-header">
-      <span class="card-title">Overall Syllabus Progress</span>
-      <span class="text-mono text-muted" style="font-size: 0.85rem;" id="global-progress-text">0 / {totalTopics} topics</span>
-    </div>
-    <div style="height: 8px; background: var(--surface-sunken); border-radius: var(--radius-full); overflow: hidden;">
-      <div id="global-progress-bar" style="height: 100%; width: 0%; background: var(--accent); border-radius: var(--radius-full); transition: width 0.6s var(--ease-out);"></div>
-    </div>
-  </div>
-
-  <!-- Part filter tabs -->
-  <div class="flex gap-2 mb-6 flex-wrap animate-in" style="animation-delay: 250ms;">
+  <div class="flex gap-2 mb-6 overflow-x-auto pb-2 animate-in" style="--stagger: 3">
     <button class="syl-tab active" data-target="all">All Parts</button>
-    <button class="syl-tab" data-target="partA">General Studies</button>
-    <button class="syl-tab" data-target="partB">Aptitude</button>
-    <button class="syl-tab" data-target="partC">Language</button>
+    {parts.map(p => (
+      <button class="syl-tab" data-target={p.id}>{p.title}</button>
+    ))}
+    <button class="syl-tab" data-target="lang">Part C: Language</button>
   </div>
 
-  <!-- Parts -->
-  {parts.map((part, pIdx) => (
-    <section class={`syl-part animate-in`} id={`part${part.id}`} data-part-id={part.id} style={`animation-delay: ${300 + pIdx * 100}ms;`}>
-      <!-- Part header -->
-      <div class="syl-part-header" style={`border-left: 4px solid ${part.color};`}>
+  {parts.map(part => (
+    <section id={part.id} class="syl-part animate-in" style="--stagger: 4">
+      <div class="syl-part-header">
         <div>
-          <h2 style="font-size: 1.15rem; margin-bottom: 2px;">Part {part.id} — {part.name}</h2>
-          <span class="text-muted" style="font-size: 0.8rem;">{part.standard} · {part.total} Questions</span>
+          <h2 class="text-xl font-bold mb-1">{part.title}</h2>
+          <div class="text-sm text-text-muted">{part.standard} • {part.total} Questions</div>
         </div>
-        <span class="text-mono" style={`font-size: 0.85rem; font-weight: 700; color: ${part.color};`} id={`part-${part.id}-progress`}>0%</span>
+        <div class="text-right">
+          <div class="text-sm font-medium mb-1 text-accent" id={`part-${part.id}-progress`}>0%</div>
+        </div>
       </div>
 
-      {/* Language toggle for Part C */}
-      {part.id === "C" && (
-        <div class="flex gap-2 mb-4" style="padding-left: 1.5rem;">
-          <button class="lang-tab active" data-lang="tamil">பொதுத் தமிழ்</button>
-          <button class="lang-tab" data-lang="english">General English</button>
-        </div>
-      )}
-
-      {/* Regular units (Parts A & B) */}
-      {part.units && (
-        <div class="syl-units">
-          {part.units.map((unit: any) => (
-            <div class="syl-unit">
-              <div class="syl-unit-top">
-                <div class="flex items-center gap-3">
-                  <span class="syl-unit-num" style={`background: ${part.colorSoft}; color: ${part.color};`}>Unit {unit.num}</span>
-                  <div>
-                    <div style="font-weight: 600; font-size: 0.95rem;">{unit.title}</div>
-                    <div class="text-muted" style="font-size: 0.75rem;">{unit.questions} Questions · {unit.topics.length} topics</div>
-                  </div>
-                </div>
-                <span class="text-mono text-muted" style="font-size: 0.78rem;" id={`u-${part.id}-${unit.num}`}>0/{unit.topics.length}</span>
+      <div class="syl-units">
+        {part.units.map(unit => (
+          <div class="syl-unit">
+            <div class="syl-unit-top">
+              <div class="flex items-center gap-3">
+                <span class="syl-unit-num bg-surface-raised border border-border">Unit {unit.num}</span>
+                <h3 class="text-base font-bold m-0">{unit.title}</h3>
               </div>
-              <div class="syl-progress-track">
-                <div class="syl-progress-fill" id={`bar-${part.id}-${unit.num}`} style={`background: ${part.color};`}></div>
+              <div class="text-sm font-medium text-text-muted">
+                <span id={`u-${part.id}-${unit.num}`}>0/{unit.topics.length}</span>
               </div>
-              <ul class="syl-topics">
-                {unit.topics.map((t: string, tIdx: number) => {
-                  const uid = `syllabus-checked-${part.id}-${unit.num}-${tIdx}`;
-                  return (
-                    <li class="syl-topic">
-                      <label class="syl-check-label">
-                        <input type="checkbox" class="syl-checkbox" data-id={uid} data-part={part.id} data-unit={unit.num} />
-                        <span class="syl-check-box" style={`--check-color: ${part.color};`}></span>
-                        <span class="syl-topic-text">{t}</span>
-                      </label>
-                    </li>
-                  );
-                })}
-              </ul>
-              {unit.relatedNotes?.length > 0 && (
-                <div class="syl-notes">
-                  <span class="text-muted" style="font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;">Related Notes</span>
-                  <div class="flex gap-2 flex-wrap" style="margin-top: var(--space-2);">
-                    {unit.relatedNotes.map((n: any) => (
-                      <a href={`/notes/${n.slug}`} class="syl-note-chip">{n.title.length > 30 ? n.title.slice(0, 30) + '…' : n.title}</a>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
-          ))}
-        </div>
-      )}
-
-      {/* Tamil units */}
-      {part.tamilUnits && (
-        <div class="syl-units lang-panel" data-lang-panel="tamil">
-          {part.tamilUnits.map((unit: any) => (
-            <div class="syl-unit">
-              <div class="syl-unit-top">
-                <div class="flex items-center gap-3">
-                  <span class="syl-unit-num" style={`background: ${part.colorSoft}; color: ${part.color};`}>அலகு {unit.num}</span>
-                  <div>
-                    <div style="font-weight: 600; font-size: 0.95rem;" class="text-tamil">{unit.title}</div>
-                    <div class="text-muted" style="font-size: 0.75rem;">{unit.questions} Qs · {unit.topics.length} topics</div>
-                  </div>
-                </div>
-                <span class="text-mono text-muted" style="font-size: 0.78rem;" id={`u-C-tamil-${unit.num}`}>0/{unit.topics.length}</span>
-              </div>
-              <div class="syl-progress-track"><div class="syl-progress-fill" id={`bar-C-tamil-${unit.num}`} style={`background: ${part.color};`}></div></div>
-              <ul class="syl-topics">
-                {unit.topics.map((t: string, tIdx: number) => {
-                  const uid = `syllabus-checked-C-tamil-${unit.num}-${tIdx}`;
-                  return (
-                    <li class="syl-topic"><label class="syl-check-label"><input type="checkbox" class="syl-checkbox" data-id={uid} data-part="C-tamil" data-unit={unit.num} /><span class="syl-check-box" style={`--check-color: ${part.color};`}></span><span class="syl-topic-text text-tamil">{t}</span></label></li>
-                  );
-                })}
-              </ul>
-              {unit.relatedNotes?.length > 0 && (
-                <div class="syl-notes"><span class="text-muted" style="font-size: 0.72rem; font-weight: 600; text-transform: uppercase;">Related Notes</span><div class="flex gap-2 flex-wrap" style="margin-top: var(--space-2);">{unit.relatedNotes.map((n: any) => (<a href={`/notes/${n.slug}`} class="syl-note-chip">{n.title.length > 30 ? n.title.slice(0, 30) + '…' : n.title}</a>))}</div></div>
-              )}
+            
+            <div class="syl-progress-track">
+              <div class="syl-progress-fill bg-accent" id={`bar-${part.id}-${unit.num}`}></div>
             </div>
-          ))}
-        </div>
-      )}
 
-      {/* English units */}
-      {part.englishUnits && (
-        <div class="syl-units lang-panel" data-lang-panel="english" style="display:none;">
-          {part.englishUnits.map((unit: any) => (
-            <div class="syl-unit">
-              <div class="syl-unit-top">
-                <div class="flex items-center gap-3">
-                  <span class="syl-unit-num" style={`background: ${part.colorSoft}; color: ${part.color};`}>Unit {unit.num}</span>
-                  <div>
-                    <div style="font-weight: 600; font-size: 0.95rem;">{unit.title}</div>
-                    <div class="text-muted" style="font-size: 0.75rem;">{unit.questions} Qs · {unit.topics.length} topics</div>
-                  </div>
-                </div>
-                <span class="text-mono text-muted" style="font-size: 0.78rem;" id={`u-C-english-${unit.num}`}>0/{unit.topics.length}</span>
-              </div>
-              <div class="syl-progress-track"><div class="syl-progress-fill" id={`bar-C-english-${unit.num}`} style={`background: ${part.color};`}></div></div>
-              <ul class="syl-topics">
-                {unit.topics.map((t: string, tIdx: number) => {
-                  const uid = `syllabus-checked-C-english-${unit.num}-${tIdx}`;
-                  return (
-                    <li class="syl-topic"><label class="syl-check-label"><input type="checkbox" class="syl-checkbox" data-id={uid} data-part="C-english" data-unit={unit.num} /><span class="syl-check-box" style={`--check-color: ${part.color};`}></span><span class="syl-topic-text">{t}</span></label></li>
-                  );
-                })}
-              </ul>
-              {unit.relatedNotes?.length > 0 && (
-                <div class="syl-notes"><span class="text-muted" style="font-size: 0.72rem; font-weight: 600; text-transform: uppercase;">Related Notes</span><div class="flex gap-2 flex-wrap" style="margin-top: var(--space-2);">{unit.relatedNotes.map((n: any) => (<a href={`/notes/${n.slug}`} class="syl-note-chip">{n.title.length > 30 ? n.title.slice(0, 30) + '…' : n.title}</a>))}</div></div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
+            <ul class="syl-topics">
+              {unit.topics.map((topic, i) => (
+                <li class="syl-topic">
+                  <label class="syl-check-label">
+                    <input type="checkbox" class="syl-checkbox" data-id={`cb-${part.id}-${unit.num}-${i}`} data-part={part.id} data-unit={unit.num} />
+                    <div class="syl-check-box"></div>
+                    <span class="syl-topic-text">{topic}</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </section>
   ))}
+
+  <section id="lang" class="syl-part animate-in" style="--stagger: 5">
+    <div class="syl-part-header">
+      <div>
+        <h2 class="text-xl font-bold mb-1">Part C: Language</h2>
+        <div class="text-sm text-text-muted">SSLC Standard • 100 Questions</div>
+      </div>
+      <div class="text-right">
+        <div class="text-sm font-medium mb-1 text-accent" id="part-language-progress">0%</div>
+      </div>
+    </div>
+
+    <div class="flex gap-2 mb-4">
+      <button class="lang-tab active" data-lang="tamil">General Tamil</button>
+      <button class="lang-tab" data-lang="english" disabled title="Coming soon">General English (Soon)</button>
+    </div>
+
+    <div class="lang-panel" data-lang-panel="tamil">
+      <div class="syl-units">
+        {tamilUnits.map(unit => (
+          <div class="syl-unit">
+            <div class="syl-unit-top">
+              <div class="flex items-center gap-3">
+                <span class="syl-unit-num bg-surface-raised border border-border">அலகு {unit.num}</span>
+                <h3 class="text-base font-bold m-0">{unit.title}</h3>
+              </div>
+              <div class="text-sm font-medium text-text-muted">
+                <span id={`u-language-${unit.num}`}>0/{unit.topics.length}</span>
+              </div>
+            </div>
+            <div class="syl-progress-track">
+              <div class="syl-progress-fill bg-green" id={`bar-language-${unit.num}`}></div>
+            </div>
+            <ul class="syl-topics">
+              {unit.topics.map((topic, i) => (
+                <li class="syl-topic">
+                  <label class="syl-check-label">
+                    <input type="checkbox" class="syl-checkbox" data-id={`cb-language-${unit.num}-${i}`} data-part="language" data-unit={unit.num} />
+                    <div class="syl-check-box"></div>
+                    <span class="syl-topic-text">{topic}</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
 </Layout>
 
 <style>
+  /* Analytics styles */
+  .analytics-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    text-align: center;
+  }
+  .analytics-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: var(--space-2); }
+  .analytics-value { font-size: 2rem; font-weight: 800; color: var(--text); }
+  .bg-purple { background-color: var(--purple, #9333ea); }
+  .bg-green { background-color: var(--green, #16a34a); }
+
   /* Part header */
   .syl-part { margin-bottom: var(--space-8); }
   .syl-part-header {
@@ -294,7 +230,7 @@ const totalTopics = parts.reduce((acc, p) => {
     color: var(--text-muted); cursor: pointer;
     transition: all var(--duration-fast);
   }
-  .lang-tab.active { background: var(--purple); color: white; border-color: var(--purple); }
+  .lang-tab.active { background: var(--purple, #9333ea); color: white; border-color: var(--purple, #9333ea); }
 
   /* Unit cards */
   .syl-units { display: flex; flex-direction: column; gap: var(--space-4); }
@@ -320,7 +256,7 @@ const totalTopics = parts.reduce((acc, p) => {
 
   /* Progress */
   .syl-progress-track {
-    height: 4px; background: var(--surface-sunken); border-radius: 2px;
+    height: 4px; background: var(--surface); border-radius: 2px;
     margin-bottom: var(--space-4); overflow: hidden;
   }
   .syl-progress-fill {
@@ -346,8 +282,8 @@ const totalTopics = parts.reduce((acc, p) => {
     position: relative;
   }
   .syl-checkbox:checked + .syl-check-box {
-    background: var(--check-color);
-    border-color: var(--check-color);
+    background: var(--check-color, #2563eb);
+    border-color: var(--check-color, #2563eb);
   }
   .syl-checkbox:checked + .syl-check-box::after {
     content: '';
@@ -362,28 +298,10 @@ const totalTopics = parts.reduce((acc, p) => {
   }
   .syl-topic-text { line-height: 1.5; color: var(--text-secondary); }
 
-  /* Related notes */
-  .syl-notes {
-    margin-top: var(--space-4);
-    padding-top: var(--space-3);
-    border-top: 1px solid var(--border-subtle);
-  }
-  .syl-note-chip {
-    display: inline-block;
-    padding: var(--space-1) var(--space-3);
-    background: var(--surface-raised);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-full);
-    font-size: 0.75rem; font-weight: 500;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: all var(--duration-fast);
-  }
-  .syl-note-chip:hover { border-color: var(--accent); color: var(--accent); }
-
   @media (max-width: 768px) {
     .syl-units { padding-left: 0; }
     .syl-unit-top { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+    .grid-3 { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -450,10 +368,10 @@ const totalTopics = parts.reduce((acc, p) => {
       if (text) text.textContent = `${done}/${total}`;
     }
 
-    // Per-part progress
+    // Per-part progress (gs, aptitude, language)
     const partMap: Record<string, { done: number; total: number }> = {};
     allBoxes.forEach(cb => {
-      const partId = cb.dataset.part!.split('-')[0]; // A, B, C
+      const partId = cb.dataset.part!;
       if (!partMap[partId]) partMap[partId] = { done: 0, total: 0 };
       partMap[partId].total++;
       if (cb.checked) partMap[partId].done++;
@@ -462,7 +380,13 @@ const totalTopics = parts.reduce((acc, p) => {
     for (const [partId, { done, total }] of Object.entries(partMap)) {
       const pct = total > 0 ? Math.round((done / total) * 100) : 0;
       const el = document.getElementById(`part-${partId}-progress`);
-      if (el) el.textContent = `${pct}%`;
+      if (el) el.textContent = `${pct}% Complete`;
+      
+      // Update Analytics Dashboard
+      const mastery = document.getElementById(`${partId}-mastery`);
+      const bar = document.getElementById(`${partId}-bar`);
+      if (mastery) mastery.textContent = `${pct}%`;
+      if (bar) bar.style.width = `${pct}%`;
     }
 
     // Global progress
@@ -470,11 +394,17 @@ const totalTopics = parts.reduce((acc, p) => {
     let totalAll = 0;
     allBoxes.forEach(cb => { totalAll++; if (cb.checked) totalDone++; });
     const globalPct = totalAll > 0 ? Math.round((totalDone / totalAll) * 100) : 0;
-    const gBar = document.getElementById('global-progress-bar');
     const gText = document.getElementById('global-progress-text');
-    if (gBar) gBar.style.width = `${globalPct}%`;
-    if (gText) gText.textContent = `${totalDone} / ${totalAll} topics (${globalPct}%)`;
+    if (gText) {
+      if (globalPct === 100) gText.textContent = `🎯 100% Mastered!`;
+      else gText.textContent = `${globalPct}% Overall Complete`;
+    }
   }
 
+  // Initialize progress on load
+  document.addEventListener("DOMContentLoaded", () => {
+    updateProgress();
+  });
+  // Execute immediately just in case
   updateProgress();
 </script>
