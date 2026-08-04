@@ -60,7 +60,13 @@ const downloadsByUnit = downloads.reduce((acc: any, dl: any) => {
     <div class="stack gap-6">
       {Object.entries(downloadsByUnit).map(([unit, items]: [string, any]) => (
         <div class="unit-section">
-          <h3 class="mb-4 pb-2" style="font-size: 1.25rem; color: var(--text); border-bottom: 2px solid var(--surface-sunken);">{unit}</h3>
+          <div class="flex items-center justify-between mb-4 pb-2" style="border-bottom: 2px solid var(--surface-sunken);">
+            <h3 style="font-size: 1.25rem; color: var(--text); margin: 0;">{unit}</h3>
+            <button class="btn btn-outline download-all-btn" style="padding: 0.4rem 0.75rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.4rem;" data-urls={JSON.stringify(items.map((i: any) => i.url))}>
+              <svg style="width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              Download All
+            </button>
+          </div>
           
           <div class="card" style="padding: 0; overflow: hidden;">
             <div class="flex flex-col">
@@ -135,5 +141,32 @@ const downloadsByUnit = downloads.reduce((acc: any, dl: any) => {
       ))}
     </div>
   </div>
+
+  <!-- Scripts -->
+  <script>
+    document.querySelectorAll('.download-all-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const urls = JSON.parse(target.dataset.urls || '[]');
+        
+        // Alert user about browser pop-up blockers
+        if (urls.length > 3) {
+          alert("Your browser might block multiple downloads. If asked, please 'Allow' downloading multiple files.");
+        }
+        
+        urls.forEach((url: string, index: number) => {
+          setTimeout(() => {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '';
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }, index * 800); // 800ms delay to help bypass strict pop-up blockers
+        });
+      });
+    });
+  </script>
 
 </Layout>
