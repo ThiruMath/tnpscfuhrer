@@ -62,31 +62,33 @@ const downloadsByUnit = downloads.reduce((acc: any, dl: any) => {
         <div class="unit-section">
           <h3 class="mb-4 pb-2" style="font-size: 1.25rem; color: var(--text); border-bottom: 2px solid var(--surface-sunken);">{unit}</h3>
           
-          <div class="grid grid-2 stagger">
-            {items.map((dl: any) => (
-              <div class="card card-interactive flex flex-col h-full" style="padding: var(--space-4);">
-                <div class="flex justify-between items-start mb-2">
-                  <span class="badge badge-neutral text-mono" style="font-size: 0.7rem;">{dl.subject}</span>
-                  <span class="text-muted text-mono" style="font-size: 0.75rem;">{dl.size} {dl.pages ? `• ${dl.pages} pages` : ''}</span>
-                </div>
-                
-                <h4 style="font-size: 1.1rem; margin-bottom: var(--space-1);">{dl.title}</h4>
-                <p class="text-secondary mb-3" style="font-size: 0.85rem;">Target: <span style="font-weight: 500; color: var(--text);">{dl.exam}</span></p>
-                
-                {dl.description && (
-                  <p class="text-muted mb-4" style="font-size: 0.85rem; line-height: 1.5; flex: 1;">
-                    {dl.description}
-                  </p>
-                )}
-                
-                <div class="flex justify-end mt-auto pt-3" style="border-top: 1px solid var(--border-subtle);">
-                  <a href={dl.url} download target="_blank" rel="noopener noreferrer" class="btn btn-accent" style="font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; width: 100%; justify-content: center;">
-                    <svg style="width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-                    Download PDF
+          <div class="card" style="padding: 0; overflow: hidden;">
+            <div class="flex flex-col">
+              {items.map((dl: any, index: number) => (
+                <div class="download-row" style={`background: var(--surface); padding: var(--space-3) var(--space-4); display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); border-bottom: ${index === items.length - 1 ? 'none' : '1px solid var(--border-subtle)'}; transition: background-color 0.2s ease;`}>
+                  
+                  <div style="flex: 1; min-width: 0;">
+                    <div class="flex items-center gap-2 mb-1">
+                      <span class="badge badge-neutral text-mono" style="font-size: 0.65rem;">{dl.exam}</span>
+                      <span class="text-muted text-mono" style="font-size: 0.7rem;">{dl.size} {dl.pages ? `• ${dl.pages} pages` : ''}</span>
+                    </div>
+                    
+                    <h4 style="font-size: 1rem; margin: 0; color: var(--text); line-height: 1.4;">{dl.title}</h4>
+                    
+                    {dl.description && (
+                      <p class="text-secondary" style="font-size: 0.85rem; margin-top: 4px; line-height: 1.5;">
+                        {dl.description}
+                      </p>
+                    )}
+                  </div>
+
+                  <a href={dl.url} download target="_blank" rel="noopener noreferrer" class="btn btn-accent" style="padding: 0.6rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; flex-shrink: 0;" title="Download PDF">
+                    <svg style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2;" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                   </a>
+                  
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       ))}
