@@ -2,150 +2,96 @@
 import Layout from '../layouts/Layout.astro';
 import { parts, tamilUnits } from '../data/syllabus.ts';
 ---
-<Layout title="TNPSC Group II & IIA Syllabus - Dashboard">
-  <!-- DASHBOARD HEADER -->
-  <div class="mb-8 border-b border-border-subtle pb-6 pt-4 animate-in">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-      <div>
-        <div class="flex items-center gap-2 mb-2">
-          <span class="badge badge-accent">Code 495</span>
-          <span class="text-sm font-medium text-text-muted">Updated Dec 2024</span>
-        </div>
-        <h1 class="text-3xl font-bold">Syllabus Dashboard</h1>
-        <p class="text-text-muted">Combined Civil Services Preliminary Examination</p>
+<Layout title="TNPSC Group II & IIA Syllabus - Compact Guide">
+  <div class="mb-12 text-center animate-in pt-4">
+    <h1 class="text-3xl md:text-5xl font-extrabold text-[#1a365d] mb-3 uppercase tracking-wide">TNPSC Group II & IIA</h1>
+    <h2 class="text-lg md:text-xl font-bold text-[#4a5568] uppercase tracking-widest">Section-Wise Breakdown</h2>
+  </div>
+
+  <!-- EXAM PATTERN CIRCLES (Interlocking) -->
+  <div class="flex justify-center items-center mb-16 overflow-hidden py-4 animate-in" style="--stagger: 1">
+    <div class="exam-circle" style="border-color: #38b2ac;">
+      <span class="text-3xl font-black text-gray-800">180</span>
+      <span class="text-xs font-bold text-gray-800 uppercase">Minutes</span>
+    </div>
+    <div class="exam-circle overlap-left" style="border-color: #2b6cb0;">
+      <span class="text-4xl font-black text-gray-800">200</span>
+      <span class="text-xs font-bold text-gray-800 uppercase">Questions</span>
+    </div>
+    <div class="exam-circle overlap-left" style="border-color: #e53e3e;">
+      <span class="text-2xl font-black text-gray-800">OMR</span>
+      <span class="text-[10px] font-bold text-gray-800 uppercase text-center leading-tight mt-1">Offline<br>Test</span>
+    </div>
+    <div class="exam-circle overlap-left" style="border-color: #ecc94b;">
+      <span class="text-3xl font-black text-gray-800">300</span>
+      <span class="text-[10px] font-bold text-gray-800 uppercase text-center leading-tight mt-1">Marks<br>Total</span>
+    </div>
+  </div>
+
+  <!-- HORIZONTAL SECTION BREAKDOWN -->
+  <div class="mb-16 border-b-[5px] border-[#1a202c] pb-8 animate-in max-w-5xl mx-auto" style="--stagger: 2">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+      
+      <div class="flex flex-col items-center text-center px-6">
+        <div class="text-[#2b6cb0] text-6xl mb-4">📘</div>
+        <div class="font-black uppercase text-lg mb-4 border-b-2 border-black w-full pb-2">General Studies</div>
+        <ul class="text-sm font-bold text-left w-full mt-2 space-y-2 uppercase tracking-tight text-gray-700">
+          <li>• History & Culture</li>
+          <li>• Indian Polity</li>
+          <li>• Economy & Dev</li>
+          <li>• General Science</li>
+        </ul>
       </div>
+
+      <div class="flex flex-col items-center text-center px-6 md:border-l-2 md:border-[#1a202c]">
+        <div class="text-[#38a169] text-6xl mb-4">🧮</div>
+        <div class="font-black uppercase text-lg mb-4 border-b-2 border-black w-full pb-2">Aptitude & Mental</div>
+        <ul class="text-sm font-bold text-left w-full mt-2 space-y-2 uppercase tracking-tight text-gray-700">
+          <li>• Simplification</li>
+          <li>• Percentage & Ratio</li>
+          <li>• Area & Volume</li>
+          <li>• Logical Reasoning</li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col items-center text-center px-6 md:border-l-2 md:border-[#1a202c]">
+        <div class="text-[#d69e2e] text-6xl mb-4">🌍</div>
+        <div class="font-black uppercase text-lg mb-4 border-b-2 border-black w-full pb-2">Language Section</div>
+        <ul class="text-sm font-bold text-left w-full mt-2 space-y-2 uppercase tracking-tight text-gray-700">
+          <li>• Grammar (இலக்கணம்)</li>
+          <li>• Literature (இலக்கியம்)</li>
+          <li>• Tamil Scholars</li>
+          <li>• Translations</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 
-  <!-- KPI CARDS (Dashboard style) -->
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 animate-in" style="--stagger: 1">
-    <div class="dash-kpi">
-      <div class="kpi-label">Total Questions</div>
-      <div class="kpi-value text-text">200</div>
-      <div class="kpi-sub">300 Marks Total</div>
-    </div>
-    <div class="dash-kpi">
-      <div class="kpi-label">General Studies</div>
-      <div class="kpi-value text-accent">75</div>
-      <div class="kpi-sub">Degree Standard</div>
-    </div>
-    <div class="dash-kpi">
-      <div class="kpi-label">Aptitude</div>
-      <div class="kpi-value text-purple">25</div>
-      <div class="kpi-sub">SSLC Standard</div>
-    </div>
-    <div class="dash-kpi">
-      <div class="kpi-label">Language</div>
-      <div class="kpi-value text-green">100</div>
-      <div class="kpi-sub">SSLC Standard</div>
-    </div>
-  </div>
-
-  <!-- EXAM SCHEME TABLE -->
-  <div class="card bg-surface border border-border-subtle rounded-xl p-0 overflow-hidden mb-10 animate-in shadow-sm" style="--stagger: 2">
-    <div class="px-6 py-4 border-b border-border-subtle bg-surface-sunken">
-      <h3 class="font-bold text-sm uppercase tracking-wider text-text-muted">Exam Pattern Breakdown</h3>
-    </div>
-    <div class="overflow-x-auto">
-      <table class="w-full text-sm text-left">
-        <thead class="text-xs uppercase bg-surface border-b border-border">
-          <tr>
-            <th class="px-6 py-3 min-w-[200px]">Subject</th>
-            <th class="px-6 py-3 text-center">Standard</th>
-            <th class="px-6 py-3 text-center">Questions</th>
-            <th class="px-6 py-3 min-w-[150px]">Weightage</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-border-subtle">
-          <tr>
-            <td class="px-6 py-4 font-medium">A. General Studies</td>
-            <td class="px-6 py-4 text-center text-text-muted">Degree</td>
-            <td class="px-6 py-4 text-center font-bold">75</td>
-            <td class="px-6 py-4">
-              <div class="flex items-center gap-3">
-                <div class="h-2 flex-1 bg-surface-sunken rounded-full"><div class="h-full bg-accent rounded-full" style="width: 37.5%"></div></div>
-                <span class="text-xs font-bold text-right w-8">37.5%</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="px-6 py-4 font-medium">B. Aptitude & Mental Ability</td>
-            <td class="px-6 py-4 text-center text-text-muted">SSLC</td>
-            <td class="px-6 py-4 text-center font-bold">25</td>
-            <td class="px-6 py-4">
-              <div class="flex items-center gap-3">
-                <div class="h-2 flex-1 bg-surface-sunken rounded-full"><div class="h-full bg-purple rounded-full" style="width: 12.5%"></div></div>
-                <span class="text-xs font-bold text-right w-8">12.5%</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="px-6 py-4 font-medium">C. Language (Tamil or English)</td>
-            <td class="px-6 py-4 text-center text-text-muted">SSLC</td>
-            <td class="px-6 py-4 text-center font-bold">100</td>
-            <td class="px-6 py-4">
-              <div class="flex items-center gap-3">
-                <div class="h-2 flex-1 bg-surface-sunken rounded-full"><div class="h-full bg-green rounded-full" style="width: 50%"></div></div>
-                <span class="text-xs font-bold text-right w-8">50%</span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="flex gap-2 mb-6 overflow-x-auto pb-2 animate-in" style="--stagger: 3">
-    <button class="syl-tab active" data-target="all">All Parts</button>
-    {parts.map(p => (
-      <button class="syl-tab" data-target={p.id}>{p.title}</button>
-    ))}
-    <button class="syl-tab" data-target="lang">Part C: Language</button>
-  </div>
-
-  <!-- DASHBOARD SYLLABUS LIST -->
-  <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 animate-in" style="--stagger: 4">
+  <!-- COMPACT SYLLABUS GRID -->
+  <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-in max-w-6xl mx-auto" style="--stagger: 3">
     {parts.map(part => (
-      <section id={part.id} class="syl-part flex flex-col gap-6">
-        <div class="flex items-center justify-between border-b border-border pb-2">
-          <h2 class="text-xl font-bold">{part.title}</h2>
-          <span class="badge badge-neutral">{part.total} Qs</span>
-        </div>
-        
+      <div class="flex flex-col gap-4">
         {part.units.map(unit => {
-          const colorClass = part.id === 'gs' ? 'bg-accent' : 'bg-purple';
-          const pct = (unit.questions / part.total) * 100;
+          const pct = Math.round((unit.questions / 200) * 100);
           return (
-            <div class="dash-unit-card">
-              <div class="dash-unit-header">
-                <div>
-                  <div class="text-xs font-bold text-text-muted uppercase tracking-wider mb-1">Unit {unit.num}</div>
-                  <h3 class="text-base font-bold m-0 leading-tight pr-4">{unit.title}</h3>
-                </div>
-                <div class="text-right flex-shrink-0">
-                  <div class="text-2xl font-black leading-none mb-1 text-text">{unit.questions}</div>
-                  <div class="text-[10px] uppercase text-text-muted font-bold tracking-widest">Questions</div>
-                </div>
+            <div class="compact-unit-card">
+              <div class="compact-header">
+                <span class="text-sm font-medium text-gray-700 mb-0.5">Unit {unit.num}</span>
+                <span class="font-bold text-lg text-black leading-tight">{unit.title}</span>
               </div>
-              <div class="px-5 pb-5 pt-3">
-                <div class="flex items-center gap-3 mb-5 bg-surface-sunken p-2 rounded-lg border border-border-subtle">
-                  <span class="text-xs text-text-muted font-bold w-16 uppercase tracking-wider text-center">Weight</span>
-                  <div class="h-1.5 flex-1 bg-surface rounded-full overflow-hidden">
-                    <div class={`h-full ${colorClass} rounded-full`} style={`width: ${pct}%`}></div>
-                  </div>
-                  <span class="text-xs font-bold w-10 text-right">{Math.round(pct)}%</span>
+              <div class="compact-body">
+                <div class="text-sm font-medium text-gray-800 mb-1 flex gap-4">
+                  <span>Weight</span>
+                  <span>{pct}%</span>
                 </div>
-                
-                <div class="flex flex-wrap gap-2 mb-5">
-                  {unit.tags.map(tag => (
-                    <span class="text-[10px] font-bold px-2 py-1 bg-surface-raised border border-border-subtle rounded text-text-muted uppercase">#{tag}</span>
-                  ))}
+                <div class="text-[13px] font-medium text-gray-600 mb-3 font-mono tracking-tight flex flex-wrap gap-x-2">
+                  {unit.tags.map(tag => `#${tag}`)}
                 </div>
-                
-                <ul class="flex flex-col gap-3">
+                <ul class="compact-list">
                   {unit.topics.map(topic => (
-                    <li class="flex gap-3 text-sm text-text-secondary leading-relaxed">
-                      <span class="text-text-muted mt-0.5 text-xs">■</span>
+                    <li>
+                      <span class="text-[10px] mt-1 text-black">■</span> 
                       <span>{topic}</span>
                     </li>
                   ))}
@@ -154,141 +100,94 @@ import { parts, tamilUnits } from '../data/syllabus.ts';
             </div>
           )
         })}
-      </section>
+      </div>
     ))}
 
-    <section id="lang" class="syl-part flex flex-col gap-6">
-      <div class="flex items-center justify-between border-b border-border pb-2">
-        <h2 class="text-xl font-bold">Part C: Language</h2>
-        <span class="badge badge-neutral">100 Qs</span>
-      </div>
-
-      <div class="flex gap-2 mb-2">
-        <button class="lang-tab active" data-lang="tamil">General Tamil</button>
-        <button class="lang-tab" data-lang="english" disabled title="Coming soon">General English (Soon)</button>
-      </div>
-
-      <div class="lang-panel flex flex-col gap-6" data-lang-panel="tamil">
-        {tamilUnits.map(unit => {
-          const pct = (unit.questions / 100) * 100;
-          return (
-            <div class="dash-unit-card">
-              <div class="dash-unit-header">
-                <div>
-                  <div class="text-xs font-bold text-text-muted uppercase tracking-wider mb-1">அலகு {unit.num}</div>
-                  <h3 class="text-base font-bold m-0 leading-tight pr-4">{unit.title}</h3>
-                </div>
-                <div class="text-right flex-shrink-0">
-                  <div class="text-2xl font-black leading-none mb-1 text-text">{unit.questions}</div>
-                  <div class="text-[10px] uppercase text-text-muted font-bold tracking-widest">Questions</div>
-                </div>
-              </div>
-              <div class="px-5 pb-5 pt-3">
-                <div class="flex items-center gap-3 mb-5 bg-surface-sunken p-2 rounded-lg border border-border-subtle">
-                  <span class="text-xs text-text-muted font-bold w-16 uppercase tracking-wider text-center">Weight</span>
-                  <div class="h-1.5 flex-1 bg-surface rounded-full overflow-hidden">
-                    <div class="h-full bg-green rounded-full" style={`width: ${pct}%`}></div>
-                  </div>
-                  <span class="text-xs font-bold w-10 text-right">{Math.round(pct)}%</span>
-                </div>
-                <ul class="flex flex-col gap-3">
-                  {unit.topics.map(topic => (
-                    <li class="flex gap-3 text-sm text-text-secondary leading-relaxed">
-                      <span class="text-text-muted mt-0.5 text-xs">■</span>
-                      <span>{topic}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+    <div class="flex flex-col gap-4">
+      {tamilUnits.map(unit => {
+        const pct = Math.round((unit.questions / 200) * 100);
+        return (
+          <div class="compact-unit-card">
+            <div class="compact-header">
+              <span class="text-sm font-medium text-gray-700 mb-0.5">அலகு {unit.num}</span>
+              <span class="font-bold text-lg text-black leading-tight">{unit.title}</span>
             </div>
-          )
-        })}
-      </div>
-    </section>
+            <div class="compact-body">
+              <div class="text-sm font-medium text-gray-800 mb-3 flex gap-4">
+                <span>Weight</span>
+                <span>{pct}%</span>
+              </div>
+              <ul class="compact-list">
+                {unit.topics.map(topic => (
+                  <li>
+                    <span class="text-[10px] mt-1 text-black">■</span> 
+                    <span>{topic}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )
+      })}
+    </div>
   </div>
 </Layout>
 
 <style>
-  /* KPI Cards */
-  .dash-kpi {
-    background: var(--surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    padding: var(--space-5);
-    box-shadow: var(--shadow-sm);
-  }
-  .kpi-label { font-size: 0.75rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); margin-bottom: var(--space-2); letter-spacing: 0.05em; }
-  .kpi-value { font-size: 2.25rem; font-weight: 900; line-height: 1; margin-bottom: var(--space-2); }
-  .kpi-sub { font-size: 0.75rem; font-weight: 600; color: var(--text-faint); }
-
-  /* Colors */
-  .bg-purple { background-color: var(--purple, #9333ea); }
-  .bg-green { background-color: var(--green, #16a34a); }
-  .text-purple { color: var(--purple, #9333ea); }
-  .text-green { color: var(--green, #16a34a); }
-
-  /* Unit Cards */
-  .dash-unit-card {
-    background: var(--surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow var(--duration-normal);
-  }
-  .dash-unit-card:hover {
-    box-shadow: var(--shadow-md);
-    border-color: var(--border-hover);
-  }
-  .dash-unit-header {
-    background: var(--surface-sunken);
-    padding: var(--space-4) var(--space-5);
-    border-bottom: 1px solid var(--border-subtle);
+  /* Interlocking Circles */
+  .exam-circle {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    border-width: 14px;
+    border-style: solid;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    position: relative;
+    z-index: 10;
+  }
+  .exam-circle.overlap-left {
+    margin-left: -24px;
+  }
+  @media (max-width: 640px) {
+    .exam-circle { width: 100px; height: 100px; border-width: 10px; }
+    .exam-circle.overlap-left { margin-left: -16px; }
+    .exam-circle .text-4xl { font-size: 1.5rem; }
+    .exam-circle .text-3xl { font-size: 1.25rem; }
+    .exam-circle .text-2xl { font-size: 1rem; }
+    .exam-circle .text-xs { font-size: 0.6rem; }
+  }
+
+  /* Compact Cards */
+  .compact-unit-card {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fafafa;
+    overflow: hidden;
+  }
+  .compact-header {
+    background-color: #f1f5f9;
+    border-bottom: 1px solid #cbd5e1;
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    color: #0f172a;
+  }
+  .compact-body {
+    padding: 14px 16px;
+  }
+  .compact-list {
+    margin: 0; padding: 0; list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .compact-list li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #334155;
+    display: flex;
+    gap: 10px;
     align-items: flex-start;
   }
-
-  /* Tabs */
-  .syl-tab, .lang-tab {
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    font-size: 0.82rem; font-weight: 600;
-    color: var(--text-muted); cursor: pointer;
-    transition: all var(--duration-fast);
-  }
-  .syl-tab:hover, .lang-tab:hover { border-color: var(--border-hover); color: var(--text); }
-  .syl-tab.active { background: var(--text); color: var(--text-inverse); border-color: var(--text); }
-  .lang-tab.active { background: var(--green, #16a34a); color: white; border-color: var(--green, #16a34a); }
 </style>
-
-<script>
-  // === Tab filtering ===
-  document.querySelectorAll('.syl-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.syl-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const target = (btn as HTMLElement).dataset.target;
-      document.querySelectorAll('.syl-part').forEach(s => {
-        const el = s as HTMLElement;
-        if (target === 'all') { el.style.display = ''; }
-        else { el.style.display = el.id === target ? '' : 'none'; }
-      });
-    });
-  });
-
-  // === Language toggle ===
-  document.querySelectorAll('.lang-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.lang-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const lang = (btn as HTMLElement).dataset.lang;
-      document.querySelectorAll('.lang-panel').forEach(p => {
-        const el = p as HTMLElement;
-        el.style.display = el.dataset.langPanel === lang ? '' : 'none';
-      });
-    });
-  });
-</script>
