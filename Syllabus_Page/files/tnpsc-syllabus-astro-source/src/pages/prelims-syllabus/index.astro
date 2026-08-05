@@ -1,0 +1,91 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import UnitBlock from "../../components/UnitBlock.astro";
+import MarksMeter from "../../components/MarksMeter.astro";
+import { meta, partA, partB, partC } from "../../data/prelims";
+---
+<Layout title="Prelims Syllabus" description="TNPSC Group II & IIA Preliminary Examination syllabus, Code 495 — General Studies, Aptitude & Mental Ability, and Language, unit by unit.">
+  <div class="wrap">
+    <PageHeader
+      eyebrow={`Preliminary Syllabus · Code ${meta.code}`}
+      title="Common Preliminary Examination"
+      tamilTitle="தொடக்கத் தேர்வு · தொகுதி II & IIA பொதுவானது"
+      description="One objective paper shared by both services. Every mark here is qualifying — it clears the way to the Mains, but is not carried forward for ranking."
+    />
+
+    <section class="overview card">
+      <MarksMeter
+        total={meta.totalMarks}
+        unitWord="questions"
+        rows={[
+          { label: "Part A — General Studies", value: partA.questions, href: "#part-a" },
+          { label: "Part B — Aptitude & Mental Ability", value: partB.questions, href: "#part-b" },
+          { label: "Part C — Language", value: partC.questions, href: "#part-c" },
+        ]}
+      />
+    </section>
+
+    <section id="part-a" class="part-section">
+      <h2>{partA.label}</h2>
+      <p class="part-meta">{partA.standard} &middot; {partA.questions} questions across 6 units</p>
+      {partA.units.map((u) => (
+        <UnitBlock no={u.no} title={u.title} weight={u.questions} weightLabel="questions" content={u.content} />
+      ))}
+    </section>
+
+    <section id="part-b" class="part-section">
+      <h2>{partB.label}</h2>
+      <p class="part-meta">{partB.standard} &middot; {partB.questions} questions</p>
+      {partB.units.map((u) => (
+        <UnitBlock no={u.no} title={u.title} weight={u.questions} weightLabel="questions" content={u.content} />
+      ))}
+    </section>
+
+    <section id="part-c" class="part-section">
+      <h2>{partC.label}</h2>
+      <p class="part-meta">{partC.standard} &middot; {partC.questions} questions &middot; choose one language track</p>
+      <div class="lang-grid">
+        <div class="lang-card card">
+          <h3>பொதுத் தமிழ் <span class="lang-en">General Tamil</span></h3>
+          <table>
+            <thead><tr><th>Unit</th><th>Topic</th><th class="num">Questions</th></tr></thead>
+            <tbody>
+              {partC.tamilUnits.map((u) => (
+                <tr><td>{u.no}</td><td>{u.title}</td><td class="num">{u.questions}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="lang-card card">
+          <h3>General English</h3>
+          <table>
+            <thead><tr><th>Unit</th><th>Topic</th><th class="num">Questions</th></tr></thead>
+            <tbody>
+              {partC.englishUnits.map((u) => (
+                <tr><td>{u.no}</td><td>{u.title}</td><td class="num">{u.questions}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="lang-note">Full grammar points, vocabulary lists, comprehension skills, and the Tamil literary-works reading list follow the SSLC-standard textbook syllabus for each unit above.</p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .overview { padding: 20px 22px; margin-bottom: 40px; }
+  .part-section { margin-bottom: 46px; }
+  .part-section h2 { font-size: 1.3rem; }
+  .part-meta { font-size: 0.85rem; color: var(--ink-faint); margin: 6px 0 20px; font-family: var(--font-mono); }
+
+  .lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  .lang-card { padding: 18px 20px 20px; }
+  .lang-card h3 { font-size: 1.02rem; margin-bottom: 12px; display: flex; align-items: baseline; gap: 8px; }
+  .lang-card h3 { font-family: var(--font-tamil); }
+  .lang-en { font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .lang-note { margin-top: 16px; font-size: 0.84rem; color: var(--ink-faint); max-width: 68ch; }
+
+  @media (max-width: 700px) { .lang-grid { grid-template-columns: 1fr; } }
+</style>

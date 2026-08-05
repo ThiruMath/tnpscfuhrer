@@ -1,0 +1,43 @@
+---
+import Layout from "../../../layouts/SyllabusLayout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import UnitBlock from "../../../components/UnitBlock.astro";
+import MarksMeter from "../../../components/MarksMeter.astro";
+import { meta, units } from "../../../data/group2";
+---
+<Layout title="Group II Mains Syllabus" description="TNPSC Group II Combined Civil Services Mains syllabus, Code 469 — General Studies, unit by unit, with descriptive marks weightage.">
+  <div class="wrap">
+    <PageHeader
+      eyebrow={`Mains Syllabus · Code ${meta.code}`}
+      title="Group II — Paper II"
+      tamilTitle="தொகுதி II · பொது அறிவு · 300 மதிப்பெண்கள்"
+      description="Seven units of General Studies, answered descriptively. Unit II (Tamil Society, Culture & Heritage) is the only unit you may answer in Tamil or English by choice — see the exam scheme for exactly how each unit is examined across Parts A, B and C."
+    />
+
+    <section class="overview card">
+      <MarksMeter
+        total={meta.totalMarks}
+        rows={units.map((u) => ({ label: `Unit ${u.no} — ${u.title}`, value: u.marks, href: `#unit-${u.no}` }))}
+      />
+    </section>
+
+    <section class="part-section">
+      {units.map((u) => (
+        <UnitBlock
+          no={u.no}
+          title={u.title}
+          weight={u.marks}
+          weightLabel="marks"
+          content={u.content}
+          note={u.answerLanguageNote}
+        />
+      ))}
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .overview { padding: 20px 22px; margin-bottom: 40px; }
+</style>
+
+

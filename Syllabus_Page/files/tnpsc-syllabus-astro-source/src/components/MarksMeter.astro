@@ -1,0 +1,63 @@
+---
+interface Row { label: string; value: number; href?: string; }
+interface Props {
+  rows: Row[];
+  total: number;
+  unitWord?: string;
+}
+const { rows, total, unitWord = "marks" } = Astro.props;
+---
+<div class="meter">
+  {rows.map((row) => (
+    <a class="row" href={row.href}>
+      <span class="row-label">{row.label}</span>
+      <span class="row-track">
+        <span class="row-fill" style={`width:${Math.round((row.value / total) * 1000) / 10}%`}></span>
+      </span>
+      <span class="row-value stamp-number">{row.value}</span>
+    </a>
+  ))}
+  <div class="meter-total">
+    <span>Total</span>
+    <span class="stamp-number">{total} {unitWord}</span>
+  </div>
+</div>
+
+<style>
+  .meter { display: grid; gap: 9px; }
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(120px, 2fr) 44px;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 4px 0;
+  }
+  .row-label { font-size: 0.86rem; font-weight: 500; }
+  .row-track {
+    height: 8px;
+    background: var(--accent-soft);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .row-fill {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dim));
+    border-radius: 2px;
+  }
+  .row-value { font-size: 0.82rem; text-align: right; }
+  .meter-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line-strong);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+</style>

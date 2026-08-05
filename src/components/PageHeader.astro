@@ -1,0 +1,22 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  tamilTitle?: string;
+  description?: string;
+}
+const { eyebrow, title, tamilTitle, description } = Astro.props;
+---
+<header class="page-header">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1>{title}</h1>
+  {tamilTitle && <p class="tamil-title">{tamilTitle}</p>}
+  {description && <p class="description">{description}</p>}
+</header>
+
+<style>
+  .page-header { margin-bottom: 34px; }
+  .page-header h1 { font-size: clamp(1.7rem, 3.4vw, 2.35rem); margin-top: 8px; line-height: 1.15; }
+  .tamil-title { font-family: var(--font-tamil); font-size: 1.05rem; color: var(--accent-dim); margin-top: 8px; }
+  .description { margin-top: 12px; color: var(--ink-soft); max-width: 62ch; font-size: 0.98rem; }
+</style>

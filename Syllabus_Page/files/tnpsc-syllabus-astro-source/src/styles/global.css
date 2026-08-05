@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+Tamil:wght@500;600;700&display=swap");
+
+:root {
+  --bg: #f3f6f1;
+  --paper: #fbfcfa;
+  --surface: #ffffff;
+  --ink: #16231f;
+  --ink-soft: #4c5850;
+  --ink-faint: #7c887f;
+  --accent: #1b4b43;
+  --accent-dim: #29645a;
+  --accent-soft: #e2ebe4;
+  --gold: #a9762f;
+  --gold-soft: #f3e6cd;
+  --line: #dbe2d8;
+  --line-strong: #b9c6bc;
+  --radius: 3px;
+
+  --font-display: "Fraunces", "Noto Serif Tamil", ui-serif, Georgia, serif;
+  --font-tamil: "Noto Serif Tamil", "Fraunces", serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+a { color: inherit; }
+
+::selection { background: var(--gold-soft); color: var(--ink); }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--ink);
+}
+
+p { margin: 0; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+  font-weight: 600;
+}
+
+.stamp-number {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+  background: var(--accent-soft);
+}
+
+td.num, th.num {
+  font-family: var(--font-mono);
+  text-align: right;
+  white-space: nowrap;
+}

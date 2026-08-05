@@ -1,0 +1,77 @@
+---
+interface Props {
+  no: string;
+  title: string;
+  weight?: number;
+  weightLabel?: string;
+  content: string;
+  note?: string;
+}
+const { no, title, weight, weightLabel, content, note } = Astro.props;
+const items = content
+  .split(";")
+  .map((s) => s.trim())
+  .filter(Boolean);
+---
+<article class="unit card" id={`unit-${no}`}>
+  <header class="unit-head">
+    <span class="unit-no">{no}</span>
+    <div class="unit-heading">
+      <h3>{title}</h3>
+      {note && <p class="unit-note">{note}</p>}
+    </div>
+    {weight !== undefined && (
+      <span class="unit-weight">
+        <span class="stamp-number">{weight}</span>
+        <span class="unit-weight-label">{weightLabel}</span>
+      </span>
+    )}
+  </header>
+  <ul class="unit-list">
+    {items.map((item) => <li>{item}</li>)}
+  </ul>
+</article>
+
+<style>
+  .unit { padding: 22px 24px 24px; margin-bottom: 18px; }
+  .unit-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .unit-no {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 3px;
+    padding: 3px 8px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .unit-heading { flex: 1; min-width: 0; }
+  .unit-heading h3 { font-size: 1.12rem; line-height: 1.35; }
+  .unit-note { margin-top: 4px; font-size: 0.82rem; color: var(--ink-faint); font-style: italic; }
+  .unit-weight { text-align: right; flex-shrink: 0; }
+  .unit-weight .stamp-number { display: block; font-size: 1.15rem; }
+  .unit-weight-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .unit-list {
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 7px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .unit-list li::marker { color: var(--gold); }
+</style>

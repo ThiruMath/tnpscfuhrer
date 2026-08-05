@@ -1,0 +1,65 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import { meta, examPattern, syllabusTopics } from "../../data/tamilEligibility";
+---
+<Layout title="Tamil Eligibility Test" description="TNPSC Tamil Eligibility Test (Paper I) exam pattern and syllabus — common qualifying paper for Group II and IIA Mains.">
+  <div class="wrap">
+    <PageHeader
+      eyebrow={`Mains Paper I · Dated ${meta.dated}`}
+      title={meta.title}
+      tamilTitle="கட்டாயத் தமிழ் மொழி தகுதித் தேர்வு"
+      description={meta.note}
+    />
+
+    <section class="part-section">
+      <h2>Exam pattern</h2>
+      <p class="part-meta">{meta.subtitle} &middot; {meta.marks} marks</p>
+      <ol class="pattern-list">
+        {examPattern.map((item) => (
+          <li class="card">
+            <div class="pattern-item-head">
+              <span class="stamp-number">{item.no}</span>
+              <h3>{item.title}</h3>
+            </div>
+            {item.detail && <p class="pattern-detail">{item.detail}</p>}
+            {item.subtopics && (
+              <ul class="subtopics">
+                {item.subtopics.map((s, i) => <li><span>{["அ","ஆ","இ","ஈ","உ","ஊ","எ"][i]}</span>{s}</li>)}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="part-section">
+      <h2>Syllabus themes</h2>
+      <p class="part-meta">Topics the passages, letters, and essay questions draw from</p>
+      <div class="topic-card card">
+        <ul class="theme-list">
+          {syllabusTopics.map((t) => <li>{t}</li>)}
+        </ul>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .part-section { margin-bottom: 46px; }
+  .part-section h2 { font-size: 1.3rem; }
+  .part-meta { font-size: 0.85rem; color: var(--ink-faint); margin: 6px 0 20px; font-family: var(--font-mono); }
+
+  .pattern-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .pattern-list li { padding: 18px 20px; }
+  .pattern-item-head { display: flex; align-items: baseline; gap: 12px; }
+  .pattern-item-head h3 { font-size: 1rem; }
+  .pattern-detail { margin-top: 8px; font-size: 0.88rem; color: var(--ink-soft); }
+  .subtopics { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+  .subtopics li { display: flex; gap: 8px; font-size: 0.86rem; color: var(--ink-soft); }
+  .subtopics li span { font-family: var(--font-tamil); color: var(--gold); flex-shrink: 0; }
+
+  .topic-card { padding: 20px 24px; }
+  .theme-list { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 0.9rem; color: var(--ink-soft); }
+  .theme-list li::marker { color: var(--gold); }
+</style>

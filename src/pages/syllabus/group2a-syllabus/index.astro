@@ -1,0 +1,67 @@
+---
+import Layout from "../../../layouts/SyllabusLayout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import UnitBlock from "../../../components/UnitBlock.astro";
+import MarksMeter from "../../../components/MarksMeter.astro";
+import { meta, partA, partB } from "../../../data/group2a";
+---
+<Layout title="Group IIA Mains Syllabus" description="TNPSC Group IIA Combined Civil Services Mains syllabus, Code 583 — General Studies and General Intelligence & Reasoning, unit by unit.">
+  <div class="wrap">
+    <PageHeader
+      eyebrow={`Mains Syllabus · Code ${meta.code} · Dated ${meta.dated}`}
+      title="Group IIA — Paper II"
+      tamilTitle="தொகுதி IIA · ஒட்டுமொத்தம் 225 வினாக்கள் · 300 மதிப்பெண்கள்"
+      description="A single objective paper: 150 General Studies questions at degree standard, plus 50 questions of General Intelligence and Reasoning at SSLC standard. No oral interview follows — this score alone decides the rank."
+    />
+
+    <section class="overview card">
+      <MarksMeter
+        total={meta.totalMarks}
+        rows={[
+          { label: "Part A — General Studies", value: 150, href: "#part-a" },
+          { label: "Part B — General Intelligence & Reasoning", value: 50, href: "#reasoning" },
+        ]}
+      />
+    </section>
+
+    <section id="part-a" class="part-section">
+      <h2>{partA.label}</h2>
+      <p class="part-meta">{partA.standard} &middot; {partA.questions} questions across 5 units</p>
+      {partA.units.map((u) => (
+        <UnitBlock no={u.no} title={u.title} weight={u.questions} weightLabel="questions" content={u.content} />
+      ))}
+    </section>
+
+    <section id="reasoning" class="part-section">
+      <h2>{partB.label}</h2>
+      <p class="part-meta">{partB.standard} &middot; {partB.questions} questions</p>
+      <div class="topic-card card">
+        <ol class="topic-grid">
+          {partB.topics.map((t) => <li>{t}</li>)}
+        </ol>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .overview { padding: 20px 22px; margin-bottom: 40px; }
+  .part-section { margin-bottom: 46px; }
+  .part-section h2 { font-size: 1.3rem; }
+  .part-meta { font-size: 0.85rem; color: var(--ink-faint); margin: 6px 0 20px; font-family: var(--font-mono); }
+  .topic-card { padding: 20px 24px; }
+  .topic-grid {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 32px;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    display: block;
+  }
+  .topic-grid li { break-inside: avoid; margin-bottom: 9px; }
+  .topic-grid li::marker { color: var(--gold); font-family: var(--font-mono); font-size: 0.8rem; }
+  @media (max-width: 560px) { .topic-grid { columns: 1; } }
+</style>
+
+
