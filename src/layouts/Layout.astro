@@ -34,6 +34,7 @@ const icons: Record<string, string> = {
 
 const navLinks = [
   { href: '/',               label: 'Dashboard',       icon: 'home',          section: 'main' },
+  { href: '/quiz/gemini',    label: 'Gemini Quiz',     icon: 'flame',         section: 'main' },
   { href: '/syllabus',       label: 'Syllabus',        icon: 'clipboard',     section: 'main' },
   { href: '/pyq',            label: 'PYQ Quiz',        icon: 'barchart',      section: 'main' },
   { href: '/current-affairs', label: 'Current Affairs', icon: 'newspaper',     section: 'main' },
@@ -43,6 +44,7 @@ const navLinks = [
   { href: '/math',           label: 'Math',             icon: 'calculator',    section: 'subject' },
   { href: '/tnpsc',          label: 'TNPSC Info',       icon: 'info',          section: 'other' },
   { href: '/calendar',       label: 'Exam Calendar',    icon: 'calendar',      section: 'other' },
+  { href: '/dashboard',      label: 'Lab Portal',      icon: 'clipboard',     section: 'other' },
 ];
 
 const sections = [
@@ -223,6 +225,8 @@ const pageTitle = active || 'Dashboard';
   // Quick links data for command palette
   const quickLinks = [
     { title: 'Dashboard', href: '/', icon: '🏠', meta: 'Home' },
+    { title: 'Gemini Quiz', href: '/quiz/gemini', icon: '✨', meta: 'AI Diagnostic Quiz' },
+    { title: 'Project Lab', href: '/dashboard', icon: '🔐', meta: 'Project Dashboard' },
     { title: 'Study Notes', href: '/notes', icon: '📖', meta: '600+ notes' },
     { title: 'PYQ Quiz', href: '/pyq', icon: '📝', meta: 'Practice questions' },
     { title: 'Syllabus', href: '/syllabus', icon: '📋', meta: 'Group 2 & 2A' },
