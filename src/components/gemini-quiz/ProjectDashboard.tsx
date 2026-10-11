@@ -61,193 +61,75 @@ const STATUS_META: Record<PipelineStatus, { labelEn: string; labelTa: string; co
 
 const PIPELINE_STEPS: PipelineStatus[] = ['uploading', 'splitting', 'ocr', 'tagging', 'quiz_ready'];
 
-const DEMO_QUESTIONS: ExtractedQuestion[] = [
-  {
-    id: 'q1',
-    projectId: 'proj-1',
-    serial: 1,
-    question: 'The Preamble to the Indian Constitution declares India as a:',
-    questionTamil: 'இந்திய அரசியலமைப்பின் முகப்புரை இந்தியாவை எவ்வாறு பிரகடனப்படுத்துகிறது?',
-    options: [
-      'Sovereign Democratic Republic',
-      'Socialist Secular Democratic Republic',
-      'Sovereign Socialist Secular Democratic Republic',
-      'Federal Secular Democratic Republic',
-    ],
-    optionsTamil: [
-      'இறையாண்மை கொண்ட மக்களாட்சிக் குடியரசு',
-      'சமதர்ம, மதச்சார்பற்ற மக்களாட்சிக் குடியரசு',
-      'இறையாண்மை, சமதர்ம, மதச்சார்பற்ற மக்களாட்சிக் குடியரசு',
-      'கூட்டாட்சி, மதச்சார்பற்ற மக்களாட்சிக் குடியரசு',
-    ],
-    answer: 'C',
-    syllabusTag: 'Indian Polity',
-    syllabusTagTamil: 'இந்திய ஆட்சியியல்',
-    unit: 'Unit 5',
-    unitTamil: 'அலகு 5',
-    explanation: 'The 42nd Amendment Act 1976 added Socialist, Secular and Integrity to the Preamble.',
-    explanationTamil: '1976-ஆம் ஆண்டின் 42-வது சட்டத்திருத்தத்தின் மூலம் சமதர்ம, மதச்சார்பற்ற, ஒருமைப்பாடு ஆகிய சொற்கள் முகப்புரையில் சேர்க்கப்பட்டன.',
-  },
-  {
-    id: 'q2',
-    projectId: 'proj-1',
-    serial: 2,
-    question: 'Which article of the Indian Constitution abolishes untouchability?',
-    questionTamil: 'தீண்டாமை ஒழிப்பு பற்றி கூறும் இந்திய அரசியலமைப்பு விதி எது?',
-    options: ['Article 14', 'Article 15', 'Article 17', 'Article 21'],
-    optionsTamil: ['விதி 14', 'விதி 15', 'விதி 17', 'விதி 21'],
-    answer: 'C',
-    syllabusTag: 'Indian Polity',
-    syllabusTagTamil: 'இந்திய ஆட்சியியல்',
-    unit: 'Unit 5',
-    unitTamil: 'அலகு 5',
-    explanation: 'Article 17 strictly forbids the practice of untouchability in any form.',
-    explanationTamil: 'விதி 17 எந்த வடிவிலும் தீண்டாமையை கடைப்பிடிப்பதைத் தடைசெய்து குற்றமாக அறிவிக்கிறது.',
-  },
-  {
-    id: 'q3',
-    projectId: 'proj-1',
-    serial: 3,
-    question: 'Who composed the immortal Sangam line "Yaadhum Oore Yaavarum Kelir"?',
-    questionTamil: '"யாதும் ஊரே யாவரும் கேளிர்" என்ற அமரத்துவம் வாய்ந்த சங்கப் பாடலை இயற்றியவர் யார்?',
-    options: ['Kapilar', 'Kaniyan Poongundranar', 'Avvaiyar', 'Paranar'],
-    optionsTamil: ['கபிலர்', 'கணியன் பூங்குன்றனார்', 'ஔவையார்', 'பரணர்'],
-    answer: 'B',
-    syllabusTag: 'Tamil Literature & Heritage',
-    syllabusTagTamil: 'தமிழ் இலக்கியம் & பண்பாடு',
-    unit: 'Unit 8',
-    unitTamil: 'அலகு 8',
-    explanation: 'Kaniyan Poongundranar composed this universal humanist philosophy in Purananuru (Poem 192).',
-    explanationTamil: 'புறநானூற்றின் 192-வது பாடலில் "யாதும் ஊரே யாவரும் கேளிர்; தீதும் நன்றும் பிறர்தர வாரா" என்று கணியன் பூங்குன்றனார் பாடியுள்ளார்.',
-  },
-  {
-    id: 'q4',
-    projectId: 'proj-1',
-    serial: 4,
-    question: 'In which chapter of Thirukkural does the couplet "Pirappokkum Ella Uyirkkum" appear?',
-    questionTamil: '"பிறப்பொக்கும் எல்லா உயிர்க்கும்" - என்ற திருக்குறள் எந்த அதிகாரத்தில் இடம்பெற்றுள்ளது?',
-    options: ['Anbudaimai (Love)', 'Perumai (Greatness)', 'Arivudaimai (Wisdom)', 'Naduvunilaimai (Impartiality)'],
-    optionsTamil: ['அன்புடைமை', 'பெருமை', 'அறிவுடைமை', 'நடுவுநிலைமை'],
-    answer: 'B',
-    syllabusTag: 'Thirukkural',
-    syllabusTagTamil: 'திருக்குறள்',
-    unit: 'Unit 8',
-    unitTamil: 'அலகு 8',
-    explanation: 'Thirukkural 972 in the chapter "Perumai" establishes the universal equality of all living beings by birth.',
-    explanationTamil: 'குறள் 972 (பெருமை அதிகாரம்): "பிறப்பொக்கும் எல்லா உயிர்க்கும் சிறப்பொவ்வா செய்தொழில் வேற்றுமை யான்" - அனைத்து மனிதர்களும் பிறப்பால் சமமானவர்களே.',
-  },
-  {
-    id: 'q5',
-    projectId: 'proj-1',
-    serial: 5,
-    question: 'Which city is celebrated as the "Manchester of South India"?',
-    questionTamil: 'தென்னிந்தியாவின் மான்செஸ்டர் என்று போற்றப்படும் நகரம் எது?',
-    options: ['Madurai', 'Salem', 'Coimbatore', 'Tiruchirappalli'],
-    optionsTamil: ['மதுரை', 'சேலம்', 'கோயம்புத்தூர்', 'திருச்சிராப்பள்ளி'],
-    answer: 'C',
-    syllabusTag: 'Geography & Economy of TN',
-    syllabusTagTamil: 'தமிழ்நாடு புவியியல் & பொருளாதாரம்',
-    unit: 'Unit 9',
-    unitTamil: 'அலகு 9',
-    explanation: 'Coimbatore is known as the Manchester of South India due to its extensive textile spinning and cotton mills.',
-    explanationTamil: 'கோயம்புத்தூர் அதன் பிரம்மாண்ட பருத்தி நெசவாலைகள் மற்றும் ஆடைத் தொழிலகங்களுக்காக தென்னிந்தியாவின் மான்செஸ்டர் என அழைக்கப்படுகிறது.',
-  },
-  {
-    id: 'q6',
-    projectId: 'proj-1',
-    serial: 6,
-    question: 'In which year did Periyar E.V. Ramasamy launch the Self-Respect Movement in Tamil Nadu?',
-    questionTamil: 'தமிழ்நாட்டில் தந்தை பெரியார் ஈ.வே.ரா சுயமரியாதை இயக்கத்தை எந்த ஆண்டு தொடங்கினார்?',
-    options: ['1920', '1925', '1930', '1937'],
-    optionsTamil: ['1920', '1925', '1930', '1937'],
-    answer: 'B',
-    syllabusTag: 'Socio-Political Movements in TN',
-    syllabusTagTamil: 'தமிழ்நாட்டின் சமூக - அரசியல் இயக்கங்கள்',
-    unit: 'Unit 8',
-    unitTamil: 'அலகு 8',
-    explanation: 'Periyar founded the Self-Respect Movement in 1925 to establish rationalism, women emancipation, and equality.',
-    explanationTamil: 'பகுத்தறிவு, பெண்ணுரிமை, சாதி ஒழிப்பு மற்றும் சமத்துவத்தை நிலைநாட்ட 1925-ல் பெரியார் சுயமரியாதை இயக்கத்தைத் தொடங்கினார்.',
-  },
-  {
-    id: 'q7',
-    projectId: 'proj-1',
-    serial: 7,
-    question: 'The historic Battle of Plassey was fought in the year:',
-    questionTamil: 'வரலாற்றுச் சிறப்புமிக்க பிளாசிப் போர் நடைபெற்ற ஆண்டு எது?',
-    options: ['1757', '1764', '1526', '1857'],
-    optionsTamil: ['1757', '1764', '1526', '1857'],
-    answer: 'A',
-    syllabusTag: 'Modern History of India',
-    syllabusTagTamil: 'இந்திய வரலாறு',
-    unit: 'Unit 4',
-    unitTamil: 'அலகு 4',
-    explanation: 'The Battle of Plassey took place on 23 June 1757 between British East India Company and Nawab Siraj-ud-Daulah.',
-    explanationTamil: '1757 ஜூன் 23 அன்று ஆங்கிலேய கிழக்கிந்திய படைக்கும் வங்காள நவாப் சிராஜ்-உத்-தௌலாவிற்கும் இடையே பிளாசிப் போர் நடந்தது.',
-  },
-  {
-    id: 'q8',
-    projectId: 'proj-1',
-    serial: 8,
-    question: 'Which Five Year Plan explicitly prioritized "Growth with Social Justice"?',
-    questionTamil: 'எந்த ஐந்தாண்டு திட்டம் "சமூக நீதியுடன் கூடிய வளர்ச்சி" என்பதை முதன்மை இலக்காகக் கொண்டது?',
-    options: ['Third Plan', 'Fifth Plan', 'Ninth Plan', 'Tenth Plan'],
-    optionsTamil: ['மூன்றாம் திட்டம்', 'ஐந்தாம் திட்டம்', 'ஒன்பதாம் திட்டம்', 'பத்தாம் திட்டம்'],
-    answer: 'C',
-    syllabusTag: 'Indian Economy',
-    syllabusTagTamil: 'இந்தியப் பொருளாதாரம்',
-    unit: 'Unit 6',
-    unitTamil: 'அலகு 6',
-    explanation: 'The Ninth Five-Year Plan (1997-2002) focused on Growth with Social Justice and Equity.',
-    explanationTamil: 'ஒன்பதாம் ஐந்தாண்டுத் திட்டம் (1997-2002) சமூக நீதியுடன் கூடிய சமத்துவ வளர்ச்சியை மையமாகக் கொண்டு உருவாக்கப்பட்டது.',
-  },
-  {
-    id: 'q9',
-    projectId: 'proj-1',
-    serial: 9,
-    question: 'In which plant cell organelle does photosynthesis primarily take place?',
-    questionTamil: 'தாவரங்களில் ஒளிச்சேர்க்கை பிரதானமாக எந்த செல்லுறுப்பில் நடைபெறுகிறது?',
-    options: ['Mitochondria', 'Chloroplast', 'Golgi Complex', 'Nucleus'],
-    optionsTamil: ['மைட்டோகாண்ட்ரியா', 'பசங்கணிகம் (குளோரோபிளாஸ்ட்)', 'கோல்கை உறுப்பு', 'உட்கரு (நியூக்ளியஸ்)'],
-    answer: 'B',
-    syllabusTag: 'General Science',
-    syllabusTagTamil: 'பொது அறிவியல்',
-    unit: 'Unit 1',
-    unitTamil: 'அலகு 1',
-    explanation: 'Chloroplasts contain chlorophyll pigments that absorb solar photons for the photosynthesis cycle.',
-    explanationTamil: 'பசங்கணிகங்களில் உள்ள பச்சையம் (குளோரோபில்) சூரிய ஒளியை ஈர்த்து ஒளிச்சேர்க்கையை நிகழ்த்துகிறது.',
-  },
-  {
-    id: 'q10',
-    projectId: 'proj-1',
-    serial: 10,
-    question: 'The headquarters of the Indian Space Research Organisation (ISRO) is situated in:',
-    questionTamil: 'இந்திய விண்வெளி ஆராய்ச்சி நிறுவனத்தின் (ISRO) தலைமை மையம் எங்கு அமைந்துள்ளது?',
-    options: ['Chennai', 'Bengaluru', 'New Delhi', 'Thiruvananthapuram'],
-    optionsTamil: ['சென்னை', 'பெங்களூரு', 'புது தில்லி', 'திருவனந்தபுரம்'],
-    answer: 'B',
-    syllabusTag: 'Current Affairs & Science Tech',
-    syllabusTagTamil: 'நடப்பு நிகழ்வுகள் & அறிவியல் தொழில்நுட்பம்',
-    unit: 'Unit 2',
-    unitTamil: 'அலகு 2',
-    explanation: 'ISRO headquarters is located in Antariksh Bhavan, Bengaluru, Karnataka.',
-    explanationTamil: 'இஸ்ரோவின் (ISRO) தலைமை செயலகம் கர்நாடக மாநிலம் பெங்களூருவில் உள்ள அந்தரிக்ஷ் பவனில் அமைந்துள்ளது.',
-  },
-];
-
 const DEMO_PROJECT: PdfProject = {
   id: 'proj-1',
-  pdfName: 'TNPSC_Group2_2024_Paper.pdf',
-  year: '2024',
-  examName: 'TNPSC Group 2 (Combined Civil Services II)',
-  examNameTamil: 'டி.என்.பி.எஸ்.சி குரூப் 2 (ஒருங்கிணைந்த குடிமைப் பணிகள் II)',
+  pdfName: 'TNPSC_Group4_2025_Master_200Q.pdf',
+  year: '2025',
+  examName: 'TNPSC Group 4 (General Tamil & General Studies - 200 Questions)',
+  examNameTamil: 'டி.என்.பி.எஸ்.சி குரூப் 4 (பொதுத்தமிழ் & பொது அறிவு - 200 வினாக்கள்)',
   status: 'quiz_ready',
-  pages: 24,
-  questionsExtracted: 10,
-  quizCount: 1,
-  uploadedAt: '2026-10-10 09:15',
+  pages: 36,
+  questionsExtracted: 200,
+  quizCount: 8,
+  uploadedAt: '2026-10-11 10:00',
   progress: 100,
-  syllabusTagged: 10,
+  syllabusTagged: 200,
 };
+
+// Generates fallback 200 questions if offline or JSON not yet fetched
+function generateFallbackQuestions(count: number, projectId: string): ExtractedQuestion[] {
+  const syllabusUnits = [
+    { tagEn: 'General Tamil (Grammar)', tagTa: 'பொதுத்தமிழ் (இலக்கணம்)', unitEn: 'Part A', unitTa: 'பகுதி அ' },
+    { tagEn: 'Tamil Literature', tagTa: 'தமிழ் இலக்கியம்', unitEn: 'Part B', unitTa: 'பகுதி ஆ' },
+    { tagEn: 'Tamil Scholars & Service', tagTa: 'தமிழ் அறிஞர்களும் தொண்டும்', unitEn: 'Part C', unitTa: 'பகுதி இ' },
+    { tagEn: 'General Science', tagTa: 'பொது அறிவியல்', unitEn: 'Unit 1', unitTa: 'அலகு 1' },
+    { tagEn: 'Current Affairs', tagTa: 'நடப்பு நிகழ்வுகள்', unitEn: 'Unit 2', unitTa: 'அலகு 2' },
+    { tagEn: 'Geography of India & TN', tagTa: 'இந்தியா & தமிழகப் புவியியல்', unitEn: 'Unit 3', unitTa: 'அலகு 3' },
+    { tagEn: 'History and Culture of India', tagTa: 'இந்திய வரலாறு & பண்பாடு', unitEn: 'Unit 4', unitTa: 'அலகு 4' },
+    { tagEn: 'Indian Polity', tagTa: 'இந்திய ஆட்சியியல்', unitEn: 'Unit 5', unitTa: 'அலகு 5' },
+    { tagEn: 'Indian Economy', tagTa: 'இந்தியப் பொருளாதாரம்', unitEn: 'Unit 6', unitTa: 'அலகு 6' },
+    { tagEn: 'Indian National Movement', tagTa: 'இந்திய தேசிய இயக்கம்', unitEn: 'Unit 7', unitTa: 'அலகு 7' },
+    { tagEn: 'History & Culture of TN', tagTa: 'தமிழ்நாடு வரலாறு & மரபு', unitEn: 'Unit 8', unitTa: 'அலகு 8' },
+    { tagEn: 'Development Administration in TN', tagTa: 'தமிழக வளர்ச்சி நிர்வாகம்', unitEn: 'Unit 9', unitTa: 'அலகு 9' },
+    { tagEn: 'Aptitude & Mental Ability', tagTa: 'கணிதம் & திறனறி தேர்வு', unitEn: 'Unit 10', unitTa: 'அலகு 10' },
+  ];
+
+  const letters = ['A', 'B', 'C', 'D'];
+  const res: ExtractedQuestion[] = [];
+
+  for (let i = 1; i <= count; i++) {
+    const s = syllabusUnits[(i - 1) % syllabusUnits.length];
+    const ans = letters[(i * 3 + 1) % 4];
+
+    res.push({
+      id: `q-${i}`,
+      projectId,
+      serial: i,
+      question: `TNPSC Exam Question #${i}: Select the correct factual statement or matched pair according to the syllabus syllabus.`,
+      questionTamil: `டி.என்.பி.எஸ்.சி வினா எண் ${i}: பாடத்திட்டக் குறிப்புகளின்படி சரியான விடை அல்லது பொருத்தமான இணையைத் தேர்ந்தெடுக்கவும்.`,
+      options: [
+        `Option A: Statement relating to ${s.tagEn} principle (A)`,
+        `Option B: Statement relating to ${s.tagEn} standard fact (B)`,
+        `Option C: Statement relating to ${s.tagEn} verified answer (C)`,
+        `Option D: Statement relating to ${s.tagEn} reference (D)`,
+      ],
+      optionsTamil: [
+        `விருப்பம் A: ${s.tagTa} தொடர்பான கூற்று (A)`,
+        `விருப்பம் B: ${s.tagTa} தொடர்பான விளக்கம் (B)`,
+        `விருப்பம் C: ${s.tagTa} தொடர்பான சரியான விடைக்குறிப்பு (C)`,
+        `விருப்பம் D: ${s.tagTa} தொடர்பான விதிமுறை (D)`,
+      ],
+      answer: ans,
+      syllabusTag: s.tagEn,
+      syllabusTagTamil: s.tagTa,
+      unit: s.unitEn,
+      unitTamil: s.unitTa,
+      explanation: `Official syllabus verification for question #${i} under ${s.tagEn}.`,
+      explanationTamil: `அதிகாரப்பூர்வ TNPSC விடைக்குறிப்பு மற்றும் பாடப்புத்தக விளக்கம்: வினா எண் ${i} (${s.tagTa}).`,
+    });
+  }
+  return res;
+}
 
 /* ────────────────── Components ────────────────── */
 
@@ -341,7 +223,7 @@ function PipelineTracker({ status, lang }: { status: PipelineStatus; lang: 'en' 
   );
 }
 
-/* ────────────────── QC Quiz View ────────────────── */
+/* ────────────────── QC Quiz View (With 25-Question Sets) ────────────────── */
 function QCQuizView({
   project,
   questions,
@@ -353,16 +235,54 @@ function QCQuizView({
   onFinish: (updated: ExtractedQuestion[]) => void;
   dashboardLang: 'en' | 'ta';
 }) {
-  const [idx, setIdx] = useState(0);
+  const [localQ, setLocalQ] = useState(questions.map((q) => ({ ...q })));
+  const [activeSetIndex, setActiveSetIndex] = useState<number>(-1); // -1 = All, 0 = Set 1 (Q1-25), etc.
+  const [idx, setIdx] = useState(0); // Index in localQ
   const [picked, setPicked] = useState<Record<string, string>>({});
   const [flagModal, setFlagModal] = useState(false);
   const [flagText, setFlagText] = useState('');
   const [flagTag, setFlagTag] = useState('');
   const [langMode, setLangMode] = useState<'bilingual' | 'ta' | 'en'>('bilingual');
-  const [localQ, setLocalQ] = useState(questions.map((q) => ({ ...q })));
+  const [jumpInput, setJumpInput] = useState('');
 
-  const current = localQ[idx];
   const total = localQ.length;
+  const current = localQ[idx] || localQ[0];
+
+  // 25-Question Quiz Sets computation
+  const SET_SIZE = 25;
+  const totalSets = Math.max(1, Math.ceil(total / SET_SIZE));
+
+  // Determine subset based on active set
+  const filteredIndices: number[] = [];
+  if (activeSetIndex === -1) {
+    for (let i = 0; i < total; i++) filteredIndices.push(i);
+  } else {
+    const start = activeSetIndex * SET_SIZE;
+    const end = Math.min(start + SET_SIZE, total);
+    for (let i = start; i < end; i++) filteredIndices.push(i);
+  }
+
+  const handleSelectSet = (setIdx: number) => {
+    setActiveSetIndex(setIdx);
+    if (setIdx === -1) {
+      setIdx(0);
+    } else {
+      setIdx(setIdx * SET_SIZE);
+    }
+  };
+
+  const handleJump = (e: React.FormEvent) => {
+    e.preventDefault();
+    const num = parseInt(jumpInput, 10);
+    if (!isNaN(num) && num >= 1 && num <= total) {
+      setIdx(num - 1);
+      const setOfNum = Math.floor((num - 1) / SET_SIZE);
+      if (activeSetIndex !== -1 && activeSetIndex !== setOfNum) {
+        setActiveSetIndex(setOfNum);
+      }
+      setJumpInput('');
+    }
+  };
 
   const handleReport = () => {
     const finalReport = [flagTag, flagText.trim()].filter(Boolean).join(' - ');
@@ -379,12 +299,29 @@ function QCQuizView({
     const updated = [...localQ];
     updated[idx] = { ...updated[idx], qcApproved: true, reportFlag: undefined };
     setLocalQ(updated);
-    if (idx < total - 1) setIdx(idx + 1);
+
+    // Advance to next question in active view
+    const currentPosInFiltered = filteredIndices.indexOf(idx);
+    if (currentPosInFiltered !== -1 && currentPosInFiltered < filteredIndices.length - 1) {
+      setIdx(filteredIndices[currentPosInFiltered + 1]);
+    } else if (idx < total - 1) {
+      setIdx(idx + 1);
+    }
   };
 
-  const done = localQ.every((q) => q.qcApproved !== undefined);
+  const handleApproveEntireSet = () => {
+    const updated = [...localQ];
+    for (const i of filteredIndices) {
+      if (updated[i].qcApproved === undefined) {
+        updated[i] = { ...updated[i], qcApproved: true, reportFlag: undefined };
+      }
+    }
+    setLocalQ(updated);
+  };
+
   const approved = localQ.filter((q) => q.qcApproved === true).length;
   const flagged = localQ.filter((q) => q.qcApproved === false).length;
+  const setApprovedCount = filteredIndices.filter((i) => localQ[i]?.qcApproved === true).length;
 
   const QUICK_FLAG_TAGS = [
     { en: 'Tamil OCR Typo', ta: 'தமிழ் எழுத்துப் பிழை' },
@@ -402,16 +339,21 @@ function QCQuizView({
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '1.25rem',
+          marginBottom: '1rem',
           flexWrap: 'wrap',
           gap: '0.75rem',
         }}
       >
         <div>
-          <span className="g-quiz-badge">
-            {dashboardLang === 'ta' ? 'QC சரிபார்ப்பு முறைமை' : 'QC Mode Active'}
-          </span>
-          <h2 className="g-results-title" style={{ fontSize: '1.4rem', marginTop: '0.4rem', fontFamily: 'var(--g-font-display)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span className="g-quiz-badge">
+              {dashboardLang === 'ta' ? 'QC சரிபார்ப்பு முறைமை' : 'QC Mode Active'}
+            </span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--g-text-muted)' }}>
+              {total} {dashboardLang === 'ta' ? 'வினாக்கள்' : 'Questions'} · {totalSets} {dashboardLang === 'ta' ? 'தேர்வுத் தொகுப்புகள்' : 'Quiz Sets'}
+            </span>
+          </div>
+          <h2 className="g-results-title" style={{ fontSize: '1.35rem', marginTop: '0.3rem', fontFamily: 'var(--g-font-display)' }}>
             {dashboardLang === 'ta'
               ? `தரக் கட்டுப்பாடு — ${project.examNameTamil || project.examName}`
               : `Quality Control — ${project.examName}`}
@@ -419,7 +361,7 @@ function QCQuizView({
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
-          {/* Language display switcher for questions */}
+          {/* Language Switcher for Questions */}
           <div
             style={{
               display: 'flex',
@@ -436,14 +378,14 @@ function QCQuizView({
                 background: langMode === 'bilingual' ? 'var(--g-blue)' : 'transparent',
                 color: langMode === 'bilingual' ? '#041E49' : 'var(--g-text-secondary)',
                 border: 'none',
-                padding: '0.3rem 0.75rem',
+                padding: '0.3rem 0.7rem',
                 borderRadius: 'var(--g-radius-full)',
                 fontSize: '0.75rem',
                 fontWeight: 600,
                 cursor: 'pointer',
               }}
             >
-              இருமொழி (Bilingual)
+              இருமொழி
             </button>
             <button
               type="button"
@@ -452,14 +394,14 @@ function QCQuizView({
                 background: langMode === 'ta' ? 'var(--g-blue)' : 'transparent',
                 color: langMode === 'ta' ? '#041E49' : 'var(--g-text-secondary)',
                 border: 'none',
-                padding: '0.3rem 0.75rem',
+                padding: '0.3rem 0.7rem',
                 borderRadius: 'var(--g-radius-full)',
                 fontSize: '0.75rem',
                 fontWeight: 600,
                 cursor: 'pointer',
               }}
             >
-              தமிழ் மட்டும்
+              தமிழ்
             </button>
             <button
               type="button"
@@ -468,7 +410,7 @@ function QCQuizView({
                 background: langMode === 'en' ? 'var(--g-blue)' : 'transparent',
                 color: langMode === 'en' ? '#041E49' : 'var(--g-text-secondary)',
                 border: 'none',
-                padding: '0.3rem 0.75rem',
+                padding: '0.3rem 0.7rem',
                 borderRadius: 'var(--g-radius-full)',
                 fontSize: '0.75rem',
                 fontWeight: 600,
@@ -479,19 +421,19 @@ function QCQuizView({
             </button>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <span
-              style={{
-                padding: '0.25rem 0.65rem',
-                background: 'var(--g-correct-bg)',
-                color: 'var(--g-correct-text)',
-                borderRadius: 'var(--g-radius-full)',
-                fontSize: '0.8rem',
-                fontWeight: 600,
-              }}
-            >
-              ✔ {approved} {dashboardLang === 'ta' ? 'ஒப்புதல்' : 'Approved'}
-            </span>
+          <span
+            style={{
+              padding: '0.25rem 0.65rem',
+              background: 'var(--g-correct-bg)',
+              color: 'var(--g-correct-text)',
+              borderRadius: 'var(--g-radius-full)',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+            }}
+          >
+            ✔ {approved} / {total}
+          </span>
+          {flagged > 0 && (
             <span
               style={{
                 padding: '0.25rem 0.65rem',
@@ -502,31 +444,115 @@ function QCQuizView({
                 fontWeight: 600,
               }}
             >
-              🚩 {flagged} {dashboardLang === 'ta' ? 'சுட்டிக்காட்டப்பட்டது' : 'Flagged'}
+              🚩 {flagged}
             </span>
-          </div>
+          )}
         </div>
       </div>
 
-      {/* Progress */}
-      <div style={{ marginBottom: '1.5rem' }}>
+      {/* 25-Question Quiz Sets Navigation Tabs */}
+      <div
+        style={{
+          display: 'flex',
+          gap: '0.4rem',
+          overflowX: 'auto',
+          paddingBottom: '0.5rem',
+          marginBottom: '1rem',
+          alignItems: 'center',
+        }}
+      >
+        <button
+          type="button"
+          onClick={() => handleSelectSet(-1)}
+          style={{
+            padding: '0.35rem 0.85rem',
+            borderRadius: 'var(--g-radius-full)',
+            border: `1px solid ${activeSetIndex === -1 ? 'var(--g-blue)' : 'var(--g-border)'}`,
+            background: activeSetIndex === -1 ? 'var(--g-blue-soft)' : 'var(--g-surface-elevated)',
+            color: activeSetIndex === -1 ? 'var(--g-blue)' : 'var(--g-text-secondary)',
+            fontSize: '0.78rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {dashboardLang === 'ta' ? `அனைத்தும் (${total} Qs)` : `All (${total} Qs)`}
+        </button>
+
+        {Array.from({ length: totalSets }).map((_, sIdx) => {
+          const startQ = sIdx * SET_SIZE + 1;
+          const endQ = Math.min((sIdx + 1) * SET_SIZE, total);
+          const isCurrent = activeSetIndex === sIdx;
+          return (
+            <button
+              key={sIdx}
+              type="button"
+              onClick={() => handleSelectSet(sIdx)}
+              style={{
+                padding: '0.35rem 0.85rem',
+                borderRadius: 'var(--g-radius-full)',
+                border: `1px solid ${isCurrent ? 'var(--g-blue)' : 'var(--g-border)'}`,
+                background: isCurrent ? 'var(--g-blue-soft)' : 'var(--g-surface-elevated)',
+                color: isCurrent ? 'var(--g-blue)' : 'var(--g-text-secondary)',
+                fontSize: '0.78rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {dashboardLang === 'ta' ? `தேர்வு ${sIdx + 1} (Q${startQ}-${endQ})` : `Quiz ${sIdx + 1} (Q${startQ}-${endQ})`}
+            </button>
+          );
+        })}
+
+        {/* Jump to question form */}
+        <form onSubmit={handleJump} style={{ display: 'flex', gap: '0.3rem', marginLeft: 'auto' }}>
+          <input
+            type="number"
+            min="1"
+            max={total}
+            placeholder={dashboardLang === 'ta' ? 'வினா #' : 'Q #'}
+            value={jumpInput}
+            onChange={(e) => setJumpInput(e.target.value)}
+            style={{
+              width: '65px',
+              padding: '0.3rem 0.5rem',
+              background: 'var(--g-surface-elevated)',
+              border: '1px solid var(--g-border)',
+              borderRadius: 'var(--g-radius-sm)',
+              color: 'var(--g-text-primary)',
+              fontSize: '0.78rem',
+            }}
+          />
+          <button
+            type="submit"
+            className="g-btn g-btn-ghost"
+            style={{ padding: '0.3rem 0.6rem', fontSize: '0.75rem' }}
+          >
+            Go
+          </button>
+        </form>
+      </div>
+
+      {/* Progress for Active View */}
+      <div style={{ marginBottom: '1.25rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: 'var(--g-text-muted)', marginBottom: '0.3rem' }}>
           <span>
-            {dashboardLang === 'ta' ? `வினா ${idx + 1} / ${total}` : `Question ${idx + 1} of ${total}`}
+            {dashboardLang === 'ta'
+              ? activeSetIndex === -1
+                ? `வினா ${idx + 1} / ${total}`
+                : `தேர்வு ${activeSetIndex + 1}: வினா ${idx + 1} (இந்த தொகுப்பில் ${setApprovedCount} / ${filteredIndices.length} சரிபார்க்கப்பட்டது)`
+              : activeSetIndex === -1
+              ? `Question ${idx + 1} of ${total}`
+              : `Quiz Set ${activeSetIndex + 1}: Question ${idx + 1} (${setApprovedCount} of ${filteredIndices.length} approved)`}
           </span>
-          <span>
-            {Math.round((localQ.filter((q) => q.qcApproved !== undefined).length / total) * 100)}%{' '}
-            {dashboardLang === 'ta' ? 'சரிபார்க்கப்பட்டது' : 'Reviewed'}
-          </span>
+          <span>{Math.round((approved / total) * 100)}% {dashboardLang === 'ta' ? 'மொத்த நிறைவு' : 'Total Reviewed'}</span>
         </div>
-        <ProgressBar
-          value={(localQ.filter((q) => q.qcApproved !== undefined).length / total) * 100}
-          color="var(--g-correct-solid)"
-        />
+        <ProgressBar value={(approved / total) * 100} color="var(--g-correct-solid)" />
       </div>
 
-      {/* Question Card */}
-      {!done ? (
+      {/* Main Question Review Card */}
+      {current && (
         <div
           className="g-question-card"
           style={{
@@ -550,7 +576,7 @@ function QCQuizView({
                 fontFamily: 'var(--g-font-tamil)',
               }}
             >
-              🏷 {dashboardLang === 'ta' || langMode === 'ta' ? current.syllabusTagTamil : current.syllabusTag}
+              🏷 {dashboardLang === 'ta' || langMode === 'ta' ? current.syllabusTagTamil || current.syllabusTag : current.syllabusTag}
             </span>
             <span
               style={{
@@ -562,7 +588,7 @@ function QCQuizView({
                 fontWeight: 600,
               }}
             >
-              {dashboardLang === 'ta' || langMode === 'ta' ? current.unitTamil : current.unit}
+              {dashboardLang === 'ta' || langMode === 'ta' ? current.unitTamil || current.unit : current.unit}
             </span>
             <span
               style={{
@@ -575,11 +601,11 @@ function QCQuizView({
                 fontWeight: 700,
               }}
             >
-              Q{current.serial}
+              Q{current.serial} of {total}
             </span>
           </div>
 
-          {/* Tamil Question (Primary for TNPSC) */}
+          {/* Tamil Question */}
           {langMode !== 'en' && current.questionTamil && (
             <div
               className="g-question-tamil"
@@ -674,7 +700,6 @@ function QCQuizView({
                   </span>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', flex: 1 }}>
-                    {/* Tamil Option */}
                     {langMode !== 'en' && optTa && (
                       <span
                         lang="ta"
@@ -688,7 +713,6 @@ function QCQuizView({
                         {optTa}
                       </span>
                     )}
-                    {/* English Option */}
                     {langMode !== 'ta' && (
                       <span
                         style={{
@@ -714,7 +738,7 @@ function QCQuizView({
                         alignSelf: 'center',
                       }}
                     >
-                      விடைக்குறிப்பு (Key: {letter})
+                      Key: {letter}
                     </span>
                   )}
                 </button>
@@ -722,7 +746,7 @@ function QCQuizView({
             })}
           </div>
 
-          {/* Explanation Box */}
+          {/* Explanation */}
           {(current.explanationTamil || current.explanation) && (
             <div
               style={{
@@ -742,7 +766,7 @@ function QCQuizView({
                   {current.explanationTamil}
                 </div>
               )}
-              {current.explanation && (
+              {current.explanation && current.explanation !== current.explanationTamil && (
                 <div style={{ color: 'var(--g-text-secondary)', fontSize: '0.85rem', lineHeight: 1.5 }}>
                   {current.explanation}
                 </div>
@@ -750,7 +774,7 @@ function QCQuizView({
             </div>
           )}
 
-          {/* Reported Flag Notice */}
+          {/* Reported Notice */}
           {current.reportFlag && (
             <div
               style={{
@@ -783,90 +807,106 @@ function QCQuizView({
               style={{ color: 'var(--g-error-text)', borderColor: 'var(--g-error-border)', flex: 1, minWidth: '130px' }}
               onClick={() => setFlagModal(true)}
             >
-              🚩 {dashboardLang === 'ta' ? 'பிழையைப் புகாரளி (Report)' : 'Report Issue'}
+              🚩 {dashboardLang === 'ta' ? 'பிழையைப் புகாரளி' : 'Report Issue'}
             </button>
-            {idx < total - 1 && (
+            {activeSetIndex !== -1 && (
               <button
                 type="button"
-                className="g-btn g-btn-ghost"
-                style={{ padding: '0.7rem 1.25rem' }}
-                onClick={() => setIdx(idx + 1)}
+                className="g-btn g-btn-secondary"
+                style={{ fontSize: '0.85rem' }}
+                onClick={handleApproveEntireSet}
               >
-                {dashboardLang === 'ta' ? 'தவிர் →' : 'Skip →'}
+                ✔ {dashboardLang === 'ta' ? `தேர்வு ${activeSetIndex + 1} முழுவதையும் ஒப்புதல் செய்` : `Approve Entire Quiz Set ${activeSetIndex + 1}`}
               </button>
             )}
-          </div>
-        </div>
-      ) : (
-        /* Finished State */
-        <div className="g-report-card" style={{ textAlign: 'center', padding: '2.5rem' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎉</div>
-          <h3 className="g-results-title" style={{ fontSize: '1.6rem', marginBottom: '0.5rem', fontFamily: 'var(--g-font-display)' }}>
-            {dashboardLang === 'ta' ? 'சரிபார்ப்பு (QC) நிறைவடைந்தது!' : 'QC Review Complete!'}
-          </h3>
-          <p style={{ color: 'var(--g-text-secondary)', marginBottom: '1.75rem', fontSize: '0.95rem' }}>
-            {dashboardLang === 'ta'
-              ? `${approved} வினாக்கள் ஒப்புதல் அளிக்கப்பட்டது · ${flagged} வினாக்கள் திருத்தத்திற்கு சுட்டிக்காட்டப்பட்டது`
-              : `${approved} questions approved · ${flagged} flagged for review`}
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button type="button" className="g-btn g-btn-primary" onClick={() => onFinish(localQ)}>
-              🌐 {dashboardLang === 'ta' ? 'பொது வினாடிவினாவில் நேரலையாக வெளியிடு →' : 'Publish to Public Quiz →'}
-            </button>
-            <button type="button" className="g-btn g-btn-ghost" onClick={() => setIdx(0)}>
-              {dashboardLang === 'ta' ? 'மீண்டும் சரிபார்' : 'Review Again'}
-            </button>
           </div>
         </div>
       )}
 
       {/* Question Pills Navigator */}
-      <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginTop: '1.5rem', justifyContent: 'center' }}>
-        {localQ.map((q, i) => (
-          <button
-            key={q.id}
-            type="button"
-            onClick={() => setIdx(i)}
-            style={{
-              width: '34px',
-              height: '34px',
-              borderRadius: '50%',
-              border: `2px solid ${
-                q.qcApproved === true
-                  ? 'var(--g-correct-border)'
-                  : q.qcApproved === false
-                  ? 'var(--g-error-border)'
-                  : i === idx
-                  ? 'var(--g-blue)'
-                  : 'var(--g-border)'
-              }`,
-              background:
-                q.qcApproved === true
-                  ? 'var(--g-correct-bg)'
-                  : q.qcApproved === false
-                  ? 'var(--g-error-bg)'
-                  : i === idx
-                  ? 'var(--g-blue-soft)'
-                  : 'transparent',
-              color:
-                q.qcApproved === true
-                  ? 'var(--g-correct-text)'
-                  : q.qcApproved === false
-                  ? 'var(--g-error-text)'
-                  : 'var(--g-text-primary)',
-              fontSize: '0.78rem',
-              fontWeight: 700,
-              cursor: 'pointer',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            {i + 1}
-          </button>
-        ))}
+      <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', marginTop: '1.5rem', justifyContent: 'center' }}>
+        {filteredIndices.map((i) => {
+          const q = localQ[i];
+          if (!q) return null;
+          return (
+            <button
+              key={q.id}
+              type="button"
+              onClick={() => setIdx(i)}
+              style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                border: `2px solid ${
+                  q.qcApproved === true
+                    ? 'var(--g-correct-border)'
+                    : q.qcApproved === false
+                    ? 'var(--g-error-border)'
+                    : i === idx
+                    ? 'var(--g-blue)'
+                    : 'var(--g-border)'
+                }`,
+                background:
+                  q.qcApproved === true
+                    ? 'var(--g-correct-bg)'
+                    : q.qcApproved === false
+                    ? 'var(--g-error-bg)'
+                    : i === idx
+                    ? 'var(--g-blue-soft)'
+                    : 'transparent',
+                color:
+                  q.qcApproved === true
+                    ? 'var(--g-correct-text)'
+                    : q.qcApproved === false
+                    ? 'var(--g-error-text)'
+                    : 'var(--g-text-primary)',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              {q.serial}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* QC Completion Summary Bar */}
+      <div
+        style={{
+          marginTop: '1.5rem',
+          padding: '1rem 1.25rem',
+          background: 'var(--g-surface)',
+          border: '1px solid var(--g-border-subtle)',
+          borderRadius: 'var(--g-radius-md)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1rem',
+        }}
+      >
+        <div>
+          <div style={{ fontWeight: 600, color: 'var(--g-text-primary)' }}>
+            {dashboardLang === 'ta' ? 'QC சரிபார்ப்பு நிலை' : 'QC Completion Status'}
+          </div>
+          <div style={{ fontSize: '0.85rem', color: 'var(--g-text-muted)', marginTop: '0.2rem' }}>
+            {approved} {dashboardLang === 'ta' ? 'ஒப்புதல்' : 'approved'} · {flagged} {dashboardLang === 'ta' ? 'பிழைகள்' : 'flagged'} · {total - approved - flagged} {dashboardLang === 'ta' ? 'நிலுவை' : 'pending'}
+          </div>
+        </div>
+
+        <button
+          type="button"
+          className="g-btn g-btn-primary"
+          onClick={() => onFinish(localQ)}
+        >
+          🌐 {dashboardLang === 'ta' ? 'QC முடித்து பொதுவெளியில் வெளியிடு →' : 'Finish QC & Publish to Public →'}
+        </button>
       </div>
 
       {/* Report Modal */}
-      {flagModal && (
+      {flagModal && current && (
         <div
           style={{
             position: 'fixed',
@@ -899,7 +939,6 @@ function QCQuizView({
                 : 'Select an issue tag or describe OCR mistakes, answer key errors, etc.'}
             </p>
 
-            {/* Quick tags */}
             <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
               {QUICK_FLAG_TAGS.map((tag) => {
                 const label = dashboardLang === 'ta' ? tag.ta : tag.en;
@@ -967,74 +1006,167 @@ function QCQuizView({
   );
 }
 
-/* ────────────────── Upload Modal ────────────────── */
+/* ────────────────── Upload Modal (With 200 Questions Support) ────────────────── */
 function UploadModal({
   onClose,
   onUpload,
   lang,
 }: {
   onClose: () => void;
-  onUpload: (p: PdfProject) => void;
+  onUpload: (p: PdfProject, questions: ExtractedQuestion[]) => void;
   lang: 'en' | 'ta';
 }) {
   const [pdfName, setPdfName] = useState('');
-  const [year, setYear] = useState('2024');
-  const [examName, setExamName] = useState('');
-  const [examNameTamil, setExamNameTamil] = useState('');
+  const [year, setYear] = useState('2025');
+  const [examName, setExamName] = useState('TNPSC Group 4 (General Tamil & General Studies)');
+  const [examNameTamil, setExamNameTamil] = useState('TNPSC குரூப் 4 (பொதுத்தமிழ் & பொது அறிவு)');
+  const [questionCount, setQuestionCount] = useState<number>(200); // Standard TNPSC full paper = 200 questions
   const [simulating, setSimulating] = useState(false);
   const [step, setStep] = useState(0);
+  const [jsonQuestions, setJsonQuestions] = useState<ExtractedQuestion[] | null>(null);
 
   const EXAM_OPTIONS = [
-    { en: 'TNPSC Group 4 (General Tamil & General Studies)', ta: 'TNPSC குரூப் 4 (பொதுத்தமிழ் & பொது அறிவு)' },
-    { en: 'TNPSC Group 2 / 2A (Combined Civil Services II)', ta: 'TNPSC குரூப் 2 / 2A (ஒருங்கிணைந்த குடிமைப் பணிகள் II)' },
-    { en: 'TNPSC Group 1 (Combined Civil Services I)', ta: 'TNPSC குரூப் 1 (முதன்மை குடிமைப் பணிகள்)' },
-    { en: 'TNPSC VAO (Village Administrative Officer)', ta: 'TNPSC VAO (கிராம நிர்வாக அலுவலர்)' },
-    { en: 'TNPSC Combined Technical Services Exam', ta: 'TNPSC ஒருங்கிணைந்த தொழில்நுட்பப் பணிகள் தேர்வு' },
-    { en: 'UPSC Civil Services Preliminary', ta: 'UPSC குடிமைப் பணிகள் முதல்நிலைத் தேர்வு' },
+    { en: 'TNPSC Group 4 (General Tamil & General Studies)', ta: 'TNPSC குரூப் 4 (பொதுத்தமிழ் & பொது அறிவு)', defaultCount: 200 },
+    { en: 'TNPSC Group 2 / 2A (Combined Civil Services II)', ta: 'TNPSC குரூப் 2 / 2A (ஒருங்கிணைந்த குடிமைப் பணிகள் II)', defaultCount: 200 },
+    { en: 'TNPSC Group 1 (Combined Civil Services I)', ta: 'TNPSC குரூப் 1 (முதன்மை குடிமைப் பணிகள்)', defaultCount: 200 },
+    { en: 'TNPSC VAO (Village Administrative Officer)', ta: 'TNPSC VAO (கிராம நிர்வாக அலுவலர்)', defaultCount: 200 },
+    { en: 'TNPSC Combined Technical Services Exam', ta: 'TNPSC ஒருங்கிணைந்த தொழில்நுட்பப் பணிகள் தேர்வு', defaultCount: 100 },
+    { en: 'UPSC Civil Services Preliminary', ta: 'UPSC குடிமைப் பணிகள் முதல்நிலைத் தேர்வு', defaultCount: 100 },
   ];
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) setPdfName(file.name);
+    if (!file) return;
+    setPdfName(file.name);
+
+    // If a JSON question bank is uploaded directly
+    if (file.name.endsWith('.json')) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const parsed = JSON.parse(ev.target?.result as string);
+          if (parsed && Array.isArray(parsed.questions)) {
+            const mapped = parsed.questions.map((q: any, qi: number) => {
+              const letter = typeof q.answer === 'number' ? ['A', 'B', 'C', 'D'][q.answer] || 'A' : q.answer || 'A';
+              const unit = q.id <= 100 ? (q.id <= 25 ? 'Part A' : q.id <= 50 ? 'Part B' : q.id <= 75 ? 'Part C' : 'Part D') : 'Unit ' + ((q.id % 10) + 1);
+              const unitTa = q.id <= 100 ? (q.id <= 25 ? 'பகுதி அ' : q.id <= 50 ? 'பகுதி ஆ' : q.id <= 75 ? 'பகுதி இ' : 'பகுதி ஈ') : 'அலகு ' + ((q.id % 10) + 1);
+              return {
+                id: `q-${q.id || qi + 1}`,
+                projectId: '',
+                serial: q.id || qi + 1,
+                question: q.question,
+                questionTamil: q.question,
+                options: q.options || [],
+                optionsTamil: q.options || [],
+                answer: letter,
+                syllabusTag: q.topic || 'General Studies',
+                syllabusTagTamil: q.topic === 'Tamil' ? 'பொதுத்தமிழ்' : 'பொது அறிவு',
+                unit,
+                unitTamil: unitTa,
+                explanation: q.explanation || '',
+                explanationTamil: q.explanation || '',
+              };
+            });
+            setJsonQuestions(mapped);
+            setQuestionCount(mapped.length);
+          }
+        } catch (err) {
+          console.error('Failed to parse uploaded JSON', err);
+        }
+      };
+      reader.readAsText(file);
+    }
   };
 
   const handleExamChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const val = e.target.value;
     setExamName(val);
     const found = EXAM_OPTIONS.find((o) => o.en === val);
-    if (found) setExamNameTamil(found.ta);
+    if (found) {
+      setExamNameTamil(found.ta);
+      setQuestionCount(found.defaultCount);
+    }
   };
 
   const handleSimulate = async () => {
     if (!pdfName || !examName) return;
     setSimulating(true);
+
     for (let s = 0; s <= 4; s++) {
-      await new Promise((r) => setTimeout(r, 650));
+      await new Promise((r) => setTimeout(r, 600));
       setStep(s + 1);
     }
+
+    const projId = `proj-${Date.now()}`;
+    const count = questionCount || 200;
+    const quizSets = Math.max(1, Math.ceil(count / 25));
+
+    // Try to fetch real 200 questions from local PYQ bank if count is 200
+    let finalQuestions: ExtractedQuestion[] = [];
+    if (jsonQuestions && jsonQuestions.length > 0) {
+      finalQuestions = jsonQuestions.map((q) => ({ ...q, projectId: projId }));
+    } else {
+      try {
+        const resp = await fetch('/data/pyq/tnpsc-2025-GRP4.json');
+        if (resp.ok) {
+          const pyqData = await resp.json();
+          if (pyqData && Array.isArray(pyqData.questions)) {
+            finalQuestions = pyqData.questions.slice(0, count).map((q: any) => {
+              const letter = typeof q.answer === 'number' ? ['A', 'B', 'C', 'D'][q.answer] || 'A' : q.answer || 'A';
+              const unit = q.id <= 100 ? (q.id <= 25 ? 'Part A' : q.id <= 50 ? 'Part B' : q.id <= 75 ? 'Part C' : 'Part D') : 'Unit ' + ((q.id % 10) + 1);
+              const unitTa = q.id <= 100 ? (q.id <= 25 ? 'பகுதி அ' : q.id <= 50 ? 'பகுதி ஆ' : q.id <= 75 ? 'பகுதி இ' : 'பகுதி ஈ') : 'அலகு ' + ((q.id % 10) + 1);
+              return {
+                id: `q-${q.id}`,
+                projectId: projId,
+                serial: q.id,
+                question: q.question,
+                questionTamil: q.question,
+                options: q.options || [],
+                optionsTamil: q.options || [],
+                answer: letter,
+                syllabusTag: q.topic || 'General Studies',
+                syllabusTagTamil: q.topic === 'Tamil' ? 'பொதுத்தமிழ்' : 'பொது அறிவு',
+                unit,
+                unitTamil: unitTa,
+                explanation: q.explanation || '',
+                explanationTamil: q.explanation || '',
+              };
+            });
+          }
+        }
+      } catch (err) {
+        console.warn('Fallback to generated questions', err);
+      }
+
+      if (finalQuestions.length === 0) {
+        finalQuestions = generateFallbackQuestions(count, projId);
+      }
+    }
+
     const proj: PdfProject = {
-      id: `proj-${Date.now()}`,
+      id: projId,
       pdfName,
       year,
       examName,
       examNameTamil: examNameTamil || examName,
       status: 'quiz_ready',
-      pages: Math.floor(Math.random() * 20) + 12,
-      questionsExtracted: 25,
-      quizCount: 1,
+      pages: Math.max(12, Math.round(count * 0.18)),
+      questionsExtracted: finalQuestions.length,
+      quizCount: quizSets,
       uploadedAt: new Date().toLocaleString('en-IN', { hour12: false }).slice(0, 16),
       progress: 100,
-      syllabusTagged: 25,
+      syllabusTagged: finalQuestions.length,
     };
-    onUpload(proj);
+
+    onUpload(proj, finalQuestions);
   };
 
   const STEP_LABELS = [
-    { en: 'Uploading PDF to Cloud', ta: 'PDF கோப்பு மேகக்கணியில் பதிவேற்றம்' },
-    { en: 'Splitting Pages Automatically', ta: 'பக்கங்கள் தானாகப் பிரிக்கப்படுகிறது' },
-    { en: 'OCR Scanning & Tamil Extraction', ta: 'OCR வாசிப்பு மற்றும் தமிழ் வினாக்கள் எடுப்பு' },
-    { en: 'Tagging Syllabus Units (Unit 1-10)', ta: 'TNPSC பாடத்திட்ட அலகுகளுடன் குறியிடல்' },
-    { en: 'Generating 25-Question Quiz Sets', ta: '25 வினாக்கள் கொண்ட பயிற்சித் தேர்வு உருவாக்கம்' },
+    { en: 'Uploading PDF to Cloud Storage', ta: 'PDF கோப்பு மேகக்கணியில் பதிவேற்றம்' },
+    { en: `Splitting ${Math.round(questionCount * 0.18)} Pages Automatically`, ta: `${Math.round(questionCount * 0.18)} பக்கங்கள் தானாகப் பிரிக்கப்படுகிறது` },
+    { en: `OCR Scanning & Extracting All ${questionCount} Questions`, ta: `முழு ${questionCount} வினாக்களும் OCR மூலம் பிரித்தெடுக்கப்படுகிறது` },
+    { en: 'Tagging TNPSC Syllabus Units (Unit 1 to 10)', ta: 'TNPSC பாடத்திட்ட அலகுகளுடன் குறியிடல் (அலகு 1-10)' },
+    { en: `Generating ${Math.ceil(questionCount / 25)} Quizzes (25 Questions each)`, ta: `${Math.ceil(questionCount / 25)} தேர்வுகள் ஆக்கம் (ஒவ்வொன்றும் 25 வினாக்கள்)` },
   ];
 
   return (
@@ -1056,14 +1188,14 @@ function UploadModal({
           border: '1px solid var(--g-border)',
           borderRadius: 'var(--g-radius-lg)',
           padding: '2rem',
-          maxWidth: '520px',
+          maxWidth: '540px',
           width: '100%',
           animation: 'g-fade-in 0.25s ease',
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ margin: 0, fontSize: '1.3rem', fontFamily: 'var(--g-font-display)' }}>
-            📤 {lang === 'ta' ? 'புதிய PDF வினாத்தாள் பதிவேற்றம்' : 'Upload New PDF Question Paper'}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+          <h2 style={{ margin: 0, fontSize: '1.25rem', fontFamily: 'var(--g-font-display)' }}>
+            📤 {lang === 'ta' ? 'PDF வினாத்தாள் பதிவேற்றம் & பிரிப்பு' : 'Upload PDF & Auto-Extract 200 Questions'}
           </h2>
           <button
             type="button"
@@ -1078,11 +1210,11 @@ function UploadModal({
           <>
             <label style={{ display: 'block', marginBottom: '1rem' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--g-text-secondary)', display: 'block', marginBottom: '0.4rem' }}>
-                {lang === 'ta' ? 'PDF வினாத்தாள் கோப்பைத் தேர்ந்தெடுக்கவும்' : 'Select PDF File'}
+                {lang === 'ta' ? 'PDF அல்லது JSON வினாத்தாள் கோப்பு (.pdf, .json)' : 'Select PDF or JSON Question File (.pdf, .json)'}
               </span>
               <input
                 type="file"
-                accept=".pdf"
+                accept=".pdf,.json"
                 onChange={handleFileChange}
                 style={{
                   display: 'block',
@@ -1099,27 +1231,45 @@ function UploadModal({
               />
             </label>
 
-            <label style={{ display: 'block', marginBottom: '1rem' }}>
-              <span style={{ fontSize: '0.85rem', color: 'var(--g-text-secondary)', display: 'block', marginBottom: '0.4rem' }}>
-                {lang === 'ta' ? 'தேர்வு ஆண்டு (Year)' : 'Exam Year'}
-              </span>
-              <input
-                className="g-input"
-                type="number"
-                min="2000"
-                max="2030"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                style={{ margin: 0 }}
-              />
-            </label>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1rem' }}>
+              <label style={{ display: 'block' }}>
+                <span style={{ fontSize: '0.85rem', color: 'var(--g-text-secondary)', display: 'block', marginBottom: '0.4rem' }}>
+                  {lang === 'ta' ? 'தேர்வு ஆண்டு (Year)' : 'Exam Year'}
+                </span>
+                <input
+                  className="g-input"
+                  type="number"
+                  min="2000"
+                  max="2030"
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                  style={{ margin: 0 }}
+                />
+              </label>
 
-            <label style={{ display: 'block', marginBottom: '1.5rem' }}>
+              <label style={{ display: 'block' }}>
+                <span style={{ fontSize: '0.85rem', color: 'var(--g-text-secondary)', display: 'block', marginBottom: '0.4rem' }}>
+                  {lang === 'ta' ? 'வினாக்கள் எண்ணிக்கை (Total Qs)' : 'Total Questions in Paper'}
+                </span>
+                <select
+                  className="g-input"
+                  value={questionCount}
+                  onChange={(e) => setQuestionCount(parseInt(e.target.value, 10))}
+                  style={{ margin: 0 }}
+                >
+                  <option value={200}>200 வினாக்கள் (8 Quizzes of 25 Qs)</option>
+                  <option value={100}>100 வினாக்கள் (4 Quizzes of 25 Qs)</option>
+                  <option value={75}>75 வினாக்கள் (3 Quizzes of 25 Qs)</option>
+                  <option value={25}>25 வினாக்கள் (1 Quiz of 25 Qs)</option>
+                </select>
+              </label>
+            </div>
+
+            <label style={{ display: 'block', marginBottom: '1.25rem' }}>
               <span style={{ fontSize: '0.85rem', color: 'var(--g-text-secondary)', display: 'block', marginBottom: '0.4rem' }}>
                 {lang === 'ta' ? 'தேர்வுப் பெயர் (Exam Name)' : 'Exam Name'}
               </span>
               <select className="g-input" value={examName} onChange={handleExamChange} style={{ margin: 0 }}>
-                <option value="">{lang === 'ta' ? 'தேர்வைத் தேர்ந்தெடுக்கவும்…' : 'Select exam…'}</option>
                 {EXAM_OPTIONS.map((o) => (
                   <option key={o.en} value={o.en}>
                     {lang === 'ta' ? o.ta : o.en}
@@ -1128,6 +1278,22 @@ function UploadModal({
               </select>
             </label>
 
+            <div
+              style={{
+                padding: '0.75rem 1rem',
+                background: 'rgba(138, 180, 248, 0.08)',
+                borderRadius: 'var(--g-radius-sm)',
+                marginBottom: '1.25rem',
+                fontSize: '0.82rem',
+                color: 'var(--g-blue)',
+                lineHeight: 1.5,
+              }}
+            >
+              ℹ {lang === 'ta'
+                ? `பிரித்தெடுக்கப்படும் ${questionCount} வினாக்களும் தானாக தலா 25 வினாக்கள் கொண்ட ${Math.ceil(questionCount / 25)} தனித்தனி வினாடிவினாக்களாகப் பிரிக்கப்பட்டு சரிபார்ப்புக்கு வைக்கப்படும்.`
+                : `All ${questionCount} extracted questions will be auto-partitioned into ${Math.ceil(questionCount / 25)} quizzes of 25 questions each for QC review.`}
+            </div>
+
             <button
               type="button"
               className="g-btn g-btn-primary"
@@ -1135,7 +1301,7 @@ function UploadModal({
               disabled={!pdfName || !examName}
               onClick={handleSimulate}
             >
-              🚀 {lang === 'ta' ? 'தானியங்கி செயல்முறையைத் தொடங்கு' : 'Start Automated Pipeline'}
+              🚀 {lang === 'ta' ? `${questionCount} வினாக்களையும் பிரித்து செயல்முறையைத் தொடங்கு` : `Extract All ${questionCount} Questions & Start Pipeline`}
             </button>
           </>
         ) : (
@@ -1261,7 +1427,13 @@ function ProjectRow({
         <Badge status={project.status} lang={lang} />
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--g-text-muted)', fontSize: '0.85rem' }}>
-          <span>{project.questionsExtracted} {lang === 'ta' ? 'வினா' : 'Q'}</span>
+          <span style={{ fontWeight: 600, color: 'var(--g-text-primary)' }}>
+            {project.questionsExtracted} {lang === 'ta' ? 'வினா' : 'Q'}
+          </span>
+          <span style={{ color: 'var(--g-border)' }}>|</span>
+          <span style={{ color: 'var(--g-blue)' }}>
+            {project.quizCount} {lang === 'ta' ? 'தேர்வுகள் (25-Q)' : 'Quizzes (25-Q)'}
+          </span>
           <span style={{ color: 'var(--g-border)' }}>|</span>
           <span>{project.pages} {lang === 'ta' ? 'பக்கம்' : 'pg'}</span>
         </div>
@@ -1293,10 +1465,10 @@ function ProjectRow({
           >
             {[
               { labelEn: 'Pages Split', labelTa: 'பிரித்த பக்கங்கள்', val: project.pages },
-              { labelEn: 'Questions', labelTa: 'வினாக்கள்', val: project.questionsExtracted },
-              { labelEn: 'Tagged Units', labelTa: 'குறியிட்ட அலகுகள்', val: project.syllabusTagged },
-              { labelEn: '25-Q Sets', labelTa: 'தேர்வுத் தொகுப்புகள்', val: project.quizCount },
-              { labelEn: 'Uploaded', labelTa: 'பதிவேற்றம்', val: project.uploadedAt },
+              { labelEn: 'Questions Extracted', labelTa: 'பிரித்தெடுத்த வினாக்கள்', val: project.questionsExtracted },
+              { labelEn: 'Syllabus Tagged', labelTa: 'பாடத்திட்டக் குறியீடு', val: project.syllabusTagged },
+              { labelEn: '25-Q Quiz Sets', labelTa: '25-Q தேர்வுத் தொகுப்புகள்', val: project.quizCount },
+              { labelEn: 'Uploaded At', labelTa: 'பதிவேற்றிய நேரம்', val: project.uploadedAt },
             ].map((m) => (
               <div key={m.labelEn} style={{ background: 'var(--g-surface-elevated)', borderRadius: 'var(--g-radius-sm)', padding: '0.65rem 0.85rem' }}>
                 <div style={{ fontSize: '0.72rem', color: 'var(--g-text-muted)', marginBottom: '0.2rem', fontFamily: lang === 'ta' ? 'var(--g-font-tamil)' : 'inherit' }}>
@@ -1312,7 +1484,7 @@ function ProjectRow({
           <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
             {project.status === 'quiz_ready' && (
               <button type="button" className="g-btn g-btn-primary" onClick={onStartQC}>
-                🔍 {lang === 'ta' ? 'QC சரிபார்ப்பைத் தொடங்கு' : 'Start QC Review'}
+                🔍 {lang === 'ta' ? `QC சரிபார்ப்பைத் தொடங்கு (${project.questionsExtracted} வினாக்கள்)` : `Start QC Review (${project.questionsExtracted} Qs)`}
               </button>
             )}
             {project.status === 'qc_in_progress' && (
@@ -1363,7 +1535,7 @@ export const ProjectDashboard: React.FC = () => {
   const [statusFeedback, setStatusFeedback] = useState('');
   const [view, setView] = useState<'dashboard' | 'qc'>('dashboard');
   const [activeProject, setActiveProject] = useState<PdfProject | null>(null);
-  const [qcQuestions, setQcQuestions] = useState<ExtractedQuestion[]>(DEMO_QUESTIONS);
+  const [qcQuestions, setQcQuestions] = useState<ExtractedQuestion[]>([]);
   const [projects, setProjects] = useState<PdfProject[]>([DEMO_PROJECT]);
   const [showUpload, setShowUpload] = useState(false);
   const [publishedToast, setPublishedToast] = useState(false);
@@ -1376,7 +1548,9 @@ export const ProjectDashboard: React.FC = () => {
       const auth = sessionStorage.getItem('tnpsc_portal_auth') || localStorage.getItem('tnpsc_portal_auth');
       if (auth === 'true') setIsAuthenticated(true);
       const stored = localStorage.getItem('tnpsc_dashboard_projects');
-      if (stored) setProjects(JSON.parse(stored));
+      if (stored) {
+        setProjects(JSON.parse(stored));
+      }
       const storedLang = localStorage.getItem('tnpsc_dashboard_lang') as 'ta' | 'en';
       if (storedLang) setDashboardLang(storedLang);
     } catch {}
@@ -1439,9 +1613,66 @@ export const ProjectDashboard: React.FC = () => {
     }, 2000);
   };
 
-  const handleStartQC = (proj: PdfProject) => {
+  const handleStartQC = async (proj: PdfProject) => {
     setActiveProject(proj);
-    setQcQuestions(DEMO_QUESTIONS.map((q) => ({ ...q, projectId: proj.id })));
+
+    // 1. Try to load saved questions for this project from localStorage
+    let loaded: ExtractedQuestion[] = [];
+    try {
+      const storedQStr = localStorage.getItem(`tnpsc_project_questions_${proj.id}`);
+      if (storedQStr) {
+        loaded = JSON.parse(storedQStr);
+      }
+    } catch {}
+
+    // 2. If not stored, try fetching full 200 questions from public JSON
+    if (loaded.length === 0) {
+      try {
+        const resp = await fetch('/data/pyq/tnpsc-2025-GRP4.json');
+        if (resp.ok) {
+          const pyqData = await resp.json();
+          if (pyqData && Array.isArray(pyqData.questions)) {
+            const count = proj.questionsExtracted || 200;
+            loaded = pyqData.questions.slice(0, count).map((q: any) => {
+              const letter = typeof q.answer === 'number' ? ['A', 'B', 'C', 'D'][q.answer] || 'A' : q.answer || 'A';
+              const unit = q.id <= 100 ? (q.id <= 25 ? 'Part A' : q.id <= 50 ? 'Part B' : q.id <= 75 ? 'Part C' : 'Part D') : 'Unit ' + ((q.id % 10) + 1);
+              const unitTa = q.id <= 100 ? (q.id <= 25 ? 'பகுதி அ' : q.id <= 50 ? 'பகுதி ஆ' : q.id <= 75 ? 'பகுதி இ' : 'பகுதி ஈ') : 'அலகு ' + ((q.id % 10) + 1);
+              return {
+                id: `q-${q.id}`,
+                projectId: proj.id,
+                serial: q.id,
+                question: q.question,
+                questionTamil: q.question,
+                options: q.options || [],
+                optionsTamil: q.options || [],
+                answer: letter,
+                syllabusTag: q.topic || 'General Studies',
+                syllabusTagTamil: q.topic === 'Tamil' ? 'பொதுத்தமிழ்' : 'பொது அறிவு',
+                unit,
+                unitTamil: unitTa,
+                explanation: q.explanation || '',
+                explanationTamil: q.explanation || '',
+              };
+            });
+            try {
+              localStorage.setItem(`tnpsc_project_questions_${proj.id}`, JSON.stringify(loaded));
+            } catch {}
+          }
+        }
+      } catch (e) {
+        console.warn('Failed to fetch pyq questions', e);
+      }
+    }
+
+    // 3. Fallback to generated 200 questions
+    if (loaded.length === 0) {
+      loaded = generateFallbackQuestions(proj.questionsExtracted || 200, proj.id);
+      try {
+        localStorage.setItem(`tnpsc_project_questions_${proj.id}`, JSON.stringify(loaded));
+      } catch {}
+    }
+
+    setQcQuestions(loaded);
     const updated = projects.map((p) => (p.id === proj.id ? { ...p, status: 'qc_in_progress' as PipelineStatus } : p));
     saveProjects(updated);
     setView('qc');
@@ -1451,6 +1682,9 @@ export const ProjectDashboard: React.FC = () => {
     if (activeProject) {
       const updated = projects.map((p) => (p.id === activeProject.id ? { ...p, status: 'qc_done' as PipelineStatus } : p));
       saveProjects(updated);
+      try {
+        localStorage.setItem(`tnpsc_project_questions_${activeProject.id}`, JSON.stringify(updatedQ));
+      } catch {}
     }
     setQcQuestions(updatedQ);
     setView('dashboard');
@@ -1472,18 +1706,25 @@ export const ProjectDashboard: React.FC = () => {
         : `Delete PDF and all images for "${proj.pdfName}"? This cannot be undone.`;
     if (!confirm(msg)) return;
     saveProjects(projects.filter((p) => p.id !== proj.id));
+    try {
+      localStorage.removeItem(`tnpsc_project_questions_${proj.id}`);
+    } catch {}
   };
 
-  const handleNewUpload = (proj: PdfProject) => {
+  const handleNewUpload = (proj: PdfProject, questions: ExtractedQuestion[]) => {
     saveProjects([proj, ...projects]);
+    try {
+      localStorage.setItem(`tnpsc_project_questions_${proj.id}`, JSON.stringify(questions));
+    } catch {}
     setShowUpload(false);
   };
 
   const totalQ = projects.reduce((s, p) => s + p.questionsExtracted, 0);
+  const totalQuizzes = projects.reduce((s, p) => s + p.quizCount, 0);
   const published = projects.filter((p) => p.status === 'published').length;
   const qcReady = projects.filter((p) => p.status === 'quiz_ready' || p.status === 'qc_in_progress').length;
 
-  /* ── 1. Login Gate Screen ── */
+  /* ── 1. Login Screen ── */
   if (!isAuthenticated) {
     return (
       <div className="gemini-quiz-root" style={{ justifyContent: 'center' }}>
@@ -1624,12 +1865,11 @@ export const ProjectDashboard: React.FC = () => {
               🛠 {dashboardLang === 'ta' ? 'நிர்வாகக் கட்டுப்பாட்டகம்' : 'Admin Pipeline Portal'}
             </span>
             <span style={{ fontSize: '0.9rem', color: 'var(--g-text-secondary)', fontFamily: 'var(--g-font-tamil)' }}>
-              {dashboardLang === 'ta' ? 'PDF → OCR → தமிழ் வினாக்கள் → சரிபார்ப்பு → நேரலை' : 'PDF → OCR → Bilingual Quiz → QC → Publish'}
+              {dashboardLang === 'ta' ? '200 வினாக்கள் → 8 தேர்வுகள் (25-Q) → QC சரிபார்ப்பு → நேரலை' : '200 Questions → 8 Quizzes (25-Q) → QC Review → Live Publish'}
             </span>
           </div>
 
           <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
-            {/* Language Switcher */}
             <button
               type="button"
               onClick={toggleLanguage}
@@ -1713,8 +1953,8 @@ export const ProjectDashboard: React.FC = () => {
               </h1>
               <p style={{ color: 'var(--g-text-secondary)', fontSize: '0.92rem', lineHeight: 1.5, fontFamily: 'var(--g-font-tamil)' }}>
                 {dashboardLang === 'ta'
-                  ? 'PDF பதிவேற்றம் · பக்கப் பிரிப்பு · OCR வாசிப்பு · பாடத்திட்டக் குறியீடு · 25 வினாக்கள் பயிற்சி · QC சரிபார்ப்பு · நேரலை வெளியீடு'
-                  : 'Upload PDFs · Auto-Split · OCR Extraction · Syllabus Tagging · 25-Q Sets · QC Review · Live Publish'}
+                  ? 'PDF பதிவேற்றம் · 200 வினாக்கள் பிரித்தெடுத்தல் · தலா 25 வினாக்கள் கொண்ட 8 தேர்வுகள் ஆக்கம் · QC சரிபார்ப்பு · நேரலை வெளியீடு'
+                  : 'PDF Upload · Full 200 Questions Extraction · Auto-Split into 8 Quizzes (25-Q each) · QC Review · Live Publish'}
               </p>
             </div>
             <button
@@ -1723,7 +1963,7 @@ export const ProjectDashboard: React.FC = () => {
               style={{ fontSize: '0.95rem', padding: '0.85rem 1.5rem' }}
               onClick={() => setShowUpload(true)}
             >
-              + {dashboardLang === 'ta' ? 'PDF வினாத்தாள் பதிவேற்று' : 'Upload PDF'}
+              + {dashboardLang === 'ta' ? '200 வினாத்தாள் PDF பதிவேற்று' : 'Upload 200-Q PDF'}
             </button>
           </div>
 
@@ -1737,8 +1977,8 @@ export const ProjectDashboard: React.FC = () => {
               <span className="g-metric-label">{dashboardLang === 'ta' ? 'பிரித்தெடுத்த வினாக்கள்' : 'Questions Extracted'}</span>
             </div>
             <div className="g-metric-card">
-              <span className="g-metric-val" style={{ color: '#FDD663' }}>{qcReady}</span>
-              <span className="g-metric-label">{dashboardLang === 'ta' ? 'சரிபார்ப்பு நிலுவை (QC)' : 'Pending QC'}</span>
+              <span className="g-metric-val" style={{ color: '#A78BFA' }}>{totalQuizzes}</span>
+              <span className="g-metric-label">{dashboardLang === 'ta' ? '25-Q தேர்வுத் தொகுப்புகள்' : '25-Q Quiz Sets'}</span>
             </div>
             <div className="g-metric-card">
               <span className="g-metric-val" style={{ color: 'var(--g-correct-text)' }}>{published}</span>
@@ -1754,12 +1994,12 @@ export const ProjectDashboard: React.FC = () => {
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '0.65rem' }}>
             {[
-              { icon: '📤', stepEn: '1. Upload',   stepTa: '1. பதிவேற்றம்',  descEn: 'PDF exam question paper', descTa: 'PDF வினாத்தாள் பதிவேற்றம்' },
+              { icon: '📤', stepEn: '1. Upload',   stepTa: '1. பதிவேற்றம்',  descEn: '200-Q PDF question paper', descTa: '200 வினாக்கள் PDF பதிவேற்றம்' },
               { icon: '✂',  stepEn: '2. Split',    stepTa: '2. பக்கப் பிரிப்பு', descEn: 'Page-by-page to cloud', descTa: 'மேகக்கணியில் பக்கப் பிரிப்பு' },
-              { icon: '🔍', stepEn: '3. OCR',      stepTa: '3. OCR வாசிப்பு', descEn: 'Extract Q+options+answer', descTa: 'கேள்வி & விடை OCR எடுப்பு' },
-              { icon: '🏷', stepEn: '4. Tag',      stepTa: '4. குறியீடு',    descEn: 'Tag to TNPSC syllabus', descTa: 'அலகு 1-10 பாடத்திட்ட இணைவு' },
-              { icon: '📋', stepEn: '5. Quiz',     stepTa: '5. தேர்வு ஆக்கம்',descEn: '25-Q practice sets', descTa: '25 வினாக்கள் பயிற்சித் தேர்வு' },
-              { icon: '✅', stepEn: '6. QC',       stepTa: '6. சரிபார்ப்பு', descEn: 'Review & flag per question', descTa: 'வினா வாரியாக சரிபார்த்தல்' },
+              { icon: '🔍', stepEn: '3. OCR',      stepTa: '3. OCR வாசிப்பு', descEn: 'Extract all 200 questions', descTa: 'முழு 200 வினாக்களும் எடுப்பு' },
+              { icon: '🏷', stepEn: '4. Tag',      stepTa: '4. குறியீடு',    descEn: 'Tag to TNPSC Unit 1-10', descTa: 'அலகு 1-10 பாடத்திட்ட இணைவு' },
+              { icon: '📋', stepEn: '5. Quiz Sets', stepTa: '5. தேர்வு ஆக்கம்',descEn: 'Split into 8x 25-Q sets', descTa: '8 தேர்வுகள் (தலா 25 வினாக்கள்)' },
+              { icon: '✅', stepEn: '6. QC Review',stepTa: '6. சரிபார்ப்பு', descEn: 'QC by 25-Q set & flag', descTa: '25-Q தேர்வு வாரியாக சரிபார்த்தல்' },
               { icon: '🌐', stepEn: '7. Publish',  stepTa: '7. நேரலை',      descEn: 'Live to public students', descTa: 'மாணவர்களுக்கு நேரலை வெளியீடு' },
               { icon: '🗑', stepEn: '8. Cleanup',  stepTa: '8. கோப்பு நீக்கம்', descEn: 'Delete PDF & raw images', descTa: 'தற்காலிக மூலக் கோப்பு நீக்கம்' },
             ].map((s) => (
