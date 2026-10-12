@@ -846,3 +846,59 @@
     flex: 1;
   }
 }
+
+/* ── PDF Studio & Split Screen Workstation ────────────────────────────── */
+.g-studio-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.g-studio-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 1080px) {
+  .g-studio-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.g-pdf-panel {
+  background: var(--g-surface);
+  border: 1px solid var(--g-border-subtle);
+  border-radius: var(--g-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 140px);
+  min-height: 650px;
+  position: sticky;
+  top: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.g-pdf-toolbar {
+  padding: 0.7rem 1rem;
+  background: var(--g-surface-elevated);
+  border-bottom: 1px solid var(--g-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.g-pdf-frame {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #1E1F20;
+}
+
