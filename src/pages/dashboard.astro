@@ -1,21 +1,22 @@
 ---
 import { ProjectDashboard } from '../components/gemini-quiz/ProjectDashboard';
+import '../styles/studio-command-center.css';
 import '../styles/gemini-quiz.css';
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Lab Dashboard | TNPSC Fuhrer</title>
-    <meta name="description" content="Password-protected Project Dashboard and Gemini-style AI assessment engine." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>TNPSC Fuhrer Studio | Question Bank Command Center</title>
+    <meta name="description" content="TNPSC Question Paper Database Studio, Side-by-Side Live PDF Reader, and 25-Question Quiz Generator." />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
-  <body style="margin: 0; background-color: #131314; color: #F0F4F9;">
+  <body style="margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; background-color: #0E0F10; color: #F0F4F9;">
     <ProjectDashboard client:load />
   </body>
 </html>
